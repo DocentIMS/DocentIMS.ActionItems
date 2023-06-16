@@ -54,6 +54,11 @@ setup(
         'z3c.jbot',
         'plone.api>=1.8.4',
         'plone.app.dexterity',
+        'collective.accordionviews',
+        'collective.searchandreplace',
+        'collective.impersonate',
+        'collective.contentsections',
+        'Products.PloneKeywordManager'
     ],
     extras_require={
         'test': [

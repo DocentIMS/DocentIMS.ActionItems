@@ -4,5 +4,6 @@
     i18n:domain="DocentIMS.ActionItems">
 
 <!-- -*- extra stuff goes here -*- -->
+  <javascript id="action_items.js" file="++plone++DocentIMS.ActionItems/js/action_items.js" enabled="True" />
 
 </registry>

@@ -18,4 +18,15 @@
       directory="static"
       />
 
+
+  <!-- ICal Browser Views -->
+  <!-- Change for="*" to content type IActionItems-->
+  <browser:page
+      name="ics_action_view"
+      for="*"
+      class=".exporter.ActionItemsICal"
+      permission="zope2.View"
+      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+    />
+
 </configure>
