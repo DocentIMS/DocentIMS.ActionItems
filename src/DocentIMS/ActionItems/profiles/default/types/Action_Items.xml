@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="action_items" meta_type="Dexterity FTI" i18n:domain="plone"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">Action Items</property>
+ <property name="description" i18n:translate="">action items</property>
+ <property name="icon_expr">string:file-earmark-text</property>
+ <property name="factory">action_items</property>
+ <property
+    name="add_view_expr">string:${folder_url}/++add++action_items</property>
+ <property name="link_target"></property>
+ <property name="immediate_view">view</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">True</property>
+ <property name="default_view">view</property>
+ <property name="view_methods">
+  <element value="view"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <property name="add_permission">cmf.AddPortalContent</property>
+ <property name="klass">plone.dexterity.content.Container</property>
+ <property name="behaviors">
+  <element value="plone.namefromtitle"/>
+  <element value="plone.versioning"/>
+  <element value="plone.allowdiscussion"/>
+  <element value="plone.dublincore"/>
+  <element value="plone.locking"/>
+ </property>
+ <property name="schema"></property>
+ <property
+    name="model_source">&lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
+    &lt;schema&gt;
+      &lt;field name=&quot;full_explanation&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+        &lt;description&gt;Give all the details, including any references, documents, etc. that might be helpful.&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Full Explanation&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;priority&quot; type=&quot;zope.schema.Choice&quot;&gt;
+        &lt;description&gt;Establish a priority level 1-5 with &quot;1&quot; being the most critical&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Priority&lt;/title&gt;
+        &lt;values&gt;
+          &lt;element&gt;1&lt;/element&gt;
+          &lt;element&gt;2&lt;/element&gt;
+          &lt;element&gt;3&lt;/element&gt;
+          &lt;element&gt;4&lt;/element&gt;
+          &lt;element&gt;5&lt;/element&gt;
+        &lt;/values&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;export_to_microsoft_calendar_&quot; type=&quot;zope.schema.Bool&quot;&gt;
+        &lt;description&gt;If selected, you will have the option of people to select downloading dates and title of action item.&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Allow Export to Microsoft Calendar?&lt;/title&gt;
+        &lt;form:widget type=&quot;z3c.form.browser.radio.RadioFieldWidget&quot;/&gt;
+      &lt;/field&gt;
+      &lt;fieldset name=&quot;all_dates&quot; label=&quot;All Dates&quot; description=&quot;All relevant dates&quot;&gt;
+        &lt;field name=&quot;creation_date&quot; type=&quot;zope.schema.Date&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Creation Date&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;initial_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Initial Due Date&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;revised_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Revised Due Date&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;How are these action items connected to the documents&quot;&gt;
+        &lt;field name=&quot;is_this_action_out_of_the_scope_of_work_&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;description&gt;If this action item isn&#x27;t directly driven by the Statement of Work, then select &quot;Yes&quot; and then explain.&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Is This Action Out of the Scope of Work?&lt;/title&gt;
+          &lt;form:widget type=&quot;z3c.form.browser.radio.RadioFieldWidget&quot;/&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;explanation_for_out_of_scope_ai&quot; type=&quot;zope.schema.Text&quot;&gt;
+          &lt;default&gt;Note:  this will only display if &quot;yes&quot; is selected.  Also, the above won&#x27;t be a radio button it will be check box and only checked if AI is out of scope.&lt;/default&gt;
+          &lt;description&gt;Explain why this Action Item is needed if it isn&#x27;t driven by SOW&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Explanation for Out of Scope AI&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;related_sow_section&quot; type=&quot;zope.schema.Choice&quot;&gt;
+          &lt;description&gt;Which section in the SOW drives this action item?&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Related SOW Section&lt;/title&gt;
+          &lt;values&gt;
+            &lt;element&gt;1&lt;/element&gt;
+            &lt;element&gt;1-1&lt;/element&gt;
+            &lt;element&gt;1-2&lt;/element&gt;
+          &lt;/values&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;sow_section_text&quot; type=&quot;zope.schema.Text&quot;&gt;
+          &lt;description&gt;The text from the section that generates this Action Item&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;SOW section text&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;intermediate_actioins&quot; label=&quot;Intermediate Actions&quot; description=&quot;Describe all the actions taken including intermediate work if it is a lengthy or complicated issue.&quot;&gt;
+        &lt;field name=&quot;actions_taken&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;description&gt;Explain the intermediate steps as a way to keep people updated on your actiions&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Actions Taken&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;close_out&quot; label=&quot;Close Out&quot; description=&quot;Explain in detail what you did to complete this action item.&quot;&gt;
+        &lt;field name=&quot;is_this_item_closed&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;description&gt;have you finished&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Is this item closed&lt;/title&gt;
+          &lt;form:widget type=&quot;z3c.form.browser.radio.RadioFieldWidget&quot;/&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;actions_to_close_out&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;description&gt;Explain what you did to close this out.&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Actions to Close out&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;owners&quot; label=&quot;Owners&quot; description=&quot;The creator and assigned owners of this Action Item.&quot;&gt;
+        &lt;field name=&quot;created_by&quot; type=&quot;zope.schema.Choice&quot;&gt;
+          &lt;description&gt;Person creating the Action Item.&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Created by&lt;/title&gt;
+          &lt;values/&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
+          &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Assigned to&lt;/title&gt;
+          &lt;values/&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+    &lt;/schema&gt;
+  &lt;/model&gt;</property>
+ <property name="model_file"></property>
+ <property name="schema_policy">dexterity</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="@@edit"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="string:toolbar-action/view" link_target=""
+    url_expr="string:${object_url}" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="string:toolbar-action/edit" link_target=""
+    url_expr="string:${object_url}/edit" visible="True">
+ <permission value="Modify portal content"/>
+ </action>
+</object>
