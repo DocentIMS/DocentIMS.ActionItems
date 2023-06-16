@@ -4,11 +4,11 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="DocentIMS.ActionItems">
 
- <!-- -*- extra stuff goes here -*- -->
+ <!-- -*- change * to content type (?) DocentIMS.ActionItems.content.action_items.IActionItems -*- -->
 
   <browser:page
     name="action-items-view"
-    for="action_items"
+    for="*"
     class=".action_items_view.ActionItemsView"
     template="action_items_view.pt"
     permission="zope2.View"

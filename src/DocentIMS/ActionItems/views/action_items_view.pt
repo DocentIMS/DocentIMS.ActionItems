@@ -8,10 +8,30 @@
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
-      <h2 i18n:translate="">Sample View</h2>
-      <!--<div tal:replace="view/my_custom_view_method" />-->
-      <!--<div tal:replace="context/my_custom_field" />-->
+      <h4 i18n:translate="">Info</h4>
 
+
+      <p><b>Explanation:</b></p>
+      <div tal:replace="structure  context/full_explanation/output|None" />
+      <p><b>Priority:</b> ${context/priority|None}</p>
+      <p><b>Priority:</b> ${context/export_to_microsoft_calendar_|None}</p>
+      <p><b>Created:</b> ${context/creation_date|None}</p>
+      <p><b>Ini due date:</b> ${context/initial_due_date|None}</p>
+      <p><b>Rev due date:</b> ${context/revised_due_date|None}</p>
+      <p><b>Out of scope?</b> ${context/is_this_action_out_of_the_scope_of_work_|None}</p>
+      <p tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"><b>Explanation:</b> ${context/explanation_for_out_of_scope_ai|None}</p>
+      <p><b>Related SOW:</b> ${context/related_sow_section|None}</p>
+      <p><b>SOW:</b> ${context/sow_section_text|None}</p>
+      <p><b>Actions taken:</b> ${context/actions_taken|None}</p>
+      <p><b>Closed:</b> ${context/is_this_item_closed|None}</p>
+      <p><b>Out:</b> ${context/actions_to_close_out|None}</p>
+      <div class="people-stuff">
+        <p><b>By:</b> ${context/created_by|None}</p>
+        <p><b>Assigned:</b> ${context/assigned_to|None}</p>
+      </div>
+      <style>
+        .people-stuff { border: 1px solid #123456; padding: 10px; margin: 20px 0}
+      </style>
   </metal:block>
   </metal:content-core>
 </body>

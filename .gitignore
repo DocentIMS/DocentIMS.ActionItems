@@ -1,3 +1,4 @@
 *.pyc
 src/DocentIMS.ActionItems.egg-info/*
  
+src/DocentIMS/ActionItems/.DS_Store

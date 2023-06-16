@@ -76,7 +76,7 @@
   &lt;description&gt;If this action item isn&#x27;t directly driven by the Statement of Work, then select &quot;Yes&quot; and then explain.&lt;/description&gt;
   &lt;required&gt;False&lt;/required&gt;
   &lt;title&gt;Is This Action Out of the Scope of Work?&lt;/title&gt;
-  &lt;form:widget type=&quot;z3c.form.browser.radio.RadioFieldWidget&quot;/&gt;
+  &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
   &lt;/field&gt;
   &lt;field name=&quot;explanation_for_out_of_scope_ai&quot; type=&quot;zope.schema.Text&quot;&gt;
   &lt;default&gt;Note:  this will only display if &quot;yes&quot; is selected.  Also, the above won&#x27;t be a radio button it will be check box and only checked if AI is out of scope.&lt;/default&gt;
