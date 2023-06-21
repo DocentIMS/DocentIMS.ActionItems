@@ -17,6 +17,7 @@
       <p><b>Priority:</b> ${context/export_to_microsoft_calendar_|None}</p>
       <p><b>Created:</b> ${context/creation_date|None}</p>
       <p><b>Ini due date:</b> ${context/initial_due_date|None}</p>
+      <a tal:condition="context/initial_due_date|None" href="${context/absolute_url}/@@ics_action_view">Export ICal<a>
       <p><b>Rev due date:</b> ${context/revised_due_date|None}</p>
       <p><b>Out of scope?</b> ${context/is_this_action_out_of_the_scope_of_work_|None}</p>
       <p tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"><b>Explanation:</b> ${context/explanation_for_out_of_scope_ai|None}</p>
