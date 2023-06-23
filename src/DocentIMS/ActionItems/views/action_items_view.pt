@@ -42,7 +42,7 @@
 
           <fieldset>
             <legend>⛏ Actions taken</legend>
-            <div tal:replace="structure context/actions_taken/output" />
+            <div tal:replace="structure context/actions_taken/output|None" />
 
           </fieldset>
 
@@ -54,7 +54,7 @@
                 <span tal:condition="not: context/is_this_item_closed|None"> No </span>
             </p>
             <h6 tal:condition="context/is_this_item_closed">Closed out</h6>
-            <div tal:condition="context/is_this_item_closed" tal:replace="structure context/actions_to_close_out/output" />
+            <div tal:condition="context/is_this_item_closed" tal:replace="structure context/actions_to_close_out/output|None" />
           </fieldset>
 
       </div>
