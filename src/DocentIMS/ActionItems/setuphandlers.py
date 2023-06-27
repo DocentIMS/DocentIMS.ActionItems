@@ -42,7 +42,8 @@ def post_install(context):
     _create_content(portal)
 
 def _create_content(portal):
-        action_items = api.content.create(
+        if not portal.get('action_items', False):
+            action_items = api.content.create(
                 type='Folder',
                 container=portal,
                 id='action_items',

@@ -3,7 +3,17 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
 
-<!-- -*- extra stuff goes here -*- -->
-  <javascript id="action_items.js" file="++plone++DocentIMS.ActionItems/js/action_items.js" enabled="True" />
+      <!-- -*- extra stuff goes here -*- -->
+     <!--javascript id="action_items.js" file="++plone++DocentIMS.ActionItems/js/action_items.js" enabled="True" /-->
+
+
+
+    <records interface="plone.base.interfaces.resources.IBundleRegistry" prefix="plone.bundles/actionitems">
+      <value key="enabled">True</value>
+      <value key="jscompilation">++plone++DocentIMS.ActionItems/js/action_items.js</value>
+      <value key="load_async">False</value>
+      <value key="load_defer">False</value>
+      <value key="depends">jquery</value>
+    </records>
 
 </registry>
