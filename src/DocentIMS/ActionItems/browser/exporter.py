@@ -38,7 +38,7 @@ class ActionItemsICal(BrowserView):
         #event.add("dtstamp", utc(datetime.now()))
         event.add("summary", self.context.title)
         event.add("name", self.context.title)
-        event.add("description",self.context.id)
+        event.add("description",self.context.Description())
         event.add("dtstart", self.context.initial_due_date)
         cal.add_component(event)
 

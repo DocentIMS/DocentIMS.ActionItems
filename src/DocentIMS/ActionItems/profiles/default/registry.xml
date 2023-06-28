@@ -13,7 +13,7 @@
       <value key="jscompilation">++plone++DocentIMS.ActionItems/js/action_items.js</value>
       <value key="load_async">False</value>
       <value key="load_defer">False</value>
-      <value key="depends">jquery</value>
+      <value key="depends">plone</value>
     </records>
 
 </registry>

@@ -49,12 +49,6 @@
   &lt;element&gt;5&lt;/element&gt;
   &lt;/values&gt;
   &lt;/field&gt;
-  &lt;field name=&quot;export_to_microsoft_calendar_&quot; type=&quot;zope.schema.Bool&quot;&gt;
-  &lt;description&gt;If selected, you will have the option of people to select downloading dates and title of action item.&lt;/description&gt;
-  &lt;required&gt;False&lt;/required&gt;
-  &lt;title&gt;Allow Export to Microsoft Calendar?&lt;/title&gt;
-  &lt;form:widget type=&quot;z3c.form.browser.radio.RadioFieldWidget&quot;/&gt;
-  &lt;/field&gt;
   &lt;fieldset name=&quot;all_dates&quot; label=&quot;All Dates&quot; description=&quot;All relevant dates&quot;&gt;
   &lt;field name=&quot;creation_date&quot; type=&quot;zope.schema.Date&quot;&gt;
   &lt;description/&gt;
