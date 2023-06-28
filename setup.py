@@ -58,7 +58,8 @@ setup(
         'collective.searchandreplace',
         'collective.impersonate',
         'collective.contentsections',
-        'Products.PloneKeywordManager'
+        'Products.PloneKeywordManager',
+        'plone.app.versioningbehavior'
     ],
     extras_require={
         'test': [

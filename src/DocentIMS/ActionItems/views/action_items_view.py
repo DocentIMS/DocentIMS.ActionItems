@@ -3,6 +3,7 @@
 # from DocentIMS.ActionItems import _
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
+from plone import api
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -19,3 +20,6 @@ class ActionItemsView(BrowserView):
     def __call__(self):
         # Implement your own actions:
         return self.index()
+
+    def portal_url(self):
+        return api.portal.get().absolute_url()
