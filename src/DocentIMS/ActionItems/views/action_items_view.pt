@@ -29,7 +29,13 @@
             📅 Dates</legend>
             <!--p><b>Created:</b> ${context/creation_date|None}</p-->
             <p><b>Initial due date:</b> ${context/initial_due_date|None}
-              <!--span class="plone-pat-moment pat-moment" data-pat-moment="format:relative">${context/initial_due_date|None}</span-->
+            (<time class="pat-display-time"
+              datetime="${python:context.initial_due_date.isoformat()}"
+              data-pat-display-time="output-format: dddd Do MMMM YYYY">
+              ${python:context.initial_due_date}
+            </time>)
+
+
               <!--span class="plone-pat-moment pat-moment" data-pat-moment="selector:span;format:calendar"><span>${context/initial_due_date|None}</span-->
 
 
