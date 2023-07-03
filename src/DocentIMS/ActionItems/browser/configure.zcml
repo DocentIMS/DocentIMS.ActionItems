@@ -29,4 +29,29 @@
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
     />
 
+
+    <!-- Register AddForm for Action Item to override 'standard' tab-->
+    <!-- 'name' is the important part, it needs to be same as content type -->
+    <adapter
+        factory=".views.ActionItemsAddFormView"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        for="*
+             DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
+             plone.dexterity.interfaces.IDexterityFTI"
+             name="action_items"
+        />
+
+      <!-- Override EditForm for Collection -->
+      <!--browser:page
+          name="edit"
+          for="*"
+          class=".views.ActionItemsEditFormView"
+          permission="cmf.ModifyPortalContent"
+          layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+          /-->
+
+
+
+
+
 </configure>

@@ -30,6 +30,7 @@
             <!--p><b>Created:</b> ${context/creation_date|None}</p-->
             <p><b>Initial due date:</b> ${context/initial_due_date|None}
             (<time class="pat-display-time"
+              tal:condition="context/initial_due_date|None"
               datetime="${python:context.initial_due_date.isoformat()}"
               data-pat-display-time="output-format: dddd Do MMMM YYYY">
               ${python:context.initial_due_date}
