@@ -11,7 +11,7 @@
 
       <!-- first tab -->
 
-      <div><h1>${context/related_item}</h1></div>
+
       <div class="pat-autotoc autotabs"
             data-pat-autotoc="section:fieldset;levels:legend;">
           <fieldset>
@@ -81,6 +81,10 @@
 
       </div>
             <hr class="hr" />
+      </div>
+
+      <div tal:condition="context/related_item|None" tal:define="related context/related_item|None" >
+        <p>Related item: <a href="${related/to_path}">${related/to_object/Title}</a></p>
       </div>
 
 

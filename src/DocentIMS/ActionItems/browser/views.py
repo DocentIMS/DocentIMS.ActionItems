@@ -10,11 +10,7 @@ from z3c.relationfield import RelationValue
 from plone import api
 
 from zope.component import getUtility
-
-#from zope.lifecycleevent import modified
-import transaction
-from bs4 import BeautifulSoup
-
+from z3c.form import interfaces
 
 
 class ActionItemsAddForm(DefaultAddForm):
@@ -23,6 +19,14 @@ class ActionItemsAddForm(DefaultAddForm):
 
     def __init__(self, context, request):
         super(ActionItemsAddForm, self).__init__(context, request)
+
+
+
+    def updateWidgets(self):
+        super(ActionItemsAddForm, self).updateWidgets()
+        self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
+
+
 
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
@@ -35,6 +39,7 @@ class ActionItemsAddForm(DefaultAddForm):
 
             #import pdb; pdb.set_trace()
             self.fields['related_item'].field.default = RelationValue( came_from_i )
+            #self.fields['related_item'].field.mode = "hidden"
             #self.fields['related_item'].field.default_value = RelationValue( came_from_i )
 
     def update(self):
