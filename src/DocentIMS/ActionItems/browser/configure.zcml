@@ -41,7 +41,16 @@
              name="action_items"
         />
 
-      <!-- Override EditForm for Collection -->
+      <!-- Override EditForm for Action Items -->
+      <browser:page
+          name="add"
+          for="*"
+          class=".views.ActionItemsAddFormView"
+          permission="cmf.ModifyPortalContent"
+          layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+          />
+
+      <!-- Override EditForm for Action Items -->
       <!--browser:page
           name="edit"
           for="*"
