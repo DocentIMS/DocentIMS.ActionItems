@@ -59,7 +59,7 @@ setup(
         'collective.impersonate',
         'collective.contentsections',
         'Products.PloneKeywordManager',
-        'plone.app.versioningbehavior'
+        'plone.app.versioningbehavior',
         'plone.restapi'
     ],
     extras_require={
