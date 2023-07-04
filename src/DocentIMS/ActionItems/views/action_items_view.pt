@@ -63,7 +63,7 @@
             <p>Summary of Actions to Date</p>
             <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>.
             <p>&nbsp;</p>
-            <p class="alert alert-warning">this will open the same action item creation form IN A NEW WINDOW. (this needs to be discussed - I have it here only to not forget.</p>
+            <p class="alert alert-warning">adds new ActionItem IN A NEW WINDOW and automatically sets relation to it.</p>
             <div tal:replace="structure context/actions_taken/output|None" />
 
           </fieldset>
