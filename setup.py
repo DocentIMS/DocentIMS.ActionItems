@@ -60,6 +60,7 @@ setup(
         'collective.contentsections',
         'Products.PloneKeywordManager',
         'plone.app.versioningbehavior'
+        'plone.restapi'
     ],
     extras_require={
         'test': [
