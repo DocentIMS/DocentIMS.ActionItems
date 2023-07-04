@@ -92,7 +92,7 @@
       </div>
 
       <div tal:repeat="relation view/source_relations|None">
-        <p>Related item (pchild): <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
+        <p>Related item (child): <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
       </div>
 
       <p tal:condition="context/initial_due_date|None"><a  class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
