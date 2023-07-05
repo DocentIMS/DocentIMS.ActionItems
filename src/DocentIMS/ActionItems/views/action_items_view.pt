@@ -38,23 +38,23 @@
             <p>Dates summary</p>
             <hr class="hr" />
             <!--p><b>Created:</b> ${context/creation_date|None}</p-->
-            <p><b>Initial due date:</b> <span tal:condition="context/initial_due_date|None"> ${context/initial_due_date|None}</span>
+            <p><b>Initial due date:</b>
+            <!-- span tal:condition="context/initial_due_date|None"> ${context/initial_due_date|None}</span-->
             <tal:condition tal:condition="context/initial_due_date|None">
-            (<time class="pat-display-time"
+            <time class="pat-display-time"
               datetime="${python:context.initial_due_date.isoformat()}"
               data-pat-display-time="output-format: dddd Do MMMM YYYY">
               ${context/initial_due_date|None}
-              </time>)
+              </time>
             </tal:condition>
-            <p><b>Alternative layout: </b>
-            <tal:condition tal:condition="context/initial_due_date|None">
+
+            <!-- tal:condition tal:condition="context/initial_due_date|None">
             <time class="pat-display-time"
               datetime="${python:context.initial_due_date.isoformat()}"
               data-pat-display-time="output-format: Do MMMM, YYYY (dddd)">
               ${context/initial_due_date|None}
             </time>
-            </tal:condition></p>
-
+          </tal:condition-->
 
               <!--span class="plone-pat-moment pat-moment" data-pat-moment="selector:span;format:calendar"><span>${context/initial_due_date|None}</span-->
 
