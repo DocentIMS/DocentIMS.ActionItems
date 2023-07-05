@@ -43,13 +43,13 @@
 
 
       <!-- Override AddForm for Action Items -->
-      <browser:page
+      <!--browser:page
             name="add"
             for="*"
             class=".views.ActionItemsAddFormView"
             permission="cmf.ModifyPortalContent"
             layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
-            />
+            /-->
 
 
       <!-- Override EditForm for Action Items -->

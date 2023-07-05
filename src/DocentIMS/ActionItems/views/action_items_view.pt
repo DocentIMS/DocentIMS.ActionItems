@@ -46,6 +46,14 @@
               ${context/initial_due_date|None}
               </time>)
             </tal:condition>
+            <p><b>Alternative layout: </b>
+            <tal:condition tal:condition="context/initial_due_date|None">
+            <time class="pat-display-time"
+              datetime="${python:context.initial_due_date.isoformat()}"
+              data-pat-display-time="output-format: Do MMMM, YYYY (dddd)">
+              ${context/initial_due_date|None}
+            </time>
+            </tal:condition></p>
 
 
               <!--span class="plone-pat-moment pat-moment" data-pat-moment="selector:span;format:calendar"><span>${context/initial_due_date|None}</span-->

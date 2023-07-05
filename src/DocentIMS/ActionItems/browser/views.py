@@ -64,6 +64,9 @@ class ActionItemsEditForm(DefaultEditForm):
         super(ActionItemsEditForm, self).update()
 
 class ActionItemsAddFormView(DefaultAddView):
+    portal_type = "action_items"
+    default_fieldset_label = 'Home'
+
     form = ActionItemsAddForm
 
 class ActionItemsEditFormView(DefaultEditView):
