@@ -29,3 +29,6 @@ class ActionItemsView(BrowserView):
     def target_relations(self):
         relations =  api.relation.get(target=self.context)
         return relations
+
+    def new_id(self):
+        return  self.context.id.replace('action_item', ' South Tacoma Station')

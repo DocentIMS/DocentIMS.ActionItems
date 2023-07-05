@@ -11,6 +11,8 @@
 
       <!-- first tab -->
 
+      <h6><b>ID:</b> ${view/new_id|None}</h6>
+
 
       <div class="pat-autotoc autotabs"
             data-pat-autotoc="section:fieldset;levels:legend;">
@@ -19,14 +21,24 @@
             <p>Full Details of the Action Item</p>
             <div tal:replace="structure  context/full_explanation/output|None" />
             <hr class="hr" />
-            <p><b>Action Item Owner:</b> ${context/Creator}</p>
+            <div class="alert alert-warning">
+              <p><b>Action Item Owner:</b> ${context/assigned_to}</p>
+              <p><b>Action Item Creator:</b> ${context/Creator}</p>
+
+              <p><b>Date Created:</b> <time class="pat-display-time"
+                datetime="${python:context.created().ISO()}"
+                data-pat-display-time="output-format: LLLL">
+                ${context/created}
+                </time>
+              </p>
+              <p><b>Last modified:</b> <time class="pat-display-time"
+                datetime="${python:context.modified().ISO()}"
+                data-pat-display-time="output-format: LLLL">
+                ${context/modified}
+                </time>
+              </p>
+            </div>
             <p><b>Priority:</b> <span tal:condition="context/priority|None">${context/priority|None}</span></p>
-            <p><b>Date Created:</b> <time class="pat-display-time"
-              datetime="${python:context.created().ISO()}"
-              data-pat-display-time="output-format: dddd Do MMMM YYYY">
-              ${context/created}
-              </time>
-            </p>
 
 
           </fieldset>
