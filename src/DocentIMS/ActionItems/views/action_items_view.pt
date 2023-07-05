@@ -21,6 +21,12 @@
             <hr class="hr" />
             <p><b>Action Item Owner:</b> ${context/Creator}</p>
             <p><b>Priority:</b> <span tal:condition="context/priority|None">${context/priority|None}</span></p>
+            <p><b>Date Created:</b> <time class="pat-display-time"
+              datetime="${python:context.created().ISO()}"
+              data-pat-display-time="output-format: dddd Do MMMM YYYY">
+              ${context/created}
+              </time>
+            </p>
 
 
           </fieldset>
@@ -29,14 +35,17 @@
           <legend>
 
             📅 Dates</legend>
+            <p>Dates summary</p>
+            <hr class="hr" />
             <!--p><b>Created:</b> ${context/creation_date|None}</p-->
-            <p><b>Initial due date:</b> ${context/initial_due_date|None}
+            <p><b>Initial due date:</b> <span tal:condition="context/initial_due_date|None"> ${context/initial_due_date|None}</span>
+            <tal:condition tal:condition="context/initial_due_date|None">
             (<time class="pat-display-time"
-              tal:condition="context/initial_due_date|None"
               datetime="${python:context.initial_due_date.isoformat()}"
               data-pat-display-time="output-format: dddd Do MMMM YYYY">
-              ${python:context.initial_due_date}
-            </time>)
+              ${context/initial_due_date|None}
+              </time>)
+            </tal:condition>
 
 
               <!--span class="plone-pat-moment pat-moment" data-pat-moment="selector:span;format:calendar"><span>${context/initial_due_date|None}</span-->
@@ -44,12 +53,21 @@
 
              </p>
             <!--p tal:condition="context/initial_due_date|None">📅  <a  href="${context/absolute_url}/@@ics_action_view">Export ICal<a></p-->
-            <p><b>Rev. due date:</b> ${context/revised_due_date|None}</p>
+            <p><b>Rev. due date:</b> <span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
+            <tal:condition tal:condition="context/revisited_due_date|None">
+            (<time class="pat-display-time"
+              datetime="${python:context.revisited_due_date.isoformat()}"
+              data-pat-display-time="output-format: dddd Do MMMM YYYY">
+              ${context/revisited_due_date|None}
+              </time>)
+            </tal:condition>
           </fieldset>
 
           <fieldset>
             <legend>↹ Connections</legend>
-            <p><b>Out of scope?</b> <span tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"> ✓ Yes </span>
+              <p>Connections – How is this action item connection to the Scope?</p>
+              <hr class="hr" />
+              <p><b>Out of scope?</b> <span tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"> ✓ Yes </span>
               <span tal:condition="not:context/is_this_action_out_of_the_scope_of_work_|None"> No </span>
             </p>
 
@@ -61,10 +79,11 @@
           <fieldset>
             <legend>⛏ Actions taken</legend>
             <p>Summary of Actions to Date</p>
-            <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>.
-            <p>&nbsp;</p>
-            <p class="alert alert-warning">adds new ActionItem IN A NEW WINDOW and automatically sets relation to it.</p>
+            <hr class="hr" />
+            <p>These are the steps, if any, taken to date</p>
             <div tal:replace="structure context/actions_taken/output|None" />
+            <!--p>&nbsp;</p-->
+            <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
 
           </fieldset>
 
@@ -83,16 +102,16 @@
             <hr class="hr" />
       </div>
 
-      <div tal:condition="context/related_item|None" tal:define="related context/related_item|None" >
+      <!--div tal:condition="context/related_item|None" tal:define="related context/related_item|None" >
         <p>Related item (parent): <a href="${related/to_path}">${related/to_object/Title}</a></p>
-      </div>
+      </div-->
 
       <div tal:repeat="relation view/target_relations|None">
-        <p>Related item (parent): <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
+        <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
       </div>
 
       <div tal:repeat="relation view/source_relations|None">
-        <p>Related item (child): <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
+        <p>Related item ↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
       </div>
 
       <p tal:condition="context/initial_due_date|None"><a  class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
@@ -110,7 +129,6 @@
           .xpat-autotoc.autotabs {background: white}
           fieldset {background: white; padding-left: 2rem; padding-right: 2rem;}
         </style>
-
 
   </metal:block>
   </metal:content-core>
