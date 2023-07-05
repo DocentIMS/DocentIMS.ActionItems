@@ -44,4 +44,9 @@
 
   <include package=".views" />
 
+
+  <utility
+  	  component=".vocabulary.ShowActionItemsVocabulary"
+      name="DocentIMS.ActionItems.ShowActionItemsVocabulary" />
+
 </configure>
