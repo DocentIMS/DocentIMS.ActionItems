@@ -1,8 +1,11 @@
+
+
 from zope.publisher.browser import BrowserView
 from plone.dexterity.browser.add import DefaultAddView
 from plone.dexterity.browser.add import DefaultAddForm
 from plone.dexterity.browser.edit import DefaultEditView
 from plone.dexterity.browser.edit import DefaultEditForm
+from plone.dexterity.browser import edit
 from plone.uuid.interfaces import IUUID
 from zope.intid.interfaces import IIntIds
 from Products.CMFCore.utils import getToolByName
@@ -23,12 +26,6 @@ class ActionItemsAddForm(DefaultAddForm):
         super(ActionItemsAddForm, self).updateWidgets()
         self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
         self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
-        #import pdb; pdb.set_trace()
-        #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE
-        #self.widgets['versioning_enabled'].mode = interfaces.HIDDEN_MODE
-
-        #self.widgets['form.widgets.IVersionable'].mode = interfaces.HIDDEN_MODE
-        #self.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
 
 
     def updateFields(self):
@@ -39,13 +36,21 @@ class ActionItemsAddForm(DefaultAddForm):
             came_from  = api.content.get(UID=from_uid)
             initids = getUtility(IIntIds)
             came_from_i = initids.getId(came_from)
-
-            #import pdb; pdb.set_trace()
             self.fields['related_item'].field.default = RelationValue( came_from_i )
-
 
     def update(self):
         super(ActionItemsAddForm, self).update()
+
+        for group in self.groups:
+            #import pdb; pdb.set_trace()
+            if group.__name__ == 'settings':
+                #group.mode = 'omitted'
+                group.label = None
+                group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+
+class ActionItemsAddFormView(DefaultAddView):
+    form = ActionItemsAddForm
 
 class ActionItemsEditForm(DefaultEditForm):
     portal_type = "action_items"
@@ -56,7 +61,9 @@ class ActionItemsEditForm(DefaultEditForm):
 
     def updateWidgets(self):
         super(ActionItemsEditForm, self).updateWidgets()
-        self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
+        if self.portal_type == 'action_items':
+            self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            #self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
 
     def updateFields(self):
         super(ActionItemsEditForm, self).updateFields()
@@ -64,11 +71,17 @@ class ActionItemsEditForm(DefaultEditForm):
     def update(self):
         super(ActionItemsEditForm, self).update()
 
-class ActionItemsAddFormView(DefaultAddView):
-    portal_type = "action_items"
-    default_fieldset_label = 'Home'
+        if self.portal_type == 'action_items':
+            for group in self.groups:
+                #import pdb; pdb.set_trace()
+                if group.__name__ == 'settings':
+                    #group.mode = 'omitted'
+                    group.label = None
+                    group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                    group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
 
-    form = ActionItemsAddForm
 
 class ActionItemsEditFormView(DefaultEditView):
+    portal_type = "action_items"
+    default_fieldset_label = 'Home'
     form = ActionItemsEditForm

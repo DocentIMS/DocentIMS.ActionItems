@@ -39,13 +39,10 @@
               </p>
             </div>
             <p><b>Priority:</b> <span tal:condition="context/priority|None">${context/priority|None}</span></p>
-
-
           </fieldset>
 
           <fieldset>
           <legend>
-
             📅 Dates</legend>
             <p>Dates summary</p>
             <hr class="hr" />
