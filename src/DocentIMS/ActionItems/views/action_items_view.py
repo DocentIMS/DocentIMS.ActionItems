@@ -31,4 +31,4 @@ class ActionItemsView(BrowserView):
         return relations
 
     def new_id(self):
-        return  self.context.id.replace('action_item', ' South Tacoma Station')
+        return  self.context.id.replace('action_item', 'South Tacoma Station')

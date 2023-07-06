@@ -46,6 +46,11 @@
 
 
   <utility
+    	  component=".vocabulary.ActionItemsVocabulary"
+        name="DocentIMS.ActionItems.ActionItemsVocabulary" />
+
+
+  <utility
   	  component=".vocabulary.ShowActionItemsVocabulary"
       name="DocentIMS.ActionItems.ShowActionItemsVocabulary" />
 
