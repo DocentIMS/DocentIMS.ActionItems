@@ -44,8 +44,6 @@
           &lt;element&gt;1&lt;/element&gt;
           &lt;element&gt;2&lt;/element&gt;
           &lt;element&gt;3&lt;/element&gt;
-          &lt;element&gt;4&lt;/element&gt;
-          &lt;element&gt;5&lt;/element&gt;
         &lt;/values&gt;
       &lt;/field&gt;
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
@@ -79,7 +77,7 @@
           &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
         &lt;/field&gt;
         &lt;field name=&quot;explanation_for_out_of_scope_ai&quot; type=&quot;zope.schema.Text&quot;&gt;
-          &lt;default&gt;Note:  this will only display if &quot;yes&quot; is selected.  Also, the above won&#x27;t be a radio button it will be check box and only checked if AI is out of scope.&lt;/default&gt;
+          &lt;default&gt;  &lt;/default&gt;
           &lt;description&gt;Explain why this Action Item is needed if it isn&#x27;t driven by SOW&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Explanation for Out of Scope AI&lt;/title&gt;
@@ -88,11 +86,7 @@
           &lt;description&gt;Which section in the SOW drives this action item?&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Related SOW Section&lt;/title&gt;
-          &lt;values&gt;
-            &lt;element&gt;1&lt;/element&gt;
-            &lt;element&gt;1-1&lt;/element&gt;
-            &lt;element&gt;1-2&lt;/element&gt;
-          &lt;/values&gt;
+          &lt;vocabulary&gt;DocentIMS.ActionItems.ShowActionItemsVocabulary&lt;/vocabulary&gt;
         &lt;/field&gt;
         &lt;field name=&quot;sow_section_text&quot; type=&quot;zope.schema.Text&quot;&gt;
           &lt;description&gt;The text from the section that generates this Action Item&lt;/description&gt;
