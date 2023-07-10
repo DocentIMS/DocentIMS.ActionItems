@@ -36,3 +36,22 @@ class ActionItemsView(BrowserView):
     def get_sow(self):
         #import pdb; pdb.set_trace()
         return api.content.get(UID=self.context.related_sow_section)
+
+    def get_creator(self):
+        member = api.user.get(userid=self.context.Creator())
+        return  {'id': member.getProperty('id'),
+                  'last_name': member.getProperty('last_name'),
+                  'first_name': member.getProperty('first_name'),
+                  'company': member.getProperty('location'),
+                 }
+
+    def get_owner(self):
+        member = api.user.get(userid=self.context.assigned_to)
+
+        if member:
+            return  {'id': member.getProperty('id'),
+                  'last_name': member.getProperty('last_name'),
+                  'first_name': member.getProperty('first_name'),
+                  'company': member.getProperty('location'),
+                 }
+        return None

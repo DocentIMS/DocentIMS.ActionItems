@@ -1,168 +1,161 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-  <metal:content-core fill-slot="content">
-  <metal:block define-macro="content">
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="DocentIMS.ActionItems"
+  metal:use-macro="context/main_template/macros/master">
+  <body>
+    <metal:content-core fill-slot="content">
+      <metal:block define-macro="content">
 
-      <h1 class="priority-${context/priority|None}">${context/Title}</h1>
-      <p class="lead"> ${view/new_id|None}</p>
+        <h1 class="priority-${context/priority|None}">${context/Title}</h1>
+        <p class="lead"> ${view/new_id|None}</p>
 
-      <div class="white-background">
-      <!-- first tab -->
-
-      <div class="pat-autotoc autotabs"
+        <div class="white-background">
+          <!-- first tab -->
+          <div class="pat-autotoc autotabs"
             data-pat-autotoc="section:fieldset;levels:legend;">
-          <fieldset>
-            <legend>ⓘ Full Details</legend>
-            <p>Full Details of the Action Item</p>
-            <div tal:replace="structure  context/full_explanation/output|None" />
-            <hr class="hr" />
-            <div class="alert alert-warning">
-              <p><b>Action Item Owner:</b> ${context/assigned_to}</p>
-              <p><b>Action Item Creator:</b> ${context/Creator}</p>
+            <fieldset>
+              <legend>ⓘ Full Details</legend>
+              <p>Full Details of the Action Item</p>
+              <div tal:replace="structure  context/full_explanation/output|None" />
+              <hr class="hr" />
+              <div class="alert alert-warning">
+                <p tal:condition="context/assigned_to|None">
+                  <b>Action Item Owner:</b>
+                  <span tal:define="owner view/get_owner|None">
+                    ${owner/last_name|None}, ${owner/first_name|None} –  ${owner/company|None}
+                  </span>
+                </p>
+                <p tal:define="creator view/get_creator|None">
+                  <b>Action Item Creator:</b> ${creator/last_name|None}, ${creator/first_name|None} –  ${creator/company|None}
+                </p>
 
-              <p><b>Date Created:</b> <time class="pat-display-time"
-                datetime="${python:context.created().ISO()}"
-                data-pat-display-time="output-format: LLLL">
-                ${context/created}
+                <p>
+                  <b>Date Created:</b>
+                  <time class="pat-display-time"
+                    datetime="${python:context.created().ISO()}"
+                    data-pat-display-time="output-format: LLLL">
+                    ${context/created}
+                  </time>
+                </p>
+                <p><b>Last modified:</b>
+                  <time class="pat-display-time"
+                    datetime="${python:context.modified().ISO()}"
+                    data-pat-display-time="output-format: LLLL">
+                    ${context/modified}
+                  </time>
+                </p>
+              <p><b>Initial due date:</b>
+              <!-- span tal:condition="context/initial_due_date|None"> ${context/initial_due_date|None}</span-->
+              <p>
+                <tal:condition tal:condition="context/initial_due_date|None">
+                <time class="pat-display-time"
+                  datetime="${python:context.initial_due_date.isoformat()}"
+                  data-pat-display-time="output-format: dddd Do MMMM YYYY">
+                  ${context/initial_due_date|None}
                 </time>
+              </tal:condition>
               </p>
-              <p><b>Last modified:</b> <time class="pat-display-time"
-                datetime="${python:context.modified().ISO()}"
-                data-pat-display-time="output-format: LLLL">
-                ${context/modified}
-                </time>
-              </p>
-            </div>
-            <p><b>Priority:</b> <span tal:condition="context/priority|None">${context/priority|None}</span></p>
-          </fieldset>
-
-          <fieldset>
-          <legend>
-            📅 Dates</legend>
-            <p>Dates summary</p>
-            <hr class="hr" />
-            <!--p><b>Created:</b> ${context/creation_date|None}</p-->
-            <p><b>Initial due date:</b>
-            <!-- span tal:condition="context/initial_due_date|None"> ${context/initial_due_date|None}</span-->
-            <tal:condition tal:condition="context/initial_due_date|None">
-            <time class="pat-display-time"
-              datetime="${python:context.initial_due_date.isoformat()}"
-              data-pat-display-time="output-format: dddd Do MMMM YYYY">
-              ${context/initial_due_date|None}
-              </time>
-            </tal:condition>
-
-            <!-- tal:condition tal:condition="context/initial_due_date|None">
-            <time class="pat-display-time"
-              datetime="${python:context.initial_due_date.isoformat()}"
-              data-pat-display-time="output-format: Do MMMM, YYYY (dddd)">
-              ${context/initial_due_date|None}
-            </time>
-          </tal:condition-->
-
-              <!--span class="plone-pat-moment pat-moment" data-pat-moment="selector:span;format:calendar"><span>${context/initial_due_date|None}</span-->
-
-
-             </p>
             <!--p tal:condition="context/initial_due_date|None">📅  <a  href="${context/absolute_url}/@@ics_action_view">Export ICal<a></p-->
             <p><b>Rev. due date:</b> <span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
-            <tal:condition tal:condition="context/revisited_due_date|None">
-            (<time class="pat-display-time"
-              datetime="${python:context.revisited_due_date.isoformat()}"
-              data-pat-display-time="output-format: dddd Do MMMM YYYY">
-              ${context/revisited_due_date|None}
+              <tal:condition tal:condition="context/revisited_due_date|None">
+                (<time class="pat-display-time"
+                datetime="${python:context.revisited_due_date.isoformat()}"
+                data-pat-display-time="output-format: dddd Do MMMM YYYY">
+                ${context/revisited_due_date|None}
               </time>)
-            </tal:condition>
-          </fieldset>
-
-          <fieldset>
-            <legend>↹ Connections</legend>
-              <p>Connections – How is this action item connection to the Scope?</p>
-              <hr class="hr" />
-              <p><b>Out of scope?</b> <span tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"> ✓ Yes </span>
-              <span tal:condition="not:context/is_this_action_out_of_the_scope_of_work_|None"> No </span>
-            </p>
-
-            <p tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"><b>Explanation:</b> ${context/explanation_for_out_of_scope_ai|None}</p>
-            <p><b class="label">Related SOW:</b>
-              <tal:condition tal:condition="context/related_sow_section|None">
-                <a tal:define="sow view/get_sow" href="${sow/absolute_url}">${sow/Title}</a>
-              </tal:condition>
-            </p>
-            <p><b>SOW:</b> ${context/sow_section_text|None}</p>
-          </fieldset>
-
-          <fieldset>
-            <legend>⛏ Actions taken</legend>
-            <p>Summary of Actions to Date</p>
-            <hr class="hr" />
-            <p>These are the steps, if any, taken to date</p>
-            <div tal:replace="structure context/actions_taken/output|None" />
-            <!--p>&nbsp;</p-->
-
-          </fieldset>
-
-          <fieldset>
-            <legend>√ Close Out</legend>
-            <p>
-                <b>Closed ?</b>
-                <span tal:condition="context/is_this_item_closed|None"> ✓ Yes </span>
-                <span tal:condition="not: context/is_this_item_closed|None"> No </span>
-            </p>
-            <h6 tal:condition="context/is_this_item_closed">Closed out</h6>
-            <div tal:condition="context/is_this_item_closed" tal:replace="structure context/actions_to_close_out/output|None" />
-          </fieldset>
-          <fieldset>
-            <legend>Related Items</legend>
-            <p> <a tal:condition="context/initial_due_date|None" class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"  class="plone-icon icon-inline bi bi-calendar" viewBox="0 0 19 19">
-                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
-                </svg>
-                Export ICal<a>
-            </p>
-            <hr class="hr"/>
-            <div tal:repeat="relation view/target_relations|None">
-              <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
-            </div>
-
-            <div tal:repeat="relation view/source_relations|None">
-              <p>Related item ↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
-            </div>
-
-            <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
-
-           </fieldset>
-
-      </div>
-            <hr class="hr" />
-      </div>
+          </tal:condition>
+        </p>
+        <p><b>Priority:</b> <span tal:condition="context/priority|None">${context/priority|None}</span></p>
+          </div>
+      </fieldset>
 
 
+  <fieldset>
+    <legend>↹ Connections</legend>
+    <p>Connections – How is this action item connection to the Scope?</p>
+    <hr class="hr" />
+    <p><b>Out of scope?</b> <span tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"> ✓ Yes </span>
+    <span tal:condition="not:context/is_this_action_out_of_the_scope_of_work_|None"> No </span>
+  </p>
+
+  <p tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"><b>Explanation:</b> ${context/explanation_for_out_of_scope_ai|None}</p>
+  <p><b class="label">Related SOW:</b>
+  <tal:condition tal:condition="context/related_sow_section|None">
+    <a tal:define="sow view/get_sow" href="${sow/absolute_url}">${sow/Title}</a>
+  </tal:condition>
+</p>
+<p><b>SOW:</b> ${context/sow_section_text|None}</p>
+</fieldset>
+
+<fieldset>
+  <legend>⛏ Actions taken</legend>
+  <p>Summary of Actions to Date</p>
+  <hr class="hr" />
+  <p>These are the steps, if any, taken to date</p>
+  <div tal:replace="structure context/actions_taken/output|None" />
+  <!--p>&nbsp;</p-->
+
+</fieldset>
+
+<fieldset>
+  <legend>√ Close Out</legend>
+  <p>
+    <b>Closed ?</b>
+    <span tal:condition="context/is_this_item_closed|None"> ✓ Yes </span>
+    <span tal:condition="not: context/is_this_item_closed|None"> No </span>
+  </p>
+  <h6 tal:condition="context/is_this_item_closed">Closed out</h6>
+  <div tal:condition="context/is_this_item_closed" tal:replace="structure context/actions_to_close_out/output|None" />
+</fieldset>
+<fieldset>
+  <legend>Related Items</legend>
+  <p> <a tal:condition="context/initial_due_date|None" class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"  class="plone-icon icon-inline bi bi-calendar" viewBox="0 0 19 19">
+      <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+    </svg>
+    Export ICal<a>
+  </p>
+  <hr class="hr"/>
+  <div tal:repeat="relation view/target_relations|None">
+    <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
+  </div>
+
+  <div tal:repeat="relation view/source_relations|None">
+    <p>Related item ↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
+  </div>
+
+  <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
+
+</fieldset>
+
+</div>
+<hr class="hr" />
+</div>
 
 
 
-        <style>
-          h1.priority-1 {color: #F24C3D}
-          h1.priority-3 {color: #22A699}
-          h1.priority-2 {color: #F2BE22}
-          h1.priority-x3 {color: #F29727}
-          h1.priority-xx1 {color: #F24C3D}
-          h1.priority-x1 {color: red}
-          .black {color: black}
-          .autotoc-nav {background: whitesmoke}
-          .autotoc-nav .active  {background: white}
-          .white-background {background: white}
-          body {background: whitesmoke}
-          .xpat-autotoc.autotabs {background: white}
-          fieldset {background: white; padding-left: 2rem; padding-right: 2rem;}
-        </style>
 
-  </metal:block>
-  </metal:content-core>
+
+
+<style>
+  h1.priority-1 {color: #F24C3D}
+  h1.priority-3 {color: #22A699}
+  h1.priority-2 {color: #F2BE22}
+  h1.priority-x3 {color: #F29727}
+  h1.priority-xx1 {color: #F24C3D}
+  h1.priority-x1 {color: red}
+  .black {color: black}
+  .autotoc-nav {background: whitesmoke}
+  .autotoc-nav .active  {background: white}
+  .white-background {background: white}
+  body {background: whitesmoke}
+  .xpat-autotoc.autotabs {background: white}
+  fieldset {background: white; padding-left: 2rem; padding-right: 2rem;}
+</style>
+
+</metal:block>
+</metal:content-core>
 </body>
 </html>

@@ -22,8 +22,15 @@
             <div tal:replace="structure  context/full_explanation/output|None" />
             <hr class="hr" />
             <div class="alert alert-warning">
-              <p><b>Action Item Owner:</b> ${context/assigned_to}</p>
-              <p><b>Action Item Creator:</b> ${context/Creator}</p>
+              <p tal:condition="context/assigned_to|None">
+                <b>Action Item Owner:</b>
+                <span tal:define="owner view/get_owner|None">
+                  ${owner/last_name|None}, ${owner/first_name|None} –  ${owner/company|None}
+                </span>
+              </p>
+              <p tal:define="creator view/get_creator|None">
+                <b>Action Item Creator:</b> ${creator/last_name|None}, ${creator/first_name|None} –  ${creator/company|None}
+              </p>
 
               <p><b>Date Created:</b> <time class="pat-display-time"
                 datetime="${python:context.created().ISO()}"
