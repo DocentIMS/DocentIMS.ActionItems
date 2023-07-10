@@ -104,7 +104,6 @@
             <p>These are the steps, if any, taken to date</p>
             <div tal:replace="structure context/actions_taken/output|None" />
             <!--p>&nbsp;</p-->
-            <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
 
           </fieldset>
 
@@ -118,34 +117,33 @@
             <h6 tal:condition="context/is_this_item_closed">Closed out</h6>
             <div tal:condition="context/is_this_item_closed" tal:replace="structure context/actions_to_close_out/output|None" />
           </fieldset>
+          <fieldset>
+            <legend>Related Items</legend>
+            <p> <a tal:condition="context/initial_due_date|None" class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"  class="plone-icon icon-inline bi bi-calendar" viewBox="0 0 19 19">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                </svg>
+                Export ICal<a>
+            </p>
+            <hr class="hr"/>
+            <div tal:repeat="relation view/target_relations|None">
+              <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
+            </div>
+
+            <div tal:repeat="relation view/source_relations|None">
+              <p>Related item ↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
+            </div>
+
+            <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
+
+           </fieldset>
 
       </div>
             <hr class="hr" />
       </div>
 
-      <!--div tal:condition="context/related_item|None" tal:define="related context/related_item|None" >
-        <p>Related item (parent): <a href="${related/to_path}">${related/to_object/Title}</a></p>
-      </div-->
 
 
-      <p> <a tal:condition="context/initial_due_date|None" class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
-          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"  class="plone-icon icon-inline bi bi-calendar" viewBox="0 0 19 19">
-          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
-          </svg>
-          Export ICal<a>
-          <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}"
-            target="_blank" class="button standalone btn btn-outline-primary">
-             <span class="black">Δ+</span>  Create Related Action Item</a>
-
-      </p>
-      <hr class="hr"/>
-      <div tal:repeat="relation view/target_relations|None">
-        <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
-      </div>
-
-      <div tal:repeat="relation view/source_relations|None">
-        <p>Related item ↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
-      </div>
 
 
         <style>

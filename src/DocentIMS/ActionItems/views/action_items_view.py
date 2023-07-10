@@ -32,3 +32,7 @@ class ActionItemsView(BrowserView):
 
     def new_id(self):
         return  self.context.id.replace('action_items-', 'South Tacoma Station – ')
+
+    def get_sow(self):
+        #import pdb; pdb.set_trace()
+        return api.content.get(UID=self.context.related_sow_section)
