@@ -56,4 +56,8 @@
   	  component=".vocabulary.ShowActionItemsVocabulary"
       name="DocentIMS.ActionItems.ShowActionItemsVocabulary" />
 
+  <utility
+  	  component=".vocabulary.CompanyVocabulary"
+      name="DocentIMS.ActionItems.CompanyVocabulary" />
+
 </configure>
