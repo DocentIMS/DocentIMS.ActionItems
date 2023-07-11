@@ -10,5 +10,36 @@
       <role name="Contributor"/>
     </permission>
 
+    <permission name="DocentIMS.ActionItems: Archive ActionItems" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Delete ActionItems" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add SOWItems" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Archive SOWItems" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Delete SOWItems" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+ 
   </permissions>
 </rolemap>
