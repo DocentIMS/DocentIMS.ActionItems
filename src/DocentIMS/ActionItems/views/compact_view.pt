@@ -173,15 +173,7 @@
       <span class="black">Δ+</span>  Create Related Action Item</a>
 
     </p>
-    <hr class="hr"/>
-    <div tal:repeat="relation view/target_relations|None">
-      <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
-    </div>
-
-    <div tal:repeat="relation view/source_relations|None">
-      <p>Related item ↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
-    </div>
-
+   
 
     <style>
       h1.priority-1 {color: #F24C3D}
