@@ -28,6 +28,53 @@
                     ${owner/last_name|None}, ${owner/first_name|None} –  ${owner/company|None}
                   </span>
                 </p>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td tal:define="creator view/get_creator|None">
+                        <b>Created by:</b><br/> ${creator/last_name|None}, ${creator/first_name|None} –  ${creator/company|None}
+                      </td>
+                          <td>
+                            <b>Created:</b><br/> <time class="pat-display-time"
+                            datetime="${python:context.created().ISO()}"
+                            data-pat-display-time="output-format: LLLL">
+                            ${context/created}
+                          </time>
+                        </td>
+                        <td>
+                          <b>Initial due date:</b><br/>
+                          <tal:condition tal:condition="context/initial_due_date|None">
+                            <time class="pat-display-time"
+                              datetime="${python:context.initial_due_date.isoformat()}"
+                              data-pat-display-time="output-format: dddd Do MMMM YYYY">
+                              ${context/initial_due_date|None}
+                            </time>
+                          </tal:condition> &nbsp;
+                        </td></tr>
+                        <tr>
+                          <td>
+                            <b>Priority:</b> <br/><span tal:condition="context/priority|None">${context/priority|None}</span>
+                          </td>
+                          <td>
+                            <b>Last modified:</b> <br/><time class="pat-display-time"
+                            datetime="${python:context.modified().ISO()}"
+                            data-pat-display-time="output-format: LLLL">
+                            ${context/modified}
+                          </time>
+                        </td>
+                        <td>
+                          <b>Rev. due date:</b> <br/><span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
+                          <tal:condition tal:condition="context/revisited_due_date|None">
+                            (<time class="pat-display-time"
+                            datetime="${python:context.revisited_due_date.isoformat()}"
+                            data-pat-display-time="output-format: dddd Do MMMM YYYY">
+                            ${context/revisited_due_date|None}
+                          </time>)
+                        </tal:condition> &nbsp;
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
                 <tal:condition tal:condition="context/initial_due_date|None">
                   <div class="redborder calendarsheet">
@@ -44,6 +91,9 @@
                   </div>
                 </tal:condition>
 
+
+                <hr class="hr"/>
+
                 <table>
                   <tbody>
                     <tr>
@@ -57,7 +107,7 @@
                           </time>
                         </td>
                         <td>
-                          <b>Initial due: </b>
+                          <b>Ini. due: </b>
                           <tal:condition tal:condition="context/initial_due_date|None">
                             <time class="pat-display-time"
                               datetime="${python:context.initial_due_date.isoformat()}"
@@ -78,7 +128,7 @@
                           </time>
                         </td>
                         <td>
-                          <b>Revised due:</b>  <span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
+                          <b>Rev. due date:</b>  <span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
                           <tal:condition tal:condition="context/revisited_due_date|None">
                             (<time class="pat-display-time"
                             datetime="${python:context.revisited_due_date.isoformat()}"
@@ -131,27 +181,8 @@
             <span tal:condition="context/is_this_item_closed|None"> ✓ Yes </span>
             <span tal:condition="not: context/is_this_item_closed|None"> No </span>
           </p>
-          <h6 tal:condition="context/is_this_item_closed|None">Closed out</h6>
-          <div tal:condition="context/is_this_item_closed|None" tal:replace="structure context/actions_to_close_out/output|None" />
-        </fieldset>
-
-        <fieldset>
-          <legend>Related Items</legend>
-          <p>
-              These Action Items were created while working on the open Action Item.
-          </p>
-
-          <hr class="hr"/>
-          <div tal:repeat="relation view/target_relations|None">
-            <p>↓ <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
-          </div>
-
-          <div tal:repeat="relation view/source_relations|None">
-            <p>↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
-          </div>
-
-          <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
-
+          <h6 tal:condition="context/is_this_item_closed">Closed out</h6>
+          <div tal:condition="context/is_this_item_closed" tal:replace="structure context/actions_to_close_out/output|None" />
         </fieldset>
 
       </div>
@@ -173,6 +204,14 @@
       <span class="black">Δ+</span>  Create Related Action Item</a>
 
     </p>
+    <hr class="hr"/>
+    <div tal:repeat="relation view/target_relations|None">
+      <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
+    </div>
+
+    <div tal:repeat="relation view/source_relations|None">
+      <p>Related item ↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
+    </div>
 
 
     <style>
