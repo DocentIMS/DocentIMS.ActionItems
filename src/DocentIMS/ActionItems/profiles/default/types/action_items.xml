@@ -78,14 +78,14 @@
         &lt;/field&gt;
         &lt;field name=&quot;explanation_for_out_of_scope_ai&quot; type=&quot;zope.schema.Text&quot;&gt;
           &lt;default&gt;  &lt;/default&gt;
-          &lt;description&gt;Explain why this Action Item is needed if it isn&#x27;t driven by SOW&lt;/description&gt;
+          &lt;description&gt;Explain why this Action Item is needed if it isn&#x27;t driven by Scope&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Explanation for Out of Scope AI&lt;/title&gt;
         &lt;/field&gt;
         &lt;field name=&quot;related_sow_section&quot; type=&quot;zope.schema.Choice&quot;&gt;
-          &lt;description&gt;Which section in the SOW drives this action item?&lt;/description&gt;
+          &lt;description&gt;Which section in the Scope drives this action item?&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
-          &lt;title&gt;Related SOW Section&lt;/title&gt;
+          &lt;title&gt;Related Scope Section&lt;/title&gt;
           &lt;vocabulary&gt;DocentIMS.ActionItems.ShowActionItemsVocabulary&lt;/vocabulary&gt;
         &lt;/field&gt;
         &lt;field name=&quot;sow_section_text&quot; type=&quot;zope.schema.Text&quot;&gt;
