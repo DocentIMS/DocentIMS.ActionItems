@@ -39,6 +39,10 @@ class ActionItemsView(BrowserView):
         #import pdb; pdb.set_trace()
         return api.content.get(UID=self.context.related_sow_section)
 
+    def get_sow_text(self):
+        rel_sow = api.content.get(UID=self.context.related_sow_section)
+        return rel_sow.bodytext.output
+
     def get_creator(self):
         member = api.user.get(userid=self.context.Creator())
         return  {'id': member.getProperty('id'),

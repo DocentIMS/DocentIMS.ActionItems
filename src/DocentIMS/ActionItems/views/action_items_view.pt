@@ -108,8 +108,7 @@
             <p><b class="label">Related Scope:</b></p>
             <tal:condition tal:condition="context/related_sow_section|None">
               <p><a tal:define="sow view/get_sow" href="${sow/absolute_url}">${sow/Title}</a></p>
-              <div tal:replace="structure sow/getObject/text|None"/>
-              <div tal:replace="structure sow/section_number|None"/>
+              <div tal:replace="structure view/get_sow_text"/>
             </tal:condition>
 
         </fieldset>
