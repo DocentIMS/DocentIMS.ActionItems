@@ -17,10 +17,10 @@
 
 
     <browser:page
-      name="compact-view"
+      name="ai-view"
       for="*"
       class=".action_items_view.ActionItemsView"
-      template="compact_view.pt"
+      template="ai.pt"
       permission="zope2.View"
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
       />

@@ -43,6 +43,9 @@ class ActionItemsAddForm(DefaultAddForm):
 
         for group in self.groups:
             #import pdb; pdb.set_trace()
+            if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
+                #group.mode = 'omitted'
+                group.label = None
             if group.__name__ == 'settings':
                 #group.mode = 'omitted'
                 group.label = None

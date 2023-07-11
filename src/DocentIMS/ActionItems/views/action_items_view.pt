@@ -89,19 +89,19 @@
 
           <fieldset>
             <legend>↹ Connections</legend>
-              <p>Connections – How is this action item connection to the Scope?</p>
+              <p>Connections – How is this Action Item connected to the Scope?</p>
               <hr class="hr" />
               <p><b>Out of scope?</b> <span tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"> ✓ Yes </span>
               <span tal:condition="not:context/is_this_action_out_of_the_scope_of_work_|None"> No </span>
             </p>
 
             <p tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"><b>Explanation:</b> ${context/explanation_for_out_of_scope_ai|None}</p>
-            <p><b class="label">Related SOW:</b>
+            <p><b class="label">Related Scope:</b>
               <tal:condition tal:condition="context/related_sow_section|None">
                 <a tal:define="sow view/get_sow" href="${sow/absolute_url}">${sow/Title}</a>
               </tal:condition>
             </p>
-            <p><b>SOW:</b> ${context/sow_section_text|None}</p>
+            <p><b>Scope:</b> ${context/sow_section_text|None}</p>
           </fieldset>
 
           <fieldset>

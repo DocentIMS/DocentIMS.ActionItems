@@ -74,19 +74,19 @@
 
   <fieldset>
     <legend>↹ Connections</legend>
-    <p>Connections – How is this action item connection to the Scope?</p>
+    <p>Connections – How is this Action Item connected to the Scope?</p>
     <hr class="hr" />
     <p><b>Out of scope?</b> <span tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"> ✓ Yes </span>
     <span tal:condition="not:context/is_this_action_out_of_the_scope_of_work_|None"> No </span>
   </p>
 
   <p tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"><b>Explanation:</b> ${context/explanation_for_out_of_scope_ai|None}</p>
-  <p><b class="label">Related SOW:</b>
+  <p><b class="label">Related Scope:</b>
   <tal:condition tal:condition="context/related_sow_section|None">
     <a tal:define="sow view/get_sow" href="${sow/absolute_url}">${sow/Title}</a>
   </tal:condition>
 </p>
-<p><b>SOW:</b> ${context/sow_section_text|None}</p>
+<p><b>Scope:</b> ${context/sow_section_text|None}</p>
 </fieldset>
 
 <fieldset>
@@ -111,12 +111,10 @@
 </fieldset>
 <fieldset>
   <legend>Related Items</legend>
-  <p> <a tal:condition="context/initial_due_date|None" class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
-    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"  class="plone-icon icon-inline bi bi-calendar" viewBox="0 0 19 19">
-      <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
-    </svg>
-    Export ICal<a>
+  <p>
+      These Action Items were created while working on the open Action Item.
   </p>
+
   <hr class="hr"/>
   <div tal:repeat="relation view/target_relations|None">
     <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
@@ -132,6 +130,12 @@
 
 </div>
 <hr class="hr" />
+<p> <a tal:condition="context/initial_due_date|None" class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
+  <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"  class="plone-icon icon-inline bi bi-calendar" viewBox="0 0 19 19">
+    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+  </svg>
+  Export ICal<a>
+</p>
 </div>
 
 
