@@ -8,9 +8,9 @@
 
   <browser:viewlet
      name="add-action-item-viewlet"
-     for="plone.app.contenttypes.interfaces.IDocument"
+     for="*"
      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-     layer="DocentIMS.ActionItems.interfaces.IDocentIMSActionItemsLayer"
+     layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
      class=".add_action_item_viewlet.AddActionItemViewlet"
      template="add-action-item-viewlet.pt"
      permission="zope2.View"

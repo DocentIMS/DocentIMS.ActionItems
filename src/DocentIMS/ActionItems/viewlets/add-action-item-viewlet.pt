@@ -1,3 +1,9 @@
-<div class="days_to_conf">
-    ${view/message}
-</div>
+<p class="action_adder text-right">
+    <a class="btn btn-primary float-right text-right btn-success"
+      href="${view/portal_url}/action_items/++add++action_items">
+      Add Action Items
+    </a>
+</p>
+<style>
+  .text-right { text-align: right}
+</style>

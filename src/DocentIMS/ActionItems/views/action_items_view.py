@@ -31,6 +31,8 @@ class ActionItemsView(BrowserView):
         return relations
 
     def new_id(self):
+        if self.context.id == 'action_items':
+            return 'South Tacoma Station – 0'
         return  self.context.id.replace('action_items-', 'South Tacoma Station – ')
 
     def get_sow(self):
