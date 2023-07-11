@@ -76,6 +76,22 @@
                   </tbody>
                 </table>
 
+                <tal:condition tal:condition="context/initial_due_date|None">
+                  <div class="redborder calendarsheet">
+                    <time class="pat-display-time"
+                      datetime="${python:context.initial_due_date.isoformat()}"
+                      data-pat-display-time="output-format: MMMM YY">
+
+                    </time>
+                    <date class="pat-display-time"
+                      datetime="${python:context.initial_due_date.isoformat()}"
+                      data-pat-display-time="output-format: DD">
+
+                    </date>
+                  </div>
+                </tal:condition>
+
+
                 <hr class="hr"/>
 
                 <table>
@@ -217,6 +233,40 @@
        background: rgba(254,255,255,0.5913176);
        margin:  1px;
       }
+
+
+
+    .calendarsheet {
+        max-width: 120px;
+        min-width: 90px;
+        float: right;
+
+        display: block;
+    }
+
+    .calendarsheet time,
+    .calendarsheet date {
+        display: block;
+        text-align: center;
+    }
+
+    .redborder {
+        border: 5px solid red;
+    }
+
+    .calendarsheet time {
+        background: red;
+        color: white
+    }
+
+    .calendarsheet date {
+        background: white;
+        color: black;
+        font-size: 3rem;
+        font-weight: 500;
+        letter-spacing: -3px;
+
+    }
 
 
 
