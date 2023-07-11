@@ -37,4 +37,4 @@ def CompanyVocabulary(context):
         return SimpleVocabulary(terms)
     return SimpleVocabulary([])
 
-directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
+directlyProvides(CompanyVocabulary, IVocabularyFactory)
