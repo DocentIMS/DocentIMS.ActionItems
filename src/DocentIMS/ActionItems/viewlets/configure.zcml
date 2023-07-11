@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="DocentIMS.ActionItems">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <browser:viewlet
+     name="add-action-item-viewlet"
+     for="plone.app.contenttypes.interfaces.IDocument"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     layer="DocentIMS.ActionItems.interfaces.IDocentIMSActionItemsLayer"
+     class=".add_action_item_viewlet.AddActionItemViewlet"
+     template="add-action-item-viewlet.pt"
+     permission="zope2.View"
+     />
+
+
+</configure>
