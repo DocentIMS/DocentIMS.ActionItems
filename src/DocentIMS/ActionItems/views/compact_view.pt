@@ -28,53 +28,7 @@
                     ${owner/last_name|None}, ${owner/first_name|None} –  ${owner/company|None}
                   </span>
                 </p>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td tal:define="creator view/get_creator|None">
-                        <b>Created by:</b><br/> ${creator/last_name|None}, ${creator/first_name|None} –  ${creator/company|None}
-                      </td>
-                          <td>
-                            <b>Created:</b><br/> <time class="pat-display-time"
-                            datetime="${python:context.created().ISO()}"
-                            data-pat-display-time="output-format: LLLL">
-                            ${context/created}
-                          </time>
-                        </td>
-                        <td>
-                          <b>Initial due date:</b><br/>
-                          <tal:condition tal:condition="context/initial_due_date|None">
-                            <time class="pat-display-time"
-                              datetime="${python:context.initial_due_date.isoformat()}"
-                              data-pat-display-time="output-format: dddd Do MMMM YYYY">
-                              ${context/initial_due_date|None}
-                            </time>
-                          </tal:condition> &nbsp;
-                        </td></tr>
-                        <tr>
-                          <td>
-                            <b>Priority:</b> <br/><span tal:condition="context/priority|None">${context/priority|None}</span>
-                          </td>
-                          <td>
-                            <b>Last modified:</b> <br/><time class="pat-display-time"
-                            datetime="${python:context.modified().ISO()}"
-                            data-pat-display-time="output-format: LLLL">
-                            ${context/modified}
-                          </time>
-                        </td>
-                        <td>
-                          <b>Rev. due date:</b> <br/><span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
-                          <tal:condition tal:condition="context/revisited_due_date|None">
-                            (<time class="pat-display-time"
-                            datetime="${python:context.revisited_due_date.isoformat()}"
-                            data-pat-display-time="output-format: dddd Do MMMM YYYY">
-                            ${context/revisited_due_date|None}
-                          </time>)
-                        </tal:condition> &nbsp;
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+
 
                 <tal:condition tal:condition="context/initial_due_date|None">
                   <div class="redborder calendarsheet">
@@ -107,7 +61,7 @@
                           </time>
                         </td>
                         <td>
-                          <b>Ini. due: </b>
+                          <b>Initial due: </b>
                           <tal:condition tal:condition="context/initial_due_date|None">
                             <time class="pat-display-time"
                               datetime="${python:context.initial_due_date.isoformat()}"
@@ -128,7 +82,7 @@
                           </time>
                         </td>
                         <td>
-                          <b>Rev. due date:</b>  <span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
+                          <b>Revised due:</b>  <span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
                           <tal:condition tal:condition="context/revisited_due_date|None">
                             (<time class="pat-display-time"
                             datetime="${python:context.revisited_due_date.isoformat()}"
