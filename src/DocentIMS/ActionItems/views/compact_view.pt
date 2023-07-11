@@ -29,7 +29,6 @@
                   </span>
                 </p>
 
-
                 <tal:condition tal:condition="context/initial_due_date|None">
                   <div class="redborder calendarsheet">
                     <time class="pat-display-time"
