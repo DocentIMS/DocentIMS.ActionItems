@@ -135,6 +135,25 @@
           <div tal:condition="context/is_this_item_closed" tal:replace="structure context/actions_to_close_out/output|None" />
         </fieldset>
 
+        <fieldset>
+          <legend>Related Items</legend>
+          <p>
+              These Action Items were created while working on the open Action Item.
+          </p>
+
+          <hr class="hr"/>
+          <div tal:repeat="relation view/target_relations|None">
+            <p>Related item ↓: <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
+          </div>
+
+          <div tal:repeat="relation view/source_relations|None">
+            <p>Related item ↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
+          </div>
+
+          <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
+
+        </fieldset>
+
       </div>
       <hr class="hr" />
     </div>
