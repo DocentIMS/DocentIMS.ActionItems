@@ -131,8 +131,8 @@
             <span tal:condition="context/is_this_item_closed|None"> ✓ Yes </span>
             <span tal:condition="not: context/is_this_item_closed|None"> No </span>
           </p>
-          <h6 tal:condition="context/is_this_item_closed">Closed out</h6>
-          <div tal:condition="context/is_this_item_closed" tal:replace="structure context/actions_to_close_out/output|None" />
+          <h6 tal:condition="context/is_this_item_closed|None">Closed out</h6>
+          <div tal:condition="context/is_this_item_closed|None" tal:replace="structure context/actions_to_close_out/output|None" />
         </fieldset>
 
         <fieldset>
@@ -173,7 +173,7 @@
       <span class="black">Δ+</span>  Create Related Action Item</a>
 
     </p>
-   
+
 
     <style>
       h1.priority-1 {color: #F24C3D}
