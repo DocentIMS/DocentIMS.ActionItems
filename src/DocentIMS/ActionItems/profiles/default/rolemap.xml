@@ -3,6 +3,14 @@
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission name="DocentIMS.ActionItems: Add ProjectCompanies" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+
     <permission name="DocentIMS.ActionItems: Add SowAnalysis" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
