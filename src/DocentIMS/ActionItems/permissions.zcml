@@ -7,11 +7,40 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.AddSowAnalysis"
+        title="DocentIMS.ActionItems: Add SowAnalysis"
+    />
+
+
+    <permission
         id="DocentIMS.ActionItems.AddActionItems"
         title="DocentIMS.ActionItems: Add ActionItems"
     />
 
+    <permission
+        id="DocentIMS.ActionItems.ArchiveActionItems"
+        title="DocentIMS.ActionItems: Archive ActionItems"
+    />
 
+    <permission
+        id="DocentIMS.ActionItems.DeleteActionItems"
+        title="DocentIMS.ActionItems: Delete ActionItems"
+    />
+
+    <permission
+        id="DocentIMS.ActionItemsAdd.SOWItems"
+        title="DocentIMS.ActionItems: Add SOWItems"
+    />
+
+    <permission
+        id="DocentIMS.ActionItems.ArchiveSOWItems"
+        title="DocentIMS.ActionItems: Archive SOWItems"
+    />
+
+    <permission
+        id="DocentIMS.ActionItems.DeleteSOWItems"
+        title="DocentIMS.ActionItems: Delete SOWItems"
+    />
 
   </configure>
 
