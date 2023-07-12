@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from DocentIMS.ActionItems.interfaces import IDocentIMSActionItemsLayer
+from DocentIMS.ActionItems.interfaces import IDocentimsActionitemsLayer
 from DocentIMS.ActionItems.testing import DOCENTIMS_ACTIONITEMS_FUNCTIONAL_TESTING
 from DocentIMS.ActionItems.testing import DOCENTIMS_ACTIONITEMS_INTEGRATION_TESTING
 from plone import api

@@ -6,6 +6,12 @@
   <configure zcml:condition="installed AccessControl.security">
   <!-- -*- extra stuff goes here -*- -->
 
+
+    <permission
+        id="DocentIMS.ActionItems.AddProject"
+        title="DocentIMS.ActionItems: Add Project"
+    />
+
     <permission
         id="DocentIMS.ActionItems.AddProjectInformation"
         title="DocentIMS.ActionItems: Add ProjectInformation"

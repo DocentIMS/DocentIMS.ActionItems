@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="sow_analysis" meta_type="Dexterity FTI" i18n:domain="plone"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">SOW Analysis</property>
+ <property name="description"
+    i18n:translate="">Individual analysis of SOW</property>
+ <property name="icon_expr">string:file-earmark-text</property>
+ <property name="factory">sow_analysis</property>
+ <property
+    name="add_view_expr">string:${folder_url}/++add++sow_analysis</property>
+ <property name="link_target"></property>
+ <property name="immediate_view">view</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">view</property>
+ <property name="view_methods">
+  <element value="view"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <property name="add_permission">cmf.AddPortalContent</property>
+ <property name="klass">plone.dexterity.content.Container</property>
+ <property name="behaviors">
+  <element value="plone.dublincore"/>
+  <element value="plone.namefromtitle"/>
+ </property>
+ <property name="schema"></property>
+ <property
+    name="model_source">&lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
+    &lt;schema&gt;
+      &lt;field name=&quot;section_number&quot; type=&quot;zope.schema.Choice&quot;&gt;
+        &lt;description&gt;Select sectioin number&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Section Number&lt;/title&gt;
+        &lt;values&gt;
+          &lt;element&gt;1&lt;/element&gt;
+          &lt;element&gt;1-1&lt;/element&gt;
+          &lt;element&gt;1-2&lt;/element&gt;
+          &lt;element&gt;1-3&lt;/element&gt;
+          &lt;element&gt;2&lt;/element&gt;
+          &lt;element&gt;2-1&lt;/element&gt;
+        &lt;/values&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;details&quot; type=&quot;zope.schema.Text&quot;&gt;
+        &lt;default&gt;This was created via word and the parsing of the document......&lt;/default&gt;
+        &lt;description&gt;why is this here.&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Details&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;bodytext&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+        &lt;description&gt;The entire text of the section from thie Statement of Work&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Full SOW Section Text&lt;/title&gt;
+        &lt;validate_invariants&gt;False&lt;/validate_invariants&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;assigned&quot; type=&quot;zope.schema.Choice&quot;&gt;
+        &lt;description&gt;To whom is this section assigned for analysis.&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Analysis Owner&lt;/title&gt;
+        &lt;values&gt;
+          &lt;element&gt;Eric Clapton&lt;/element&gt;
+          &lt;element&gt;Ringo Star&lt;/element&gt;
+        &lt;/values&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;priority&quot; type=&quot;zope.schema.Choice&quot;&gt;
+        &lt;description&gt;Rate the level of importance 1-3  .  &quot;1&quot; is most critical&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Priority&lt;/title&gt;
+        &lt;values&gt;
+          &lt;element&gt;1&lt;/element&gt;
+          &lt;element&gt;2&lt;/element&gt;
+          &lt;element&gt;3&lt;/element&gt;
+          &lt;element&gt;&lt;/element&gt;
+        &lt;/values&gt;
+      &lt;/field&gt;
+      &lt;fieldset name=&quot;date&quot; label=&quot;date&quot; description=&quot;Who is the owner of this SOW section analysis&quot;&gt;
+        &lt;field name=&quot;analysis_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
+          &lt;description&gt;Initial estimate of the due date.&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Initial Due Date&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;revised_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
+          &lt;description&gt;If the initial due date has been changed.&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Revised Due Date&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;notes&quot; label=&quot;Notes&quot; description=&quot;Enter any notes&quot;&gt;
+        &lt;field name=&quot;notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;description&gt;Notes from Project Manager regarding this section&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Project Manager Notes&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;actions_items&quot; label=&quot;Actions Items&quot; description=&quot;These are the action items generated from the analysis of this Statement of Work.&quot;&gt;
+        &lt;field name=&quot;explanation&quot; type=&quot;zope.schema.Text&quot;&gt;
+          &lt;description&gt;What is this for&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Explanation&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;create_action_item&quot; type=&quot;zope.schema.TextLine&quot;&gt;
+          &lt;description&gt;This will be button to create an action item&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Create action item&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;action_items_related_will_be_listed_here&quot; type=&quot;zope.schema.TextLine&quot;&gt;
+          &lt;default&gt;There will be list of action items created based on analysis&lt;/default&gt;
+          &lt;description&gt;List of action items from the analysis&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Action items related will be listed here&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;qc_requirements&quot; label=&quot;QC Requirements&quot; description=&quot;Is QC required for this section?  If so, give details.&quot;&gt;
+        &lt;field name=&quot;internal_qc_required_&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;description&gt;Will the output of the action item require review by Parametrix internal QC?&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Internal QC Required?&lt;/title&gt;
+          &lt;form:widget type=&quot;z3c.form.browser.radio.RadioFieldWidget&quot;/&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;estimated_qc_time&quot; type=&quot;zope.schema.Choice&quot;&gt;
+          &lt;description&gt;If QC is required, please provide estimate of how long.  Contact the QC department if needed to get good estimate.&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Estimated QC Time&lt;/title&gt;
+          &lt;values&gt;
+            &lt;element&gt;1 hour&lt;/element&gt;
+            &lt;element&gt;3 hours&lt;/element&gt;
+            &lt;element&gt;5 hours&lt;/element&gt;
+          &lt;/values&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;notes_to_qc&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;description&gt;Enter anything that might help the QC process&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Notes to QC&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;analysis_notes&quot; label=&quot;Analysis Notes&quot; description=&quot;Person analyzing this Scope section add any notes regarding your analysis.&quot;&gt;
+        &lt;field name=&quot;is_the_analyis_complete&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Is the analyis complete&lt;/title&gt;
+          &lt;form:widget type=&quot;z3c.form.browser.radio.RadioFieldWidget&quot;/&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;analysis_notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Analysis Notes&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;submit_for_review&quot; type=&quot;zope.schema.Text&quot;&gt;
+          &lt;default&gt;There will be a button to use workflow to submit&lt;/default&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Submit for review&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;close_out&quot; label=&quot;Close Out&quot; description=&quot;Actions taken to close this analysis&quot;/&gt;
+    &lt;/schema&gt;
+  &lt;/model&gt;</property>
+ <property name="model_file"></property>
+ <property name="schema_policy">dexterity</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="@@edit"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="string:toolbar-action/view" link_target=""
+    url_expr="string:${object_url}" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="string:toolbar-action/edit" link_target=""
+    url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+</object>

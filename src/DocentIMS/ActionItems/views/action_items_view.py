@@ -18,9 +18,24 @@ class ActionItemsView(BrowserView):
         return api.portal.get().absolute_url()
 
     def due_date(self):
-        return self.context.created().ISO()
+        #return self.context.created().ISO()
         #return datetime.datetime.from_date(initial_due_date).ISO()
-        #return self.context.initial_due_date().ISO()
+        return self.context.initial_due_date().ISO()
+
+    def days_left(self):
+        # to do, due date or initial due date ?
+        due_date = self.context.revised_due_date or  self.context.initial_due_date or None
+
+        # difference between dates in timedelta
+        delta = due_date - datetime.date.today()
+        return delta.days
+        #days = delta.days
+
+        #if days > -1:
+        #    days
+
+
+
 
     def source_relations(self):
         relations =  api.relation.get(source=self.context)

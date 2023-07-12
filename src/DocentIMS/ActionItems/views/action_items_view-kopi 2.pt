@@ -29,19 +29,20 @@
                   </span>
                 </p>
 
+                <tal:condition tal:condition="context/initial_due_date|None">
+                  <div class="redborder calendarsheet">
+                    <time class="pat-display-time"
+                      datetime="${python:context.initial_due_date.isoformat()}"
+                      data-pat-display-time="output-format: MMMM YY">
 
+                    </time>
+                    <date class="pat-display-time"
+                      datetime="${python:context.initial_due_date.isoformat()}"
+                      data-pat-display-time="output-format: DD">
 
-
-
-                <div class="redborder calendarsheet">
-                  <p class="theading">
-                    Days left:
-                  </p>
-                  <p class="days">
-                    ${view/days_left|None}
-                  </p>
-                </div>
-
+                    </date>
+                  </div>
+                </tal:condition>
 
                 <table>
                   <tbody>
@@ -99,11 +100,9 @@
               <legend>↹ Connections</legend>
               <p class="larger">Connections – How is this Action Item connected to the Scope?</p>
               <hr class="hr" />
-              <p>
-                <b>Out of scope?</b>
-                <span tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"> ✓ Yes </span>
-                <span tal:condition="not:context/is_this_action_out_of_the_scope_of_work_|None"> No </span>
-              </p>
+              <p><b>Out of scope?</b> <span tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"> ✓ Yes </span>
+              <span tal:condition="not:context/is_this_action_out_of_the_scope_of_work_|None"> No </span>
+            </p>
 
             <p tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"><b>Explanation:</b> ${context/explanation_for_out_of_scope_ai|None}</p>
             <p><b class="label">Related Scope:</b>
@@ -125,7 +124,17 @@
           <!--p>&nbsp;</p-->
           <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
 
+        </fieldset>
 
+        <fieldset>
+          <legend>√ Close Out</legend>
+          <p>
+            <b>Closed ?</b>
+            <span tal:condition="context/is_this_item_closed|None"> ✓ Yes </span>
+            <span tal:condition="not: context/is_this_item_closed|None"> No </span>
+          </p>
+          <h6 tal:condition="context/is_this_item_closed|None">Closed out</h6>
+          <div tal:condition="context/is_this_item_closed|None" tal:replace="structure context/actions_to_close_out/output|None" />
         </fieldset>
 
         <fieldset>
@@ -146,37 +155,6 @@
           <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
 
         </fieldset>
-
-        <fieldset>
-          <legend>√ Close Out</legend>
-          <p>
-            <b>Closed ?</b>
-            <span tal:condition="context/is_this_item_closed|None"> ✓ Yes </span>
-            <span tal:condition="not: context/is_this_item_closed|None"> No </span>
-          </p>
-          <h6 tal:condition="context/is_this_item_closed|None">Closed out</h6>
-          <div tal:condition="context/is_this_item_closed|None" tal:replace="structure context/actions_to_close_out/output|None" />
-
-          <tal:condition tal:condition="context/initial_due_date|None">
-            <hr class="hr"/>
-            <p>Due</p>
-            <div class="redborder calendarsheet left">
-
-              <time class="pat-display-time"
-                datetime="${python:context.initial_due_date.isoformat()}"
-                data-pat-display-time="output-format: MMMM YY">
-
-              </time>
-              <date class="pat-display-time"
-                datetime="${python:context.initial_due_date.isoformat()}"
-                data-pat-display-time="output-format: DD">
-
-              </date>
-            </div>
-          </tal:condition>
-        </fieldset>
-
-
 
       </div>
       <hr class="hr" />
@@ -229,12 +207,7 @@
         display: block;
     }
 
-    .calendarsheet.left {
-        float: left;
-        opacity: 0.6
-    }
     .calendarsheet time,
-    .calendarsheet p,
     .calendarsheet date {
         display: block;
         text-align: center;
@@ -244,21 +217,17 @@
         border: 5px solid red;
     }
 
-    .calendarsheet time,
-    .calendarsheet p.theading {
+    .calendarsheet time {
         background: red;
-        color: white !important;
-        margin: 0
+        color: white
     }
 
-    .calendarsheet .days,
     .calendarsheet date {
         background: white;
         color: black;
         font-size: 3rem;
         font-weight: 500;
         letter-spacing: -3px;
-        margin: 0;
 
     }
 
