@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.AddProjectInformation"
+        title="DocentIMS.ActionItems: Add ProjectInformation"
+    />
+
+
+    <permission
         id="DocentIMS.ActionItems.AddProjectCompanies"
         title="DocentIMS.ActionItems: Add ProjectCompanies"
     />
