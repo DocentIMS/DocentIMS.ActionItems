@@ -60,9 +60,6 @@
 
 
 
-
-
-
     <!-- Register AddForm for Company Information to override 'standard' tab-->
     <!-- 'name' is the important part, it needs to be same as content type -->
     <adapter

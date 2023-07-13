@@ -14,6 +14,7 @@ from plone import api
 from zope.component import getUtility
 from z3c.form import interfaces
 from plone.app.versioningbehavior.behaviors import IVersionable
+from z3c.form.browser.text import TextWidget
 
 class ActionItemsAddForm(DefaultAddForm):
     portal_type = "action_items"
@@ -104,16 +105,26 @@ class CompanyInformationAddForm(DefaultAddForm):
         super(CompanyInformationAddForm, self).updateWidgets()
         self.widgets['IDublinCore.title'].label = 'Full Company Name'
         self.widgets['IDublinCore.description'].label = 'Short Company Name'
-        #self.widgets['IDublinCore.description'].type = "zope.schema.TextLine"
-        self.widgets['IDublinCore.description'].widget = "zope.schema.TextLine"
+        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
+        #self.fields['IDublinCore.title'].widgetFactory = TextWidget
+
+        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
+        #self.fields['IDublinCore.description'].widget = TextWidget
+
 
     def updateFields(self):
         super(CompanyInformationAddForm, self).updateFields()
+        self.widgets['IDublinCore.description'].rows = 1
+        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
+
+
         #import pdb; pdb.set_trace()
-        #self.fields['IDublinCore.description'].field = "zope.schema.TextLine"
+        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
 
     def update(self):
         super(CompanyInformationAddForm, self).update()
+        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
+        self.fields['IDublinCore.title'].widgetFactory = TextWidget
 
         for group in self.groups:
             if group.__name__ == 'settings':
