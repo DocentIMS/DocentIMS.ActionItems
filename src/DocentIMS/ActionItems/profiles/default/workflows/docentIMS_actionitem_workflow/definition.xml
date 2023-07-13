@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dc-workflow workflow_id="docentIMS_actionitem_workflow" title="Docent IMS Action Item workflow" description="The workflow for DocentIMS Action Item" state_variable="review_state" initial_state="private" manager_bypass="True">
+ <instance-creation-conditions>
+   <guard>
+    <guard-group>PrjTeam</guard-group>
+   </guard>
+ </instance-creation-conditions>
+ <permission>Access contents information</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="active" title="Active">
+  <description>The assigned owner has accepted the Action Item .</description>
+  <exit-transition transition_id="archive"/>
+  <exit-transition transition_id="complete"/>
+  <exit-transition transition_id="return_toReview"/>
+ </state>
+ <state state_id="archived" title="Archived">
+  <description>Action Items that are not and will not be completed.
+The "Archive' takes the place of "Trashcan'</description>
+  <exit-transition transition_id="return_toClosed"/>
+ </state>
+ <state state_id="closed" title="Closed">
+  <description>Action Item accepted as complete by PM.</description>
+  <exit-transition transition_id="archive"/>
+  <exit-transition transition_id="return_toCompleted"/>
+ </state>
+ <state state_id="completed" title="Completed">
+  <exit-transition transition_id="close"/>
+  <exit-transition transition_id="return_toActive"/>
+ </state>
+ <state state_id="private" title="Private">
+  <description>An Action Item you've created but have Not submitted.  Only the creator and the system administrator can see this Action Item
+When ready, use "Submit" to send to the PM for review.</description>
+  <exit-transition transition_id="archive"/>
+  <exit-transition transition_id="submit"/>
+ </state>
+ <state state_id="review" title="Pending Review">
+  <description>The AI is awaiting review by assigned owner to determine if it is their responsibility.</description>
+  <exit-transition transition_id="accept"/>
+  <exit-transition transition_id="archive"/>
+  <exit-transition transition_id="retract"/>
+ </state>
+ <transition transition_id="accept" title="Accept" new_state="active" trigger="USER" before_script="" after_script="">
+  <description>User accepts responsibility for the Action Item</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=accept" category="workflow" icon="">Accept</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="archive" title="Archive" new_state="archived" trigger="USER" before_script="" after_script="">
+  <description>Move Action Item to Archive State.  This is equivalent to deleting - the item will no longer be visible; however, it may be see by the PM and may be recovered.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=archive" category="workflow" icon="">Archive</action>
+  <guard>
+   <guard-group>PrjMgr</guard-group>
+  </guard>
+ </transition>
+ <transition transition_id="close" title="Close" new_state="closed" trigger="USER" before_script="" after_script="">
+  <description>when AI is complete the PM closes</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="complete" title="Complete" new_state="completed" trigger="USER" before_script="" after_script="">
+  <description>Work on the Action Item is complete and PM moves it to Completed</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=complete" category="workflow" icon="">Complete</action>
+  <guard>
+   <guard-group>PrjMgr</guard-group>
+  </guard>
+ </transition>
+ <transition transition_id="retract" title="Retract" new_state="private" trigger="USER" before_script="" after_script="">
+  <description>Return AI to Creator </description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="return_toActive" title="Return to Active" new_state="active" trigger="USER" before_script="" after_script="">
+  <description>Used to move contact back from Completed to Active</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=return_toActive" category="workflow" icon="">Return to Active</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="return_toClosed" title="Return to Closed" new_state="closed" trigger="USER" before_script="" after_script="">
+  <description>Returns the object from "Archived" to "Closed"</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=return_toClosed" category="workflow" icon="">Return to Closed</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="return_toCompleted" title="Return to Completed" new_state="completed" trigger="USER" before_script="" after_script="">
+  <description>Returns content from Closed to Completed.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=return_toCompleted" category="workflow" icon="">Return to Completed</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="return_toPrivate" title="Return to Private" new_state="private" trigger="USER" before_script="" after_script="">
+  <description>Returns object from Submitted state to the Private state</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=return_toPrivate" category="workflow" icon="">Return to Private</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="return_toReview" title="Return to Review" new_state="review" trigger="USER" before_script="" after_script="">
+  <description>Move content back to the Review State.  Adding note of explanation is rewquired.</description>
+  <action url="" category="workflow" icon="">Return to Review</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="submit" title="Submit for Review" new_state="review" trigger="USER" before_script="" after_script="">
+  <description>Submits Action Item to the Owner initially identified by AI creator.  This sends to the proposed owner who may accept or reject.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" icon="">Submit for Acceptance</action>
+  <guard>
+   <guard-group>PrjTeam</guard-group>
+  </guard>
+ </transition>
+ <worklist worklist_id="active_queue" title="">
+  <description>All action items for you in the Active state</description>
+  <action url="" category="global" icon="">Active (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="active"/>
+ </worklist>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer Tasks</description>
+  <action url="" category="global" icon="">Review</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>Previous transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the previous transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comment about the last transition</description>
+  <default>
+   <value type="string">Enter commnts regarding your action.</value>
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+   <guard-group>PrjTeam</guard-group>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>When the previous transition was performed</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>
