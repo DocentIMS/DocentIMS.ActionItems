@@ -29,6 +29,7 @@
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
     />
 
+
     <!-- Register AddForm for Action Item to override 'standard' tab-->
     <!-- 'name' is the important part, it needs to be same as content type -->
     <adapter
@@ -55,6 +56,42 @@
         permission="cmf.ModifyPortalContent"
         layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
         />
+
+
+
+
+
+
+
+    <!-- Register AddForm for Company Information to override 'standard' tab-->
+    <!-- 'name' is the important part, it needs to be same as content type -->
+    <adapter
+        factory=".views.CompanyInformationAddFormView"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        for="*
+             DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
+             plone.dexterity.interfaces.IDexterityFTI"
+             name="project_companies"
+        />
+
+    <class class=".views.CompanyInformationAddFormView">
+    <require
+        permission="cmf.AddPortalContent"
+        interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+    </class>
+
+
+    <browser:page
+        name="edit"
+        for="DocentIMS.ActionItems.content.project_companies.IProjectCompanies"
+        class=".views.CompanyInformationEditFormView"
+        permission="cmf.ModifyPortalContent"
+        layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+        />
+
+
+
 
 
 </configure>

@@ -31,7 +31,7 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 
 def CompanyVocabulary(context):
-    items = api.content.find(portal_type=['Company', 'company', 'project_company'], sort_on='sortable_title')
+    items = api.content.find(portal_type=['Company', 'company', 'project_company', 'project_companies'], sort_on='sortable_title')
     if items:
         terms = [ SimpleTerm(value=item.UID, token=item.UID, title=item.Title) for item in items ]
         return SimpleVocabulary(terms)

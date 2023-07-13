@@ -60,7 +60,8 @@ setup(
         'collective.contentsections',
         'Products.PloneKeywordManager',
         'plone.app.versioningbehavior',
-        'plone.restapi'
+        'plone.restapi',
+        'medialog.controlpanel'
     ],
     extras_require={
         'test': [

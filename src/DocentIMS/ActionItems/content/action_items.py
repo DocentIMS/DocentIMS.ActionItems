@@ -8,7 +8,7 @@ import plone.api
 class IActionItems(model.Schema):
     """ Marker interface for ActionItems
     """
-
+    
     #def Description(self, context):
     #    return 'My overriden description'
 

@@ -88,3 +88,71 @@ class ActionItemsEditFormView(DefaultEditView):
     portal_type = "action_items"
     default_fieldset_label = 'Home'
     form = ActionItemsEditForm
+
+
+
+
+
+class CompanyInformationAddForm(DefaultAddForm):
+    portal_type = "project_companies"
+    default_fieldset_label = 'Company'
+
+    def __init__(self, context, request):
+        super(CompanyInformationAddForm, self).__init__(context, request)
+
+    def updateWidgets(self):
+        super(CompanyInformationAddForm, self).updateWidgets()
+        self.widgets['IDublinCore.title'].label = 'Full Company Name'
+        self.widgets['IDublinCore.description'].label = 'Short Company Name'
+        #self.widgets['IDublinCore.description'].type = "zope.schema.TextLine"
+        self.widgets['IDublinCore.description'].widget = "zope.schema.TextLine"
+
+    def updateFields(self):
+        super(CompanyInformationAddForm, self).updateFields()
+        #import pdb; pdb.set_trace()
+        #self.fields['IDublinCore.description'].field = "zope.schema.TextLine"
+
+    def update(self):
+        super(CompanyInformationAddForm, self).update()
+
+        for group in self.groups:
+            if group.__name__ == 'settings':
+                #group.mode = 'omitted'
+                group.label = None
+                group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+
+class CompanyInformationAddFormView(DefaultAddView):
+    form = CompanyInformationAddForm
+
+class CompanyInformationEditForm(DefaultEditForm):
+    portal_type = "project_companies"
+    default_fieldset_label = 'Company'
+
+    def __init__(self, context, request):
+        super(CompanyInformationEditForm, self).__init__(context, request)
+
+    def updateWidgets(self):
+        super(CompanyInformationEditForm, self).updateWidgets()
+        if self.portal_type == 'company_information':
+            self.widgets['IBasic.description'].label = 'Short Company Name'
+
+    def updateFields(self):
+        super(CompanyInformationEditForm, self).updateFields()
+
+    def update(self):
+        super(CompanyInformationEditForm, self).update()
+
+        if self.portal_type == 'project_companies':
+            for group in self.groups:
+                if group.__name__ == 'settings':
+                    #group.mode = 'omitted'
+                    group.label = None
+                    group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                    group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+
+
+class CompanyInformationEditFormView(DefaultEditView):
+    portal_type = "project_companies"
+    default_fieldset_label = 'Company'
+    form = CompanyInformationEditForm

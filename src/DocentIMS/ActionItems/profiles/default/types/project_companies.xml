@@ -29,16 +29,7 @@
  <property
     name="model_source">&lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
     &lt;schema&gt;
-      &lt;fieldset name=&quot;company&quot; label=&quot;Company&quot; description=&quot;Important company information.&quot;&gt;
-        &lt;field name=&quot;full_name&quot; type=&quot;zope.schema.TextLine&quot;&gt;
-          &lt;description&gt;Complete name of company&lt;/description&gt;
-          &lt;title&gt;Full Company Name&lt;/title&gt;
-        &lt;/field&gt;
-        &lt;field name=&quot;short_name&quot; type=&quot;zope.schema.TextLine&quot;&gt;
-          &lt;description&gt;A shorter name.  this will be used in the project for listings, ownership of work, etc.&lt;/description&gt;
-          &lt;title&gt;Short Company Name&lt;/title&gt;
-        &lt;/field&gt;
-        &lt;field name=&quot;code&quot; type=&quot;zope.schema.TextLine&quot;&gt;
+       &lt;field name=&quot;code&quot; type=&quot;zope.schema.TextLine&quot;&gt;
           &lt;description&gt;enter a 3 letter code.  this will be used in project where short identifier is needed.&lt;/description&gt;
           &lt;max_length&gt;3&lt;/max_length&gt;
           &lt;min_length&gt;3&lt;/min_length&gt;
@@ -60,7 +51,6 @@
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Company Logo&lt;/title&gt;
         &lt;/field&gt;
-      &lt;/fieldset&gt;
       &lt;fieldset name=&quot;address&quot; label=&quot;Address&quot; description=&quot;Address Information&quot;&gt;
         &lt;field name=&quot;address&quot; type=&quot;zope.schema.TextLine&quot;&gt;
           &lt;description&gt;e.g. 141 Reservoir Ave.&lt;/description&gt;
