@@ -2,6 +2,4 @@
 src/DocentIMS.ActionItems.egg-info/*
 src/*/.DS_Store*
 .DS_Store
-.DS_Store.
-.DS_Store
-.ds_store.
+*DS_Store
