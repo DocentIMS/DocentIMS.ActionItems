@@ -114,7 +114,7 @@ class CompanyInformationAddForm(DefaultAddForm):
 
     def updateFields(self):
         super(CompanyInformationAddForm, self).updateFields()
-        self.widgets['IDublinCore.description'].rows = 1
+        #self.widgets['IDublinCore.description'].rows = 1
         #self.fields['IDublinCore.description'].widgetFactory = TextWidget
 
 
