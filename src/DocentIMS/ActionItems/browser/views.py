@@ -143,10 +143,15 @@ class CompanyInformationEditForm(DefaultEditForm):
     def __init__(self, context, request):
         super(CompanyInformationEditForm, self).__init__(context, request)
 
+    #def updateWidgets(self):
+    #    super(CompanyInformationEditForm, self).updateWidgets()
+    #    if self.portal_type == 'company_information':
+    #        self.widgets['IBasic.description'].label = 'Short Company Name'
+
     def updateWidgets(self):
         super(CompanyInformationEditForm, self).updateWidgets()
-        if self.portal_type == 'company_information':
-            self.widgets['IBasic.description'].label = 'Short Company Name'
+        self.widgets['IDublinCore.title'].label = 'Short Company Name'
+        self.widgets['IDublinCore.description'].label = 'Full Company Name'
 
     def updateFields(self):
         super(CompanyInformationEditForm, self).updateFields()
