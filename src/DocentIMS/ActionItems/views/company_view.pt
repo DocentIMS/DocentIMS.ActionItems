@@ -1,16 +1,46 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:metal="http://xml.zope.org/namespaces/metal" xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
+
 <body>
   <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+    <metal:block define-macro="content-core">
 
-      <h2 i18n:translate="">Sample View</h2>
-      <!--<div tal:replace="view/my_custom_view_method" />-->
-      <!--<div tal:replace="context/my_custom_field" />-->
+      <div class="company-profile">
+        <img class="logo" src="${context/absolute_url/@@images/image}" alt="company logo" />
+
+        <h2>Full Company Name: <span>${context/Title}</span></h2>
+        <h4>Short Company Name: <span>${context/Description}</span></h2>
+        <h6>Company Project Code: <span>${context/code}</span></h6>
+        <p>Role: <span>${context/company_role}</span></p>
+        <h5 class="underline"><a><span>Address</span> <i class="fa fa-chevron-down"></a></h5>
+
+        <div class="collapse hidden">
+          <p>Street Address: <span>${context/address}</span></p>
+          <p>Other Address: ${context/other_address}</p>
+          <p>City: <span>${context/city}</span></p>
+          <p>State: <span>${context/states}</span></p>
+          <p>ZIP: <span${context/zip}</span></p>
+          <p>Main phone number:: <span>${context/main_phone_number}</span></p>
+          <p>Fax number:: <span> ${context/fax_number}</span></p>
+        </div>
+      </div>
+
+      <script>
+        $("#${view/id} h5").click(function(){
+          $("#${view/id} .collapse").toggleClass("hidden");
+          $("#${view/id} .fa-chevron-down").toggleClass("open");
+        });
+      </script>
+
+      <style>
+        .collapse { border-bottom: 1px solid silver; margin-bottom: 1rem; padding-bottom: 1.5rem}
+        h5.underline  { border-bottom: 1px solid silver; padding: 1rem 0 0.5rem; display: block; font-size: 110%}
+        h5.underline a {   color: #333; text-decoration: none}
+        h5.underline i { float: right}
+        .no-border { border: 0 none !important}
+        .fa-chevron-down{ transform: rotate(0deg); transition: transform 0.2s linear;   }
+        .headertext h4:first-letter { color: #DA291C !important}
+        .fa-chevron-down.open{ transform: rotate(180deg); transition: transform 0.2s linear; }
+      </style>
 
   </metal:block>
   </metal:content-core>

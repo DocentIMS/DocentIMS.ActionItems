@@ -103,8 +103,8 @@ class CompanyInformationAddForm(DefaultAddForm):
 
     def updateWidgets(self):
         super(CompanyInformationAddForm, self).updateWidgets()
-        self.widgets['IDublinCore.title'].label = 'Full Company Name'
-        self.widgets['IDublinCore.description'].label = 'Short Company Name'
+        self.widgets['IDublinCore.title'].label = 'Short Company Name'
+        self.widgets['IDublinCore.description'].label = 'Full Company Name'
         #self.fields['IDublinCore.description'].widgetFactory = TextWidget
         #self.fields['IDublinCore.title'].widgetFactory = TextWidget
 
