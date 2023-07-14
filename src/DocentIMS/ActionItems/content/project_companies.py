@@ -16,7 +16,7 @@ from zope.interface import implementer
 class IProjectCompanies(model.Schema):
     """ Marker interface and Dexterity Python Schema for ProjectCompanies
     """
-    #pass
+    pass
     # If you want, you can load a xml model created TTW here
     # and customize it in Python:
 

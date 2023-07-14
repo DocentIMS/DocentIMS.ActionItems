@@ -81,7 +81,7 @@
 
     <browser:page
         name="edit"
-        for="DocentIMS.ActionItems.content.project_companies.IProjectCompanies"
+        for="*"
         class=".views.CompanyInformationEditFormView"
         permission="cmf.ModifyPortalContent"
         layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"

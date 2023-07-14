@@ -68,6 +68,10 @@ class ActionItemsEditForm(DefaultEditForm):
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             #self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
+        if self.portal_type == 'project_companies':
+            self.widgets['IDublinCore.title'].label = 'Short Company Name'
+            self.widgets['IDublinCore.description'].label = 'Full Company Name'
+            #self.fields['IDublinCore.description'].widgetFactory = TextWidget
 
     def updateFields(self):
         super(ActionItemsEditForm, self).updateFields()
@@ -126,6 +130,7 @@ class CompanyInformationAddForm(DefaultAddForm):
         #self.fields['IDublinCore.description'].widgetFactory = TextWidget
         self.fields['IDublinCore.title'].widgetFactory = TextWidget
 
+
         for group in self.groups:
             if group.__name__ == 'settings':
                 #group.mode = 'omitted'
@@ -155,6 +160,7 @@ class CompanyInformationEditForm(DefaultEditForm):
 
     def updateFields(self):
         super(CompanyInformationEditForm, self).updateFields()
+
 
     def update(self):
         super(CompanyInformationEditForm, self).update()
