@@ -14,7 +14,10 @@ from plone import api
 from zope.component import getUtility
 from z3c.form import interfaces
 from plone.app.versioningbehavior.behaviors import IVersionable
-from z3c.form.browser.text import TextWidget
+#from z3c.form.browser.text import TextWidget
+from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile as Z3ViewPageTemplateFile
+
+#from z3c.form.interfaces import INPUT_MODE
 
 class ActionItemsAddForm(DefaultAddForm):
     portal_type = "action_items"
@@ -43,7 +46,6 @@ class ActionItemsAddForm(DefaultAddForm):
         super(ActionItemsAddForm, self).update()
 
         for group in self.groups:
-            #import pdb; pdb.set_trace()
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
                 #group.mode = 'omitted'
                 group.label = None
@@ -71,7 +73,7 @@ class ActionItemsEditForm(DefaultEditForm):
         if self.portal_type == 'project_companies':
             self.widgets['IDublinCore.title'].label = 'Short Company Name'
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
-            #self.fields['IDublinCore.description'].widgetFactory = TextWidget
+            self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
     def updateFields(self):
         super(ActionItemsEditForm, self).updateFields()
@@ -81,7 +83,6 @@ class ActionItemsEditForm(DefaultEditForm):
 
         if self.portal_type == 'action_items':
             for group in self.groups:
-                #import pdb; pdb.set_trace()
                 if group.__name__ == 'settings':
                     #group.mode = 'omitted'
                     group.label = None
@@ -109,26 +110,16 @@ class CompanyInformationAddForm(DefaultAddForm):
         super(CompanyInformationAddForm, self).updateWidgets()
         self.widgets['IDublinCore.title'].label = 'Short Company Name'
         self.widgets['IDublinCore.description'].label = 'Full Company Name'
-        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
-        #self.fields['IDublinCore.title'].widgetFactory = TextWidget
+        self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
-        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
-        #self.fields['IDublinCore.description'].widget = TextWidget
 
 
     def updateFields(self):
         super(CompanyInformationAddForm, self).updateFields()
-        #self.widgets['IDublinCore.description'].rows = 1
-        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
-
-
-        #import pdb; pdb.set_trace()
-        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
 
     def update(self):
         super(CompanyInformationAddForm, self).update()
-        #self.fields['IDublinCore.description'].widgetFactory = TextWidget
-        self.fields['IDublinCore.title'].widgetFactory = TextWidget
+        #self.fields['IDublinCore.title'].widgetFactory = TextWidget
 
 
         for group in self.groups:
@@ -147,11 +138,6 @@ class CompanyInformationEditForm(DefaultEditForm):
 
     def __init__(self, context, request):
         super(CompanyInformationEditForm, self).__init__(context, request)
-
-    #def updateWidgets(self):
-    #    super(CompanyInformationEditForm, self).updateWidgets()
-    #    if self.portal_type == 'company_information':
-    #        self.widgets['IBasic.description'].label = 'Short Company Name'
 
     def updateWidgets(self):
         super(CompanyInformationEditForm, self).updateWidgets()
