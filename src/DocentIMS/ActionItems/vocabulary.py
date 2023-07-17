@@ -3,6 +3,8 @@ from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from zope.schema.interfaces import IVocabularyFactory
 from plone import api
 
+from .interfaces import IDocentimsSettings
+
 #from zope.i18nmessageid import MessageFactory
 #_ = MessageFactory('DocentIMS.ActionItems')
 
@@ -38,3 +40,14 @@ def CompanyVocabulary(context):
     return SimpleVocabulary([])
 
 directlyProvides(CompanyVocabulary, IVocabularyFactory)
+
+
+
+def SiteVocabulary(context):
+    items  =  api.portal.get_registry_record('vokabulary', interface=IDocentimsSettings)
+    if items:
+        terms = [ SimpleTerm(value=item, token=item.lower(), title=item) for item in items ]
+        return SimpleVocabulary(terms)
+    return SimpleVocabulary([])
+
+directlyProvides(SiteVocabulary, IVocabularyFactory)

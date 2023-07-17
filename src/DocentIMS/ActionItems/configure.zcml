@@ -60,4 +60,8 @@
   	  component=".vocabulary.CompanyVocabulary"
       name="DocentIMS.ActionItems.CompanyVocabulary" />
 
+  <utility
+  	  component=".vocabulary.SiteVocabulary"
+      name="DocentIMS.ActionItems.SiteVocabulary" />
+
 </configure>

@@ -23,24 +23,7 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
 class IDocentimsSettings(model.Schema):
     """Adds settings to medialog.controlpanel
     """
-
-    model.fieldset(
-        'project',
-        label=_(u'Project Information'),
-        fields=[
-            'my_field',
-            ],
-        )
-
-
-    model.fieldset(
-        'Company',
-        label=_(u'Company Information'),
-        fields=[
-            'm_y_field',
-            ],
-        )
-
+    
     model.fieldset(
         'vocabularies',
         label=_(u'Vocabularies'),
@@ -49,23 +32,142 @@ class IDocentimsSettings(model.Schema):
             ],
         )
 
-    my_field = schema.TextLine(
-        title=_(u"label_my_field", default=u"My Field"),
-        description=_(u"help_my_field",
-                      default=u"My description")
+    model.fieldset(
+        'project',
+        label=_(u'Project Information'),
+        fields=[
+            'project_title',
+            'project_description',
+            'project_full_name',
+            'project_short_name',
+            'project_contract_number',
+            'project_document_naming_convention'
+            ],
         )
 
-    m_y_field = schema.TextLine(
-        title=_(u"label_my_2_field", default=u"My 2 Field"),
-        description=_(u"help_my_2_field",
-                      default=u"My 2 description")
+
+    model.fieldset(
+        'Company',
+        label=_(u'Company Information'),
+        fields=[
+            'full_company_name',
+            'short_company_name',
+            'company_letter_code',
+            'company_role',
+            'company_logo',
+            ],
         )
 
-    vokabulary = schema.Text(
+    model.fieldset(
+        'address',
+        label=_(u'Address'),
+        fields=[
+            'company_full_street_address',
+            'company_city',
+            'company_other_address',
+            'company_state',
+            'company_zip',
+            'company_main_phone_number',
+            ],
+        )
+
+
+
+    project_title = schema.TextLine(
+        required = False,
+        title=_(u"label_title", default=u"Project Title"),
+        description=_(u"help_title",
+                      default=u"Project title")
+        )
+    project_description = schema.TextLine(
+        required = False,
+        title=_(u"label_project_description", default=u"Project Description"),
+        description=_(u"help_project_description",
+                      default=u"Project description")
+        )
+    project_full_name = schema.TextLine(
+        required = False,
+        title=_(u"label_project_fullname", default=u"Project Full Name"),
+        description=_(u"help_project_fullname",
+                      default=u"Project_fullname")
+        )
+    project_short_name = schema.TextLine(
+        required = False,
+        title=_(u"label_project_short_name", default=u"Project Short name"),
+        description=_(u"help_project_short_name",
+                      default=u"Project_short_name")
+        )
+    project_contract_number = schema.TextLine(
+        required = False,
+        title=_(u"label_project_contract_number", default=u"Project Contract Number"),
+        description=_(u"help_project_contract_number",
+                      default=u"Project_contract_number")
+        )
+    project_document_naming_convention = schema.TextLine(
+        required = False,
+        title=_(u"label_project_document_naming_convention", default=u"Project Document Naming Convention"),
+        description=_(u"help_project_document_naming_convention",
+                      default=u"Project document naming convention")
+        )
+
+    full_company_name = schema.Text(
+        required = False,
+        title=_(u"label_company_name", default=u"Full Company Name")
+        )
+    short_company_name= schema.Text(
+        required = False,
+        title=_(u"label_company_short_name", default=u"Short Company Name")
+        )
+    company_letter_code = schema.Text(
+        required = False,
+        title=_(u"label_company_letter_code", default=u"Company 3-letter code")
+        )
+    company_role = schema.Text(
+        required = False,
+        title=_(u"label_company_role", default=u"Company role")
+        )
+    company_logo = schema.Text(
+        required = False,
+        title=_(u"label_company_logo", default=u"Company Logo")
+        )
+
+
+    company_full_street_address = schema.Text(
+        required = False,
+        title=_(u"label_company_full_street_adress", default=u"Full Street Address")
+        )
+    company_city = schema.Text(
+        required = False,
+        title=_(u"label_company_citye", default=u"City")
+        )
+    company_other_address = schema.Text(
+        required = False,
+        title=_(u"label_company_other_adress", default=u"Other Address")
+        )
+    company_state = schema.Text(
+        required = False,
+        title=_(u"label_company_state", default=u"State")
+        )
+    company_zip = schema.Text(
+        required = False,
+        title=_(u"label_company_zip", default=u"ZIP")
+        )
+    company_main_phone_number = schema.Text(
+        required = False,
+        title=_(u"label_main_phone_number", default=u"Main Phone Number")
+        )
+
+
+    vokabulary = schema.List(
+        required = False,
         title=_(u"label_vokabulary", default=u"Vokaculary 1"),
         description=_(u"help_vocabulary",
-                      default=u"One entry on each line")
+                      default=u"One entry on each line"),
+        value_type=schema.Text(
+            title=_(u"label_vocabulary_entry",
+            default=u"Vocabulary Entry")
         )
+    )
 
 
 alsoProvides(IDocentimsSettings, IMedialogControlpanelSettingsProvider)
