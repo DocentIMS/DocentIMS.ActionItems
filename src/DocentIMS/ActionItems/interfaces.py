@@ -23,7 +23,7 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
 class IDocentimsSettings(model.Schema):
     """Adds settings to medialog.controlpanel
     """
-    
+
     model.fieldset(
         'vocabularies',
         label=_(u'Vocabularies'),
