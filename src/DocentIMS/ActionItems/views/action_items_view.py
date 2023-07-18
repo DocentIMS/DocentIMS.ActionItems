@@ -70,7 +70,7 @@ class ActionItemsView(BrowserView):
         return  {'id': member.getProperty('id'),
                   'last_name': member.getProperty('last_name'),
                   'first_name': member.getProperty('first_name'),
-                  'company': member.getProperty('location'),
+                  'company': member.getProperty('company'),
                  }
 
     def get_owner(self):
@@ -80,6 +80,6 @@ class ActionItemsView(BrowserView):
             return  {'id': member.getProperty('id'),
                   'last_name': member.getProperty('last_name'),
                   'first_name': member.getProperty('first_name'),
-                  'company': member.getProperty('location'),
+                  'company': member.getProperty('company'),
                  }
         return None
