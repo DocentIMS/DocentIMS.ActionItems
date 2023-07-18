@@ -54,7 +54,6 @@ class ActionItemsView(BrowserView):
         return  self.context.id.replace('action_items-', 'South Tacoma Station – ')
 
     def get_sow(self):
-        #import pdb; pdb.set_trace()
         if self.context.related_sow_section:
             return api.content.get(UID=self.context.related_sow_section)
         return None
@@ -67,19 +66,26 @@ class ActionItemsView(BrowserView):
 
     def get_creator(self):
         member = api.user.get(userid=self.context.Creator())
+        company = ''
+        company_id =  member.getProperty('company')
+        if company_id:
+            company = api.content.get(UID=company_id).Title()
         return  {'id': member.getProperty('id'),
                   'last_name': member.getProperty('last_name'),
                   'first_name': member.getProperty('first_name'),
-                  'company': member.getProperty('company'),
+                  'company': company,
                  }
 
     def get_owner(self):
         member = api.user.get(userid=self.context.assigned_to)
-
         if member:
+            company = ''
+            company_id =  member.getProperty('company')
+            if company_id:
+                company = api.content.get(UID=company_id).Title()
             return  {'id': member.getProperty('id'),
                   'last_name': member.getProperty('last_name'),
                   'first_name': member.getProperty('first_name'),
-                  'company': member.getProperty('company'),
+                  'company': company,
                  }
         return None
