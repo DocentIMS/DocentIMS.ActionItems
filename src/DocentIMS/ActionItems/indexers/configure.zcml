@@ -3,7 +3,7 @@
   <!--adapter factory=".actionno.dummy"
     name="actionno" /-->
 
-  <adapter factory=".actionno.actionnoIndexer"
+  <adapter factory=".indexers.actionIndexer"
     name="actionno" />
 
 </configure
