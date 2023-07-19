@@ -18,8 +18,7 @@
  <index name="close_out" meta_type="FieldIndex">
   <indexed_attr value="close_out"/>
  </index>
- <index name="action_item_number" meta_type="FieldIndex">
-  <indexed_attr value="action_item_number"/>
+ <index name="actionno" meta_type="FieldIndex">
  </index>
 
  <column value="owner"/>
@@ -28,7 +27,7 @@
  <column value="initial_due_date"/>
  <column value="assigned_to"/>
  <column value="close_out"/>
- <column value="action_item_number"/>
+ <column value="actionno"/>
 
 
 </object>
