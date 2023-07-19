@@ -15,7 +15,9 @@ def dummy(obj):
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def actionIndexer(obj):
     """Calculate and return the value for the indexer"""
-    import pdb; pdb.set_trace()
-    action_item_no = int(self.id.replace('action-item-', ''))
-    obj.action_item_number = action_item_no
-    return action_item_no
+    #import pdb; pdb.set_trace()
+    if "action_items-" in obj.id:
+        action_item =  obj.id.replace('action_items', '').replace("-", '')
+        action_item_no = int(float(action_item))
+        return action_item_no
+    return None
