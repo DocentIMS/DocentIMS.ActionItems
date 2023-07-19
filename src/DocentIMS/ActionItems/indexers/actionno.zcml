@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!--adapter factory=".actionno.dummy"
+    name="actionno" /-->
+
+  <adapter factory=".actionno.actionIndexer"
+    name="actionno" />
+
+</configure
