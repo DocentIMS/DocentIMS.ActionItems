@@ -6,4 +6,4 @@
   <adapter factory=".indexers.actionIndexer"
     name="actionno" />
 
-</configure
+</configure>
