@@ -14,7 +14,7 @@ from zope.interface import implementer
 
 
 class ISowAnalysis(model.Schema):
-    """ Marker interface and Dexterity Python Schema for SowAnalysis
+    """ Marker interface and Dexterity Python Schema for Scope Analysis
     """
     # If you want, you can load a xml model created TTW here
     # and customize it in Python:

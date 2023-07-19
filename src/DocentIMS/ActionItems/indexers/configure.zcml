@@ -4,7 +4,7 @@
 
   -*- extra stuff goes here -*-
 
-  <include package=".action_item_number" />
+  <include package=".actionno" />
 
 
 </configure>

@@ -1,9 +1,0 @@
-<configure xmlns="http://namespaces.zope.org/zope">
-
-  <adapter factory=".action_item_number.dummy"
-    name="action_item_number" />
-
-  <adapter factory=".action_item_number.action_item_number"
-    name="action_item_number" />
-
-</configure
