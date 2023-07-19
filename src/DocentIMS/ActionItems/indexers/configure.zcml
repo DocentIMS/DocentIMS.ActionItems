@@ -1,0 +1,10 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="DocentIMS.ActionItems">
+
+  -*- extra stuff goes here -*-
+
+  <include package=".action_item_number" />
+
+
+</configure>
