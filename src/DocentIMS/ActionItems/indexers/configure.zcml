@@ -1,10 +1,9 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope"
-    i18n_domain="DocentIMS.ActionItems">
+<configure xmlns="http://namespaces.zope.org/zope">
 
-  -*- extra stuff goes here -*-
+  <!--adapter factory=".actionno.dummy"
+    name="actionno" /-->
 
-  <include package=".actionno" />
+  <adapter factory=".actionno.actionnoIndexer"
+    name="actionno" />
 
-
-</configure>
+</configure
