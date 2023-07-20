@@ -50,20 +50,24 @@
 
 
   <utility
-    	  component=".vocabulary.ActionItemsVocabulary"
+    	  component=".vocabularies.ActionItemsVocabulary"
         name="DocentIMS.ActionItems.ActionItemsVocabulary" />
 
 
   <utility
-  	  component=".vocabulary.ShowActionItemsVocabulary"
+  	  component=".vocabularies.ShowActionItemsVocabulary"
       name="DocentIMS.ActionItems.ShowActionItemsVocabulary" />
 
   <utility
-  	  component=".vocabulary.CompanyVocabulary"
+  	  component=".vocabularies.CompanyVocabulary"
       name="DocentIMS.ActionItems.CompanyVocabulary" />
 
   <utility
-  	  component=".vocabulary.SiteVocabulary"
+  	  component=".vocabularies.SiteVocabulary"
       name="DocentIMS.ActionItems.SiteVocabulary" />
+
+  <utility
+  	  component=".vocabularies.PriorityVocabulary"
+      name="DocentIMS.ActionItems.PriorityVocabulary" />
 
 </configure>

@@ -21,3 +21,9 @@ def actionIndexer(obj):
         action_item_no = int(float(action_item))
         return action_item_no
     return None
+
+
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def priorityIndexer(obj):
+    """Calculate and return the value for the indexer"""
+    return int(float(obj.priority))

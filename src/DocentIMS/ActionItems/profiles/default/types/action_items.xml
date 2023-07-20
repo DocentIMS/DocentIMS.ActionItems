@@ -40,11 +40,7 @@
         &lt;description&gt;Establish a priority level 1-5 with &quot;1&quot; being the most critical&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Priority&lt;/title&gt;
-        &lt;values&gt;
-          &lt;element&gt;1&lt;/element&gt;
-          &lt;element&gt;2&lt;/element&gt;
-          &lt;element&gt;3&lt;/element&gt;
-        &lt;/values&gt;
+        &lt;vocabulary&gt;DocentIMS.ActionItems.PriorityVocabulary&lt;/vocabulary&gt;
       &lt;/field&gt;
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
