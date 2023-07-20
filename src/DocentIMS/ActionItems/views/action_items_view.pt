@@ -47,9 +47,9 @@
                   <tbody>
                     <tr>
                       <td tal:define="creator view/get_creator|None">
-                        <b>By:</b>  ${creator/last_name|None}, ${creator/first_name|None}
+                        <b>Created By:</b>  ${creator/last_name|None}, ${creator/first_name|None}
                       </td>
-                          <td><b>Date:</b>  <time class="pat-display-time"
+                          <td><b>Created:</b>  <time class="pat-display-time"
                             datetime="${python:context.created().ISO()}"
                             data-pat-display-time="output-format: Do MMMM YYYY">
                             ${context/created}
@@ -207,15 +207,15 @@
       h1.priority-xx1 {color: #F24C3D}
       h1.priority-x1 {color: red}
       .black {color: black}
-      .autotoc-nav {background: whitesmoke}
-      .autotoc-nav .active  {background: white}
-      .white-background {background: white}
-      body {background: whitesmoke}
+      .autotoc-nav {xbackground: whitesmoke}
+      .autotoc-nav .active  {xbackground: white}
+      .white-background {xbackground: white}
+      body {xbackground: whitesmoke}
       .xpat-autotoc.autotabs {background: white}
       fieldset {background: white; padding-left: 2rem; padding-right: 2rem;}
       td {
        padding: 3px 12px;
-       background: rgba(254,255,255,0.5913176);
+       xbackground: rgba(254,255,255,0.5913176);
        margin:  1px;
       }
 
