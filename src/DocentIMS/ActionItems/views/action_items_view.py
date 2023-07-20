@@ -61,7 +61,8 @@ class ActionItemsView(BrowserView):
     def get_sow_text(self):
         if self.context.related_sow_section:
             rel_sow = api.content.get(UID=self.context.related_sow_section)
-            return rel_sow.bodytext.output
+            if rel_sow.bodytext:
+                return rel_sow.bodytext.output
         return None
 
     def get_creator(self):

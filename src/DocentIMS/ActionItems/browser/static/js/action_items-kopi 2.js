@@ -31,20 +31,27 @@ $(document).ready(function() {
     if ($( this ).val() != '--NOVALUE--' )     {
       $('.relatex-sow-text').hide();
       $selvalue = $( this ).val() ;
-      $searchval = '/Plone18/@@search';
+      $searchval = '/Plone18/@search?SearchableText='+ $selvalue;
       //$searchval = '/Plone18/@search';
       //$searchval = '/@get?UID=' + $selvalue;
 
+      $.ajax({
+        url: $searchval,
+        contentType: "application/json",
+        dataType: 'json',
+        headers: {'Accept': 'application/json'},
+        success: function(result){
 
+          $( "h1" ).replaceWith(result);
+          $( "h2dsfafasdfasdf" ).insertAfter( $( '#content-core' ) );
+          console.log(result);
+          console.log('xxxx');
 
-      $.get( $searchval, function( data ) {
-        //$res = $( ".result" ).html( data );
-        console.log( typeof data ); // string
-        alert('TO DO: text from sow currently only shows after save');
-        //console.log( data ); // HTML content of the jQuery.ajax page
-        //alert( data );
-        //alert( $res );
-      });
+          alert(result.length);
+          alert(result.text);
+          //$($searchval).insertAfter('.formControls');
+        }
+      })
 
     }
   });
