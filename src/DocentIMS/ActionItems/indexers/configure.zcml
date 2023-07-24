@@ -4,10 +4,10 @@
     name="actionno" />
 
   <adapter factory=".indexers.dummy"
-    name="actionno" />
-
-  <adapter factory=".indexers.actionIndexer"
     name="priority" />
+  
+  <adapter factory=".indexers.actionIndexer"
+    name="actionno" />
 
   <adapter factory=".indexers.priorityIndexer"
       name="priority" />
