@@ -61,8 +61,8 @@
 
      <records interface="plone.app.querystring.interfaces.IQueryField"
               prefix="plone.app.querystring.field.close_out">
-       <value key="title">Closed</value>
-       <value key="description">Closed (no)</value>
+       <value key="title">Closed Out</value>
+       <value key="description">Closed (yes, no)</value>
        <value key="enabled">True</value>
        <value key="sortable">False</value>
        <value key="operations">
