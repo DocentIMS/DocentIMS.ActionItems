@@ -16,18 +16,17 @@ def dummy(obj):
 def actionIndexer(obj):
     """Calculate and return the value for the indexer"""
     #import pdb; pdb.set_trace()
-    if obj.portal_type== 'action_items':
-        if "action_items-" in obj.id:
-            action_item =  obj.id.replace('action_items', '').replace("-", '')
-            action_item_no = int(float(action_item))
-            return action_item_no
-    raise AttributeError('This field should not indexed here!')
+    if "action_items-" in obj.id:
+        action_item =  obj.id.replace('action_items', '').replace("-", '')
+        action_item_no = int(float(action_item))
+        return action_item_no
+    return None
+
 
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def priorityIndexer(obj):
     """Calculate and return the value for the indexer"""
-    if obj.portal_type== 'action_items':
-        if obj.priority:
-            return int(float(obj.priority))
-    raise AttributeError('This field should not indexed here!')
+    if obj.priority:
+        return int(float(obj.priority))
+    return None
