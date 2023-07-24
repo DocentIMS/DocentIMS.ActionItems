@@ -9,9 +9,7 @@
  <index name="initial_due_date" meta_type="DateIndex">
   <indexed_attr value="initial_due_date"/>
  </index>
- <index name="owner" meta_type="FieldIndex">
-  <indexed_attr value="owner"/>
- </index>
+ 
  <index name="assigned_to" meta_type="FieldIndex">
   <indexed_attr value="assigned_to"/>
  </index>
@@ -22,7 +20,7 @@
    <indexed_attr value="actionno"/>
  </index>
 
- <column value="owner"/>
+
  <column value="priority"/>
  <column value="revised_due_date"/>
  <column value="initial_due_date"/>
