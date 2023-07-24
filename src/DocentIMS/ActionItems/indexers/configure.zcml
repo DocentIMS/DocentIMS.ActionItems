@@ -1,10 +1,13 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
-  <!--adapter factory=".actionno.dummy"
-    name="actionno" /-->
+  <adapter factory=".indexers.dummy"
+    name="actionno" />
+
+  <adapter factory=".indexers.dummy"
+    name="actionno" />
 
   <adapter factory=".indexers.actionIndexer"
-    name="actionno" />
+    name="priority" />
 
   <adapter factory=".indexers.priorityIndexer"
       name="priority" />
