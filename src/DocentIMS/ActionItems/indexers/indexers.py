@@ -21,7 +21,7 @@ def actionIndexer(obj):
             action_item =  obj.id.replace('action_items', '').replace("-", '')
             action_item_no = int(float(action_item))
             return action_item_no
-    return None
+    raise AttributeError('This field should not indexed here!')
 
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
@@ -30,3 +30,4 @@ def priorityIndexer(obj):
     if obj.portal_type== 'action_items':
         if obj.priority:
             return int(float(obj.priority))
+    raise AttributeError('This field should not indexed here!')
