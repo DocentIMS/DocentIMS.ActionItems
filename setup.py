@@ -57,7 +57,6 @@ setup(
         'collective.accordionviews',
         'collective.searchandreplace',
         'collective.impersonate',
-        'collective.contentsections',
         'Products.PloneKeywordManager',
         'plone.app.versioningbehavior',
         'plone.restapi',
