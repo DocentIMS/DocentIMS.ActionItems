@@ -29,16 +29,21 @@
                     <td><span>${item/assigned_to|None}</span></td>
                     <td><span>${item/initial_due_date|None}</span></td>
                     <td><span>${item/revised_due_date|None}</span></td>
-                    <td><span>${item/priority|None}</span></td>
+                    <td class="priority-${item/priority|None}"><span>${item/priority|None}</span></td>
                     <td>
                       <span tal:condition="obj/is_this_item_closed|None">Yes</span>
                       <span tal:condition="not: obj/is_this_item_closed|None">No</span>
                   </td>
                   </tal:obj>
                 </tr>
-              </tbody> 
+              </tbody>
               <table>
             </div>
+            <style>
+              .priority-1 span { color: red; padding: 1px 5px}
+              .priority-2 span { color: orange; padding: 1px 5px}
+              .priority-3 span  {color:  green; padding: 1px 5px}
+            </style>
         </metal:content-core>
 </body>
 </html>
