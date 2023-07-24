@@ -24,18 +24,17 @@
                 <tr tal:define="obj item/getObject;">
                   <td><a href="${item/getURL}">${obj/actionno|None}</a></td>
                   <td><a href="${item/getURL}">${obj/title}</a></td>
-                  <td>${obj/assigned_to|None}</td>
-                  <td>${obj/initial_due_date|None}</td>
-                  <td>${obj/revised_due_date|None}</td>
-                  <td>${obj/priority|None}</td>
-                  <td><span tal:condtion="obj/is_this_item_closed|None">X</span></td>
+                  <td><span>${obj/assigned_to|None}</span></td>
+                  <td><span>${obj/initial_due_date|None}</span></td>
+                  <td><span>${obj/revised_due_date|None}</span></td>
+                  <td><span>${obj/priority|None}</span></td>
+                  <td><span tal:condition="obj/is_this_item_closed|None">X</span></td>
                   </tr>
                  </tal:repeat>
               </tbody>
             <table>
 
         </div>
-
 
         <script>require([
           'jquery',
