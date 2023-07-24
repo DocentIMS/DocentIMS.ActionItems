@@ -36,8 +36,7 @@
                   </td>
                   </tal:obj>
                 </tr>
-              </tbody>
-              <tfoot></tfoot>
+              </tbody> 
               <table>
             </div>
         </metal:content-core>
