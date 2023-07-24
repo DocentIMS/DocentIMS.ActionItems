@@ -13,8 +13,8 @@
  <index name="assigned_to" meta_type="FieldIndex">
   <indexed_attr value="assigned_to"/>
  </index>
- <index name="close_out" meta_type="BooleanIndex">
-  <indexed_attr value="close_out"/>
+ <index name="is_this_item_closed" meta_type="BooleanIndex">
+  <indexed_attr value="is_this_item_closed"/>
  </index>
  <index name="actionno" meta_type="FieldIndex">
    <indexed_attr value="actionno"/>
@@ -27,7 +27,7 @@
  <column value="revised_due_date"/>
  <column value="initial_due_date"/>
  <column value="assigned_to"/>
- <column value="close_out"/>
+ <column value="is_this_item_closed"/>
  <column value="closed"/>
  <column value="actionno"/>
 

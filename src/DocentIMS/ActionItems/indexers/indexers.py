@@ -35,8 +35,7 @@ def priorityIndexer(obj):
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def closedIndexer(obj):
     """Calculate and return the value for the indexer"""
-    import pdb;pdb.set_trace()
-    if obj.close_out:
+    if obj.is_this_item_closed:
         obj.closed = 'Yes'
         return 'Yes'
     return None
