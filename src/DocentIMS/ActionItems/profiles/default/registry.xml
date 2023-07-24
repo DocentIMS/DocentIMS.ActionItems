@@ -50,7 +50,7 @@
        <field type="plone.registry.field.TextLine">
          <title>Title</title>
        </field>
-       <value xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">assigned_to</value>
+       <value xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Assigned to</value>
      </record>
      <record name="plone.app.querystring.field.assigned_to.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
        <field type="plone.registry.field.TextLine">
