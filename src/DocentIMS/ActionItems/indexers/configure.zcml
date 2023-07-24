@@ -11,8 +11,8 @@
 
   <adapter factory=".indexers.actionIndexer"
     name="actionno" />
-    
-  <adapter factory=".indexers.actionIndexer"
+
+  <adapter factory=".indexers.closedIndexer"
     name="closed" />
 
   <adapter factory=".indexers.priorityIndexer"
