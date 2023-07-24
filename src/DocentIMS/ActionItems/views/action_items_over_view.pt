@@ -9,7 +9,7 @@
         <metal:content-core fill-slot="content-core">
           <div>
               <!--table class="pat-xdatatables pat-tablesorter stacktable listing table-responsive" data-pat-datatables="pageLength: 50; pagingType: simple"-->
-            <table class="listing pat-datatables" >
+            <table class="listing pat-datatables listing" data-pat-datatables="pageLength: 50">
               <thead>
                 <tr>
                   <th>ID</th>
