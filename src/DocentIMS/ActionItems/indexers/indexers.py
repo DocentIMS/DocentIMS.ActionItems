@@ -30,3 +30,11 @@ def priorityIndexer(obj):
     if obj.priority:
         return int(float(obj.priority))
     return None
+
+
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def closedIndexer(obj):
+    """Calculate and return the value for the indexer"""
+    if obj.closed_out:
+        return 'Yes'
+    return None
