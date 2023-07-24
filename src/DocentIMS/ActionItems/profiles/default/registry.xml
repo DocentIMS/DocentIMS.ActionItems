@@ -60,7 +60,7 @@
      </record>
 
      <records interface="plone.app.querystring.interfaces.IQueryField"
-              prefix="plone.app.querystring.field.closed">
+              prefix="plone.app.querystring.field.close_out">
        <value key="title">Closed</value>
        <value key="description">Closed (no)</value>
        <value key="enabled">True</value>
