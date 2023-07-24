@@ -6,6 +6,15 @@
 
  <!-- -*- change * to content type (?) DocentIMS.ActionItems.content.action_items.IActionItems -*- -->
 
+ <browser:page
+   name="action-items-overview"
+   for="*"
+   template="action_items_over_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+
   <browser:page
     name="action-items-view"
     for="*"
