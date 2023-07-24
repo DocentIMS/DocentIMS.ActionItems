@@ -24,8 +24,8 @@
               <tbody>
                 <tr tal:repeat="item context/results|context/getFolderContents">
                   <tal:obj tal:define="obj item/getObject">
-                    <td><a href="${item/getURL}">${obj/actionno|None}</a></td>
-                    <td><a href="${item/getURL}">${obj/title}</a></td>
+                    <td><a href="${item/getURL}">${item/actionno|None}</a></td>
+                    <td><a href="${item/getURL}">${item/title}</a></td>
                     <td><span>${item/assigned_to|None}</span></td>
                     <td><span>${item/initial_due_date|None}</span></td>
                     <td><span>${item/revised_due_date|None}</span></td>
