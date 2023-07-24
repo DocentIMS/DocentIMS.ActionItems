@@ -125,9 +125,8 @@
        <value key="group">Metadata</value>
      </records>
 
-
-       <!-- -*- extra stuff goes here -*- -->
-      <!--javascript id="action_items.js" file="++plone++DocentIMS.ActionItems/js/action_items.js" enabled="True" /-->
+    <!-- -*- extra stuff goes here -*- -->
+    <!--javascript id="action_items.js" file="++plone++DocentIMS.ActionItems/js/action_items.js" enabled="True" /-->
 
     <records interface="plone.base.interfaces.resources.IBundleRegistry" prefix="plone.bundles/actionitems">
       <value key="enabled">True</value>
