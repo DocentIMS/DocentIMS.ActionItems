@@ -5,9 +5,15 @@
 
   <adapter factory=".indexers.dummy"
     name="priority" />
-  
+
+  <adapter factory=".indexers.dummy"
+    name="closed" />
+
   <adapter factory=".indexers.actionIndexer"
     name="actionno" />
+    
+  <adapter factory=".indexers.actionIndexer"
+    name="closed" />
 
   <adapter factory=".indexers.priorityIndexer"
       name="priority" />
