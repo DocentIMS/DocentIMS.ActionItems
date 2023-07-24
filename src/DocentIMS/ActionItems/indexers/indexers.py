@@ -36,5 +36,6 @@ def priorityIndexer(obj):
 def closedIndexer(obj):
     """Calculate and return the value for the indexer"""
     if obj.closed_out:
+        obj.closed = 'Yes'
         return 'Yes'
     return None
