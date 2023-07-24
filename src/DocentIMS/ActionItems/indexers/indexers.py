@@ -6,7 +6,7 @@ from plone.dexterity.interfaces import IDexterityContainer
 from plone.indexer import indexer
 
 
-@indexer(IDexterityContent)
+@indexer(IDexterityContainer)
 def dummy(obj):
     """ Dummy to prevent indexing other objects thru acquisition """
     raise AttributeError('This field should not indexed here!')
