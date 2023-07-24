@@ -67,6 +67,7 @@
        <value key="operations">
            <element>plone.app.querystring.operation.boolean.isTrue</element>
            <element>plone.app.querystring.operation.boolean.isFalse</element>
+           <element>plone.app.querystring.operation.int.is</element>
        </value>
        <value key="group">Metadata</value>
      </records>
