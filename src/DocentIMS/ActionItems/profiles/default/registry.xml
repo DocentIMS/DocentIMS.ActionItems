@@ -60,14 +60,14 @@
      </record>
 
      <records interface="plone.app.querystring.interfaces.IQueryField"
-              prefix="plone.app.querystring.field.close_out">
-       <value key="title">Close Out</value>
-       <value key="description">Close Out (closed, yes, no)</value>
+              prefix="plone.app.querystring.field.closed">
+       <value key="title">Closed</value>
+       <value key="description">Closed (no)</value>
        <value key="enabled">True</value>
+       <value key="sortable">False</value>
        <value key="operations">
            <element>plone.app.querystring.operation.boolean.isTrue</element>
            <element>plone.app.querystring.operation.boolean.isFalse</element>
-           <element>plone.app.querystring.operation.int.is</element>
        </value>
        <value key="group">Metadata</value>
      </records>
