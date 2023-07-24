@@ -7,50 +7,38 @@
 
   <body>
         <metal:content-core fill-slot="content-core">
-          <div><table class="datatable pat-tablesorter listing">
+          <div>
+              <!--table class="pat-xdatatables pat-tablesorter stacktable listing table-responsive" data-pat-datatables="pageLength: 50; pagingType: simple"-->
+            <table class="listing pat-datatables" >
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>Title</th>
                   <th>Assigned to</th>
-                  <th>Ini Due date<th>
-                  <th>Rev Due date<th>
-                  <th>Priority<th>
-                  <th>Closed<th>
+                  <th>Due</th>
+                  <th>Rev Due</th>
+                  <th>Priority</th>
+                  <th>Closed</th>
                 </tr>
               </thead>
               <tbody>
-                <tal:repeat  tal:repeat="item context/results|context/getFolderContents">
-                <tr tal:define="obj item/getObject;">
-                  <td><a href="${item/getURL}">${obj/actionno|None}</a></td>
-                  <td><a href="${item/getURL}">${obj/title}</a></td>
-                  <td><span>${obj/assigned_to|None}</span></td>
-                  <td><span>${obj/initial_due_date|None}</span></td>
-                  <td><span>${obj/revised_due_date|None}</span></td>
-                  <td><span>${obj/priority|None}</span></td>
-                  <td><span tal:condition="obj/is_this_item_closed|None">X</span></td>
-                  </tr>
-                 </tal:repeat>
+                <tr tal:repeat="item context/results|context/getFolderContents">
+                  <tal:obj tal:define="obj item/getObject">
+                    <td><a href="${item/getURL}">${obj/actionno|None}</a></td>
+                    <td><a href="${item/getURL}">${obj/title}</a></td>
+                    <td><span>${item/assigned_to|None}</span></td>
+                    <td><span>${item/initial_due_date|None}</span></td>
+                    <td><span>${item/revised_due_date|None}</span></td>
+                    <td><span>${item/priority|None}</span></td>
+                    <td>
+                      <span tal:condition="obj/is_this_item_closed|None">Yes</span>
+                      <span tal:condition="not: obj/is_this_item_closed|None">No</span>
+                  </td>
+                  </tal:obj>
+                </tr>
               </tbody>
-            <table>
-
-        </div>
-
-        <script>require([
-          'jquery',
-          'https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js'
-          ], function(Base) {
-            'use strict';
-            $('.datatable').DataTable( {
-              "processing": true,
-              "pageLength": 50,
-            });
-          });
-        </script>
-
-        <style>
-          .dataTables_length label { line-height: 3em: }
-        </style>
+              <table>
+            </div>
         </metal:content-core>
-    </body>
-  </html>
+</body>
+</html>
