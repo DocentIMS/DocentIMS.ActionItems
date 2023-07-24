@@ -41,20 +41,45 @@
        <value key="group">Metadata</value>
      </records>
 
-     <records interface="plone.app.querystring.interfaces.IQueryField"
-              prefix="plone.app.querystring.field.assigned_to">
-       <value key="title">Assigned to</value>
-       <value key="description">Assigned to User (index)</value>
-       <value key="enabled">True</value>
-       <value key="operations">
-           <element>plone.app.querystring.operation.string.is</element>
-           <element>plone.app.querystring.operation.string.contains</element>
-           <element>plone.app.querystring.operation.string.currentUser</element>
-           <element>plone.app.querystring.operation.selection.any</element>
-           <element>plone.app.querystring.operation.selection.none</element>
+
+
+     <record name="plone.app.querystring.field.assigned_to.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+       <field type="plone.registry.field.List">
+         <title>Operations</title>
+         <value_type type="plone.registry.field.DottedName">
+           <title>Operation ID</title>
+         </value_type>
+       </field>
+       <value>
+         <element>plone.app.querystring.operation.string.currentUser</element>
+         <element>plone.app.querystring.operation.selection.any</element>
+         <element>plone.app.querystring.operation.selection.none</element>
        </value>
-       <value key="group">Metadata</value>
-     </records>
+     </record>
+     <record name="plone.app.querystring.field.assigned_to.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+       <field type="plone.registry.field.Bool">
+         <title>Sortable</title>
+       </field>
+       <value>True</value>
+     </record>
+     <record name="plone.app.querystring.field.assigned_to.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+       <field type="plone.registry.field.TextLine">
+         <title>Title</title>
+       </field>
+       <value xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">assigned_to</value>
+     </record>
+     <record name="plone.app.querystring.field.assigned_to.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+       <field type="plone.registry.field.TextLine">
+         <title>Vocabulary</title>
+       </field>
+       <value>plone.app.vocabularies.Users</value>
+     </record>
+
+
+
+
+
+
 
      <records interface="plone.app.querystring.interfaces.IQueryField"
               prefix="plone.app.querystring.field.close_out">
