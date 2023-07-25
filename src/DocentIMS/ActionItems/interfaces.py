@@ -26,10 +26,6 @@ class IVocabulari(model.Schema):
     )
 
 
-
-
-
-
 class ICompany(model.Schema):
     full_company_name = schema.TextLine(
         required = False,

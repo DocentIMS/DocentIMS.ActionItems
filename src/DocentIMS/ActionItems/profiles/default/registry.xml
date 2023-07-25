@@ -3,6 +3,14 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
 
+      <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_companies"
+              interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
+              field="project_companies">
+        <field type="plone.registry.field.Text">
+        </field>
+        <value></value>
+      </record>
+
       <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings">
           <value key="project_title"></value>
           <value key="project_description"></value>
@@ -10,7 +18,7 @@
           <value key="project_short_name"></value>
           <value key="project_contract_number"></value>
           <value key="project_document_naming_convention"></value>
-          <value key="project_companies">Nonxse</value>
+
 
           <value key="full_company_name"></value>
           <value key="short_company_name"></value>
