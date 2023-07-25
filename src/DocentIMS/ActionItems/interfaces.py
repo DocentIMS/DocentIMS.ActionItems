@@ -145,6 +145,13 @@ class IDocentimsSettings(model.Schema):
             ],
         )
 
+    model.fieldset(
+        'table',
+        label=_(u'Table Columns'),
+        fields=[
+            'table_columns',
+            ],
+        )
 
     project_title = schema.TextLine(
         required = False,
@@ -264,6 +271,13 @@ class IDocentimsSettings(model.Schema):
         title = _(u"Companies",
             default=u"Companies"),
         value_type=DictRow(schema=ICompany),
+    )
+
+    #widget(companies=DataGridFieldFactory)
+    table_columns = schema.List(
+        title = _(u"Table Columns",
+            default=u"Table Column fields"),
+            value_type=schema.Choice(vocabulary=u"DocentIMS.ActionItems.AiFieldsVocabulary"),
     )
 
 alsoProvides(IDocentimsSettings, IMedialogControlpanelSettingsProvider)

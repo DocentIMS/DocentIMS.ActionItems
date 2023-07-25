@@ -70,4 +70,10 @@
   	  component=".vocabularies.PriorityVocabulary"
       name="DocentIMS.ActionItems.PriorityVocabulary" />
 
+  <utility
+  	  component=".vocabularies.AiFieldsVocabulary"
+      name="DocentIMS.ActionItems.AiFieldsVocabulary" />
+
+
+
 </configure>

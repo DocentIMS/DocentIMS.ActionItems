@@ -67,5 +67,23 @@ def PriorityVocabulary(context):
          SimpleTerm(value=2, token=2, title=_(u'2 Medium')),
          SimpleTerm(value=3, token=3, title=_(u'3 Low'))]
         )
-
 directlyProvides(PriorityVocabulary, IVocabularyFactory)
+
+def AiFieldsVocabulary(context):
+    return SimpleVocabulary(
+        [SimpleTerm(value='title', token='title', title=_(u'Title')),
+            SimpleTerm(value='description', token='description', title=_(u'Description')),
+            SimpleTerm(value='priority', token='priority', title=_(u'Priority')),
+            SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Assigned To')),
+            SimpleTerm(value='related_item', token='related_item', title=_(u'Related')),
+            SimpleTerm(value='Creator', token='Creator', title=_(u'Creator')),
+            SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'iIni Due Date')),
+            SimpleTerm(value='modified', token='modified', title=_(u'modified')),
+            SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'Rev Due Date')),
+            SimpleTerm(value='is_this_action_out_of_the_scope_of_work_', token='is_this_action_out_of_the_scope_of_work_', title=_(u'Out of Scope')),
+            SimpleTerm(value='related_sow_section', token='related_sow_section', title=_(u'Rel Scope')),
+            SimpleTerm(value='is_this_item_closed', token='is_this_item_closed', title=_(u'Closed?')),
+        ]
+    )
+
+directlyProvides(AiFieldsVocabulary, IVocabularyFactory)
