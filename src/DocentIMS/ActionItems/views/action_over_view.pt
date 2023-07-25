@@ -21,7 +21,7 @@
                 <tr tal:repeat="item context/results|context/getFolderContents">
                   <tal:obj tal:define="obj item/getObject">
                     <tal:repeat tal:repeat="field fields">
-                    <td tal:define="val python:getattr(obj, field)">${val}</td>
+                    <td tal:define="val python:getattr(obj, field, '') or None">${val|None}</td>
 
                     </tal:repeat>
                   </tal:obj>
