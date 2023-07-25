@@ -13,9 +13,8 @@
               <thead>
                 <tr>
                   <tal:repeat tal:repeat="field fields">
-
-                    <th tal:condition="python: field!='actionno'">${python:field.replace("_", " ").capitalize()}</th>
-                    <th tal:condition="python: field=='actionno'">ID</th>
+                    <th tal:condition="python: field != 'actionno'">${python:field.replace("", " ").capitalize()}</th>
+                    <th tal:condition="python: field == 'actionno'">ID</th>
                   </tal:repeat>
                 </tr>
               </thead>
