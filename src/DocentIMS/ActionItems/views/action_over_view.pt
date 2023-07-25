@@ -23,7 +23,7 @@
                   <tal:obj tal:define="obj item/getObject">
 
                     <tal:repeat tal:repeat="field fields">
-                    <td tal:define="val python:getattr(obj, field, '–') or None">${val|None}
+                      <td tal:define="val python:getattr(obj, field, '')">${val|None}
                       <tal:check tal:condition="python: field=='actionno'"><a href="${item/getURL}">${item/actionno|None}</a></tal:check>
                     </td>
                     </tal:repeat>
