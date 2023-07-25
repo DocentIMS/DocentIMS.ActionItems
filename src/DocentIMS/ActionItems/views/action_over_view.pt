@@ -21,12 +21,13 @@
               <tbody>
                 <tr tal:repeat="item context/results|context/getFolderContents">
                   <tal:obj tal:define="obj item/getObject">
+                    <a href="${item/getURL}">
                     <tal:repeat tal:repeat="field fields">
                     <td tal:define="val python:getattr(obj, field, '–') or None">${val|None}
                       <tal:check tal:condition="python: field=='actionno'">${item/actionno|None}</tal:check>
                     </td>
-
                     </tal:repeat>
+                    <a href="${item/getURL}">
                   </tal:obj>
                 </tr>
               </tbody>
