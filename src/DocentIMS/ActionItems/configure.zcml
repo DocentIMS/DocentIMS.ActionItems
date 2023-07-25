@@ -67,6 +67,10 @@
       name="DocentIMS.ActionItems.SiteVocabulary" />
 
   <utility
+  	  component=".vocabularies.Site2Vocabulary"
+      name="DocentIMS.ActionItems.Site2Vocabulary" />
+
+  <utility
   	  component=".vocabularies.PriorityVocabulary"
       name="DocentIMS.ActionItems.PriorityVocabulary" />
 

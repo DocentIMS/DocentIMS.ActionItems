@@ -16,8 +16,8 @@
                   <th>Title</th>
                   <th>Creator</th>
                   <th>Assigned to</th>
-                  <th>Due</th>
-                  <th>Rev Due</th>
+                  <th>Initial Due</th>
+                  <th>Revised Due</th>
                   <th>Priority</th>
                   <th>Closed</th>
                 </tr>

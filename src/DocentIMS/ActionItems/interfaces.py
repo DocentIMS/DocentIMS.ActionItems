@@ -20,9 +20,8 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
 
 class IVocabulari(model.Schema):
     vocabulary_entry = schema.TextLine(
-        title=_(u'Vocabulary', 'Vocabulary'),
-        required=False,
-        default=u""""""
+        title=_(u'Vocabulary entries', 'Vocabulary entries'),
+        required=False, 
     )
 
 
@@ -254,8 +253,8 @@ class IDocentimsSettings(model.Schema):
 
     widget(vokabularies=DataGridFieldFactory)
     vokabularies = schema.List(
-        title = _(u"Vocabularies 1",
-            default=u"Vocabulary 1"),
+        title = _(u"My vocabulary Name",
+            default=u"Some Vocabulary name"),
         value_type=DictRow(schema=IVocabulari),
     )
 
