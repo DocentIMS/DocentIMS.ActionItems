@@ -71,7 +71,9 @@ directlyProvides(PriorityVocabulary, IVocabularyFactory)
 
 def AiFieldsVocabulary(context):
     return SimpleVocabulary(
-        [SimpleTerm(value='title', token='title', title=_(u'Title')),
+        [
+            SimpleTerm(value='actionno', token='actionno', title=_(u'actionno')),
+            SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='description', token='description', title=_(u'Description')),
             SimpleTerm(value='priority', token='priority', title=_(u'Priority')),
             SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Assigned To')),
