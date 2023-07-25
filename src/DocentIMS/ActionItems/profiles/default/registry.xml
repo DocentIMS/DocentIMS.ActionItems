@@ -24,7 +24,10 @@
           <value key="company_zip"></value>
           <value key="company_main_phone_number"></value>
 
-          <value key="vokabulary"></value>
+          <value key="vokabularies"></value>
+          <value key="vokabularies2"></value>
+          <value key="companies"></value>
+
      </records>
 
      <record name="plone.app.querystring.field.assigned_to.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">

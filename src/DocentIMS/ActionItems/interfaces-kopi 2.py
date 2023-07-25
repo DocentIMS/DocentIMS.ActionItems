@@ -19,74 +19,11 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 class IVocabulari(model.Schema):
-    vocabulary_entry = schema.TextLine(
+    vocabulary_entry = schema.Text(
         title=_(u'Vocabulary', 'Vocabulary'),
         required=False,
-        default=u""""""
+        default=u"""One on each line"""
     )
-
-
-
-
-
-
-class ICompany(model.Schema):
-    full_company_name = schema.TextLine(
-        required = False,
-        title=_(u"label_company_name", default=u"Full Company Name")
-        )
-    short_company_name= schema.TextLine(
-        required = False,
-        title=_(u"label_company_short_name", default=u"Short Company Name")
-        )
-    company_letter_code = schema.TextLine(
-        required = False,
-        title=_(u"label_company_letter_code", default=u"Company 3-letter code")
-        )
-    company_role = schema.Text(
-        required = False,
-        title=_(u"label_company_role", default=u"Company role")
-        )
-    company_logo = schema.Text(
-        required = False,
-        title=_(u"label_company_logo", default=u"Company Logo")
-        )
-
-
-    company_full_street_address = schema.Text(
-        required = False,
-        title=_(u"label_company_full_street_adress", default=u"Full Street Address")
-        )
-    company_city = schema.TextLine(
-        required = False,
-        title=_(u"label_company_citye", default=u"City")
-        )
-    company_other_address = schema.Text(
-        required = False,
-        title=_(u"label_company_other_adress", default=u"Other Address")
-        )
-    company_state = schema.TextLine(
-        required = False,
-        title=_(u"label_company_state", default=u"State")
-        )
-    company_zip = schema.TextLine(
-        required = False,
-        title=_(u"label_company_zip", default=u"ZIP")
-        )
-    company_main_phone_number = schema.TextLine(
-        required = False,
-        title=_(u"label_main_phone_number", default=u"Main Phone Number")
-        )
-
-
-
-
-
-
-
-
-
-
 
 class IDocentimsSettings(model.Schema):
     """Adds settings to medialog.controlpanel
@@ -97,7 +34,6 @@ class IDocentimsSettings(model.Schema):
         label=_(u'Vocabularies'),
         fields=[
             'vokabularies',
-            'vokabularies2',
             ],
         )
 
@@ -140,14 +76,6 @@ class IDocentimsSettings(model.Schema):
             ],
         )
 
-
-    model.fieldset(
-        'companies',
-        label=_(u'Companies'),
-        fields=[
-            'companies',
-            ],
-        )
 
 
     project_title = schema.TextLine(
@@ -237,23 +165,11 @@ class IDocentimsSettings(model.Schema):
 
     widget(vokabularies=DataGridFieldFactory)
     vokabularies = schema.List(
-        title = _(u"Vocabularies 1",
-            default=u"Vocabulary 1"),
+        title = _(u"Vocabularies",
+            default=u"Ekstra buttons"),
         value_type=DictRow(schema=IVocabulari),
     )
 
-    widget(vokabularies2=DataGridFieldFactory)
-    vokabularies2 = schema.List(
-        title = _(u"Vocabularies 2",
-            default=u"Vocabulary 2"),
-        value_type=DictRow(schema=IVocabulari),
-    )
 
-    widget(companies=DataGridFieldFactory)
-    companies = schema.List(
-        title = _(u"Companies",
-            default=u"Companies"),
-        value_type=DictRow(schema=ICompany),
-    )
 
 alsoProvides(IDocentimsSettings, IMedialogControlpanelSettingsProvider)

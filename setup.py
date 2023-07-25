@@ -60,7 +60,8 @@ setup(
         'Products.PloneKeywordManager',
         'plone.app.versioningbehavior',
         'plone.restapi',
-        'medialog.controlpanel'
+        'medialog.controlpanel',
+        'collective.z3cform.datagridfield'
     ],
     extras_require={
         'test': [
