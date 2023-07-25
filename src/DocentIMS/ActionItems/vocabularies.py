@@ -42,15 +42,23 @@ def CompanyVocabulary(context):
 directlyProvides(CompanyVocabulary, IVocabularyFactory)
 
 
+#def SiteVocabulary(context):
+#    items  =  api.portal.get_registry_record('vokabulary', interface=IDocentimsSettings)
+#    if items:
+#        terms = [ SimpleTerm(value=item, token=item.lower(), title=item) for item in items ]
+#        return SimpleVocabulary(terms)
+#    return SimpleVocabulary([])
+#
+#directlyProvides(SiteVocabulary, IVocabularyFactory)
+
 def SiteVocabulary(context):
-    items  =  api.portal.get_registry_record('vokabulary', interface=IDocentimsSettings)
+    items  =  api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
     if items:
-        terms = [ SimpleTerm(value=item, token=item.lower(), title=item) for item in items ]
+        terms = [ SimpleTerm(value=item['vocabulary_entry'], token=item['vocabulary_entry'].lower(), title=item['vocabulary_entry']) for item in items ]
         return SimpleVocabulary(terms)
     return SimpleVocabulary([])
 
 directlyProvides(SiteVocabulary, IVocabularyFactory)
-
 
 def PriorityVocabulary(context):
 

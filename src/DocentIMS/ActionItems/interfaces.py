@@ -93,6 +93,20 @@ class IDocentimsSettings(model.Schema):
     """
 
     model.fieldset(
+        'project',
+        label=_(u'Project Information'),
+        fields=[
+            'project_title',
+            'project_short_name',
+            'project_description',
+            'project_full_name',
+            'project_companies',
+            'project_contract_number',
+            'project_document_naming_convention'
+            ],
+        )
+
+    model.fieldset(
         'vocabularies',
         label=_(u'Vocabularies'),
         fields=[
@@ -100,20 +114,6 @@ class IDocentimsSettings(model.Schema):
             'vokabularies2',
             ],
         )
-
-    model.fieldset(
-        'project',
-        label=_(u'Project Information'),
-        fields=[
-            'project_title',
-            'project_description',
-            'project_full_name',
-            'project_short_name',
-            'project_contract_number',
-            'project_document_naming_convention'
-            ],
-        )
-
 
     model.fieldset(
         'Company',
@@ -154,26 +154,39 @@ class IDocentimsSettings(model.Schema):
         required = False,
         title=_(u"label_title", default=u"Project Title"),
         description=_(u"help_title",
-                      default=u"Project title")
+                      default=u"Enter short project title")
         )
-    project_description = schema.TextLine(
-        required = False,
-        title=_(u"label_project_description", default=u"Project Description"),
-        description=_(u"help_project_description",
-                      default=u"Project description")
-        )
+
     project_full_name = schema.TextLine(
         required = False,
         title=_(u"label_project_fullname", default=u"Project Full Name"),
         description=_(u"help_project_fullname",
                       default=u"Project_fullname")
         )
+
     project_short_name = schema.TextLine(
-        required = False,
-        title=_(u"label_project_short_name", default=u"Project Short name"),
+        title=_(u"label_project_short_name",
+        default=u"Project Short name"),
         description=_(u"help_project_short_name",
                       default=u"Project_short_name")
         )
+
+    project_description = schema.TextLine(
+        required = False,
+        title=_(u"label_project_description", default=u"Project Description"),
+        description=_(u"help_project_description",
+                      default=u"Project description")
+        )
+
+    project_companies = schema.Choice(
+        required = False,
+        vocabulary=u"DocentIMS.ActionItems.CompanyVocabulary",
+        title=_(u"label_project_companies", default=u"Project Companies"),
+        description=_(u"help_project_companies",
+                      default=u"Project Companies List")
+        )
+
+
     project_contract_number = schema.TextLine(
         required = False,
         title=_(u"label_project_contract_number", default=u"Project Contract Number"),
@@ -217,6 +230,7 @@ class IDocentimsSettings(model.Schema):
         required = False,
         title=_(u"label_company_citye", default=u"City")
         )
+
     company_other_address = schema.Text(
         required = False,
         title=_(u"label_company_other_adress", default=u"Other Address")

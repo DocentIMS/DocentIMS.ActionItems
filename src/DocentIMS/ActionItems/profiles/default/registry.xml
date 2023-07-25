@@ -10,6 +10,7 @@
           <value key="project_short_name"></value>
           <value key="project_contract_number"></value>
           <value key="project_document_naming_convention"></value>
+          <value key="project_companies"></value>
 
           <value key="full_company_name"></value>
           <value key="short_company_name"></value>
