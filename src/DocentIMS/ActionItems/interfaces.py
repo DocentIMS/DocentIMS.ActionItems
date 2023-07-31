@@ -11,12 +11,40 @@ from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone.app.z3cform.widget import SelectFieldWidget
+#from z3c.form import validator
+from zope.interface import invariant, Invalid
 
 #from plone.namedfile.field import NamedBlobImage
 from plone.namedfile import field
 
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
+
+
+def company_letter_codeConstraint(value):
+    """Check that the company_3 letter code is upperclass
+    """
+    if not value.isupper():
+        raise Invalid(_(u"Only capital letters for Company 3 letter code"))
+    return True
+
+def company_letter_kodeConstraint(value):
+    """Check that the company_3 letter code is upperclass
+    """
+    if not value.isupper():
+        #raise Invalid(_(u"Only capital letters for Company 3 letter code"))
+        return False
+    return True
+
+
+
+#@validator(field=ICompany['company_letter_kode'])
+#def validateName(value):
+#    """Ensure 3 letters#
+#    """
+#
+#    if not value.isupper():
+#        raise Invalid(_(u"Please give a full name"))
 
 
 class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
@@ -52,12 +80,22 @@ class ICompany(model.Schema):
         required = False,
         title=_(u"label_company_short_name", default=u"Short Company Name")
         )
-    company_letter_code = schema.TextLine(
+    company_letter_kode = schema.TextLine(
         required = False,
         title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
         max_length=3,
         min_length=3,
+        constraint=company_letter_kodeConstraint,
         )
+
+    #@invariant
+    #def company_letter_kodeInvariant(data):
+    #    #import pdb; pdb.set_trace()
+    #    if data.company_letter_kode:
+    #        if not data.company_letter_kode.isupper():
+    #            raise Invalid(_(u"Only capital letters for Company 3 letter code"))
+
+
     company_role = schema.Text(
         required = False,
         title=_(u"label_company_role", default=u"Company role")
@@ -188,7 +226,7 @@ class IDocentimsSettings(model.Schema):
         required = False,
         title=_(u"label_project_fullname", default=u"Project Full Name"),
         description=_(u"help_project_fullname",
-                      default=u"Project_fullname")
+                      default=u"Project_fullname"),
         )
 
     project_short_name = schema.TextLine(
@@ -237,8 +275,19 @@ class IDocentimsSettings(model.Schema):
         )
     company_letter_code = schema.TextLine(
         required = False,
-        title=_(u"label_company_letter_code", default=u"Company 3-letter code")
+        max_length=3,
+        min_length=3,
+        title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
+        constraint=company_letter_codeConstraint,
         )
+
+    #@invariant
+    #def company_letter_codeInvariant(data):
+    #    #import pdb; pdb.set_trace()
+    #    if data.company_letter_code:
+    #        if not data.company_letter_code.isupper():
+    #            raise Invalid(_(u"Only capital letters for Company 3 letter code"))
+
     company_role = schema.Text(
         required = False,
         title=_(u"label_company_role", default=u"Company role")
