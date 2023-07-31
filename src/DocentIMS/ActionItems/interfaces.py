@@ -13,6 +13,11 @@ from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvid
 from plone.app.z3cform.widget import SelectFieldWidget
 #from z3c.form import validator
 from zope.interface import invariant, Invalid
+#, Invalid, InvalidValue
+
+from zope.schema.interfaces import  InvalidValue
+#, TooSmall
+
 
 #from plone.namedfile.field import NamedBlobImage
 from plone.namedfile import field
@@ -32,8 +37,8 @@ def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
     if not value.isupper():
-        #raise Invalid(_(u"Only capital letters for Company 3 letter code"),)
-        return False
+        raise  InvalidValue(_(u"Only capital letters for Company 3 letter code"))
+        #return False
     return True
 
 
@@ -83,9 +88,9 @@ class ICompany(model.Schema):
     company_letter_kode = schema.TextLine(
         required = False,
         title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
-        max_length=3,
-        min_length=3,
         constraint=company_letter_kodeConstraint,
+        min_length=3,
+        max_length=3
         )
 
 
