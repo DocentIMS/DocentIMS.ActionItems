@@ -12,8 +12,8 @@ from plone.autoform.directives import widget
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone.app.z3cform.widget import SelectFieldWidget
 #from z3c.form import validator
+#from  zope import interface
 from zope.interface import invariant, Invalid
-#, Invalid, InvalidValue
 
 from zope.schema.interfaces import  InvalidValue
 #, TooSmall
@@ -37,7 +37,9 @@ def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
     if not value.isupper():
-        raise  InvalidValue(_(u"Only capital letters for Company 3 letter code"))
+        #import pdb; pdb.set_trace()
+        #field.__doc__ = 'halloe'
+        raise  InvalidValue("Only capital letters for Company 3 letter code")
         #return False
     return True
 
