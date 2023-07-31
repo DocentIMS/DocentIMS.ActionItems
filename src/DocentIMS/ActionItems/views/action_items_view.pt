@@ -73,14 +73,15 @@
                           </time>
                         </td>
                         <td>
-                          <b>Revised due:</b>  <span tal:condition="context/revisited_due_date|None"> ${context/revisited_due_date|None}</span>
-                          <tal:condition tal:condition="context/revisited_due_date|None">
-                            (<time class="pat-display-time"
-                            datetime="${python:context.revisited_due_date.isoformat()}"
-                            data-pat-display-time="output-format: dddd Do MMMM YYYY">
-                            ${context/revisited_due_date|None}
-                          </time>)
+                          <b>Revised due:</b>
+                          <tal:condition tal:condition="context/revised_due_date|None">
+                            <time class="pat-display-time"
+                            datetime="${python:context.revised_due_date.isoformat()}"
+                            data-pat-display-time="output-format: Do MMMM YYYY">
+                            ${context/revised_due_date|None}
+                          </time>
                         </tal:condition>
+
                       </td>
                     </tr>
                   </tbody>
@@ -153,18 +154,18 @@
           <h6 tal:condition="context/is_this_item_closed|None">Closed out</h6>
           <div tal:condition="context/is_this_item_closed|None" tal:replace="structure context/actions_to_close_out/output|None" />
 
-          <tal:condition tal:condition="context/initial_due_date|None">
+          <tal:condition tal:condition="context/duedate|None">
             <hr class="hr"/>
             <p>Due</p>
             <div class="redborder calendarsheet left">
 
               <time class="pat-display-time"
-                datetime="${python:context.initial_due_date.isoformat()}"
+                datetime="${python:context.duedate.isoformat()}"
                 data-pat-display-time="output-format: MMMM YY">
 
               </time>
               <date class="pat-display-time"
-                datetime="${python:context.initial_due_date.isoformat()}"
+                datetime="${python:context.duedate.isoformat()}"
                 data-pat-display-time="output-format: DD">
 
               </date>
@@ -174,7 +175,7 @@
 
 
 
-      </div>
+      </div> 
       <hr class="hr" />
     </div>
 

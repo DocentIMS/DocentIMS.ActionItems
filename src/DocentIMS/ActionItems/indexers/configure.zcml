@@ -9,6 +9,9 @@
   <adapter factory=".indexers.dummy"
     name="closed" />
 
+  <adapter factory=".indexers.dummy"
+    name="duedate" />
+
   <adapter factory=".indexers.actionIndexer"
     name="actionno" />
 
@@ -17,5 +20,8 @@
 
   <adapter factory=".indexers.priorityIndexer"
       name="priority" />
+
+  <adapter factory=".indexers.duedateIndexer"
+      name="duedate" />
 
 </configure>

@@ -13,8 +13,8 @@
               <thead>
                 <tr>
                   <tal:repeat tal:repeat="field fields">
-                    <th tal:condition="python: field != 'actionno'">${python:field.replace("_", " ").capitalize()}</th>
-                    <th tal:condition="python: field == 'actionno'">ID</th>
+                    <th>${field/row_title|None}</th>
+
                   </tal:repeat>
                 </tr>
               </thead>
@@ -23,8 +23,12 @@
                   <tal:obj tal:define="obj item/getObject">
 
                     <tal:repeat tal:repeat="field fields">
-                      <td tal:define="val python:getattr(obj, field, '')">${val|None}
-                      <tal:check tal:condition="python: field=='actionno'"><a href="${item/getURL}">${item/actionno|None}</a></tal:check>
+                      <td tal:define="val python:getattr(obj, field['row_field'], '')">
+                        <a href="${item/getURL}" tal:omit-tag="python: field['row_field']!='title'">
+                          <span tal:condition="python: val==False"> No </span>
+                          <span tal:condition="python: val==True"> ✓ Yes </span>
+                          <span tal:condition="python: val != False and val != True">${val}</span>
+                        </a>
                     </td>
                     </tal:repeat>
 

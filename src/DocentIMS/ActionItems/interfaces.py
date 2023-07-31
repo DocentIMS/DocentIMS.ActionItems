@@ -10,6 +10,7 @@ from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
+from plone.app.z3cform.widget import SelectFieldWidget
 
 #from plone.namedfile.field import NamedBlobImage
 from plone.namedfile import field
@@ -26,6 +27,20 @@ class IVocabulari(model.Schema):
         title=_(u'Vocabulary entries', 'Vocabulary entries'),
         required=False,
     )
+
+class ITableRows(model.Schema):
+    widget(row_field=SelectFieldWidget)
+    row_field = schema.Choice(
+        vocabulary=u"DocentIMS.ActionItems.AiFieldsVocabulary",
+        title=_(u"Field", default=u"Field"),
+        required=False,
+    )
+
+    row_title = schema.TextLine(
+        title=_(u'Table title', 'Table title'),
+        required=False,
+    )
+
 
 
 class ICompany(model.Schema):
@@ -285,11 +300,17 @@ class IDocentimsSettings(model.Schema):
         value_type=DictRow(schema=ICompany),
     )
 
-    #widget(companies=DataGridFieldFactory)
+    widget(table_columns=DataGridFieldFactory)
     table_columns = schema.List(
         title = _(u"Table Columns",
             default=u"Table Column fields"),
-            value_type=schema.Choice(vocabulary=u"DocentIMS.ActionItems.AiFieldsVocabulary"),
+            value_type=DictRow(schema=ITableRows),
     )
+
+    #table_columns = schema.List(
+    #    title = _(u"Table Columns",
+    #        default=u"Table Column fields"),
+    #        value_type=schema.Choice(vocabulary=u"DocentIMS.ActionItems.AiFieldsVocabulary"),
+    #)
 
 alsoProvides(IDocentimsSettings, IMedialogControlpanelSettingsProvider)

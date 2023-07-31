@@ -3,6 +3,7 @@ from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from zope.schema.interfaces import IVocabularyFactory
 from plone import api
 
+
 from .interfaces import IDocentimsSettings
 
 from zope.i18nmessageid import MessageFactory

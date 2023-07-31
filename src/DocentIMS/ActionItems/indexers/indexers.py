@@ -23,6 +23,15 @@ def actionIndexer(obj):
     return None
 
 
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def duedateIndexer(obj):
+    """Calculate and return the value for the indexer"""
+    value = obj.revised_due_date or obj.initial_due_date or None
+    if value:
+        obj.duedate= value
+        return value
+    return None
+
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def priorityIndexer(obj):

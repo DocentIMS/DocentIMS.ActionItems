@@ -24,6 +24,7 @@ class ActionItemsView(BrowserView):
 
     def days_left(self):
         # to do, due date or initial due date ?
+        #due_date = self.context.duedate or None
         due_date = self.context.revised_due_date or self.context.initial_due_date or None
 
         # difference between dates in timedelta

@@ -64,6 +64,11 @@
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Revised Due Date&lt;/title&gt;
         &lt;/field&gt;
+        &lt;field name=&quot;duedate&quot; form:omitted=&quot;true&quot; type=&quot;zope.schema.Date&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Due Date&lt;/title&gt;
+        &lt;/field&gt;
       &lt;/fieldset&gt;
       &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;How are these action items connected to the documents&quot;&gt;
         &lt;field name=&quot;is_this_action_out_of_the_scope_of_work_&quot; type=&quot;zope.schema.Bool&quot;&gt;
