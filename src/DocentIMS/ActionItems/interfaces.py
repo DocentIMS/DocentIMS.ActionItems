@@ -32,7 +32,7 @@ def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
     if not value.isupper():
-        #raise Invalid(_(u"Only capital letters for Company 3 letter code"))
+        #raise Invalid(_(u"Only capital letters for Company 3 letter code"),)
         return False
     return True
 
@@ -88,13 +88,6 @@ class ICompany(model.Schema):
         constraint=company_letter_kodeConstraint,
         )
 
-    #@invariant
-    #def company_letter_kodeInvariant(data):
-    #    #import pdb; pdb.set_trace()
-    #    if data.company_letter_kode:
-    #        if not data.company_letter_kode.isupper():
-    #            raise Invalid(_(u"Only capital letters for Company 3 letter code"))
-
 
     company_role = schema.Text(
         required = False,
@@ -136,13 +129,6 @@ class ICompany(model.Schema):
     #    required = False,
     #    title=_(u"label_main_phone_number", default=u"Main Phone Number")
     #    )
-
-
-
-
-
-
-
 
 
 
@@ -280,13 +266,6 @@ class IDocentimsSettings(model.Schema):
         title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
         constraint=company_letter_codeConstraint,
         )
-
-    #@invariant
-    #def company_letter_codeInvariant(data):
-    #    #import pdb; pdb.set_trace()
-    #    if data.company_letter_code:
-    #        if not data.company_letter_code.isupper():
-    #            raise Invalid(_(u"Only capital letters for Company 3 letter code"))
 
     company_role = schema.Text(
         required = False,
