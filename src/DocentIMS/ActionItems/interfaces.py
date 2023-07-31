@@ -11,6 +11,9 @@ from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 
+#from plone.namedfile.field import NamedBlobImage
+from plone.namedfile import field
+
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
 
@@ -21,7 +24,7 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
 class IVocabulari(model.Schema):
     vocabulary_entry = schema.TextLine(
         title=_(u'Vocabulary entries', 'Vocabulary entries'),
-        required=False, 
+        required=False,
     )
 
 
@@ -36,16 +39,20 @@ class ICompany(model.Schema):
         )
     company_letter_code = schema.TextLine(
         required = False,
-        title=_(u"label_company_letter_code", default=u"Company 3-letter code")
+        title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
+        max_length=3,
+        min_length=3,
         )
     company_role = schema.Text(
         required = False,
         title=_(u"label_company_role", default=u"Company role")
         )
-    company_logo = schema.Text(
-        required = False,
-        title=_(u"label_company_logo", default=u"Company Logo")
-        )
+    #company_logo = schema.Text(
+    #    required = False,
+    #    title=_(u"label_company_logo", default=u"Company Logo")
+    #    )
+
+    #company_logo = field.NamedBlobImage(title=u"Company Logo")
 
 
     company_full_street_address = schema.Text(
@@ -60,18 +67,22 @@ class ICompany(model.Schema):
         required = False,
         title=_(u"label_company_other_adress", default=u"Other Address")
         )
+
     company_state = schema.TextLine(
         required = False,
-        title=_(u"label_company_state", default=u"State")
+        title=_(u"label_company_state", default=u"State"),
+        min_length=2,
+        max_length=2
         )
+
     company_zip = schema.TextLine(
         required = False,
         title=_(u"label_company_zip", default=u"ZIP")
-        )
-    company_main_phone_number = schema.TextLine(
-        required = False,
-        title=_(u"label_main_phone_number", default=u"Main Phone Number")
-        )
+    )
+    #company_main_phone_number = schema.TextLine(
+    #    required = False,
+    #    title=_(u"label_main_phone_number", default=u"Main Phone Number")
+    #    )
 
 
 
@@ -131,7 +142,6 @@ class IDocentimsSettings(model.Schema):
             'company_other_address',
             'company_state',
             'company_zip',
-            'company_main_phone_number',
             ],
         )
 
@@ -221,7 +231,9 @@ class IDocentimsSettings(model.Schema):
     company_logo = schema.Text(
         required = False,
         title=_(u"label_company_logo", default=u"Company Logo")
-        )
+    )
+
+    #company_logo = field.NamedBlobImage(title=u"Company Logo")
 
 
     company_full_street_address = schema.Text(
@@ -244,11 +256,12 @@ class IDocentimsSettings(model.Schema):
     company_zip = schema.TextLine(
         required = False,
         title=_(u"label_company_zip", default=u"ZIP")
-        )
-    company_main_phone_number = schema.TextLine(
-        required = False,
-        title=_(u"label_main_phone_number", default=u"Main Phone Number")
-        )
+    )
+
+    #company_main_phone_number = schema.TextLine(
+    #    required = False,
+    #    title=_(u"label_main_phone_number", default=u"Main Phone Number")
+    #    )
 
 
     widget(vokabularies=DataGridFieldFactory)
