@@ -47,7 +47,7 @@
               .priority-1 span { color: red; padding: 1px 5px}
               .priority-2 span { color: orange; padding: 1px 5px}
               .priority-3 span  {color:  green; padding: 1px 5px}
-              .graph {border: 1px solid silver; max-width: 600px; padding: 15px;}
+              .graph {border: 1px solid silver; max-width: 600px; padding: 15px; margin-bottom: 2rem}
               .flex-wrap { flex-wrap: wrap; display: flex; justify-content: space-between;}
             </style>
 
