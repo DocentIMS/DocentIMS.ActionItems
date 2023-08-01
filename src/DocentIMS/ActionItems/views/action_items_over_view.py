@@ -43,14 +43,15 @@ class ActionItemsOverView(BrowserView):
         contentitems = [item[1] for item in items]
 
         for item in contentitems:
-            title = item.Title()
-            duedate = item.duedate or today
-            created = item.created()
-            delta = duedate - today
-            delta2 =  now -  created.asdatetime()
-            #delta3 =  duedate -  created.asdatetime()
-            itemlist.append({'title': title, 'data': [delta.days, delta2.days], 'index': index})
-            index += 1
+            if item.portal_type == 'action_items':
+                title = item.Title()
+                duedate = item.duedate or today
+                created = item.created()
+                delta = duedate - today
+                delta2 =  now -  created.asdatetime()
+                #delta3 =  duedate -  created.asdatetime()
+                itemlist.append({'title': title, 'data': [delta.days, delta2.days], 'index': index})
+                index += 1
 
         #import pdb; pdb.set_trace()
         return itemlist
