@@ -10,11 +10,29 @@ from datetime import timezone
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
+from Acquisition import aq_inner
+from plone.batching import Batch
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+#import plone.api
+
+
+
+
+
+
+
+
 class ActionItemsOverView(BrowserView):
 
     def __call__(self):
         #self.msg = _(u'A small message')
         return self.index()
+
+
+    def batch(self):
+        batch = self.context.restrictedTraverse('@@contentlisting')(sort_on='sortable_title', batch=True, b_size=400);
+        return batch
 
     def get_fields(self):
         return api.portal.get_registry_record('table_columns', interface=IDocentimsSettings)
@@ -25,10 +43,20 @@ class ActionItemsOverView(BrowserView):
 
     def get_graphdata(self):
         colors = ['#CCCCCC',  '#FF0000',  'orange', '#123456']
-        items = self.context.items()
-        datanames = [item[1].Title() for item in items]
-        datavalues = [item[1].priority if hasattr(item[1], 'priority') else 0 for item in items]
-        datacolors = [ colors[datavalue] if datavalue != None else '#CCCCCC' for datavalue in datavalues]
+
+        #if self.context.portal_type=="Collection":
+        items = self.batch()
+        #else:
+        #    items =  self.context.items()
+
+        datanames = []
+        datavalues  = []
+        datacolors = []
+        for item in items:
+            if item.portal_type == 'action_items':
+                datanames.append(item.Title())
+                datavalues.append(item.priority)
+                datacolors.append(colors[item.priority])
         return datanames, datavalues, datacolors
 
 
@@ -36,17 +64,17 @@ class ActionItemsOverView(BrowserView):
         colors = ['#CCCCCC',  '#FF0000',  'orange', '#123456']
         today = datetime.date.today()
         now = datetime.datetime.now(timezone.utc)
-        items = self.context.items()
+        items = items = self.batch()
 
         itemlist = []
         index = 0
-        contentitems = [item[1] for item in items]
+        #contentitems = [item[1] for item in items]
 
-        for item in contentitems:
+        for item in items:
             if item.portal_type == 'action_items':
                 title = item.Title()
                 duedate = item.duedate or today
-                created = item.created()
+                created = item.created
                 delta = duedate - today
                 delta2 =  now -  created.asdatetime()
                 #delta3 =  duedate -  created.asdatetime()
