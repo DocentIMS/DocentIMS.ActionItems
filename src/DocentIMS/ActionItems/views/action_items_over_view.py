@@ -28,7 +28,7 @@ class ActionItemsOverView(BrowserView):
         items = self.context.items()
         datanames = [item[1].Title() for item in items]
         datavalues = [item[1].priority if hasattr(item[1], 'priority') else 0 for item in items]
-        datacolors = [ colors[datavalue] for datavalue in datavalues]
+        datacolors = [ colors[datavalue] if datavalue != None else '#CCCCCC' for datavalue in datavalues]
         return datanames, datavalues, datacolors
 
 
