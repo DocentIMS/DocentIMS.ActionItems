@@ -47,8 +47,6 @@
                       </span>
                     </td>
 
-
-
                     <td tal:define="related obj/related_item|None">
                      <span tal:condition="related">${related/to_object/title|None}</span>
 
