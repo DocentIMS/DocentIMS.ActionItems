@@ -87,7 +87,7 @@
                     <script>
                       var data = [
                           {
-                            labels: ['Days Left: ${python: graphdata['data'][1]}', 'Days Passed: ${python: graphdata['data'][2]}' ],
+                            labels: ['Days Left: ${python: graphdata['data'][1]}', 'Days Passed: ${python: graphdata['data'][0]}' ],
                             values: ${python: graphdata['data']},
                             type: 'pie'
                           }
