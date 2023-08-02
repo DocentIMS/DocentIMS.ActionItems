@@ -55,11 +55,13 @@ class ActionItemsOverView(BrowserView):
         for item in items:
             if item.portal_type == 'action_items':
                 datanames.append(item.Title())
-                datavalues.append(item.priority)
+
                 if item.priority:
+                    datavalues.append(item.priority)
                     datacolors.append(colors[item.priority])
                 else:
                     datacolors.append('#CCCCCC')
+                    datavalues.append(0)
         return datanames, datavalues, datacolors
 
 
