@@ -81,7 +81,7 @@ class ActionItemsOverView(BrowserView):
                 delta = duedate - today
                 delta2 =  now -  created.asdatetime()
                 #delta3 =  duedate -  created.asdatetime()
-                itemlist.append({'title': title, 'data': [delta.days, delta2.days], 'index': index})
+                itemlist.append({'title': title, 'data': [delta2.days, delta.days], 'index': index})
                 index += 1
 
         #import pdb; pdb.set_trace()
