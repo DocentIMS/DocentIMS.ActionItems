@@ -61,7 +61,8 @@ setup(
         'plone.app.versioningbehavior',
         'plone.restapi',
         'medialog.controlpanel',
-        'collective.z3cform.datagridfield'
+        'collective.z3cform.datagridfield',
+        'collective.collectionview'
     ],
     extras_require={
         'test': [
