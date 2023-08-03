@@ -62,7 +62,7 @@ setup(
         'plone.restapi',
         'medialog.controlpanel',
         'collective.z3cform.datagridfield',
-        'collective.collectionview'
+        'collective.collectionfilter'
     ],
     extras_require={
         'test': [
