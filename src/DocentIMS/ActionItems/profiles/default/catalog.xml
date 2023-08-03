@@ -3,6 +3,9 @@
  <index name="priority" meta_type="FieldIndex">
   <indexed_attr value="priority"/>
  </index>
+ <index name="prioritystring" meta_type="FieldIndex">
+  <indexed_attr value="prioritystring"/>
+ </index>
  <index name="revised_due_date" meta_type="DateIndex">
   <indexed_attr value="revised_due_date"/>
  </index>
@@ -28,6 +31,7 @@
  </index>
 
  <column value="priority"/>
+ <column value="prioritystring"/>
  <column value="revised_due_date"/>
  <column value="initial_due_date"/>
  <column value="duedate"/>

@@ -42,6 +42,12 @@
         &lt;title&gt;Priority&lt;/title&gt;
         &lt;vocabulary&gt;DocentIMS.ActionItems.PriorityVocabulary&lt;/vocabulary&gt;
       &lt;/field&gt;
+      &lt;field name=&quot;prioritystring&quot; form:omitted=&quot;true&quot;  type=&quot;zope.schema.TextLine&quot;&gt;   
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;PriorityString&lt;/title&gt;
+      &lt;/field&gt;
+
+
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;

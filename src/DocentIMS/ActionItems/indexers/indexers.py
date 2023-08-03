@@ -28,7 +28,7 @@ def duedateIndexer(obj):
     """Calculate and return the value for the indexer"""
     value = obj.revised_due_date or obj.initial_due_date or None
     if value:
-        obj.duedate= value
+        obj.duedate = value
         return value
     return None
 
@@ -40,6 +40,14 @@ def priorityIndexer(obj):
         return int(float(obj.priority))
     return None
 
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def prioritystringIndexer(obj):
+    """Calculate and return the value for the indexer"""
+    if obj.priority:
+        obj.prioritystring = str(obj.priority)
+        return str(obj.priority)
+    return None
+
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def closedIndexer(obj):
@@ -47,4 +55,4 @@ def closedIndexer(obj):
     if obj.is_this_item_closed:
         obj.closed = 'Yes'
         return 'Yes'
-    return None
+    return 'No'

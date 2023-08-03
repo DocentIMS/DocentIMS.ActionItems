@@ -7,6 +7,9 @@
     name="priority" />
 
   <adapter factory=".indexers.dummy"
+    name="prioritystring" />
+
+  <adapter factory=".indexers.dummy"
     name="closed" />
 
   <adapter factory=".indexers.dummy"
@@ -20,6 +23,9 @@
 
   <adapter factory=".indexers.priorityIndexer"
       name="priority" />
+
+  <adapter factory=".indexers.prioritystringIndexer"
+      name="prioritystring" />
 
   <adapter factory=".indexers.duedateIndexer"
       name="duedate" />
