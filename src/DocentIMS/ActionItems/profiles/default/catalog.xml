@@ -17,6 +17,10 @@
   <indexed_attr value="duedate"/>
  </index>
 
+ <index name="daysleft" meta_type="FieldIndex">
+  <indexed_attr value="daysleft"/>
+ </index>
+
  <index name="assigned_to" meta_type="FieldIndex">
   <indexed_attr value="assigned_to"/>
  </index>
@@ -35,6 +39,7 @@
  <column value="revised_due_date"/>
  <column value="initial_due_date"/>
  <column value="duedate"/>
+ <column value="daysleft"/>
  <column value="assigned_to"/>
  <column value="is_this_item_closed"/>
  <column value="closed"/>

@@ -15,6 +15,9 @@
   <adapter factory=".indexers.dummy"
     name="duedate" />
 
+  <adapter factory=".indexers.dummy"
+    name="daysleft" />
+
   <adapter factory=".indexers.actionIndexer"
     name="actionno" />
 
@@ -29,5 +32,9 @@
 
   <adapter factory=".indexers.duedateIndexer"
       name="duedate" />
+
+  <adapter factory=".indexers.daysleftIndexer"
+      name="daysleft" />
+
 
 </configure>

@@ -4,7 +4,9 @@ from plone.app.contenttypes.interfaces import IDocument
 from plone.dexterity.interfaces import IDexterityContent
 from plone.dexterity.interfaces import IDexterityContainer
 from plone.indexer import indexer
-
+#import DateTime
+import datetime
+#from datetime import timezone
 
 @indexer(IDexterityContent)
 def dummy(obj):
@@ -56,3 +58,22 @@ def closedIndexer(obj):
         obj.closed = 'Yes'
         return 'Yes'
     return 'No'
+
+
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def daysleftIndexer(obj):
+    """Calculate and return the value for the indexer"""
+    due_date = obj.duedate or None
+    # difference between dates in timedelta
+    if due_date != None:
+        delta = due_date - datetime.date.today()
+        if delta.days<1:
+            return '0 - Out of time'
+        if delta.days<=7:
+            return '1 – Less than 7'
+        if delta.days<=14:
+            return '2 - Less than 14'
+
+        return '3 - More than 15'
+
+    return None

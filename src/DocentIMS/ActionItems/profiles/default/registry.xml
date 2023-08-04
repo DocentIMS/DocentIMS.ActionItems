@@ -159,6 +159,17 @@
      </records>
 
      <records interface="plone.app.querystring.interfaces.IQueryField"
+              prefix="plone.app.querystring.daysleft">
+       <value key="title">Daysleft</value>
+       <value key="description">Daysleft</value>
+       <value key="enabled">True</value>
+       <value key="operations">
+           <element>plone.app.querystring.operation.string.is</element>
+       </value>
+       <value key="group">Days</value>
+     </records>
+
+     <records interface="plone.app.querystring.interfaces.IQueryField"
               prefix="plone.app.querystring.field.priority">
        <value key="title">Priority</value>
        <value key="description">Priority index</value>
