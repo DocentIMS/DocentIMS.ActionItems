@@ -7,12 +7,23 @@ from plone.indexer import indexer
 #import DateTime
 import datetime
 #from datetime import timezone
+from plone import api
 
 @indexer(IDexterityContent)
 def dummy(obj):
     """ Dummy to prevent indexing other objects thru acquisition """
     raise AttributeError('This field should not indexed here!')
 
+
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def assigned_toIndexer(obj):
+    """Index real name instead of username for assigned_to"""
+    #import pdb; pdb.set_trace()
+    username = obj.assigned_to
+    if username:
+        return api.user.get(userid=username).getProperty('fullname')
+
+    return None
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def actionIndexer(obj):

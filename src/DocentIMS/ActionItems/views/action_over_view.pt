@@ -43,19 +43,34 @@
               </tbody>
               <table>
             </div>
-            <style>
-              .priority-1 span { color: red; padding: 1px 5px}
-              .priority-2 span { color: orange; padding: 1px 5px}
-              .priority-3 span  {color:  green; padding: 1px 5px}
-              .graph {border: 1px solid silver; max-width: 600px; padding: 15px; margin-bottom: 2rem}
-              .flex-wrap { flex-wrap: wrap; display: flex; justify-content: space-between;}
-            </style>
-
             <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
-            <div><p>&nbsp;</p></div>
+
             <h2>Priority</h2>
 
             <div id='plotlyDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+
+            <h2>Priority</h2>
+            <div  tal:define="graphdata python: view.get_piedata()">
+              <div  id="div-pie" ><!-- Plotly chart will be drawn inside this DIV --></div>
+
+            </div>
+
+            <script>
+              var data = [
+                  {
+                    labels: ['Priority 1', 'Priority 2', 'Priority 3' ],
+                    values: ${python: view.get_piedata()},
+                    type: 'pie'
+                  }
+                ];
+                var layout = {
+                  height: 400,
+                  width: 500
+                };
+
+                Plotly.newPlot('div-pie', data, layout);
+            </script>
+
             <script tal:define="graphdata python: view.get_graphdata()">
               var data = [
                   {
@@ -77,32 +92,16 @@
             </script>
 
 
-            <h2>Days left</h2>
-            <div class="flex flex-wrap">
-              <tal:repeat  tal:repeat="graphdata python: view.get_piedata()">
-                <div class="graph">
-                  <h5>${python: graphdata['title']}</h5>
 
-                  <div  id="div-${python: graphdata['title']}-{${python: graphdata['index']}"><!-- Plotly chart will be drawn inside this DIV --></div>
-                    <script>
-                      var data = [
-                          {
-                            labels: ['Days Left: ${python: graphdata['data'][1]}', 'Days Passed: ${python: graphdata['data'][0]}' ],
-                            values: ${python: graphdata['data']},
-                            type: 'pie'
-                          }
-                        ];
-                        var layout = {
-                          height: 400,
-                          width: 500
-                        };
 
-                        Plotly.newPlot('div-${python: graphdata['title']}-{${python: graphdata['index']}', data, layout);
-                    </script>
-                </div>
-              </tal:repeat>
-            </div>
-            <div><p>&nbsp;</p></div>
+            <style>
+              .priority-1 span { color: red; padding: 1px 5px}
+              .priority-2 span { color: orange; padding: 1px 5px}
+              .priority-3 span  {color:  green; padding: 1px 5px}
+              .graph {border: 1px solid silver; max-width: 600px; padding: 15px; margin-bottom: 2rem}
+              .flex-wrap { flex-wrap: wrap; display: flex; justify-content: space-between;}
+            </style>
+
         </metal:content-core>
 </body>
 </html>

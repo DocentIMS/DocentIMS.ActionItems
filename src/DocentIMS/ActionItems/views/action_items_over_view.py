@@ -16,9 +16,7 @@ from zope.component import getMultiAdapter
 from zope.component import getUtility
 #import plone.api
 
-
-
-
+from plone.app.contenttypes.browser.collection import CollectionView
 
 
 
@@ -66,25 +64,57 @@ class ActionItemsOverView(BrowserView):
 
 
     def get_piedata(self):
-        colors = ['#CCCCCC',  '#FF0000',  'orange', '#123456']
-        today = datetime.date.today()
-        now = datetime.datetime.now(timezone.utc)
+        colors = ['#FF0000',  'orange', '#123456']
         items = items = self.batch()
 
-        itemlist = []
-        index = 0
-        #contentitems = [item[1] for item in items]
+        priority1 = 0
+        priority2 = 0
+        priority3 = 0
 
         for item in items:
             if item.portal_type == 'action_items':
-                title = item.Title()
-                duedate = item.duedate or today
-                created = item.created
-                delta = duedate - today
-                delta2 =  now -  created.asdatetime()
-                #delta3 =  duedate -  created.asdatetime()
-                itemlist.append({'title': title, 'data': [delta2.days, delta.days], 'index': index})
-                index += 1
 
-        #import pdb; pdb.set_trace()
-        return itemlist
+                if item.priority == 3:
+                    priority3 += 1
+                if item.priority == 2:
+                    priority2 += 1
+                if item.priority == 1:
+                    priority1 += 1
+
+
+
+        return [ priority1, priority2, priority3  ]
+
+
+
+
+class ActionItemsCollectionView(CollectionView, ActionItemsOverView):
+
+    def __call__(self):
+        return self.index()
+
+    def get_graphdata(self):
+        colors = ['#FF0000',  'orange', '#123456']
+
+        items = self.batch()
+
+        priority1 = 0
+        priority2 = 0
+        priority3 = 0
+
+        #datavalues  = []
+        #datacolors = []
+        for item in items:
+            if item.portal_type == 'action_items':
+
+                if item.priority == 3:
+                    priority3 += 1
+                if item.priority == 2:
+                    priority2 += 1
+                if item.priority == 1:
+                    priority1 += 1
+
+        datanames = ['Priority 1: ' +  str(priority1) + ' item(s)', 'Priority 2: ' +  str(priority2)  + ' item(s)', 'Priority 3: ' +  str(priority3)  + ' item(s)']
+        #datanames = ['Priority 1: '  , 'Priority 2: '   , 'Priority 3: '   ]
+
+        return datanames, [priority1, priority2, priority3 ], colors

@@ -18,6 +18,9 @@
   <adapter factory=".indexers.dummy"
     name="daysleft" />
 
+  <adapter factory=".indexers.dummy"
+    name="assigned_to" />
+
   <adapter factory=".indexers.actionIndexer"
     name="actionno" />
 
@@ -36,5 +39,7 @@
   <adapter factory=".indexers.daysleftIndexer"
       name="daysleft" />
 
+  <adapter factory=".indexers.assigned_toIndexer"
+      name="assigned_to" />
 
 </configure>

@@ -6,6 +6,20 @@
 
  <!-- -*- change * to content type (?) DocentIMS.ActionItems.content.action_items.IActionItems -*- -->
 
+ <browser:pages
+     for="plone.app.contenttypes.interfaces.ICollection"
+     class=".action_items_over_view.ActionItemsCollectionView"
+     layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+     permission="zope2.View">
+
+   <browser:page
+      name="action-overview"
+      template="action_over_view.pt"
+    />
+
+ </browser:pages>
+
+
  <browser:page
    name="action-items-overview"
    for="*"
@@ -17,7 +31,7 @@
 
   <browser:page
    name="action-overview"
-   for="*"
+   for="plone.app.contenttypes.interfaces.IFolder"
    class=".action_items_over_view.ActionItemsOverView"
    template="action_over_view.pt"
    permission="zope2.View"
