@@ -83,7 +83,7 @@ class ActionItemsOverView(BrowserView):
 
 
 
-        return [ priority1, priority2, priority3  ]
+        return [[ priority1, priority2, priority3  ], ['#FF0000',  'orange', '#123456']]
 
 
 
@@ -94,7 +94,7 @@ class ActionItemsCollectionView(CollectionView, ActionItemsOverView):
         return self.index()
 
     def get_graphdata(self):
-        colors = ['#FF0000',  'orange', '#123456']
+        #colors = """'#FF0000',  'orange', '#123456'"""
 
         items = self.batch()
 
@@ -117,4 +117,4 @@ class ActionItemsCollectionView(CollectionView, ActionItemsOverView):
         datanames = ['Priority 1: ' +  str(priority1) + ' item(s)', 'Priority 2: ' +  str(priority2)  + ' item(s)', 'Priority 3: ' +  str(priority3)  + ' item(s)']
         #datanames = ['Priority 1: '  , 'Priority 2: '   , 'Priority 3: '   ]
 
-        return datanames, [priority1, priority2, priority3 ], colors
+        return  [priority1, priority2, priority3 ]

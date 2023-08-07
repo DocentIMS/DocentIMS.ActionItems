@@ -44,22 +44,22 @@
             </div>
             <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
 
-            <h2 class="pa3">Priority</h2>
-
-            <div id='plotlyDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
 
             <h2 class="pa3">Priority</h2>
-            <div  tal:define="graphdata python: view.get_piedata()">
+            <div class="flex flex-wrap">
+              <div id='plotlyDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
               <div  id="div-pie" ><!-- Plotly chart will be drawn inside this DIV --></div>
-
             </div>
 
-            <script>
+            <script tal:define="graphdata python: view.get_piedata()">
               var data = [
                   {
                     labels: ['Priority 1', 'Priority 2', 'Priority 3' ],
-                    values: ${python: view.get_piedata()},
-                    type: 'pie'
+                    values: ${python: graphdata},
+                    type: 'pie',
+                    marker:{
+                      colors: ['#FF0000',  'orange', '#123456']
+                    },
                   }
                 ];
                 var layout = {
@@ -82,6 +82,8 @@
                   }
                 ];
                 var layout = {
+                height: 400,
+                width: 400,
                   yaxis: {
                     tick0: 0,
                     dtick: 1,
@@ -94,12 +96,13 @@
 
 
             <style>
+
               h2.pa3 { margin-top: 3rem, padding-top: 3rem;}
               .priority-1 span { color: red; padding: 1px 5px}
               .priority-2 span { color: orange; padding: 1px 5px}
               .priority-3 span  {color:  green; padding: 1px 5px}
               .graph {border: 1px solid silver; max-width: 600px; padding: 15px; margin-bottom: 2rem}
-              .flex-wrap { flex-wrap: wrap; display: flex; justify-content: space-between;}
+              .flex-wrap { flex-wrap: wrap; display: flex; xjustify-content: space-between; background: white}
               div.outer-wrapper.flex-shrink-0 {
                 	background: whitesmoke;
                 }
