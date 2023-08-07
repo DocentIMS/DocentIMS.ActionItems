@@ -47,28 +47,9 @@
 
             <h2 class="pa3">Priority</h2>
             <div class="flex flex-wrap">
-              <div id='plotlyDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
-              <div  id="div-pie" ><!-- Plotly chart will be drawn inside this DIV --></div>
+              <div id="div-bar"><!-- Plotly chart will be drawn inside this DIV --></div>
+              <div id="div-pie" ><!-- Plotly chart will be drawn inside this DIV --></div>
             </div>
-
-            <script tal:define="graphdata python: view.get_piedata()">
-              var data = [
-                  {
-                    labels: ['Priority 1', 'Priority 2', 'Priority 3' ],
-                    values: ${python: graphdata},
-                    type: 'pie',
-                    marker:{
-                      colors: ['#FF0000',  'orange', '#123456']
-                    },
-                  }
-                ];
-                var layout = {
-                  height: 400,
-                  width: 500
-                };
-
-                Plotly.newPlot('div-pie', data, layout);
-            </script>
 
             <script tal:define="graphdata python: view.get_graphdata()">
               var data = [
@@ -76,7 +57,7 @@
                     x: ${python: graphdata[0]},
                     y: ${python: graphdata[1]},
                     marker:{
-                      color: ${python: graphdata[2]}
+                      color: ['#FF0000',  'orange', '#123456']
                     },
                     type: 'bar'
                   }
@@ -89,10 +70,27 @@
                     dtick: 1,
                   },
                 };
-                Plotly.newPlot('plotlyDiv', data, layout);
+                Plotly.newPlot('div-bar', data, layout);
             </script>
 
+            <script>
+              var data = [
+                  {
+                    labels: ['Priority 1', 'Priority 2', 'Priority 3' ],
+                    values: ${view/get_piedata|None},
+                    type: 'pie',
+                    marker:{
+                      colors: ['#FF0000',  'orange', '#123456'],
+                    },
+                  }
+                ];
+                var layout = {
+                  height: 400,
+                  width: 500
+                };
 
+                Plotly.newPlot('div-pie', data, layout);
+            </script>
 
 
             <style>

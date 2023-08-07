@@ -40,60 +40,6 @@ class ActionItemsOverView(BrowserView):
         return datetime.date.today()
 
     def get_graphdata(self):
-        colors = ['#CCCCCC',  '#FF0000',  'orange', '#123456']
-
-        #if self.context.portal_type=="Collection":
-        items = self.batch()
-        #else:
-        #    items =  self.context.items()
-
-        datanames = []
-        datavalues  = []
-        datacolors = []
-        for item in items:
-            if item.portal_type == 'action_items':
-                datanames.append(item.Title())
-
-                if item.priority:
-                    datavalues.append(item.priority)
-                    datacolors.append(colors[item.priority])
-                else:
-                    datacolors.append('#CCCCCC')
-                    datavalues.append(0)
-        return datanames, datavalues, datacolors
-
-
-    def get_piedata(self):
-        colors = ['#FF0000',  'orange', '#123456']
-        items = items = self.batch()
-
-        priority1 = 0
-        priority2 = 0
-        priority3 = 0
-
-        for item in items:
-            if item.portal_type == 'action_items':
-
-                if item.priority == 3:
-                    priority3 += 1
-                if item.priority == 2:
-                    priority2 += 1
-                if item.priority == 1:
-                    priority1 += 1
-
-
-
-        return [[ priority1, priority2, priority3  ], ['#FF0000',  'orange', '#123456']]
-
-
-
-
-class ActionItemsCollectionView(CollectionView, ActionItemsOverView):
-
-    def __call__(self):
-        return self.index()
-
-    def get_graphdata(self):
         #colors = """'#FF0000',  'orange', '#123456'"""
 
         items = self.batch()
@@ -117,4 +63,34 @@ class ActionItemsCollectionView(CollectionView, ActionItemsOverView):
         datanames = ['Priority 1: ' +  str(priority1) + ' item(s)', 'Priority 2: ' +  str(priority2)  + ' item(s)', 'Priority 3: ' +  str(priority3)  + ' item(s)']
         #datanames = ['Priority 1: '  , 'Priority 2: '   , 'Priority 3: '   ]
 
-        return  [priority1, priority2, priority3 ]
+        return  [datanames, [priority1, priority2, priority3]]
+
+
+    def get_piedata(self):
+        #colors = ['#FF0000',  'orange', '#123456']
+        items = items = self.batch()
+
+        priority1 = 0
+        priority2 = 0
+        priority3 = 0
+
+        for item in items:
+            if item.portal_type == 'action_items':
+
+                if item.priority == 3:
+                    priority3 += 1
+                if item.priority == 2:
+                    priority2 += 1
+                if item.priority == 1:
+                    priority1 += 1
+
+
+        return [ priority1, priority2, priority3 ]
+
+
+
+
+class ActionItemsCollectionView(CollectionView, ActionItemsOverView):
+
+    def __call__(self):
+        return self.index()
