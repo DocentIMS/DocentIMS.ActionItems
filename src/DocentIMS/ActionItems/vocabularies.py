@@ -96,6 +96,7 @@ def AiFieldsVocabulary(context):
             SimpleTerm(value='related_item', token='related_item', title=_(u'Related')),
             SimpleTerm(value='Creator', token='Creator', title=_(u'Creator')),
             SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'iIni Due Date')),
+            SimpleTerm(value='duedate', token='duedate', title=_(u'Due Date')),
             SimpleTerm(value='modified', token='modified', title=_(u'modified')),
             SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'Rev Due Date')),
             SimpleTerm(value='is_this_action_out_of_the_scope_of_work_', token='is_this_action_out_of_the_scope_of_work_', title=_(u'Out of Scope')),

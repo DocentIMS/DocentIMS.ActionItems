@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="DocentIMS.ActionItems"
+      metal:use-macro="context/main_template/macros/master">
+
+  <body>
+        <metal:content-core fill-slot="content-core">
+          <div><table class="datatable pat-tablesorter listing">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Assigned to</th>
+                  <th>Ini Due date<th>
+                  <th>Rev Due date<th>
+                  <th>Priority<th>
+                  <th>Closed<th>
+                </tr>
+              </thead>
+              <tbody>
+                <tal:repeat  tal:repeat="item context/results|context/getFolderContents">
+                <tr tal:define="obj item/getObject;">
+                  <td><a href="${item/getURL}">${obj/actionno|None}</a></td>
+                  <td><a href="${item/getURL}">${obj/title}</a></td>
+                  <td><span>${obj/assigned_to|None}</span></td>
+                  <td><span>${obj/initial_due_date|None}</span></td>
+                  <td><span>${obj/revised_due_date|None}</span></td>
+                  <td><span>${obj/priority|None}</span></td>
+                  <td><span tal:condition="obj/is_this_item_closed|None">X</span></td>
+                  </tr>
+                 </tal:repeat>
+              </tbody>
+            <table>
+
+        </div>
+
+
+        <script>require([
+          'jquery',
+          'https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js'
+          ], function(Base) {
+            'use strict';
+            $('.datatable').DataTable( {
+              "processing": true,
+              "pageLength": 50,
+            });
+          });
+        </script>
+
+        <style>
+          .dataTables_length label { line-height: 3em: }
+        </style>
+        </metal:content-core>
+    </body>
+  </html>
