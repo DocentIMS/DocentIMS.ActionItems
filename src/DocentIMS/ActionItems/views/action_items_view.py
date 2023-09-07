@@ -5,9 +5,10 @@ from Products.Five.browser import BrowserView
 from zope.interface import Interface
 from plone import api
 import DateTime
+import numpy as np
 import datetime
-
-
+import holidays
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
 class IActionItemsView(Interface):
     """ Marker Interface for IActionItemsView"""
@@ -31,13 +32,69 @@ class ActionItemsView(BrowserView):
         # difference between dates in timedelta
         if due_date != None:
             delta = due_date - datetime.date.today()
+            #if delta.days <= red_value:
+            #    set flag to tru 
+            #if delta.days <= 0:
+            #    self.context.is_this_item_closed == True
+            
             return delta.days
-
+            
         return None
         #days = delta.days
 
         #if days > -1:
         #    days
+        
+        
+    def workdays_left(self):
+        due_date = self.context.revised_due_date or self.context.initial_due_date or None
+
+        # difference between dates in timedelta
+        if due_date != None:
+            #import pdb; pdb.set_trace()
+            today = datetime.date.today()
+            usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
+            workdays = np.busday_count(today, due_date, holidays = usholiday)
+            return workdays
+
+        return None
+            
+
+    def get_css_urgency(self):
+        daycount = self.workdays_left()
+
+        if daycount <=   api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings):
+            return 'urgent_red'
+
+        if daycount <=   api.portal.get_registry_record('soon_yellow', interface=IDocentimsSettings):
+            return 'soon_yellow'
+
+        if daycount <=   api.portal.get_registry_record('future_green', interface=IDocentimsSettings):
+            return 'future_green'
+
+        return 'long_grey'
+
+
+
+
+ 
+
+        
+                       
+
+    # # Specify the country (United States) and a range of years
+    # start_year = 2023
+    # end_year = 2030
+
+    # # Create a dictionary to store holiday data for multiple years
+    # us_holidays = {}
+
+    # # Iterate through the years and add holiday data to the dictionary
+    # for year in range(start_year, end_year + 1):
+    #     us_holidays[year] = holidays.US(years=year)
+
+    # # Example: Get holiday dates for the year 2025
+    # year_2025_holidays = us_holidays[2025]
 
 
 

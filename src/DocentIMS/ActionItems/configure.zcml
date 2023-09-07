@@ -63,8 +63,8 @@
       name="DocentIMS.ActionItems.CompanyVocabulary" />
 
   <utility
-  	  component=".vocabularies.SiteVocabulary"
-      name="DocentIMS.ActionItems.SiteVocabulary" />
+  	  component=".vocabularies.ProjectRolesVocabulary"
+      name="DocentIMS.ActionItems.ProjectRolesVocabulary" />
 
   <utility
   	  component=".vocabularies.Site2Vocabulary"

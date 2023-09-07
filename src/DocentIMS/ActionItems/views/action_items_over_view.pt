@@ -57,6 +57,7 @@
                   </td>
                   <td>
                     <tal:check  tal:condition="item/duedate|None">
+                    <!-- TO do, replace 14 and 28 with value from control panel-->
                       <span tal:define="left python:item.duedate - todag; days python: left.days"
                         class="previousdue-${python: days<0} late14-${python: days<14} soon14-${python: days>14} later-${python: days>=28}">${left/days|None}</span>
                     </tal:check>

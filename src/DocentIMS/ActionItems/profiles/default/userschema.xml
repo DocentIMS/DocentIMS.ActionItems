@@ -4,12 +4,7 @@
       <description>What is your role on this team?</description>
       <required>False</required>
       <title>Your Team Role</title>
-      <values>
-        <element>PM</element>
-        <element>Engineer</element>
-        <element>Quality</element>
-        <element>Public Relations</element>
-      </values>
+        <vocabulary>DocentIMS.ActionItems.ProjectRolesVocabulary</vocabulary>
     </field>
     <field name="first_name" type="zope.schema.TextLine" users:forms="On Registration|In User Profile">
       <description/>

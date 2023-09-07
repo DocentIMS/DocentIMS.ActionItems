@@ -62,7 +62,9 @@ setup(
         'plone.restapi',
         'medialog.controlpanel',
         'collective.z3cform.datagridfield',
-        'collective.collectionfilter'
+        'collective.collectionfilter',
+        'holidays',
+        'numpy'
     ],
     extras_require={
         'test': [

@@ -52,7 +52,7 @@ directlyProvides(CompanyVocabulary, IVocabularyFactory)
 #
 #directlyProvides(SiteVocabulary, IVocabularyFactory)
 
-def SiteVocabulary(context):
+def ProjectRolesVocabulary(context):
     items  =  api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
 
     if items:
@@ -61,7 +61,7 @@ def SiteVocabulary(context):
         return SimpleVocabulary(terms)
     return SimpleVocabulary([])
 
-directlyProvides(SiteVocabulary, IVocabularyFactory)
+directlyProvides(ProjectRolesVocabulary, IVocabularyFactory)
 
 
 def Site2Vocabulary(context):
@@ -75,11 +75,24 @@ def Site2Vocabulary(context):
 
 directlyProvides(Site2Vocabulary, IVocabularyFactory)
 
+# def PriorityVocabulary(context):
+#     red  =  api.portal.get_registry_record('red', interface=IDocentimsSettings)
+#     yellow  =  api.portal.get_registry_record('yellow', interface=IDocentimsSettings)
+#     green  =  api.portal.get_registry_record('green', interface=IDocentimsSettings)
+
+#     return SimpleVocabulary(
+#         [SimpleTerm(value=red, token=red, title=_(u'1 Red Critical')),
+#          SimpleTerm(value=yellow, token=yellow, title=_(u'2 Yellow Medium')),
+#          SimpleTerm(value=green, token=green, title=_(u'3 Green Low'))]
+#         )
+#     return SimpleVocabulary([])
+
+# directlyProvides(PriorityVocabulary, IVocabularyFactory)
 
 def PriorityVocabulary(context):
 
     return SimpleVocabulary(
-        [SimpleTerm(value=1, token=1, title=_(u'1 Critical')),
+        [SimpleTerm(value=1, token=1, title=_(u'1 Important')),
          SimpleTerm(value=2, token=2, title=_(u'2 Medium')),
          SimpleTerm(value=3, token=3, title=_(u'3 Low'))]
         )

@@ -11,10 +11,9 @@ from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone.app.z3cform.widget import SelectFieldWidget
-
-from z3c.form import validator
+#from z3c.form import validator
 #from  zope import interface
-from zope.interface import invariant, Invalid 
+from zope.interface import invariant, Invalid
 
 from zope.schema.interfaces import  InvalidValue
 #, TooSmall
@@ -30,29 +29,18 @@ _ = MessageFactory('DocentIMS.ActionItems')
 def company_letter_codeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
-    if value == None:
-        raise  Invalid("Only 3 capital letters for Company 3 letter code")
-    if len(value) != 3:
-        raise  Invalid("Only 3 capital letters for Company 3 letter code")
-    # if not value.isupper():
-    #     #import pdb; pdb.set_trace()
-    #     #field.__doc__ = 'halloe'
-    #     raise  InvalidValue("Only capital letters for Company 3 letter code")
-    #     #return False
+    if not value.isupper():
+        raise Invalid(_(u"Only capital letters for Company 3 letter code"))
     return True
 
 def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
-    if value == None:
-        raise  Invalid("Only 3 capital letters for Company 3 letter code")
-    if len(value) != 3:
-        raise  InvalidValue("Only 3 capital letters for Company 3 letter code")
-    # if not value.isupper():
-    #     #import pdb; pdb.set_trace()
-    #     #field.__doc__ = 'halloe'
-    #     raise  InvalidValue("Only capital letters for Company 3 letter code")
-    #     #return False
+    if not value.isupper():
+        #import pdb; pdb.set_trace()
+        #field.__doc__ = 'halloe'
+        raise  InvalidValue("Only capital letters for Company 3 letter code")
+        #return False
     return True
 
 
@@ -103,8 +91,8 @@ class ICompany(model.Schema):
         required = False,
         title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
         constraint=company_letter_kodeConstraint,
-        #min_length=3,
-        #max_length=3
+        min_length=3,
+        max_length=3
         )
 
 
@@ -163,7 +151,8 @@ class IDocentimsSettings(model.Schema):
             'project_title',
             'project_short_name',
             'project_description',
-            # 'project_companies',
+            'project_full_name',
+            'project_companies',
             'project_contract_number',
             'project_document_naming_convention'
             ],
@@ -174,42 +163,33 @@ class IDocentimsSettings(model.Schema):
         label=_(u'Vocabularies'),
         fields=[
             'vokabularies',
-            # 'vokabularies2',
-        ] 
-    )
-
-    model.fieldset(
-        'notifications',
-        label=_(u'Notifications'),
-        fields=[
-            'future_green',
-            'soon_yellow',
-             'urgent_red',
+            'vokabularies2',
             ],
         )
-    # model.fieldset(
-    #     'Company',
-    #     label=_(u'Company Information'),
-    #     fields=[
-    #         'full_company_name',
-    #         'short_company_name',
-    #         'company_letter_code',
-    #         'company_role',
-    #         'company_logo',
-    #         ],
-    #     )
 
-    # model.fieldset(
-    #     'address',
-    #     label=_(u'Address'),
-    #     fields=[
-    #         'company_full_street_address',
-    #         'company_city',
-    #         'company_other_address',
-    #         'company_state',
-    #         'company_zip',
-    #         ],
-    #     )
+    model.fieldset(
+        'Company',
+        label=_(u'Company Information'),
+        fields=[
+            'full_company_name',
+            'short_company_name',
+            'company_letter_code',
+            'company_role',
+            'company_logo',
+            ],
+        )
+
+    model.fieldset(
+        'address',
+        label=_(u'Address'),
+        fields=[
+            'company_full_street_address',
+            'company_city',
+            'company_other_address',
+            'company_state',
+            'company_zip',
+            ],
+        )
 
 
     model.fieldset(
@@ -235,12 +215,12 @@ class IDocentimsSettings(model.Schema):
                       default=u"Enter short project title")
         )
 
-    #project_full_name = schema.TextLine(
-    #    required = False,
-    #    title=_(u"label_project_fullname", default=u"Project Full Name"),
-    #    description=_(u"help_project_fullname",
-    #                  default=u"Project_fullname"),
-    #    )
+    project_full_name = schema.TextLine(
+        required = False,
+        title=_(u"label_project_fullname", default=u"Project Full Name"),
+        description=_(u"help_project_fullname",
+                      default=u"Project_fullname"),
+        )
 
     project_short_name = schema.TextLine(
         title=_(u"label_project_short_name",
@@ -256,13 +236,13 @@ class IDocentimsSettings(model.Schema):
                       default=u"Project description")
         )
 
-    # project_companies = schema.Choice(
-    #     required = False,
-    #     vocabulary=u"DocentIMS.ActionItems.CompanyVocabulary",
-    #     title=_(u"label_project_companies", default=u"Project Companies"),
-    #     description=_(u"help_project_companies",
-    #                   default=u"Project Companies List")
-    #     )
+    project_companies = schema.Choice(
+        required = False,
+        vocabulary=u"DocentIMS.ActionItems.CompanyVocabulary",
+        title=_(u"label_project_companies", default=u"Project Companies"),
+        description=_(u"help_project_companies",
+                      default=u"Project Companies List")
+        )
 
 
     project_contract_number = schema.TextLine(
@@ -277,71 +257,56 @@ class IDocentimsSettings(model.Schema):
         description=_(u"help_project_document_naming_convention",
                       default=u"Project document naming convention")
         )
-    
-    urgent_red = schema.Int(
-        title=_(u"label_red", default=u"Urgent Red value"),
-        description="enter number of days",
+
+    full_company_name = schema.TextLine(
+        required = False,
+        title=_(u"label_company_name", default=u"Full Company Name")
         )
-    
-    future_green = schema.Int(
-        title=_(u"label_green", default=u"Future Green value"),
-        description="enter number of days",
+    short_company_name= schema.TextLine(
+        required = False,
+        title=_(u"label_company_short_name", default=u"Short Company Name")
+        )
+    company_letter_code = schema.TextLine(
+        required = False,
+        max_length=3,
+        min_length=3,
+        title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
+        constraint=company_letter_codeConstraint,
         )
 
-    soon_yellow = schema.Int(
-        title=_(u"label_yellow", default=u"Soon Yellow value"),
-        description="enter number of days",
+    company_role = schema.Text(
+        required = False,
+        title=_(u"label_company_role", default=u"Company role")
+        )
+    company_logo = schema.Text(
+        required = False,
+        title=_(u"label_company_logo", default=u"Company Logo")
+    )
+
+    #company_logo = field.NamedBlobImage(title=u"Company Logo")
+
+
+    company_full_street_address = schema.Text(
+        required = False,
+        title=_(u"label_company_full_street_adress", default=u"Full Street Address")
+        )
+    company_city = schema.TextLine(
+        required = False,
+        title=_(u"label_company_citye", default=u"City")
         )
 
-    # full_company_name = schema.TextLine(
-    #     required = False,
-    #     title=_(u"label_company_name", default=u"Full Company Name")
-    #     )
-    # short_company_name= schema.TextLine(
-    #     required = False,
-    #     title=_(u"label_company_short_name", default=u"Short Company Name")
-    #     )
-    # company_letter_code = schema.TextLine(
-    #     required = False,
-    #     max_length=3,
-    #     min_length=3,
-    #     title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
-    #     constraint=company_letter_codeConstraint,
-    #     )
-
-    # company_role = schema.Text(
-    #     required = False,
-    #     title=_(u"label_company_role", default=u"Company role")
-    #     )
-    # company_logo = schema.Text(
-    #     required = False,
-    #     title=_(u"label_company_logo", default=u"Company Logo")
-    # )
-
-    # #company_logo = field.NamedBlobImage(title=u"Company Logo")
-
-
-    # company_full_street_address = schema.Text(
-    #     required = False,
-    #     title=_(u"label_company_full_street_adress", default=u"Full Street Address")
-    #     )
-    # company_city = schema.TextLine(
-    #     required = False,
-    #     title=_(u"label_company_citye", default=u"City")
-    #     )
-
-    # company_other_address = schema.Text(
-    #     required = False,
-    #     title=_(u"label_company_other_adress", default=u"Other Address")
-    #     )
-    # company_state = schema.TextLine(
-    #     required = False,
-    #     title=_(u"label_company_state", default=u"State")
-    #     )
-    # company_zip = schema.TextLine(
-    #     required = False,
-    #     title=_(u"label_company_zip", default=u"ZIP")
-    # )
+    company_other_address = schema.Text(
+        required = False,
+        title=_(u"label_company_other_adress", default=u"Other Address")
+        )
+    company_state = schema.TextLine(
+        required = False,
+        title=_(u"label_company_state", default=u"State")
+        )
+    company_zip = schema.TextLine(
+        required = False,
+        title=_(u"label_company_zip", default=u"ZIP")
+    )
 
     #company_main_phone_number = schema.TextLine(
     #    required = False,
@@ -351,19 +316,17 @@ class IDocentimsSettings(model.Schema):
 
     widget(vokabularies=DataGridFieldFactory)
     vokabularies = schema.List(
-        title = _(u"Team Member Project Roles",
-            default=u"Team Member Project Roles"),
+        title = _(u"My vocabulary Name",
+            default=u"Some Vocabulary name"),
         value_type=DictRow(schema=IVocabulari),
-        required=False,
     )
 
-    # widget(vokabularies2=DataGridFieldFactory)
-    # vokabularies2 = schema.List(
-    #     title = _(u"Vocabularies 2",
-    #         default=u"Vocabulary 2"),
-    #     value_type=DictRow(schema=IVocabulari),
-    #     required=False,
-    # )
+    widget(vokabularies2=DataGridFieldFactory)
+    vokabularies2 = schema.List(
+        title = _(u"Vocabularies 2",
+            default=u"Vocabulary 2"),
+        value_type=DictRow(schema=IVocabulari),
+    )
 
     widget(companies=DataGridFieldFactory)
     companies = schema.List(

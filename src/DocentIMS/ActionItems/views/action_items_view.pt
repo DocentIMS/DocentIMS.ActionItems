@@ -29,12 +29,12 @@
                   </span>
                 </p>
 
-                <div class="redborder calendarsheet">
+                <div class="${view/get_css_urgency} colorborder calendarsheet">
                   <p class="theading">
-                    Days left:
+                    Workdays left:
                   </p>
                   <p class="days">
-                    ${view/days_left|None}
+                    ${view/workdays_left}
                   </p>
                 </div>
 
@@ -237,13 +237,22 @@
         text-align: center;
     }
 
-    .redborder {
-        border: 5px solid red;
+    .colorborder {
+        border: 5px solid;
     }
+
+    .urgent_red  {border-color: red}
+    .soon_yellow {border-color: orange}
+    .future_green {border-color: green}
+    .long_grey {border-color: #123456}
+
+    .urgent_red p.theading {background: red}
+    .soon_yellow p.theading {background: orange}
+    .future_green p.theading {background: green}
+    .long_grey p.theading {background: #123456}
 
     .calendarsheet time,
     .calendarsheet p.theading {
-        background: red;
         color: white !important;
         margin: 0
     }
