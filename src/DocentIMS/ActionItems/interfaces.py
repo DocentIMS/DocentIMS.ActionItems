@@ -9,6 +9,8 @@ from plone.supermodel import model
 from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
+from plone.app.textfield import RichText
+
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone.app.z3cform.widget import SelectFieldWidget
 
@@ -248,13 +250,22 @@ class IDocentimsSettings(model.Schema):
         description=_(u"help_project_short_name",
                       default=u"Project_short_name")
         )
+    
 
-    project_description = schema.TextLine(
-        required = False,
-        title=_(u"label_project_description", default=u"Project Description"),
-        description=_(u"help_project_description",
-                      default=u"Project description")
-        )
+    project_description = RichText(
+        title=u"Project Description",
+        default_mime_type='text/structured',
+        output_mime_type='text/html',
+        allowed_mime_types=('text/structured', 'text/plain',),
+        default=u""
+    )
+
+    # project_description = schema.Text(
+    #     required = False,
+    #     title=_(u"label_project_description", default=u"Project Description"),
+    #     description=_(u"help_project_description",
+    #                   default=u"Project description")
+    #     )
 
     # project_companies = schema.Choice(
     #     required = False,
