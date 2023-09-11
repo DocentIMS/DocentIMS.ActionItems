@@ -230,6 +230,10 @@
         float: left;
         opacity: 0.6
     }
+
+    .redborder.calendarsheet time {
+      background: red;
+    }
     .calendarsheet time,
     .calendarsheet p,
     .calendarsheet date {
@@ -241,11 +245,16 @@
         border: 5px solid;
     }
 
-    .urgent_red  {border-color: red}
+    .redborder {
+        border: 5px solid red;
+    }
+
+    .urgent_red {border-color: red}
     .soon_yellow {border-color: orange}
     .future_green {border-color: green}
     .long_grey {border-color: #123456}
 
+    .redborder p.theading,
     .urgent_red p.theading {background: red}
     .soon_yellow p.theading {background: orange}
     .future_green p.theading {background: green}
