@@ -53,12 +53,14 @@ class ActionItemsOverView(BrowserView):
         for item in items:
             if item.portal_type == 'action_items':
 
-                if item.priority == 3:
-                    priority3 += 1
-                if item.priority == 2:
-                    priority2 += 1
-                if item.priority == 1:
-                    priority1 += 1
+                if item.priority:
+
+                    if item.priority == 3:
+                        priority3 += 1
+                    if item.priority == 2:
+                        priority2 += 1
+                    if item.priority == 1:
+                        priority1 += 1
 
         datanames = ['Priority 1: ' +  str(priority1) + ' item(s)', 'Priority 2: ' +  str(priority2)  + ' item(s)', 'Priority 3: ' +  str(priority3)  + ' item(s)']
         #datanames = ['Priority 1: '  , 'Priority 2: '   , 'Priority 3: '   ]

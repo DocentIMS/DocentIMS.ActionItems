@@ -29,7 +29,7 @@
                   </span>
                 </p>
 
-                <div class="${view/get_css_urgency} colorborder calendarsheet">
+                <div class="${view/get_css_urgency|None} colorborder calendarsheet">
                   <p class="theading">
                     Workdays left:
                   </p>

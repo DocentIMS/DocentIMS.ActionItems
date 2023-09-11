@@ -32,9 +32,13 @@
                             <span tal:condition="python: val==False"> &nbsp; No </span>
                             <span tal:condition="python: val==True"> ✓ Yes </span>
                           </tal:check>
-                          <span tal:condition="python: not isinstance(val,bool)">${val}</span>
+                          <span tal:condition="python: not isinstance(val,bool) and field['row_field']!='actionno' and field['row_field']!='related_item' ">${val}</span>
                       
                           <span tal:condition="python: field['row_field']=='actionno'">${python: obj.id.replace("action_items", "").replace("-", "")}</span>
+                       
+                          <span tal:condition="python: field['row_field']=='related_item'"> 
+                          <span tal:condition="val/to_object|None">x</span>
+                          
                         </a>
                     </td>
                     </tal:repeat>

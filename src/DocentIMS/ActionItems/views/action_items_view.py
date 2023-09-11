@@ -61,16 +61,18 @@ class ActionItemsView(BrowserView):
             
 
     def get_css_urgency(self):
-        daycount = self.workdays_left()
+        daycount = self.workdays_left() or None
 
-        if daycount <=   api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings):
-            return 'urgent_red'
+        if daycount:
 
-        if daycount <=   api.portal.get_registry_record('soon_yellow', interface=IDocentimsSettings):
-            return 'soon_yellow'
+            if daycount <=   api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings):
+                return 'urgent_red'
 
-        if daycount <=   api.portal.get_registry_record('future_green', interface=IDocentimsSettings):
-            return 'future_green'
+            if daycount <=   api.portal.get_registry_record('soon_yellow', interface=IDocentimsSettings):
+                return 'soon_yellow'
+
+            if daycount <=   api.portal.get_registry_record('future_green', interface=IDocentimsSettings):
+                return 'future_green'
 
         return 'long_grey'
 
