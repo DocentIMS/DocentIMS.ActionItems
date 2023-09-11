@@ -252,20 +252,20 @@ class IDocentimsSettings(model.Schema):
         )
     
 
-    project_description = RichText(
-        title=u"Project Description",
-        # default_mime_type='text/structured',
-        # output_mime_type='text/html',
-        # allowed_mime_types=('text/structured', 'text/plain',),
-        default=u""
-    )
+    # project_description = RichText(
+    #     title=u"Project Description",
+    #     # default_mime_type='text/structured',
+    #     # output_mime_type='text/html',
+    #     # allowed_mime_types=('text/structured', 'text/plain',),
+    #     default=u""
+    # )
 
-    # project_description = schema.Text(
-    #     required = False,
-    #     title=_(u"label_project_description", default=u"Project Description"),
-    #     description=_(u"help_project_description",
-    #                   default=u"Project description")
-    #     )
+    project_description = schema.Text(
+        required = False,
+        title=_(u"label_project_description", default=u"Project Description"),
+        description=_(u"help_project_description",
+                      default=u"Project description")
+        )
 
     # project_companies = schema.Choice(
     #     required = False,
@@ -386,7 +386,7 @@ class IDocentimsSettings(model.Schema):
     widget(table_columns=DataGridFieldFactory)
     table_columns = schema.List(
         title = _(u"Table Columns",
-            default=u"Table Column fields"),
+            default=u"Table Column fields to be used for actions overview Table / View"),
             value_type=DictRow(schema=ITableRows),
     )
 
