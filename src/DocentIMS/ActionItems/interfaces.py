@@ -254,9 +254,9 @@ class IDocentimsSettings(model.Schema):
 
     project_description = RichText(
         title=u"Project Description",
-        default_mime_type='text/structured',
-        output_mime_type='text/html',
-        allowed_mime_types=('text/structured', 'text/plain',),
+        # default_mime_type='text/structured',
+        # output_mime_type='text/html',
+        # allowed_mime_types=('text/structured', 'text/plain',),
         default=u""
     )
 
