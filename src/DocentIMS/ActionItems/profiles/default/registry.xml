@@ -29,18 +29,6 @@
           <value key="project_contract_number"></value>
           <value key="project_document_naming_convention"></value>
 
-
-          <value key="full_company_name"></value>
-          <value key="short_company_name"></value>
-          <value key="company_letter_code"></value>
-          <value key="company_role"></value>
-          <value key="company_logo"></value>
-
-          <value key="company_full_street_address"></value>
-          <value key="company_city"></value>
-          <value key="company_other_address"></value>
-          <value key="company_state"></value>
-          <value key="company_zip"></value>
           <!--value key="company_main_phone_number"></value-->
 
           <value key="vokabularies"></value>
