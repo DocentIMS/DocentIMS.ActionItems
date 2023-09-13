@@ -49,13 +49,14 @@ _ = MessageFactory('DocentIMS.ActionItems')
 def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
-    if value != None:
+    import pdb; pdb.set_trace()
+    if value != None and value != '':
         if len(value) != 3:
-            raise InvalidValue()
-            #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
-            return True
-        #value = '   '
-        return False
+             raise InvalidValue()
+             #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
+             return True
+        # #value = '   '
+        # return False
         
     # if not value.isupper():
     #     #import pdb; pdb.set_trace()
@@ -111,9 +112,7 @@ class ICompany(model.Schema):
     company_letter_kode = schema.TextLine(
         required = False,
         title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
-        constraint=company_letter_kodeConstraint,
-        min_length=3,
-        max_length=3
+        #constraint=company_letter_kodeConstraint,
         )
 
 
@@ -145,8 +144,8 @@ class ICompany(model.Schema):
     company_state = schema.TextLine(
         required = False,
         title=_(u"label_company_state", default=u"State"),
-        min_length=2,
-        max_length=2
+        #min_length=2,
+        #max_length=2
         )
 
     company_zip = schema.TextLine(

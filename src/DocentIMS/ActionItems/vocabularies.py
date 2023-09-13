@@ -34,9 +34,11 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 
 def CompanyVocabulary(context):
-    items = api.content.find(portal_type=['Company', 'company', 'project_company', 'project_companies'], sort_on='sortable_title')
+    items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    #import pdb; pdb.set_trace()
+    #TO DO: Maybe check if they are unique
     if items:
-        terms = [ SimpleTerm(value=item.UID, token=item.UID, title=item.Title) for item in items ]
+        terms = [ SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name']) for item in items ]
         return SimpleVocabulary(terms)
     return SimpleVocabulary([])
 
