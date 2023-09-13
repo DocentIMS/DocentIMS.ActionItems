@@ -53,8 +53,8 @@ def company_letter_kodeConstraint(value):
         if len(value) != 3:
             raise InvalidValue()
             #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
-            return False
-        value = '   '
+            return True
+        #value = '   '
         return False
         
     # if not value.isupper():
