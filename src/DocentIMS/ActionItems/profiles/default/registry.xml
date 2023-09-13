@@ -25,7 +25,6 @@
       <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings">
           <value key="project_title"></value>
           <value key="project_description"></value>
-          <value key="project_full_name"></value>
           <value key="project_short_name"></value>
           <value key="project_contract_number"></value>
           <value key="project_document_naming_convention"></value>
