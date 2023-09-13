@@ -36,6 +36,9 @@ def company_letter_codeConstraint(value):
         raise  Invalid("Only 3 capital letters for Company 3 letter code")
     if len(value) != 3:
         raise  Invalid("Only 3 capital letters for Company 3 letter code")
+    if not value.isupper():
+        value = value.upper()
+
     # if not value.isupper():
     #     #import pdb; pdb.set_trace()
     #     #field.__doc__ = 'halloe'
