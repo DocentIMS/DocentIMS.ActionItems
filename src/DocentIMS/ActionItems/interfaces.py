@@ -51,7 +51,7 @@ def company_letter_kodeConstraint(value):
     """
     if value != None:
         if len(value) != 3:
-            raise Invalid(_(u"Only capital letters for Company 3 letter code"))
+            raise InvalidValue(_(u"Only capital letters for Company 3 letter code"))
             #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
             return False
         
