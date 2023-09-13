@@ -29,22 +29,22 @@ from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
 
 
-def company_letter_codeConstraint(value):
-    """Check that the company_3 letter code is upperclass
-    """
-    if value == None:
-        raise  Invalid("Only 3 capital letters for Company 3 letter code")
-    if len(value) != 3:
-        raise  Invalid("Only 3 capital letters for Company 3 letter code")
-    if not value.isupper():
-        value = value.upper()
+# def company_letter_codeConstraint(value):
+#     """Check that the company_3 letter code is upperclass
+#     """
+#     if value == None:
+#         raise  Invalid("Only 3 capital letters for Company 3 letter code")
+#     if len(value) != 3:
+#         raise  Invalid("Only 3 capital letters for Company 3 letter code")
+#     if not value.isupper():
+#         value = value.upper()
 
-    # if not value.isupper():
-    #     #import pdb; pdb.set_trace()
-    #     #field.__doc__ = 'halloe'
-    #     raise  InvalidValue("Only capital letters for Company 3 letter code")
-    #     #return False
-    return True
+#     # if not value.isupper():
+#     #     #import pdb; pdb.set_trace()
+#     #     #field.__doc__ = 'halloe'
+#     #     raise  InvalidValue("Only capital letters for Company 3 letter code")
+#     #     #return False
+#     return True
 
 def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
@@ -52,7 +52,7 @@ def company_letter_kodeConstraint(value):
     if value == None:
         raise  Invalid("Only 3 capital letters for Company 3 letter code")
     if len(value) != 3:
-        raise  InvalidValue("Only 3 capital letters for Company 3 letter code")
+        raise  Invalid("Only 3 capital letters for Company 3 letter code")
     # if not value.isupper():
     #     #import pdb; pdb.set_trace()
     #     #field.__doc__ = 'halloe'
