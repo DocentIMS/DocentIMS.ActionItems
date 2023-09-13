@@ -50,7 +50,8 @@ def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
     if value == None:
-        raise  Invalid()
+        value = '-'
+        raise  InvalidValue()
         #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
         #return False
     if len(value) != 3 or not value.isupper():
