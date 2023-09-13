@@ -112,8 +112,8 @@ class ICompany(model.Schema):
         required = False,
         title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
         constraint=company_letter_kodeConstraint,
-        #min_length=3,
-        #max_length=3
+        min_length=3,
+        max_length=3
         )
 
 
