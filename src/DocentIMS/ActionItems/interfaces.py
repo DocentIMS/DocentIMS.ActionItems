@@ -50,16 +50,15 @@ def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
     if value == None:
-        raise Invalid(_(u"Only capital letters for Company 3 letter code"))
+        raise  InvalidValue(_(u"Only capital letters for Company 3 letter code"))
         #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
         return False
     if len(value) != 3 or not value.isupper():
-        raise Invalid(_(u"Only capital letters for Company 3 letter code"))
+        raise  InvalidValue(_(u"Only capital letters for Company 3 letter code"))
         #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
         return False
+    
     #if not value.isupper():
-
-
     #     #import pdb; pdb.set_trace()
     #     #field.__doc__ = 'halloe'
     #     raise  InvalidValue("Only capital letters for Company 3 letter code")
