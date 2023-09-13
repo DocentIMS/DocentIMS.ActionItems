@@ -32,8 +32,7 @@
           <!--value key="company_main_phone_number"></value-->
 
           <value key="vokabularies"></value>
-          <value key="vokabularies2"></value>
-          <value key="companies"></value>
+         <value key="companies"></value>
 
           <value key="urgent_red"></value>
           <value key="future_green"></value>
