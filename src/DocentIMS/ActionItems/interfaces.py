@@ -55,7 +55,7 @@ def company_letter_kodeConstraint(value):
     #     #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
     #     #return False
     if len(value) != 3 or not value.isupper() or value == None:
-        raise  InvalidValue()
+        raise  Invalid()
         #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
         #return False
     
