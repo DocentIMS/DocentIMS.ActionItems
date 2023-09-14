@@ -23,6 +23,6 @@ class ReindexView(BrowserView):
     def reindex(self):
         my_brains = self.context.portal_catalog(portal_type=['action_items'])
         for brain in my_brains:
-            brain.getObject().reindexObject(idxs=["daysleft"])
+            brain.getObject().reindexObject(idxs=["daysleft", "urgency"])
         
         return len(my_brains)
