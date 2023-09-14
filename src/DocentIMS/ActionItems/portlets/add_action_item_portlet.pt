@@ -1,11 +1,14 @@
-<div class="weather">
-    <h3>Weather Report</h3>
-    <span tal:content="view/weather_report"></span>
-    <br>
-    Pressure: 
-    <span tal:content="view/get_pressure"></span>
-    <br>
-    Humidity: 
-    <span tal:content="view/get_humidity"></span>
-    <br>
+<div class="action_item_add ">
+    
+    <p class="action_adder text-right">
+        <a class="btn btn-primary text-right btn-success"
+        href="${view/portal_url}/action_items/++add++action_items">
+        <span tal:content="view/data/place_str"></span>
+        </a>
+    </p>
+ 
 </div>
+<style>
+ .text-right {text-align: right}
+</style>
+
