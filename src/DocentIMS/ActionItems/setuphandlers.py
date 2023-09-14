@@ -52,6 +52,15 @@ def _create_content(portal):
 
             )
 
+        if not portal.get('sow_items', False):
+            action_items = api.content.create(
+                type='Folder',
+                container=portal,
+                id='sow_items',
+                title='SOW Folder',
+
+            )
+
 
 
 
