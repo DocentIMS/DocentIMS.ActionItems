@@ -161,7 +161,7 @@
            <element>plone.app.querystring.operation.int.lessThan</element>
             <element>plone.app.querystring.operation.int.largerThan</element>
        </value>
-       <value key="group">Days</value>
+       <value key="group">Metadata</value>
      </records>
 
      <records interface="plone.app.querystring.interfaces.IQueryField"
