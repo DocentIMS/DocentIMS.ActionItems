@@ -87,7 +87,7 @@ def daysleftIndexer(obj):
         usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
         workdays = np.busday_count(today, due_date, holidays = usholiday)
 
-        return workdays
+        return str(workdays)
 
     return None
 

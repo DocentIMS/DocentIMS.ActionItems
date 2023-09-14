@@ -21,8 +21,8 @@
   <indexed_attr value="daysleft"/>
  </index>
 
- <index name="urgencey" meta_type="FieldIndex">
-  <indexed_attr value="urgencey"/>
+ <index name="urgency" meta_type="FieldIndex">
+  <indexed_attr value="urgency"/>
  </index>
 
  <index name="assigned_to" meta_type="FieldIndex">

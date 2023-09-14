@@ -163,18 +163,6 @@
        </value>
        <value key="group">Metadata</value>
      </records>
-
-     <records interface="plone.app.querystring.interfaces.IQueryField"
-              prefix="plone.app.querystring.urgency">
-       <value key="title">Urgency</value>
-       <value key="description">Urgency</value>
-       <value key="enabled">True</value>
-       <value key="operations">
-           <element>plone.app.querystring.operation.string.is</element>
-       </value>
-       <value key="group">Days</value>
-     </records>
-
      <records interface="plone.app.querystring.interfaces.IQueryField"
               prefix="plone.app.querystring.field.priority">
        <value key="title">Priority</value>
@@ -210,6 +198,17 @@
        <value key="group">Metadata</value>
      </records>
 
+      <records interface="plone.app.querystring.interfaces.IQueryField"
+              prefix="plone.app.querystring.urgency">
+       <value key="title">Urgency</value>
+       <value key="description">Urgency</value>
+       <value key="enabled">True</value>
+       <value key="operations">
+           <element>plone.app.querystring.operation.string.is</element>
+       </value>
+       <value key="group">Days</value>
+     </records>
+
     <!-- -*- extra stuff goes here -*- -->
     <!--javascript id="action_items.js" file="++plone++DocentIMS.ActionItems/js/action_items.js" enabled="True" /-->
 
@@ -220,5 +219,7 @@
       <value key="load_defer">False</value>
       <value key="depends">plone</value>
     </records>
+
+    
 
 </registry>
