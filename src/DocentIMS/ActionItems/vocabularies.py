@@ -117,6 +117,8 @@ def AiFieldsVocabulary(context):
             SimpleTerm(value='is_this_action_out_of_the_scope_of_work_', token='is_this_action_out_of_the_scope_of_work_', title=_(u'Out of Scope')),
             SimpleTerm(value='related_sow_section', token='related_sow_section', title=_(u'Rel Scope')),
             SimpleTerm(value='is_this_item_closed', token='is_this_item_closed', title=_(u'Closed?')),
+            SimpleTerm(value='daysleft', token='daysleft', title=_(u'Workdays Left')),
+            SimpleTerm(value='urgency', token='urgency', title=_(u'Urgency')),
         ]
     )
 

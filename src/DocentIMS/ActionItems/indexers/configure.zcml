@@ -21,6 +21,9 @@
   <adapter factory=".indexers.dummy"
     name="assigned_to" />
 
+  <adapter factory=".indexers.dummy"
+    name="urgency" />
+
   <adapter factory=".indexers.actionIndexer"
     name="actionno" />
 
@@ -38,6 +41,9 @@
 
   <adapter factory=".indexers.daysleftIndexer"
       name="daysleft" />
+
+  <adapter factory=".indexers.urgencyIndexer"
+      name="urgency" />
 
   <adapter factory=".indexers.assigned_toIndexer"
       name="assigned_to" />

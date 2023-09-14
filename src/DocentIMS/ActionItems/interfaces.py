@@ -14,13 +14,15 @@ from plone.app.textfield import RichText
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone.app.z3cform.widget import SelectFieldWidget
 
-from z3c.form import validator
+#from z3c.form import validator
+
 #from  zope import interface
-from zope.interface import invariant, Invalid 
+#from zope.interface import invariant, Invalid 
 
 from zope.schema.interfaces import  InvalidValue
-#, TooSmall
 
+#from Products.statusmessages.interfaces import IStatusMessage
+from plone.api.portal import show_message
 
 #from plone.namedfile.field import NamedBlobImage
 from plone.namedfile import field
@@ -29,51 +31,43 @@ from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
 
 
-# def company_letter_codeConstraint(value):
-#     """Check that the company_3 letter code is upperclass
-#     """
-#     if value == None:
-#         raise  Invalid("Only 3 capital letters for Company 3 letter code")
-#     if len(value) != 3:
-#         raise  Invalid("Only 3 capital letters for Company 3 letter code")
-#     if not value.isupper():
-#         value = value.upper()
-
-#     # if not value.isupper():
-#     #     #import pdb; pdb.set_trace()
-#     #     #field.__doc__ = 'halloe'
-#     #     raise  InvalidValue("Only capital letters for Company 3 letter code")
-#     #     #return False
-#     return True
+ 
 
 def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
-    import pdb; pdb.set_trace()
     if value != None and value != '':
         if len(value) != 3:
              raise InvalidValue()
              #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
              return True
-        # #value = '   '
-        # return False
         
-    # if not value.isupper():
-    #     #import pdb; pdb.set_trace()
-    #     #field.__doc__ = 'halloe'
-    #     raise  InvalidValue("Only capital letters for Company 3 letter code")
-    #     #return False
+        if not value.isupper():
+            raise  InvalidValue("Only capital letters for Company 3 letter code")
+            return True
     return True
 
+def stateConstraint(value):
+    """Check lenght = 2 and upperclass
+    """
+    if value != None and value != '':
+        if len(value) != 2:
+             raise InvalidValue()
+             #Works with datagridfield, but will show error message 'Constraint not satisfied /The system could not process the given value.'
+             return True
+        if not value.isupper():
+            # Raises error, but do not 'render the text'
+            raise  InvalidValue("Only 2 capital letters for State")
+            return True
+        if not value in [ 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 
+                        'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 
+                        'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']:
+            
+            show_message(message="Company State does not exist", type='warning')
+            #raise InvalidValue()
+            #return True
 
-
-#@validator(field=ICompany['company_letter_kode'])
-#def validateName(value):
-#    """Ensure 3 letters#
-#    """
-#
-#    if not value.isupper():
-#        raise Invalid(_(u"Please give a full name"))
+    return True
 
 
 class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
@@ -112,7 +106,7 @@ class ICompany(model.Schema):
     company_letter_kode = schema.TextLine(
         required = False,
         title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
-        #constraint=company_letter_kodeConstraint,
+        constraint=company_letter_kodeConstraint,
         )
 
 
@@ -144,9 +138,63 @@ class ICompany(model.Schema):
     company_state = schema.TextLine(
         required = False,
         title=_(u"label_company_state", default=u"State"),
-        #min_length=2,
-        #max_length=2
+        constraint=stateConstraint,
         )
+
+#TO DO, maybe use a choice field instead ?
+
+# Alabama: AL
+# Alaska: AK
+# Arizona: AZ
+# Arkansas: AR
+# California: CA
+# Colorado: CO
+# Connecticut: CT
+# Delaware: DE
+# Florida: FL
+# Georgia: GA
+# Hawaii: HI
+# Idaho: ID
+# Illinois: IL
+# Indiana: IN
+# Iowa: IA
+# Kansas: KS
+# Kentucky: KY
+# Louisiana: LA
+# Maine: ME
+# Maryland: MD
+# Massachusetts: MA
+# Michigan: MI
+# Minnesota: MN
+# Mississippi: MS
+# Missouri: MO
+# Montana: MT
+# Nebraska: NE
+# Nevada: NV
+# New Hampshire: NH
+# New Jersey: NJ
+# New Mexico: NM
+# New York: NY
+# North Carolina: NC
+# North Dakota: ND
+# Ohio: OH
+# Oklahoma: OK
+# Oregon: OR
+# Pennsylvania: PA
+# Rhode Island: RI
+# South Carolina: SC
+# South Dakota: SD
+# Tennessee: TN
+# Texas: TX
+# Utah: UT
+# Vermont: VT
+# Virginia: VA
+# Washington: WA
+# West Virginia: WV
+# Wisconsin: WI
+# Wyoming: WY
+
+
 
     company_zip = schema.TextLine(
         required = False,

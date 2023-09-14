@@ -35,9 +35,13 @@
                           <span tal:condition="python: not isinstance(val,bool) and field['row_field']!='actionno' and field['row_field']!='related_item' ">${val}</span>
                       
                           <span tal:condition="python: field['row_field']=='actionno'">${python: obj.id.replace("action_items", "").replace("-", "")}</span>
+                          <span tal:condition="python: field['row_field']=='daysleft'">${item/daysleft|None}</span>
+                          <span tal:condition="python: field['row_field']=='urgency'">${item/urgency|None}</span>
                        
                           <span tal:condition="python: field['row_field']=='related_item'"> 
                           <span tal:condition="val/to_object|None">✓ Yes </span>
+                          
+                    
                           
                         </a>
                     </td>

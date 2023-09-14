@@ -57,6 +57,13 @@
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
       />
 
+    <browser:page
+      name="reindex-workdays"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".reindexview.ReindexView"
+      permission="cmf.ManagePortal"
+      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
 
     <browser:page
       name="compact-view"

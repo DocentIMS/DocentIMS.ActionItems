@@ -8,6 +8,11 @@ from plone.indexer import indexer
 import datetime
 #from datetime import timezone
 from plone import api
+import DateTime
+import numpy as np
+import datetime
+import holidays
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
 @indexer(IDexterityContent)
 def dummy(obj):
@@ -77,14 +82,39 @@ def daysleftIndexer(obj):
     due_date = obj.duedate or None
     # difference between dates in timedelta
     if due_date != None:
-        delta = due_date - datetime.date.today()
-        if delta.days<1:
-            return '0 - Out of time'
-        if delta.days<=7:
-            return '1 – Less than 7'
-        if delta.days<=14:
-            return '2 - Less than 14'
+        #import pdb; pdb.set_trace()
+        today = datetime.date.today()
+        usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
+        workdays = np.busday_count(today, due_date, holidays = usholiday)
 
-        return '3 - More than 15'
+        return workdays
+
+    return None
+
+
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def urgencyIndexer(obj):
+    """Calculate and return the value for the indexer"""
+    due_date = obj.duedate or None
+    if due_date != None:
+        #import pdb; pdb.set_trace()
+        today = datetime.date.today()
+        usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
+        workdays = np.busday_count(today, due_date, holidays = usholiday)
+
+        red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
+        yellow = api.portal.get_registry_record('soon_yellow', interface=IDocentimsSettings)
+        green = api.portal.get_registry_record('future_green', interface=IDocentimsSettings)
+        
+        if workdays <=   red:
+            return "Urgent < {days} days".format(days = red)
+
+        if workdays <=   yellow:
+            return "Soon < {days} days".format(days = yellow) 
+
+        if workdays <=   green:
+            return "Future < {days} days".format(days = green) 
+
+        return 'More than ' + green
 
     return None

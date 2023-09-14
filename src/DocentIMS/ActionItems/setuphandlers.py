@@ -39,6 +39,7 @@ def post_install(context):
     # Create Folder to put everything in
 
     portal = api.portal.get()
+    api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
     _create_content(portal)
 
 def _create_content(portal):

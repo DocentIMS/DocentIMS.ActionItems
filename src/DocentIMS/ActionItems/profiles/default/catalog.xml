@@ -21,6 +21,10 @@
   <indexed_attr value="daysleft"/>
  </index>
 
+ <index name="urgencey" meta_type="FieldIndex">
+  <indexed_attr value="urgencey"/>
+ </index>
+
  <index name="assigned_to" meta_type="FieldIndex">
   <indexed_attr value="assigned_to"/>
  </index>
@@ -44,5 +48,6 @@
  <column value="is_this_item_closed"/>
  <column value="closed"/>
  <column value="actionno"/>
+<column value="urgency"/>
 
 </object>
