@@ -31,7 +31,12 @@ from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
 
 
- 
+def richtextConstraint(value):
+    """ Workaround for bug 
+    """
+    #import pdb; pdb.set_trace()
+    value = value.output
+    return True 
 
 def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
@@ -307,11 +312,9 @@ class IDocentimsSettings(model.Schema):
     
 
     # project_description = RichText(
-    #     title=u"Project Description",
-    #     # default_mime_type='text/structured',
-    #     # output_mime_type='text/html',
-    #     # allowed_mime_types=('text/structured', 'text/plain',),
-    #     default=u""
+    #     title=u"Project Description Rich text",
+    #     required=False,
+    #     constraint=richtextConstraint
     # )
 
     project_description = schema.Text(
