@@ -29,18 +29,10 @@
  <property
     name="model_source">&lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
     &lt;schema&gt;
-      &lt;field name=&quot;section_number&quot; type=&quot;zope.schema.Choice&quot;&gt;
+      &lt;field name=&quot;section_number&quot; type=&quot;zope.schema.TextLine&quot;&gt;
         &lt;description&gt;Select sectioin number&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Section Number&lt;/title&gt;
-        &lt;values&gt;
-          &lt;element&gt;1&lt;/element&gt;
-          &lt;element&gt;1-1&lt;/element&gt;
-          &lt;element&gt;1-2&lt;/element&gt;
-          &lt;element&gt;1-3&lt;/element&gt;
-          &lt;element&gt;2&lt;/element&gt;
-          &lt;element&gt;2-1&lt;/element&gt;
-        &lt;/values&gt;
       &lt;/field&gt;
       &lt;field name=&quot;details&quot; type=&quot;zope.schema.Text&quot;&gt;
         &lt;default&gt;This was created via word and the parsing of the document......&lt;/default&gt;
