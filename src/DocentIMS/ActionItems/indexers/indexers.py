@@ -115,6 +115,6 @@ def urgencyIndexer(obj):
         if workdays <=   green:
             return "Future < {days} workdays".format(days = green) 
 
-        return "Nore than {days}".format(days = green) 
+        return "More than {days}".format(days = green) 
 
     return None
