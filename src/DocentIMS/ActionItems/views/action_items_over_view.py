@@ -128,7 +128,7 @@ class ActionItemsOverView(BrowserView):
  
 
         #datanames = [urgent + ' item(s)', soon  + ' item(s)', future  + ' item(s)', more  + ' item(s)']
-        datanames = ["< {} days'".format(red), "< {} days'".format(yellow), "< {}  days'".format(green), 'more']
+        datanames = ["< {} days'".format(red), "< {} + days'".format(yellow), "< {}  days'".format(green), 'more']
         
         return  [datanames, [urgency1, urgency2, urgency3, urgency4]]
 

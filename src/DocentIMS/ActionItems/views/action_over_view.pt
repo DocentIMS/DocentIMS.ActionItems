@@ -123,7 +123,7 @@
                     x: ${python: graphdata[0]},
                     y: ${python: graphdata[1]},
                     marker:{
-                      color: ['#FF0000',  'orange', 'geren', '#123456']
+                      color: ['#FF0000',  'orange', 'green', '#123456']
                     },
                     type: 'bar'
                   }
