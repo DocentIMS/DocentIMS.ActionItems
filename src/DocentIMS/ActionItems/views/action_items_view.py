@@ -141,7 +141,6 @@ class ActionItemsView(BrowserView):
     def get_owner(self):
         member = api.user.get(userid=self.context.assigned_to)
         if member:
-            company = ''
             company_id =  member.getProperty('company')
             #import pdb; pdb.set_trace()
             #if company_id:

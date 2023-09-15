@@ -19,6 +19,7 @@
                   </tal:repeat>
                 </tr>
               </thead>
+              <tbody>
                <tr tal:repeat="item python: view.batch()">
 
                     <tr tal:repeat="item python: view.batch()">
@@ -46,6 +47,7 @@
 
                       </tal:obj>
                     </tr> 
+                    </tbody>
               </table>
             </fieldset>
             <fieldset>
