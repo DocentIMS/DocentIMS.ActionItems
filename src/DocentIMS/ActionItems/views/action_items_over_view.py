@@ -90,6 +90,47 @@ class ActionItemsOverView(BrowserView):
         return [ priority1, priority2, priority3 ]
 
 
+    def get_urgencydata(self):
+        #colors = """'#FF0000',  'orange', '#123456'"""
+
+        items = self.batch()
+
+        red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
+        yellow = api.portal.get_registry_record('soon_yellow', interface=IDocentimsSettings)
+        green = api.portal.get_registry_record('future_green', interface=IDocentimsSettings)
+        
+        urgent = "Urgent < {days} workdays".format(days = red)
+        soon = "Soon < {days} workdays".format(days = yellow) 
+        future = "Future < {days} workdays".format(days = green) 
+        more = 'More than {days}'.format(days = green)  
+
+        urgency1 = 0
+        urgency2 = 0
+        urgency3 = 0
+        urgency4 = 0
+
+        #leftdays  = []
+        #datacolors = []
+        for item in items:
+            if item.portal_type == 'action_items':
+                if item.urgency:
+                    if item.urgency == urgent:
+                        urgency1 += 1
+
+                    if item.urgency == soon:
+                        urgency2 += 1
+
+                    if item.urgency == future:
+                        urgency3 += 1
+
+                    if item.urgency == more:
+                        urgency4 += 1
+ 
+
+        #datanames = [urgent + ' item(s)', soon  + ' item(s)', future  + ' item(s)', more  + ' item(s)']
+        datanames = ["< {} days'".format(red), "< {} days'".format(yellow), "< {}  days'".format(green), 'more']
+        
+        return  [datanames, [urgency1, urgency2, urgency3, urgency4]]
 
 
 class ActionItemsCollectionView(CollectionView, ActionItemsOverView):

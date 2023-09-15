@@ -39,9 +39,7 @@
                           
                               <span tal:condition="python: field['row_field']=='related_item'"> 
                               <span tal:condition="val/to_object|None">✓ Yes </span>
-                              
-                        
-                              
+                                 
                             </a>
                         </td>
                         </tal:repeat>
@@ -52,12 +50,20 @@
             </fieldset>
             <fieldset>
               <legend>Graphs</legend>
+              <h4 class="pa3">Priority</h4>
               
               <div class="flex flex-wrap">
-              <h4 class="pa3">Priority</h4>
                 <div id="div-bar"><!-- Plotly chart will be drawn inside this DIV --></div>
-                <div id="div-pie" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id="div-pie" ><!-- Plotly chart will be drawn inside this DIV --></div> 
               </div>
+               
+            </fieldset>
+             <fieldset>
+              <legend>Urgency</legend>
+              <h4 class="pa3">Urgency</h4>
+                <div>
+                  <div id="urgency-bar" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                </div>
             </fieldset>
 
             <fieldset>
@@ -110,6 +116,28 @@
 
                 Plotly.newPlot('div-pie', data, layout);
             </script>
+
+            <script tal:define="graphdata python: view.get_urgencydata()">
+              var data = [
+                  {
+                    x: ${python: graphdata[0]},
+                    y: ${python: graphdata[1]},
+                    marker:{
+                      color: ['#FF0000',  'orange', 'geren', '#123456']
+                    },
+                    type: 'bar'
+                  }
+                ];
+                var layout = {
+                height: 500, 
+                  yaxis: {
+                    tick0: 0,
+                    dtick: 1,
+                  },
+                };
+                Plotly.newPlot('urgency-bar', data, layout);
+            </script>
+
 
 
             <style>
