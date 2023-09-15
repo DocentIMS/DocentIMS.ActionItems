@@ -107,14 +107,14 @@ def urgencyIndexer(obj):
         green = api.portal.get_registry_record('future_green', interface=IDocentimsSettings)
         
         if workdays <=   red:
-            return "1 Urgent < {:02d} workdays".format(red)
+            return "Urgent < {days} workdays".format(days = red)
 
         if workdays <=   yellow:
-            return "2 Soon < {:02d} workdays".format(yellow) 
+            return "Soon < {days} workdays".format(days = yellow) 
 
         if workdays <=   green:
-            return "3 Future < {days} workdays".format(days = green) 
+            return "Future < {days} workdays".format(days = green) 
 
-        return '4 More than ' + green
+        return 'More than ' + green
 
     return None
