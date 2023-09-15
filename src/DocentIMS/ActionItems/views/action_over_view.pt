@@ -7,6 +7,7 @@
 
   <body>
       <metal:content-core fill-slot="content-core" tal:define="fields view/get_fields|None">
+       <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
         <div class="pat-autotoc autotabs"
             data-pat-autotoc="section:fieldset;levels:legend;">
             <fieldset>
@@ -77,7 +78,7 @@
             </fieldset>
         </div>
 
-            <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
+           
             <script tal:define="graphdata python: view.get_graphdata()">
               var data = [
                   {
