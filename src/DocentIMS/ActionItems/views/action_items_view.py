@@ -146,8 +146,8 @@ class ActionItemsView(BrowserView):
             if company_id:
                 company = api.content.get(UID=company_id).Title() or ''
             return  {'id': member.getProperty('id'),
-                  'last_name': member.getProperty('last_name'),
-                  'first_name': member.getProperty('first_name'),
+                  'last_name': member.getProperty('last_name') or '',
+                  'first_name': member.getProperty('first_name') or '',
                   'company': company,
                  }
         return None
