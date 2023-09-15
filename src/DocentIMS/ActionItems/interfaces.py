@@ -38,6 +38,13 @@ def richtextConstraint(value):
     value = value.output
     return True 
 
+def richtextget(value):
+    """ Workaround for bug 
+    """
+    #import pdb; pdb.set_trace()
+    value = value.output
+    return value 
+
 def company_letter_kodeConstraint(value):
     """Check that the company_3 letter code is upperclass
     """
@@ -313,10 +320,10 @@ class IDocentimsSettings(model.Schema):
 
     # project_description = RichText(
     #     title=u"Project Description Rich text",
-    #     required=False,
-    #     constraint=richtextConstraint
+    #     required=False, 
     # )
 
+    widget("project_description", klass="pat-tinymce")
     project_description = schema.Text(
         required = False,
         title=_(u"label_project_description", default=u"Project Description"),
