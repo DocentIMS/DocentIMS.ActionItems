@@ -52,12 +52,13 @@ def _create_content(portal):
 
             )
 
-        if not portal.get('sow_items', False):
+        if not portal.get('scope-analysis', False):
             action_items = api.content.create(
                 type='Folder',
+                Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
                 container=portal,
-                id='sow_items',
-                title='SOW Folder',
+                id='scope-analysis',
+                title='Scope Analysis',
 
             )
 
