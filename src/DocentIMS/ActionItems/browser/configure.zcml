@@ -90,6 +90,35 @@
 
 
 
+    <!-- Register AddForm for SowAnalysis Item to override 'standard' tab-->
+    <!-- 'name' is the important part, it needs to be same as content type -->
+    <adapter
+        factory=".views.SowAnalysisAddFormView"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        for="*
+             DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
+             plone.dexterity.interfaces.IDexterityFTI"
+             name="sow_analysis"
+        />
 
+    <class class=".views.SowAnalysisAddFormView">
+    <require
+        permission="cmf.AddPortalContent"
+        interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+    </class>
+
+
+    <!--browser:page
+        name="edit"
+        for="Products.CMFCore.interfaces.IFolderish"
+        class=".views.SowAnalysisEditFormView"
+        permission="cmf.ModifyPortalContent"
+        layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+    /-->
+
+
+
+  
 
 </configure>

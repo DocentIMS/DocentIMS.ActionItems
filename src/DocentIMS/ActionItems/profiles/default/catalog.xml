@@ -38,6 +38,11 @@
    <indexed_attr value="closed"/>
  </index>
 
+ <index name="out_of_the_scope" meta_type="FieldIndex">
+   <indexed_attr value="is_this_action_out_of_the_scope_of_work_"/>
+ </index>
+ 
+
  <column value="priority"/>
  <column value="prioritystring"/>
  <column value="revised_due_date"/>
@@ -49,5 +54,8 @@
  <column value="closed"/>
  <column value="actionno"/>
 <column value="urgency"/>
+<column value="is_this_action_out_of_the_scope_of_work_"/>
+
+
 
 </object>
