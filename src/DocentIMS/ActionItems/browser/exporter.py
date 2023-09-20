@@ -39,7 +39,12 @@ class ActionItemsICal(BrowserView):
         event.add("summary", self.context.title)
         event.add("name", self.context.title)
         event.add("description",self.context.Description())
-        event.add("dtstart", self.context.initial_due_date)
+        #import pdb; pdb.set_trace()
+        dato =  self.context.revised_due_date or self.context.initial_due_date
+        dt = datetime(dato.year, dato.month, dato.day, 8, 0, 0, 0)
+        event.add("dtstart", dt)
+        #event.add("dtstart", self.context.initial_due_date)
+        #change to 8 in the morning
         cal.add_component(event)
 
         return cal.to_ical()
