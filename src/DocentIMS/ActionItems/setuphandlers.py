@@ -2,6 +2,8 @@
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
 from plone import api
+import os
+from plone.namedfile.file import NamedBlobImage
 
 from plone.base.interfaces import constrains
 from plone.base.interfaces.constrains import IConstrainTypes
@@ -62,15 +64,18 @@ def _create_content(portal):
 
             )
 
-        if not portal.get('sactionitemwf', False):
-            action_items = api.content.create(
+        wf_name = u'blank.png'
+        wf_image = api.content.create(
                 type='Image',
-                Description=u'Image of the workflow',
                 container=portal,
-                id='actionitemwf',
-                title='Action Item Work Flow',
-
+                id=wf_name,
+                title=wf_name,
+                description=u'EMN 2012-2013'
             )
+        wf_image.image = load_image()
+
+ 
+
 
         if not portal.get('actionitemhelp', False):
             action_items = api.content.create(
@@ -81,6 +86,7 @@ def _create_content(portal):
                 title='Action Item Help',
 
             )
+
 
 
         
@@ -115,3 +121,12 @@ def _create_content(portal):
 def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
+
+
+def load_image():
+    filename = os.path.join(os.path.dirname(__file__), 'img', 'blank.png')
+    with open(filename, 'rb') as image_file:
+        return NamedBlobImage(
+            data=image_file.read(),
+            filename='blank.png'
+        )

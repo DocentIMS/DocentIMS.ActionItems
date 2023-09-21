@@ -66,7 +66,7 @@
           &lt;element&gt;&lt;/element&gt;
         &lt;/values&gt;
       &lt;/field&gt;
-      &lt;fieldset name=&quot;date&quot; label=&quot;date&quot; description=&quot;Who is the owner of this Scope section analysis&quot;&gt;
+      &lt;fieldset name=&quot;date&quot; label=&quot;All Dates&quot; description=&quot;Due Dates&quot;&gt;
         &lt;field name=&quot;analysis_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
           &lt;description&gt;Initial estimate of the due date.&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;

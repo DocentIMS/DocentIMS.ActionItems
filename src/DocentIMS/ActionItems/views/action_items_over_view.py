@@ -34,6 +34,11 @@ class ActionItemsOverView(BrowserView):
 
     def get_fields(self):
         return api.portal.get_registry_record('table_columns', interface=IDocentimsSettings)
+    
+    @property
+    def portal_url(self):
+        return api.portal.get().absolute_url() 
+ 
 
     def today(self):
         #import pdb; pdb.set_trace()
