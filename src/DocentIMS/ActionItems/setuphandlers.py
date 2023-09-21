@@ -62,7 +62,28 @@ def _create_content(portal):
 
             )
 
+        if not portal.get('sactionitemwf', False):
+            action_items = api.content.create(
+                type='Image',
+                Description=u'Image of the workflow',
+                container=portal,
+                id='actionitemwf',
+                title='Action Item Work Flow',
 
+            )
+
+        if not portal.get('actionitemhelp', False):
+            action_items = api.content.create(
+                type='Document',
+                Description=u'Action Item Help',
+                container=portal,
+                id='actionitemhelp',
+                title='Action Item Help',
+
+            )
+
+
+        
 
 
             #    behaviour = constrains.ISelectableConstra

@@ -77,6 +77,15 @@ def closedIndexer(obj):
 
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
+def is_this_action_out_of_the_scope_of_work_Indexer(obj):
+    """Calculate and return the value for the indexer"""
+    if obj.is_this_action_out_of_the_scope_of_work_:
+        obj.is_this_action_out_of_the_scope_of_work_ = 'Yes'
+        return 'Yes'
+    return 'No'
+
+
+@indexer(IDexterityContainer)  # ADJUST THIS!
 def daysleftIndexer(obj):
     """Calculate and return the value for the indexer"""
     due_date = obj.duedate or None

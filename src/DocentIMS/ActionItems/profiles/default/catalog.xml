@@ -38,10 +38,13 @@
    <indexed_attr value="closed"/>
  </index>
 
- <index name="out_of_the_scope" meta_type="FieldIndex">
+ <!-- <index name="out_of_the_scope" meta_type="FieldIndex"> -->
+   <!-- <indexed_attr value="is_this_action_out_of_the_scope_of_work_"/> -->
+ <!-- </index> -->
+ 
+ <index name="is_this_action_out_of_the_scope_of_work_" meta_type="FieldIndex">
    <indexed_attr value="is_this_action_out_of_the_scope_of_work_"/>
  </index>
- 
 
  <column value="priority"/>
  <column value="prioritystring"/>
@@ -53,8 +56,10 @@
  <column value="is_this_item_closed"/>
  <column value="closed"/>
  <column value="actionno"/>
-<column value="urgency"/>
-<column value="is_this_action_out_of_the_scope_of_work_"/>
+ <column value="urgency"/>
+ <!-- <column value="out_of_the_scope"/> -->
+ <column value="is_this_action_out_of_the_scope_of_work_"/> 
+
 
 
 

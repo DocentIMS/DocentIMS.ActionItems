@@ -13,6 +13,9 @@
     name="closed" />
 
   <adapter factory=".indexers.dummy"
+    name="is_this_action_out_of_the_scope_of_work_" />
+
+  <adapter factory=".indexers.dummy"
     name="duedate" />
 
   <adapter factory=".indexers.dummy"
@@ -29,6 +32,9 @@
 
   <adapter factory=".indexers.closedIndexer"
     name="closed" />
+    
+  <adapter factory=".indexers.is_this_action_out_of_the_scope_of_work_Indexer"
+      name="is_this_action_out_of_the_scope_of_work_" />
 
   <adapter factory=".indexers.priorityIndexer"
       name="priority" />
