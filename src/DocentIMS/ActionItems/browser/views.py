@@ -59,6 +59,7 @@ class ActionItemsAddFormView(DefaultAddView):
     form = ActionItemsAddForm
 
 class ActionItemsEditForm(DefaultEditForm):
+    ## Does not take portal type into action, so this is used FOR ALL
     portal_type = "action_items"
     default_fieldset_label = 'Home'
 
@@ -81,13 +82,20 @@ class ActionItemsEditForm(DefaultEditForm):
     def update(self):
         super(ActionItemsEditForm, self).update()
 
-        if self.portal_type == 'action_items':
+        if self.portal_type == 'action_items' or self.portal_type == 'sow_analysis':
             for group in self.groups:
                 if group.__name__ == 'settings':
                     #group.mode = 'omitted'
                     group.label = None
                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+
+            if self.portal_type == 'sow_analysis':
+                for group in self.groups:
+                    if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                        #group.mode = 'omitted'
+                        group.label = None
+                        
 
 
 class ActionItemsEditFormView(DefaultEditView):
@@ -200,34 +208,34 @@ class SowAnalysisAddForm(DefaultAddForm):
 class SowAnalysisAddFormView(DefaultAddView):
     form = SowAnalysisAddForm
 
-class SowAnalysisEditForm(DefaultEditForm):
-    portal_type = "sow_analysis"
-    default_fieldset_label = 'Home'
+# class SowAnalysisEditForm(DefaultEditForm):
+#     portal_type = "sow_analysis"
+#     default_fieldset_label = 'Home'
 
-    def __init__(self, context, request):
-        super(SowAnalysisEditForm, self).__init__(context, request)
+#     def __init__(self, context, request):
+#         super(SowAnalysisEditForm, self).__init__(context, request)
 
-    def updateWidgets(self):
-        super(SowAnalysisEditForm, self).updateWidgets()
-        if self.portal_type == 'sow_analysis':
-            self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+#     def updateWidgets(self):
+#         super(SowAnalysisEditForm, self).updateWidgets()
+#         if self.portal_type == 'sow_analysis':
+#             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             
-    def updateFields(self):
-        super(SowAnalysisEditForm, self).updateFields()
+#     def updateFields(self):
+#         super(SowAnalysisEditForm, self).updateFields()
 
-    def update(self):
-        super(SowAnalysisEditForm, self).update()
+#     def update(self):
+#         super(SowAnalysisEditForm, self).update()
 
-        if self.portal_type == 'sow_analysis':
-            for group in self.groups:
-                if group.__name__ == 'settings' or group.__name__ == 'dates':
-                    #group.mode = 'omitted'
-                    group.label = None
-                    #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
-                    #group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+#         if self.portal_type == 'sow_analysis':
+#             for group in self.groups:
+#                 if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+#                     #group.mode = 'omitted'
+#                     group.label = None
+#                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+#                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
 
 
-class SowAnalysisEditFormView(DefaultEditView):
-    portal_type = "sow_analysis"
-    default_fieldset_label = 'Home'
-    form = SowAnalysisEditForm
+# class SowAnalysisEditFormView(DefaultEditView):
+#     portal_type = "sow_analysis"
+#     default_fieldset_label = 'Home'
+#     form = SowAnalysisEditForm

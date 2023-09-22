@@ -1,4 +1,34 @@
+
+
 $(document).ready(function() {
+
+
+// Scope analysis, hide show fields. 
+// Shows and hides fields depending on checkbox
+
+if( $('#form-widgets-internal_qc_required_-0').is(':checked') ) {
+  // $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc').hide();
+} else {
+  $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc').hide();
+}
+
+$('#form-widgets-internal_qc_required_-0').change(function () {
+  $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc').toggle();
+});
+
+
+if( $('#form-widgets-is_the_analyis_complete-0').is(':checked') ) {
+    //$('#formfield-form-widgets-analysis_notes').show();
+} else {
+  $('#formfield-form-widgets-analysis_notes').hide();
+}
+
+$('#form-widgets-is_the_analyis_complete-0').change(function () {
+  $('#formfield-form-widgets-analysis_notes').toggle();
+});
+
+// end
+
   if( $('#form-widgets-is_this_action_out_of_the_scope_of_work_-0').not(':checked') ) {
       $('#formfield-form-widgets-explanation_for_out_of_scope_ai').hide();
 
