@@ -4,7 +4,7 @@
  <property name="title" i18n:translate="">Scope Analysis</property>
  <property name="description"
     i18n:translate="">Individual analysis of Scope</property>
- <property name="icon_expr">string:file-earmark-text</property>
+ <property name="icon_expr">string:sow_analysis</property>
  <property name="factory">sow_analysis</property>
  <property
     name="add_view_expr">string:${folder_url}/++add++sow_analysis</property>

@@ -3,7 +3,7 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Action Items</property>
  <property name="description" i18n:translate="">action items</property>
- <property name="icon_expr">string:file-earmark-text</property>
+ <property name="icon_expr">string:action_items</property>
  <property name="factory">action_items</property>
  <property
     name="add_view_expr">string:${portal_url}/action_items/++add++action_items</property>

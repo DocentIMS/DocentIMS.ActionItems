@@ -3,6 +3,36 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
 
+
+     <record name="plone.icon.contenttype/sow_analysis">
+      <field type="plone.registry.field.TextLine">
+        <title>Scope</title>
+      </field>
+      <value key="resource">++plone++DocentIMS.ActionItems/icons/scope_icon.svg</value>
+    </record>
+
+      <record name="plone.icon.sow_analysis">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value>++plone++DocentIMS.ActionItems/icons/scope_icon_neg.svg</value>
+      </record>
+
+
+     <record name="plone.icon.contenttype/action_items">
+      <field type="plone.registry.field.TextLine">
+        <title>Scope</title>
+      </field>
+      <value key="resource">++plone++DocentIMS.ActionItems/icons/action_icon.svg</value>
+    </record>
+    
+
+      <record name="plone.icon.action_items">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value>++plone++DocentIMS.ActionItems/icons/action_icon_neg.svg</value>
+      </record>
+
+      
       <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_companies"
               interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
               field="project_companies">
