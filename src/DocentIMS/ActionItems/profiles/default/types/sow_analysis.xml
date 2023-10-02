@@ -34,12 +34,6 @@
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Section Number&lt;/title&gt;
       &lt;/field&gt;
-      &lt;field name=&quot;details&quot; type=&quot;zope.schema.Text&quot;&gt;
-        &lt;default&gt;This was created via word and the parsing of the document......&lt;/default&gt;
-        &lt;description&gt;why is this here.&lt;/description&gt;
-        &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;Details&lt;/title&gt;
-      &lt;/field&gt;
       &lt;field name=&quot;bodytext&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
         &lt;description&gt;The entire text of the section from thie Statement of Work&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
