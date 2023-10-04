@@ -81,11 +81,10 @@
             </fieldset>
             <fieldset>
               <legend>Help</legend>
-              <div tal:condition="context/actionitemhelp|None">
-                
-                <h3 tal:content="context/actionitemhelp/Title"/>
-                <p tal:replace="structure context/actionitemhelp/Description"/> 
-                 <div tal:replace="structure context/actionitemhelp/text/output"/>
+              <div tal:condition="context/help_files/actionitemhelp|None">
+                <h3 tal:content="context/help_files/actionitemhelp/Title"/>
+                <p tal:replace="structure context/help_files/actionitemhelp/Description"/> 
+                 <div tal:replace="structure contexthelp_files/actionitemhelp/text/output"/>
               </div>
             </fieldset>
         </div>
