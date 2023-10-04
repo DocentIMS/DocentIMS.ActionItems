@@ -77,7 +77,7 @@
               <div>
                 <h4 class="pa3">Workflow PDF</h4>
                 <p>Workflow text, maybe from PDF</p>
-                <img src="workflow.png" />
+                <img src="help_files/workflow.png" />
               </div>
             </fieldset>
             <fieldset>
