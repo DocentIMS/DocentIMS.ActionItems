@@ -64,11 +64,20 @@ def _create_content(portal):
 
             )
 
+        if not portal.get('help_files', False):
+            action_items = api.content.create(
+                type='Folder',
+                container=portal,
+                id='help_files',
+                title='Help Files',
+                exclude_from_nav=True,
+            )
+
         wf_name = u'help.png'
-        if not portal.get(wf_name, False):
+        if not action_items.get(wf_name, False):
             wf_image = api.content.create(
                     type='Image',
-                    container=portal,
+                    container=action_items,
                     id=wf_name,
                     title=wf_name,
                     
@@ -78,11 +87,11 @@ def _create_content(portal):
  
 
 
-        if not portal.get('actionitemhelp', False):
+        if not action_items.get('actionitemhelp', False):
             action_items = api.content.create(
                 type='Document',
                 Description=u'Action Item Help',
-                container=portal,
+                container=action_items,
                 id='actionitemhelp',
                 title='Action Item Help',
 
