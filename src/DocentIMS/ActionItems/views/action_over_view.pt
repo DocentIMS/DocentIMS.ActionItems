@@ -81,9 +81,11 @@
             </fieldset>
             <fieldset>
               <legend>Help</legend>
-              <div>
-                <h4 class="pa3">Help</h4>
-                <p><a class="pat-plone-modal" href="${portal_url}/actionitemhelp">Get help</a></p>
+              <div tal:condition="context/actionitemhelp|None">
+                
+                <h3 tal:content="context/actionitemhelp/Title"/>
+                <p tal:replace="structure context/actionitemhelp/Description"/> 
+                 <div tal:replace="structure context/actionitemhelp/text/output"/>
               </div>
             </fieldset>
         </div>
