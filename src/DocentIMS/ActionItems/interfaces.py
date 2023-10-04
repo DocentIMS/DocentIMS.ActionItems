@@ -104,6 +104,19 @@ class ITableRows(model.Schema):
         required=False,
     )
 
+class IScopeTableRows(model.Schema):
+    widget(row_field=SelectFieldWidget)
+    row_field = schema.Choice(
+        vocabulary=u"DocentIMS.ActionItems.SowFieldsVocabulary",
+        title=_(u"Field", default=u"Field"),
+        required=False,
+    )
+
+    row_title = schema.TextLine(
+        title=_(u'Table title', 'Table title'),
+        required=False,
+    )
+
 
 
 class ICompany(model.Schema):
@@ -290,9 +303,17 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'table',
-        label=_(u'Table Columns'),
+        label=_(u'Action Items Columns'),
         fields=[
             'table_columns',
+            ],
+        )
+    
+    model.fieldset(
+        'scope_table',
+        label=_(u'Scope table Columns'),
+        fields=[
+            'scope_table_columns',
             ],
         )
 
@@ -452,6 +473,13 @@ class IDocentimsSettings(model.Schema):
         title = _(u"Table Columns",
             default=u"Table Column fields to be used for actions overview Table / View"),
             value_type=DictRow(schema=ITableRows),
+    )
+
+    widget(scope_table_columns=DataGridFieldFactory)
+    scope_table_columns = schema.List(
+        title = _(u"Table Columns",
+            default=u"Table Column fields to be used for Scope  Table / View"),
+            value_type=DictRow(schema=IScopeTableRows),
     )
 
     #table_columns = schema.List(

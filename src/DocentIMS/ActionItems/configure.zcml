@@ -80,6 +80,9 @@
   	  component=".vocabularies.AiFieldsVocabulary"
       name="DocentIMS.ActionItems.AiFieldsVocabulary" />
 
+  <utility
+  	  component=".vocabularies.SowFieldsVocabulary"
+      name="DocentIMS.ActionItems.SowFieldsVocabulary" />
 
 
 </configure>

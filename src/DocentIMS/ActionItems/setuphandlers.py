@@ -64,15 +64,16 @@ def _create_content(portal):
 
             )
 
-        wf_name = u'blank.png'
-        wf_image = api.content.create(
-                type='Image',
-                container=portal,
-                id=wf_name,
-                title=wf_name,
-                description=u'EMN 2012-2013'
-            )
-        wf_image.image = load_image()
+        wf_name = u'help.png'
+        if not portal.get(wf_name, False):
+            wf_image = api.content.create(
+                    type='Image',
+                    container=portal,
+                    id=wf_name,
+                    title=wf_name,
+                    
+                )
+            wf_image.image = load_image()
 
  
 

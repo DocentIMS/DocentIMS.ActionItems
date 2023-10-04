@@ -71,7 +71,8 @@ class ActionItemsEditForm(DefaultEditForm):
         
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
-            #self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
+        if self.portal_type == 'sow_analysis':
+            self.widgets['section_number'].mode = interfaces.DISPLAY_MODE
         if self.portal_type == 'project_companies':
             self.widgets['IDublinCore.title'].label = 'Short Company Name'
             self.widgets['IDublinCore.description'].label = 'Full Company Name'

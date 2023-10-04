@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="DocentIMS.ActionItems"
+      metal:use-macro="context/main_template/macros/master">
+
+  <body>
+      <metal:content-core fill-slot="content-core" tal:define="fields view/get_fields|None"> 
+        <div class="pat-autotoc autotabs"
+            data-pat-autotoc="section:fieldset;levels:legend;">
+            
+            <fieldset>
+              <legend>Scope table</legend> 
+              <table class="listing pat-datatables listing" data-pat-datatables="pageLength: 50">
+                 <thead>
+                    <tr>
+                      <tal:repeat tal:repeat="field fields">
+                        <th>${field/row_title|None}</th>
+                      </tal:repeat>
+                    </tr>
+                  </thead>
+              <tbody>
+               <tr tal:repeat="item python: view.batch()">
+                      <tal:obj tal:define="obj item/getObject">
+                        <tal:repeat tal:repeat="field view/get_fields|None">
+                          <td tal:define="val python:getattr(obj, field['row_field'], '')">
+                            <a href="${item/getURL}"  tal:condition="python: field['row_field']=='title'">
+                              ${val}
+                            </a>
+                              <tal:check tal:condition="python: isinstance(val,bool)">
+                                <span tal:condition="python: val==False"> &nbsp; No </span>
+                                <span tal:condition="python: val==True"> ✓ Yes </span>
+                              </tal:check>
+                              <span tal:condition="python: not isinstance(val,bool) and 
+                                  field['row_field'] not in ['actionno' ,'title', 'related_item','daysleft', 'urgency']">
+                                  ${val}
+                                </span>
+                          
+                              <span tal:condition="python: field['row_field']=='actionno'">${python: obj.id.replace("action_items", "").replace("-", "")}</span>
+                              <span tal:condition="python: field['row_field']=='daysleft'">${item/daysleft|None}</span>
+                              <span tal:condition="python: field['row_field']=='urgency'">${item/urgency|None}</span>
+                          
+                              <span tal:condition="python: field['row_field']=='related_item'"> 
+                                <span tal:condition="val/to_object|None">✓ Yes 
+                              </span>
+                                 
+                            
+                        </td>
+                        </tal:repeat>
+
+                      </tal:obj>
+                    </tr> 
+                    </tbody>
+              </table>
+            </fieldset>
+             
+        </div>
+ 
+
+        </metal:content-core>
+</body>
+</html>
+
