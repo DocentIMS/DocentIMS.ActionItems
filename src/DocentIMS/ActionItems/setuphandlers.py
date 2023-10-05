@@ -20,6 +20,10 @@ from pandas import *
 
 import datetime
 
+import os
+
+
+
 #from plone.base.interfaces.constrains import ISelectableConstrainTypes
 #from plone.base.interfaces.constrains import ISelectableConstrainTypes as IESelectableConstrainTypes
 #from plone.app.dexterity.behaviors.constrains import ConstrainTypesBehavior
@@ -79,6 +83,11 @@ def post_import(context):
 
 
 def _create_content(portal):
+        
+        folderpath = os.path.dirname(__file__)
+        fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
+
+
         if not portal.get('action_items', False):
             action_items = plone.api.content.create(
                 type='Folder',
@@ -90,7 +99,7 @@ def _create_content(portal):
             )
 
 
-            df = pd.read_excel('ai_import.xlsx')
+            df = pd.read_excel( fullpath )
             print(df)
 
             my_dict = df.to_dict(orient='index')

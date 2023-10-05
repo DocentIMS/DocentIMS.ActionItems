@@ -6,11 +6,8 @@ from zope.lifecycleevent import modified
 import plone.api
 from zope.component.hooks import setSite
 import transaction
-from pandas import *
-import os
 
-import pdb; pdb.set_trace()
-print os.path.abspath(__file__)
+from pandas import *
 
 setSite(app['Plone'])
 portal = plone.api.portal.get()
