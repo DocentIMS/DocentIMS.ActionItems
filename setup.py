@@ -64,7 +64,9 @@ setup(
         'collective.z3cform.datagridfield',
         'collective.collectionfilter',
         'holidays',
-        'numpy'
+        'numpy',
+        'pandas',
+        'openpyxl'
     ],
     extras_require={
         'test': [

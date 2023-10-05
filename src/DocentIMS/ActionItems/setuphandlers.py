@@ -1,13 +1,24 @@
 # -*- coding: utf-8 -*-
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
-from plone import api
+#from plone import api
 import os
 from plone.namedfile.file import NamedBlobImage
 
 from plone.base.interfaces import constrains
 from plone.base.interfaces.constrains import IConstrainTypes
 from plone.base.interfaces.constrains import ISelectableConstrainTypes
+
+import pandas as pd
+import openpyxl
+from zope.lifecycleevent import modified
+import plone.api
+from zope.component.hooks import setSite
+import transaction
+
+from pandas import *
+
+import datetime
 
 #from plone.base.interfaces.constrains import ISelectableConstrainTypes
 #from plone.base.interfaces.constrains import ISelectableConstrainTypes as IESelectableConstrainTypes
@@ -40,22 +51,57 @@ def post_install(context):
 
     # Create Folder to put everything in
 
-    portal = api.portal.get()
+    portal = plone.api.portal.get()
     #api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
     _create_content(portal)
 
 def _create_content(portal):
         if not portal.get('action_items', False):
-            action_items = api.content.create(
+            action_items = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='action_items',
                 title='Action Items',
+                layout='action-items-overview'
 
             )
 
+
+            df = pd.read_excel('ai_import.xlsx')
+            print(df)
+
+            my_dict = df.to_dict(orient='index')
+
+            for i in range(0, len(my_dict)):
+                title = my_dict[i].get('Title')
+                #id = my_dict[i].get('ID')
+                date = my_dict[i].get('Start')
+                #import pdb; pdb.set_trace()
+                date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
+
+                initial_due_date = my_dict[i].get('Finish')
+                initial_due_date_time_obj =  datetime.datetime.strptime(str(initial_due_date), '%Y-%m-%d %H:%M:%S')
+
+                texte = my_dict[i].get('Predecessors')
+                notes = my_dict[i].get('Notes')
+                bodytext = txt1 = "{texte}<(br/> {notes}".format(texte = texte, notes = notes)
+                # texte + notes
+
+                action_item = plone.api.content.create(
+                            type='action_items',
+                            container=action_items,
+                            title=title,
+                            date=date_time_obj,
+                            initial_due_date=initial_due_date_time_obj.date(),
+                            priority = '1'
+                )
+
+                a = 1
+
+
+
         if not portal.get('scope-analysis', False):
-            action_items = api.content.create(
+            action_items = plone.api.content.create(
                 type='Folder',
                 Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
                 container=portal,
@@ -65,7 +111,7 @@ def _create_content(portal):
             )
 
         if not portal.get('help_files', False):
-            action_items = api.content.create(
+            action_items = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='help_files',
@@ -75,7 +121,7 @@ def _create_content(portal):
 
         wf_name = u'help.png'
         if not action_items.get(wf_name, False):
-            wf_image = api.content.create(
+            wf_image = plone.api.content.create(
                     type='Image',
                     container=action_items,
                     id=wf_name,
@@ -88,7 +134,7 @@ def _create_content(portal):
 
 
         if not action_items.get('actionitemhelp', False):
-            action_items = api.content.create(
+            action_items = plone.api.content.create(
                 type='Document',
                 Description=u'Action Item Help',
                 container=action_items,
