@@ -105,7 +105,7 @@
             <p tal:condition="context/is_this_action_out_of_the_scope_of_work_|None"><b>Explanation:</b> ${context/explanation_for_out_of_scope_ai|None}</p>
             <p><b class="label">Related Scope:</b>
               <span tal:condition="not: context/related_sow_section|None">None assigned</span>
-              <tal:condition tal:condition="context/related_sow_section|None"> <a tal:define="sow view/get_sow|None" href="${sow/absolute_url|none}">${sow/Title|None}</a></tal:condition>
+              <tal:condition tal:condition="context/related_sow_section|None"> <a tal:define="sow view/get_sow|None" href="${sow/absolute_url|None}">${sow/Title|None}</a></tal:condition>
                </p>
             <tal:condition tal:condition="context/related_sow_section|None">
               <div tal:replace="structure view/get_sow_text|None"/>
