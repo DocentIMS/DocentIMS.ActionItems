@@ -49,10 +49,13 @@ def post_install(context):
     """Post install script"""
     # Do something at the end of the installation of this package.
 
-    # Create Folder to put everything in
-
+    
     portal = plone.api.portal.get()
-    #api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    
+    #Set control panel properties, since we can not set them TTW
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    
+    # Create Folder to put everything in
     _create_content(portal)
 
 def _create_content(portal):
@@ -62,7 +65,7 @@ def _create_content(portal):
                 container=portal,
                 id='action_items',
                 title='Action Items',
-                layout='action-items-overview'
+                layout='action-overview'
 
             )
 
@@ -73,8 +76,9 @@ def _create_content(portal):
             my_dict = df.to_dict(orient='index')
 
             for i in range(0, len(my_dict)):
+                print(my_dict[i])
                 title = my_dict[i].get('Title')
-                #id = my_dict[i].get('ID')
+                myid = "action_items-{id}".format(id=my_dict[i].get('ID'))
                 date = my_dict[i].get('Start')
                 #import pdb; pdb.set_trace()
                 date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
@@ -89,14 +93,15 @@ def _create_content(portal):
 
                 action_item = plone.api.content.create(
                             type='action_items',
+                            id=myid,
                             container=action_items,
                             title=title,
                             date=date_time_obj,
                             initial_due_date=initial_due_date_time_obj.date(),
-                            priority = '1'
+                            priority = str((i%3) + 1)    
                 )
 
-                a = 1
+                # count them ?
 
 
 
