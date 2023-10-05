@@ -108,7 +108,7 @@
               <tal:condition tal:condition="context/related_sow_section|None"> <a tal:define="sow view/get_sow|None" href="${sow/absolute_url|None}">${sow/Title|None}</a></tal:condition>
                </p>
             <tal:condition tal:condition="context/related_sow_section|None">
-              <div tal:replace="structure view/get_sow_text|None"/>
+              <div tal:condition="view/get_sow_text|None" tal:replace="structure view/get_sow_text|None"/>
             </tal:condition>
 
         </fieldset>
