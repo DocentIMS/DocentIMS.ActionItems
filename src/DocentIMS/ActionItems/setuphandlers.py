@@ -53,10 +53,30 @@ def post_install(context):
     portal = plone.api.portal.get()
     
     #Set control panel properties, since we can not set them TTW
+    #TODO: Maybe make a check 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  [{'row_field': 'id', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
     
     # Create Folder to put everything in
     _create_content(portal)
+
+
+
+def post_import(context):
+    """Post install script"""
+    # Do something at the end of the installation of this package.
+
+    
+    portal = plone.api.portal.get()
+    
+    #Set control panel properties, since we can not set them TTW
+    #TODO: Maybe make a check 
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  [{'row_field': 'id', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    
+    # Create Folder to put everything in
+    _create_content(portal)
+
 
 def _create_content(portal):
         if not portal.get('action_items', False):
@@ -112,11 +132,12 @@ def _create_content(portal):
                 container=portal,
                 id='scope-analysis',
                 title='Scope Analysis',
+                layout='sow-overview',
 
             )
 
         if not portal.get('help_files', False):
-            action_items = plone.api.content.create(
+            items = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='help_files',
@@ -124,29 +145,29 @@ def _create_content(portal):
                 exclude_from_nav=True,
             )
 
-        wf_name = u'help.png'
-        if not action_items.get(wf_name, False):
-            wf_image = plone.api.content.create(
-                    type='Image',
+            wf_name = u'help.png'
+            if not items.get(wf_name, False):
+                wf_image = plone.api.content.create(
+                        type='Image',
+                        container=action_items,
+                        id=wf_name,
+                        title=wf_name,
+                        
+                    )
+                wf_image.image = load_image()
+
+    
+
+
+            if not items.get('actionitemhelp', False):
+                action_items = plone.api.content.create(
+                    type='Document',
+                    Description=u'Action Item Help',
                     container=action_items,
-                    id=wf_name,
-                    title=wf_name,
-                    
+                    id='actionitemhelp',
+                    title='Action Item Help',
+
                 )
-            wf_image.image = load_image()
-
- 
-
-
-        if not action_items.get('actionitemhelp', False):
-            action_items = plone.api.content.create(
-                type='Document',
-                Description=u'Action Item Help',
-                container=action_items,
-                id='actionitemhelp',
-                title='Action Item Help',
-
-            )
 
 
 

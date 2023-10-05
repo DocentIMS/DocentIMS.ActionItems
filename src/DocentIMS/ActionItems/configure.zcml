@@ -26,6 +26,17 @@
       post_handler=".setuphandlers.post_install"
       />
 
+
+  <genericsetup:registerProfile
+      name="import"
+      title="DocentIMS.ActionItems"
+      directory="profiles/import"
+      description="Installs the DocentIMS.ActionItems add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_import"
+      />
+
+
   <genericsetup:registerProfile
       name="uninstall"
       title="DocentIMS.ActionItems (uninstall)"

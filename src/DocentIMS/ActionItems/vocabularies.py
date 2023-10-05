@@ -129,6 +129,7 @@ def SowFieldsVocabulary(context):
     return SimpleVocabulary(
         [
             #SimpleTerm(value='action_items_related_will_be_listed_here', token='action_items_related_will_be_listed_here', title=_(u'action_items_related_will_be_listed_here')),
+            SimpleTerm(value='id', token='id', title=_(u'id')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='priority', token='priority', title=_(u'priority')),
             SimpleTerm(value='analysis_due_date ', token='analysis_due_date ', title=_(u'analysis_due_date ')),
