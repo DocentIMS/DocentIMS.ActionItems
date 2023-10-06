@@ -74,7 +74,14 @@ class Renderer(base.Renderer):
         not an anonymous user."""
         return not self.anonymous
 
+
+    @property
+    def kame_from(self):
+        if self.context.portal_type in [ 'action_item', 'sow_analysis']:
+            return self.context.UID
+        return ''
     
+
     @property
     def portal_url(self):
         return api.portal.get().absolute_url() 

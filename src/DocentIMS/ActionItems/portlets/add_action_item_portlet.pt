@@ -1,11 +1,26 @@
 <div class="action_item_add ">
+
+ 
     
     <p class="action_adder text-right">
-        <a class="btn btn-primary text-right btn-success"
+        <a tal:condition="not: view/kame_from" class="btn btn-primary text-right btn-success"
         href="${view/portal_url}/action_items/++add++action_items">
         <span tal:content="view/data/place_str"></span>
         </a>
+
+
+        <a  tal:condition="view/kame_from"  href="${view/portal_url}/action_items/++add++action_items?related_from=${view/kame_from}" target="_blank" 
+            class="button standalone btn btn-outline-primary">
+            <span tal:content="view/data/place_str"></span> <span>(related)</span>
+        </a>
+
+
+
     </p>
+
+
+              
+
  
 </div>
 <style>
