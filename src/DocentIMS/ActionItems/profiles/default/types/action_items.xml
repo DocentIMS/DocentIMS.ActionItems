@@ -76,9 +76,9 @@
           &lt;title&gt;Due Date&lt;/title&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
-      &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;How are these action items connected to the documents&quot;&gt;
+      &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;With minor exceptions, all action items can be connected back to the Scope.&quot;&gt;
         &lt;field name=&quot;is_this_action_out_of_the_scope_of_work_&quot; type=&quot;zope.schema.Bool&quot;&gt;
-          &lt;description&gt;If this action item isn&#x27;t directly driven by the Statement of Work, then select &quot;Yes&quot; and then explain.&lt;/description&gt;
+          &lt;description&gt;If this action item isn&#x27;t directly driven by the Statement of Work, select &#x27;Yes&#x27; and explain.&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Is This Action Out of the Scope of Work?&lt;/title&gt;
           &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
