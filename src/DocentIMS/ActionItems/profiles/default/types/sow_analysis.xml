@@ -120,6 +120,18 @@
           &lt;title&gt;Notes to QC&lt;/title&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;deliverables&quot; label=&quot;Deliverables&quot; description=&quot;&quot;&gt;
+        &lt;field name=&quot;responsible_parties&quot; type=&quot;zope.schema.TextLine&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Responsible Parties&lt;/title&gt; 
+        &lt;/field&gt;
+        &lt;field name=&quot;quality_procedure&quot; type=&quot;zope.schema.TextLine&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Quality Procedure&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
       &lt;fieldset name=&quot;analysis_notes&quot; label=&quot;Analysis Notes&quot; description=&quot;Person analyzing this Scope section add any notes regarding your analysis.&quot;&gt;
         &lt;field name=&quot;is_the_analyis_complete&quot; type=&quot;zope.schema.Bool&quot;&gt;
           &lt;description/&gt;

@@ -75,10 +75,8 @@
             <fieldset>
               <legend>Workflow</legend>
               <div>
-                <h4 class="pa3">Workflow PDF</h4>
-                <p>Workflow text, maybe from PDF</p>
-                <img src="help_files/workflow.png" />
-              </div>
+                <img src='${view/portal_url}/help_files/help.png' alt="help image workflow">
+                </div>
             </fieldset>
             <fieldset>
               <legend>Help</legend>
