@@ -22,6 +22,21 @@
     <!--<for interface="plone.app.portlets.interfaces.IDashboard" />-->
 
   </portlet>
+
+ 
+  <!-- Assign a collection filter portlet -->
+  <assignment category="context"
+              key="/action_items/action_items_collection"
+              manager="plone.rightcolumn"
+              name="collectionfilterone"
+              type="collective.collectionfilter.portlets.CollectionFilter">
+      <property name="header">Tags</property>
+      <property name="group_by">Subject</property>
+      <property name="show_count">True</property>
+  </assignment>
+
+ 
+ 
   
   
 </portlets>
