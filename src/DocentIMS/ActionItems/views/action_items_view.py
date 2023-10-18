@@ -152,3 +152,6 @@ class ActionItemsView(BrowserView):
                   'company': company_id,
                  }
         return None
+    
+    def get_duedate(self):
+        return self.context.revised_due_date or self.context.initial_due_date or None
