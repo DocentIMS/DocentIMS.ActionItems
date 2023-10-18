@@ -133,11 +133,11 @@
 
           <hr class="hr"/>
           <div tal:repeat="relation view/target_relations|None">
-            <p>↓ <a href="${relation/from_path}">${relation/from_object/Title}</a></p>
+            <p>↓ <a href="${relation/from_path|None}">${relation/from_object/Title|None}</a></p>
           </div>
 
           <div tal:repeat="relation view/source_relations|None">
-            <p>↑: <a href="${relation/to_path}">${relation/to_object/Title}</a></p>
+            <p>↑: <a href="${relation/to_pathh|None}">${relation/to_object/Titleh|None}</a></p>
           </div>
 
           <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
