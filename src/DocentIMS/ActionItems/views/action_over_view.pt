@@ -37,7 +37,15 @@
                                   ${val}
                                 </span>
                           
-                              <span tal:condition="python: field['row_field']=='actionno'">${python: obj.id.replace("action_items", "").replace("-", "")}</span>
+                              <span tal:condition="python: field['row_field']=='actionno'">
+                                <tal:condition tal:condition="python: obj.id !='action_items'" 
+                                  tal:define="ano python: obj.id.replace('action_items', '').replace('-', '')">
+                                  ${python: "{0:0=4d}".format(int(ano))}
+                                </tal:condition>
+                                 <tal:condition tal:condition="python: obj.id =='action_items'">
+                                  0000
+                                 </tal:condition> 
+                              </span>
                               <span tal:condition="python: field['row_field']=='daysleft'">${item/daysleft|None}</span>
                               <span tal:condition="python: field['row_field']=='urgency'">${item/urgency|None}</span>
                           
@@ -75,15 +83,15 @@
             <fieldset>
               <legend>Workflow</legend>
               <div>
-                <img src='${view/portal_url}/help_files/help.png' alt="help image workflow">
+                <img src='${view/portal_url}/help-files/action-item-help/action-item-wf' alt="help image workflow">
                 </div>
             </fieldset>
             <fieldset>
-              <legend>Help</legend>
-              <div tal:condition="context/help_files/actionitemhelp|None">
-                <h3 tal:content="context/help_files/actionitemhelp/Title|None"/>
-                <p tal:replace="structure context/help_files/actionitemhelp/Description|None"/> 
-                 <div tal:replace="structure context/help_files/actionitemhelp/text/output|None"/>
+              <legend>AI Help</legend>
+              <div tal:condition="context/help-files/action-item-help/action-item-help|None">
+                <h3 tal:content="context/help-files/action-item-help/action-item-help/Title|None"/>
+                <p tal:replace="structure context/help-files/action-item-help/action-item-help/Description|None"/> 
+                 <div tal:replace="structure context/help-files/action-item-help/action-item-help/text/output|None"/>
               </div>
             </fieldset>
         </div>

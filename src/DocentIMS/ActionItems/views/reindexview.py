@@ -21,7 +21,7 @@ class ReindexView(BrowserView):
         return self.reindex()
 
     def reindex(self):
-        my_brains = self.context.portal_catalog(portal_type=['action_items'])
+        my_brains = self.context.portal_catalog(portal_type=['action_items', 'sow_analysis'])
         for brain in my_brains:
             brain.getObject().reindexObject(idxs=["daysleft", "urgency"])
         

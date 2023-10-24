@@ -43,6 +43,101 @@ class SowOverView(BrowserView):
     def today(self):
         #import pdb; pdb.set_trace()
         return datetime.date.today()
+    
+    
+    def get_graphdata(self):
+        #colors = """'#FF0000',  'orange', '#123456'"""
+
+        items = self.batch()
+
+        priority1 = 0
+        priority2 = 0
+        priority3 = 0
+
+        #datavalues  = []
+        #datacolors = []
+        for item in items:
+            if item.portal_type == 'sow_analysis':
+
+                if item.priority:
+
+                    if item.priority == 3:
+                        priority3 += 1
+                    if item.priority == 2:
+                        priority2 += 1
+                    if item.priority == 1:
+                        priority1 += 1
+
+        datanames = ['Priority 1: ' +  str(priority1) + ' item(s)', 'Priority 2: ' +  str(priority2)  + ' item(s)', 'Priority 3: ' +  str(priority3)  + ' item(s)']
+        #datanames = ['Priority 1: '  , 'Priority 2: '   , 'Priority 3: '   ]
+
+        return  [datanames, [priority1, priority2, priority3]]
+
+
+    def get_piedata(self):
+        #colors = ['#FF0000',  'orange', '#123456']
+        items = items = self.batch()
+
+        priority1 = 0
+        priority2 = 0
+        priority3 = 0
+
+        for item in items:
+            if item.portal_type == 'sow_analysis':
+
+                if item.priority == 3:
+                    priority3 += 1
+                if item.priority == 2:
+                    priority2 += 1
+                if item.priority == 1:
+                    priority1 += 1
+
+
+        return [ priority1, priority2, priority3 ]
+
+
+    def get_urgencydata(self):
+        #colors = """'#FF0000',  'orange', '#123456'"""
+
+        items = self.batch()
+
+        red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
+        yellow = api.portal.get_registry_record('soon_yellow', interface=IDocentimsSettings)
+        green = api.portal.get_registry_record('future_green', interface=IDocentimsSettings)
+        
+        urgent = "Urgent < {days} workdays".format(days = red)
+        soon = "Soon < {days} workdays".format(days = yellow) 
+        future = "Future < {days} workdays".format(days = green) 
+        more = 'More than {days}'.format(days = green)  
+
+        urgency1 = 0
+        urgency2 = 0
+        urgency3 = 0
+        urgency4 = 0
+
+        #leftdays  = []
+        #datacolors = []
+        for item in items:
+            if item.portal_type == 'sow_analysis':
+                if item.urgency:
+                    if item.urgency == urgent:
+                        urgency1 += 1
+
+                    if item.urgency == soon:
+                        urgency2 += 1
+
+                    if item.urgency == future:
+                        urgency3 += 1
+
+                    if item.urgency == more:
+                        urgency4 += 1
+ 
+
+        #datanames = [urgent + ' item(s)', soon  + ' item(s)', future  + ' item(s)', more  + ' item(s)']
+        datanames = ["< {} days'".format(red), "< {} + days'".format(yellow), "< {}  days'".format(green), 'more']
+        
+        return  [datanames, [urgency1, urgency2, urgency3, urgency4]]
+
 
     
 

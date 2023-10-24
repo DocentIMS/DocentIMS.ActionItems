@@ -54,8 +54,122 @@
                     </tbody>
               </table>
             </fieldset>
-             
+            <fieldset>
+              <legend>Graphs</legend>
+              <h4 class="pa3">Priority</h4>
+              
+              <div class="flex flex-wrap">
+                <div id="div-bar"><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id="div-pie" ><!-- Plotly chart will be drawn inside this DIV --></div> 
+              </div>
+               
+            </fieldset>
+             <fieldset>
+              <legend>Urgency</legend>
+              <h4 class="pa3">Urgency</h4>
+                <div>
+                  <div id="urgency-bar" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Workflow</legend>
+              <div>
+                <img src='${view/portal_url}/help-files/scope-help/scope-wf' alt="help image workflow">
+                </div>
+            </fieldset>
+            <fieldset>
+              <legend>Scope Help</legend>
+              <div tal:condition="context/help-files/scope-help/scope-help|None">
+                <h3 tal:content="context/help-files/scope-help/scope-help/Title|None"/>
+                <p tal:replace="structure context/help-files/scope-help/scope-help/Description|None"/> 
+                 <div tal:replace="structure context/help-files/scope-help/scope-help/text/output|None"/>
+              </div>
+            </fieldset>
         </div>
+
+           <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
+            <script tal:define="graphdata python: view.get_graphdata()">
+              var data = [
+                  {
+                    x: ${python: graphdata[0]},
+                    y: ${python: graphdata[1]},
+                    marker:{
+                      color: ['#FF0000',  'orange', '#123456']
+                    },
+                    type: 'bar'
+                  }
+                ];
+                var layout = {
+                height: 400,
+                width: 400,
+                  yaxis: {
+                    tick0: 0,
+                    dtick: 1,
+                  },
+                };
+                Plotly.newPlot('div-bar', data, layout);
+            </script>
+
+            <script>
+              var data = [
+                  {
+                    labels: ['Priority 1', 'Priority 2', 'Priority 3' ],
+                    values: ${view/get_piedata|None},
+                    type: 'pie',
+                    marker:{
+                      colors: ['#FF0000',  'orange', '#123456'],
+                    },
+                  }
+                ];
+                var layout = {
+                  height: 400,
+                  width: 500
+                };
+
+                Plotly.newPlot('div-pie', data, layout);
+            </script>
+
+            <script tal:define="graphdata python: view.get_urgencydata()">
+              var data = [
+                  {
+                    x: ${python: graphdata[0]},
+                    y: ${python: graphdata[1]},
+                    marker:{
+                      color: ['#FF0000',  'orange', 'green', '#123456']
+                    },
+                    type: 'bar'
+                  }
+                ];
+                var layout = {
+                height: 500, 
+                  yaxis: {
+                    tick0: 0,
+                    dtick: 1,
+                  },
+                };
+                Plotly.newPlot('urgency-bar', data, layout);
+            </script>
+
+
+
+            <style>
+
+              h2.pa3 { margin-top: 3rem, padding-top: 3rem;}
+              .priority-1 span { color: red; padding: 1px 5px}
+              .priority-2 span { color: orange; padding: 1px 5px}
+              .priority-3 span  {color:  green; padding: 1px 5px}
+              .graph {border: 1px solid silver; max-width: 600px; padding: 15px; margin-bottom: 2rem}
+              .flex-wrap { flex-wrap: wrap; display: flex; xjustify-content: space-between; background: white}
+              div.outer-wrapper.flex-shrink-0 {
+                	background: whitesmoke;
+                }
+
+                h2.pa3 {
+                	margin-top:  2rem;
+                }
+
+            </style>
  
 
         </metal:content-core>

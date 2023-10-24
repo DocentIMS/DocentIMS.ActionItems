@@ -30,7 +30,8 @@
               <tbody>
                 <tr tal:repeat="item context/results|context/getFolderContents">
                   <tal:obj tal:define="obj item/getObject">
-                    <td>${item/actionno|None}</td>
+                    <td tal:conditon="item/actionno|None">${item/actionno}xxx</td>
+                    <td tal:conditon="not:item/actionno|None">0</td>
                     <td><a href="${item/getURL}">${item/Title}</a></td>
                     <td><span>${item/Creator/title|None}</span></td>
                     <td><span>${item/assigned_to/title|None}</span></td>

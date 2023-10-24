@@ -92,7 +92,7 @@ def _create_content(portal):
             action_items = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                id='action_items',
+                id='action-items',
                 title='Action Items',
                 layout='action-overview',
                 default_page='action_items_collection'
@@ -104,7 +104,7 @@ def _create_content(portal):
             action_items_collection = plone.api.content.create(
                 type='Collection',
                 container=action_items,
-                id='action_items_collection',
+                id='action-items-collection',
                 title='Action Items',
                 layout='action-overview'
 
@@ -167,7 +167,7 @@ def _create_content(portal):
             action_items_collection = plone.api.content.create(
                 type='Collection',
                 container=action_items,
-                id='sow_collection',
+                id='sow-collection',
                 title='Scope Analysis',
                 layout='scope-overview'
 
@@ -178,34 +178,113 @@ def _create_content(portal):
             items = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                id='help_files',
+                id='help-files',
                 title='Help Files',
                 exclude_from_nav=True,
             )
 
-            wf_name = u'help.png'
-            if not items.get(wf_name, False):
+            if not items.get('action-item-help', False):
+                action_folder = plone.api.content.create(
+                    type='Folder',
+                    container=items,
+                    id='action-item-help',
+                    title='Action Item Help',
+                    exclude_from_nav=True,
+                )
+
+
+            wf_name = u'Action Item WF'
+            if not action_folder.get(wf_name, False):
                 wf_image = plone.api.content.create(
                         type='Image',
-                        container=items,
-                        id=wf_name,
+                        container=action_folder,
+                        id='action-item-wf',
                         title=wf_name,
                         
                     )
                 wf_image.image = load_image()
 
-    
-
-
-            if not items.get('actionitemhelp', False):
+            
+            if not action_folder.get('action-item-help', False):
                 action_items = plone.api.content.create(
                     type='Document',
                     Description=u'Action Item Help',
-                    container=items,
-                    id='actionitemhelp',
+                    container=action_folder,
+                    id='action-item-help',
                     title='Action Item Help',
 
                 )
+
+
+            if not items.get('word-help', False):
+                word_folder = plone.api.content.create(
+                    type='Folder',
+                    container=items,
+                    id='word-help',
+                    title='Word Help',
+                    exclude_from_nav=True,
+                )
+
+
+                wf_name = u'Word WF'
+                if not word_folder.get(wf_name, False):
+                    wf_image = plone.api.content.create(
+                            type='Image',
+                            container=word_folder,
+                            id='word-wf',
+                            title=wf_name,
+                            
+                        )
+                    wf_image.image = load_image()
+
+                
+
+
+                if not word_folder.get('word-help', False):
+                    word = plone.api.content.create(
+                        type='Document',
+                        Description=u'Word Help',
+                        container=word_folder,
+                        id='word-help',
+                        title='Word Help',
+
+                    )
+
+            if not items.get('scope-help', False):
+                scope_folder = plone.api.content.create(
+                    type='Folder',
+                    container=items,
+                    id='scope-help',
+                    title='Scope Help',
+                    exclude_from_nav=True,
+                )
+
+
+            wf_name = u'Scope WF'
+            if not scope_folder.get(wf_name, False):
+                wf_image = plone.api.content.create(
+                        type='Image',
+                        container=scope_folder,
+                        id='scope-wf',
+                        title=wf_name,
+                        
+                    )
+                wf_image.image = load_image()
+
+            
+
+
+            if not scope_folder.get('scope-help', False):
+                scope = plone.api.content.create(
+                    type='Document',
+                    Description=u'scope Help',
+                    container=scope_folder,
+                    id='scope-help',
+                    title='Scope Help',
+
+                )
+
+            
 
 
  
@@ -220,5 +299,5 @@ def load_image():
     with open(filename, 'rb') as image_file:
         return NamedBlobImage(
             data=image_file.read(),
-            filename='blank.png'
+            filename='dummy.png'
         )

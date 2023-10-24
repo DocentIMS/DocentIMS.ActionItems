@@ -38,7 +38,7 @@ def actionIndexer(obj):
         action_item =  obj.id.replace('action_items', '').replace("-", '')
         action_item_no = int(float(action_item))
         return action_item_no
-    return None
+    return int(0)
 
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
