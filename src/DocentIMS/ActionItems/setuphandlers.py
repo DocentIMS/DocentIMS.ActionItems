@@ -175,7 +175,7 @@ def _create_content(portal):
             )
 
 
-        if not portal.get('help_files', False):
+        if not portal.get('help-files', False):
             items = plone.api.content.create(
                 type='Folder',
                 container=portal,
