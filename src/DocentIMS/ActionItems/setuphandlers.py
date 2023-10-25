@@ -101,52 +101,53 @@ def _create_content(portal):
 
             ## add collection inside here
 
-            action_items_collection = plone.api.content.create(
-                type='Collection',
-                container=action_items,
-                id='action-items-collection',
-                title='Action Items',
-                layout='action-overview'
+            if not action_items.get('action-items-collection', False):
+                action_items_collection = plone.api.content.create(
+                    type='Collection',
+                    container=action_items,
+                    id='action-items-collection',
+                    title='Action Items',
+                    layout='action-overview'
 
-            )
+                )
 
 
-            try:
-                df = pd.read_excel( fullpath )
-                print(df)
+            # try:
+            #     df = pd.read_excel( fullpath )
+            #     print(df)
 
-                my_dict = df.to_dict(orient='index')
+            #     my_dict = df.to_dict(orient='index')
 
-                for i in range(0, len(my_dict)):
-                    print(my_dict[i])
-                    title = my_dict[i].get('Title')
-                    myid = "action_items-{id}".format(id=my_dict[i].get('ID'))
-                    date = my_dict[i].get('Start')
-                    #import pdb; pdb.set_trace()
-                    date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
+            #     for i in range(0, len(my_dict)):
+            #         print(my_dict[i])
+            #         title = my_dict[i].get('Title')
+            #         myid = "action_items-{id}".format(id=my_dict[i].get('ID'))
+            #         date = my_dict[i].get('Start')
+            #         #import pdb; pdb.set_trace()
+            #         date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
 
-                    initial_due_date = my_dict[i].get('Finish')
-                    initial_due_date_time_obj =  datetime.datetime.strptime(str(initial_due_date), '%Y-%m-%d %H:%M:%S')
+            #         initial_due_date = my_dict[i].get('Finish')
+            #         initial_due_date_time_obj =  datetime.datetime.strptime(str(initial_due_date), '%Y-%m-%d %H:%M:%S')
 
-                    texte = my_dict[i].get('Predecessors')
-                    notes = my_dict[i].get('Notes')
-                    bodytext = txt1 = "{texte}<(br/> {notes}".format(texte = texte, notes = notes)
-                    # texte + notes
+            #         texte = my_dict[i].get('Predecessors')
+            #         notes = my_dict[i].get('Notes')
+            #         bodytext = txt1 = "{texte}<(br/> {notes}".format(texte = texte, notes = notes)
+            #         # texte + notes
 
-                    action_item = plone.api.content.create(
-                                type='action_items',
-                                id=myid,
-                                container=action_items,
-                                title=title,
-                                date=date_time_obj,
-                                initial_due_date=initial_due_date_time_obj.date(),
-                                priority = str((i%3) + 1)    
-                    )
+            #         action_item = plone.api.content.create(
+            #                     type='action_items',
+            #                     id=myid,
+            #                     container=action_items,
+            #                     title=title,
+            #                     date=date_time_obj,
+            #                     initial_due_date=initial_due_date_time_obj.date(),
+            #                     priority = str((i%3) + 1)    
+            #         )
 
-                    # count them ?
+            #         # count them ?
 
-            except FileNotFoundError:
-                pass
+            # except FileNotFoundError:
+            #     pass
 
 
 
