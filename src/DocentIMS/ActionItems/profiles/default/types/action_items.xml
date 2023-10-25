@@ -6,7 +6,7 @@
  <property name="icon_expr">string:action_items</property>
  <property name="factory">action_items</property>
  <property
-    name="add_view_expr">string:${portal_url}/action_items/++add++action_items</property>
+    name="add_view_expr">string:${portal_url}/action-items/++add++action_items</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
