@@ -152,7 +152,7 @@ def _create_content(portal):
 
 
         if not portal.get('scope-analysis', False):
-            action_items = plone.api.content.create(
+            scopeanalysis = plone.api.content.create(
                 type='Folder',
                 Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
                 container=portal,
@@ -165,9 +165,9 @@ def _create_content(portal):
 
             ## add collection inside here
 
-            action_items_collection = plone.api.content.create(
+            scopeoverview = plone.api.content.create(
                 type='Collection',
-                container=action_items,
+                container=scopeanalysis,
                 id='sow-collection',
                 title='Scope Analysis',
                 layout='scope-overview'
