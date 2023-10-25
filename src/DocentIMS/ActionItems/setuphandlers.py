@@ -88,14 +88,14 @@ def _create_content(portal):
         fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
 
 
-        if not portal.get('action_items', False):
+        if not portal.get('action-items', False):
             action_items = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='action-items',
                 title='Action Items',
                 layout='action-overview',
-                default_page='action_items_collection'
+                default_page='action-items-collection'
 
             )
 
