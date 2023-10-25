@@ -159,7 +159,7 @@ def _create_content(portal):
                 id='scope-analysis',
                 title='Scope Analysis',
                 layout='scope-overview',
-                default_page='sow_collection'
+                default_page='sow-collection'
 
             )
 
