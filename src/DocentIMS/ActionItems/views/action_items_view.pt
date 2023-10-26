@@ -120,7 +120,7 @@
           <p>These are the steps, if any, taken to date</p>
           <div tal:replace="structure context/actions_taken/output|None" />
           <!--p>&nbsp;</p-->
-          <!-- <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a> -->
+          <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
 
 
         </fieldset>
@@ -140,7 +140,7 @@
             <p>↑: <a href="${relation/to_path|None}">${relation/to_object/Title|None}</a></p>
           </div>
 
-          <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a>
+          <!-- <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a> -->
 
         </fieldset>
 
