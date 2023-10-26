@@ -9,7 +9,7 @@
         </a>
 
 
-        <a  tal:condition="view/kame_from"  href="${view/portal_url}/action_items/++add++action_items?related_from=${view/kame_from}" target="_blank" 
+        <a  tal:condition="view/kame_from"  href="${view/portal_url}/action-items/++add++action_items?related_from=${view/kame_from}" target="_blank" 
             class="button standalone btn btn-outline-primary">
             <span tal:content="view/data/place_str"></span> <span>(related)</span>
         </a>
