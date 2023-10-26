@@ -131,7 +131,7 @@ class ActionItemsView(BrowserView):
         member = api.user.get(userid=self.context.Creator())
         company = ''
         company_id =  member.getProperty('company')
-        if company_id:
+        if company_id != None:
             company = api.content.get(UID=company_id).Title() or ''
         return  {'id': member.getProperty('id'),
                   'last_name': member.getProperty('last_name'),
