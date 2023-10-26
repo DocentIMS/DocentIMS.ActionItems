@@ -169,7 +169,7 @@ def _create_content(portal):
                 container=scopeanalysis,
                 id='sow-collection',
                 title='Scope Analysis',
-                layout='scope-overview'
+                layout='sow-overview'
 
             )
 
