@@ -221,6 +221,7 @@
 
 
 
+
     .calendarsheet {
         max-width: 120px;
         min-width: 90px;
@@ -281,6 +282,14 @@
     }
 
     .larger { font-size: 120%}
+
+
+    @media (min-width:100px){
+      div.soon_yellow.colorborder.calendarsheet {
+        position: relative;
+        top:  -2.5rem;;
+      }
+    }
 
 
 
