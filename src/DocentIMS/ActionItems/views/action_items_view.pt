@@ -25,7 +25,7 @@
                 <p tal:condition="context/assigned_to|None">
                   <b>Action Item Owner:</b>
                   <span tal:define="owner view/get_owner|None" >
-                    ${owner/last_name|None}, ${owner/first_name|None} –  ${owner/company|None}
+                    ${owner/last_name|None}, ${owner/first_name|None} <tal:condition tal:condition="owner/company|None">–  ${owner/company|None}</tal:condition>
                   </span>
                 </p>
 
