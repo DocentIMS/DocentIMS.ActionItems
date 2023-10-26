@@ -132,7 +132,11 @@ class ActionItemsView(BrowserView):
         company = ''
         company_id =  member.getProperty('company')
         if company_id != None:
-            company = api.content.get(UID=company_id).Title() or ''
+            #import pdb; pdb.set_trace();
+            company_obj = api.content.get(UID=company_id)
+            NoneType = type(None)
+            if not isinstance(company_obj, NoneType):
+                company = company_obj.Title()
         return  {'id': member.getProperty('id'),
                   'last_name': member.getProperty('last_name'),
                   'first_name': member.getProperty('first_name'),
