@@ -192,7 +192,7 @@
       </svg>
       </span>
       <span tal:condition="view/get_duedate">Export ICal</span><a>
-    <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}"
+    <a href="${view/portal_url}/action-items/++add++action_items?related_from=${context/UID}"
       target="_blank" class="button standalone btn btn-outline-primary">
       <span class="black">Δ+</span>  Create Related Action Item</a>
 
