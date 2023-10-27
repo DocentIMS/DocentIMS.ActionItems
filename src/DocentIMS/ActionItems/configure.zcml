@@ -23,6 +23,7 @@
       directory="profiles/default"
       description="Installs the DocentIMS.ActionItems add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
+      pre_handler=".setuphandlers.pre_install"
       post_handler=".setuphandlers.post_install"
       />
 

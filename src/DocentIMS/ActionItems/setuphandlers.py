@@ -66,10 +66,16 @@ def post_install(context):
 
 
 
+def pre_import(context):
+    """Pre install script"""
+    # Do something before the installation of this package.
+    portal = plone.api.portal.get()
+    _create_content(portal)
+
+
 def post_import(context):
     """Post install script"""
     # Do something at the end of the installation of this package.
-
     
     portal = plone.api.portal.get()
     
@@ -78,9 +84,7 @@ def post_import(context):
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  [{'row_field': 'id', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
     
-    # Create Folder to put everything in
-    _create_content(portal)
-
+    
 
 def _create_content(portal):
         
@@ -111,43 +115,41 @@ def _create_content(portal):
 
                 )
 
+            # This is for importing dummy content, will require action items to be present (installed)
+            # Dont remove, keep the code in case we need to install dummy content
+            
+            # try:
+            #     df = pd.read_excel( fullpath )
+            #     print(df)
 
-            try:
-                df = pd.read_excel( fullpath )
-                print(df)
+            #     my_dict = df.to_dict(orient='index')
 
-                my_dict = df.to_dict(orient='index')
+            #     for i in range(0, len(my_dict)):
+            #         print(my_dict[i])
+            #         title = my_dict[i].get('Title')
+            #         myid = "action_items-{id}".format(id=my_dict[i].get('ID'))
+            #         date = my_dict[i].get('Start')
+            #         date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
 
-                for i in range(0, len(my_dict)):
-                    print(my_dict[i])
-                    title = my_dict[i].get('Title')
-                    myid = "action_items-{id}".format(id=my_dict[i].get('ID'))
-                    date = my_dict[i].get('Start')
-                    #import pdb; pdb.set_trace()
-                    date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
+            #         initial_due_date = my_dict[i].get('Finish')
+            #         initial_due_date_time_obj =  datetime.datetime.strptime(str(initial_due_date), '%Y-%m-%d %H:%M:%S')
 
-                    initial_due_date = my_dict[i].get('Finish')
-                    initial_due_date_time_obj =  datetime.datetime.strptime(str(initial_due_date), '%Y-%m-%d %H:%M:%S')
+            #         texte = my_dict[i].get('Predecessors')
+            #         notes = my_dict[i].get('Notes')
+            #         bodytext = txt1 = "{texte}<(br/> {notes}".format(texte = texte, notes = notes)
+            #         action_item = plone.api.content.create(
+            #                     type='action_items',
+            #                     id=myid,
+            #                     container=action_items,
+            #                     title=title,
+            #                     date=date_time_obj,
+            #                     initial_due_date=initial_due_date_time_obj.date(),
+            #                     priority = str((i%3) + 1)    
+            #         )
 
-                    texte = my_dict[i].get('Predecessors')
-                    notes = my_dict[i].get('Notes')
-                    bodytext = txt1 = "{texte}<(br/> {notes}".format(texte = texte, notes = notes)
-                    # texte + notes
-
-                    action_item = plone.api.content.create(
-                                type='action_items',
-                                id=myid,
-                                container=action_items,
-                                title=title,
-                                date=date_time_obj,
-                                initial_due_date=initial_due_date_time_obj.date(),
-                                priority = str((i%3) + 1)    
-                    )
-
-                    # count them ?
-
-            except FileNotFoundError:
-                pass
+                    
+            # except FileNotFoundError:
+            #     pass
 
 
 
