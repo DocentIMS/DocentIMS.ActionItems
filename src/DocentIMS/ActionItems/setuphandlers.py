@@ -66,7 +66,7 @@ def post_install(context):
 
 
 
-def pre_import(context):
+def pre_install(context):
     """Pre install script"""
     # Do something before the installation of this package.
     portal = plone.api.portal.get()
