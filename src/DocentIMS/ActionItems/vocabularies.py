@@ -132,7 +132,7 @@ def SowFieldsVocabulary(context):
             SimpleTerm(value='id', token='id', title=_(u'id')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='priority', token='priority', title=_(u'priority')),
-            SimpleTerm(value='analysis_due_date ', token='analysis_due_date ', title=_(u'analysis_due_date ')),
+            SimpleTerm(value='initial_due_date ', token='initial_due_date ', title=_(u'inital_due_date ')),
             SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'revised_due_date')),
             SimpleTerm(value='section_number', token='section_number', title=_(u'section_number')),
             SimpleTerm(value='details', token='details', title=_(u'details')),
