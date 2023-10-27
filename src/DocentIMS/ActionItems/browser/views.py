@@ -95,7 +95,7 @@ class ActionItemsEditForm(DefaultEditForm):
             if self.portal_type == 'action_items':
                 for group in self.groups:
                     if group.__name__ == 'all_dates':
-                        group.widgets['initial_due_date'].mode = interfaces.DISPLAY_MODE
+                        group.widgets['initial_due_date'].mode = interfaces.VIEW_MODE
 
 
             if self.portal_type == 'sow_analysis':
