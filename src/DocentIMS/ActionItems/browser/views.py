@@ -101,7 +101,7 @@ class ActionItemsEditForm(DefaultEditForm):
             if self.portal_type == 'sow_analysis':
                 for group in self.groups:
                     if group.__name__ == 'date':
-                        group.widgets['analysis_due_date'].mode = interfaces.HIDDEN_MODE
+                        group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                         #group.mode = 'omitted'
                         group.label = None
