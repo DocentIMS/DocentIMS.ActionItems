@@ -134,15 +134,12 @@ def SowFieldsVocabulary(context):
             SimpleTerm(value='priority', token='priority', title=_(u'priority')),
             SimpleTerm(value='analysis_due_date ', token='analysis_due_date ', title=_(u'analysis_due_date ')),
             SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'revised_due_date')),
-            SimpleTerm(value='analysis_notes', token='analysis_notes', title=_(u'analysis_notes')),
             SimpleTerm(value='section_number', token='section_number', title=_(u'section_number')),
             SimpleTerm(value='details', token='details', title=_(u'details')),
             SimpleTerm(value='estimated_qc_time', token='estimated_qc_time', title=_(u'estimated_qc_time')),
             SimpleTerm(value='explanation', token='explanation', title=_(u'explanation')),
             SimpleTerm(value='internal_qc_required_', token='internal_qc_required_', title=_(u'internal_qc_required_')),
             SimpleTerm(value='is_the_analyis_complete', token='is_the_analyis_complete', title=_(u'is_the_analyis_complete')),
-            SimpleTerm(value='notes_to_qc', token='notes_to_qc', title=_(u'notes_to_qc')),
-            SimpleTerm(value='notes', token='notes', title=_(u'notes')),
         ]
     )
 
