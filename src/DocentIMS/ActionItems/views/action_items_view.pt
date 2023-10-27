@@ -95,7 +95,7 @@
 
 
             <fieldset>
-              <legend>↹ PM Notes</legend>
+              <legend>📌 PM Notes</legend>
               <p class="larger">Project Manager's Notes to Person Analyzing This Section</p>
               <hr class="hr" />
              <div tal:replace="structure context/notes/output|None" />
