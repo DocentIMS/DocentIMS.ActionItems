@@ -16,13 +16,12 @@
 
           <div class="pat-autotoc autotabs"
             data-pat-autotoc="section:fieldset;levels:legend;">
-            <fieldset>
-            <h1>Example heading <span class="badge badge-secondary">New</span></h1>
+            <fieldset> 
               <legend>ⓘ Full Details</legend> 
               <p class="larger">Full Details of the Action Item</p>
               <div tal:replace="structure  context/full_explanation/output|None" />
               <hr class="hr" />
-              <div class="alert alert-warning">
+              <div class="alert alert-info">
                 <p tal:condition="context/assigned_to|None">
                   <b>Action Item Owner:</b>
                   <span tal:define="owner view/get_owner|None" >
