@@ -92,6 +92,20 @@
             </fieldset>
 
 
+
+
+            <fieldset>
+              <legend>↹ PM Notes</legend>
+              <p class="larger">Project Manager's Notes to Person Analyzing This Section</p>
+              <hr class="hr" />
+             <div tal:replace="structure context/notes/output|None" />
+
+             </fieldset>
+
+
+ 
+
+
             <fieldset>
               <legend>↹ Connections</legend>
               <p class="larger">Connections – How is this Action Item connected to the Scope?</p>
