@@ -211,8 +211,8 @@
       <span class="black">Δ+</span>  Create Related Action Item</a>
 
     <a href="${context/absolute_url}/edit"
-       class="button standalone btn btn-outline-primary">
-      <span class="black">✎</span>  Edit</a>
+       class="button standalone btn btn-success">
+      <span class="black">✎</span>  Edit Item </a>
 
  
 
