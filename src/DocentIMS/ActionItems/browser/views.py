@@ -80,6 +80,13 @@ class ActionItemsEditForm(DefaultEditForm):
 
     def updateFields(self):
         super(ActionItemsEditForm, self).updateFields()
+        #import pdb; pdb.set_trace()
+        # for group in self.groups:
+        #     if group.__name__ == 'all_dates':
+        #         #import pdb; pdb.set_trace()
+        
+                
+                    
 
     def update(self):
         super(ActionItemsEditForm, self).update()
@@ -91,17 +98,23 @@ class ActionItemsEditForm(DefaultEditForm):
                     group.label = None
                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
-            
-            if self.portal_type == 'action_items':
-                for group in self.groups:
-                    if group.__name__ == 'all_dates':
-                        group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
+
+                if group.__name__ == 'all_dates':
+                    import pdb; pdb.set_trace()
+                    group.widgets['initial_due_date'].disabled = 'disabled'
+                    
+                    #group.widgets['initial_due_date'].disabled=True
+                    #group.widgets['initial_due_date'].disabled=1
+                    
+                    #group.widgets['initial_due_date'].mode = interfaces.DISPLAY_MODE
+                    #group.widgets['initial_due_date'].missing_value=group.widgets['initial_due_date'].value
+                    
+                 
 
 
             if self.portal_type == 'sow_analysis':
                 for group in self.groups:
-                    if group.__name__ == 'date':
-                        group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
+
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                         #group.mode = 'omitted'
                         group.label = None
