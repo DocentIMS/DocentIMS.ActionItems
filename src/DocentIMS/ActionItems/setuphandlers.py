@@ -83,13 +83,13 @@ def post_import(context):
     #TODO: Maybe make a check 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  [{'row_field': 'id', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
-    
+    _import_content(portal)
     
 
 def _create_content(portal):
         
-        folderpath = os.path.dirname(__file__)
-        fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
+        #folderpath = os.path.dirname(__file__)
+        #fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
 
 
         if not portal.get('action-items', False):
@@ -303,3 +303,53 @@ def load_image():
             data=image_file.read(),
             filename='dummy.png'
         )
+
+
+
+
+
+def _import_content(portal):
+
+    folderpath = os.path.dirname(__file__)
+    fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
+    action_items = plone.api.content.get(path='action-items')
+
+    # This is for importing dummy content, will require action items to be present (installed)
+    # Dont remove, keep the code in case we need to install dummy content
+    
+    try:
+        df = pd.read_excel( fullpath )
+        print(df)
+
+        my_dict = df.to_dict(orient='index')
+
+        for i in range(0, len(my_dict)):
+            print(my_dict[i])
+            title = my_dict[i].get('Title')
+            myid = "action_items-{id}".format(id=my_dict[i].get('ID'))
+            date = my_dict[i].get('Start')
+            date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
+
+            initial_due_date = my_dict[i].get('Finish')
+            initial_due_date_time_obj =  datetime.datetime.strptime(str(initial_due_date), '%Y-%m-%d %H:%M:%S')
+
+            texte = my_dict[i].get('Predecessors')
+            notes = my_dict[i].get('Notes')
+            bodytext = txt1 = "{texte}<(br/> {notes}".format(texte = texte, notes = notes)
+            action_item = plone.api.content.create(
+                        type='action_items',
+                        id=myid,
+                        container=action_items,
+                        title=title,
+                        date=date_time_obj,
+                        initial_due_date=initial_due_date_time_obj.date(),
+                        priority = str((i%3) + 1)    
+            )
+
+            
+    except FileNotFoundError:
+        pass
+
+
+
+    

@@ -80,11 +80,9 @@
             </fieldset>
             <fieldset>
               <legend>Scope Help</legend>
-              <div tal:condition="context/help-files/scope-help/scope-help|None">
-                <h3 tal:content="context/help-files/scope-help/scope-help/Title|None"/>
-                <p tal:replace="structure context/help-files/scope-help/scope-help/Description|None"/> 
-                 <div tal:replace="structure context/help-files/scope-help/scope-help/text/output|None"/>
-              </div>
+              <h3>${context/help-files/scope-help/scope-help/Title|None}</h3>
+              <p> ${context/help-files/scope-help/scope-help/Description|None}</p> 
+              <div tal:replace="structure context/help-files/scope-help/scope-help/text/output|None"/>
             </fieldset>
         </div>
 
