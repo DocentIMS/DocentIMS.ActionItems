@@ -1,4 +1,5 @@
 <span tal:content="structure widget/readonly_value"></span>
+<h1>ksas</h1>
 <input type="hidden"
        tal:attributes="name widget/for"
        tal:content="structure widget/value"

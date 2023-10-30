@@ -100,8 +100,10 @@ class ActionItemsEditForm(DefaultEditForm):
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
 
                 if group.__name__ == 'all_dates':
-                    import pdb; pdb.set_trace()
-                    group.widgets['initial_due_date'].disabled = 'disabled'
+                    #import pdb; pdb.set_trace()
+                    group.widgets['initial_due_date'].template="disabled_input.pt"
+                    #group.widgets['initial_due_date'].disabled = 'disabled'
+                    #group.widgets['initial_due_date'].__setattr__('disabled', 'disabled')
                     
                     #group.widgets['initial_due_date'].disabled=True
                     #group.widgets['initial_due_date'].disabled=1

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+    <script type="text/javascript" src="./plugins/index.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="editor" style="margin: auto; width: 60%">
+        <h3>Tinymce Plugin</h3>
+        <textarea id="tinymce" style="width: 100%"> </textarea>
+      </div>
+
+      <script type="text/javascript">
+        tinymce.init({
+          selector: "#tinymce",
+          mode: "exact",
+          elements: "tinymce",
+          plugins: "link link_plugin code",
+          toolbar: [
+            "undo redo | styleselect | bold italic underline | image alignleft aligncenter alignright | visualblocks | code | link_btn",
+          ],
+          extended_valid_elements: "p,span[*],delete[*],insert[*]",
+          content_css: "/demo.css",
+          content_style: "p { margin: 0;}",
+          height: "400",
+          menubar: "view",
+          visualblocks_default_state: true,
+          setup: function (editor) {},
+        });
+      </script>
+    </div>
+  </body>
+</html>

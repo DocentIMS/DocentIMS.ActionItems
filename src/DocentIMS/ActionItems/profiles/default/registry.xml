@@ -263,6 +263,24 @@
       <value key="depends">plone</value>
     </records>
 
+
+
+    <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema"
+           prefix="plone">
+    <value key="plugins" purge="False">
+      <element>template</element>
+    </value>
+    <value key="custom_plugins" purge="False">
+     <element>template|++plone++DocentIMS.ActionItems/tiny_mce/plugins/index.js</element>
+   
+    </value>
+    <value key="templates">
+        [
+            {"title": "Something", "description": "", "url": "++plone++DocentIMS.ActionItems/tiny_mce/index.html"}
+        ]
+    </value>
+  </records>
+
     
 
 </registry>
