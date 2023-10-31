@@ -100,6 +100,24 @@ def PriorityVocabulary(context):
         )
 directlyProvides(PriorityVocabulary, IVocabularyFactory)
 
+
+def QPVocabulary(context):
+
+    return SimpleVocabulary(
+        [ 
+            SimpleTerm(value='OS',  token='OS',  title=_(u'OS')),
+            SimpleTerm(value='DD',  token='DD',  title=_(u'DD')),
+            SimpleTerm(value='DQC', token='DQC', title=_(u'DQC')),
+            SimpleTerm(value='QA',  token='QA',  title=_(u'QA')),
+            SimpleTerm(value='N/A', token='N/A', title=_(u'N/A')),
+            SimpleTerm(value='VC',  token='VC',  title=_(u'VC')),
+        ]
+
+        )
+directlyProvides(QPVocabulary, IVocabularyFactory)
+
+
+
 def AiFieldsVocabulary(context):
     return SimpleVocabulary(
         [
@@ -144,3 +162,8 @@ def SowFieldsVocabulary(context):
     )
 
 directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
+
+
+
+
+

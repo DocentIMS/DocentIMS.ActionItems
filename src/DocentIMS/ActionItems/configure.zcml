@@ -96,5 +96,10 @@
   	  component=".vocabularies.SowFieldsVocabulary"
       name="DocentIMS.ActionItems.SowFieldsVocabulary" />
 
+  <utility
+  	  component=".vocabularies.QPVocabulary"
+      name="DocentIMS.ActionItems.QPVocabulary" />
+      
+
 
 </configure>
