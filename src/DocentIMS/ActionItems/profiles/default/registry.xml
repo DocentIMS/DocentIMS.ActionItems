@@ -57,7 +57,7 @@
       </record>
 
       <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns"
-              purge="False">
+              purge="False"
               interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
               field="scope_table_columns">
         <field type="plone.registry.field.List">
@@ -71,7 +71,7 @@
       </record>
 
       <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
-          purge="False">
+          purge="False"
           <value key="project_title"></value>
           <value key="project_description"></value>
           <value key="project_short_name"></value>
