@@ -83,17 +83,6 @@
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Explanation&lt;/title&gt;
         &lt;/field&gt;
-        &lt;field name=&quot;create_action_item&quot; type=&quot;zope.schema.TextLine&quot;&gt;
-          &lt;description&gt;This will be button to create an action item&lt;/description&gt;
-          &lt;required&gt;False&lt;/required&gt;
-          &lt;title&gt;Create action item&lt;/title&gt;
-        &lt;/field&gt;
-        &lt;field name=&quot;action_items_related_will_be_listed_here&quot; type=&quot;zope.schema.TextLine&quot;&gt;
-          &lt;default&gt;There will be list of action items created based on analysis&lt;/default&gt;
-          &lt;description&gt;List of action items from the analysis&lt;/description&gt;
-          &lt;required&gt;False&lt;/required&gt;
-          &lt;title&gt;Action items related will be listed here&lt;/title&gt;
-        &lt;/field&gt;
       &lt;/fieldset&gt;
       &lt;fieldset name=&quot;qc_requirements&quot; label=&quot;QC Requirements&quot; description=&quot;Is QC required for this section?  If so, give details.&quot;&gt;
         &lt;field name=&quot;internal_qc_required_&quot; type=&quot;zope.schema.Bool&quot;&gt;
