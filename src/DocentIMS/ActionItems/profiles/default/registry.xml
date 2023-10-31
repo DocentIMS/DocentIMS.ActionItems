@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <registry
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="DocentIMS.ActionItems">
+    i18n:domain="DocentIMS.ActionItems"
+    purge="False">
 
 
      <record name="plone.icon.contenttype/sow_analysis">
@@ -42,6 +43,7 @@
       </record>
 
       <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns"
+              purge="False">
               interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
               field="table_columns">
         <field type="plone.registry.field.List">
@@ -55,6 +57,7 @@
       </record>
 
       <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns"
+              purge="False">
               interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
               field="scope_table_columns">
         <field type="plone.registry.field.List">
@@ -67,7 +70,8 @@
             </value>
       </record>
 
-      <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings">
+      <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
+          purge="False">
           <value key="project_title"></value>
           <value key="project_description"></value>
           <value key="project_short_name"></value>
