@@ -43,7 +43,7 @@
       </record>
 
       <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns"
-              purge="False">
+              purge="False"
               interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
               field="table_columns">
         <field type="plone.registry.field.List">
