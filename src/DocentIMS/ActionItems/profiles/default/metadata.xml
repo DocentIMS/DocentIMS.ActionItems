@@ -7,6 +7,7 @@
     <dependency>profile-medialog.controlpanel:default</dependency>
     <dependency>profile-collective.z3cform.datagridfield:default</dependency>
     <dependency>collective.collectionfilter.portlets:default</dependency>
+    <dependency>collective.z3cform.colorpicker:default</dependency>
     <dependency>plone.restapi:default</dependency> 
   </dependencies>
 </metadata>

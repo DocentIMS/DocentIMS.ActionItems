@@ -64,6 +64,7 @@ setup(
         'collective.z3cform.datagridfield',
         'collective.collectionfilter',
         'holidays',
+        'collective.z3cform.colorpicker',
         'numpy',
         'pandas',
         'openpyxl'

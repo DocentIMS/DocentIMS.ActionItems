@@ -73,19 +73,13 @@
           <value key="project_short_name"></value>
           <value key="project_contract_number"></value>
           <value key="project_document_naming_convention"></value>
-
           <!--value key="company_main_phone_number"></value-->
-
           <value key="vokabularies"></value>
-         <value key="companies"></value>
-
+          <value key="companies"></value>
           <value key="urgent_red">7</value>
           <value key="future_green">28</value>
           <value key="soon_yellow">14</value>
-
-
-
-
+          <value key="color1"></value>
      </records>
 
      <record name="plone.app.querystring.field.assigned_to.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">

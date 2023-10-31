@@ -13,6 +13,10 @@ from plone.app.textfield import RichText
 
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone.app.z3cform.widget import SelectFieldWidget
+from z3c.form import form, field
+from collective.z3cform.colorpicker import Color
+
+
 
 #from z3c.form import validator
 
@@ -84,6 +88,14 @@ def stateConstraint(value):
 
 class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
+
+# class IColorForm(model.Schema):
+#     color = Color(
+#         title=u"Color",
+#         description=u"",
+#         required=False,
+#         default="#ff0000"
+#     )
 
 class IVocabulari(model.Schema):
     vocabulary_entry = schema.TextLine(
@@ -165,6 +177,8 @@ class ICompany(model.Schema):
         title=_(u"label_company_state", default=u"State"),
         constraint=stateConstraint,
         )
+    
+
 
 #TO DO, maybe use a choice field instead ?
 
@@ -246,7 +260,8 @@ class IDocentimsSettings(model.Schema):
             'project_description',
             # 'project_companies',
             'project_contract_number',
-            'project_document_naming_convention'
+            'project_document_naming_convention',
+            'color1'
             ],
         )
 
@@ -487,5 +502,20 @@ class IDocentimsSettings(model.Schema):
     #        default=u"Table Column fields"),
     #        value_type=schema.Choice(vocabulary=u"DocentIMS.ActionItems.AiFieldsVocabulary"),
     #)
+
+    # color1 = schema.TextLine(
+    #     title=u"Color",
+    #     description=u"Choose Color",
+    #     required=False,
+    #     default="#ff0000"
+    # )
+
+    color1 = Color(
+        title=u"Color",
+        description=u"Choose Color 1",
+        # max_length=10,
+        required=False,
+        default="#ff0000"
+    )
 
 alsoProvides(IDocentimsSettings, IMedialogControlpanelSettingsProvider)
