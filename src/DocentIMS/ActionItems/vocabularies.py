@@ -113,7 +113,8 @@ def QPVocabulary(context):
             SimpleTerm(value='VC',  token='VC',  title=_(u'VC')),
         ]
 
-        )
+    )
+
 directlyProvides(QPVocabulary, IVocabularyFactory)
 
 
