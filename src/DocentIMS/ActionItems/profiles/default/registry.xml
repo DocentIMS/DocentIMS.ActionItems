@@ -71,7 +71,7 @@
       </record>
 
       <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
-          purge="False"
+          purge="False">
           <value key="project_title"></value>
           <value key="project_description"></value>
           <value key="project_short_name"></value>
