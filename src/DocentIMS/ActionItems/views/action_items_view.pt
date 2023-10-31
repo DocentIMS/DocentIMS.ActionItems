@@ -214,7 +214,7 @@
 
     <a href="${context/absolute_url}/edit"
        class="button standalone btn btn-success">
-      <span class="black">✎</span>  Edit Item </a>
+      <span>✎</span>  Edit Item </a>
 
  
 

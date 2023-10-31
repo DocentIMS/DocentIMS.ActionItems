@@ -171,10 +171,13 @@
       target="_blank" class="button standalone btn btn-outline-primary">
       <span class="black">Δ+</span>  Create Related Action Item</a>
 
+    <a href="${context/absolute_url}/edit"
+       class="button standalone btn btn-success">
+      <span>✎</span>  Edit Scope </a>
+
     </p>
 
-
-    <style>
+    <style> 
       h1.priority-1 {color: #F24C3D}
       h1.priority-3 {color: #22A699}
       h1.priority-2 {color: #F2BE22}
