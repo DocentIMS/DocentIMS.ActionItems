@@ -119,7 +119,7 @@
           &lt;title&gt;Quality Procedure&lt;/title&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
-      &lt;fieldset name=&quot;analysis_notes&quot; label=&quot;Analysis Notes&quot; description=&quot;Person analyzing this Scope section add any notes regarding your analysis.&quot;&gt;
+      &lt;fieldset name=&quot;analysis_notes&quot; label=&quot;Close out&quot; description=&quot;Person analyzing this Scope section add any notes regarding your analysis.&quot;&gt;
         &lt;field name=&quot;is_the_analyis_complete&quot; type=&quot;zope.schema.Bool&quot;&gt;
           &lt;description/&gt;
           &lt;required&gt;False&lt;/required&gt;

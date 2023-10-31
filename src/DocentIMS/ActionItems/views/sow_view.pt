@@ -138,7 +138,7 @@
 
 
         <fieldset>
-          <legend>Analysis Notes</legend>
+          <legend>Close Out</legend>
           <p class="larger">Person analyzing this Scope section add any notes regarding your analysis.</p>
           <hr class="hr" />
           <p><b>Internal QC_required</b>: <span tal:condition="context/internal_qc_required_">Yes</span> <span tal:condition="not: context/internal_qc_required_">No</span></p>
