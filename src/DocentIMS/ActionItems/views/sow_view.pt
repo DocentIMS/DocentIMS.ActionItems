@@ -9,7 +9,9 @@
       <metal:block define-macro="content">
 
         <h1 class="priority-${context/priority|None}">${context/Title}</h1>
-        <p class="lead"> ${view/section_number|None}</p>
+        <p class="lead"> ${context/Description|None}</p>
+
+        <p><b>Section no</b>: ${context/section_number|None}</p>
 
         <div class="white-background">
           <!-- first tab -->
@@ -92,32 +94,57 @@
             </fieldset>
 
 
-            <fieldset>
+        <fieldset>
               <legend>↹ PM Notes</legend>
-              <p class="larger">Some text here?</p>
+              <p class="larger">Notes from the Project Manager to person doing the analysis</p>
               <hr class="hr" />
               <div tal:replace="structure  context/notes/output|None" /> 
+        </fieldset>
 
-            <p><b class="label">Related Scope:</b>
-              <span tal:condition="not: context/related_sow_section|None">None assigned</span>
-              <tal:condition tal:condition="context/related_sow_section|None"> <a tal:define="sow view/get_sow|None" href="${sow/absolute_url|None}">${sow/Title|None}</a></tal:condition>
-               </p>
-            <tal:condition tal:condition="context/related_sow_section|None">
-              <div tal:condition="view/get_sow_text|None" tal:replace="structure view/get_sow_text|None"/>
-            </tal:condition>
+
+
+        <fieldset>
+              <legend>Action Items</legend>
+              <p class="larger">These are the action items generated from the analysis of this Statement of Work.</p>
+              <hr class="hr" />
+              <div tal:replace="structure  context/explanation/output|None" /> 
+
+            <p><b class="label">Related Action Items:</b>
+            <ul tal:condition="view/target_relations|None"> 
+                <li tal:repeat="rela view/target_relations">
+                  <a href="${rela/to_path}">${rela/from_object/title}</a>
+                </li> 
+            </ul>
+        </fieldset>
+
+        <fieldset>
+              <legend>QC Requirements</legend>
+              <p class="larger">These are the action items generated from the analysis of this Statement of Work.</p>
+              <hr class="hr" />
+              <p><b>Internal QC_required</b>: <span tal:condition="context/internal_qc_required_">Yes</span> <span tal:condition="not: context/internal_qc_required_">No</span></p>
+              <p><b>Estimated QC Time</b>: ${context/estimated_qc_time}</p>
+              <p tal:condition="context/internal_qc_required_"><b>Notes to QC:</b></p>
+              <div tal:replace="structure  context/notes_to_qc/output|None" /> 
 
         </fieldset>
 
         <fieldset>
-          <legend>⛏ Actions taken</legend>
-          <p class="larger">Summary of Actions to Date</p>
+              <legend>Deliverables</legend>
+              <p><b>Responsible Parties</b>: <span>${context/responsible_parties}</span></p>
+              <p><b>Quality Procedure</b>: ${context/quality_procedure}</p> 
+
+        </fieldset>
+        
+
+
+        <fieldset>
+          <legend>Analysis Notes</legend>
+          <p class="larger">Person analyzing this Scope section add any notes regarding your analysis.</p>
           <hr class="hr" />
-          <p>These are the steps, if any, taken to date</p>
-          <div tal:replace="structure context/actions_taken/output|None" />
-          <!--p>&nbsp;</p-->
-          <!-- <a href="${view/portal_url}/action-items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a> -->
-
-
+          <p><b>Internal QC_required</b>: <span tal:condition="context/internal_qc_required_">Yes</span> <span tal:condition="not: context/internal_qc_required_">No</span></p>
+          <p tal:condition="context/internal_qc_required_"><b>Analysis Notes:</b></p>
+          
+           <div tal:replace="structure  context/analysis_notes/output|None" /> 
         </fieldset>
 
          
