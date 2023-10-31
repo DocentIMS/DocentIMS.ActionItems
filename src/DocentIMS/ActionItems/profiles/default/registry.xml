@@ -275,14 +275,13 @@
       <element>template</element>
     </value>
     <value key="custom_plugins" purge="False">
-     <element>template|++plone++DocentIMS.ActionItems/tiny_mce/plugins/index.js</element>
-   
+     <element>link_plugin|++plone++DocentIMS.ActionItems/tiny_mce/plugins/index.js</element>
     </value>
-    <value key="templates">
-        [
-            {"title": "Something", "description": "", "url": "++plone++DocentIMS.ActionItems/tiny_mce/index.html"}
-        ]
+    
+    <value key="custom_buttons" purge="False">
+      <element>link_btn</element>
     </value>
+  
   </records>
 
     

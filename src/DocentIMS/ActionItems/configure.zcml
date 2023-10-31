@@ -98,7 +98,6 @@
 
   <utility
   	  component=".vocabularies.QPVocabulary"
-      name="DocentIMS.ActionItems.QPVocabulary" />
-      
+      name="DocentIMS.ActionItems.QPVocabulary" />      
 
 </configure>
