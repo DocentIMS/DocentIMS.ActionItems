@@ -1,23 +1,19 @@
 
 
-from zope.publisher.browser import BrowserView
+#from zope.publisher.browser import BrowserView
 from plone.dexterity.browser.add import DefaultAddView
 from plone.dexterity.browser.add import DefaultAddForm
 from plone.dexterity.browser.edit import DefaultEditView
 from plone.dexterity.browser.edit import DefaultEditForm
-from plone.dexterity.browser import edit
-from plone.uuid.interfaces import IUUID
+
 from zope.intid.interfaces import IIntIds
-from Products.CMFCore.utils import getToolByName
 from z3c.relationfield import RelationValue
 from plone import api
 from zope.component import getUtility
 from z3c.form import interfaces
 from plone.app.versioningbehavior.behaviors import IVersionable
-#from z3c.form.browser.text import TextWidget
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile as Z3ViewPageTemplateFile
 
-#from z3c.form.interfaces import INPUT_MODE
 
 class ActionItemsAddForm(DefaultAddForm):
     portal_type = "action_items"
@@ -62,7 +58,8 @@ class ActionItemsEditForm(DefaultEditForm):
     ## Does not take portal type into action, so this is used FOR ALL
     portal_type = "action_items"
     default_fieldset_label = 'Home'
-
+    
+    
     def __init__(self, context, request):
         super(ActionItemsEditForm, self).__init__(context, request)
 
@@ -71,19 +68,20 @@ class ActionItemsEditForm(DefaultEditForm):
         
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            
         if self.portal_type == 'sow_analysis':
-            self.widgets['section_number'].mode = interfaces.DISPLAY_MODE
+            self.widgets['section_number'].disabled='disabled'
         if self.portal_type == 'project_companies':
             self.widgets['IDublinCore.title'].label = 'Short Company Name'
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
             self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
-    def updateFields(self):
-        super(ActionItemsEditForm, self).updateFields()
-        #import pdb; pdb.set_trace()
-        # for group in self.groups:
-        #     if group.__name__ == 'all_dates':
-        #         #import pdb; pdb.set_trace()
+    # def updateFields(self):
+    #     super(ActionItemsEditForm, self).updateFields()
+    #     #import pdb; pdb.set_trace()
+    #     # for group in self.groups:
+    #     #     if group.__name__ == 'all_dates':
+    #     #         #import pdb; pdb.set_trace()
         
                 
                     
@@ -101,7 +99,7 @@ class ActionItemsEditForm(DefaultEditForm):
 
                 if group.__name__ == 'all_dates':
                     #import pdb; pdb.set_trace()
-                    #group.widgets['initial_due_date'].disabled='disabled'
+                    group.widgets['initial_due_date'].disabled='disabled'
                     group.description = '{}<br/><p>Initial Due Date</p><input disabled class="form-control" value="{}"/>'.format(group.description , group.widgets['initial_due_date'].value)
                     group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
                     
