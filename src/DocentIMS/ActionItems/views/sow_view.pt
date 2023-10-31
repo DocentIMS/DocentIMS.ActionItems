@@ -132,6 +132,8 @@
               <legend>Deliverables</legend>
               <p><b>Responsible Parties</b>: <span>${context/responsible_parties}</span></p>
               <p><b>Quality Procedure</b>: ${context/quality_procedure}</p> 
+              <p tal:condition="context/deliverable_text"><b>Deliberable Text:</b></p>
+              <div tal:replace="structure  context/deliverable_text/output|None" /> 
 
         </fieldset>
         
