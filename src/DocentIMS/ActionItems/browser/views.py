@@ -201,7 +201,7 @@ class SowAnalysisAddForm(DefaultAddForm):
 
     def updateWidgets(self):
         super(SowAnalysisAddForm, self).updateWidgets()
-        self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+        self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
 
 
     def updateFields(self):
