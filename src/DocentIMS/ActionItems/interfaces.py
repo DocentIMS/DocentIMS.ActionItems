@@ -15,6 +15,11 @@ from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvid
 from plone.app.z3cform.widget import SelectFieldWidget
 from z3c.form import form, field
 from collective.z3cform.colorpicker import Color
+# from collective.z3cform.colorpicker.colorpicker  import IColorpickerWidget
+# from collective.z3cform.colorpicker.colorpicker  import ColorpickerWidget
+from collective.z3cform.colorpicker.colorpicker  import ColorpickerFieldWidget
+
+
 
 
 
@@ -510,9 +515,10 @@ class IDocentimsSettings(model.Schema):
     #     default="#ff0000"
     # )
 
-    color1 = Color(
+    widget(color1=ColorpickerFieldWidget)
+    color1 = schema.TextLine(
         title=u"Color",
-        description=u"Choose Color 1",
+        description=u"Choose Color One",
         # max_length=10,
         required=False,
         default="#ff0000"

@@ -67,6 +67,14 @@
             </value>
       </record>
 
+      <record interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
+              field="color1">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value>#123456</value>
+      </record>
+
+
       <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings">
           <value key="project_title"></value>
           <value key="project_description"></value>
@@ -81,7 +89,6 @@
           <value key="urgent_red">7</value>
           <value key="future_green">28</value>
           <value key="soon_yellow">14</value>
-          <value key="color1"></value>
 
      </records>
 
