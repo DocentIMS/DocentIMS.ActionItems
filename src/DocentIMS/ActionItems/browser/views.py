@@ -71,6 +71,7 @@ class ActionItemsEditForm(DefaultEditForm):
             
         if self.portal_type == 'sow_analysis':
             self.widgets['section_number'].disabled='disabled'
+            self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
         if self.portal_type == 'project_companies':
             self.widgets['IDublinCore.title'].label = 'Short Company Name'
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
@@ -200,7 +201,7 @@ class SowAnalysisAddForm(DefaultAddForm):
 
     def updateWidgets(self):
         super(SowAnalysisAddForm, self).updateWidgets()
-        #self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+        self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
 
 
     def updateFields(self):
