@@ -20,7 +20,7 @@
             data-pat-autotoc="section:fieldset;levels:legend;">
             <fieldset>
               <legend>ⓘ Full Details</legend>
-              <p class="larger">Full Details of the Action Item</p>
+              <p class="larger">Full Details of the Scope</p>
               <div tal:replace="structure  context/bodytext/output|None" />
               <hr class="hr" />
               <div class="alert alert-warning">
