@@ -68,10 +68,16 @@ class ActionItemsEditForm(DefaultEditForm):
         
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            # #import pdb; pdb.set_trace()
+            # for group in self.groups:
+            #     if group.__name__ == 'all_dates':
+            #         self.groups['all_dates'].widgets['initial_due_date'].disabled='disabled'
             
         if self.portal_type == 'sow_analysis':
             self.widgets['section_number'].disabled='disabled'
             self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
+            
+                    
         if self.portal_type == 'project_companies':
             self.widgets['IDublinCore.title'].label = 'Short Company Name'
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
@@ -100,7 +106,8 @@ class ActionItemsEditForm(DefaultEditForm):
 
                 if group.__name__ == 'all_dates':
                     #import pdb; pdb.set_trace()
-                    group.widgets['initial_due_date'].disabled='disabled'
+                    #Not working
+                    #group.widgets['initial_due_date'].disabled='disabled'
                     group.description = '{}<br/><p>Initial Due Date</p><input disabled class="form-control" value="{}"/>'.format(group.description , group.widgets['initial_due_date'].value)
                     group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
                     
