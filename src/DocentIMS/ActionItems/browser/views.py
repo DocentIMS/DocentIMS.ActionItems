@@ -26,6 +26,7 @@ class ActionItemsAddForm(DefaultAddForm):
         super(ActionItemsAddForm, self).updateWidgets()
         self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
         self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+       
 
 
     def updateFields(self):
@@ -41,6 +42,7 @@ class ActionItemsAddForm(DefaultAddForm):
     def update(self):
         super(ActionItemsAddForm, self).update()
 
+        
         for group in self.groups:
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
                 #group.mode = 'omitted'
@@ -83,19 +85,12 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
             self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
-    # def updateFields(self):
-    #     super(ActionItemsEditForm, self).updateFields()
-    #     #import pdb; pdb.set_trace()
-    #     # for group in self.groups:
-    #     #     if group.__name__ == 'all_dates':
-    #     #         #import pdb; pdb.set_trace()
-        
-                
-                    
-
+    
     def update(self):
         super(ActionItemsEditForm, self).update()
-
+        
+        
+        
         if self.portal_type == 'action_items' or self.portal_type == 'sow_analysis':
             for group in self.groups:
                 if group.__name__ == 'settings':
@@ -110,6 +105,7 @@ class ActionItemsEditForm(DefaultEditForm):
                     #group.widgets['initial_due_date'].disabled='disabled'
                     group.description = '{}<br/><p>Initial Due Date</p><input disabled class="form-control" value="{}"/>'.format(group.description , group.widgets['initial_due_date'].value)
                     group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
+                     
                     
             
 

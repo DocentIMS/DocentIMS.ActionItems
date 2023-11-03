@@ -34,11 +34,13 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 
 def CompanyVocabulary(context):
-    items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    all_items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    set_items = set(all_items)
     #import pdb; pdb.set_trace()
     #TO DO: Maybe check if they are unique
-    if items:
-        terms = [ SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name']) for item in items ]
+    if set_items:
+        items = list(set_items)
+        terms = [ SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name']) for item in items.sort() ]
         return SimpleVocabulary(terms)
     return SimpleVocabulary([])
 
@@ -55,10 +57,13 @@ directlyProvides(CompanyVocabulary, IVocabularyFactory)
 #directlyProvides(SiteVocabulary, IVocabularyFactory)
 
 def ProjectRolesVocabulary(context):
-    items  =  api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
+    all_items  =  api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
+    set_items = set(all_items)
 
-    if items:
-        entries = set([ item['vocabulary_entry'] for item in items ])
+
+    if set_items:
+        items = list(set_items)
+        entries = set([ item['vocabulary_entry'] for item in items.sort() ])
         terms = [ SimpleTerm(value=item, token=item.lower(), title=item) for item in entries]
         return SimpleVocabulary(terms)
     return SimpleVocabulary([])
@@ -67,10 +72,12 @@ directlyProvides(ProjectRolesVocabulary, IVocabularyFactory)
 
 
 def Site2Vocabulary(context):
-    items  =  api.portal.get_registry_record('vokabularies2', interface=IDocentimsSettings)
+    all_items  =  api.portal.get_registry_record('vokabularies2', interface=IDocentimsSettings)
+    set_items = set(all_items)
 
-    if items:
-        entries = set([ item['vocabulary_entry'] for item in items ])
+    if set_items:
+        items = list(set_items)
+        entries = set([ item['vocabulary_entry'] for item in items.sort() ])
         terms = [ SimpleTerm(value=item, token=item.lower(), title=item) for item in entries]
         return SimpleVocabulary(terms)
     return SimpleVocabulary([])

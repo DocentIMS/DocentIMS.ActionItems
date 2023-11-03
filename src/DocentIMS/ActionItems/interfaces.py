@@ -338,7 +338,7 @@ class IDocentimsSettings(model.Schema):
         )
 
     project_title = schema.TextLine(
-        required = False,
+        required = True,
         title=_(u"label_title", default=u"Project Title"),
         description=_(u"help_title",
                       default=u"Enter short project title")
@@ -470,7 +470,7 @@ class IDocentimsSettings(model.Schema):
         title = _(u"Team Member Project Roles",
             default=u"Team Member Project Roles"),
         value_type=DictRow(schema=IVocabulari),
-        required=False,
+        required=True,
     )
 
     # widget(vokabularies2=DataGridFieldFactory)
@@ -486,6 +486,7 @@ class IDocentimsSettings(model.Schema):
         title = _(u"Companies",
             default=u"Companies"),
         value_type=DictRow(schema=ICompany),
+        
     )
 
     widget(table_columns=DataGridFieldFactory)
@@ -517,10 +518,10 @@ class IDocentimsSettings(model.Schema):
 
     widget(color1=ColorpickerFieldWidget)
     color1 = schema.TextLine(
-        title=u"Color",
+        title=u"Project Color",
         description=u"Choose Color One",
         # max_length=10,
-        required=False,
+        required=True,
         default="#ff0000"
     )
 
