@@ -5,10 +5,10 @@
   i18n:domain="DocentIMS.ActionItems"
   metal:use-macro="context/main_template/macros/master">
   <body>
-    <metal:content-core fill-slot="content">
-      <metal:block define-macro="content">
+    <metal:content-core fill-slot="content-core">
+      <metal:block define-macro="content-core">
 
-        <h1 class="priority-${context/priority|None}">${context/Title}</h1>
+        <!-- <h1 class="priority-${context/priority|None}">${context/Title}</h1> -->
         <p class="lead"> ${context/Description|None}</p>
 
         <p><b>Section no</b>: ${context/section_number|None}</p>
@@ -180,6 +180,10 @@
     </p>
 
     <style> 
+
+      #viewlet-below-content-title {display: none} 
+
+
       h1.priority-1 {color: #F24C3D}
       h1.priority-3 {color: #22A699}
       h1.priority-2 {color: #F2BE22}
