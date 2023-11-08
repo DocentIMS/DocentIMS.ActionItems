@@ -3,7 +3,6 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
 
-
      <record name="plone.icon.contenttype/sow_analysis">
       <field type="plone.registry.field.TextLine">
         <title>Scope</title>
@@ -268,8 +267,8 @@
     </records>
 
 
-
-    <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema"
+    <!-- this is the Tiuny MCE plugin-->
+    <!-- <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema"
            prefix="plone">
     <value key="plugins" purge="False">
       <element>template</element>
@@ -282,7 +281,7 @@
       <element>link_btn</element>
     </value>
   
-  </records>
+  </records> -->
 
     
 
