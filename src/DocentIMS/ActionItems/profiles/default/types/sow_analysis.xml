@@ -76,7 +76,7 @@
   &lt;/field&gt;
   &lt;/fieldset&gt;
   &lt;fieldset name=&quot;actions_items&quot; label=&quot;Actions Items&quot; description=&quot;These are the action items generated from the analysis of this Statement of Work.&quot;&gt;
-  &lt;field name=&quot;explanation&quot; type=&quot;zope.schema.Text&quot;&gt;
+  &lt;field name=&quot;explanation&quot; type=&quot;lone.app.textfield.RichText&quot;&gt;
   &lt;description&gt;What is this for&lt;/description&gt;
   &lt;required&gt;False&lt;/required&gt;
   &lt;title&gt;Explanation&lt;/title&gt;

@@ -106,6 +106,8 @@
               <p class="larger">Actions taken</p>
               <hr class="hr" />
               <div tal:replace="structure  context/actions_taken/output|None" /> 
+              <div tal:replace="structure  context/explanation/output|None" /> 
+              
         </fieldset>
 
 
