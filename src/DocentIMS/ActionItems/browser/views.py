@@ -68,6 +68,9 @@ class ActionItemsEditForm(DefaultEditForm):
     def updateWidgets(self):
         super(ActionItemsEditForm, self).updateWidgets()
         
+        #Hide input field 'change note'
+        self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE     
+        
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             # #import pdb; pdb.set_trace()
