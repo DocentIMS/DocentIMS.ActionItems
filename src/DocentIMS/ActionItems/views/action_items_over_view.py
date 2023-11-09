@@ -26,7 +26,9 @@ class ActionItemsOverView(BrowserView):
     def __call__(self):
         #self.msg = _(u'A small message')
         return self.index()
-
+    
+    def portal_url(self):
+        return api.portal.get().absolute_url()
 
     def batch(self):
         batch = self.context.restrictedTraverse('@@contentlisting')(sort_on='sortable_title', batch=True, b_size=400);
