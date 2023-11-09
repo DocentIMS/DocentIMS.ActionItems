@@ -101,6 +101,13 @@
               <div tal:replace="structure  context/notes/output|None" /> 
         </fieldset>
 
+        <fieldset>
+              <legend>Intermediate Actions</legend>
+              <p class="larger">Actions taken</p>
+              <hr class="hr" />
+              <div tal:replace="structure  context/actions_taken/output|None" /> 
+        </fieldset>
+
 
 
         <fieldset>
