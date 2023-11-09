@@ -26,7 +26,7 @@ class ActionItemsAddForm(DefaultAddForm):
         super(ActionItemsAddForm, self).updateWidgets()
         self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
         self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
-       
+        self.widgets['IVersionable-changeNote'].mode = interfaces.HIDDEN_MODE       
 
 
     def updateFields(self):

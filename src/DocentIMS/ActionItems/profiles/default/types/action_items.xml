@@ -74,6 +74,16 @@
           &lt;title&gt;Due Date&lt;/title&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
+
+      &lt;fieldset name=&quot;notes&quot; label=&quot;PM Notes&quot; description=&quot; &quot;&gt;
+        &lt;field name=&quot;notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+        &lt;description&gt;Project Manager&#x27;s Notes to Person Analyzing This Section&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt; &quot;Notes from the Project Manager to person doing the analysis&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+
+      
       &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;With minor exceptions, all action items can be connected back to the Scope.&quot;&gt;
         &lt;field name=&quot;is_this_action_out_of_the_scope_of_work_&quot; type=&quot;zope.schema.Bool&quot;&gt;
           &lt;description&gt;By default, all action items are presumed to be driven by Scope requirements. However, this is not always the case. &amp;#13;
