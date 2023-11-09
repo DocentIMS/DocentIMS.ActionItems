@@ -93,6 +93,12 @@
                 <div tal:replace="structure context/help-files/action-item-help/action-item-help/text/output|None"/>
             </fieldset>
         </div>
+        <div>
+            <a href="${view/portal_url}/action-items/++add++action_items"
+                    target="_blank" class="button standalone btn btn-outline-primary">
+                    <span class="black">Δ+</span> Create New Action Item
+            </a>
+        </div>
 
            <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
             <script tal:define="graphdata python: view.get_graphdata()">
