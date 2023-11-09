@@ -94,6 +94,9 @@
             </fieldset>
         </div>
         <div>
+          <hr/>
+        </div>
+        <div>
             <a href="${view/portal_url}/action-items/++add++action_items"
                     target="_blank" class="button standalone btn btn-outline-primary">
                     <span class="black">Δ+</span> Create New Action Item
