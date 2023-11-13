@@ -121,7 +121,7 @@
             <p><b class="label">Related Action Items:</b>
             <ul tal:condition="view/target_relations|None"> 
                 <li tal:repeat="rela view/target_relations">
-                  <a href="${rela/to_path}">${rela/from_object/title}</a>
+                  <a href="${rela/from_path}">${rela/from_object/title}</a>
                 </li> 
             </ul>
         </fieldset>
