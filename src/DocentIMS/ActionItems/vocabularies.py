@@ -35,9 +35,10 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 def CompanyVocabulary(context):
     all_items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    import pdb; pdb.set_trace()
     if all_items:
         set_items = set(all_items)
-        #import pdb; pdb.set_trace()
+       
         #TO DO: Maybe check if they are unique
         if set_items:
             items = list(set_items)
