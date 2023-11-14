@@ -63,15 +63,19 @@ directlyProvides(CompanyVocabulary, IVocabularyFactory)
 #directlyProvides(SiteVocabulary, IVocabularyFactory)
 
 def ProjectRolesVocabulary(context):
-    all_items  =  api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
-    set_items = set(all_items)
+    items = api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
 
+    if items:
+        # Extract unique entries from items and convert to lowercase for case-insensitive comparison
+        
+        # Create SimpleTerm objects from the unique entries
+        terms = [
+            SimpleTerm(value=item, token=item.lower(), title=item)
+            for item in sorted(items)  # Use sorted() to ensure consistent ordering
+        ]
 
-    if set_items:
-        items = list(set_items)
-        entries = set([ item['vocabulary_entry'] for item in items.sort() ])
-        terms = [ SimpleTerm(value=item, token=item.lower(), title=item) for item in entries]
         return SimpleVocabulary(terms)
+
     return SimpleVocabulary([])
 
 directlyProvides(ProjectRolesVocabulary, IVocabularyFactory)
