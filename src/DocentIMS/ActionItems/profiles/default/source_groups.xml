@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<zodb-groups title="" >
+ <group group_id="PrjCust" title="Project Customer" description="The customer for the project"></group>
+ <group group_id="PrjMgr" title="Project Manager" description="Project Manager	Person managing the projec"></group>
+ <group group_id="PrjTeam" title="Project Team" description="All Members of the Project"></group>
+ <group group_id="PrjQcMgr" title="Project QC Manager" description="Person in charge of manage QC for the project"></group>
+</zodb-groups>
+ 

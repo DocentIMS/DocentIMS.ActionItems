@@ -92,6 +92,33 @@ def _create_content(portal):
         #fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
 
 
+        if not portal.get('downloads', False):
+            downloads = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='downloads',
+                title='Downloads' 
+
+            )
+
+            if not downloads.get('project_manager', False):
+                downloads = plone.api.content.create(
+                    type='Folder',
+                    container=downloads,
+                    id='project_manager',
+                    title='Project Manager' 
+                )
+
+            if not downloads.get('team_member', False):
+                downloads = plone.api.content.create(
+                    type='Folder',
+                    container=downloads,
+                    id='team_member',
+                    title='Team Member' 
+
+                )
+
+
         if not portal.get('action-items', False):
             action_items = plone.api.content.create(
                 type='Folder',
