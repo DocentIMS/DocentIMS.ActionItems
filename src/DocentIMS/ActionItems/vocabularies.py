@@ -34,17 +34,21 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 
 def CompanyVocabulary(context):
-    all_items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
-    import pdb; pdb.set_trace()
-    if all_items:
-        set_items = set(all_items)
-       
-        #TO DO: Maybe check if they are unique
-        if set_items:
-            items = list(set_items)
-            terms = [ SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name']) for item in items.sort() ]
-            return SimpleVocabulary(terms)
-        return SimpleVocabulary([])
+    items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    if items:
+        # Assuming items is a list of dictionaries
+
+        # Use sorted() to create a sorted list of items based on 'short_company_name'
+        sorted_items = sorted(items, key=lambda x: x['short_company_name'])
+
+        # Create SimpleTerm objects from the sorted list, excluding empty 'short_company_name'
+        terms = [
+            SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name'])
+            for item in sorted_items if item['short_company_name']
+        ]
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([])
 
 directlyProvides(CompanyVocabulary, IVocabularyFactory)
 
