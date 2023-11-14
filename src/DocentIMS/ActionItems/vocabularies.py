@@ -74,8 +74,9 @@ def ProjectRolesVocabulary(context):
         
         # Create SimpleTerm objects from the unique entries
         terms = [
-            SimpleTerm(value=item, token=item.lower(), title=item)
-            for item in sorted(items)  # Use sorted() to ensure consistent ordering
+            SimpleTerm(value=item['short_company_name'], token=item['short_company_name'].lower(), title=item['short_company_name'])
+            for item in sorted(items, key=lambda x: x.get('short_company_name', '').lower())
+            if item.get('short_company_name')  # Exclude items with None or empty 'short_company_name'
         ]
 
         return SimpleVocabulary(terms)
