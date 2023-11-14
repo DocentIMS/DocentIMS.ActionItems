@@ -39,7 +39,11 @@ def CompanyVocabulary(context):
         # Assuming items is a list of dictionaries
 
         # Use sorted() to create a sorted list of items based on 'short_company_name'
-        sorted_items = sorted(items, key=lambda x: x['short_company_name'])
+        #sorted_items = sorted(items, key=lambda x: x['short_company_name'])
+        sorted_items = sorted(
+                filter(lambda x: x.get('short_company_name', '') is not None, items),
+                key=lambda x: x.get('short_company_name', '') or ''
+        )
 
         # Create SimpleTerm objects from the sorted list, excluding empty 'short_company_name'
         terms = [
