@@ -102,7 +102,7 @@ def _create_content(portal):
             )
 
             if not downloads.get('project_manager', False):
-                downloads = plone.api.content.create(
+                project_manager = plone.api.content.create(
                     type='Folder',
                     container=downloads,
                     id='project_manager',
