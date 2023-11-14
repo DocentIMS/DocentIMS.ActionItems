@@ -35,14 +35,15 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 def CompanyVocabulary(context):
     all_items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
-    set_items = set(all_items)
-    #import pdb; pdb.set_trace()
-    #TO DO: Maybe check if they are unique
-    if set_items:
-        items = list(set_items)
-        terms = [ SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name']) for item in items.sort() ]
-        return SimpleVocabulary(terms)
-    return SimpleVocabulary([])
+    if all_items:
+        set_items = set(all_items)
+        #import pdb; pdb.set_trace()
+        #TO DO: Maybe check if they are unique
+        if set_items:
+            items = list(set_items)
+            terms = [ SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name']) for item in items.sort() ]
+            return SimpleVocabulary(terms)
+        return SimpleVocabulary([])
 
 directlyProvides(CompanyVocabulary, IVocabularyFactory)
 
