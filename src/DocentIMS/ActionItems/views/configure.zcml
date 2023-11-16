@@ -44,6 +44,14 @@
    />
 
   <browser:page
+   name="front-page-view"
+   for="*"
+   template="front_page_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+  <browser:page
    name="action-overview"
    for="plone.app.contenttypes.interfaces.IFolder"
    class=".action_items_over_view.ActionItemsOverView"

@@ -63,6 +63,14 @@ def post_install(context):
     
     # Create Folder to put everything in
     _create_content(portal)
+    if not portal.get('frontpage', False):
+        fpage = plone.api.content.create(
+        type='FrontPage',
+        container=portal,
+        id='frontpage',
+        title='Front page' 
+    )
+
 
 
 
@@ -314,6 +322,13 @@ def _create_content(portal):
                 )
 
             
+        # if not portal.get('frontpage', False):
+        #     fpage = plone.api.content.create(
+        #         type='FrontPage',
+        #         container=portal,
+        #         id='frontpage',
+        #         title='Front page' 
+        #     )
 
 
  

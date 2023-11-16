@@ -81,7 +81,9 @@ class ActionItemsEditForm(DefaultEditForm):
             #         self.groups['all_dates'].widgets['initial_due_date'].disabled='disabled'
             
         if self.portal_type == 'sow_analysis':
-            self.widgets['section_number'].disabled='disabled'
+            #import pdb; pdb.set_trace()
+            self.widgets['bodytext'].template = Z3ViewPageTemplateFile("description_template.pt")
+            self.widgets['section_number'].readonly='readonly'
             self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
             
                     
