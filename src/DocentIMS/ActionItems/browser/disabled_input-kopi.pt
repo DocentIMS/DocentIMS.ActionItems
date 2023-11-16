@@ -1,0 +1,9 @@
+<span tal:content="structure widget/readonly_value"></span>
+<h1>ksas</h1>
+<p>nothing here</p>
+<input type="hidden"
+       tal:attributes="name widget/for"
+       tal:content="structure widget/value"
+       disabled="disabled"
+       class="pat-autosuggest-hidden-value"
+/>

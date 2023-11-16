@@ -69,7 +69,9 @@ class ActionItemsEditForm(DefaultEditForm):
         super(ActionItemsEditForm, self).updateWidgets()
         
         #Hide input field 'change note'
-        self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE     
+        #if 'IVersionable.changeNote' in self.widgets
+        if self.portal_type in  ['action_items', 'sow_analysis', 'project_companies', 'Document']:
+            self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE     
         
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
@@ -108,9 +110,6 @@ class ActionItemsEditForm(DefaultEditForm):
                     #group.widgets['initial_due_date'].disabled='disabled'
                     group.description = '{}<br/><p>Initial Due Date</p><input disabled class="form-control" value="{}"/>'.format(group.description , group.widgets['initial_due_date'].value)
                     group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
-                     
-                    
-            
 
                 if self.portal_type == 'sow_analysis':
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
