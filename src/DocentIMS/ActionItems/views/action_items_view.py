@@ -24,14 +24,16 @@ class ActionItemsView(BrowserView):
 
     def get_usernote(self):
         context = self.context
-        user =  api.user.get_current().getMemberId()
+        current =  api.user.get_current()
+        if current:
+            user = current.getMemberId()
         
-        item = api.content.find(context=context, id=user )
-        
-        if item:
-            notedoc = item[0].getObject().bodytext
-            if notedoc:
-                return notedoc.output
+            item = api.content.find(context=context, id=user )
+            
+            if item:
+                notedoc = item[0].getObject().bodytext
+                if notedoc:
+                    return notedoc.output
         return ''
                 
         
