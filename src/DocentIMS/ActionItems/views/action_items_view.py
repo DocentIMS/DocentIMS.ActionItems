@@ -25,6 +25,7 @@ class ActionItemsView(BrowserView):
     def get_usernote(self):
         context = self.context
         current =  api.user.get_current()
+        import pdb; pdb.set_trace()
         if current:
             user = current.getMemberId()
         
