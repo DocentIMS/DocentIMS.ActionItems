@@ -65,8 +65,8 @@
 
 <!-- to do find registration for right thing-->
   <subscriber
-    for="*
-    zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    for="Products.CMFCore.interfaces.IFolderish        
+        zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".subscriber.save_note"
     />
 

@@ -268,18 +268,18 @@
 
 
     <!-- this is the Tiuny MCE plugin-->
-    <!-- <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema"
+    <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema"
            prefix="plone">
 
     <value key="custom_plugins" purge="False">
-     <element>link_plugin|++plone++DocentIMS.ActionItems/tiny_mce/plugins/index.js</element>
+     <element>DocentIMS_CreateAI|++plone++DocentIMS.ActionItems/tiny_mce/plugins/index.js</element>
     </value>
+        
+      <value key="custom_buttons" purge="False">
+        <element>DocentIMS_CreateAI_btn</element>
+      </value>
+    </records>
     
-    <value key="custom_buttons" purge="False">
-      <element>link_btn</element>
-    </value>
-  
-  </records> -->
 
     
 

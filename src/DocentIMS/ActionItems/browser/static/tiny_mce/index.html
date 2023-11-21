@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <div class="editor" style="margin: auto; width: 60%">
-        <h3>Tinymce Plugin</h3>
+        <h3>DocentIMS_CreateAI TinyMce Plugin</h3>
         <textarea id="tinymce" style="width: 100%"> </textarea>
       </div>
 
@@ -20,9 +20,9 @@
           selector: "#tinymce",
           mode: "exact",
           elements: "tinymce",
-          plugins: "link link_plugin code",
+          plugins: "link DocentIMS_CreateAI code",
           toolbar: [
-            "undo redo | styleselect | bold italic underline | image alignleft aligncenter alignright | visualblocks | code | link_btn",
+            "undo redo | styleselect | bold italic underline | image alignleft aligncenter alignright | visualblocks | link | code | DocentIMS_CreateAI_btn",
           ],
           extended_valid_elements: "p,span[*],delete[*],insert[*]",
           content_css: "/demo.css",
