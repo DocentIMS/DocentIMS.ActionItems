@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from Products.CMFPlone.interfaces import INonInstallable
+from Products.CMFCore.utils import getToolByName
 from zope.interface import implementer
 #from plone import api
 import os
@@ -15,6 +16,7 @@ from zope.lifecycleevent import modified
 import plone.api
 from zope.component.hooks import setSite
 import transaction
+
 
 from pandas import *
 
@@ -72,8 +74,19 @@ def post_install(context):
     )
         
     portal.default_page='frontpage'
+    
+    #Restrict content types that can be added to folders
+    action_folder = portal.get('action-items', False)
+    behaviour = constrains.ISelectableConstrainTypes(action_folder)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['action_items'])
+    behaviour.setLocallyAllowedTypes(['action_items'])
 
-
+    scope_analysis = portal.get('scope-analysis', False)
+    behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['sow_analysis'])
+    behaviour.setLocallyAllowedTypes(['sow_analysis'])
 
 
 def pre_install(context):
@@ -93,6 +106,9 @@ def post_import(context):
     #TODO: Maybe make a check 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  [{'row_field': 'id', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    
+
+    #Import excel content    
     _import_content(portal)
     
 
@@ -145,11 +161,14 @@ def _create_content(portal):
                 id='action-items',
                 title='Action Items',
                 layout='action-overview',
-                default_page='action-items-collection'
-
+                default_page='action-items-collection',
+                # action_items.allowed_types=['action_items'],
+                # action_items.allowedContentTypes=['action_items']
             )
-
+            
             ## add collection inside here
+            
+            
 
             if not action_items.get('action-items-collection', False):
                 action_items_collection = plone.api.content.create(
