@@ -25,8 +25,8 @@ class ActionItemsView(BrowserView):
     def get_usernote(self):
         context = self.context
         current =  api.user.get_current()
-        import pdb; pdb.set_trace()
-        if current:
+        # check if user is logged in
+        if current.getUserName() != 'Anonymous User':
             user = current.getMemberId()
         
             item = api.content.find(context=context, id=user )
