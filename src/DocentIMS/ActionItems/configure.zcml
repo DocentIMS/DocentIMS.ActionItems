@@ -63,6 +63,14 @@
   <include package=".views" />
 
 
+<!-- to do find registration for right thing-->
+  <subscriber
+    for="*
+    zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".subscriber.save_note"
+    />
+
+
   <utility
     	  component=".vocabularies.ActionItemsVocabulary"
         name="DocentIMS.ActionItems.ActionItemsVocabulary" />

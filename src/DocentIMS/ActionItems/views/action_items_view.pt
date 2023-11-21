@@ -188,7 +188,17 @@
             </div>
           </tal:condition>
         </fieldset>
+            <fieldset>
+              <legend>📌 Private notes</legend>
+              <p class="larger">Personal notes</p>
+              <hr class="hr" />
+              <div class="alert alert-warning">
+                <div tal:replace="structure view/get_usernote" />
+              </div>
+              <!-- <a class="button   btn btn-secondary" href="${context/absolute_url}/${view/get_memberid|None}/edit">Edit notes</a> -->
+             <!-- <div tal:replace="structure view/get_usernote/output|None" /> -->
 
+         </fieldset>
 
 
       </div> 

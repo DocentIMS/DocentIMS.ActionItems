@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 
 #from zope.publisher.browser import BrowserView
@@ -13,6 +14,11 @@ from zope.component import getUtility
 from z3c.form import interfaces
 from plone.app.versioningbehavior.behaviors import IVersionable
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile as Z3ViewPageTemplateFile
+
+
+#from plone.app.textfield import RichText
+#from zope.interface import Interface
+
 
 
 class ActionItemsAddForm(DefaultAddForm):
@@ -75,6 +81,8 @@ class ActionItemsEditForm(DefaultEditForm):
         
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            
+            
             # #import pdb; pdb.set_trace()
             # for group in self.groups:
             #     if group.__name__ == 'all_dates':
@@ -82,7 +90,8 @@ class ActionItemsEditForm(DefaultEditForm):
             
         if self.portal_type == 'sow_analysis':
             #import pdb; pdb.set_trace()
-            self.widgets['bodytext'].template = Z3ViewPageTemplateFile("description_template.pt")
+            #self.widgets['bodytext'].template = Z3ViewPageTemplateFile("disabled_input.pt")
+            #self.widgets['bodytext'].mode = interfaces.HIDDEN_MODE
             self.widgets['section_number'].readonly='readonly'
             self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
             
@@ -95,9 +104,7 @@ class ActionItemsEditForm(DefaultEditForm):
     
     def update(self):
         super(ActionItemsEditForm, self).update()
-        
-        
-        
+       
         if self.portal_type == 'action_items' or self.portal_type == 'sow_analysis':
             for group in self.groups:
                 if group.__name__ == 'settings':
@@ -118,6 +125,18 @@ class ActionItemsEditForm(DefaultEditForm):
                         #group.mode = 'omitted'
                         group.label = None
                     
+                
+                if group.__name__ == 'private_notes':
+                        #if self.portal_type == 'action_items':
+                        context = self.context
+                        user =  api.user.get_current().getMemberId()
+                        item = api.content.find(context=context, id=user, portal_type='personal_notes' )
+                        
+                        if item:
+                            notes_item = item[0].getObject()
+                            group.widgets['private_notes'].value = notes_item.bodytext 
+                        else:
+                            self.private_notes = None
 
 
 class ActionItemsEditFormView(DefaultEditView):

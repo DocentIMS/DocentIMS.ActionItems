@@ -18,7 +18,24 @@ class ActionItemsView(BrowserView):
 
     def portal_url(self):
         return api.portal.get().absolute_url()
+    
+    def get_memberid(self):
+        return  api.user.get_current().getMemberId()
 
+    def get_usernote(self):
+        context = self.context
+        user =  api.user.get_current().getMemberId()
+        
+        item = api.content.find(context=context, id=user )
+        
+        if item:
+            notedoc = item[0].getObject().bodytext
+            if notedoc:
+                return notedoc.output
+        return ''
+                
+        
+    
     def due_date(self):
         #return self.context.created().ISO()
         #return datetime.datetime.from_date(initial_due_date).ISO()
