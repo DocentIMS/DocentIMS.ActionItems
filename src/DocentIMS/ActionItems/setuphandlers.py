@@ -125,7 +125,14 @@ def _create_content(portal):
         #folderpath = os.path.dirname(__file__)
         #fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
         
-        
+        if not portal.get('templates', False):
+            images_folder = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='templates',
+                title='Templates' 
+            )
+                    
         if not portal.get('images', False):
             images_folder = plone.api.content.create(
                 type='Folder',
