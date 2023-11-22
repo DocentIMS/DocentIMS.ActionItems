@@ -93,6 +93,14 @@ def pre_install(context):
     """Pre install script"""
     # Do something before the installation of this package.
     portal = plone.api.portal.get()
+    
+    #create groups, wayne might need these for workflow
+    plone.api.group.create(groupname="PrjCust", title="Project Customer", description="The customer for the project")
+    plone.api.group.create(groupname="PrjMgr", title="Project Managerr", description="Person managing the project")
+    plone.api.group.create(groupname="PrjTeam", title="Project Team", description="All Members of the Project")
+    plone.api.group.create(groupname="PrjQcMgr", title="Project QC Manager", description="Person in charge of manage QC for the project")
+   
+    #create content 
     _create_content(portal)
 
 
