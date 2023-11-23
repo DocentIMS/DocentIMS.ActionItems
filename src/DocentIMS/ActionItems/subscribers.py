@@ -9,7 +9,14 @@ from zope.interface import Interface
 from zope.lifecycleevent import IObjectModifiedEvent
 #from zope.schema.interfaces import IContextSourceBinder
 
-
+def last_state(object, event):
+    #subscribers.last_state
+    histo = event.transition.variables.review_history
+    import pdb; pdb.set_trace()
+    if event.transition.__name__ == 'last_state':
+        #something here
+        import pdb; pdb.set_trace()
+    
 
 def save_note(object, event):
     """Make notes content items"""

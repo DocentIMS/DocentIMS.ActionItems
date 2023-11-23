@@ -67,9 +67,24 @@
   <subscriber
     for="Products.CMFCore.interfaces.IFolderish        
         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-    handler=".subscriber.save_note"
+    handler=".subscribers.save_note"
     />
 
+    <!-- subscriber for the 'Last state' transaction -->
+  <!--subscriber
+    for="*
+        Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
+    handler=".subscribers.last_state"
+    /-->
+
+    <!-- Adapter for mail so we can sent mail to 'owner' -->
+    <adapter
+        factory=".adapters.AssignedTo"
+        provides="plone.stringinterp.interfaces.IStringSubstitution"
+        for="*"
+        name="assigned"
+    />
+    
 
   <utility
     	  component=".vocabularies.ActionItemsVocabulary"
