@@ -85,6 +85,12 @@
         name="assigned"
     />
     
+    <adapter
+        factory=".adapters.AssignedMail"
+        provides="plone.stringinterp.interfaces.IStringSubstitution"
+        for="*"
+        name="assignedmail"
+    />
 
   <utility
     	  component=".vocabularies.ActionItemsVocabulary"

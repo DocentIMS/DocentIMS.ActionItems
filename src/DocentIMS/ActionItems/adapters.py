@@ -3,6 +3,7 @@
 from zope.interface import Interface
 from zope.component import adapter
 from plone.stringinterp.adapters import BaseSubstitution
+from plone import api
 
 @adapter(Interface)
 class AssignedTo(BaseSubstitution):
@@ -12,6 +13,18 @@ class AssignedTo(BaseSubstitution):
     def safe_call(self):
       if hasattr(self.context, 'assigned_to'):
         return self.context.assigned_to
+      return ''
+
+@adapter(Interface)
+class AssignedMail(BaseSubstitution):
+    category = "All Content"
+    description = "Assigned To Email"
+
+    def safe_call(self):
+      if hasattr(self.context, 'assigned_to'):
+        #return assigned users email
+        return api.user.get(userid=self.context.assigned_to).getProperty('email')
+      
       return ''
 
         
