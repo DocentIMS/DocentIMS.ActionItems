@@ -73,7 +73,7 @@
     <!-- subscriber for the 'Last state' transaction -->
   <!--subscriber
     for="*
-        Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
+        Products.DCWorkflow.interfaces.IAfterTransitionEvent"
     handler=".subscribers.last_state"
     /-->
 

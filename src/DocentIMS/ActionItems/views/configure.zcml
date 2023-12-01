@@ -104,6 +104,7 @@
       name="reindex-workdays"
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".reindexview.ReindexView"
+      template="reindex_view.pt"
       permission="cmf.ManagePortal"
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
       />

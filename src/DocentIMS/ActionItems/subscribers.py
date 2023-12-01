@@ -11,11 +11,31 @@ from zope.lifecycleevent import IObjectModifiedEvent
 
 def last_state(object, event):
     #subscribers.last_state
-    histo = event.transition.variables.review_history
-    import pdb; pdb.set_trace()
+    #histo = event.transition.variables.review_history
+    #event.transition.variables.__dict__
+    #event.transition.variables.review_history.__dict__
+    #event.transition.variables.review_history.__doc__
+    #__name__ 
+    
     if event.transition.__name__ == 'last_state':
-        #something here
-        import pdb; pdb.set_trace()
+        try:
+            api.content.transition(obj=object, transition=object.formertransitiontwo)
+        #except  InvalidParameterError: 
+        #    #Add some message 
+        #    a = 1
+        finally:
+             a= 1
+             api.portal.show_message(message='Action / Item Change  Not Allowed',type='warning')
+        #     #Add some message 
+            
+        #return
+        # .__name__ == 'last_state':
+       
+    else:
+        #Store state so one can revert
+        object.formertransitiontwo =  object.formertransition or None
+        object.formertransition = event.transition.__name__
+    
     
 
 def save_note(object, event):
