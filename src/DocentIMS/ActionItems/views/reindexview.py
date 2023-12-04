@@ -31,6 +31,12 @@ from zope.globalrequest import getRequest
 from zope.interface import implementer, Interface
 from plone import api
 
+from datetime import datetime
+
+now = datetime.now()
+
+
+
 import logging
 
 logger = logging.getLogger(__file__)
@@ -50,6 +56,11 @@ class ReindexView(BrowserView):
         # Implement your own actions:
         #return self.reindex()
         return self.index()
+    
+    def current_time(self):
+        current_time = now.strftime("%H:%M:%S")
+        return  current_time
+
 
     def reindex(self):
         my_brains = self.context.portal_catalog(portal_type=['action_items', 'sow_analysis'])
@@ -73,31 +84,33 @@ class ReindexView(BrowserView):
         for brain in my_brains:
             old_urgency = brain.urgency
             brain.getObject().reindexObject(idxs=["daysleft", "urgency"])
+            daysleft = brain.daysleft
             
             #Send mail if urgency changed
-            if brain.urgency != old_urgency:
+            if brain.urgency == old_urgency:
                 #Send email to user assigned 
                 if brain.assigned_to:
                     #import pdb; pdb.set_trace()
                     object = brain.getObject()
                     interpolator = IStringInterpolator(object)
-                    #self.recipients = "espen@medialog.no"
                     
                     assigned_user =  api.user.get(userid=brain.getObject().assigned_to)
                     self.recipients = assigned_user.getProperty('email')
                     
                     if self.recipients:
+                        # print('sending mail')
                     
                         # melding = """Hello {creators} This is a friendly reminder that:{tittel} is due in XX days.  
                         #  If you believe that you will get this {tittel} done in time, no action is required.However, 
                         # if you believe that you may miss the due date, please contact the project manager.<hr/> Sincerely,{manager}
                         # Project Manager{project}<short name of project>""".format(creators = brain.assigned_to, tittel = brain.Title, manager='manager nam', project='project name')
                         
-                        melding = """Hello ${assigned} This is a friendly reminder that: ${title}  is due in XX days.  \r\n
-                        If you believe that you will get ${title} - ${absolute_url} - done in time, no action is required.However, \r\n
-                        if you believe that you may miss the due date, please contact the project manager.<hr/> Sincerely, xxx \r\n
-                        Project Manager <short name of project>
-                        ${absolute_url}""" 
+                        melding = """<p>Hello ${assigned}<p> <p>This is a friendly reminder that:  <a href="${absolute_url}">${title}</a>  is due in <b>${daysleft} days</b>.   </p>
+                        <p>If you believe that you will get <a href="${absolute_url}">${title}</a> done in time, no action is required.</p>
+                        <p>However,  
+                        if you believe that you may miss the due date, please contact the project manager.</p><hr/> 
+                        <p>Sincerely, <b>xxx</b> Project Manager <short name of project>
+                        ${absolute_url}</p>""" 
                         
                         
                         # prepend interpolated message with \n to avoid interpretation

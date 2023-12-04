@@ -92,6 +92,13 @@
         name="assignedmail"
     />
 
+    <adapter
+        factory=".adapters.DaysLeft"
+        provides="plone.stringinterp.interfaces.IStringSubstitution"
+        for="*"
+        name="daysleft"
+    />
+
   <utility
     	  component=".vocabularies.ActionItemsVocabulary"
         name="DocentIMS.ActionItems.ActionItemsVocabulary" />

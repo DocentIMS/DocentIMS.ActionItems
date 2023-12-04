@@ -15,6 +15,15 @@ class AssignedTo(BaseSubstitution):
         return self.context.assigned_to
       return ''
 
+class DaysLeft(BaseSubstitution):
+    category = "All Content"
+    description = "Assigned To"
+
+    def safe_call(self):
+      if hasattr(self.context, 'daysleft'):
+        return self.context.daysleft
+      return ''
+
 @adapter(Interface)
 class AssignedMail(BaseSubstitution):
     category = "All Content"
