@@ -5,6 +5,9 @@ from zope.component import adapter
 from plone.stringinterp.adapters import BaseSubstitution
 from plone import api
 
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
+
+
 @adapter(Interface)
 class AssignedTo(BaseSubstitution):
     category = "All Content"
@@ -35,6 +38,29 @@ class AssignedMail(BaseSubstitution):
         return api.user.get(userid=self.context.assigned_to).getProperty('email')
       
       return ''
+
+
+@adapter(Interface)
+class AssignedFullName(BaseSubstitution):
+    category = "All Content"
+    description = "Assigned To Fullname"
+
+    def safe_call(self):
+      if hasattr(self.context, 'assigned_to'):
+        #return assigned users email
+        return api.user.get(userid=self.context.assigned_to).getProperty('fullname')
+      
+      return ''
+
+
+@adapter(Interface)
+class ProjectShortName(BaseSubstitution):
+    category = "All Content"
+    description = "Project Short Name "
+
+    def safe_call(self):
+      return  api.portal.get_registry_record('project_short_name', interface=IDocentimsSettings) or ''
+
 
         
 # @adapter(Interface)

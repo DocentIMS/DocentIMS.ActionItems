@@ -99,6 +99,22 @@
         name="daysleft"
     />
 
+    <adapter
+        factory=".adapters.AssignedFullName"
+        provides="plone.stringinterp.interfaces.IStringSubstitution"
+        for="*"
+        name="assignedfullname"
+    />
+
+    <adapter
+        factory=".adapters.ProjectShortName"
+        provides="plone.stringinterp.interfaces.IStringSubstitution"
+        for="*"
+        name="project_short_name"
+    />
+    
+    
+
   <utility
     	  component=".vocabularies.ActionItemsVocabulary"
         name="DocentIMS.ActionItems.ActionItemsVocabulary" />

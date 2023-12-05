@@ -24,21 +24,19 @@ from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFPlone.interfaces import IMailSchema
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 #from Products.statusmessages.interfaces import IStatusMessage
-from zope import schema
+# from zope import schema
 from zope.component import adapter, getUtility
 from zope.interface.interfaces import ComponentLookupError
-from zope.globalrequest import getRequest
+# from zope.globalrequest import getRequest
 from zope.interface import implementer, Interface
 from plone import api
-
 from datetime import datetime
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
+
 
 now = datetime.now()
 
-
-
 import logging
-
 logger = logging.getLogger(__file__)
 
 
@@ -65,7 +63,6 @@ class ReindexView(BrowserView):
     def reindex(self):
         my_brains = self.context.portal_catalog(portal_type=['action_items', 'sow_analysis'])
         # red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
-
         
         registry = getUtility(IRegistry)
         self.mail_settings = registry.forInterface(IMailSchema, prefix="plone")
@@ -87,7 +84,7 @@ class ReindexView(BrowserView):
             daysleft = brain.daysleft
             
             #Send mail if urgency changed
-            if brain.urgency == old_urgency:
+            if brain.urgency != old_urgency:
                 #Send email to user assigned 
                 if brain.assigned_to:
                     #import pdb; pdb.set_trace()
@@ -104,20 +101,21 @@ class ReindexView(BrowserView):
                         #  If you believe that you will get this {tittel} done in time, no action is required.However, 
                         # if you believe that you may miss the due date, please contact the project manager.<hr/> Sincerely,{manager}
                         # Project Manager{project}<short name of project>""".format(creators = brain.assigned_to, tittel = brain.Title, manager='manager nam', project='project name')
+                        #${assigned} 
                         
-                        melding = """<p>Hello ${assigned}<p> <p>This is a friendly reminder that:  <a href="${absolute_url}">${title}</a>  is due in <b>${daysleft} days</b>.   </p>
+                        melding = """<p>Hello ${assignedfullname}<p> <p>This is a friendly reminder that:  <a href="${absolute_url}">${title}</a>  is due in <b>${daysleft} days</b>.   </p>
                         <p>If you believe that you will get <a href="${absolute_url}">${title}</a> done in time, no action is required.</p>
                         <p>However,  
                         if you believe that you may miss the due date, please contact the project manager.</p><hr/> 
-                        <p>Sincerely, <b>xxx</b> Project Manager <short name of project>
-                        ${absolute_url}</p>""" 
+                        <p>Sincerely, <b>xxx</b></p>
+                        <p>Project Manager<br/> ${project_short_name}</p>
+                        </p>""" 
                         
                         
                         # prepend interpolated message with \n to avoid interpretation
                         # of first line as header
                         message = f"\n{interpolator(melding)!s}"
                         # print(message)
-                        #message = melding
                         outer = MIMEMultipart('alternative')
                         outer['To'] = self.recipients
                         outer['From'] = self.mail_settings.email_from_address
