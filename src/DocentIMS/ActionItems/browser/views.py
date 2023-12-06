@@ -47,7 +47,6 @@ class ActionItemsAddForm(DefaultAddForm):
             from_url =  self.request.get('from_url')
             if from_url:
                 portal_url= api.portal.get().absolute_url()
-                import pdb; pdb.set_trace()
                 from_path =    url = unquote(from_url).replace(portal_url, '')
                 from_content = api.content.get(path=from_path)  
                 from_uid = api.content.get_uuid(from_content)
