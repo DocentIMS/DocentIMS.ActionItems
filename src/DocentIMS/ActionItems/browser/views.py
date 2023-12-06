@@ -38,6 +38,14 @@ class ActionItemsAddForm(DefaultAddForm):
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
         from_uid =  self.request.get('related_from')
+        if not from_uid:
+            from_url =  self.request.get('from_url')
+            if from_url:
+                portal_url= api.portal.get().absolute_url()
+                from_path =  from_url.replace(portal_url, '')
+                from_content = api.content.get(path=from_path)  
+                from_uid = api.content.get_uuid(from_content)
+
 
         if from_uid:
             came_from  = api.content.get(UID=from_uid)
@@ -45,10 +53,15 @@ class ActionItemsAddForm(DefaultAddForm):
             came_from_i = initids.getId(came_from)
             self.fields['related_item'].field.default = RelationValue( came_from_i )
 
+
     def update(self):
         super(ActionItemsAddForm, self).update()
 
+        to_uuid =  self.request.get('to_uuid')
+        if to_uuid:
+            setattr(self.context, '_plone.uuid', to_uuid)
         
+
         for group in self.groups:
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
                 #group.mode = 'omitted'
