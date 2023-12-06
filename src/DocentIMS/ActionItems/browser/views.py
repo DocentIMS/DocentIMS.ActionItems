@@ -29,20 +29,6 @@ class ActionItemsAddForm(DefaultAddForm):
     portal_type = "action_items"
     default_fieldset_label = 'Home'
     
-    # @button.buttonAndHandler(("Save"), name=None)
-    # def handleSave(self, action):
-    #     self.save()
-
-    # @button.buttonAndHandler(("Cancel"), name="cancel")
-    # def handleCancel(self, action):
-    #     super().handleCancel(self, action)
-        
-    # @button.buttonAndHandler(
-    #     "Add related item", 
-    #     name="related"
-    # )
-    # def handle_related_action(self, action):
-    #     self.request.response.redirect(api.portal.get().absolute_url(), "_blank")
 
     def __init__(self, context, request):
         super(ActionItemsAddForm, self).__init__(context, request)
@@ -78,7 +64,7 @@ class ActionItemsAddForm(DefaultAddForm):
 
         to_uuid =  self.request.get('to_uuid')
         if to_uuid:
-            setattr(self.context, 'to_uuid', to_uuid)
+            self.context.to_uuid =  to_uuid
             
         for group in self.groups:
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
