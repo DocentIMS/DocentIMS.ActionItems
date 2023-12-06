@@ -64,7 +64,7 @@ class ActionItemsAddForm(DefaultAddForm):
 
         to_uuid =  self.request.get('to_uuid')
         if to_uuid:
-            self.context.to_uuid =  to_uuid
+            setattr(self, 'to_uuid', to_uuid)
             
         for group in self.groups:
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
