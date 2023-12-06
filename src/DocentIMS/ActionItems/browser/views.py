@@ -62,9 +62,9 @@ class ActionItemsAddForm(DefaultAddForm):
     def update(self):
         super(ActionItemsAddForm, self).update()
 
-        to_uuid =  self.request.get('to_uuid')
-        if to_uuid:
-            self.fields['to_uuid'] =  to_uuid
+        # to_uuid =  self.request.get('to_uuid')
+        # if to_uuid:
+        #     self.fields['to_uuid'] =  to_uuid
             
         for group in self.groups:
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
