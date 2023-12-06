@@ -62,6 +62,13 @@
 
   <include package=".views" />
 
+<!-- Change UUID after creation -->
+  <subscriber
+    for="Products.CMFCore.interfaces.IFolderish        
+        zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".subscribers.change_uuid"
+    />
+
 
 <!-- to do find registration for right thing-->
   <subscriber

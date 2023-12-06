@@ -17,7 +17,7 @@ from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile as Z3View
 
 from urllib.parse import unquote
 
-
+from z3c.form import button
 
 
 #from plone.app.textfield import RichText
@@ -28,6 +28,21 @@ from urllib.parse import unquote
 class ActionItemsAddForm(DefaultAddForm):
     portal_type = "action_items"
     default_fieldset_label = 'Home'
+    
+    # @button.buttonAndHandler(("Save"), name=None)
+    # def handleSave(self, action):
+    #     self.save()
+
+    # @button.buttonAndHandler(("Cancel"), name="cancel")
+    # def handleCancel(self, action):
+    #     super().handleCancel(self, action)
+        
+    # @button.buttonAndHandler(
+    #     "Add related item", 
+    #     name="related"
+    # )
+    # def handle_related_action(self, action):
+    #     self.request.response.redirect(api.portal.get().absolute_url(), "_blank")
 
     def __init__(self, context, request):
         super(ActionItemsAddForm, self).__init__(context, request)
@@ -51,7 +66,6 @@ class ActionItemsAddForm(DefaultAddForm):
                 from_content = api.content.get(path=from_path)  
                 from_uid = api.content.get_uuid(from_content)
 
-
         if from_uid:
             came_from  = api.content.get(UID=from_uid)
             initids = getUtility(IIntIds)
@@ -64,9 +78,8 @@ class ActionItemsAddForm(DefaultAddForm):
 
         to_uuid =  self.request.get('to_uuid')
         if to_uuid:
-            setattr(self.context, '_plone.uuid', to_uuid)
-        
-
+            setattr(self.context, 'to_uuid', to_uuid)
+            
         for group in self.groups:
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
                 #group.mode = 'omitted'

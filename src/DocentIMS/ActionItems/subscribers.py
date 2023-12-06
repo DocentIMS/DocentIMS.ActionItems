@@ -9,6 +9,10 @@ from zope.interface import Interface
 from zope.lifecycleevent import IObjectModifiedEvent
 #from zope.schema.interfaces import IContextSourceBinder
 
+def change_uuid(object, event):
+    if hasattr(object, 'to_uuid'):
+        setattr(object, '_plone.uuid', object.to_uuid)
+        
 def last_state(object, event):
     #subscribers.last_state
     #histo = event.transition.variables.review_history
