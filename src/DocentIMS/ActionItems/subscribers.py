@@ -12,12 +12,13 @@ from zope.lifecycleevent import IObjectModifiedEvent
 def change_uuid(object, event):
     
     #import pdb; pdb.set_trace()
-    if object.portal_type in  ['action_items', 'sow_analysis' ]:
-        if hasattr(object, 'Description'):
-            lenght = len( object.description ) 
-            if  lenght == 36:
-                setattr(object, '_plone.uuid', object.Description())
-                setattr(object, 'Description', '' )
+    a = 1
+    # if object.portal_type in  ['action_items', 'sow_analysis' ]:
+    #     if hasattr(object, 'Description'):
+    #         lenght = len( object.description ) 
+    #         if  lenght == 36:
+    #             setattr(object, '_plone.uuid', object.Description())
+    #             setattr(object, 'Description', '' )
                 
         
 def last_state(object, event):
