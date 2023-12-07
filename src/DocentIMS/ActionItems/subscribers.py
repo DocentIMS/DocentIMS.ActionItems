@@ -11,7 +11,7 @@ from zope.lifecycleevent import IObjectModifiedEvent
 
 def change_uuid(object, event):
     
-    import pdb; pdb.set_trace()
+    #import pdb; pdb.set_trace()
     if object.portal_type in  ['action_items', 'sow_analysis' ]:
         if hasattr(object, 'Description'):
             lenght = len( object.description ) 
