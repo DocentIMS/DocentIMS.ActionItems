@@ -69,6 +69,11 @@
     handler=".subscribers.change_uuid"
     />
 
+  <subscriber
+    for="Products.CMFCore.interfaces.IFolderish        
+        zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".subscribers.remove_description"
+    />
 
 <!-- to do find registration for right thing-->
   <subscriber
