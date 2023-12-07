@@ -59,7 +59,7 @@ class ActionItemsAddForm(DefaultAddForm):
 
         to_uuid =  self.request.get('to_uuid')
         if to_uuid:
-            self.fields['placeholder'].field.default = to_uuid
+            self.fields['IBasic.description'].field.default = to_uuid
             
 
     def update(self):
