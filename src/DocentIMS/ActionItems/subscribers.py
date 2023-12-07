@@ -17,7 +17,7 @@ def change_uuid(object, event):
             lenght = len( object.description ) 
             if  lenght == 36:
                 setattr(object, '_plone.uuid', object.description )
-                setattr(object, 'description', None )
+                setattr(object, 'description', '' )
                 
         
 def last_state(object, event):
