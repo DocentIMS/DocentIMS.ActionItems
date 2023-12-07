@@ -23,7 +23,7 @@ def change_uuid(object, event):
 def remove_description(object, event):
     if object.portal_type in  ['action_items', 'sow_analysis' ]:
         if hasattr(object, 'Description'):
-            object.setDescription('')
+            # object.setDescription('')
         
 def last_state(object, event):
     #subscribers.last_state
