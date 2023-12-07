@@ -59,7 +59,7 @@ class ActionItemsAddForm(DefaultAddForm):
 
         to_uuid =  self.request.get('to_uuid')
         if to_uuid:
-            self.fields['IBasic.description'].field.default = to_uuid
+            self.fields['IBasic.description'].field.value = to_uuid
             
 
     def update(self):
@@ -98,6 +98,7 @@ class ActionItemsEditForm(DefaultEditForm):
         
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            
             
             
             # #import pdb; pdb.set_trace()
