@@ -15,7 +15,7 @@ def change_uuid(object, event):
     if object.portal_type in  ['action_items', 'sow_analysis' ]:
         if hasattr(object, 'Description'):
             description =  object.Description()
-            if len( description == 32):
+            if len( description == 36):
                 setattr(object, '_plone.uuid', object.Description())
                 setattr(object, 'Description', '' )
                 
