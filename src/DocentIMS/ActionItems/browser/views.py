@@ -57,15 +57,15 @@ class ActionItemsAddForm(DefaultAddForm):
             came_from_i = initids.getId(came_from)
             self.fields['related_item'].field.default = RelationValue( came_from_i )
 
+        to_uuid =  self.request.get('to_uuid')
+        if to_uuid:
+            self.fields['IBasic.description'].field.default = to_uuid
+            
 
     def update(self):
         super(ActionItemsAddForm, self).update()
+        
 
-        # to_uuid =  self.request.get('to_uuid')
-        # if to_uuid:
-        #     setattr(self.to_uuid, to_uuid)
-        #     setattr(self, '_plone.uuid', to_uuid)
-            
         for group in self.groups:
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
                 #group.mode = 'omitted'

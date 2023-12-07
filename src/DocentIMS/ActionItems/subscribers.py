@@ -10,8 +10,15 @@ from zope.lifecycleevent import IObjectModifiedEvent
 #from zope.schema.interfaces import IContextSourceBinder
 
 def change_uuid(object, event):
-    if hasattr(object, 'to_uuid'):
-        setattr(object, '_plone.uuid', object.to_uuid)
+    
+    import pdb; pdb.set_trace()
+    if object.portal_type in  ['action_items', 'sow_analysis' ]:
+        if hasattr(object, 'Description'):
+            description =  object.Description()
+            if len( description == 32):
+                setattr(object, '_plone.uuid', object.Description())
+                setattr(object, 'Description', '' )
+                
         
 def last_state(object, event):
     #subscribers.last_state
