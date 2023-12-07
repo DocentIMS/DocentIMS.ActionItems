@@ -17,13 +17,13 @@ def change_uuid(object, event):
             lenght = len( object.description ) 
             if  lenght == 36:
                 setattr(object, '_plone.uuid', object.description )
-                setattr(object, 'description', '' )
+                # setattr(object, 'description', '' )
+                object.setDescription('')
 
 def remove_description(object, event):
     if object.portal_type in  ['action_items', 'sow_analysis' ]:
         if hasattr(object, 'Description'):
-            setattr(object, 'Description', '' )
-                
+            object.setDescription('')
         
 def last_state(object, event):
     #subscribers.last_state
