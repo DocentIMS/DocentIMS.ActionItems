@@ -61,6 +61,10 @@ def save_note(object, event):
         context = object
         user =  api.user.get_current().getMemberId()
         item = api.content.find(context=context, id=user, portal_type='personal_notes' )
+        
+        # if object.portal_type in  ['action_items', 'sow_analysis' ]:
+        #     if hasattr(object, 'Description'):
+        #         a=1
             
             
         #Update personal note with content
