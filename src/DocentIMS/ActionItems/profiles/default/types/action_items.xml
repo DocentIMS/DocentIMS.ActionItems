@@ -48,6 +48,10 @@
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;PriorityString&lt;/title&gt;
       &lt;/field&gt;
+      &lt;field name=&quot;placeholder&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Placeholder&lt;/title&gt;
+      &lt;/field&gt;
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;

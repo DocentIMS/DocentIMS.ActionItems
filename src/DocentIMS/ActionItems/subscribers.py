@@ -3,23 +3,27 @@
 from plone import api
 from plone.app.textfield import RichText
 from zope.i18nmessageid import MessageFactory
+import transaction
 # from zope.interface import alsoProvides
 # from zope.interface import directlyProvides
 from zope.interface import Interface
 from zope.lifecycleevent import IObjectModifiedEvent
+# from zope.lifecycleevent import IObjectAddedEvent"
+
 #from zope.schema.interfaces import IContextSourceBinder
 
-def change_uuid(object, event):
-    
-    #import pdb; pdb.set_trace()
-    if object.portal_type in  ['action_items', 'sow_analysis' ]:
-        if hasattr(object, 'description'):
-            lenght = len( object.description ) 
-            if  lenght == 36:
-                setattr(object, '_plone.uuid', object.Description() )
-                # setattr(object, 'description', '' )
-                # object.setDescription('')
 
+def change_uuid(object, event):
+    if object.portal_type in  ['action_items' ]:
+        #import pdb; pdb.set_trace()
+        if hasattr(object, 'placeholder'):
+            if object.placeholder is not None:
+                lenght = len( object.placeholder ) 
+                if  lenght == 32:
+                    setattr(object, '_plone.uuid', object.placeholder) 
+                    setattr(object, 'placeholder', '') 
+                    transaction.commit()
+                    
 def remove_description(object, event):
     if object.portal_type in  ['action_items', 'sow_analysis' ]:
         if hasattr(object, 'Description'):

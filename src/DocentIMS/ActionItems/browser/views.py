@@ -43,11 +43,12 @@ class ActionItemsAddForm(DefaultAddForm):
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
         from_uid =  self.request.get('related_from')
+        to_uuid =  self.request.get('to_uuid')
         if not from_uid:
             from_url =  self.request.get('from_url')
-            if from_url:
+            if from_url and from_url != '':
                 portal_url= api.portal.get().absolute_url()
-                from_path =    url = unquote(from_url).replace(portal_url, '')
+                from_path =  from_url.replace(portal_url, '')
                 from_content = api.content.get(path=from_path)  
                 from_uid = api.content.get_uuid(from_content)
 
@@ -57,12 +58,14 @@ class ActionItemsAddForm(DefaultAddForm):
             came_from_i = initids.getId(came_from)
             self.fields['related_item'].field.default = RelationValue( came_from_i )
 
-        to_uuid =  self.request.get('to_uuid')
+        
         if to_uuid:
-            self.fields['IBasic.description'].field.value = to_uuid
+            self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE    
+            self.fields['placeholder'].field.default = to_uuid
+            # self.fields['IBasic.description'].field.default = to_uuid
             
 
-    def update(self):
+    def update(self): 
         super(ActionItemsAddForm, self).update()
         
 
@@ -98,6 +101,7 @@ class ActionItemsEditForm(DefaultEditForm):
         
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            # self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE    
             
             
             
