@@ -37,8 +37,9 @@ class ActionItemsAddForm(DefaultAddForm):
         super(ActionItemsAddForm, self).updateWidgets()
         self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
         self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
-        self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE       
-
+        self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
+        self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE    
+        
 
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
@@ -60,7 +61,6 @@ class ActionItemsAddForm(DefaultAddForm):
 
         
         if to_uuid:
-            self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE    
             self.fields['placeholder'].field.default = to_uuid
             # self.fields['IBasic.description'].field.default = to_uuid
             
