@@ -19,7 +19,7 @@ tinymce.PluginManager.add("DocentIMS_CreateAI", function (editor) {
               editor.selection.setContent(tempValue);
               setTimeout(() => {
                 // Variable replacement did not work
-                const linkToOpen = portalUrl +'/action-items/++add++action_items?from_url=' + baseUrl + '&to_uuid=' + to_uuid;
+                const linkToOpen = portalUrl +'/action-items/++add++action_items?from_url=' + baseUrl + '&to_uuid=' + to_uuid + '&exp_text=' + content;
                 window.open(linkToOpen, "_blank");
               }, 250);
             }

@@ -45,6 +45,7 @@ class ActionItemsAddForm(DefaultAddForm):
         super(ActionItemsAddForm, self).updateFields()
         from_uid =  self.request.get('related_from')
         to_uuid =  self.request.get('to_uuid')
+        exp_text =  self.request.get('exp_text')
         if not from_uid:
             from_url =  self.request.get('from_url')
             if from_url and from_url != '':
@@ -63,6 +64,11 @@ class ActionItemsAddForm(DefaultAddForm):
         if to_uuid:
             self.fields['placeholder'].field.default = to_uuid
             # self.fields['IBasic.description'].field.default = to_uuid
+
+        if exp_text:
+            self.fields['full_explanation'].field.default = exp_text
+
+            
             
 
     def update(self): 
