@@ -38,8 +38,10 @@ class ActionItemsAddForm(DefaultAddForm):
         self.widgets['related_item'].mode = interfaces.HIDDEN_MODE
         self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
         self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
-        self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE    
-        
+        self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
+        self.widgets["placeholder"].disabled = "disabled"
+
+
 
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
