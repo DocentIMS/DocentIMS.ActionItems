@@ -48,10 +48,6 @@
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;PriorityString&lt;/title&gt;
       &lt;/field&gt;
-      &lt;field name=&quot;placeholder&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
-        &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;Placeholder&lt;/title&gt;
-      &lt;/field&gt;
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
@@ -62,6 +58,11 @@
         &lt;description/&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Related Item&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;placeholder&quot; type=&quot;zope.schema.TextLine&quot;&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;placeholder&lt;/title&gt;
       &lt;/field&gt;
       &lt;fieldset name=&quot;all_dates&quot; label=&quot;All Dates&quot; description=&quot;Due Dates. The Initial Due Date Stays Unchanged. The Revised Due Date May be Changed&quot;&gt;
         &lt;field name=&quot;initial_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
