@@ -109,9 +109,8 @@ class ActionItemsEditForm(DefaultEditForm):
         
         if self.portal_type == 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
-            # self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE    
-            
-            
+            self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
+            self.widgets["placeholder"].disabled = "disabled"
             
             # #import pdb; pdb.set_trace()
             # for group in self.groups:
