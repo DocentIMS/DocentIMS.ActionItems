@@ -149,11 +149,18 @@
 
           <hr class="hr"/>
           <div tal:repeat="relation view/target_relations|None">
-            <p>↓ <a href="${relation/from_path|None}">${relation/from_object/Title|None}</a></p>
+            <p>↓ <a href="${relation/from_path|None}">${relation/from_object/Title|None}</a> 
+            <span tal:condition="relation/from_object/revised_due_date|None">- ${relation/from_object/revised_due_date}</span>
+            <span tal:condition="not: relation/from_object/revised_due_date|None">- ${relation/from_object/initial_due_date}</span>
+            
+          </p>
           </div>
 
           <div tal:repeat="relation view/source_relations|None">
-            <p>↑: <a href="${relation/to_path|None}">${relation/to_object/Title|None}</a></p>
+            <p>↑: <a href="${relation/to_path|None}">${relation/to_object/Title|None}</a>
+            <span tal:condition="relation/to_object/revised_due_date|None">- ${relation/to_object/revised_due_date}</span>
+            <span tal:condition="not: relation/to_object/revised_due_date|None">- ${relation/to_object/initial_due_date}</span>
+            </p>
           </div>
 
           <!-- <a href="${view/portal_url}/action_items/++add++action_items?related_from=${context/UID}" target="_blank" class="button standalone btn btn-outline-primary">Create Related Action Item</a> -->

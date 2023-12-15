@@ -20,12 +20,12 @@
             data-pat-autotoc="section:fieldset;levels:legend;">
             <fieldset>
               <legend>ⓘ Full Details</legend>
-              <p class="larger">Full Details of the Scope</p>
+              <p class="larger">Scope Section Details</p>
               <div tal:replace="structure  context/bodytext/output|None" />
               <hr class="hr" />
               <div class="alert alert-warning">
                 <p tal:condition="context/assigned_to|None">
-                  <b>Scope Owner:</b>
+                  <b>Responsibility:</b>
                   <span tal:define="owner view/get_owner|None" >
                     ${owner/last_name|None}, ${owner/first_name|None} <tal:condition tal:condition="owner/company|None">–  ${owner/company|None}</tal:condition>
                   </span>
@@ -64,9 +64,9 @@
                           </tal:condition>
                         </td></tr>
                         <tr>
-                          <td>
+                          <!--td>
                             <b>Priority:</b>  <span tal:condition="context/priority|None">${context/priority|None}</span>
-                          </td>
+                          </td-->
                           <td>
                             <b>Modified:</b>  <time class="pat-display-time"
                             datetime="${python:context.modified().ISO()}"
@@ -95,20 +95,20 @@
 
 
         <fieldset>
-              <legend>↹ PM Notes</legend>
+              <legend>↹ Notes</legend>
               <p class="larger">Notes from the Project Manager to person doing the analysis</p>
               <hr class="hr" />
               <div tal:replace="structure  context/notes/output|None" /> 
         </fieldset>
 
-        <fieldset>
+        <!--fieldset>
               <legend>Intermediate Actions</legend>
               <p class="larger">Actions taken</p>
               <hr class="hr" />
               <div tal:replace="structure  context/actions_taken/output|None" /> 
               <div tal:replace="structure  context/explanation/output|None" /> 
               
-        </fieldset>
+        </fieldset-->
 
 
 
@@ -121,7 +121,9 @@
             <p><b class="label">Related Action Items:</b>
             <ul tal:condition="view/target_relations|None"> 
                 <li tal:repeat="rela view/target_relations">
-                  <a href="${rela/from_path}">${rela/from_object/title}</a>
+                  <a href="${rela/from_path}">${rela/from_object/title}</a> 
+                    <span tal:condition="relation/from_object/revised_due_date|None">- ${relation/from_object/revised_due_date}</span>
+                    <span tal:condition="not: relation/from_object/revised_due_date|None">- ${relation/from_object/initial_due_date}</span>
                 </li> 
             </ul>
         </fieldset>
@@ -178,14 +180,13 @@
       </svg>
       </span>
       <span tal:condition="view/get_duedate">Export ICal</span><a>
-    <a href="${view/portal_url}/action-items/++add++action_items?related_from=${context/UID}"
+    <!--a href="${view/portal_url}/action-items/++add++action_items?related_from=${context/UID}"
       target="_blank" class="button standalone btn btn-outline-primary">
-      <span class="black">Δ+</span>  Create Related Action Item</a>
+      <span class="black">Δ+</span>  Create Related Action Item</a-->
 
     <a href="${context/absolute_url}/edit"
        class="button standalone btn btn-success">
       <span>✎</span>  Edit Scope </a>
-
     </p>
 
     <style> 
@@ -211,9 +212,6 @@
        xbackground: rgba(254,255,255,0.5913176);
        margin:  1px;
       }
-
-
-
 
     .calendarsheet {
         max-width: 120px;

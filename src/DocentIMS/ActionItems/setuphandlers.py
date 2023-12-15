@@ -60,8 +60,20 @@ def post_install(context):
     
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  [{'row_field': 'id', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
+                                         [{'row_field': 'title', 'row_title': 'Title'},
+                                          {'row_field': 'assigned_to', 'row_title': 'Responsible person'},
+                                          {'row_field': 'description', 'row_title': 'Description'},
+                                          {'row_field': 'priority', 'row_title': 'Priority'},
+                                          {'row_field': 'initial_due_date', 'row_title': 'Due date'},
+                                         ])
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  
+                                         [{'row_field': 'id', 'row_title': 'ID'}, 
+                                          {'row_field': 'title', 'row_title': 'Title'},
+                                          {'row_field': 'initial_due_date', 'row_title': 'Due date'},
+                                          {'row_field': 'section_number', 'row_title': 'SN'},
+                                          {'row_field': 'estimated_qc_time', 'row_title': 'QC time'}, 
+                                          ])
     
     # Create Folder to put everything in
     _create_content(portal)
@@ -236,21 +248,21 @@ def _create_content(portal):
         if not portal.get('scope-analysis', False):
             scopeanalysis = plone.api.content.create(
                 type='Folder',
-                Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
                 container=portal,
                 id='scope-analysis',
-                title='Scope Analysis',
+                title='Scope Breakdown',
                 default_page='sow-collection'
 
             )
-
+            
+            # Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
             ## add collection inside here
 
             scopeoverview = plone.api.content.create(
                 type='Collection',
                 container=scopeanalysis,
                 id='sow-collection',
-                title='Scope Analysis',
+                title='Scope Breakdown',
                 layout='sow-overview'
 
             )

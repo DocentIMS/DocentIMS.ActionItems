@@ -7,13 +7,13 @@ $(document).ready(function() {
 // Shows and hides fields depending on checkbox
 
 if( $('#form-widgets-internal_qc_required_-0').is(':checked') ) {
-  // $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc').hide();
+  // $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc').show();
 } else {
-  $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc').hide();
+  $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc, #formfield-form-widgets-finishing_date_for_qc, #formfield-form-widgets-date_wc_finished, #formfield-form-widgets-date_item_finished').hide();
 }
 
 $('#form-widgets-internal_qc_required_-0').change(function () {
-  $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc').toggle();
+  $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc, #formfield-form-widgets-finishing_date_for_qc, #formfield-form-widgets-date_wc_finished, #formfield-form-widgets-date_item_finished').toggle();
 });
 
 

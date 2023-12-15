@@ -31,7 +31,8 @@
  </property>
  <property name="schema"></property>
  <property
-    name="model_source">&lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
+    name="model_source">&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;utf8&#x27;?&gt;
+  &lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
     &lt;schema&gt;
       &lt;field name=&quot;full_explanation&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
         &lt;description&gt;Give all the details, including any references, documents, etc. that might be helpful.&lt;/description&gt;
@@ -44,15 +45,24 @@
         &lt;title&gt;Priority&lt;/title&gt;
         &lt;vocabulary&gt;DocentIMS.ActionItems.PriorityVocabulary&lt;/vocabulary&gt;
       &lt;/field&gt;
-      &lt;field name=&quot;prioritystring&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
-        &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;PriorityString&lt;/title&gt;
-      &lt;/field&gt;
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Assigned to&lt;/title&gt;
         &lt;vocabulary&gt;plone.app.vocabularies.Users&lt;/vocabulary&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;prioritystring&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;PriorityString&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;related_members&quot; type=&quot;zope.schema.Set&quot;&gt;
+       &lt;form:widget type=&quot;plone.app.z3cform.widget.AjaxSelectFieldWidget&quot;/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Identify other team members related to this action item&lt;/title&gt;
+        &lt;description&gt; &lt;/description&gt;
+        &lt;value_type type=&quot;zope.schema.Choice&quot;&gt;
+          &lt;vocabulary&gt;plone.app.vocabularies.Users&lt;/vocabulary&gt;
+        &lt;/value_type&gt;
       &lt;/field&gt;
       &lt;field name=&quot;related_item&quot; type=&quot;z3c.relationfield.schema.RelationChoice&quot;&gt;
         &lt;description/&gt;
@@ -64,7 +74,7 @@
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;placeholder&lt;/title&gt;
       &lt;/field&gt;
-      &lt;fieldset name=&quot;all_dates&quot; label=&quot;All Dates&quot; description=&quot;Due Dates. The Initial Due Date Stays Unchanged. The Revised Due Date May be Changed&quot;&gt;
+      &lt;fieldset name=&quot;all_dates&quot; label=&quot;Dates&quot; description=&quot;Due Dates. The Initial Due Date Stays Unchanged. The Revised Due Date May be Changed&quot;&gt;
         &lt;field name=&quot;initial_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
           &lt;description/&gt;
           &lt;required&gt;False&lt;/required&gt;
@@ -90,6 +100,7 @@
       &lt;/fieldset&gt;
       &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;With minor exceptions, all action items can be connected back to the Scope.&quot;&gt;
         &lt;field name=&quot;is_this_action_out_of_the_scope_of_work_&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;default&gt;False&lt;/default&gt;
           &lt;description&gt;By default, all action items are presumed to be driven by Scope requirements. However, this is not always the case. &amp;#13;
   &amp;lt;br/&amp;gt;&amp;#13;
   If this Action Item is Not directly driven by the Scope, select &#x27;Yes&#x27; and explain in the box that opens. If it is Driven by the Scope, disregard this tab.&lt;/description&gt;
@@ -98,7 +109,6 @@
           &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
         &lt;/field&gt;
         &lt;field name=&quot;explanation_for_out_of_scope_ai&quot; type=&quot;zope.schema.Text&quot;&gt;
-          &lt;default&gt;  &lt;/default&gt;
           &lt;description&gt;Explain why this Action Item is needed if it isn&#x27;t driven by Scope&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Explanation for Out of Scope AI&lt;/title&gt;
@@ -119,6 +129,7 @@
       &lt;/fieldset&gt;
       &lt;fieldset name=&quot;close_out&quot; label=&quot;Close Out&quot; description=&quot;Explain in detail what you did to complete this action item.&quot;&gt;
         &lt;field name=&quot;is_this_item_closed&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;default&gt;False&lt;/default&gt;
           &lt;description&gt;have you finished&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Is this item closed&lt;/title&gt;

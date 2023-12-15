@@ -104,7 +104,7 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
 
 class IVocabulari(model.Schema):
     vocabulary_entry = schema.TextLine(
-        title=_(u'Vocabulary entries', 'Vocabulary entries'),
+        title=_(u'Vocabulary entries', 'Member Roles'),
         required=False,
     )
 
@@ -147,7 +147,7 @@ class ICompany(model.Schema):
         )
     company_letter_kode = schema.TextLine(
         required = False,
-        title=_(u"label_company_letter_code", default=u"Company 3-letter code"),
+        title=_(u"label_company_letter_code", default=u"Company 3-letter code (All Caps)"),
         constraint=company_letter_kodeConstraint,
         )
 
@@ -168,15 +168,16 @@ class ICompany(model.Schema):
         required = False,
         title=_(u"label_company_full_street_adress", default=u"Full Street Address")
         )
-    company_city = schema.TextLine(
-        required = False,
-        title=_(u"label_company_citye", default=u"City")
-        )
     company_other_address = schema.Text(
         required = False,
         title=_(u"label_company_other_adress", default=u"Other Address")
         )
 
+    company_city = schema.TextLine(
+        required = False,
+        title=_(u"label_company_citye", default=u"City")
+        )
+    
     company_state = schema.TextLine(
         required = False,
         title=_(u"label_company_state", default=u"State"),
@@ -272,7 +273,7 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'vocabularies',
-        label=_(u'Vocabularies'),
+        label=_(u'Member Roles'),
         fields=[
             'vokabularies',
             # 'vokabularies2',
@@ -339,9 +340,9 @@ class IDocentimsSettings(model.Schema):
 
     project_title = schema.TextLine(
         required = True,
-        title=_(u"label_title", default=u"Project Title"),
-        description=_(u"help_title",
-                      default=u"Enter short project title")
+        title=_(u"label_title", default=u"Project Full Name"),
+        description=_(u"",
+                      default=u"")
         )
 
     #project_full_name = schema.TextLine(
@@ -354,8 +355,8 @@ class IDocentimsSettings(model.Schema):
     project_short_name = schema.TextLine(
         title=_(u"label_project_short_name",
         default=u"Project Short name"),
-        description=_(u"help_project_short_name",
-                      default=u"Project_short_name")
+        description=_(u"",
+                      default=u"")
         )
     
 
@@ -368,8 +369,8 @@ class IDocentimsSettings(model.Schema):
     project_description = schema.Text(
         required = False,
         title=_(u"label_project_description", default=u"Project Description"),
-        description=_(u"help_project_description",
-                      default=u"Project description")
+        description=_(u"",
+                      default=u"")
         )
 
     # project_companies = schema.Choice(
@@ -384,29 +385,29 @@ class IDocentimsSettings(model.Schema):
     project_contract_number = schema.TextLine(
         required = False,
         title=_(u"label_project_contract_number", default=u"Project Contract Number"),
-        description=_(u"help_project_contract_number",
-                      default=u"Project_contract_number")
+        description=_(u"",
+                      default=u"")
         )
     project_document_naming_convention = schema.TextLine(
         required = False,
         title=_(u"label_project_document_naming_convention", default=u"Project Document Naming Convention"),
-        description=_(u"help_project_document_naming_convention",
-                      default=u"Project document naming convention")
+        description=_(u"",
+                      default=u"")
         )
     
     urgent_red = schema.Int(
-        title=_(u"label_red", default=u"Urgent Red value"),
-        description="enter number of days",
+        title=_(u"label_red", default=u"Urgent Red value, enter number of days"),
+        description=" ",
         )
     
     future_green = schema.Int(
-        title=_(u"label_green", default=u"Future Green value"),
-        description="enter number of days",
+        title=_(u"label_green", default=u"Future Green value, enter number of days"),
+        description="",
         )
 
     soon_yellow = schema.Int(
-        title=_(u"label_yellow", default=u"Soon Yellow value"),
-        description="enter number of days",
+        title=_(u"label_yellow", default=u"Soon Yellow value, enter number of days"),
+        description="",
         )
 
     # full_company_name = schema.TextLine(
@@ -467,8 +468,8 @@ class IDocentimsSettings(model.Schema):
 
     widget(vokabularies=DataGridFieldFactory)
     vokabularies = schema.List(
-        title = _(u"Team Member Project Roles",
-            default=u"Team Member Project Roles"),
+        title = _(u" ",
+            default=u""),
         value_type=DictRow(schema=IVocabulari),
         required=True,
     )
@@ -519,7 +520,7 @@ class IDocentimsSettings(model.Schema):
     widget(color1=ColorpickerFieldWidget)
     color1 = schema.TextLine(
         title=u"Project Color",
-        description=u"Choose Color One",
+        description=u"",
         # max_length=10,
         required=True,
         default="#ff0000"
