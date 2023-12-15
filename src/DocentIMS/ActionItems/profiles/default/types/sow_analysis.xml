@@ -61,9 +61,9 @@
           &lt;title&gt;Revised Due Date&lt;/title&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
-      &lt;fieldset name=&quot;notes&quot; label=&quot;PM Notes&quot; description=&quot; &quot;&gt;
+      &lt;fieldset name=&quot;notes&quot; label=&quot;Notes&quot; description=&quot; &quot;&gt;
         &lt;field name=&quot;notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
-          &lt;description&gt;Project Manager&#x27;s Notes to Person Analyzing This Section&lt;/description&gt;
+          &lt;description&gt;Add any notes regarding this Scope Item&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt; &quot; &lt;/title&gt;
         &lt;/field&gt;
