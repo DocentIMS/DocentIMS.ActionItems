@@ -122,8 +122,8 @@
             <ul tal:condition="view/target_relations|None"> 
                 <li tal:repeat="rela view/target_relations">
                   <a href="${rela/from_path}">${rela/from_object/title}</a> 
-                    <span tal:condition="relation/from_object/revised_due_date|None">- ${relation/from_object/revised_due_date}</span>
-                    <span tal:condition="not: relation/from_object/revised_due_date|None">- ${relation/from_object/initial_due_date}</span>
+                    <span tal:condition="rela/from_object/revised_due_date|None">- ${rela/from_object/revised_due_date}</span>
+                    <span tal:condition="not: rela/from_object/revised_due_date|None">- ${rela/from_object/initial_due_date}</span>
                 </li> 
             </ul>
         </fieldset>
