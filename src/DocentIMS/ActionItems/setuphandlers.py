@@ -189,8 +189,7 @@ def _create_content(portal):
                 title='Action Items',
                 layout='action-overview',
                 default_page='action-items-collection',
-                # action_items.allowed_types=['action_items'],
-                # action_items.allowedContentTypes=['action_items']
+                nextPreviousEnabled=1 
             )
             
             ## add collection inside here
@@ -251,7 +250,8 @@ def _create_content(portal):
                 container=portal,
                 id='scope-analysis',
                 title='Scope Breakdown',
-                default_page='sow-collection'
+                default_page='sow-collection',
+                nextPreviousEnabled=1
 
             )
             

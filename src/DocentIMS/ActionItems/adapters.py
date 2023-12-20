@@ -37,7 +37,7 @@ class AssignedMail(BaseSubstitution):
         #return assigned users email
         return api.user.get(userid=self.context.assigned_to).getProperty('email')
       
-      return ''
+      return 'wglover@docentims.com'
 
 
 @adapter(Interface)
