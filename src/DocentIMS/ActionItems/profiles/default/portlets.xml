@@ -38,7 +38,7 @@
 
  
    <!-- Assign a collection filter portlet -->
-  <assignment category="context"
+  <!-- <assignment category="context"
           key="/action-items/action-items-collection"
           manager="plone.rightcolumn"
           name="collectionfilterp"
@@ -46,12 +46,12 @@
     <property name="header">Priority</property>
     <property name="group_by">prioritystring</property>
     <property name="show_count">True</property>
- </assignment>
+ </assignment> -->
  
 
   
    <!-- Assign a collection filter portlet -->
-  <assignment category="context"
+  <!-- <assignment category="context"
           key="/action-items/action-items-collection"
           manager="plone.rightcolumn"
           name="collectionfilterthree"
@@ -59,6 +59,6 @@
     <property name="header">Urgency</property>
     <property name="group_by">urgency</property>
     <property name="show_count">True</property>
- </assignment>
+ </assignment> -->
   
 </portlets>
