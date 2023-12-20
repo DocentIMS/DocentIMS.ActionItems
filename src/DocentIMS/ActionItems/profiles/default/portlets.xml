@@ -41,6 +41,7 @@
   <assignment category="context"
           key="/action-items/action-items-collection"
           manager="plone.rightcolumn"
+          name="collectionfilterp"
           type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Priority</property>
     <property name="group_by">prioritystring</property>
