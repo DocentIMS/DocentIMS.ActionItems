@@ -202,8 +202,8 @@ def _create_content(portal):
                     container=action_items,
                     id='action-items-collection',
                     title='Action Items',
-                    layout='action-overview'
-
+                    layout='action-overview',
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['action_items']}]
                 )
 
             # This is for importing dummy content, will require action items to be present (installed)
@@ -243,7 +243,7 @@ def _create_content(portal):
             #     pass
 
 
-
+        
         if not portal.get('scope-analysis', False):
             scopeanalysis = plone.api.content.create(
                 type='Folder',
@@ -263,8 +263,8 @@ def _create_content(portal):
                 container=scopeanalysis,
                 id='sow-collection',
                 title='Scope Breakdown',
-                layout='sow-overview'
-
+                layout='sow-overview',
+                query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}]
             )
 
 
