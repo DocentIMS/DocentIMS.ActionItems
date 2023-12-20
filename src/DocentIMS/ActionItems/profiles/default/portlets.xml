@@ -35,8 +35,6 @@
       <property name="show_count">True</property>
   </assignment>
 
-
- 
    <!-- Assign a collection filter portlet -->
   <assignment category="context"
           key="/action-items/action-items-collection"
@@ -46,10 +44,8 @@
     <property name="group_by">prioritystring</property>
     <property name="show_count">True</property>
  </assignment>
- 
 
-  
-   <!-- Assign a collection filter portlet -->
+  <!-- Assign a collection filter portlet -->
   <assignment category="context"
           key="/action-items/action-items-collection"
           manager="plone.rightcolumn"
