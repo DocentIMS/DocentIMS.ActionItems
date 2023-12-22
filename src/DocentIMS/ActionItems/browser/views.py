@@ -120,7 +120,8 @@ class ActionItemsEditForm(DefaultEditForm):
         if self.portal_type == 'sow_analysis':
             #import pdb; pdb.set_trace()
             #self.widgets['bodytext'].template = Z3ViewPageTemplateFile("disabled_input.pt")
-            #self.widgets['bodytext'].mode = interfaces.HIDDEN_MODE
+            #self.widgets['bodytext'].readonly='readonly'
+            self.widgets['bodytext'].mode = interfaces.DISPLAY_MODE
             self.widgets['section_number'].readonly='readonly'
             self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
             
