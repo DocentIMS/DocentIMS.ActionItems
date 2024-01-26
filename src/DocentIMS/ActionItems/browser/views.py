@@ -118,10 +118,14 @@ class ActionItemsEditForm(DefaultEditForm):
             #         self.groups['all_dates'].widgets['initial_due_date'].disabled='disabled'
             
         if self.portal_type == 'sow_analysis':
-            #import pdb; pdb.set_trace()
-            #self.widgets['bodytext'].template = Z3ViewPageTemplateFile("disabled_input.pt")
-            #self.widgets['bodytext'].readonly='readonly'
-            self.widgets['bodytext'].mode = interfaces.DISPLAY_MODE
+            # add confition to only show edit field for admins etc.
+            user = api.user.get_current()
+            #groups = api.group.get_groups(user=user) 
+            group = api.group.get('PrjMgr')
+            member_ids = [member.getId() for member in group.getGroupMembers()]
+            #Just checking for user in usergroup strangly does not work              
+            if not user.id in member_ids:
+                self.widgets['bodytext'].mode = interfaces.DISPLAY_MODE
             self.widgets['section_number'].readonly='readonly'
             self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
             
