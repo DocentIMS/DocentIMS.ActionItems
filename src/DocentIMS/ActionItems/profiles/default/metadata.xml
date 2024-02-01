@@ -10,5 +10,6 @@
     <dependency>profile-plone.restapi:default</dependency> 
     <dependency>profile-medialog.dutchmantheme:default</dependency> 
     <dependency>profile-collective.defaultpage:default</dependency> 
+    <dependency>profile-plone.app.changeownership:default</dependency>
    </dependencies>
 </metadata>
