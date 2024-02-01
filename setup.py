@@ -65,6 +65,7 @@ setup(
         'holidays',
         'collective.z3cform.colorpicker',
         'collective.defaultpage',
+        'plone.app.changeownership',
         'numpy',
         'pandas',
         'openpyxl'
