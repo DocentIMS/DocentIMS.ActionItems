@@ -64,6 +64,7 @@ setup(
         'collective.collectionfilter',
         'holidays',
         'collective.z3cform.colorpicker',
+        'collective.defaultpage',
         'numpy',
         'pandas',
         'openpyxl'

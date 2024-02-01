@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <metadata>
-  <version>1010</version>
+  <version>1020</version>
   <dependencies>
     <dependency>profile-plone.app.dexterity:default</dependency>
     <dependency>profile-medialog.controlpanel:default</dependency>
@@ -9,5 +9,6 @@
     <dependency>profile-collective.z3cform.colorpicker:default</dependency>
     <dependency>profile-plone.restapi:default</dependency> 
     <dependency>profile-medialog.dutchmantheme:default</dependency> 
-  </dependencies>
+    <dependency>profile-collective.defaultpage:default</dependency> 
+   </dependencies>
 </metadata>
