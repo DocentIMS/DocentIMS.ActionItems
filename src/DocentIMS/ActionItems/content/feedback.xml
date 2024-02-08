@@ -5,5 +5,25 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
   <schema>
+      <field name="feedback_submitted_by" type="zope.schema.TextLine">
+        <description/>
+        <required>False</required>
+        <title>feedback submitted by</title>
+      </field>
+      <field name="feedback_text" type="zope.schema.Text">
+        <description/>
+        <required>False</required>
+        <title>feedback text</title>
+      </field>
+      <field name="feedback_file" type="plone.namedfile.field.NamedBlobFile">
+        <description/>
+        <required>False</required>
+        <title>feedback file</title>
+      </field>
+      <field name="aa" type="plone.namedfile.field.NamedBlobImage">
+        <description/>
+        <required>False</required>
+        <title>a</title>
+      </field>
   </schema>
 </model>
