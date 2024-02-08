@@ -5,5 +5,15 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
   <schema>
+      <field name="note_text" type="zope.schema.TextLine">
+        <description/>
+        <required>False</required>
+        <title>note text</title>
+      </field>
+      <field name="attach_file" type="plone.namedfile.field.NamedBlobFile">
+        <description/>
+        <required>False</required>
+        <title>attach file</title>
+      </field>
   </schema>
 </model>

@@ -3,6 +3,14 @@
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission name="DocentIMS.ActionItems: Add Feedback" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+
     <permission name="DocentIMS.ActionItems: Add Notes" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>

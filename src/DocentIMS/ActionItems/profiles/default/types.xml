@@ -6,4 +6,5 @@
   <object name="sow_analysis" meta_type="Dexterity FTI"/>
   <object name="FrontPage" meta_type="Dexterity FTI"/>
   <object name="Notes" meta_type="Dexterity FTI"/>
+  <object name="Feedback" meta_type="Dexterity FTI"/>
 </object>
