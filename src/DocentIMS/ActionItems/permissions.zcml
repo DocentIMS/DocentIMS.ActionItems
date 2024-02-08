@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.AddNotes"
+        title="DocentIMS.ActionItems: Add Notes"
+    />
+
+
+    <permission
         id="DocentIMS.ActionItems.AddFrontPage"
         title="DocentIMS.ActionItems: Add FrontPage"
     />
