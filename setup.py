@@ -63,7 +63,6 @@ setup(
         'collective.z3cform.datagridfield',
         'collective.collectionfilter',
         'holidays',
-        'collective.z3cform.colorpicker',
         'collective.defaultpage',
         'plone.app.changeownership',
         'numpy',
