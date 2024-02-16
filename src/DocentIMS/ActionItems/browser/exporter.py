@@ -19,8 +19,8 @@ from plone.event.utils import utc
 from zope.interface import implementer
 from zope.publisher.browser import BrowserView
 
-from tempfile import TemporaryFile
-
+#from tempfile import TemporaryFile
+import io
 
 from icalendar import Calendar
 from icalendar import Event
@@ -75,7 +75,7 @@ class ActionItemsICal(BrowserView):
         self.request.response.write(ical)
 
 
-class ActionItemsCSV(BrowserView):
+class XActionItemsCSV(BrowserView):
 	"""Returns action event in CSV format."""
 
 
@@ -105,3 +105,57 @@ class ActionItemsCSV(BrowserView):
 
 		#return thefields
 		return CSV
+
+
+
+
+class CSVGenericView(BrowserView):
+    @property
+    def records(self):
+        return []
+
+    @property
+    def fileprefix(self):
+        return "Action_items"
+
+    @property
+    def filename(self):
+        #return f"{self.fileprefix}-{self.now():%Y-%m-%d %H:%M}.csv"
+        return f"{self.fileprefix}-CSV.csv"
+
+    def __call__(self):
+        records = self.records
+        if not records:
+            api.portal.show_message(
+                message="No data found for CSV.",
+                request=self.request,
+                type="error",
+            )
+            self.request.response.redirect(self.context.absolute_url())
+            return "No data."
+        self.request.response.setHeader("Content-Type", "text/csv")
+        self.request.response.setHeader(
+            "Content-Disposition", f"attachment;filename={self.filename}"
+        )
+        sio = io.BytesIO()
+        writer = csv.DictWriter(sio, records[0].keys())
+        writer.writeheader()
+        for record in records:
+            writer.writerow(record)
+        return sio.getvalue()
+
+class ActionItemsCSV(CSVGenericView):
+
+    @property
+    def fileprefix(self):
+        return "Some-Data"
+
+    @property
+    def records(self):
+        result = []
+        brains = api.content.find(portal_type='action_items')
+        for brain in brains:
+            obj = brain.getObject()
+            # better use an OrderedDict below because in CSV order matters.
+            result.append({"title": obj.Title(), "id": obj.getId()}) # and so on
+        return result
