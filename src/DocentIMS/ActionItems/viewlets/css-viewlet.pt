@@ -1,3 +1,4 @@
-<div class="days_to_conf">
-    ${view/message}
-</div>
+<style>
+   .navbar-nav li,
+   .navbar-barceloneta { background-color: ${view/color|None} !important}
+</style>
