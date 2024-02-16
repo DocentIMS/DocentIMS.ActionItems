@@ -14,7 +14,7 @@ from plone.app.textfield import RichText
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone.app.z3cform.widget import SelectFieldWidget
 from z3c.form import form, field
-from collective.z3cform.colorpicker import Color
+#from collective.z3cform.colorpicker import Color
 # from collective.z3cform.colorpicker.colorpicker  import IColorpickerWidget
 # from collective.z3cform.colorpicker.colorpicker  import ColorpickerWidget
 #from collective.z3cform.colorpicker.colorpicker  import ColorpickerFieldWidget
