@@ -3,6 +3,8 @@ from datetime import datetime
 #from datetime import timedelta
 #from plone.app.contentlisting.interfaces import IContentListingObject
 from plone.app.event.base import default_timezone
+from plone import api
+import csv
 #from plone.app.event.base import get_events
 #from plone.app.event.base import RET_MODE_BRAINS
 #from plone.event.interfaces import IEvent
@@ -17,10 +19,18 @@ from plone.event.utils import utc
 from zope.interface import implementer
 from zope.publisher.browser import BrowserView
 
+
 from icalendar import Calendar
 from icalendar import Event
 import pytz
 
+
+try:
+	from StringIO import StringIO ## for Python 2
+except ImportError:
+	from io import StringIO ## for Python 3
+ 
+from io import BytesIO   
 
 PRODID = "-//Plone.org//NONSGML Docent//EN"
 VERSION = "2.0"
@@ -61,3 +71,37 @@ class ActionItemsICal(BrowserView):
         )
         self.request.response.setHeader("Content-Length", len(ical))
         self.request.response.write(ical)
+
+
+class ActionItemsCSV(BrowserView):
+	"""Returns action event in CSV format."""
+
+
+	def download_csv_for_mytype(self):
+		# Find all items of content type 'mytype'
+		mytype_items = api.content.find(portal_type='action_items')
+		
+		
+		if not mytype_items:
+			return "No items of type 'mytype' found."
+			#
+
+		# Prepare CSV data
+		data = [] 
+		#[]= BytesIO()
+		for item in mytype_items:
+			title = item.Title
+			data.append(title)
+			data.append(title)
+			data.append(";")
+			
+		return data
+		
+	# Example usage within Plone context
+	def __call__(self):
+		
+		self.request.response.setHeader("Content-type","application/csvl")
+		self.request.response.setHeader("Content-disposition","attachment;filename=ActionIgtemsData.csv")
+
+		return self.download_csv_for_mytype()
+

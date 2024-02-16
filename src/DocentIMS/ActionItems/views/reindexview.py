@@ -79,13 +79,17 @@ class ReindexView(BrowserView):
         self.email_charset = self.mail_settings.email_charset
         
         for brain in my_brains:
-            old_urgency = brain.urgency
-            brain.getObject().reindexObject(idxs=["daysleft", "urgency"])
+            obj = brain.getObject()
+            old_urgency = obj.urgency or None
             daysleft = brain.daysleft
+            obj.reindexObject(idxs=["daysleft", "urgency"])
             
             #Send mail if urgency changed
+            #print(obj.urgency)
+            #print(brain.urgency)
             if brain.urgency != old_urgency:
-                #Send email to user assigned 
+                #Send email to user assigned
+                #print('we will send')
                 if brain.assigned_to:
                     #import pdb; pdb.set_trace()
                     object = brain.getObject()

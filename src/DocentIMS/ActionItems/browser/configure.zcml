@@ -114,7 +114,14 @@
     /-->
 
 
+    <browser:page
+      name="export-csv"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".exporter.ActionItemsCSV"
+      permission="cmf.ManagePortal"
+      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+    />
 
-  
+
 
 </configure>
