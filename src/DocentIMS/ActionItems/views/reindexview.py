@@ -85,8 +85,6 @@ class ReindexView(BrowserView):
             obj.reindexObject(idxs=["daysleft", "urgency"])
             
             #Send mail if urgency changed
-            #print(obj.urgency)
-            #print(brain.urgency)
             if brain.urgency != old_urgency:
                 #Send email to user assigned
                 #print('we will send')

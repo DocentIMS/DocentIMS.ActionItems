@@ -19,6 +19,8 @@ from plone.event.utils import utc
 from zope.interface import implementer
 from zope.publisher.browser import BrowserView
 
+from tempfile import TemporaryFile
+
 
 from icalendar import Calendar
 from icalendar import Event
@@ -77,7 +79,7 @@ class ActionItemsCSV(BrowserView):
 	"""Returns action event in CSV format."""
 
 
-	def download_csv_for_mytype(self):
+	def __call__(self):
 		# Find all items of content type 'mytype'
 		mytype_items = api.content.find(portal_type='action_items')
 		
@@ -87,21 +89,19 @@ class ActionItemsCSV(BrowserView):
 			#
 
 		# Prepare CSV data
-		data = [] 
+		CSV = []
 		#[]= BytesIO()
 		for item in mytype_items:
 			title = item.Title
-			data.append(title)
-			data.append(title)
-			data.append(";")
+			CSV.append(title)
+			CSV.append(title)
 			
-		return data
-		
-	# Example usage within Plone context
-	def __call__(self):
-		
-		self.request.response.setHeader("Content-type","application/csvl")
-		self.request.response.setHeader("Content-disposition","attachment;filename=ActionIgtemsData.csv")
+		# Add header
+		dataLen = len(CSV)
+		R = self.request.RESPONSE
+		R.setHeader('Content-Length', dataLen)
+		R.setHeader('Content-Type', 'text/csv')
+		R.setHeader('Content-Disposition', 'attachment; filename=%s.csv' % self.context.getId())
 
-		return self.download_csv_for_mytype()
-
+		#return thefields
+		return CSV
