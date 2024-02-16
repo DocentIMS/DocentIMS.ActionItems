@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Acquisition import aq_inner
 from datetime import datetime
 #from datetime import timedelta
@@ -137,7 +139,7 @@ class CSVGenericView(BrowserView):
         self.request.response.setHeader(
             "Content-Disposition", f"attachment;filename={self.filename}"
         )
-        sio = io.BytesIO()
+        sio = io.StringIO()
         writer = csv.DictWriter(sio, records[0].keys())
         writer.writeheader()
         for record in records:
@@ -153,6 +155,7 @@ class ActionItemsCSV(CSVGenericView):
     @property
     def records(self):
         result = []
+        io.StringIO()
         brains = api.content.find(portal_type='action_items')
         for brain in brains:
             obj = brain.getObject()
