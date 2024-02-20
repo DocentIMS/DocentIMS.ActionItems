@@ -239,7 +239,26 @@ def _create_content(portal):
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
                 )
             
-                
+        if not portal.get('meeting', False):
+            meeting = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='meeting',
+                title='Meeting',
+                default_page='meeting-collection',
+                nextPreviousEnabled=1
+            )
+            
+            ## add collection inside
+            
+            if not meeting.get('meeting-collection', False):
+                meeting_collection = plone.api.content.create(
+                    type='Collection',
+                    container=meeting,
+                    id='meeting-collection',
+                    title='Meeting',
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Meeting']}]
+                )
                 
         if not portal.get('notes', False):
             notes = plone.api.content.create(
