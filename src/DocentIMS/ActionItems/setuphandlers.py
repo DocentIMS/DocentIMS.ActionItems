@@ -139,9 +139,13 @@ def _create_content(portal):
         
         #delete news folder
         if not portal.get('news', False):
-            newsfolder = portal.get('news', False)
-            plone.api.content.delete(newsfolder)
-        
+            folder = portal.get('news', False)
+            plone.api.content.delete(obj=folder)
+
+        if not portal.get('events', False):
+            folder = portal.get('events', False)
+            plone.api.content.delete(obj=folder)
+            
         if not portal.get('templates', False):
             images_folder = plone.api.content.create(
                 type='Folder',
