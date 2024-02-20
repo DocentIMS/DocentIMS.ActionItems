@@ -47,8 +47,9 @@
       <required>False</required>
       <title i18n:translate="label_portrait">Portrait</title>
     </field>
-    <field name="location" type="zope.schema.TextLine" users:forms="">
+    <field name="location" type="zope.schema.TextLine" >
       <description/>
+       <required>False</required>
       <title>Geographic Location</title>
     </field>
   </schema>
