@@ -138,6 +138,7 @@ def _create_content(portal):
         #fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
         
         #delete news folder
+        import pdb; pdb.set_trace()
         if not portal.get('news', False):
             folder = portal.get('news', False)
             plone.api.content.delete(obj=folder)
