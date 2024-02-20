@@ -65,6 +65,7 @@ setup(
         'holidays',
         'collective.defaultpage',
         'plone.app.changeownership',
+        'collective.embeddedpage',
         'numpy',
         'pandas',
         'openpyxl'
