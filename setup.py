@@ -66,6 +66,7 @@ setup(
         'collective.defaultpage',
         'plone.app.changeownership',
         'collective.embeddedpage',
+        'collective.z3cform.colorpicker',
         'numpy',
         'pandas',
         'openpyxl'
