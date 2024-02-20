@@ -2,9 +2,13 @@
   <schema name="member-fields">
     <field name="your_team_role" type="zope.schema.Choice" users:forms="On Registration|In User Profile">
       <description>What is your role on this team?</description>
-      <required>False</required>
+      <required>True</required>
       <title>Your Team Role</title>
       <vocabulary>DocentIMS.ActionItems.ProjectRolesVocabulary</vocabulary>
+    </field>
+    <field name="last_name" type="zope.schema.TextLine" users:forms="On Registration|In User Profile">
+      <description/>
+      <title>Last Name</title>
     </field>
     <field name="first_name" type="zope.schema.TextLine" users:forms="On Registration|In User Profile">
       <description/>
@@ -19,13 +23,10 @@
       <description/>
       <title>Cellphone Number</title>
     </field>
-    <field name="last_name" type="zope.schema.TextLine" users:forms="On Registration|In User Profile">
-      <description/>
-      <title>Last Name</title>
-    </field>
+
     <field name="company" type="zope.schema.Choice" users:forms="On Registration|In User Profile">
       <description>Which company do you work for?</description>
-      <required>False</required>
+      <required>True</required>
       <title>Company</title>
       <vocabulary>DocentIMS.ActionItems.CompanyVocabulary</vocabulary>
     </field>
@@ -34,7 +35,7 @@
           A short overview of who you are and what you do. Will be displayed on your author page, linked from the items you create.
       </description>
       <required>False</required>
-      <title i18n:translate="label_biography">Biography</title>
+      <title i18n:translate="label_biography">Key Project-Related Skills</title>
     </field>
     <field name="portrait" type="plone.namedfile.field.NamedBlobImage" users:forms="In User Profile">
       <description i18n:translate="help_portrait">
@@ -43,7 +44,7 @@
       <required>False</required>
       <title i18n:translate="label_portrait">Portrait</title>
     </field>
-    <field name="location" type="zope.schema.TextLine">
+    <field name="location" type="zope.schema.TextLine" users:forms="">
       <description/>
       <title>Geographic Location</title>
     </field>

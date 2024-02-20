@@ -44,7 +44,7 @@
 
     <permission
         id="DocentIMS.ActionItems.AddSowAnalysis"
-        title="DocentIMS.ActionItems: Add SowAnalysis"
+        title="DocentIMS.ActionItems: Add Scope"
     />
 
 
@@ -65,17 +65,17 @@
 
     <permission
         id="DocentIMS.ActionItemsAdd.SOWItems"
-        title="DocentIMS.ActionItems: Add SOWItems"
+        title="DocentIMS.ActionItems: Add Scope"
     />
 
     <permission
         id="DocentIMS.ActionItems.ArchiveSOWItems"
-        title="DocentIMS.ActionItems: Archive SOWItems"
+        title="DocentIMS.ActionItems: Archive Scope"
     />
 
     <permission
         id="DocentIMS.ActionItems.DeleteSOWItems"
-        title="DocentIMS.ActionItems: Delete SOWItems"
+        title="DocentIMS.ActionItems: Delete Scope"
     />
 
   </configure>

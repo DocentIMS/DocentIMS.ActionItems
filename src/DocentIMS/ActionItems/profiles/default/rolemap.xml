@@ -43,7 +43,7 @@
     </permission>
 
 
-    <permission name="DocentIMS.ActionItems: Add SowAnalysis" acquire="True">
+    <permission name="DocentIMS.ActionItems: Add Scope" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
@@ -70,21 +70,21 @@
       <role name="Site Administrator"/>
     </permission>
 
-    <permission name="DocentIMS.ActionItems: Add SOWItems" acquire="True">
+    <permission name="DocentIMS.ActionItems: Add Scope" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
     </permission>
 
-    <permission name="DocentIMS.ActionItems: Archive SOWItems" acquire="True">
+    <permission name="DocentIMS.ActionItems: Archive Scope" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
     </permission>
 
-    <permission name="DocentIMS.ActionItems: Delete SOWItems" acquire="True">
+    <permission name="DocentIMS.ActionItems: Delete Scope" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
     </permission>
