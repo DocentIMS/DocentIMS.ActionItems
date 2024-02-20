@@ -246,7 +246,7 @@ def _create_content(portal):
             
             
 
-            if not action_items.get('notes-collection', False):
+            if not notes.get('notes-collection', False):
                 notes_collection = plone.api.content.create(
                     type='Collection',
                     container=notes,
