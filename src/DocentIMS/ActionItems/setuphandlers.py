@@ -208,7 +208,7 @@ def _create_content(portal):
                 
                 
         if not portal.get('feedback', False):
-            action_items = plone.api.content.create(
+            feedback = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='feedback',
@@ -222,7 +222,7 @@ def _create_content(portal):
             
 
             if not action_items.get('feedback-collection', False):
-                action_items_collection = plone.api.content.create(
+                feedback_collection = plone.api.content.create(
                     type='Collection',
                     container=feedback,
                     id='feedback-collection',
@@ -233,7 +233,7 @@ def _create_content(portal):
                 
                 
         if not portal.get('notes', False):
-            action_items = plone.api.content.create(
+            notes = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='notes',
@@ -247,7 +247,7 @@ def _create_content(portal):
             
 
             if not action_items.get('notes-collection', False):
-                action_items_collection = plone.api.content.create(
+                notes_collection = plone.api.content.create(
                     type='Collection',
                     container=notes,
                     id='notes-collection',
