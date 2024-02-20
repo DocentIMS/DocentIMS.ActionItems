@@ -137,6 +137,11 @@ def _create_content(portal):
         #folderpath = os.path.dirname(__file__)
         #fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
         
+        #delete news folder
+        if not portal.get('news', False):
+            newsfolder = portal.get('news', False)
+            plone.api.content.delete(newsfolder)
+        
         if not portal.get('templates', False):
             images_folder = plone.api.content.create(
                 type='Folder',
