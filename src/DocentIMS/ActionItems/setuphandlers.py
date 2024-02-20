@@ -221,7 +221,7 @@ def _create_content(portal):
             
             
 
-            if not afeedback.get('feedback-collection', False):
+            if not feedback.get('feedback-collection', False):
                 feedback_collection = plone.api.content.create(
                     type='Collection',
                     container=feedback,
