@@ -207,54 +207,54 @@ def _create_content(portal):
                 )
                 
                 
-            if not portal.get('feedback', False):
-                action_items = plone.api.content.create(
-                    type='Folder',
-                    container=portal,
-                    id='feedback',
+        if not portal.get('feedback', False):
+            action_items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='feedback',
+                title='Feedback',
+                default_page='feedback-collection',
+                nextPreviousEnabled=1
+            )
+            
+            ## add collection inside
+            
+            
+
+            if not action_items.get('feedback-collection', False):
+                action_items_collection = plone.api.content.create(
+                    type='Collection',
+                    container=feedback,
+                    id='feedback-collection',
                     title='Feedback',
-                    default_page='feedback-collection',
-                    nextPreviousEnabled=1
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
                 )
+            
                 
-                ## add collection inside 
                 
-                
+        if not portal.get('notes', False):
+            action_items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='notes',
+                title='Notes',
+                default_page='notes-collection',
+                nextPreviousEnabled=1
+            )
+            
+            ## add collection inside
+            
+            
 
-                if not action_items.get('feedback-collection', False):
-                    action_items_collection = plone.api.content.create(
-                        type='Collection',
-                        container=feedback,
-                        id='feedback-collection',
-                        title='Feedback',
-                        query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
-                    )
-                
-                
-                
-            if not portal.get('notes', False):
-                action_items = plone.api.content.create(
-                    type='Folder',
-                    container=portal,
-                    id='notes',
+            if not action_items.get('notes-collection', False):
+                action_items_collection = plone.api.content.create(
+                    type='Collection',
+                    container=notes,
+                    id='notes-collection',
                     title='Notes',
-                    default_page='notes-collection',
-                    nextPreviousEnabled=1
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
                 )
-                
-                ## add collection inside
-                
-                
-
-                if not action_items.get('notes-collection', False):
-                    action_items_collection = plone.api.content.create(
-                        type='Collection',
-                        container=notes,
-                        id='notes-collection',
-                        title='Notes',
-                        query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
-                    )
-                
+            
 
 
             # This is for importing dummy content, will require action items to be present (installed)
