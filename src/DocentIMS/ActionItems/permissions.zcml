@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.AddMeeting"
+        title="DocentIMS.ActionItems: Add Meeting"
+    />
+
+
+    <permission
         id="DocentIMS.ActionItems.AddFeedback"
         title="DocentIMS.ActionItems: Add Feedback"
     />
