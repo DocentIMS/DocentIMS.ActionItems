@@ -139,11 +139,11 @@ def _create_content(portal):
         
         #delete news folder
         import pdb; pdb.set_trace()
-        if not portal.get('news', False):
+        if portal.get('news', False):
             folder = portal.get('news', False)
             plone.api.content.delete(obj=folder)
 
-        if not portal.get('events', False):
+        if portal.get('events', False):
             folder = portal.get('events', False)
             plone.api.content.delete(obj=folder)
             
