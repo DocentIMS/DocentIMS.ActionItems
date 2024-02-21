@@ -83,11 +83,5 @@
       <role name="Site Administrator"/>
     </permission>
 
-    <permission name="DocentIMS.ActionItems: Add Project" acquire="True">
-      <role name="Manager"/>
-      <role name="Site Administrator"/>
-      <role name="Owner"/>
-      <role name="Contributor"/>
-    </permission>
   </permissions>
 </rolemap>
