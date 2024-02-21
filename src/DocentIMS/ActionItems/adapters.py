@@ -27,6 +27,20 @@ class DaysLeft(BaseSubstitution):
         return self.context.daysleft
       return ''
 
+class DateChanged(BaseSubstitution):
+    category = "All Content"
+    description = "Date Changed"
+
+    def safe_call(self):
+      if hasattr(self.context, 'start'):
+        start = self.context.start
+        if hasattr(self.context, 'oldstart'):
+            if self.context.oldstart != start:
+                return """IMPORTANT: new date
+                {}""".format( start.strftime('%Y-%m-%d %H:%M:%S') )
+        self.context.oldstart = start
+      return ''
+
 @adapter(Interface)
 class AssignedMail(BaseSubstitution):
     category = "All Content"

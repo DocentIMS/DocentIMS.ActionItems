@@ -112,6 +112,14 @@
         for="*"
         name="daysleft"
     />
+    
+    <adapter
+        factory=".adapters.DateChanged"
+        provides="plone.stringinterp.interfaces.IStringSubstitution"
+        for="*"
+        name="datechanged"
+    />
+    
 
     <adapter
         factory=".adapters.AssignedFullName"
@@ -126,7 +134,6 @@
         for="*"
         name="project_short_name"
     />
-    
     
 
   <utility
