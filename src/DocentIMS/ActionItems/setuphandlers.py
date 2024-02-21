@@ -99,7 +99,24 @@ def post_install(context):
     behaviour.setConstrainTypesMode(constrains.ENABLED)
     behaviour.setImmediatelyAddableTypes(['sow_analysis'])
     behaviour.setLocallyAllowedTypes(['sow_analysis'])
+    
+    notes = portal.get('notes', False)
+    behaviour = constrains.ISelectableConstrainTypes(notes)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['Notes'])
+    behaviour.setLocallyAllowedTypes(['Notes'])
+    
+    feedback = portal.get('feedback', False)
+    behaviour = constrains.ISelectableConstrainTypes(feedback)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['Feedback'])
+    behaviour.setLocallyAllowedTypes(['Feedback'])
 
+    meeting = portal.get('meeting', False)
+    behaviour = constrains.ISelectableConstrainTypes(meeting)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['Meeting'])
+    behaviour.setLocallyAllowedTypes(['Meeting'])
 
 def pre_install(context):
     """Pre install script"""
@@ -236,6 +253,10 @@ def _create_content(portal):
                     container=feedback,
                     id='feedback-collection',
                     title='Feedback',
+                    layout='tabular_view',
+                    limit=500,
+                    item_count=30,
+                    customViewFields = ['Title', 'Creator', 'CreationDate'],
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
                 )
             
@@ -280,6 +301,10 @@ def _create_content(portal):
                     container=notes,
                     id='notes-collection',
                     title='Notes',
+                    layout='tabular_view',
+                    limit=500,
+                    item_count=30,
+                    customViewFields = ['Title', 'CreationDate'],
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
                 )
             

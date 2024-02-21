@@ -68,15 +68,17 @@ directlyProvides(CompanyVocabulary, IVocabularyFactory)
 
 def ProjectRolesVocabulary(context):
     items = api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
+    
+    #   import pdb; pdb.set_trace()
 
     if items:
         # Extract unique entries from items and convert to lowercase for case-insensitive comparison
         
         # Create SimpleTerm objects from the unique entries
         terms = [
-            SimpleTerm(value=item['short_company_name'], token=item['short_company_name'].lower(), title=item['short_company_name'])
-            for item in sorted(items, key=lambda x: x.get('short_company_name', '').lower())
-            if item.get('short_company_name')  # Exclude items with None or empty 'short_company_name'
+            SimpleTerm(value=item['vocabulary_entry'], token=item['vocabulary_entry'].lower(), title=item['vocabulary_entry'])
+            for item in sorted(items, key=lambda x: x.get('vocabulary_entry', '').lower())
+            if item.get('vocabulary_entry')  # Exclude items with None or empty 'short_company_name'
         ]
 
         return SimpleVocabulary(terms)
