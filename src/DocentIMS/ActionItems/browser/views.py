@@ -135,6 +135,9 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
             self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
+        if self.portal_type == 'meeting':
+            self.widgets['IEventBasic-whole_day'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
     
     def update(self):
         super(ActionItemsEditForm, self).update()
@@ -178,6 +181,36 @@ class ActionItemsEditFormView(DefaultEditView):
     default_fieldset_label = 'Home'
     form = ActionItemsEditForm
 
+
+
+
+
+
+class MeetingEditForm(DefaultEditForm):
+    ## Does not take portal type into action, so this is used FOR ALL
+    portal_type = "Meeting"
+     
+     
+    def __init__(self, context, request):
+        super(MeetingEditForm, self).__init__(context, request)
+
+    def updateWidgets(self):
+        super(MeetingEditForm, self).updateWidgets()
+         
+        if self.portal_type == "Meeting":
+            self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+     
+    def update(self):
+        super(MeetingEditForm, self).update()
+        
+         
+
+class MeetingEditFormView(DefaultEditView):
+    portal_type = "Meeting"
+    form = MeetingEditForm
+
+ 
 
 
 
@@ -282,6 +315,33 @@ class SowAnalysisAddForm(DefaultAddForm):
 
 class SowAnalysisAddFormView(DefaultAddView):
     form = SowAnalysisAddForm
+
+
+
+
+class MeetingAddForm(DefaultAddForm):
+
+    portal_type = "Meeting"
+    
+    def __init__(self, context, request):
+        super(MeetingAddForm, self).__init__(context, request)
+
+    def updateWidgets(self):
+        super(MeetingAddForm, self).updateWidgets()
+        self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
+        self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+
+
+    def updateFields(self):
+        super(MeetingAddForm, self).updateFields()
+        
+    def update(self):
+        super(MeetingAddForm, self).update()
+
+
+class MeetingAddFormView(DefaultAddView):
+    form = MeetingAddForm
+
 
 # class SowAnalysisEditForm(DefaultEditForm):
 #     portal_type = "sow_analysis"

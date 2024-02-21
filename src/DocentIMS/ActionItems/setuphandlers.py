@@ -265,7 +265,7 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='meeting',
-                title='Meeting',
+                title='Meetings',
                 default_page='meeting-collection',
                 nextPreviousEnabled=1
             )
@@ -277,7 +277,7 @@ def _create_content(portal):
                     type='Collection',
                     container=meeting,
                     id='meeting-collection',
-                    title='Meeting',
+                    title='Meetings',
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Meeting']}]
                 )
                 
