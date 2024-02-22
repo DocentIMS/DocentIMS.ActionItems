@@ -24,8 +24,10 @@ class FrontPageView(BrowserView):
         current = api.user.get_current()
         last_login = current.getProperty('last_login_time')
         fullname = current.getProperty('fullname')
-        melding = "Welcome back {}!".format(fullname)
-        if last_login.year() == 2000:
+        melding = "Welcome"
+        if fullname:
+            melding = "Welcome back {}!".format(fullname)
+        if last_login and last_login.year() == 2000:
             melding = "Welcome {}!".format(fullname)
         
         api.portal.show_message(
