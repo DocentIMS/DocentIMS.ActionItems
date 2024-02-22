@@ -57,6 +57,7 @@ class ActionItemsOverView(BrowserView):
 
         #datavalues  = []
         #datacolors = []
+        
         for item in items:
             if item.portal_type == 'action_items':
 

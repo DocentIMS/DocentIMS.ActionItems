@@ -104,7 +104,8 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
 
 class IVocabulari(model.Schema):
     vocabulary_entry = schema.TextLine(
-        title=_(u'Vocabulary entries', 'Member Roles'),
+        title=_(u'Vocabulary entries', 'Team Roles'),
+        description=u"Each team member will be assigned a “Role” during their membership creation.  The role for each member must be created here before their account can be created.",
         required=False,
     )
 
@@ -117,7 +118,7 @@ class ITableRows(model.Schema):
     )
 
     row_title = schema.TextLine(
-        title=_(u'Column Titles in Action Items Table.', 'Table title'),
+        title=u"Column Titles in Action Items Table.",
         required=False,
     )
 
@@ -130,7 +131,7 @@ class IScopeTableRows(model.Schema):
     )
 
     row_title = schema.TextLine(
-        title=_(u'Table title', 'Table title'),
+        title=u"Column Titles in Scope Items Table",
         required=False,
     )
 
@@ -273,7 +274,7 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'vocabularies',
-        label=_(u'Member Roles'),
+        label=_(u'Team Roles'),
         fields=[
             'vokabularies',
             # 'vokabularies2',
@@ -283,6 +284,7 @@ class IDocentimsSettings(model.Schema):
     model.fieldset(
         'notifications',
         label=_(u'Notifications'),
+        description=u"Docent IMS color codes certain due dates to aid users in identifying how close an item is to a due date. We use three colors, and you can choose the number of days from the due date each color represents.",
         fields=[
             'future_green',
             'soon_yellow',
@@ -317,6 +319,7 @@ class IDocentimsSettings(model.Schema):
     model.fieldset(
         'companies',
         label=_(u'Companies'),
+        description=u"Please create all project companies involved in this project.",
         fields=[
             'companies',
             ],
@@ -324,7 +327,7 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'table',
-        label=_(u'Action Item Table.'),
+        label=_(u'Action Item Table'),
         fields=[
             'table_columns',
             ],
@@ -332,7 +335,7 @@ class IDocentimsSettings(model.Schema):
     
     model.fieldset(
         'scope_table',
-        label=_(u'Scope Items Table.'),
+        label=_(u'Scope Items Table'),
         fields=[
             'scope_table_columns',
             ],
@@ -486,7 +489,6 @@ class IDocentimsSettings(model.Schema):
     companies = schema.List(
         title = _(u"Companies",
             default=u"Companies"),
-            description=u"Please create all project companies involved in this project.",
         value_type=DictRow(schema=ICompany),
         
     )

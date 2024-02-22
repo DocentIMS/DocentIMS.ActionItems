@@ -48,7 +48,7 @@ def CompanyVocabulary(context):
         # Create SimpleTerm objects from the sorted list, excluding empty 'short_company_name'
         terms = [
             SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name'])
-            for item in sorted_items if item['short_company_name']
+            for item in sorted_items if item['short_company_name'] and len(item['short_company_name']) > 1
         ]
         return SimpleVocabulary(terms)
     
@@ -178,13 +178,11 @@ def SowFieldsVocabulary(context):
             SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'Initial Due Date')),
             SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'Revised Due Date')),
             SimpleTerm(value='section_number', token='section_number', title=_(u'Scope Auto Number')),
-            SimpleTerm(value='details', token='details', title=_(u'details')),
-            SimpleTerm(value='estimated_qc_time', token='estimated_qc_time', title=_(u'estimated_qc_time')),
-            SimpleTerm(value='explanation', token='explanation', title=_(u'explanation')),
-            SimpleTerm(value='internal_qc_required_', token='internal_qc_required_', title=_(u'is_internal_qc_required')),
-            SimpleTerm(value='is_the_analyis_complete', token='is_the_analyis_complete', title=_(u'is_the_analyis_complete')),
+            SimpleTerm(value='estimated_qc_time', token='estimated_qc_time', title=_(u'Estimated QC Time')),
+            SimpleTerm(value='internal_qc_required_', token='internal_qc_required_', title=_(u'Internal QC Required')),
+            SimpleTerm(value='is_the_analyis_complete', token='is_the_analyis_complete', title=_(u'Closed')),
             SimpleTerm(value='daysleft', token='daysleft', title=_(u'Workdays Left')),
-            SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Assigned To')),
+            SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Responsible')),
             SimpleTerm(value='modified', token='modified', title=_(u'Date Modified')),
             
         ]
