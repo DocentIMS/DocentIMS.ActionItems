@@ -17,7 +17,7 @@ from z3c.form import form, field
 #from collective.z3cform.colorpicker import Color
 # from collective.z3cform.colorpicker.colorpicker  import IColorpickerWidget
 # from collective.z3cform.colorpicker.colorpicker  import ColorpickerWidget
-#from collective.z3cform.colorpicker.colorpicker  import ColorpickerFieldWidget
+from collective.z3cform.colorpicker.colorpicker  import ColorpickerFieldWidget
 
 
 
