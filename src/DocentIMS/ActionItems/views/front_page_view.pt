@@ -7,7 +7,10 @@
 <body>
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
-     <div tal:replace="structure  context/frontpage_text/output|None" tal:condition="not: context/portal_membership/isAnonymousUser" />
+    <tal:check tal:condition="not: context/portal_membership/isAnonymousUser" >
+     <div tal:replace="structure  context/frontpage_text/output|None" />
+     <div><p>${view/last_login}</p></div>
+     </tal:check>
      <div tal:replace="structure  context/frontpage_anon/output|None" tal:condition="context/portal_membership/isAnonymousUser" />
   </metal:block>
   </metal:content-core>

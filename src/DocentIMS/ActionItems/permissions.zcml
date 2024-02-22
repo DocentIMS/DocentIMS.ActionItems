@@ -30,24 +30,6 @@
     />
 
 
-
-    <permission
-        id="DocentIMS.ActionItems.AddProject"
-        title="DocentIMS.ActionItems: Add Project"
-    />
-
-    <permission
-        id="DocentIMS.ActionItems.AddProjectInformation"
-        title="DocentIMS.ActionItems: Add ProjectInformation"
-    />
-
-
-    <permission
-        id="DocentIMS.ActionItems.AddProjectCompanies"
-        title="DocentIMS.ActionItems: Add ProjectCompanies"
-    />
-
-
     <permission
         id="DocentIMS.ActionItems.AddSowAnalysis"
         title="DocentIMS.ActionItems: Add Scope"

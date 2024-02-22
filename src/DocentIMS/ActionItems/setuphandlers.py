@@ -58,6 +58,10 @@ def post_install(context):
     
     portal = plone.api.portal.get()
     
+    #Assign role to Group 'Project Manager'
+    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager'])
+
+    
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
@@ -67,7 +71,8 @@ def post_install(context):
                                           {'row_field': 'priority', 'row_title': 'Priority'},
                                           {'row_field': 'initial_due_date', 'row_title': 'Due date'},
                                          ])
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  
+    
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',
                                          [{'row_field': 'id', 'row_title': 'ID'}, 
                                           {'row_field': 'title', 'row_title': 'Title'},
                                           {'row_field': 'initial_due_date', 'row_title': 'Due date'},
@@ -75,6 +80,25 @@ def post_install(context):
                                           {'row_field': 'estimated_qc_time', 'row_title': 'QC time'}, 
                                           ])
     
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies',
+                                        [{'vocabulary_entry': 'Specialist'},
+                                         {'vocabulary_entry': 'Coordinator'},
+                                         {'vocabulary_entry': 'Teamworker'},
+                                        ])
+    
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
+                                        [{'full_company_name': 'Docent',
+                                          'short_company_name': 'Doc' ,
+                                          'company_letter_kode': 'DOC',
+                                          'company_role': '',
+                                          'company_full_street_address': '',
+                                          'company_other_address': '',
+                                          'company_city': '',
+                                          'company_state': '',
+                                          'company_zip': ''}
+                                        ])
+                                          
+                                          
     # Create Folder to put everything in
     _create_content(portal)
     if not portal.get('frontpage', False):
