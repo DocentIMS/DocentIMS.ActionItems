@@ -80,14 +80,13 @@ class ReindexView(BrowserView):
         
         for brain in my_brains:
             obj = brain.getObject()
-            import pdb; pdb.set_trace()
             if hasattr(obj, 'urgency'):
                 old_urgency = obj.urgency or None
             daysleft = brain.daysleft
             obj.reindexObject(idxs=["daysleft", "urgency"])
             
             #Send mail if urgency changed
-            if brain.urgency != old_urgency:
+            if old_urgency and brain.urgency != old_urgency:
                 #Send email to user assigned
                 #print('we will send')
                 if brain.assigned_to:
