@@ -80,9 +80,9 @@ class ReindexView(BrowserView):
         
         for brain in my_brains:
             obj = brain.getObject()
-            old_urgency = None
-            if  hasattr(obj, urgency):
-                old_urgency = obj.urgency
+            import pdb; pdb.set_trace()
+            if hasattr(obj, urgency):
+                old_urgency = obj.urgency or None
             daysleft = brain.daysleft
             obj.reindexObject(idxs=["daysleft", "urgency"])
             
