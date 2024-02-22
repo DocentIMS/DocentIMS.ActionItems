@@ -517,7 +517,7 @@ class IDocentimsSettings(model.Schema):
     #     default="#ff0000"
     # )
 
-    #widget(color1=ColorpickerFieldWidget)
+    widget(color1=ColorpickerFieldWidget)
     color1 = schema.TextLine(
         title=u"Project Color",
         description=u"",
