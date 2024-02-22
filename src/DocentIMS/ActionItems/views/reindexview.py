@@ -82,61 +82,61 @@ class ReindexView(BrowserView):
             obj = brain.getObject()
             if hasattr(obj, 'urgency'):
                 old_urgency = obj.urgency or None
-            daysleft = brain.daysleft
-            obj.reindexObject(idxs=["daysleft", "urgency"])
-            
-            #Send mail if urgency changed
-            if old_urgency and brain.urgency != old_urgency:
-                #Send email to user assigned
-                #print('we will send')
-                if brain.assigned_to:
-                    #import pdb; pdb.set_trace()
-                    object = brain.getObject()
-                    interpolator = IStringInterpolator(object)
-                    
-                    assigned_user =  api.user.get(userid=brain.getObject().assigned_to)
-                    self.recipients = assigned_user.getProperty('email')
-                    
-                    if self.recipients:
-                        # print('sending mail')
-                    
-                        # melding = """Hello {creators} This is a friendly reminder that:{tittel} is due in XX days.  
-                        #  If you believe that you will get this {tittel} done in time, no action is required.However, 
-                        # if you believe that you may miss the due date, please contact the project manager.<hr/> Sincerely,{manager}
-                        # Project Manager{project}<short name of project>""".format(creators = brain.assigned_to, tittel = brain.Title, manager='manager nam', project='project name')
-                        #${assigned} 
+                daysleft = brain.daysleft
+                obj.reindexObject(idxs=["daysleft", "urgency"])
+                
+                #Send mail if urgency changed
+                if old_urgency and brain.urgency != old_urgency:
+                    #Send email to user assigned
+                    #print('we will send')
+                    if brain.assigned_to:
+                        #import pdb; pdb.set_trace()
+                        object = brain.getObject()
+                        interpolator = IStringInterpolator(object)
                         
-                        melding = """<p>Hello ${assignedfullname}<p> <p>This is a friendly reminder that:  <a href="${absolute_url}">${title}</a>  is due in <b>${daysleft} days</b>.   </p>
-                        <p>If you believe that you will get <a href="${absolute_url}">${title}</a> done in time, no action is required.</p>
-                        <p>However,  
-                        if you believe that you may miss the due date, please contact the project manager.</p><hr/> 
-                        <p>Sincerely, <b>xxx</b></p>
-                        <p>Project Manager<br/> ${project_short_name}</p>
-                        </p>""" 
+                        assigned_user =  api.user.get(userid=brain.getObject().assigned_to)
+                        self.recipients = assigned_user.getProperty('email')
                         
+                        if self.recipients:
+                            # print('sending mail')
                         
-                        # prepend interpolated message with \n to avoid interpretation
-                        # of first line as header
-                        message = f"\n{interpolator(melding)!s}"
-                        # print(message)
-                        outer = MIMEMultipart('alternative')
-                        outer['To'] = self.recipients
-                        outer['From'] = self.mail_settings.email_from_address
-                        #api.portal.get_registry_record('plone.email_from_address')
-                        #outer['Subject'] =  interpolator(self.element.subject)
-                        outer['Subject'] =  "Item due"
-                        outer.epilogue = ''
-                        # Attach text part
-                        #text_part = MIMEText('body_plain', 'plain', _charset='UTF-8')
-                        html_part = MIMEMultipart('related')
-                        html_text = MIMEText(message, 'html', _charset='UTF-8')
-                        html_part.attach(html_text)
-                        outer.attach(html_part)
-                        mailhost.send(outer.as_string())
-                        # # Finally send mail.
-                        mailhost.send(outer.as_string())
-             
-            
+                            # melding = """Hello {creators} This is a friendly reminder that:{tittel} is due in XX days.  
+                            #  If you believe that you will get this {tittel} done in time, no action is required.However, 
+                            # if you believe that you may miss the due date, please contact the project manager.<hr/> Sincerely,{manager}
+                            # Project Manager{project}<short name of project>""".format(creators = brain.assigned_to, tittel = brain.Title, manager='manager nam', project='project name')
+                            #${assigned} 
+                            
+                            melding = """<p>Hello ${assignedfullname}<p> <p>This is a friendly reminder that:  <a href="${absolute_url}">${title}</a>  is due in <b>${daysleft} days</b>.   </p>
+                            <p>If you believe that you will get <a href="${absolute_url}">${title}</a> done in time, no action is required.</p>
+                            <p>However,  
+                            if you believe that you may miss the due date, please contact the project manager.</p><hr/> 
+                            <p>Sincerely, <b>xxx</b></p>
+                            <p>Project Manager<br/> ${project_short_name}</p>
+                            </p>""" 
+                            
+                            
+                            # prepend interpolated message with \n to avoid interpretation
+                            # of first line as header
+                            message = f"\n{interpolator(melding)!s}"
+                            # print(message)
+                            outer = MIMEMultipart('alternative')
+                            outer['To'] = self.recipients
+                            outer['From'] = self.mail_settings.email_from_address
+                            #api.portal.get_registry_record('plone.email_from_address')
+                            #outer['Subject'] =  interpolator(self.element.subject)
+                            outer['Subject'] =  "Item due"
+                            outer.epilogue = ''
+                            # Attach text part
+                            #text_part = MIMEText('body_plain', 'plain', _charset='UTF-8')
+                            html_part = MIMEMultipart('related')
+                            html_text = MIMEText(message, 'html', _charset='UTF-8')
+                            html_part.attach(html_text)
+                            outer.attach(html_part)
+                            mailhost.send(outer.as_string())
+                            # # Finally send mail.
+                            mailhost.send(outer.as_string())
+                 
+                
             
         
         return len(my_brains)
