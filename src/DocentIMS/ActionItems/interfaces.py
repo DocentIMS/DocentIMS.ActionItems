@@ -117,7 +117,7 @@ class ITableRows(model.Schema):
     )
 
     row_title = schema.TextLine(
-        title=_(u'Table title', 'Table title'),
+        title=_(u'Column Titles in Action Items Table.', 'Table title'),
         required=False,
     )
 
@@ -170,7 +170,7 @@ class ICompany(model.Schema):
         )
     company_other_address = schema.Text(
         required = False,
-        title=_(u"label_company_other_adress", default=u"Other Address")
+        title=_(u"label_company_other_adress", default=u"Other Address - Optional")
         )
 
     company_city = schema.TextLine(
@@ -324,7 +324,7 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'table',
-        label=_(u'Action Items Columns'),
+        label=_(u'Action Item Table.'),
         fields=[
             'table_columns',
             ],
@@ -332,7 +332,7 @@ class IDocentimsSettings(model.Schema):
     
     model.fieldset(
         'scope_table',
-        label=_(u'Scope table Columns'),
+        label=_(u'Scope Items Table.'),
         fields=[
             'scope_table_columns',
             ],
@@ -367,7 +367,7 @@ class IDocentimsSettings(model.Schema):
 
     widget("project_description", klass="pat-tinymce")
     project_description = schema.Text(
-        required = False,
+        required = True,
         title=_(u"label_project_description", default=u"Project Description"),
         description=_(u"",
                       default=u"")
@@ -396,17 +396,17 @@ class IDocentimsSettings(model.Schema):
         )
     
     urgent_red = schema.Int(
-        title=_(u"label_red", default=u"Urgent Red value, enter number of days"),
+        title=_(u"label_red", default=u"Urgent days/value (displayed as Red)"),
         description=" ",
         )
     
     future_green = schema.Int(
-        title=_(u"label_green", default=u"Future Green value, enter number of days"),
+        title=_(u"label_green", default=u"Future days/value (displayed as Green)"),
         description="",
         )
 
     soon_yellow = schema.Int(
-        title=_(u"label_yellow", default=u"Soon Yellow value, enter number of days"),
+        title=_(u"label_yellow", default=u"Soon days/value (displayed as Yellow)"),
         description="",
         )
 
@@ -486,6 +486,7 @@ class IDocentimsSettings(model.Schema):
     companies = schema.List(
         title = _(u"Companies",
             default=u"Companies"),
+            description=u"Please create all project companies involved in this project.",
         value_type=DictRow(schema=ICompany),
         
     )
@@ -493,14 +494,14 @@ class IDocentimsSettings(model.Schema):
     widget(table_columns=DataGridFieldFactory)
     table_columns = schema.List(
         title = _(u"Table Columns",
-            default=u"Table Column fields to be used for actions overview Table / View"),
+            default=u"Select the columns you want to display in the Action Items Table."),
             value_type=DictRow(schema=ITableRows),
     )
 
     widget(scope_table_columns=DataGridFieldFactory)
     scope_table_columns = schema.List(
         title = _(u"Table Columns",
-            default=u"Table Column fields to be used for Scope  Table / View"),
+            default=u"Select the columns you want to display in the Scope Items Table."),
             value_type=DictRow(schema=IScopeTableRows),
     )
 

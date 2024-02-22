@@ -146,19 +146,19 @@ directlyProvides(QPVocabulary, IVocabularyFactory)
 def AiFieldsVocabulary(context):
     return SimpleVocabulary(
         [
-            SimpleTerm(value='actionno', token='actionno', title=_(u'actionno')),
+            SimpleTerm(value='actionno', token='actionno', title=_(u'AI Auto Number')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='description', token='description', title=_(u'Description')),
             SimpleTerm(value='priority', token='priority', title=_(u'Priority')),
             SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Assigned To')),
             SimpleTerm(value='related_item', token='related_item', title=_(u'Related')),
             SimpleTerm(value='Creator', token='Creator', title=_(u'Creator')),
-            SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'iIni Due Date')),
+            SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'Initial Due Date')),
             SimpleTerm(value='duedate', token='duedate', title=_(u'Due Date')),
-            SimpleTerm(value='modified', token='modified', title=_(u'modified')),
+            SimpleTerm(value='modified', token='modified', title=_(u'Date Modified')),
             SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'Rev Due Date')),
             SimpleTerm(value='is_this_action_out_of_the_scope_of_work_', token='is_this_action_out_of_the_scope_of_work_', title=_(u'Out of Scope')),
-            SimpleTerm(value='related_sow_section', token='related_sow_section', title=_(u'Rel Scope')),
+            SimpleTerm(value='related_sow_section', token='related_sow_section', title=_(u'Rel Scope Number')),
             SimpleTerm(value='is_this_item_closed', token='is_this_item_closed', title=_(u'Closed?')),
             SimpleTerm(value='daysleft', token='daysleft', title=_(u'Workdays Left')),
             SimpleTerm(value='urgency', token='urgency', title=_(u'Urgency')),
@@ -175,14 +175,18 @@ def SowFieldsVocabulary(context):
             SimpleTerm(value='id', token='id', title=_(u'id')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='priority', token='priority', title=_(u'priority')),
-            SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'initial_due_date')),
-            SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'revised_due_date')),
-            SimpleTerm(value='section_number', token='section_number', title=_(u'section_number')),
+            SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'Initial Due Date')),
+            SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'Revised Due Date')),
+            SimpleTerm(value='section_number', token='section_number', title=_(u'Scope Auto Number')),
             SimpleTerm(value='details', token='details', title=_(u'details')),
             SimpleTerm(value='estimated_qc_time', token='estimated_qc_time', title=_(u'estimated_qc_time')),
             SimpleTerm(value='explanation', token='explanation', title=_(u'explanation')),
-            SimpleTerm(value='internal_qc_required_', token='internal_qc_required_', title=_(u'internal_qc_required_')),
+            SimpleTerm(value='internal_qc_required_', token='internal_qc_required_', title=_(u'is_internal_qc_required')),
             SimpleTerm(value='is_the_analyis_complete', token='is_the_analyis_complete', title=_(u'is_the_analyis_complete')),
+            SimpleTerm(value='daysleft', token='daysleft', title=_(u'Workdays Left')),
+            SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Assigned To')),
+            SimpleTerm(value='modified', token='modified', title=_(u'Date Modified')),
+            
         ]
     )
 

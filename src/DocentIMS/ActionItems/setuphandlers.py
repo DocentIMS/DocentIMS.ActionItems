@@ -85,17 +85,17 @@ def post_install(context):
                                          {'vocabulary_entry': 'Coordinator'},
                                          {'vocabulary_entry': 'Teamworker'},
                                         ])
-    
+                                        
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
-                                        [{'full_company_name': 'Docent',
-                                          'short_company_name': 'Doc' ,
+                                        [{'full_company_name': 'Docent IMS LLC',
+                                          'short_company_name': 'Docent' ,
                                           'company_letter_kode': 'DOC',
-                                          'company_role': '',
-                                          'company_full_street_address': '',
+                                          'company_role': '???',
+                                          'company_full_street_address': '6317 157th place ne',
                                           'company_other_address': '',
-                                          'company_city': '',
-                                          'company_state': '',
-                                          'company_zip': ''}
+                                          'company_city': 'Redmond',
+                                          'company_state': 'WA',
+                                          'company_zip': '98052'}
                                         ])
                                           
                                           
