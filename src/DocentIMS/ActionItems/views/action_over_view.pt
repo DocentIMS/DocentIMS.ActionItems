@@ -33,7 +33,7 @@
                                 <span tal:condition="python: val==True"> ✓ Yes </span>
                               </tal:check>
                               <span tal:condition="python: not isinstance(val,bool) and 
-                                  field['row_field'] not in ['actionno' ,'title', 'related_item','daysleft', 'urgency']">
+                                  field['row_field'] not in ['actionno' ,'title', 'related_item','daysleft', 'urgency', 'related_sow_section']">
                                   ${val}
                                 </span>
                           
@@ -52,6 +52,11 @@
                               <span tal:condition="python: field['row_field']=='related_item'"> 
                                 <span tal:condition="val/to_object|None">✓ Yes 
                               </span>
+                              <span tal:condition="python: field['row_field']=='related_sow_section'">
+                                ${val/to_object/Title|None}
+                              </span>
+                              
+                              
                                  
                             
                         </td>

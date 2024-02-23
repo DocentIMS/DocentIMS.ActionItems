@@ -1,6 +1,6 @@
 <p class="action_adder text-right">
     <a class="btn btn-primary float-right text-right btn-success"
-      href="${view/portal_url}/action_items/++add++action_items">
+      href="${view/portal_url}/action-items/++add++action_items">
       Add Action Items
     </a>
 </p>
