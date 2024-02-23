@@ -148,20 +148,16 @@ def AiFieldsVocabulary(context):
         [
             SimpleTerm(value='actionno', token='actionno', title=_(u'AI Auto Number')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
-            SimpleTerm(value='description', token='description', title=_(u'Description')),
             SimpleTerm(value='priority', token='priority', title=_(u'Priority')),
-            SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Assigned To')),
-            SimpleTerm(value='related_item', token='related_item', title=_(u'Related')),
+            SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Assigned to / Responsible')),
             SimpleTerm(value='Creator', token='Creator', title=_(u'Creator')),
             SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'Initial Due Date')),
             SimpleTerm(value='duedate', token='duedate', title=_(u'Due Date')),
             SimpleTerm(value='modified', token='modified', title=_(u'Date Modified')),
-            SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'Rev Due Date')),
             SimpleTerm(value='is_this_action_out_of_the_scope_of_work_', token='is_this_action_out_of_the_scope_of_work_', title=_(u'Out of Scope')),
             SimpleTerm(value='related_sow_section', token='related_sow_section', title=_(u'Rel Scope Number')),
             SimpleTerm(value='is_this_item_closed', token='is_this_item_closed', title=_(u'Closed?')),
             SimpleTerm(value='daysleft', token='daysleft', title=_(u'Workdays Left')),
-            SimpleTerm(value='urgency', token='urgency', title=_(u'Urgency')),
         ]
     )
 
@@ -174,10 +170,8 @@ def SowFieldsVocabulary(context):
             #SimpleTerm(value='action_items_related_will_be_listed_here', token='action_items_related_will_be_listed_here', title=_(u'action_items_related_will_be_listed_here')),
             SimpleTerm(value='id', token='id', title=_(u'id')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
-            SimpleTerm(value='priority', token='priority', title=_(u'priority')),
             SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'Initial Due Date')),
-            SimpleTerm(value='revised_due_date', token='revised_due_date', title=_(u'Revised Due Date')),
-            SimpleTerm(value='section_number', token='section_number', title=_(u'Scope Auto Number')),
+            SimpleTerm(value='duedate', token='duedate', title=_(u'Due Date')),
             SimpleTerm(value='estimated_qc_time', token='estimated_qc_time', title=_(u'Estimated QC Time')),
             SimpleTerm(value='internal_qc_required_', token='internal_qc_required_', title=_(u'Internal QC Required')),
             SimpleTerm(value='is_the_analyis_complete', token='is_the_analyis_complete', title=_(u'Closed')),
