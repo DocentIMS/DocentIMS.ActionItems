@@ -156,9 +156,15 @@ class ActionItemsCSV(CSVGenericView):
     def records(self):
         result = []
         io.StringIO()
-        brains = api.content.find(portal_type='action_items')
+        brains = api.content.find(portal_type='sow_analysis')
+        # or action items ?
         for brain in brains:
             obj = brain.getObject()
             # better use an OrderedDict below because in CSV order matters.
-            result.append({"title": obj.Title(), "id": obj.getId()}) # and so on
+            #result.append({"title": obj.Title(), "id": obj.getId()}) # and so on
+            result.append({"title": obj.Title(),
+                "section number": obj.section_number,
+                "assigned to": obj.assigned_to,
+                "Closed": obj.is_the_analyis_complete,
+            }) # and so on
         return result
