@@ -61,7 +61,7 @@ class ReindexView(BrowserView):
 
 
     def reindex(self):
-        cimport pdb; pdb.set_trace()
+        import pdb; pdb.set_trace;
         my_brains = self.context.portal_catalog(portal_type=['action_items', 'sow_analysis'])
         # red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
         
@@ -79,15 +79,15 @@ class ReindexView(BrowserView):
 
         self.email_charset = self.mail_settings.email_charset
         
-        for obj.urgenbrain in my_brains:
+        for brain in my_brains:
             obj = brain.getObject()
             #import pdb; pdb.set_trace()
             old_urgency = brain.urgency
             
-            #import pdb; pdb.set_trace;
-            #if not hasattr(obj, 'urgency'):
-            #    import pdb; pdb.set_trace;
-            #    obj.urgency = old_urgency
+            import pdb; pdb.set_trace;
+            if not hasattr(obj, 'urgency'):
+                import pdb; pdb.set_trace;
+                obj.urgency = old_urgency
             
             if hasattr(obj, 'urgency'):
                 old_urgency = obj.urgency
@@ -96,7 +96,7 @@ class ReindexView(BrowserView):
                 obj.reindexObject(idxs=["daysleft", "urgency"])
                 
                 #Send mail if urgency changed
-                if brain.urgency != old_urgency:
+                if old_urgency and brain.urgency != old_urgency:
                     #Send email to user assigned
                     #print('we will send')
                     if brain.assigned_to:
