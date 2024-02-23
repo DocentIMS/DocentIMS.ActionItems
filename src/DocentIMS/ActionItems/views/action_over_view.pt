@@ -55,6 +55,7 @@
                               <span tal:condition="python: field['row_field']=='related_sow_section'">
                                 ${val/to_object/Title|None}
                               </span>
+                              ${python: field['row_field']}
                               
                               
                                  
