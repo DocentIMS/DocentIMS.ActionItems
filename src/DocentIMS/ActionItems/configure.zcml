@@ -12,6 +12,24 @@
     Better import explicit packages or configurations ;)
   -->
   <!--<includeDependencies package="." />-->
+  
+  
+  <include package="plone.contentrules" />
+  <include
+      package="plone.contentrules"
+      file="meta.zcml"
+      />
+      
+  <interface
+      interface="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
+      type="plone.contentrules.rule.interfaces.IRuleEventType"
+      name="User Logged in first time"
+      />
+
+  <subscriber
+    for="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
+    handler=".handlers.user_logged_in_first"
+    />
 
   <include package=".browser" />
 
