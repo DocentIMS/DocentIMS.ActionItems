@@ -54,6 +54,9 @@
                               </span>
                               <span tal:condition="python: field['row_field']=='related_sow_section'">
                                ${val}
+                               <a tal:attributes="href string:${portal_url}/@@redirect-to-uuid/${val}/@@uuid">
+                               Click here
+                               </a>
                               </span>
                               
                               
