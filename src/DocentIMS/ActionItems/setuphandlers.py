@@ -192,7 +192,8 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='templates',
-                title='Templates' 
+                title='Templates',
+                exclude_from_nav=True,
             )
                     
         if not portal.get('images', False):
@@ -209,7 +210,8 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='downloads',
-                title='Downloads' 
+                title='Downloads',
+                exclude_from_nav=True,
 
             )
 
@@ -218,7 +220,8 @@ def _create_content(portal):
                     type='Folder',
                     container=downloads,
                     id='project_manager',
-                    title='Project Manager' 
+                    title='Project Manager',
+                    exclude_from_nav=True,
                 )
 
             if not downloads.get('team_member', False):
@@ -226,8 +229,8 @@ def _create_content(portal):
                     type='Folder',
                     container=downloads,
                     id='team_member',
-                    title='Team Member' 
-
+                    title='Team Member',
+                    exclude_from_nav=True,
                 )
 
 
@@ -253,7 +256,9 @@ def _create_content(portal):
                     id='action-items-collection',
                     title='Action Items',
                     layout='action-overview',
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['action_items']}]
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['action_items']}],
+                    limit=2000,
+                    item_count=500,
                 )
                 
                 
@@ -278,8 +283,8 @@ def _create_content(portal):
                     id='feedback-collection',
                     title='Feedback',
                     layout='tabular_view',
-                    limit=500,
-                    item_count=30,
+                    limit=2000,
+                    item_count=500,
                     customViewFields = ['Title', 'Creator', 'CreationDate'],
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
                 )
@@ -326,8 +331,8 @@ def _create_content(portal):
                     id='notes-collection',
                     title='Notes',
                     layout='tabular_view',
-                    limit=500,
-                    item_count=30,
+                    limit=2000,
+                    item_count=500,
                     customViewFields = ['Title', 'CreationDate'],
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
                 )
@@ -392,10 +397,21 @@ def _create_content(portal):
                 id='sow-collection',
                 title='Scope Breakdown',
                 layout='sow-overview',
-                query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}]
+                query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}],
+                limit=2000,
+                item_count=500,
             )
 
 
+        if not portal.get('images', False):
+        items = plone.api.content.create(
+            type='Folder',
+            container=portal,
+            id='images',
+            title='Images',
+            exclude_from_nav=True,
+        )
+        
         if not portal.get('help-files', False):
             items = plone.api.content.create(
                 type='Folder',
