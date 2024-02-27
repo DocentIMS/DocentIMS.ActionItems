@@ -404,13 +404,13 @@ def _create_content(portal):
 
 
         if not portal.get('images', False):
-        items = plone.api.content.create(
-            type='Folder',
-            container=portal,
-            id='images',
-            title='Images',
-            exclude_from_nav=True,
-        )
+            items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='images',
+                title='Images',
+                exclude_from_nav=True,
+            )
         
         if not portal.get('help-files', False):
             items = plone.api.content.create(
