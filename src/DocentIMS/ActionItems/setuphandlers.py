@@ -199,7 +199,8 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='images',
-                title='Images' 
+                title='Images',                 
+                exclude_from_nav=True,
             )
 
 

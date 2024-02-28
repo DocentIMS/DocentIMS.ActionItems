@@ -69,6 +69,7 @@ class ActionItemsAddForm(DefaultAddForm):
 
         if exp_text:
             self.fields['full_explanation'].field.default = exp_text
+            self.fields['IBasic-title'].field.default = exp_text
 
             
             
@@ -200,9 +201,24 @@ class MeetingEditForm(DefaultEditForm):
         if self.portal_type == "Meeting":
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
      
     def update(self):
         super(MeetingEditForm, self).update()
+        
+        for group in self.groups:
+            if group.__name__ == 'settings':
+                group.label = None
+                #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+                
+                
+            if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                #group.mode = 'omitted'
+                group.label = None
+        
+        
         
          
 
@@ -330,6 +346,8 @@ class MeetingAddForm(DefaultAddForm):
         super(MeetingAddForm, self).updateWidgets()
         self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
         self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+        self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+        #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
 
 
     def updateFields(self):
@@ -337,6 +355,19 @@ class MeetingAddForm(DefaultAddForm):
         
     def update(self):
         super(MeetingAddForm, self).update()
+        
+        for group in self.groups:
+            if group.__name__ == 'settings':
+                group.label = None
+                #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+        
+        
+        
+            if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                #group.mode = 'omitted'
+                group.label = None
+    
 
 
 class MeetingAddFormView(DefaultAddView):
