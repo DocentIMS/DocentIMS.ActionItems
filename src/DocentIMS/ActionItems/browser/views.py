@@ -70,7 +70,7 @@ class ActionItemsAddForm(DefaultAddForm):
         if exp_text:
             self.fields['full_explanation'].field.default = exp_text
             import pdb; pdb.set_trace()
-            self.fields['IBasic-title'].field.default = exp_text
+            self.fields['IBasic.title'].field.default = exp_text
 
             
             
