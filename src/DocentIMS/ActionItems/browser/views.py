@@ -68,8 +68,7 @@ class ActionItemsAddForm(DefaultAddForm):
             # self.fields['IBasic.description'].field.default = to_uuid
 
         if exp_text:
-            self.fields['full_explanation'].field.default = exp_text
-            import pdb; pdb.set_trace()
+            #self.fields['full_explanation'].field.default = exp_text
             self.fields['IBasic.title'].field.default = exp_text
 
             
