@@ -47,18 +47,20 @@
     <!--<element value="plone.leadimage"/>-->
     <!--<element value="plone.relateditems"/>-->
     <!--<element value="plone.richtext"/>-->
-    <!--<element value="plone.tableofcontents"/>-->
+    <element value="plone.tableofcontents"/>
     <!--<element value="plone.versioning" />-->
     <!--<element value="plone.translatable" />-->
   </property>
 
   <!-- View information -->
   <property name="add_view_expr">string:${folder_url}/++add++Meeting</property>
-  <property name="default_view">view</property>
+  <property name="default_view">event_view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>
   <property name="view_methods">
     <element value="view"/>
+    <element value="event_view"/>
+    
   </property>
 
   <!-- Method aliases -->

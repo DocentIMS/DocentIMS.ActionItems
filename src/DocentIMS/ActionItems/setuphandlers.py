@@ -67,7 +67,6 @@ def post_install(context):
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
                                          [{'row_field': 'title', 'row_title': 'Title'},
                                           {'row_field': 'assigned_to', 'row_title': 'Responsible person'},
-                                          {'row_field': 'description', 'row_title': 'Description'},
                                           {'row_field': 'priority', 'row_title': 'Priority'},
                                           {'row_field': 'initial_due_date', 'row_title': 'Due date'},
                                          ])
@@ -76,7 +75,6 @@ def post_install(context):
                                          [{'row_field': 'id', 'row_title': 'ID'}, 
                                           {'row_field': 'title', 'row_title': 'Title'},
                                           {'row_field': 'initial_due_date', 'row_title': 'Due date'},
-                                          {'row_field': 'section_number', 'row_title': 'SN'},
                                           {'row_field': 'estimated_qc_time', 'row_title': 'QC time'}, 
                                           ])
     

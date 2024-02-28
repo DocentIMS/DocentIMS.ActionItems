@@ -53,12 +53,9 @@
                                 <span tal:condition="val/to_object|None">✓ Yes 
                               </span>
                               <span tal:condition="python: field['row_field']=='related_sow_section'">
-                               ${val} 
+                               ${val}
                               </span>
                               
-                              
-                                 
-                            
                         </td>
                         </tal:repeat>
 
