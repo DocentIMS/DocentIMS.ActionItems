@@ -370,7 +370,7 @@ class IDocentimsSettings(model.Schema):
 
     widget("project_description", klass="pat-tinymce")
     project_description = schema.Text(
-        required = True,
+        required = False,
         title=_(u"label_project_description", default=u"Project Description"),
         description=_(u"",
                       default=u"")

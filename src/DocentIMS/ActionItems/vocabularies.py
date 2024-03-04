@@ -149,7 +149,7 @@ def AiFieldsVocabulary(context):
             SimpleTerm(value='actionno', token='actionno', title=_(u'AI Auto Number')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='priority', token='priority', title=_(u'Priority')),
-            SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Assigned to / Responsible')),
+            SimpleTerm(value='assigned_to', token='assigned_to', title=_(u' Responsible')),
             SimpleTerm(value='Creator', token='Creator', title=_(u'Creator')),
             SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'Initial Due Date')),
             SimpleTerm(value='duedate', token='duedate', title=_(u'Due Date')),
@@ -160,6 +160,7 @@ def AiFieldsVocabulary(context):
             SimpleTerm(value='daysleft', token='daysleft', title=_(u'Workdays Left')),
         ]
     )
+    
 
 directlyProvides(AiFieldsVocabulary, IVocabularyFactory)
 
@@ -188,3 +189,4 @@ directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
 
 
 
+#Assigned to / 
