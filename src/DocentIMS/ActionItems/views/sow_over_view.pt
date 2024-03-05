@@ -59,9 +59,11 @@
 
                                <span tal:condition="python: field['row_field'] in  ['modified']">
                                  
-                          
+                                  <time class="pat-display-time" tal:condition="val"
+                                    datetime="${python:val().ISO()}"
+                                    data-pat-display-time="output-format: Do MMMM YYYY">
                                       ${val}
-                              
+                                  </time>
               
                                </span>
                               
