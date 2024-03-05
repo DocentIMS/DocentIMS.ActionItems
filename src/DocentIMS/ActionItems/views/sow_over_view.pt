@@ -47,13 +47,21 @@
                                 <span tal:condition="val/to_object|None">✓ Yes 
                               </span>
 
-                               <span tal:condition="python: field['row_field'] in  ['initial_due_date', 'duedate', 'modified']">
+                               <span tal:condition="python: field['row_field'] in  ['initial_due_date', 'duedate']">
                                  
                                   <time class="pat-display-time" tal:condition="val"
                                     datetime="${python:val.isoformat()}"
                                     data-pat-display-time="output-format: Do MMMM YYYY">
                                       ${val}
                                   </time>
+              
+                               </span>
+
+                               <span tal:condition="python: field['row_field'] in  ['modified']">
+                                 
+                          
+                                      ${val}
+                              
               
                                </span>
                               
