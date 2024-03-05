@@ -65,18 +65,20 @@ def post_install(context):
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
-                                         [{'row_field': 'id', 'id': 'ID'}, 
+                                         [{'row_field': 'actionno', 'row_title': 'ID'}, 
                                           {'row_field': 'title', 'row_title': 'Title'},
                                           {'row_field': 'assigned_to', 'row_title': 'Responsible person'},
-                                          {'row_field': 'due_date', 'row_title': 'Due date'},
+                                          {'row_field': 'duedate', 'row_title': 'Due date'}
                                          ])
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',
-                                         [{'row_field': 'section_number', 'row_title': 'ID'}, 
-                                          {'row_field': 'title', 'row_title': 'Title'},
-                                          {'row_field': 'due_date', 'row_title': 'Due date'},
-                                          {'row_field': 'estimated_qc_time', 'row_title': 'QC time'}, 
-                                          ])
+                                        [  {'row_field': 'section_number', 'row_title': 'ID'}, 
+                                           {'row_field': 'title', 'row_title': 'Title'}, 
+                                           {'row_field': 'duedate', 'row_title': 'Due date'}, 
+                                           {'row_field': 'estimated_qc_time', 'row_title': 'Estimated QC'} 
+                                            ]
+                                       )
+    
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies',
                                         [{'vocabulary_entry': 'Project Manager'},
@@ -129,7 +131,6 @@ def post_install(context):
                                           'company_city': 'Revere',
                                           'company_state': 'MA',
                                           'company_zip': '02151'},
-                                         
                                         ])
                                           
                                           
@@ -199,8 +200,8 @@ def post_import(context):
     
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  [{'row_field': 'id', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    #plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', [{'row_field': 'actionno', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
+    #plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',  [{'row_field': 'id', 'row_title': 'ID'}, {'row_field': 'title', 'row_title': 'Title'}])
     
 
     #Import excel content    
