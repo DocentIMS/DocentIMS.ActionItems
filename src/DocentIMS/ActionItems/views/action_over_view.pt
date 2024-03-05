@@ -33,7 +33,7 @@
                                 <span tal:condition="python: val==True"> ✓ Yes </span>
                               </tal:check>
                               <span tal:condition="python: not isinstance(val,bool) and 
-                                  field['row_field'] not in ['actionno' ,'title', 'related_item','daysleft', 'urgency', 'related_sow_section', 'Creator', 'creator', 'assigned_to', 'initial_due_date', 'duedate']">
+                                  field['row_field'] not in ['actionno' ,'title', 'related_item','daysleft', 'urgency', 'related_sow_section', 'Creator', 'creator', 'assigned_to', 'initial_due_date', 'duedate', 'modified']">
                                   ${val}
                                 </span>
                           
@@ -70,7 +70,7 @@
                               </span>
 
 
-                              <span tal:condition="python: field['row_field'] in  ['initial_due_date', 'duedate']">
+                              <span tal:condition="python: field['row_field'] in  ['initial_due_date', 'duedate', 'modified']">
                                  
                                   <time class="pat-display-time" tal:condition="val"
                                     datetime="${python:val.isoformat()}"
