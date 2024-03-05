@@ -27,8 +27,8 @@ class ActionItemsOverView(BrowserView):
         #self.msg = _(u'A small message')
         return self.index()
     
-    def portal_url(self):
-        return api.portal.get().absolute_url()
+    #def portal_url(self):
+    #    return api.portal.get().absolute_url()
 
     def batch(self):
         batch = self.context.restrictedTraverse('@@contentlisting')(sort_on='sortable_title', batch=True, b_size=400);
@@ -41,7 +41,13 @@ class ActionItemsOverView(BrowserView):
     def portal_url(self):
         return api.portal.get().absolute_url() 
  
-
+    #@property
+    def uid_title(self, val):
+        if val:
+            uid_object =  api.content.get(UID=val) 
+            return uid_object.Title()
+        return ''
+    
     def today(self):
         #import pdb; pdb.set_trace()
         return datetime.date.today()
