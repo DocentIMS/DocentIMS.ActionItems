@@ -48,7 +48,13 @@
                               </span>
 
                                <span tal:condition="python: field['row_field'] in  ['initial_due_date', 'duedate']">
-                                  ${val}  xxx
+                                 
+                                  <time class="pat-display-time"
+                                    datetime="${python:val).ISO()}"
+                                    data-pat-display-time="output-format: Do MMMM YYYY">
+                                      ${val}
+                                  </time>
+              
                                </span>
                               
                               <span tal:condition="python: field['row_field']=='assigned_to'"
