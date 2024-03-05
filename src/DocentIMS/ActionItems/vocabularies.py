@@ -169,7 +169,7 @@ def SowFieldsVocabulary(context):
     return SimpleVocabulary(
         [
             #SimpleTerm(value='action_items_related_will_be_listed_here', token='action_items_related_will_be_listed_here', title=_(u'action_items_related_will_be_listed_here')),
-            SimpleTerm(value='id', token='id', title=_(u'id')),
+            SimpleTerm(value='section_number', token='section_number', title=_(u'Breakdown Number')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'Initial Due Date')),
             SimpleTerm(value='duedate', token='duedate', title=_(u'Due Date')),
@@ -190,3 +190,5 @@ directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
 
 
 #Assigned to / 
+#SimpleTerm(value='id', token='id', title=_(u'id')),
+            
