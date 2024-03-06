@@ -16,7 +16,6 @@ def user_logged_in_first(event):
 def redirect(event):
     request = event.object.REQUEST
     #came_from = request.form.get('came_from', None)
-    import pdb; pdb.set_trace()
     came_from='vg.no'
     if came_from:
         response = request.RESPONSE
