@@ -5,8 +5,11 @@
       i18n:domain="DocentIMS.ActionItems"
       metal:use-macro="context/main_template/macros/master">
 <body>
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+  <metal:content-core fill-slot="content">
+  <metal:block define-macro="content">
+    <h1 class="documentFirstHeading">${view/project_title|None}</h1>
+    <!-- h3>${view/project_short_name|None}</h3-->
+    <div tal:replace="structure  view/project_description|None"/> 
     <tal:check tal:condition="not: context/portal_membership/isAnonymousUser" >
      <div tal:replace="structure  context/frontpage_text/output|None" />
    

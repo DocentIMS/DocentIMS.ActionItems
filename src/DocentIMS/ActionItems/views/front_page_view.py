@@ -6,6 +6,7 @@ from zope.interface import Interface
 from plone import api
 from datetime import datetime
 import DateTime
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -45,3 +46,17 @@ class FrontPageView(BrowserView):
             return 'Welcome, new user'
             
         return 'Welcome back'
+    
+    @property
+    def project_title(self):
+        return api.portal.get_registry_record('project_title', interface=IDocentimsSettings)
+            
+    @property
+    def project_short_name(self):
+        return api.portal.get_registry_record('project_short_name', interface=IDocentimsSettings)
+        
+        
+    @property
+    def project_description(self):
+        return api.portal.get_registry_record('project_description', interface=IDocentimsSettings)
+            
