@@ -109,6 +109,14 @@ class IVocabulari(model.Schema):
         required=False,
     )
 
+class IVocabulari3(model.Schema):
+    vocabulary_entry = schema.TextLine(
+        title=_(u'Vocabulary entries', 'Company Roles'),
+        description=u"Each company will be assigned a “Role” during their creation. You need to save this form before continuing",
+        required=False,
+    )
+
+
 class ITableRows(model.Schema):
     widget(row_field=SelectFieldWidget)
     row_field = schema.Choice(
@@ -280,10 +288,18 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'vocabularies',
-        label=_(u'Team Roles'),
+        label=_(u'Member Roles'),
         fields=[
             'vokabularies',
             # 'vokabularies2',
+        ] 
+    )
+
+    model.fieldset(
+        'vocabularies3',
+        label=_(u'Company Roles'),
+        fields=[
+            'vokabularies3',
         ] 
     )
 
@@ -480,6 +496,14 @@ class IDocentimsSettings(model.Schema):
         title = _(u" ",
             default=u""),
         value_type=DictRow(schema=IVocabulari),
+        required=True,
+    )
+    
+    widget(vokabularies3=DataGridFieldFactory)
+    vokabularies3 = schema.List(
+        title = _(u" ",
+            default=u""),
+        value_type=DictRow(schema=IVocabulari3),
         required=True,
     )
 

@@ -100,6 +100,7 @@
           <!--value key="company_main_phone_number"></value-->
 
           <value key="vokabularies"></value>
+          <value key="vokabularies3"></value>
           <value key="companies"></value>
 
           <value key="urgent_red">7</value>

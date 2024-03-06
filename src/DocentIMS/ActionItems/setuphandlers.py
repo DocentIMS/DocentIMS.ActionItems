@@ -111,7 +111,15 @@ def post_install(context):
                                             {'vocabulary_entry': 'Graphics Developer'},
                                             {'vocabulary_entry': 'GIS'}, 
                                         ])
-                                        
+    
+
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies3',
+                                        [   {'vocabulary_entry': 'Prime'},
+                                            {'vocabulary_entry': 'Architect'},
+                                            {'vocabulary_entry': 'Geotechnical'},
+                                            {'vocabulary_entry': 'Outreach'},
+                                        ])  
+
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
                                         [{'full_company_name': 'Parametrix, Inc.',
                                           'short_company_name': 'Parametrix' ,
@@ -132,6 +140,9 @@ def post_install(context):
                                           'company_state': 'MA',
                                           'company_zip': '02151'},
                                         ])
+    
+    
+    
                                           
                                           
     # Create Folder to put everything in

@@ -11,12 +11,26 @@ xmlns="http://namespaces.plone.org/supermodel/schema">
     <field name="frontpage_text" type="plone.app.textfield.RichText">
       <description>Text showed to logged in users</description>
       <required>False</required>
-      <title>Frontpage text</title>
+      <title>Logged in users Frontpage text</title>
     </field>
+ 
+    <field name="first_login_prjmgr" type="plone.app.textfield.RichText">
+      <description>Project Manager first logged in text</description>
+      <required>False</required>
+      <title>Project Manager first logged in text</title>
+    </field>
+
+    <field name="first_login_teammbr" type="plone.app.textfield.RichText">
+      <description>Team member first logged in text</description>
+      <required>False</required>
+      <title>Team member first logged in text</title>
+    </field>
+ 
     <field name="frontpage_anon" type="plone.app.textfield.RichText">
-      <description>Text showed to not logged inusers</description>
+      <description>Text showed to Anononomys nusers</description>
       <required>False</required>
       <title>Frontpage anon text</title>
     </field>
+
   </schema>
 </model>

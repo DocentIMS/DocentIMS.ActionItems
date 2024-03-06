@@ -187,15 +187,38 @@ directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
 
 
 
+# def CompanyRolesVocabulary(context):
+#     return SimpleVocabulary(
+#         [
+#             SimpleTerm(value='prime', token='prime', title=_(u'Prime')),
+#             SimpleTerm(value='architect', token='architect', title=_(u'Architect')),
+#             SimpleTerm(value='geotechnical', token='geotechnical', title=_(u'Geotechnical')),
+#             SimpleTerm(value='outreach', token='outreach', title=_(u'Outreach')),
+#         ]
+#     )
+
+# directlyProvides(CompanyRolesVocabulary, IVocabularyFactory)
+
+
+
 def CompanyRolesVocabulary(context):
-    return SimpleVocabulary(
-        [
-            SimpleTerm(value='prime', token='prime', title=_(u'Prime')),
-            SimpleTerm(value='architect', token='architect', title=_(u'Architect')),
-            SimpleTerm(value='geotechnical', token='geotechnical', title=_(u'Geotechnical')),
-            SimpleTerm(value='outreach', token='outreach', title=_(u'Outreach')),
+    items = api.portal.get_registry_record('vokabularies3', interface=IDocentimsSettings)
+    
+    #   import pdb; pdb.set_trace()
+
+    if items:
+        # Extract unique entries from items and convert to lowercase for case-insensitive comparison
+        
+        # Create SimpleTerm objects from the unique entries
+        terms = [
+            SimpleTerm(value=item['vocabulary_entry'], token=item['vocabulary_entry'].lower(), title=item['vocabulary_entry'])
+            for item in sorted(items, key=lambda x: x.get('vocabulary_entry', '').lower())
+            if item.get('vocabulary_entry')  # Exclude items with None or empty 'short_company_name'
         ]
-    )
+
+        return SimpleVocabulary(terms)
+
+    return SimpleVocabulary([])
 
 directlyProvides(CompanyRolesVocabulary, IVocabularyFactory)
 

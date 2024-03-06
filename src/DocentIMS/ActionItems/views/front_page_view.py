@@ -38,6 +38,31 @@ class FrontPageView(BrowserView):
                         type="message",
                     )
         return self.index()
+    
+    def field_to_return(self):
+        current = api.user.get_current()
+        last_login = current.getProperty('last_login_time')
+        
+        group = api.group.get(groupname='PrjTeam')
+
+        
+        #import pdb; pdb.set_trace()
+        
+        
+        #if current in group.getGroupMembers:
+        #    return 'you are part of project team'
+        
+        roles =  api.user.get_roles(user=current)
+        if 'Project Manager' in roles:
+            return self.context.first_login_prjmgr
+        
+        if last_login and last_login.year() == 2000:
+            return 'aaaa'
+        
+        
+        return 'ddd'
+        
+        
 
     def last_login(self):
         current = api.user.get_current()
