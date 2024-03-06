@@ -43,7 +43,7 @@ class FrontPageView(BrowserView):
         current = api.user.get_current()
         last_login = current.getProperty('last_login_time')
         if last_login.year() == 2000:
-            return 'Welcome, new user'
+            return 'Welcome, new user, this is your first login'
             
         return 'Welcome back'
     
