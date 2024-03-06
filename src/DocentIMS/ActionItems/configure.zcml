@@ -191,4 +191,8 @@
   	  component=".vocabularies.QPVocabulary"
       name="DocentIMS.ActionItems.QPVocabulary" />      
 
+  <utility
+  	  component=".vocabularies.CompanyRolesVocabulary"
+      name="DocentIMS.ActionItems.CompanyRolesVocabulary" />      
+
 </configure>

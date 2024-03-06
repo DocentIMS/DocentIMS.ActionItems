@@ -152,10 +152,16 @@ class ICompany(model.Schema):
         constraint=company_letter_kodeConstraint,
         )
 
-    company_role = schema.Text(
+    # company_role = schema.Text(
+    #     required = False,
+    #     title=_(u"label_company_role", default=u"Company role")
+    #     )
+    
+    company_role = schema.Choice(
         required = False,
-        title=_(u"label_company_role", default=u"Company role")
-        )
+        title=_(u"label_company_role", default=u"Company role"),
+        vocabulary=u"DocentIMS.ActionItems.CompanyRolesVocabulary",
+    )
         
     #company_logo = schema.Text(
     #    required = False,

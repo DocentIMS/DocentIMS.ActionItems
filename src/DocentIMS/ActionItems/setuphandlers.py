@@ -321,7 +321,7 @@ def _create_content(portal):
                     layout='tabular_view',
                     limit=2000,
                     item_count=500,
-                    customViewFields = ['Title', 'Creator', 'CreationDate'],
+                    customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
                 )
             

@@ -187,6 +187,17 @@ directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
 
 
 
+def CompanyRolesVocabulary(context):
+    return SimpleVocabulary(
+        [
+            SimpleTerm(value='prime', token='prime', title=_(u'Prime')),
+            SimpleTerm(value='Architect', token='architect', title=_(u'Architect')),
+            SimpleTerm(value='Geotechnical', token='geotechnical', title=_(u'Geotechnical')),
+            SimpleTerm(value='Outreach', token='outreach', title=_(u'Outreach')),
+        ]
+    )
+
+directlyProvides(CompanyRolesVocabulary, IVocabularyFactory)
 
 
 #Assigned to / 

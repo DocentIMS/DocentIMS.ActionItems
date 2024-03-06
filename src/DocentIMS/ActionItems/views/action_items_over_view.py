@@ -15,7 +15,7 @@ from plone.batching import Batch
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 #import plone.api
-
+from Products.CMFCore.utils import getToolByName
 from plone.app.contenttypes.browser.collection import CollectionView
 
 
@@ -41,12 +41,21 @@ class ActionItemsOverView(BrowserView):
     def portal_url(self):
         return api.portal.get().absolute_url() 
  
-    #@property
-    def uid_title(self, val):
+    ##@property
+    def xuid_title(self, val):
         if val:
             uid_object =  api.content.get(UID=val) 
             return uid_object.Title()
         return ''
+
+    def uid_title(context, uuid):
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(UID=uuid)
+        if results:
+            return results[0].Title
+        else:
+            return ''
+
     
     def today(self):
         #import pdb; pdb.set_trace()
