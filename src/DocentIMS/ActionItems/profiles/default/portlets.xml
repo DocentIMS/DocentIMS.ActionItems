@@ -42,8 +42,8 @@
               manager="plone.rightcolumn"
               name="collectionfilterone"
               type="collective.collectionfilter.portlets.CollectionFilter">
-      <property name="header">Responsibve</property>
-      <property name="group_by">assigned_to</property>
+      <property name="header">Responsible</property>
+      <property name="group_by">Subject</property>
       <property name="show_count">True</property>
   </assignment>
 
