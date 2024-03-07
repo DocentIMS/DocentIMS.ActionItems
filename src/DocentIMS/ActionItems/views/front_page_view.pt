@@ -15,8 +15,8 @@
     <!-- h3>${view/project_short_name|None}</h3-->
     <div tal:replace="structure  view/project_description|None"/> 
     
-        <div tal:define="text view/field_to_return" tal:replace="structure text/output" />
-        
+        <div tal:define="text view/field_to_return|None" tal:condition="text" tal:replace="structure text/output" />
+
   </metal:block>
   </metal:content-core>
 </body>
