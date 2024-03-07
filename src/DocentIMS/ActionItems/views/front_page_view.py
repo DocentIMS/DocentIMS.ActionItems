@@ -49,18 +49,18 @@ class FrontPageView(BrowserView):
             roles =  api.user.get_roles(user=current)
             
             #first login
-            if last_login and last_login.year() >= 2023:
+            if last_login and last_login.year() < 2024:
             
                 if 'Project Manager' in roles:
                     #User is project manager
                     return self.context.first_login_prjmgr
                 
-                #Check if user is part of this group
+                #Check if user is part of PrjTEam group
                 if current.getUserId() in group.getAllGroupMemberIds():
                     #User is team
                     return self.context.first_login_teammbr
             
-            if last_login and last_login.year() == 2000:
+            if last_login and last_login.year() >= 2023:
                 return self.context.frontpage_text
             
         
