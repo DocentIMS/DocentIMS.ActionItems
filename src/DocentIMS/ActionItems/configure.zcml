@@ -18,9 +18,15 @@
   <include package=".viewlets" />
   <include package=".portlets" />
   <include package=".indexers" />
+  <include package=".browser" />
   <!--include package=".viewlets" /-->
   <include package=".views" />
   <include file="permissions.zcml" />
+
+
+
+
+   <!-- Contentrules First logged in action definition -->
   <include package="plone.contentrules" />
   <include
       package="plone.contentrules"
@@ -77,7 +83,7 @@
 
 
 
-
+  
   <genericsetup:registerProfile
       name="default"
       title="DocentIMS.ActionItems"
@@ -141,6 +147,7 @@
     /-->
 
     <!-- Adapter for mail so we can sent mail to 'owner' -->
+    <!-- for use in the 'mail content rules '-->
     <adapter
         factory=".adapters.AssignedTo"
         provides="plone.stringinterp.interfaces.IStringSubstitution"
@@ -184,6 +191,8 @@
         name="project_short_name"
     />
     
+
+   <!-- vocabularies -->
 
   <utility
     	  component=".vocabularies.ActionItemsVocabulary"

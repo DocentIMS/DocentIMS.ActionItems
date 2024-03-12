@@ -16,7 +16,7 @@
                  <thead>
                     <tr>
                       <tal:repeat tal:repeat="field fields">
-                        <th>${field/row_title|None}</th>
+                        <th tal:condition="field/row_title|None">${field/row_title|None}</th>
                       </tal:repeat>
                     </tr>
                   </thead>
@@ -24,7 +24,9 @@
                <tr tal:repeat="item python: view.batch()">
                       <tal:obj tal:define="obj item/getObject">
                         <tal:repeat tal:repeat="field view/get_fields|None">
-                          <td tal:define="val python:getattr(obj, field['row_field'], '')">
+                        <td tal:condition="python: field['row_field']">
+                        
+                          <tal:define tal:define="val python:getattr(obj, field['row_field'], '')">
                             <a href="${item/getURL}"  tal:condition="python: field['row_field']=='title'">
                               ${val}
                             </a>
@@ -76,7 +78,7 @@
 
                            
                                  
-                            
+                            </tal:define>
                         </td>
                         </tal:repeat>
 
