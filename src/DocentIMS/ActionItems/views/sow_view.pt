@@ -130,7 +130,7 @@
 
         <fieldset>
               <legend>QC Requirements</legend>
-              <p class="larger">These are the action items generated from the analysis of this Statement of Work.</p>
+              <p class="larger">Are there internal QC requirements for this Scope Section?</p>
               <hr class="hr" />
               <p><b>Internal QC_required</b>: <span tal:condition="context/internal_qc_required_">Yes</span> <span tal:condition="not: context/internal_qc_required_">No</span></p>
               <p><b>Estimated QC Time</b>: ${context/estimated_qc_time}</p>

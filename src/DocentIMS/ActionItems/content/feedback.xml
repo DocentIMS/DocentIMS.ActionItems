@@ -25,7 +25,7 @@
       <description/>
       <required>False</required>
       <title>do you want a response?</title>
-      <form:widget type="z3c.form.browser.radio.RadioFieldWidget"/>
+      <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
     </field>
   </schema>
 </model>

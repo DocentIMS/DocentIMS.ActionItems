@@ -146,7 +146,7 @@ directlyProvides(QPVocabulary, IVocabularyFactory)
 def AiFieldsVocabulary(context):
     return SimpleVocabulary(
         [
-            SimpleTerm(value='actionno', token='actionno', title=_(u'AI Auto Number')),
+            SimpleTerm(value='actionno', token='actionno', title=_(u'AI Number')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='priority', token='priority', title=_(u'Priority')),
             SimpleTerm(value='assigned_to', token='assigned_to', title=_(u' Responsible')),
@@ -179,7 +179,7 @@ def SowFieldsVocabulary(context):
             SimpleTerm(value='daysleft', token='daysleft', title=_(u'Workdays Left')),
             SimpleTerm(value='assigned_to', token='assigned_to', title=_(u'Responsible')),
             SimpleTerm(value='modified', token='modified', title=_(u'Date Modified')),
-            
+            SimpleTerm(value='target_relations', token='target_relations', title=_(u'Rel Action Item')),
         ]
     )
 

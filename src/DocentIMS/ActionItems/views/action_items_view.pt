@@ -98,7 +98,7 @@
 
             <fieldset>
               <legend>📌 PM Notes</legend>
-              <p class="larger">Project Manager's Notes to Person Analyzing This Section</p>
+              <p class="larger">Project Manager's Notes to Person Assigned This Action Item</p>
               <hr class="hr" />
              <div tal:replace="structure context/notes/output|None" />
 
@@ -196,8 +196,8 @@
           </tal:condition>
         </fieldset>
             <fieldset>
-              <legend>📌 Private notes</legend>
-              <p class="larger">Personal notes</p>
+              <legend>📌 Your notes</legend>
+              <p class="larger">Private Notes - Only Visible to yourself.</p>
               <hr class="hr" />
               <div class="alert alert-warning">
                 <div tal:replace="structure view/get_usernote" />
