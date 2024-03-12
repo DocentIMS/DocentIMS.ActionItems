@@ -67,7 +67,7 @@ When ready, use "Submit" to send to the PM for review.</description>
   </guard>
  </transition>
  <transition transition_id="retract" title="Retract" new_state="private" trigger="USER" before_script="" after_script="">
-  <description>Return AI to Creator </description>
+  <description>Return AI to Creator</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
   <guard>
   </guard>

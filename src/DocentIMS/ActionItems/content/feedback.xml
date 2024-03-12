@@ -1,29 +1,33 @@
-<model
-    xmlns="http://namespaces.plone.org/supermodel/schema"
-    xmlns:security="http://namespaces.plone.org/supermodel/security"
-    xmlns:form="http://namespaces.plone.org/supermodel/form"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="DocentIMS.ActionItems">
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
+  xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" 
+  xmlns:form="http://namespaces.plone.org/supermodel/form" 
+  xmlns:security="http://namespaces.plone.org/supermodel/security" 
+  xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" 
+  xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" 
+  xmlns:users="http://namespaces.plone.org/supermodel/users"
+  i18n:domain="DocentIMS.ActionItems" 
+  xmlns="http://namespaces.plone.org/supermodel/schema">
   <schema>
-      <field name="feedback_submitted_by" type="zope.schema.TextLine">
-        <description/>
-        <required>False</required>
-        <title>feedback submitted by</title>
-      </field>
-      <field name="feedback_text" type="zope.schema.Text">
-        <description/>
-        <required>False</required>
-        <title>feedback text</title>
-      </field>
-      <field name="feedback_file" type="plone.namedfile.field.NamedBlobFile">
-        <description/>
-        <required>False</required>
-        <title>feedback file</title>
-      </field>
-      <field name="aa" type="plone.namedfile.field.NamedBlobImage">
-        <description/>
-        <required>False</required>
-        <title>a</title>
-      </field>
+    <field name="feedback_submitted_by" type="zope.schema.TextLine">
+      <description/>
+      <title>feedback submitted by</title>
+    </field>
+    <field name="feedback_text" type="zope.schema.Text">
+      <description>The content of the feedback.</description>
+      <title>feedback text</title>
+    </field>
+    <field name="feedback_file" type="plone.namedfile.field.NamedBlobFile">
+      <description>File Uploaded</description>
+      <required>False</required>
+      <title>feedback_file</title>
+    </field>
+    <field name="do_you_want_a_response" type="zope.schema.Bool">
+      <description/>
+      <required>False</required>
+      <title>do you want a response?</title>
+      <form:widget type="z3c.form.browser.radio.RadioFieldWidget"/>
+    </field>
   </schema>
 </model>
+
+ 

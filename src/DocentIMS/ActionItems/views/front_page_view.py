@@ -42,17 +42,27 @@ class FrontPageView(BrowserView):
     def field_to_return(self):
         current = api.user.get_current()
         
+        
         if current and current.getUserName() != 'Anonymous User':
-            last_login = current.getProperty('last_login_time')
+            last_login = current.getProperty('last_login_time') or None
             
             group = api.group.get(groupname='PrjTeam')
+            pr_man_group = api.group.get(groupname='PrjMgr')
             roles =  api.user.get_roles(user=current)
             
             #first login
+            #import pdb; pdb.set_trace()
             if last_login and last_login.year() < 2024:
+                
+                #import pdb; pdb.set_trace()
+        
             
                 if 'Project Manager' in roles:
                     #User is project manager
+                    return self.context.first_login_prjmgr
+                
+                if current.getUserId() in pr_man_group.getAllGroupMemberIds():
+                    #User is project manager group
                     return self.context.first_login_prjmgr
                 
                 #Check if user is part of PrjTEam group
@@ -67,7 +77,6 @@ class FrontPageView(BrowserView):
         return self.context.frontpage_anon
     
     
-        
         
 
     def last_login(self):
