@@ -11,6 +11,7 @@ from zope import schema
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
+from plone import api
 
 
 
@@ -26,7 +27,7 @@ class ILogginFirstAction(Interface):
 
     message = schema.TextLine(
         title=_("Page to redirect to"),
-        description=_("Where to send logged in users."),
+        description=_("Where to send logged in users. No first slash (/)"),
         required=True,
     )
 
@@ -38,7 +39,7 @@ class LogginFirstAction(SimpleItem):
     """The actual persistent implementation of the FirstLoggedin action element."""
 
     message = ""
-    message_type = "info"
+    #message_type = "info"
     
     element = "DocentIMS.ActionItems.LogginFirst"
     
@@ -68,13 +69,15 @@ class LogginFirstActionExecutor:
     def __call__(self):
         request = self.context.REQUEST
         message = _(self.element.message)
-        message_type = self.element.message_type
-        # request.response.redirect('came_from')
-        IStatusMessage(request).addStatusMessage(message, type=message_type)
+        #message_type = self.element.message_type
+        #request.response.redirect('/news')
+        url = api.portal.get().absolute_url() + message
+        request.RESPONSE.redirect(url)
+        #IStatusMessage(request).addStatusMessage(url, type=message_type)
         # To do
         #request = self.REQUEST
         
-        return True
+        return True #self.context.REQUEST.RESPONSE.redirect('/news')
 
 
 class LogginFirstAddForm(ActionAddForm):

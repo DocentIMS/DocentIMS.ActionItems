@@ -23,11 +23,8 @@ class FrontPageView(BrowserView):
     def __call__(self):
         # Implement your own actions:
         current = api.user.get_current()
+        #import pdb; pdb.set_trace()
         last_login = current.getProperty('last_login_time')
-        #fullname = current.getProperty('fullname')
-        #melding = "Welcome"
-        #if fullname:
-        #    melding = "Welcome back {}!".format(fullname)
         if last_login and last_login.year() == 2000:
             fullname = current.getProperty('fullname')
             melding = "Welcome {}!".format(fullname)
@@ -44,7 +41,12 @@ class FrontPageView(BrowserView):
         
         
         if current and current.getUserName() != 'Anonymous User':
-            last_login = current.getProperty('last_login_time') or None
+            #last_login = current.getProperty('last_login_time') or None
+            #import pdb; pdb.set_trace()
+            year = 2023
+            last_login =   current.getProperty('last_login_time') 
+            if last_login:
+                year = last_login.year()
             
             group = api.group.get(groupname='PrjTeam')
             pr_man_group = api.group.get(groupname='PrjMgr')
@@ -52,7 +54,7 @@ class FrontPageView(BrowserView):
             
             #first login
             #import pdb; pdb.set_trace()
-            if last_login and last_login.year() < 2024:
+            if year < 2024:
                 
                 #import pdb; pdb.set_trace()
         
@@ -70,7 +72,7 @@ class FrontPageView(BrowserView):
                     #User is team
                     return self.context.first_login_teammbr
             
-            if last_login and last_login.year() >= 2023:
+            if  year >= 2023:
                 return self.context.frontpage_text
             
         
