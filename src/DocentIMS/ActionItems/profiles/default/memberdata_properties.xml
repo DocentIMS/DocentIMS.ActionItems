@@ -22,4 +22,5 @@
  <property name="company" type="string"></property>
  <property name="description" type="text"></property>
  <property name="location" type="string"></property>
+ <property name="returning" type="boolean">False</property>
 </object>

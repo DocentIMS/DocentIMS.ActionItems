@@ -1,3 +1,7 @@
+ 
+        
+            
+            
 # -*- coding: utf-8 -*-
 
 # from DocentIMS.ActionItems import _
@@ -21,44 +25,25 @@ class FrontPageView(BrowserView):
     # template = ViewPageTemplateFile('front_page_view.pt')
 
     def __call__(self):
-        # Implement your own actions:
-        current = api.user.get_current()
-        #import pdb; pdb.set_trace()
-        last_login = current.getProperty('last_login_time')
-        if last_login and last_login.year() == 2000:
-            fullname = current.getProperty('fullname')
-            melding = "Welcome {}!".format(fullname)
-            
-            api.portal.show_message(
-                        message=melding,
-                        request=self.request,
-                        type="message",
-                    )
+        
         return self.index()
     
     def field_to_return(self):
-        current = api.user.get_current()
         
         
-        if current and current.getUserName() != 'Anonymous User':
-            #last_login = current.getProperty('last_login_time') or None
-            #import pdb; pdb.set_trace()
-            year = 2023
-            last_login =   current.getProperty('last_login_time') 
-            if last_login:
-                year = last_login.year()
-            
+        #if current and  not current.isAnonymousUser():
+        #if current and current.getUserName() != 'Anonymous User':
+        if not api.user.is_anonymous():
+            current = api.user.get_current()
+            #last_login =   current.getProperty('last_login_time')
+            returning_user =  current.getProperty('returning', False)
+            current.setProperties(returning = True)
             group = api.group.get(groupname='PrjTeam')
             pr_man_group = api.group.get(groupname='PrjMgr')
             roles =  api.user.get_roles(user=current)
             
-            #first login
-            #import pdb; pdb.set_trace()
-            if year < 2024:
+            if not returning_user:
                 
-                #import pdb; pdb.set_trace()
-        
-            
                 if 'Project Manager' in roles:
                     #User is project manager
                     return self.context.first_login_prjmgr
@@ -72,10 +57,8 @@ class FrontPageView(BrowserView):
                     #User is team
                     return self.context.first_login_teammbr
             
-            if  year >= 2023:
-                return self.context.frontpage_text
+            return self.context.frontpage_text
             
-        
         return self.context.frontpage_anon
     
     
@@ -95,8 +78,7 @@ class FrontPageView(BrowserView):
             
     @property
     def project_short_name(self):
-        return api.portal.get_registry_record('project_short_name', interface=IDocentimsSettings)
-        
+        return api.portal.get_registry_record('project_short_name', interface=IDocentimsSettings)     
         
     @property
     def project_description(self):

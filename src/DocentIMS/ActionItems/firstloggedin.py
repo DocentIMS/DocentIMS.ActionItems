@@ -25,7 +25,7 @@ class IRedirectAction(Interface):
     This is also used to create add and edit forms, below.
     """
 
-    rel_url = schema.TextLine(
+    rel_url = schema.ASCIILine(
         title=_("Page to redirect to"),
         description=_("Where to send users. No first slash (/)"),
         required=True,
