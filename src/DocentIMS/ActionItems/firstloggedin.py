@@ -6,7 +6,7 @@ from plone.app.contentrules.actions import ActionEditForm
 from plone.app.contentrules.browser.formhelper import ContentRuleFormWrapper
 from plone.contentrules.rule.interfaces import IExecutable
 from plone.contentrules.rule.interfaces import IRuleElementData
-from Products.statusmessages.interfaces import IStatusMessage
+#from Products.statusrel_urls.interfaces import IStatusMessage
 from zope import schema
 from zope.component import adapter
 from zope.interface import implementer
@@ -19,45 +19,43 @@ from plone import api
 
 
 
-class ILogginFirstAction(Interface):
+class IRedirectAction(Interface):
     """Interface for the configurable aspects of a FirstLoggedin action.
 
     This is also used to create add and edit forms, below.
     """
 
-    message = schema.TextLine(
+    rel_url = schema.TextLine(
         title=_("Page to redirect to"),
-        description=_("Where to send logged in users. No first slash (/)"),
+        description=_("Where to send users. No first slash (/)"),
         required=True,
     )
 
 
 
 
-@implementer(ILogginFirstAction, IRuleElementData)
-class LogginFirstAction(SimpleItem):
-    """The actual persistent implementation of the FirstLoggedin action element."""
+@implementer(IRedirectAction, IRuleElementData)
+class RedirectAction(SimpleItem):
+    """The actual persistent implementation of the Redirectaction element."""
 
-    message = ""
-    #message_type = "info"
-    
-    element = "DocentIMS.ActionItems.LogginFirst"
+    rel_url = ""
+    element = "DocentIMS.ActionItems.Redirect"
     
     #Redirect user here
+    
 
     @property
     def summary(self):
         return _(
-            "FirstLoggedin with message ${message}",
-            mapping=dict(message=self.message),
+            "Redirect to ${rel_url}",
+            mapping=dict(rel_url=self.rel_url),
         )
 
 
-@adapter(Interface, ILogginFirstAction, Interface)
+@adapter(Interface, IRedirectAction, Interface)
 @implementer(IExecutable)
-class LogginFirstActionExecutor:
+class RedirectActionExecutor:
     """The executor for this action.
-
     This is registered as an adapter in configure.zcml
     """
 
@@ -68,43 +66,44 @@ class LogginFirstActionExecutor:
 
     def __call__(self):
         request = self.context.REQUEST
-        message = _(self.element.message)
-        #message_type = self.element.message_type
+        rel_url = _(self.element.rel_url)
+        #rel_url_type = self.element.rel_url_type
         #request.response.redirect('/news')
-        url = api.portal.get().absolute_url() + message
+        url = api.portal.get().absolute_url() + rel_url
         request.RESPONSE.redirect(url)
-        #IStatusMessage(request).addStatusMessage(url, type=message_type)
+        #IStatusMessage(request).addStatusMessage(url, type=rel_url_type)
         # To do
         #request = self.REQUEST
+        #self.context.REQUEST.RESPONSE.redirect('/news')
+
+        return True 
         
-        return True #self.context.REQUEST.RESPONSE.redirect('/news')
 
-
-class LogginFirstAddForm(ActionAddForm):
+class RedirectAddForm(ActionAddForm):
     """An add form for FirstLoggedin rule actions."""
 
-    schema = ILogginFirstAction
-    label = _("Add FirstLoggedin Action")
-    description = _("A FirstLoggedin action can show a message to the user.")
+    schema = IRedirectAction
+    label = _("Redirect relative url")
+    description = _("Redirects user to relative URI.")
     form_name = _("Configure element")
-    Type = LogginFirstAction
+    Type = RedirectAction
 
 
-class LogginFirstAddFormView(ContentRuleFormWrapper):
-    form = LogginFirstAddForm
+class RedirectAddFormView(ContentRuleFormWrapper):
+    form = RedirectAddForm
 
 
-class LogginFirstEditForm(ActionEditForm):
-    """An edit form for FirstLoggedin rule actions.
+class RedirectEditForm(ActionEditForm):
+    """An edit form for Redirect rule actions.
 
     z3c.form does all the magic here.
     """
 
-    schema = ILogginFirstAction
+    schema = IRedirectAction
     label = _("Edit FirstLoggedin Action")
-    description = _("A FirstLoggedin action can show a message to the user.")
+    description = _("A FirstLoggedin action can show a rel_url to the user.")
     form_name = _("Configure element")
 
 
-class LogginFirstEditFormView(ContentRuleFormWrapper):
-    form = LogginFirstAddForm
+class RedirectEditFormView(ContentRuleFormWrapper):
+    form = RedirectAddForm

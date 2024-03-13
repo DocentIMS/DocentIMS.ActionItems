@@ -49,13 +49,13 @@
 
  <!-- First logged in action definition -->
 
-  <adapter factory=".firstloggedin.LogginFirstActionExecutor" />
+  <adapter factory=".firstloggedin.RedirectActionExecutor" />
 
 
   <browser:page
       name="add"
       for="plone.app.contentrules.browser.interfaces.IRuleActionAdding"
-      class=".firstloggedin.LogginFirstAddFormView"
+      class=".firstloggedin.RedirectAddFormView"
       permission="plone.app.contentrules.ManageContentRules"
       />
 
@@ -63,20 +63,20 @@
  <browser:page
       name="edit"
       for="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
-      class=".firstloggedin.LogginFirstEditFormView"
+      class=".firstloggedin.RedirectEditFormView"
       permission="plone.app.contentrules.ManageContentRules"
       /> 
 
       
 
   <plone:ruleAction
-      name="DocentIMS.ActionItems.LogginFirst"
+      name="DocentIMS.ActionItems.Redirect"
       title="Redirect to page"
       description="Redirect to page"
       for="*"
       event="*"
-      schema=".firstloggedin.ILogginFirstAction"
-      factory=".firstloggedin.LogginFirstAction"
+      schema=".firstloggedin.IRedirectAction"
+      factory=".firstloggedin.RedirectAction"
       addview="add"
       editview="edit"
       />
