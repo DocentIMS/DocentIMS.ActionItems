@@ -32,12 +32,10 @@ class ActionItemsView(BrowserView):
             item = api.content.find(context=context, id=user )
             
             if item:
-                obj = item[0].getObject()
-                notedoc = obj.getAttribute('bodytext', None)
-                #notedoc = item[0].getObject().bodytext
+                notedoc = item[0].getObject().bodytext
                 if notedoc:
                     return notedoc.output
-        return None
+        return ''
                 
         
     
@@ -146,7 +144,8 @@ class ActionItemsView(BrowserView):
             rel_sow = api.content.get(UID=self.context.related_sow_section)
             if rel_sow:
                 if rel_sow.bodytext:
-                    return rel_sow.bodytext.output
+                    # return rel_sow.bodytext.output
+                    return rel_sow.getAttribute('bodytext', None)
         return None
 
     def get_creator(self):
