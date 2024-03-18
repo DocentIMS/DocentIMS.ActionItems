@@ -89,9 +89,16 @@ class ActionItemsAddForm(DefaultAddForm):
             import pdb; pdb.set_trace()
                 
             if group.__name__ == 'connections':
-                t_uid = self.request.get('to_uuid')
-                if  t_uid:
-                    group.fields['related_sow_section'].field.default = t_uid
+                from_uid =  self.request.get('related_from')
+                if not from_uid:
+                    from_url =  self.request.get('from_url')
+                    if from_url and from_url != '':
+                        portal_url= api.portal.get().absolute_url()
+                        from_path =  from_url.replace(portal_url, '')
+                        from_content = api.content.get(path=from_path)  
+                        from_uid = api.content.get_uuid(from_content)
+                        
+                group.fields['related_sow_section'].field.default = from_uid
             
             if group.__name__ == 'settings':
                 #group.mode = 'omitted'
