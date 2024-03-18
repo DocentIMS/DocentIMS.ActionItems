@@ -400,7 +400,7 @@ class IDocentimsSettings(model.Schema):
  
     widget(project_description=RichTextFieldWidget)
     project_description = RichTextFieldRegistry(
-        title="richtext registry field",
+        title="Project Description",
         required=False,
     )
     
