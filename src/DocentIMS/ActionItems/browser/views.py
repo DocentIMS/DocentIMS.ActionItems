@@ -86,7 +86,6 @@ class ActionItemsAddForm(DefaultAddForm):
                 #group.mode = 'omitted'
                 group.label = None
                 
-            import pdb; pdb.set_trace()
                 
             if group.__name__ == 'connections':
                 from_uid =  self.request.get('related_from')

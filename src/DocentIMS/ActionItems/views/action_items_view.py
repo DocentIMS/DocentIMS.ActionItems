@@ -142,7 +142,7 @@ class ActionItemsView(BrowserView):
     def get_sow_text(self):
         if self.context.related_sow_section:
             rel_sow = api.content.get(UID=self.context.related_sow_section)
-            import pdb; pdb.set_trace()   
+            #import pdb; pdb.set_trace()   
             if rel_sow:
                 if hasattr(rel_sow, 'bodytext') and rel_sow.bodytext:
                     return rel_sow.bodytext.output
