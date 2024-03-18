@@ -7,16 +7,11 @@
 <body>
   <metal:content-core fill-slot="content">
   <metal:block define-macro="content">
-
-
-
      <!--p>${view/last_login|None}</p-->
     <h1 class="documentFirstHeading">${view/project_title|None}</h1>
     <!-- h3>${view/project_short_name|None}</h3-->
-    <div tal:replace="structure  view/project_description/output|None"/> 
-    
-     <div tal:define="text view/field_to_return|None" tal:condition="text" tal:replace="structure text/output" />
-
+    <div tal:condition="view/project_description|None" tal:replace="structure  view/project_description/output|None"/> 
+    <div tal:define="text view/field_to_return|None" tal:condition="text" tal:replace="structure text/output" />
   </metal:block>
   </metal:content-core>
 </body>
