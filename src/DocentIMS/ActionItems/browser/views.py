@@ -65,6 +65,7 @@ class ActionItemsAddForm(DefaultAddForm):
         
         if to_uuid:
             self.fields['placeholder'].field.default = to_uuid
+            import pdb; pdb.set_trace()
             self.fields['related_sow_section'].field.default = to_uuid
             # self.fields['IBasic.description'].field.default = to_uuid
 
