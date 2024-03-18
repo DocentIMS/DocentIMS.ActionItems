@@ -73,6 +73,10 @@ class ActionItemsAddForm(DefaultAddForm):
             #self.fields['full_explanation'].field.default = exp_text
             # title is only 40 characters
             self.fields['IBasic.title'].field.default = exp_text[:39]
+            
+        for group in self.groups:
+            if group.__name__ == 'connections':
+                group.fields['related_sow_section'].field.default = from_uid
 
             
             
