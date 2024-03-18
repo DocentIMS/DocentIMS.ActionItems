@@ -46,7 +46,7 @@ class ActionItemsAddForm(DefaultAddForm):
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
         from_uid =  self.request.get('related_from')
-        self.from_uid =  self.request.get('related_from')
+        #self.from_uid =  self.request.get('related_from')
         to_uuid =  self.request.get('to_uuid')
         exp_text =  self.request.get('exp_text')
         if not from_uid:
@@ -88,9 +88,10 @@ class ActionItemsAddForm(DefaultAddForm):
                 
             import pdb; pdb.set_trace()
                 
-            if group.__name__ == 'conntections':
-                if  self.from_uid:
-                    group.fields['related_sow_section'].field.default = self.from_uid
+            if group.__name__ == 'connections':
+                t_uid = self.request.get('to_uuid')
+                if  t_uid:
+                    group.fields['related_sow_section'].field.default = t_uid
             
             if group.__name__ == 'settings':
                 #group.mode = 'omitted'
