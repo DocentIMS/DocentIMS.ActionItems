@@ -32,7 +32,9 @@ class ActionItemsView(BrowserView):
             item = api.content.find(context=context, id=user )
             
             if item:
-                notedoc = item[0].getObject().bodytext
+                obj = item[0].getObject()
+                notedoc = obj.getAttribute(bodytext, None)
+                #notedoc = item[0].getObject().bodytext
                 if notedoc:
                     return notedoc.output
         return ''
