@@ -59,18 +59,21 @@ class FrontPageView(BrowserView):
                     #User is project manager
                     #import pdb; pdb.set_trace()
                     current.setProperties(returning = True)
-                    return self.context.first_login_prjmgr.output
+                    if self.context.first_login_prjmgr:
+                        return self.context.first_login_prjmgr.output
                 
             if current.getUserId() in pr_man_group.getAllGroupMemberIds():
                     #User is project manager group
                     current.setProperties(returning = True)
-                    return self.context.first_login_prjmgr.output
+                    if self.context.first_login_prjmgr:
+                        return self.context.first_login_prjmgr.output
                 
             #Check if user is part of PrjTEam group
             if current.getUserId() in group.getAllGroupMemberIds():
                     #User is team
                     current.setProperties(returning = True)
-                    return self.context.first_login_teammbr.output 
+                    if self.context.first_login_teammb:
+                        return self.context.first_login_teammbr.output 
             
         return self.context.frontpage_anon.output
 

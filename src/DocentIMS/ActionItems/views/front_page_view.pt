@@ -11,7 +11,7 @@
     <h1 class="documentFirstHeading">${view/project_title|None}</h1>
     <h3>${view/project_short_name|None}</h3>
     <div tal:condition="view/project_description|None" tal:replace="structure  view/project_description/output|None"/> 
-    <div tal:define="text view/field_to_return|None" tal:condition="text" tal:replace="structure text" /> 
+    <div tal:define="text view/field_to_return|None" tal:condition="text|None" tal:replace="structure text|None" /> 
   </metal:block>
   </metal:content-core>
 </body>
