@@ -2,8 +2,8 @@
 
 
 #from zope.publisher.browser import BrowserView
-from plone.dexterity.browser.add import DefaultAddView
-from plone.dexterity.browser.add import DefaultAddForm
+        from plone.dexterity.browser.add import DefaultAddView
+        from plone.dexterity.browser.add import DefaultAddForm
 from plone.dexterity.browser.edit import DefaultEditView
 from plone.dexterity.browser.edit import DefaultEditForm
 
@@ -65,6 +65,7 @@ class ActionItemsAddForm(DefaultAddForm):
         
         if to_uuid:
             self.fields['placeholder'].field.default = to_uuid
+            self.fields['related_sow_section'].field.default = to_uuid
             # self.fields['IBasic.description'].field.default = to_uuid
 
         if exp_text:
