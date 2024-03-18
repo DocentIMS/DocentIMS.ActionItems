@@ -142,10 +142,11 @@ class ActionItemsView(BrowserView):
     def get_sow_text(self):
         if self.context.related_sow_section:
             rel_sow = api.content.get(UID=self.context.related_sow_section)
+            import pdb; pdb.set_trace()   
             if rel_sow:
-                if rel_sow.bodytext:
-                    # return rel_sow.bodytext.output
-                    return rel_sow.getAttribute('bodytext', None)
+                #if rel_sow.bodytext:
+                # return rel_sow.bodytext.output
+                return rel_sow.getAttribute('bodytext', None)
         return None
 
     def get_creator(self):
@@ -180,3 +181,6 @@ class ActionItemsView(BrowserView):
     
     def get_duedate(self):
         return self.context.revised_due_date or self.context.initial_due_date or None
+
+
+#nothing
