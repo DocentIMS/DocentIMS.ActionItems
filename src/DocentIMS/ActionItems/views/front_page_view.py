@@ -1,7 +1,3 @@
- 
-        
-            
-            
 # -*- coding: utf-8 -*-
 
 # from DocentIMS.ActionItems import _
@@ -11,6 +7,10 @@ from plone import api
 from datetime import datetime
 import DateTime
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
+from plone.protect.interfaces import IDisableCSRFProtection
+from zope.interface import alsoProvides
+
+ 
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -23,43 +23,57 @@ class FrontPageView(BrowserView):
     # If you want to define a template here, please remove the template from
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('front_page_view.pt')
+    
+    #def __init__(self, context, request):
+    #    alsoProvides(self.request, IDisableCSRFProtection)
 
     def __call__(self):
-        
         return self.index()
     
+    # def set_returning(self):
+    #     alsoProvides(self.request, IDisableCSRFProtection)
+    #     current = api.user.get_current()
+    #     #last_login =   current.getProperty('last_login_time')
+    #     returning_user =  current.getProperty('returning', False)
+    #     current.setProperties(returning = True)
+            
+    
     def field_to_return(self):
-        
-        
         #if current and  not current.isAnonymousUser():
         #if current and current.getUserName() != 'Anonymous User':
         if not api.user.is_anonymous():
+            alsoProvides(self.request, IDisableCSRFProtection)
             current = api.user.get_current()
-            #last_login =   current.getProperty('last_login_time')
             returning_user =  current.getProperty('returning', False)
-            current.setProperties(returning = True)
             group = api.group.get(groupname='PrjTeam')
             pr_man_group = api.group.get(groupname='PrjMgr')
             roles =  api.user.get_roles(user=current)
+            current = api.user.get_current()
+            #last_login =   current.getProperty('last_login_time')
+            returning_user =  current.getProperty('returning', False)
             
-            if not returning_user:
-                
-                if 'Project Manager' in roles:
+            if returning_user:
+                return self.context.frontpage_text.output
+            
+            if 'Project Manager' in roles:
                     #User is project manager
-                    return self.context.first_login_prjmgr
+                    #import pdb; pdb.set_trace()
+                    current.setProperties(returning = True)
+                    return self.context.first_login_prjmgr.output
                 
-                if current.getUserId() in pr_man_group.getAllGroupMemberIds():
+            if current.getUserId() in pr_man_group.getAllGroupMemberIds():
                     #User is project manager group
-                    return self.context.first_login_prjmgr
+                    current.setProperties(returning = True)
+                    return self.context.first_login_prjmgr.output
                 
-                #Check if user is part of PrjTEam group
-                if current.getUserId() in group.getAllGroupMemberIds():
+            #Check if user is part of PrjTEam group
+            if current.getUserId() in group.getAllGroupMemberIds():
                     #User is team
-                    return self.context.first_login_teammbr
+                    current.setProperties(returning = True)
+                    return self.context.first_login_teammbr.output 
             
-            return self.context.frontpage_text
-            
-        return self.context.frontpage_anon
+        return self.context.frontpage_anon.output
+
     
     
         
