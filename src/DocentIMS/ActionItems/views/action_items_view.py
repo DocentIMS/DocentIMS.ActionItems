@@ -144,9 +144,9 @@ class ActionItemsView(BrowserView):
             rel_sow = api.content.get(UID=self.context.related_sow_section)
             import pdb; pdb.set_trace()   
             if rel_sow:
-                #if rel_sow.bodytext:
-                # return rel_sow.bodytext.output
-                return rel_sow.getAttribute('bodytext', None)
+                if hasattr(rel_sow, 'bodytext') and rel_sow.bodytext:
+                    return rel_sow.bodytext.output
+                #return rel_sow.getAttribute('bodytext', None)
         return None
 
     def get_creator(self):
