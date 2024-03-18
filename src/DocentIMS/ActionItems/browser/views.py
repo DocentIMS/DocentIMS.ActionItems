@@ -46,6 +46,7 @@ class ActionItemsAddForm(DefaultAddForm):
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
         from_uid =  self.request.get('related_from')
+        self.from_uid =  self.request.get('related_from')
         to_uuid =  self.request.get('to_uuid')
         exp_text =  self.request.get('exp_text')
         if not from_uid:
@@ -66,7 +67,6 @@ class ActionItemsAddForm(DefaultAddForm):
         if to_uuid:
             self.fields['placeholder'].field.default = to_uuid
             import pdb; pdb.set_trace()
-            self.fields['related_sow_section'].field.default = to_uuid
             # self.fields['IBasic.description'].field.default = to_uuid
 
         if exp_text:
@@ -85,6 +85,11 @@ class ActionItemsAddForm(DefaultAddForm):
             if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
                 #group.mode = 'omitted'
                 group.label = None
+                
+            if group.__name__ == 'conntections':
+                if  self.from_uid:
+                    group.fields['related_sow_section'].field.default = self.from_url
+            
             if group.__name__ == 'settings':
                 #group.mode = 'omitted'
                 group.label = None
