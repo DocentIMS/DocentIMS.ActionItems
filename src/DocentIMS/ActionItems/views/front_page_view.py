@@ -53,7 +53,8 @@ class FrontPageView(BrowserView):
             returning_user =  current.getProperty('returning', False)
             
             if returning_user:
-                return self.context.frontpage_text.output
+                if self.context.frontpage_text:
+                    return self.context.frontpage_text.output
             
             if 'Project Manager' in roles:
                     #User is project manager
