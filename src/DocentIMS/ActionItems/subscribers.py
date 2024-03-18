@@ -21,6 +21,7 @@ def change_uuid(object, event):
                 lenght = len( object.placeholder ) 
                 if  lenght == 32:
                     setattr(object, '_plone.uuid', object.placeholder) 
+                    setattr(object, 'related_sow_section', object.placeholder) 
                     setattr(object, 'placeholder', '') 
                     transaction.commit()
                     
