@@ -66,7 +66,7 @@ class ActionItemsAddForm(DefaultAddForm):
         
         if to_uuid:
             self.fields['placeholder'].field.default = to_uuid
-            import pdb; pdb.set_trace()
+            #import pdb; pdb.set_trace()
             # self.fields['IBasic.description'].field.default = to_uuid
 
         if exp_text:
@@ -86,9 +86,11 @@ class ActionItemsAddForm(DefaultAddForm):
                 #group.mode = 'omitted'
                 group.label = None
                 
+            import pdb; pdb.set_trace()
+                
             if group.__name__ == 'conntections':
                 if  self.from_uid:
-                    group.fields['related_sow_section'].field.default = self.from_url
+                    group.fields['related_sow_section'].field.default = self.from_uid
             
             if group.__name__ == 'settings':
                 #group.mode = 'omitted'
