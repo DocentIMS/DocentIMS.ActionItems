@@ -33,11 +33,11 @@ class ActionItemsView(BrowserView):
             
             if item:
                 obj = item[0].getObject()
-                notedoc = obj.getAttribute(bodytext, None)
+                notedoc = obj.getAttribute('bodytext', None)
                 #notedoc = item[0].getObject().bodytext
                 if notedoc:
                     return notedoc.output
-        return ''
+        return None
                 
         
     
