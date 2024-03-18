@@ -7,27 +7,30 @@
   xmlns:users="http://namespaces.plone.org/supermodel/users"
   i18n:domain="DocentIMS.ActionItems" 
   xmlns="http://namespaces.plone.org/supermodel/schema">
-  <schema>
+   <schema>
     <field name="feedback_submitted_by" type="zope.schema.TextLine">
-      <description/>
-      <title>feedback submitted by</title>
+      <description>Who submitted this feedback.</description>
+      <title>Feedback Submitted By</title>
     </field>
-    <field name="feedback_text" type="zope.schema.Text">
-      <description>The content of the feedback.</description>
-      <title>feedback text</title>
+    <field name="feedback_text" type="plone.app.textfield.RichText">
+      <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
+      <title>Feedback Text</title>
     </field>
     <field name="feedback_file" type="plone.namedfile.field.NamedBlobFile">
-      <description>File Uploaded</description>
+      <description>Attach any files that may help.</description>
       <required>False</required>
-      <title>feedback_file</title>
+      <title>Feedback File</title>
     </field>
     <field name="do_you_want_a_response" type="zope.schema.Bool">
+      <description>Would you like to hear back from us?</description>
+      <required>False</required>
+      <title>Do You Want a Response?</title>
+       <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
+    </field>
+    <field name="docent_tool_type" type="zope.schema.TextLine">
       <description/>
       <required>False</required>
-      <title>do you want a response?</title>
-      <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
+      <title>Docent Tool Type</title>
     </field>
   </schema>
 </model>
-
- 

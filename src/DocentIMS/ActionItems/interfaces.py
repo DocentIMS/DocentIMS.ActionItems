@@ -5,23 +5,24 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from z3c.form import interfaces
 from zope import schema
 from zope.interface import alsoProvides
+#from zope.interface import Interface
 from plone.supermodel import model
 from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
+#from plone.autoform import directives
 from plone.app.textfield import RichText
+from plone.app.z3cform.widgets.richtext import RichTextFieldWidget
+#from plone.app.registry.browser.controlpanel import RegistryEditForm
+from plone.registry.field import PersistentField
 
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone.app.z3cform.widget import SelectFieldWidget
-from z3c.form import form, field
+#from z3c.form import form, field
 #from collective.z3cform.colorpicker import Color
 # from collective.z3cform.colorpicker.colorpicker  import IColorpickerWidget
 # from collective.z3cform.colorpicker.colorpicker  import ColorpickerWidget
 from collective.z3cform.colorpicker.colorpicker  import ColorpickerFieldWidget
-
-
-
-
 
 #from z3c.form import validator
 
@@ -38,6 +39,14 @@ from plone.namedfile import field
 
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
+
+
+
+
+
+
+class RichTextFieldRegistry(PersistentField, RichText):
+    """ persistent registry textfield """
 
 
 def richtextConstraint(value):
@@ -115,6 +124,10 @@ class IVocabulari3(model.Schema):
         description=u"Each company will be assigned a “Role” during their creation. You need to save this form before continuing",
         required=False,
     )
+    
+
+    
+
 
 
 class ITableRows(model.Schema):
@@ -129,6 +142,7 @@ class ITableRows(model.Schema):
         title=u"Column Titles in Action Items Table.",
         required=False,
     )
+    
 
 class IScopeTableRows(model.Schema):
     widget(row_field=SelectFieldWidget)
@@ -383,20 +397,14 @@ class IDocentimsSettings(model.Schema):
         description=_(u"",
                       default=u"")
         )
+ 
+    widget(project_description=RichTextFieldWidget)
+    project_description = RichTextFieldRegistry(
+        title="richtext registry field",
+        required=False,
+    )
     
 
-    # project_description = RichText(
-    #     title=u"Project Description Rich text",
-    #     required=False, 
-    # )
-
-    widget("project_description", klass="pat-tinymce")
-    project_description = schema.Text(
-        required = False,
-        title=_(u"label_project_description", default=u"Project Description"),
-        description=_(u"",
-                      default=u"")
-        )
 
     # project_companies = schema.Choice(
     #     required = False,

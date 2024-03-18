@@ -16,7 +16,7 @@
      permission="zope2.View"
      />
 
-  <browser:viewlet
+  <!--browser:viewlet
      name="add-action-item-viewlet"
      for="*"
      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
@@ -24,7 +24,7 @@
      class=".add_action_item_viewlet.AddActionItemViewlet"
      template="add-action-item-viewlet.pt"
      permission="zope2.View"
-     />
+     /-->
 
 
 </configure>

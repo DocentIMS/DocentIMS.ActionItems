@@ -9,18 +9,18 @@
   xmlns="http://namespaces.plone.org/supermodel/schema">
   <schema>
     <field name="note_text" type="zope.schema.Text">
-      <description>Note Text</description>
+      <description/>
       <title>Note Text</title>
     </field>
     <field name="review_by_date" type="zope.schema.Date">
-      <description>Is there a date by which you want to review and take any required action?</description>
+      <description>Date by which you want to review.</description>
       <required>False</required>
-      <title>Review by Date</title>
+      <title>Review By Date</title>
     </field>
     <field name="attach_file" type="plone.namedfile.field.NamedBlobFile">
-      <description/>
+      <description>Option to attach related file.</description>
       <required>False</required>
-      <title>attach file</title>
+      <title>Attach File</title>
     </field>
   </schema>
 </model>

@@ -7,10 +7,10 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Notes</property>
+      name="title">Note</property>
   <property
       i18n:translate=""
-      name="description">Notes</property>
+      name="description">Note</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Notes</property>
