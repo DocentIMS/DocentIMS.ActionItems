@@ -21,9 +21,24 @@
   <include package=".browser" />
   <!--include package=".viewlets" /-->
   <include package=".views" />
+  
   <include file="permissions.zcml" />
 
 
+
+  <!-- Extend TinyCME settings to include image folders (old and new name) -->
+  <adapter
+      factory=".tinymce.CustomPatternSettingsAdapter"
+      for="* bgp.bgnpolicy.interfaces.IBgnPolicyLayer *"
+      name="plone_settings"
+      provides="plone.base.interfaces.IPatternsSettings"
+      />
+  <adapter
+      factory=".tinymce.CustomPatternSettingsAdapter"
+      for="* bgp.bgnpolicy.interfaces.IBgnPolicyLayer *"
+      name="pattern_settings"
+      provides="plone.base.interfaces.IPatternsSettings"
+      />
 
 
    <!-- Contentrules First logged in action definition -->
