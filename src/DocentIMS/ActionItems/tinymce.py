@@ -14,8 +14,7 @@ class CustomPatternSettingsAdapter(PatternSettingsAdapter):
     def tinymce(self):
         """Use a folder 'bilder' as initial target to upload and select images (and links)."""
         orig_config = super().tinymce()
-        images_folder = aq_get(self.context, "images", None)
-        import pdb; pdb.set_trace()
+        images_folder = aq_get(self.context, "images", None) 
         if not images_folder or images_folder.portal_type != "Folder":
             return orig_config
 
