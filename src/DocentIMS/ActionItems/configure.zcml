@@ -29,13 +29,13 @@
   <!-- Extend TinyCME settings to include image folders (old and new name) -->
   <adapter
       factory=".tinymce.CustomPatternSettingsAdapter"
-      for="*"
+      for="* DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer *"
       name="plone_settings"
       provides="plone.base.interfaces.IPatternsSettings"
       />
   <adapter
       factory=".tinymce.CustomPatternSettingsAdapter"
-      for="*"
+      for="* DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer *"
       name="pattern_settings"
       provides="plone.base.interfaces.IPatternsSettings"
       />
