@@ -73,7 +73,7 @@ class FrontPageView(BrowserView):
             if current.getUserId() in group.getAllGroupMemberIds():
                     #User is team
                     current.setProperties(returning = True)
-                    if self.context.first_login_teammb:
+                    if self.context.first_login_teammbr:
                         return self.context.first_login_teammbr.output 
             
         return self.context.frontpage_anon.output
