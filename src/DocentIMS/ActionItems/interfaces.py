@@ -327,29 +327,7 @@ class IDocentimsSettings(model.Schema):
              'urgent_red',
             ],
         )
-    # model.fieldset(
-    #     'Company',
-    #     label=_(u'Company Information'),
-    #     fields=[
-    #         'full_company_name',
-    #         'short_company_name',
-    #         'company_letter_code',
-    #         'company_role',
-    #         'company_logo',
-    #         ],
-    #     )
-
-    # model.fieldset(
-    #     'address',
-    #     label=_(u'Address'),
-    #     fields=[
-    #         'company_full_street_address',
-    #         'company_city',
-    #         'company_other_address',
-    #         'company_state',
-    #         'company_zip',
-    #         ],
-    #     )
+ 
 
 
     model.fieldset(

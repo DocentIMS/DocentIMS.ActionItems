@@ -7,6 +7,11 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.EditControlpanel"
+        title="DocentIMS.ActionItems: Edit Controlpanel"
+    />
+
+    <permission
         id="DocentIMS.ActionItems.AddMeeting"
         title="DocentIMS.ActionItems: Add Meeting"
     />

@@ -59,8 +59,9 @@ def post_install(context):
     portal = plone.api.portal.get()
     
     #Assign role to Group 'Project Manager'
-    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager'])
-
+    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'DocentIMS.ActionItems.EditControlpanel'])
+    # plone.api.group.grant_roles(groupname='PrjMgr', roles=['Edit Controlpanel'])
+  
     
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 

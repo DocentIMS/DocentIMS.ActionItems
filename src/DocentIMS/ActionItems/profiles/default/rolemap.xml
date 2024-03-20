@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
 <rolemap>
-<roles>
+    <roles>
       <role name="Project Manager"/>
+      <role name="Edit Controlpanel"/>
     </roles>
   <permissions>
-  <!-- -*- extra stuff goes here -*- -->
+ 
+
+    <permission name="DocentIMS.ActionItems: Edit Controlpanel" acquire="True">
+      <role name="Project Manager"/>
+    </permission>
 
     <permission name="DocentIMS.ActionItems: Add Meeting" acquire="True">
       <role name="Manager"/>
