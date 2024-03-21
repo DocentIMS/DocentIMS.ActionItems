@@ -1,3 +1,4 @@
+
 from OFS.SimpleItem import SimpleItem
 from plone.app.contentrules import PloneMessageFactory as _
 from plone.app.contentrules.actions import ActionAddForm
@@ -6,14 +7,21 @@ from plone.app.contentrules.actions import ActionEditForm
 from plone.app.contentrules.browser.formhelper import ContentRuleFormWrapper
 from plone.contentrules.rule.interfaces import IExecutable
 from plone.contentrules.rule.interfaces import IRuleElementData
-#from Products.statusrel_urls.interfaces import IStatusMessage
+from zope.interface.interfaces import IObjectEvent
+
 from zope import schema
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from plone import api
+from persistent import Persistent
 
 
+from zope.component import getUtility, getAllUtilitiesRegisteredFor
+from zope.component import provideUtility
+from zope.component import provideAdapter
+from plone.contentrules.rule.interfaces import IRuleCondition, IRuleAction
+from plone.contentrules.rule.element import RuleCondition, RuleAction
 
  
 
@@ -25,7 +33,7 @@ class IRedirectAction(Interface):
     This is also used to create add and edit forms, below.
     """
 
-    rel_url = schema.ASCIILine(
+    rel_url = schema.TextLine(
         title=_("Page to redirect to"),
         description=_("Where to send users. No first slash (/)"),
         required=True,
@@ -41,13 +49,13 @@ class RedirectAction(SimpleItem):
     rel_url = ""
     element = "DocentIMS.ActionItems.Redirect"
     
-    #Redirect user here
+    #Redirect user (message)
     
 
     @property
     def summary(self):
         return _(
-            "Redirect to ${rel_url}",
+            "Redirecting to ${rel_url}",
             mapping=dict(rel_url=self.rel_url),
         )
 
@@ -75,7 +83,7 @@ class RedirectActionExecutor:
         # To do
         #request = self.REQUEST
         #self.context.REQUEST.RESPONSE.redirect('/news')
-
+        return request.RESPONSE.redirect(url)
         return True 
         
 
@@ -100,8 +108,8 @@ class RedirectEditForm(ActionEditForm):
     """
 
     schema = IRedirectAction
-    label = _("Edit FirstLoggedin Action")
-    description = _("A FirstLoggedin action can show a rel_url to the user.")
+    label = _("Edit Redirect Action")
+    description = _("A relative url to redirect to.")
     form_name = _("Configure element")
 
 
