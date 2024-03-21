@@ -150,11 +150,12 @@ def post_install(context):
     _create_content(portal)
     if not portal.get('frontpage', False):
         fpage = plone.api.content.create(
-        type='FrontPage',
-        container=portal,
-        id='frontpage',
-        title='Front page' 
-    )
+            type='FrontPage',
+            container=portal,
+            id='frontpage',
+            title='Front page' 
+        )
+        plone.api.content.transition(obj=portal['frontpage'], transition='publish')
         
     portal.default_page='frontpage'
     

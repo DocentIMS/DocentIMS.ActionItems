@@ -76,8 +76,9 @@ class FrontPageView(BrowserView):
                     if self.context.first_login_teammbr:
                         return self.context.first_login_teammbr.output 
             
-        return self.context.frontpage_anon.output
-
+        if self.context.frontpage_anon:
+            return self.context.frontpage_anon.output
+        return ''
     
     
         

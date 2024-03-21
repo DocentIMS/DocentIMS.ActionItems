@@ -52,7 +52,6 @@ class RichTextFieldRegistry(PersistentField, RichText):
 def richtextConstraint(value):
     """ Workaround for bug 
     """
-    #import pdb; pdb.set_trace()
     value = value.output
     return True 
 
@@ -293,7 +292,6 @@ class IDocentimsSettings(model.Schema):
             'project_title',
             'project_short_name',
             'project_description',
-            # 'project_companies',
             'project_contract_number',
             'project_document_naming_convention',
             'color1'
@@ -382,8 +380,7 @@ class IDocentimsSettings(model.Schema):
         required=False,
     )
     
-
-
+    
     # project_companies = schema.Choice(
     #     required = False,
     #     vocabulary=u"DocentIMS.ActionItems.CompanyVocabulary",
