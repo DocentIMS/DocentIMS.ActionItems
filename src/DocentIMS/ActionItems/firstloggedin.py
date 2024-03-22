@@ -17,12 +17,13 @@ from plone import api
 from persistent import Persistent
 
 
-from zope.component import getUtility, getAllUtilitiesRegisteredFor
-from zope.component import provideUtility
-from zope.component import provideAdapter
-from plone.contentrules.rule.interfaces import IRuleCondition, IRuleAction
-from plone.contentrules.rule.element import RuleCondition, RuleAction
-
+# from zope.component import getUtility, getAllUtilitiesRegisteredFor
+# from zope.component import provideUtility
+# from zope.component import provideAdapter
+# from plone.contentrules.rule.interfaces import IRuleCondition, IRuleAction
+# from plone.contentrules.rule.element import RuleCondition, RuleAction
+from Products.PluggableAuthService.interfaces.events import IUserLoggedInEvent
+from Products.PlonePAS.interfaces.events import IUserInitialLoginInEvent
  
 
 
@@ -62,6 +63,7 @@ class RedirectAction(SimpleItem):
 
 @adapter(Interface, IRedirectAction, Interface)
 @implementer(IExecutable)
+# (IUserLoggedInEvent, IUserInitialLoginInEvent)
 class RedirectActionExecutor:
     """The executor for this action.
     This is registered as an adapter in configure.zcml
@@ -78,7 +80,8 @@ class RedirectActionExecutor:
         #rel_url_type = self.element.rel_url_type
         #request.response.redirect('/news')
         url = api.portal.get().absolute_url() + rel_url
-        request.RESPONSE.redirect(url)
+        # request.RESPONSE.redirect(url)
+        request.REQUEST["RESPONSE"].redirect(url)
         #IStatusMessage(request).addStatusMessage(url, type=rel_url_type)
         # To do
         #request = self.REQUEST

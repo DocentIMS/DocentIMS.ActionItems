@@ -11,15 +11,18 @@ def user_logged_in_first(event):
     """When a user is logged in first time, execute rules assigned to the Plonesite."""
     #import pdb; pdb.set_trace()
     #redirect(event)
+    # import pdb; pdb.set_trace()
     execute_user_rules(event)
     
-def redirect(event):
-    request = event.object.REQUEST
-    #came_from = request.form.get('came_from', None)
-    came_from='vg.no'
-    if came_from:
-        response = request.RESPONSE
-        response.redirect(came_from)
+    
+# def redirect(event):
+#     #import pdb; pdb.set_trace()
+#     request = event.object.REQUEST
+#     #came_from = request.form.get('came_from', None)
+#     came_from='vg.no'
+#     if came_from:
+#         response = request.RESPONSE
+#         response.redirect(came_from)
     
     
 
