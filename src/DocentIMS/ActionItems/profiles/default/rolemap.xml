@@ -5,7 +5,7 @@
     </roles>
         
     <permissions>
-    <permission name="plone.app.controlpanel.UsersAndGroups" acquire="True">
+    <permission name="Plone Site Setup: Users and Groups" acquire="True">
       <role name="Project Manager"/>
       <role name="Edit Controlpanel"/>
     </permission>
