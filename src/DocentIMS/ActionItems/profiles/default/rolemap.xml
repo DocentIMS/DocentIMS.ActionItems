@@ -2,10 +2,13 @@
 <rolemap>
     <roles>
       <role name="Project Manager"/>
-      <role name="Edit Controlpanel"/>
     </roles>
-  <permissions>
- 
+        
+    <permissions>
+    <permission name="plone.app.controlpanel.UsersAndGroups" acquire="True">
+      <role name="Project Manager"/>
+      <role name="Edit Controlpanel"/>
+    </permission>
 
     <permission name="DocentIMS.ActionItems: Edit Controlpanel" acquire="True">
       <role name="Project Manager"/>

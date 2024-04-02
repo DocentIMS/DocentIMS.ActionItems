@@ -353,7 +353,7 @@ class IDocentimsSettings(model.Schema):
                       default=u"")
         )
  
-    widget("project_description"=RichTextFieldWidget)
+    widget(project_description=RichTextFieldWidget)
     project_description = RichTextFieldRegistry(
         title="Project Description",
         required=False,

@@ -59,9 +59,15 @@ def post_install(context):
     portal = plone.api.portal.get()
     
     #Assign role to Group 'Project Manager'
-    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'DocentIMS.ActionItems.EditControlpanel'])
+    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'Edit Controlpanel'])
+    
+    # permission = 'plone.app.controlpanel.UsersAndGroups'
+    # roles_to_grant = ['Manager']  # or whatever role you want to grant
+    # portal.rolesOfPermission(permission).addRole('Manager', 'PrjMgr')
+    # plone.app.controlpanel.UsersAndGroups
     # plone.api.group.grant_roles(groupname='PrjMgr', roles=['Edit Controlpanel'])
   
+    
     
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
@@ -175,20 +181,20 @@ def post_install(context):
     notes = portal.get('notes', False)
     behaviour = constrains.ISelectableConstrainTypes(notes)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Notes', 'notes', 'note'])
-    behaviour.setLocallyAllowedTypes(['Notes', 'notes', 'note'])
+    behaviour.setImmediatelyAddableTypes(['Notes',])
+    behaviour.setLocallyAllowedTypes(['Notes'])
     
     feedback = portal.get('feedback', False)
     behaviour = constrains.ISelectableConstrainTypes(feedback)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Feedback', 'feedback'])
-    behaviour.setLocallyAllowedTypes(['Feedback', 'feedback'])
+    behaviour.setImmediatelyAddableTypes(['Feedback'])
+    behaviour.setLocallyAllowedTypes(['Feedback'])
 
     meeting = portal.get('meeting', False)
     behaviour = constrains.ISelectableConstrainTypes(meeting)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Meeting', 'meeting'])
-    behaviour.setLocallyAllowedTypes(['Meeting', 'meeting'])
+    behaviour.setImmediatelyAddableTypes(['Meeting'])
+    behaviour.setLocallyAllowedTypes(['Meeting'])
 
 def pre_install(context):
     """Pre install script"""

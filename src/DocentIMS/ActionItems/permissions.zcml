@@ -11,6 +11,15 @@
         title="DocentIMS.ActionItems: Edit Controlpanel"
     />
 
+    <!-- <permission 
+      id="plone.app.controlpanel.UsersAndGroups"
+      title="Plone Site Setup: Users and Groups"
+     >
+        <role name="Manager" />
+        <role name="Project Manager" />
+        <role name="Edit Controlpanel" />
+    </permission> -->
+
     <permission
         id="DocentIMS.ActionItems.AddMeeting"
         title="DocentIMS.ActionItems: Add Meeting"
