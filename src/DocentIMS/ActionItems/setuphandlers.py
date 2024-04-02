@@ -175,20 +175,20 @@ def post_install(context):
     notes = portal.get('notes', False)
     behaviour = constrains.ISelectableConstrainTypes(notes)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Notes'])
-    behaviour.setLocallyAllowedTypes(['Notes'])
+    behaviour.setImmediatelyAddableTypes(['Notes', 'notes', 'note'])
+    behaviour.setLocallyAllowedTypes(['Notes', 'notes', 'note'])
     
     feedback = portal.get('feedback', False)
     behaviour = constrains.ISelectableConstrainTypes(feedback)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Feedback'])
-    behaviour.setLocallyAllowedTypes(['Feedback'])
+    behaviour.setImmediatelyAddableTypes(['Feedback', 'feedback'])
+    behaviour.setLocallyAllowedTypes(['Feedback', 'feedback'])
 
     meeting = portal.get('meeting', False)
     behaviour = constrains.ISelectableConstrainTypes(meeting)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Meeting'])
-    behaviour.setLocallyAllowedTypes(['Meeting'])
+    behaviour.setImmediatelyAddableTypes(['Meeting', 'meeting'])
+    behaviour.setLocallyAllowedTypes(['Meeting', 'meeting'])
 
 def pre_install(context):
     """Pre install script"""
