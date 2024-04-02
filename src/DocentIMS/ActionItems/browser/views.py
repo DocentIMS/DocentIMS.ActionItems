@@ -2,6 +2,7 @@
 
 
 #from zope.publisher.browser import BrowserView
+
 from plone.dexterity.browser.add import DefaultAddView
 from plone.dexterity.browser.add import DefaultAddForm
 from plone.dexterity.browser.edit import DefaultEditView
@@ -12,7 +13,7 @@ from z3c.relationfield import RelationValue
 from plone import api
 from zope.component import getUtility
 from z3c.form import interfaces
-from plone.app.versioningbehavior.behaviors import IVersionable
+#from plone.app.versioningbehavior.behaviors import IVersionable
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile as Z3ViewPageTemplateFile
 
 from urllib.parse import unquote
