@@ -30,7 +30,7 @@ class MyEmail(object):
         # === Your custom code comes here ===
 
         user = api.user.get_current()   
-        #import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
         #if api.user.is_anonymous():
         #usermail = self.request.get('email', None)
         #if not usermail:
@@ -47,7 +47,8 @@ class MyEmail(object):
                 'my_email': {
                     'id': user.getProperty('id'),
                     'email': user.getProperty('email'),
-                    'fullname' : user.getProperty('fullname'),         
+                    'fullname' : user.getProperty('fullname'),   
+                    'roles' : user.getRoles()      
                 },
             }
             
