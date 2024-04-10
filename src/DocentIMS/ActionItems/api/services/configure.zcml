@@ -5,6 +5,7 @@
     i18n_domain="DocentIMS.ActionItems">
 
   <!-- -*- extra stuff goes here -*- -->
+<include package=".finn_epost" />
 <include package=".my_email" />
 
 

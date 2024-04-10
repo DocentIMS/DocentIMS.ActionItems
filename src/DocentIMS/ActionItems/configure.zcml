@@ -22,7 +22,7 @@
   <!--include package=".viewlets" /-->
   <include package=".views" />
   
-  <include file="permissions.zcml" />
+  <include package=".api" />
 
 
 
