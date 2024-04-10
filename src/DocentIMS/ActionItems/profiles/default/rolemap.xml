@@ -2,6 +2,7 @@
 <rolemap>
     <roles>
       <role name="Project Manager"/>
+      <role name="User Api"/>
     </roles>
         
     <permissions>
@@ -14,13 +15,16 @@
       <role name="Project Manager"/>
     </permission>
 
+    <permission name="plone.restapi: Access Plone user information" acquire="True">
+      <role name="User Api"/>
+    </permission>
+
     <permission name="DocentIMS.ActionItems: Add Meeting" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
     </permission>
-
 
     <permission name="DocentIMS.ActionItems: Add Feedback" acquire="True">
       <role name="Manager"/>
@@ -29,14 +33,12 @@
       <role name="Contributor"/>
     </permission>
 
-
     <permission name="DocentIMS.ActionItems: Add Notes" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
     </permission>
-
 
     <permission name="DocentIMS.ActionItems: Add FrontPage" acquire="True">
       <role name="Manager"/>
@@ -51,7 +53,6 @@
       <role name="Owner"/>
       <role name="Contributor"/>
     </permission>
-
 
     <permission name="DocentIMS.ActionItems: Add ActionItems" acquire="True">
       <role name="Manager"/>

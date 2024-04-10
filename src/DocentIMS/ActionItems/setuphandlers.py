@@ -61,6 +61,7 @@ def post_install(context):
     #Assign role to Group 'Project Manager'
     plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'Edit Controlpanel'])
     
+    
     # permission = 'plone.app.controlpanel.UsersAndGroups'
     # roles_to_grant = ['Manager']  # or whatever role you want to grant
     # portal.rolesOfPermission(permission).addRole('Manager', 'PrjMgr')
