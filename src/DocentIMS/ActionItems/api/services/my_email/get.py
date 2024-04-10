@@ -5,6 +5,7 @@ from plone.restapi.services import Service
 from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
+from zExceptions import BadRequest
 
 
 @implementer(IExpandableElement)
@@ -28,34 +29,38 @@ class MyEmail(object):
 
         # === Your custom code comes here ===
 
-        # Example:
-        try:
-            subjects = self.context.Subject()
-        except Exception as e:
-            print(e)
-            subjects = []
-        query = {}
-        query['portal_type'] = "Document"
-        query['Subject'] = {
-            'query': subjects,
-            'operator': 'or',
-        }
-        brains = api.content.find(**query)
-        items = []
-        for brain in brains:
-            # obj = brain.getObject()
-            # parent = obj.aq_inner.aq_parent
-            items.append({
-                'title': brain.Title,
-                'description': brain.Description,
-                '@id': brain.getURL(),
-            })
-        result['my_email']['items'] = items
-        return result
+        user = api.user.get_current()   
+        #import pdb; pdb.set_trace()
+        #if api.user.is_anonymous():
+        #usermail = self.request.get('email', None)
+        #if not usermail:
+        #    self.request.response.setStatus(401)
+                
+        #    user = api.user.get(username=usermail) 
+            
+        if not user:
+                self.request.response.setStatus(401)
+                
+            
+        if user:    
+            result = {
+                'my_email': {
+                    'id': user.getProperty('id'),
+                    'email': user.getProperty('email'),
+                    'fullname' : user.getProperty('fullname'),         
+                },
+            }
+            
+            return result
+        
+        self.request.response.setStatus(401)
 
 
 class MyEmailGet(Service):
 
     def reply(self):
+        #if api.user.is_anonymous():
+        #    raise BadRequest("Parameters supplied are not valid")
+        #    # self.request.response.setStatus(401)
         service_factory = MyEmail(self.context, self.request)
         return service_factory(expand=True)['my_email']
