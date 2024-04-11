@@ -32,11 +32,9 @@ class MyEmail(object):
         user = api.user.get_current()   
         #import pdb; pdb.set_trace()
         #if api.user.is_anonymous():
-        #usermail = self.request.get('email', None)
-        #if not usermail:
-        #    self.request.response.setStatus(401)
-                
-        #    user = api.user.get(username=usermail) 
+        usermail = self.request.get('email', None)
+        if usermail:
+            user = api.user.get(username=usermail) 
             
         if not user:
                 self.request.response.setStatus(401)
@@ -48,7 +46,13 @@ class MyEmail(object):
                     'id': user.getProperty('id'),
                     'email': user.getProperty('email'),
                     'fullname' : user.getProperty('fullname'),   
-                    'roles' : user.getRoles()      
+                    'roles' : user.getRoles(),
+                    'last_name' : user.getProperty('fullname'), 
+                    'first_name' : user.getProperty('first_name'), 
+                    'your_team_role': user.getProperty('your_team_role'), 
+                    'office_phone_number': user.getProperty('office_phone_number'), 
+                    'cellphone_number': user.getProperty('cellphone_number'), 
+                    'company' : user.getProperty('company'), 
                 },
             }
             
