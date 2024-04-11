@@ -36,11 +36,7 @@ class MyEmail(object):
         if usermail:
             user = api.user.get(username=usermail) 
             
-        if not user:
-                self.request.response.setStatus(401)
-                
-            
-        if user:    
+        if user is not None:    
             result = {
                 'my_email': {
                     'id': user.getProperty('id'),
@@ -56,16 +52,21 @@ class MyEmail(object):
                 },
             }
             
+        
             return result
         
-        self.request.response.setStatus(401)
+        #raise BadRequest("Parameters supplied are not valid")
+        result = {
+                'my_email': {
+                    'id': None,
+                },
+            }
+        return result
+        #self.request.response.setStatus(401)
 
 
 class MyEmailGet(Service):
 
     def reply(self):
-        #if api.user.is_anonymous():
-        #    raise BadRequest("Parameters supplied are not valid")
-        #    # self.request.response.setStatus(401)
         service_factory = MyEmail(self.context, self.request)
         return service_factory(expand=True)['my_email']
