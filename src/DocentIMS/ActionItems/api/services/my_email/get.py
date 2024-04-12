@@ -30,10 +30,8 @@ class MyEmail(object):
         # === Your custom code comes here ===
 
         user = api.user.get_current()   
-        #import pdb; pdb.set_trace()
-        #if api.user.is_anonymous():
         usermail = self.request.get('email', None)
-        import pdb; pdb.set_trace()
+        # Only users with special permissions can get info about other users
         if usermail and 'User Api' in api.user.get_roles(user.id):
             user = api.user.get(username=usermail) 
             
