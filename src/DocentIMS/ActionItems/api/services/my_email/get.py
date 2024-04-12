@@ -33,8 +33,10 @@ class MyEmail(object):
         #import pdb; pdb.set_trace()
         #if api.user.is_anonymous():
         usermail = self.request.get('email', None)
-        if usermail:
+        import pdb; pdb.set_trace()
+        if usermail and 'User Api' in api.user.get_roles(user.id):
             user = api.user.get(username=usermail) 
+            
             
         if user is not None:    
             result = {
