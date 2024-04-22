@@ -177,5 +177,15 @@
     />
 
 
+      <!-- <browser:page
+      name="member-search"
+      for="*"
+      class="plone.app.users.browser.membersearch.MemberSearchForm"
+      permission="zope2.View"
+      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      /> -->
+
+
+
 
 </configure>

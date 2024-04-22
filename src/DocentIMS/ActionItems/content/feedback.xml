@@ -21,10 +21,10 @@
       <required>False</required>
       <title>Feedback File</title>
     </field>
-    <field name="do_you_want_a_response" type="zope.schema.Bool">
+    <field name="do_you_want_feedback" type="zope.schema.Bool">
       <description>Would you like to hear back from us?</description>
       <required>False</required>
-      <title>Do You Want a Response?</title>
+      <title>Do You Want Feedback?</title>
        <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
     </field>
     <field name="docent_tool_type" type="zope.schema.TextLine">

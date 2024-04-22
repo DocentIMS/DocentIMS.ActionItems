@@ -77,7 +77,9 @@ class ActionItemsAddForm(DefaultAddForm):
             
         for group in self.groups:
             if group.__name__ == 'connections':
-                group.fields['related_sow_section'].field.default = from_uid
+                camefrom = api.content.get(UID=from_uid)
+                if camefrom.Type() == 'Scope Brakdown':
+                    group.fields['related_sow_section'].field.default = from_uid
 
             
             

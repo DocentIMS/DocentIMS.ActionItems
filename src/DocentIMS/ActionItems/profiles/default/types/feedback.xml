@@ -42,10 +42,10 @@
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Feedback File&lt;/title&gt;
       &lt;/field&gt;
-      &lt;field name=&quot;do_you_want_a_response&quot; type=&quot;zope.schema.Bool&quot;&gt;
+      &lt;field name=&quot;do_you_want_feedback&quot; type=&quot;zope.schema.Bool&quot;&gt;
         &lt;description&gt;Would you like to hear back from us?&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;Do You Want a Response?&lt;/title&gt;
+        &lt;title&gt;Do you want feedback?&lt;/title&gt;
         &lt;form:widget type=&quot;z3c.form.browser.radio.RadioFieldWidget&quot;/&gt;
       &lt;/field&gt;
     &lt;/schema&gt;
@@ -67,3 +67,4 @@
   <permission value="Modify portal content"/>
  </action>
 </object>
+

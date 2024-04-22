@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
+
+
  <index name="priority" meta_type="FieldIndex">
   <indexed_attr value="priority"/>
  </index>
@@ -38,6 +40,12 @@
    <indexed_attr value="closed"/>
  </index>
 
+ <index name="do_you_want_feedback" meta_type="BooleanIndex">
+  <indexed_attr value="do_you_want_feedback"/>
+ </index>
+
+     
+
  <!-- <index name="out_of_the_scope" meta_type="FieldIndex"> -->
    <!-- <indexed_attr value="is_this_action_out_of_the_scope_of_work_"/> -->
  <!-- </index> -->
@@ -57,9 +65,11 @@
  <column value="closed"/>
  <column value="actionno"/>
  <column value="urgency"/>
+
  <!-- <column value="out_of_the_scope"/> -->
  <column value="is_this_action_out_of_the_scope_of_work_"/> 
 
+ <column value="do_you_want_feedback"/>
 
 
 

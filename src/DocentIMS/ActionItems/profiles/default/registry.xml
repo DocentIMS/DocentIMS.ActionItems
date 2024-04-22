@@ -154,6 +154,22 @@
        <value key="group">Metadata</value>
      </records>
 
+
+
+          <records interface="plone.app.querystring.interfaces.IQueryField"
+              prefix="plone.app.querystring.field.do_you_want_feedback">
+       <value key="title">Feedback</value>
+       <value key="description">Do you want feedback</value>
+       <value key="enabled">True</value>
+       <value key="sortable">False</value>
+       <value key="operations">
+           <element>plone.app.querystring.operation.boolean.isTrue</element>
+           <element>plone.app.querystring.operation.boolean.isFalse</element>
+       </value>
+       <value key="group">Metadata</value>
+     </records>
+
+
      <records interface="plone.app.querystring.interfaces.IQueryField"
               prefix="plone.app.querystring.field.initial_due_date">
        <value key="title">Initial Due date</value>

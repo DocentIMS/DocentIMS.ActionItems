@@ -32,7 +32,7 @@ class MyEmail(object):
         user = api.user.get_current()   
         usermail = self.request.get('email', None)
         # Only users with special permissions can get info about other users
-        if usermail and 'User Api' in api.user.get_roles(user.id):
+        if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
             user = api.user.get(username=usermail) 
             
             

@@ -2,32 +2,32 @@
 
     
   <schema name="member-fields">
-      <field name="last_name" type="zope.schema.TextLine" users:forms="On Registration|In User Profile">
+      <field name="last_name" type="zope.schema.TextLine" users:forms="In User Profile">
         <description/>
         <title>Last Name</title>
       </field>
-      <field name="first_name" type="zope.schema.TextLine" users:forms="On Registration|In User Profile">
+      <field name="first_name" type="zope.schema.TextLine" users:forms="In User Profile">
         <description/>
         <title>First Name</title>
       </field>
-    <field name="your_team_role" type="zope.schema.Choice" users:forms="On Registration|In User Profile">
+    <field name="your_team_role" type="zope.schema.Choice" users:forms="In User Profile">
       <description>What is your role on this team?</description>
       <required>True</required>
       <title>Your Team Role</title>
       <vocabulary>DocentIMS.ActionItems.ProjectRolesVocabulary</vocabulary>
     </field>
 
-    <field name="office_phone_number" type="zope.schema.TextLine" users:forms="On Registration|In User Profile">
+    <field name="office_phone_number" type="zope.schema.TextLine" users:forms="In User Profile">
       <description/>
       <required>False</required>
       <title>Office Phone Number</title>
     </field>
-    <field name="cellphone_number" type="zope.schema.TextLine" users:forms="On Registration|In User Profile">
+    <field name="cellphone_number" type="zope.schema.TextLine" users:forms="In User Profile">
       <description/>
       <title>Cellphone Number</title>
     </field>
 
-    <field name="company" type="zope.schema.Choice" users:forms="On Registration|In User Profile">
+    <field name="company" type="zope.schema.Choice" users:forms="In User Profile">
       <description>Which company do you work for?</description>
       <required>True</required>
       <title>Company</title>

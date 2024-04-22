@@ -69,7 +69,8 @@ setup(
         'collective.z3cform.colorpicker',
         'numpy',
         'pandas',
-        'openpyxl'
+        'openpyxl',
+        'collective.glossary'
     ],
     extras_require={
         'test': [
