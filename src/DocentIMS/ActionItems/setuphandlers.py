@@ -60,7 +60,9 @@ def post_install(context):
     
     #Assign role to Group 'Project Manager'
     plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'Edit Controlpanel'])
-    
+    plone.api.group.grant_roles(groupname='can_parse', roles=['Project Manager'])
+    plone.api.group.grant_roles(groupname='can_command_statements', roles=['Project Manager'])
+    plone.api.group.grant_roles(groupname='can_document_manager', roles=['Project Manager'])
     
     # permission = 'plone.app.controlpanel.UsersAndGroups'
     # roles_to_grant = ['Manager']  # or whatever role you want to grant
@@ -207,6 +209,11 @@ def pre_install(context):
     plone.api.group.create(groupname="PrjMgr", title="Project Manager", description="Person managing the project")
     plone.api.group.create(groupname="PrjTeam", title="Project Team", description="All Members of the Project")
     plone.api.group.create(groupname="PrjQcMgr", title="Project QC Manager", description="Person in charge of manage QC for the project")
+    
+    plone.api.group.create(groupname="can_parse", title="Can parse in Word", description="Can parse in Word")
+    plone.api.group.create(groupname="can_command_statements", title="Can Command Statements in Word")
+    plone.api.group.create(groupname="can_document_manager", title="Can document manager in Word")
+    
    
     #create content 
     _create_content(portal)

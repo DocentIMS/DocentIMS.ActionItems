@@ -10,7 +10,7 @@
     method="GET"
     for="Products.CMFCore.interfaces.ISiteRoot"
     factory=".get.MyEmailGet"
-    name="@my_email"
+    name="@main_info"
     permission="zope2.View"
     />
 

@@ -270,6 +270,7 @@ class IDocentimsSettings(model.Schema):
         fields=[
             'project_title',
             'project_short_name',
+            'very_short_name',
             'project_description',
             'project_contract_number',
             'project_document_naming_convention',
@@ -348,7 +349,14 @@ class IDocentimsSettings(model.Schema):
 
     project_short_name = schema.TextLine(
         title=_(u"label_project_short_name",
-        default=u"Project Short name"),
+        default=u"Project Short Name"),
+        description=_(u"",
+                      default=u"")
+        )
+    
+    very_short_name = schema.TextLine(
+        title=_(u"label_project_very_short_name",
+        default=u"Project Very Short Name"),
         description=_(u"",
                       default=u"")
         )

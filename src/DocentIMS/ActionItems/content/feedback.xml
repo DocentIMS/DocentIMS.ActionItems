@@ -8,7 +8,9 @@
   i18n:domain="DocentIMS.ActionItems" 
   xmlns="http://namespaces.plone.org/supermodel/schema">
    <schema>
-    <field name="feedback_submitted_by" type="zope.schema.TextLine">
+    
+
+ <field name="feedback_submitted_by" type="zope.schema.TextLine">
       <description>Who submitted this feedback.</description>
       <title>Feedback Submitted By</title>
     </field>
@@ -16,10 +18,15 @@
       <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
       <title>Feedback Text</title>
     </field>
-    <field name="feedback_file" type="plone.namedfile.field.NamedBlobFile">
-      <description>Attach any files that may help.</description>
+    <field name="feedback_attachment" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
       <required>False</required>
-      <title>Feedback File</title>
+      <title>Feedback Attachment</title>
+    </field>
+    <field name="feedback_log" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <required>False</required>
+      <title>Feedback Log</title>
     </field>
     <field name="do_you_want_feedback" type="zope.schema.Bool">
       <description>Would you like to hear back from us?</description>
@@ -32,5 +39,5 @@
       <required>False</required>
       <title>Docent Tool Type</title>
     </field>
-  </schema>
+    </schema>
 </model>

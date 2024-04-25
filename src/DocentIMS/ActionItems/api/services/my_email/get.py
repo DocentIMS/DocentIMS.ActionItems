@@ -30,10 +30,10 @@ class MyEmail(object):
         # === Your custom code comes here ===
 
         user = api.user.get_current()   
-        usermail = self.request.get('email', None)
+        #usermail = self.request.get('email', None)
         # Only users with special permissions can get info about other users
-        if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
-            user = api.user.get(username=usermail) 
+        #if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
+        #    user = api.user.get(username=usermail) 
             
             
         if user is not None:    
@@ -42,6 +42,7 @@ class MyEmail(object):
                     'id': user.getProperty('id'),
                     'email': user.getProperty('email'),
                     'fullname' : user.getProperty('fullname'),   
+                    'groups': user.getGroups(),
                     'roles' : user.getRoles(),
                     'last_name' : user.getProperty('fullname'), 
                     'first_name' : user.getProperty('first_name'), 
@@ -49,6 +50,10 @@ class MyEmail(object):
                     'office_phone_number': user.getProperty('office_phone_number'), 
                     'cellphone_number': user.getProperty('cellphone_number'), 
                     'company' : user.getProperty('company'), 
+                    'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
+                    'very_short_name':  api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.very_short_name'),
+                    'short_name':       api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
+                    'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number')         
                 },
             }
             

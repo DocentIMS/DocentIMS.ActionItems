@@ -2,7 +2,7 @@
 <rolemap>
     <roles>
       <role name="Project Manager"/>
-      <role name="User Api"/>
+
     </roles>
         
     <permissions>
@@ -16,7 +16,7 @@
     </permission>
 
     <permission name="plone.restapi: Access Plone user information" acquire="True">
-      <role name="User Api"/>
+ 
     </permission>
 
     <permission name="DocentIMS.ActionItems: Add Meeting" acquire="True">
