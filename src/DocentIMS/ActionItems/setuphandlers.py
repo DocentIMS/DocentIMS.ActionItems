@@ -196,8 +196,8 @@ def post_install(context):
     meeting = portal.get('meeting', False)
     behaviour = constrains.ISelectableConstrainTypes(meeting)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Meeting'])
-    behaviour.setLocallyAllowedTypes(['Meeting'])
+    behaviour.setImmediatelyAddableTypes(['meeting'])
+    behaviour.setLocallyAllowedTypes(['meeting'])
 
 def pre_install(context):
     """Pre install script"""
@@ -370,7 +370,7 @@ def _create_content(portal):
                     container=meeting,
                     id='meeting-collection',
                     title='Meetings',
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Meeting']}]
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['meeting']}]
                 )
                 
         if not portal.get('notes', False):
