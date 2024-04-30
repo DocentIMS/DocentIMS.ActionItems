@@ -148,10 +148,12 @@ class ActionItemsEditForm(DefaultEditForm):
             # add confition to only show edit field for admins etc.
             user = api.user.get_current()
             #groups = api.group.get_groups(user=user) 
-            group = api.group.get('PrjMgr')
-            member_ids = [member.getId() for member in group.getGroupMembers()]
+            #group = api.group.get('PrjMgr')
+            roles = api.user.get_roles()
+            #member_ids = [member.getId() for member in group.getGroupMembers()]
             #Just checking for user in usergroup strangly does not work              
-            if not user.id in member_ids:
+            #if not user.id in member_ids:
+            if not 'Project Manager' in roles:
                 self.widgets['bodytext'].mode = interfaces.DISPLAY_MODE
             self.widgets['section_number'].readonly='readonly'
             self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
