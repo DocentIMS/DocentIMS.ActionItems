@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="docentIMS_collection_workflow" title="DocentIMS Collection Workflow" description="Unique WF created for collection to hide them and prevent deletion.  The Action Item Scope etc depend on a collection to show content.  want to ensure collection cant be deleted" state_variable="review_state" initial_state="private" manager_bypass="False">
+<dc-workflow workflow_id="docentIMS_note_workflow" title="DocentIMS Note Workflow" description="Notes are &quot;posit-Notes&quot; users may use as a quick reminder for future actiion" state_variable="review_state" initial_state="private" manager_bypass="False">
  <instance-creation-conditions>
    <guard>
-    <guard-role>PrjMgr</guard-role>
+    <guard-group>PrjTeam</guard-group>
    </guard>
  </instance-creation-conditions>
- <group>Administrators</group>
  <permission>Access contents information</permission>
- <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
+ <state state_id="closed" title="Closed">
+  <description>Removes from the list.  it is not deleted.</description>
+ </state>
  <state state_id="private" title="Private">
-  <description>Can only be seen and edited by the owner.</description>
+  <description>Notes are intended for the person who created and not visible to others.  so no publishing, retract, etc.</description>
+  <exit-transition transition_id="close"/>
   <permission-map name="Access contents information" acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
    <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
-  <permission-map name="Delete objects" acquired="False">
-   <permission-role>Manager</permission-role>
-  </permission-map>
   <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
+ <transition transition_id="close" title="Close" new_state="closed" trigger="USER" before_script="" after_script="">
+  <description>Once person is done with note, it is simply closed.  Won't delte</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
+  <guard>
+   <guard-role>Owner</guard-role>
+  </guard>
+ </transition>
  <worklist worklist_id="reviewer_queue" title="">
   <description>Reviewer tasks</description>
   <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>

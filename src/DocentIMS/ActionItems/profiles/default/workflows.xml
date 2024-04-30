@@ -4,7 +4,11 @@
     name="title">Contains workflow definitions for your portal</property>
  <object name="docentIMS_actionitem_workflow" meta_type="Workflow"/>
  <object name="docentIMS_collection_workflow" meta_type="Workflow"/>
+ <object name="docentIMS_actionitem_workflow" meta_type="Workflow"/>
+ <object name="docentIMS_collection_workflow" meta_type="Workflow"/>
  <object name="docentIMS_sow_workflow" meta_type="Workflow"/>
+
+ <bindings>
 </object>
 
 
