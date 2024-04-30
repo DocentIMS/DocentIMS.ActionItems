@@ -8,7 +8,6 @@
  <object name="docentIMS_collection_workflow" meta_type="Workflow"/>
  <object name="docentIMS_sow_workflow" meta_type="Workflow"/>
 
- <bindings>
 </object>
 
 

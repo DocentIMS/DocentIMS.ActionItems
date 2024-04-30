@@ -1,4 +1,11 @@
 <style>
    .navbar-nav li,
    .navbar-barceloneta { background-color: ${view/color|None} !important}
+   .view-name-member-search #xform-widgets-login {display: none}
+   .section-Members input#form-widgets-login.form-control.text-widget.textline-field, 
+   .section-Members #formfield-form-widgets-login div.form-text, 
+   .section-Members div#formfield-form-widgets-email, 
+   .section-Members #formfield-form-widgets-fullname label
 </style>
+
+ 
