@@ -73,7 +73,8 @@ class ActionItemsAddForm(DefaultAddForm):
         if exp_text:
             #self.fields['full_explanation'].field.default = exp_text
             # title is only 40 characters
-            self.fields['IBasic.title'].field.default = exp_text[:39]
+            #self.fields['IBasic.title'].field.default = exp_text[:39]
+            self.fields['full_explanation'].field.default = exp_text
             
         for group in self.groups:
             if group.__name__ == 'connections':
