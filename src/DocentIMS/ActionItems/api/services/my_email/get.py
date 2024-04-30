@@ -30,11 +30,11 @@ class MyEmail(object):
         # === Your custom code comes here ===
 
         user = api.user.get_current()   
-        #usermail = self.request.get('email', None)
+        # We are not using the option to get another user
+        # usermail = self.request.get('email', None)
         # Only users with special permissions can get info about other users
-        #if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
-        #    user = api.user.get(username=usermail) 
-            
+        # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
+        # user = api.user.get(username=usermail)      
             
         if user is not None:    
             result = {
