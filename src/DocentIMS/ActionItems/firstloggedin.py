@@ -79,7 +79,7 @@ class RedirectActionExecutor:
         rel_url = _(self.element.rel_url)
         #rel_url_type = self.element.rel_url_type
         #request.response.redirect('/news')
-        url = api.portal.get().absolute_url() + rel_url
+        url = api.portal.get().absolute_url() + '/' + rel_url
         # request.RESPONSE.redirect(url)
         request.REQUEST["RESPONSE"].redirect(url)
         #IStatusMessage(request).addStatusMessage(url, type=rel_url_type)
