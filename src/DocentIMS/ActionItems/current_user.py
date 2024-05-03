@@ -2,6 +2,7 @@ from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
 from plone import api
 
+#@provider(IDefaultFactory)
 
 @provider(IContextAwareDefaultFactory)
 def getUserId(context):
