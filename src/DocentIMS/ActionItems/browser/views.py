@@ -164,7 +164,7 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
             self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
-        if self.portal_type == 'Meeting':
+        if self.portal_type == 'Meeting' or self.portal_type == 'meeting':
             self.widgets['IEventBasic-whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
     
@@ -226,7 +226,7 @@ class MeetingEditForm(DefaultEditForm):
     def updateWidgets(self):
         super(MeetingEditForm, self).updateWidgets()
          
-        if self.portal_type == "Meeting":
+        if self.portal_type == "Meeting" or self.portal_type == 'meeting':
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
@@ -235,7 +235,7 @@ class MeetingEditForm(DefaultEditForm):
     def update(self):
         super(MeetingEditForm, self).update()
         
-        if self.portal_type in  ["Meeting", "Notes", "Feedback"]:
+        if self.portal_type in  ["Meeting", "meeting", "Notes", "notes", "Feedback", "feedback"]:
         
             for group in self.groups:
                 if group.__name__ == 'settings':
@@ -373,10 +373,10 @@ class MeetingAddForm(DefaultAddForm):
 
     def updateWidgets(self):
         super(MeetingAddForm, self).updateWidgets()
-        if self.portal_type == 'Meeting':
+        if self.portal_type == 'Meeting' or self.portal_type == 'meeting':
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
-        if self.portal_type in  ["Meeting", "Notes", "Feedback"]:
+        if self.portal_type in  ["Meeting", "meeting", "Notes", "Feedback"]:
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
 
@@ -387,7 +387,7 @@ class MeetingAddForm(DefaultAddForm):
     def update(self):
         super(MeetingAddForm, self).update()
         
-        if self.portal_type in  ["Meeting", "Notes", "Feedback"]:
+        if self.portal_type in  ["Meeting", "meeting", "Notes", "Feedback"]:
             for group in self.groups:
                 if group.__name__ == 'settings':
                     group.label = None

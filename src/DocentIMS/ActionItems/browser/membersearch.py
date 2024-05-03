@@ -9,7 +9,7 @@ from plone.autoform import directives as form
 from plone.app.users.browser.membersearch import IMemberSearchSchema
 from plone.app.users.browser.membersearch import MemberSearchForm
 from plone.autoform import directives
-# from plone.app.z3cform.widget import AjaxSelectWidget
+from plone.app.z3cform.widget import AjaxSelectWidget
 # from plone.app.z3cform.widget import SelectWidget
 # from plone.app.z3cform.widget import SelectFieldWidget
 
@@ -33,9 +33,13 @@ class IActionMemberSearchSchema(IMemberSearchSchema):
     
     form.omitted('login') 
     form.omitted('email') 
-    # directives.widget(
-    #     "fullname", SelectFieldWidget, vocabulary="plone.app.vocabularies.Users"
-    # )
+    directives.widget(
+        "fullname", AjaxSelectWidget,  
+        select_displayed="exact",
+        select_limit=1,
+        allow_multiple=False, 
+        vocabulary="plone.app.vocabularies.Users"
+    )
     
     
      

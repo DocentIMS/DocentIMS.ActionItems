@@ -141,6 +141,14 @@
     handler=".subscribers.change_uuid"
     />
 
+<!-- Disable deletion of default page -->
+  <subscriber
+    for="*       
+        zope.lifecycleevent.interfaces.IObjectRemovedEvent"
+        handler=".subscribers.check_defaultpage"
+    />
+    
+
   <!-- <subscriber
     for="Products.CMFCore.interfaces.IFolderish        
         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
