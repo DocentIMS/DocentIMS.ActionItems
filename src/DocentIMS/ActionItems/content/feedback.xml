@@ -12,6 +12,7 @@
       <description>Who submitted this feedback.</description>
       <title>Feedback Submitted By</title>
       <vocabulary>plone.app.vocabularies.Users</vocabulary>
+      <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
     </field>
     <field name="feedback_text" type="plone.app.textfield.RichText">
       <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
