@@ -1,28 +1,35 @@
 # -*- coding: utf-8 -*-
 
 from plone import api
-from plone.app.textfield import RichText
-from zope.i18nmessageid import MessageFactory
+# from plone.app.textfield import RichText
+# from zope.i18nmessageid import MessageFactory
 import transaction
 # from zope.interface import alsoProvides
 # from zope.interface import directlyProvides
 from zope.interface import Interface
 from zope.lifecycleevent import IObjectModifiedEvent
+from zope.lifecycleevent import IObjectModifiedEvent
+
 # from zope.lifecycleevent import IObjectAddedEvent"
 #from zope.schema.interfaces import IContextSourceBinder
 # from zope.schema.interfaces import  InvalidValue
-from AccessControl import Unauthorized
+# from AccessControl import Unauthorized
 from Products.statusmessages.interfaces import IStatusMessage
-        
 
- 
+# import transaction
+# from zope.container.contained import notifyContainerModified
+# from zope.event import notify
+
+from zExceptions import Redirect
+from zope.component import getMultiAdapter
+        
 
 
 def check_defaultpage(object, event):
     if object.aq_parent.default_page == object.id:
-        # messages = IStatusMessage(object)
-        # messages.addStatusMessage(u"You can not delete the default view of a folder.", type="info")
-        raise Unauthorized("You are not allowed to delete the default view of a folder")
+        messages = IStatusMessage(object.REQUEST)
+        messages.addStatusMessage(u"You can not delete the default view of a folder.", type="error")
+        raise Redirect(object.absolute_url())
  
  
         
