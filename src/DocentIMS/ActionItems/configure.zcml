@@ -136,7 +136,7 @@
 
 <!-- override event location behavior-->
   <plone:behavior
-      name="xplone.eventlocation"
+      name="docent.eventlocation"
       title="Event Location"
       description="Location extension for Events."
       provides=".behaviors.IMeetingLocation"
