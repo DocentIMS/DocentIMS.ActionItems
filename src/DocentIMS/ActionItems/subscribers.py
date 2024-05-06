@@ -29,9 +29,10 @@ def check_defaultpage(object, event):
     if object.aq_parent.default_page == object.id:
         messages = IStatusMessage(object.REQUEST)
         messages.addStatusMessage(u"You can not delete the default view of a folder.", type="error")
+        #if '@@fc-delete'  in object.REQUEST.getURL():
         raise Redirect(object.absolute_url())
  
- 
+
         
 def change_uuid(object, event):
     if object.portal_type in  ['action_items' ]:
