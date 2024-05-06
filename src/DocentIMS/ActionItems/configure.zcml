@@ -134,6 +134,15 @@
       name="DocentIMS.ActionItems-hiddenprofiles"
       />
 
+<!-- override event location behavior-->
+  <plone:behavior
+      name="xplone.eventlocation"
+      title="Event Location"
+      description="Location extension for Events."
+      provides=".behaviors.IMeetingLocation"
+      for="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+
 <!-- Change UUID after creation -->
   <subscriber
     for="Products.CMFCore.interfaces.IFolderish        
@@ -257,5 +266,10 @@
   <utility
   	  component=".vocabularies.CompanyRolesVocabulary"
       name="DocentIMS.ActionItems.CompanyRolesVocabulary" />      
+
+  <utility
+  	  component=".vocabularies.LocationsVocabulary"
+      name="DocentIMS.ActionItems.LocationsVocabulary" />      
+
 
 </configure>

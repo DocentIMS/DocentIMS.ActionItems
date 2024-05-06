@@ -27,7 +27,7 @@ from zope.component import getMultiAdapter
 
 def check_defaultpage(object, event):
     #Dont delete default page
-    if object.aq_parent.id not in ['events', 'news']:
+    if hasattr(object, 'aq_parent') and object.aq_parent.id not in ['events', 'news']:
         if hasattr(object.aq_parent, 'default_page') and object.aq_parent.default_page  == object.id:
             if not '@@fc-delete'  in object.REQUEST.getURL():
                 messages = IStatusMessage(object.REQUEST)

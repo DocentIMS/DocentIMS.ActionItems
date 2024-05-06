@@ -103,7 +103,7 @@
           <value key="vokabularies"></value>
           <value key="vokabularies3"></value>
           <value key="companies"></value>
-
+          <value key="location_names"></value>
           <value key="urgent_red">7</value>
           <value key="future_green">28</value>
           <value key="soon_yellow">14</value>

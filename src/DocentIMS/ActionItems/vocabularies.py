@@ -57,6 +57,29 @@ def CompanyVocabulary(context):
 directlyProvides(CompanyVocabulary, IVocabularyFactory)
 
 
+def LocationsVocabulary(context):
+    items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
+    if items:
+        # Assuming items is a list of dictionaries
+
+        sorted_items = sorted(
+            filter(lambda x: x.get('location_name', '') is not None, items),
+            key=lambda x: x.get('location_name', '').lower() if x.get('location_name') else ''
+        )
+
+        # Create SimpleTerm objects from the sorted list, excluding empty 'location_names'
+        terms = [
+            SimpleTerm(value=item['location_name'], token=item['location_name'], title=item['location_name'])
+            for item in sorted_items if item['location_name'] and len(item['location_name']) > 1
+        ]
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([])
+
+directlyProvides(LocationsVocabulary, IVocabularyFactory)
+
+
+
 #def SiteVocabulary(context):
 #    items  =  api.portal.get_registry_record('vokabulary', interface=IDocentimsSettings)
 #    if items:

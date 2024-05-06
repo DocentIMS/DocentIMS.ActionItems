@@ -104,6 +104,12 @@ class IVocabulari3(model.Schema):
     )
     
 
+class IVocabulari4(model.Schema):
+    location_name = schema.TextLine(
+        title=_(u'Vocabulary entries', 'Locations'),
+        description=u"Location Name",
+        required=False,
+    )
     
 
 
@@ -284,6 +290,14 @@ class IDocentimsSettings(model.Schema):
         fields=[
             'vokabularies',
             # 'vokabularies2',
+        ] 
+    )
+    
+    model.fieldset(
+        'locations',
+        label=_(u'Locations'),
+        fields=[
+            'location_names'
         ] 
     )
 
@@ -474,6 +488,14 @@ class IDocentimsSettings(model.Schema):
         title = _(u" ",
             default=u""),
         value_type=DictRow(schema=IVocabulari3),
+        required=True,
+    )
+    
+    widget(location_names=DataGridFieldFactory)
+    location_names = schema.List(
+        title = _(u" ",
+            default=u""),
+        value_type=DictRow(schema=IVocabulari4),
         required=True,
     )
 

@@ -21,7 +21,8 @@ from urllib.parse import unquote
 from z3c.form import button
 
 
-from plone.z3cform.textlines import TextLinesFieldWidget	
+	
+from z3c.form.browser.textlines import TextLinesFieldWidget
 
 
 #from plone.app.textfield import RichText
@@ -379,7 +380,7 @@ class MeetingAddForm(DefaultAddForm):
         if self.portal_type == 'Meeting' or self.portal_type == 'meeting':
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
-            #self.widgets['IEventLocation.location']   = ????	
+            
         if self.portal_type in  ["Meeting", "meeting", "Notes", "Feedback"]:
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
