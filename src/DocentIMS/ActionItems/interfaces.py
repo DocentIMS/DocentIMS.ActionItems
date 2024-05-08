@@ -111,6 +111,13 @@ class IVocabulari4(model.Schema):
         required=False,
     )
     
+class IVocabulari5(model.Schema):
+    meeting_type = schema.TextLine(
+        title=_(u'Vocabulary entries', 'Meeting Type'),
+        description=u"Meeting Type",
+        required=False,
+    )
+    
 
 
 
@@ -300,6 +307,15 @@ class IDocentimsSettings(model.Schema):
             'location_names'
         ] 
     )
+
+    model.fieldset(
+        'meeting_types',
+        label=_(u'Meeting Types'),
+        fields=[
+            'meeting_types'
+        ] 
+    )
+
 
     model.fieldset(
         'vocabularies3',
@@ -496,6 +512,15 @@ class IDocentimsSettings(model.Schema):
         title = _(u" ",
             default=u""),
         value_type=DictRow(schema=IVocabulari4),
+        required=True,
+    )
+    
+    
+    widget(meeting_types=DataGridFieldFactory)
+    meeting_types = schema.List(
+        title = _(u" ",
+            default=u""),
+        value_type=DictRow(schema=IVocabulari5),
         required=True,
     )
 

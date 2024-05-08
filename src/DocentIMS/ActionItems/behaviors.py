@@ -23,6 +23,9 @@ class IMeetingLocation(IEventLocation):
 @provider(IFormFieldProvider)
 class IMeetingContact( IEventContact):
     """Event Contact Schema."""
+    
+    directives.omitted('contact_email')
+    directives.omitted('contact_phone') 
 
     contact_name = schema.Choice(
         title="Contact Person", 
@@ -30,15 +33,20 @@ class IMeetingContact( IEventContact):
         vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary'
     )
     directives.widget("contact_name", AjaxSelectFieldWidget, klass="event_contact_name")
+    
+    # @property
+    # def contact_phone:
+    #     return users phone  
+    
 
 
 @provider(IFormFieldProvider)
 class IMeetingAttendees(IEventAttendees):
     """MEETING Attendees Schema."""
-
     attendees = schema.List(
         title= "Attendees",
         description= "List of attendees.",
+        required=False,
         value_type=schema.Choice(
             title="Attendee",
             required=False,

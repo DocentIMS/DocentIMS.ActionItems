@@ -61,4 +61,9 @@
   	  component=".vocabularies.FullnamesVocabulary"
       name="DocentIMS.ActionItems.FullnamesVocabulary" />      
 
+  <utility
+  	  component=".vocabularies.MeetingTypesVocabulary"
+      name="DocentIMS.ActionItems.MeetingTypesVocabulary" />      
+
+
 </configure>

@@ -169,7 +169,7 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
         if self.portal_type == 'Meeting' or self.portal_type == 'meeting':
-            self.widgets['IEventBasic-whole_day'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
     
     def update(self):

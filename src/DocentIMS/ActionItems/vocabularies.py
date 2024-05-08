@@ -81,6 +81,26 @@ def LocationsVocabulary(context):
 directlyProvides(LocationsVocabulary, IVocabularyFactory)
 
 
+def MeetingTypesVocabulary(context):
+    items  =  api.portal.get_registry_record('meeting_types', interface=IDocentimsSettings)
+    if items:
+        # Assuming items is a list of dictionaries
+        sorted_items = sorted(
+            filter(lambda x: x.get('meeting_type', '') is not None, items),
+            key=lambda x: x.get('meeting_type', '').lower() if x.get('meeting_type') else ''
+        )
+
+        # Create SimpleTerm objects from the sorted list, excluding empty 'meeting types'
+        terms = [
+            SimpleTerm(value=item['meeting_type'], token=item['meeting_type'], title=item['meeting_type'])
+            for item in sorted_items if item['meeting_type'] and len(item['meeting_type']) > 1
+        ]
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([])
+
+directlyProvides(MeetingTypesVocabulary, IVocabularyFactory)
+
 def FullnamesVocabulary(context):
     members = api.user.get_users()
     #  portal_membership = getToolByName(portal, 'portal_membership')

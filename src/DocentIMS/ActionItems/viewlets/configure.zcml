@@ -7,6 +7,16 @@
  <!-- -*- extra stuff goes here -*- -->
 
   <browser:viewlet
+     name="meeting-content-viewlet"
+     for="plone.app.contenttypes.interfaces.IDocument"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     layer="DocentIMS.ActionItems.interfaces.IDocentIMSActionItemsLayer"
+     class=".meeting_content_viewlet.MeetingContentViewlet"
+     template="meeting-content-viewlet.pt"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
      name="css-viewlet"
      for="*"
      manager="plone.app.layout.viewlets.interfaces.IHtmlHead"

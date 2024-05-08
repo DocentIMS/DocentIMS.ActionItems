@@ -5,5 +5,11 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
   <schema>
+  <field name="meeting_type" type="zope.schema.Choice">
+      <description/>
+      <required>False</required>
+      <title>Meeting type</title>
+      <vocabulary>DocentIMS.ActionItems.MeetingTypesVocabulary</vocabulary>
+    </field>
   </schema>
 </model>
