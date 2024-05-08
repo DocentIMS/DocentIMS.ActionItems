@@ -8,9 +8,9 @@
 
   <browser:viewlet
      name="meeting-content-viewlet"
-     for="plone.app.contenttypes.interfaces.IDocument"
-     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-     layer="DocentIMS.ActionItems.interfaces.IDocentIMSActionItemsLayer"
+     for="DocentIMS.ActionItems.behaviors.IMeetingLocation"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+     layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
      class=".meeting_content_viewlet.MeetingContentViewlet"
      template="meeting-content-viewlet.pt"
      permission="zope2.View"
