@@ -70,7 +70,6 @@ setup(
         'numpy',
         'pandas',
         'openpyxl',
-        'collective.glossary'
     ],
     extras_require={
         'test': [

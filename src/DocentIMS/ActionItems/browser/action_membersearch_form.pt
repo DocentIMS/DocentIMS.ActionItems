@@ -8,13 +8,11 @@
 
   <body>
     <metal:body fill-slot="body">
-xxxxxxxxx
+ 
       <article id="content"
                tal:condition="not: view/submitted"
       >
-
-
-      xxxxxxx
+ 
         <h1 class="documentFirstHeading"
             tal:content="view/label | nothing"
         ></h1>

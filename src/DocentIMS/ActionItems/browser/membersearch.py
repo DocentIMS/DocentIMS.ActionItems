@@ -17,6 +17,12 @@ from plone.app.z3cform.widget import SelectFieldWidget
 
 from plone.supermodel import model
 
+# from plone.autoform.interfaces import IFormFieldProvider
+# from plone.supermodel import model
+# from plone.supermodel.directives import fieldset
+# from plone import schema
+from zope.interface import provider
+
 # from z3c.form.widget import ComputedWidgetAttribute
 from zope import schema
 
@@ -40,12 +46,13 @@ class IActionMemberSearchSchema(IMemberSearchSchema):
     
     model.fieldset(
         "extra",
-        label=_("legend_member_search_criteria", default="User Search Criteria"),
+        # label=_("legend_member_search_criteria", default="User Search Criteria"),
+         label=_("legend_none", default=""), 
     )
     
     form.omitted('login') 
     form.omitted('email') 
-    directives.widget('fullname', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.FullnamesVocabulary")
+    directives.widget('fullname', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.FullnamesVocabulary", description="Select user to display a contact form and their created content")
     
 class ActionMemberSearchForm(MemberSearchForm):
     """This search form enables you to find users by specifying one or more
