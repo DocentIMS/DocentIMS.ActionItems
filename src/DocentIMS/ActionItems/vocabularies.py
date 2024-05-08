@@ -83,14 +83,12 @@ directlyProvides(LocationsVocabulary, IVocabularyFactory)
 
 def FullnamesVocabulary(context):
     members = api.user.get_users()
-    # import pdb; pdb.set_trace()
-    if members:
-        #         portal_membership = getToolByName(portal, 'portal_membership')
-        # # Get a list of member objects
-        # members = portal_membership.listMembers()
+    #  portal_membership = getToolByName(portal, 'portal_membership')
+    # # Get a list of member objects
+    # members = portal_membership.listMembers()
 
+    if members:
         # Create a list of SimpleTerms for each full name
-        import pdb; pdb.set_trace()
         terms = [SimpleTerm(value=member.getProperty('fullname', ''), token=member.getId(), title=member.getProperty('fullname')) for member in members]
 
         return SimpleVocabulary(terms)
