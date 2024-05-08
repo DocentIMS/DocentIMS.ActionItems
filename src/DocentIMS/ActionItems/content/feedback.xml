@@ -13,7 +13,11 @@
       <title>Feedback Submitted By</title>
       <vocabulary>plone.app.vocabularies.Users</vocabulary>
       <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
-    </field>
+    </field>    
+   <!-- <field name="feedback_submitted_by" type="zope.schema.TextLine">
+      <description>Who submitted this feedback.</description>
+      <title>Feedback Submitted By</title>
+    </field> -->
     <field name="feedback_text" type="plone.app.textfield.RichText">
       <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
       <title>Feedback Text</title>
@@ -38,6 +42,6 @@
       <description/>
       <required>False</required>
       <title>Docent Tool Type</title>
-    </field>
+    </field> 
     </schema>
 </model>

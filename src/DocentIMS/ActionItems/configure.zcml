@@ -135,7 +135,7 @@
       name="DocentIMS.ActionItems-hiddenprofiles"
       />
 
-<!-- override event location behavior-->
+<!-- override event   behaviors-->
   <plone:behavior
       name="docent.eventlocation"
       title="Event Location"
@@ -143,6 +143,24 @@
       provides=".behaviors.IMeetingLocation"
       for="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
       />
+
+  <plone:behavior
+      name="docent.eventattendees"
+      title="Event Attendees"
+      description="Attendees extension for Events."
+      provides=".behaviors.IMeetingAttendees"
+      for="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+ 
+   <plone:behavior
+      name="docent.eventcontact"
+      title="Event Contact"
+      description="Contact extension for Events."
+      provides=".behaviors.IMeetingContact"
+      for="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+
+ 
 
 <!-- Change UUID after creation -->
   <subscriber

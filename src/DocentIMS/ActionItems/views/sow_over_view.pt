@@ -87,13 +87,13 @@
                     </tbody>
               </table>
             </fieldset>
-            <fieldset>
+            <!-- <fieldset>
               <legend>Priority</legend>
               <h4 class="pa3">Priority</h4>
               
               <div class="flex flex-wrap">
-                <div id="div-bar"><!-- Plotly chart will be drawn inside this DIV --></div>
-                <div id="div-pie" ><!-- Plotly chart will be drawn inside this DIV --></div> 
+                <div id="div-bar">< Plotly chart will be drawn inside this DIV ></div>
+                <div id="div-pie" >< Plotly chart will be drawn inside this DIV ></div> 
               </div>
                
             </fieldset>
@@ -101,9 +101,10 @@
               <legend>Urgency</legend>
               <h4 class="pa3">Urgency</h4>
                 <div>
-                  <div id="urgency-bar" ><!-- Plotly chart will be drawn inside this DIV --></div>
+                  <div id="urgency-bar" >< Plotly chart will be drawn inside this DIV ></div>
                 </div>
             </fieldset>
+            -->
 
             <fieldset>
               <legend>Workflow</legend>
