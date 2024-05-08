@@ -10,6 +10,17 @@ from plone.app.users.browser.membersearch import IMemberSearchSchema
 from plone.app.users.browser.membersearch import MemberSearchForm
 from plone.autoform import directives
 from plone.app.z3cform.widget import AjaxSelectWidget
+
+
+from plone.app.z3cform.widget import AjaxSelectFieldWidget
+from plone.app.z3cform.widget import SelectFieldWidget
+
+from plone.supermodel import model
+
+# from z3c.form.widget import ComputedWidgetAttribute
+from zope import schema
+
+# from plone.formwidget.autocomplete import AutocompleteFieldWidget
 # from plone.app.z3cform.widget import SelectWidget
 # from plone.app.z3cform.widget import SelectFieldWidget
 
@@ -17,6 +28,7 @@ from plone.app.z3cform.widget import AjaxSelectWidget
 import plone.app.users.browser.membersearch 
 
 
+# @provider(IFormFieldProvider)
 class IActionMemberSearchSchema(IMemberSearchSchema):
     """Provide schema for member search."""
 
@@ -33,16 +45,8 @@ class IActionMemberSearchSchema(IMemberSearchSchema):
     
     form.omitted('login') 
     form.omitted('email') 
-    directives.widget(
-        "fullname", AjaxSelectWidget,  
-        select_displayed="exact",
-        select_limit=1,
-        allow_multiple=False, 
-        vocabulary="plone.app.vocabularies.Users"
-    )
+    directives.widget('fullname', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.FullnamesVocabulary")
     
-    
-     
 class ActionMemberSearchForm(MemberSearchForm):
     """This search form enables you to find users by specifying one or more
     search criteria.

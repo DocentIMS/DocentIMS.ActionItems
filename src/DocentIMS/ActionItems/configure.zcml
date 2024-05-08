@@ -15,6 +15,7 @@
 
  
   <include file="permissions.zcml" />
+  <include file="vocabularies.zcml" />
   <include package=".viewlets" />
   <include package=".portlets" />
   <include package=".indexers" />
@@ -223,53 +224,5 @@
         name="project_short_name"
     />
     
-
-   <!-- vocabularies -->
-
-  <utility
-    	  component=".vocabularies.ActionItemsVocabulary"
-        name="DocentIMS.ActionItems.ActionItemsVocabulary" />
-
-
-  <utility
-  	  component=".vocabularies.ShowActionItemsVocabulary"
-      name="DocentIMS.ActionItems.ShowActionItemsVocabulary" />
-
-  <utility
-  	  component=".vocabularies.CompanyVocabulary"
-      name="DocentIMS.ActionItems.CompanyVocabulary" />
-
-  <utility
-  	  component=".vocabularies.ProjectRolesVocabulary"
-      name="DocentIMS.ActionItems.ProjectRolesVocabulary" />
-
-  <utility
-  	  component=".vocabularies.Site2Vocabulary"
-      name="DocentIMS.ActionItems.Site2Vocabulary" />
-
-  <utility
-  	  component=".vocabularies.PriorityVocabulary"
-      name="DocentIMS.ActionItems.PriorityVocabulary" />
-
-  <utility
-  	  component=".vocabularies.AiFieldsVocabulary"
-      name="DocentIMS.ActionItems.AiFieldsVocabulary" />
-
-  <utility
-  	  component=".vocabularies.SowFieldsVocabulary"
-      name="DocentIMS.ActionItems.SowFieldsVocabulary" />
-
-  <utility
-  	  component=".vocabularies.QPVocabulary"
-      name="DocentIMS.ActionItems.QPVocabulary" />      
-
-  <utility
-  	  component=".vocabularies.CompanyRolesVocabulary"
-      name="DocentIMS.ActionItems.CompanyRolesVocabulary" />      
-
-  <utility
-  	  component=".vocabularies.LocationsVocabulary"
-      name="DocentIMS.ActionItems.LocationsVocabulary" />      
-
-
+ 
 </configure>

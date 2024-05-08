@@ -61,6 +61,8 @@ def LocationsVocabulary(context):
     items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
     if items:
         # Assuming items is a list of dictionaries
+        
+        
 
         sorted_items = sorted(
             filter(lambda x: x.get('location_name', '') is not None, items),
@@ -78,6 +80,24 @@ def LocationsVocabulary(context):
 
 directlyProvides(LocationsVocabulary, IVocabularyFactory)
 
+
+def FullnamesVocabulary(context):
+    members = api.user.get_users()
+    # import pdb; pdb.set_trace()
+    if members:
+        #         portal_membership = getToolByName(portal, 'portal_membership')
+        # # Get a list of member objects
+        # members = portal_membership.listMembers()
+
+        # Create a list of SimpleTerms for each full name
+        import pdb; pdb.set_trace()
+        terms = [SimpleTerm(value=member.getProperty('fullname', ''), token=member.getId(), title=member.getProperty('fullname')) for member in members]
+
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([])
+
+directlyProvides(FullnamesVocabulary, IVocabularyFactory)
 
 
 #def SiteVocabulary(context):
@@ -207,6 +227,7 @@ def SowFieldsVocabulary(context):
     )
 
 directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
+
 
 
 
