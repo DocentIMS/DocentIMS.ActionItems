@@ -18,11 +18,13 @@ from collective.z3cform.colorpicker.colorpicker  import ColorpickerFieldWidget
 from zope.schema.interfaces import  InvalidValue
 from plone.api.portal import show_message
 from plone.namedfile import field
+from plone.app.contentrules.handlers  import execute_user_rules
 
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
 
- 
+
+
 
 class RichTextFieldRegistry(PersistentField, RichText):
     """ persistent registry textfield """

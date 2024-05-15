@@ -44,6 +44,11 @@
   <indexed_attr value="do_you_want_feedback"/>
  </index>
 
+ <index name="Review by Date" meta_type="DateIndex">
+  <indexed_attr value="review_by_date"/>
+ </index>
+
+
      
 
  <!-- <index name="out_of_the_scope" meta_type="FieldIndex"> -->
@@ -58,6 +63,7 @@
  <column value="prioritystring"/>
  <column value="revised_due_date"/>
  <column value="initial_due_date"/>
+ <column value="review_by_date"/>
  <column value="duedate"/>
  <column value="daysleft"/>
  <column value="assigned_to"/>

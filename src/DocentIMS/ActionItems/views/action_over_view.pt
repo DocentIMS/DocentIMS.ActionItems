@@ -123,6 +123,8 @@
               <legend>Workflow</legend>
               <div>
                 <img src='${view/portal_url}/help-files/action-item-help/action-item-wf' alt="help image workflow">
+                
+
                 </div>
             </fieldset>
             <fieldset>
@@ -130,6 +132,9 @@
                 <h3>${context/help-files/action-item-help/action-item-help/Title|None}</h3>
                 <p>${context/help-files/action-item-help/action-item-help/Description|None}</p> 
                 <div tal:replace="structure context/help-files/action-item-help/action-item-help/text/output|None"/>
+                <p>
+                <a href='${view/portal_url}/help-files/action-item-help/ai-help.pdf/@@display-file' class="button standalone btn btn-outline-secondary" target="_blank">Open Help PDF</a>
+                </p>
             </fieldset>
         </div>
         <div>

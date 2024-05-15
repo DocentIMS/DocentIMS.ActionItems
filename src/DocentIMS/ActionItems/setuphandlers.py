@@ -5,6 +5,7 @@ from zope.interface import implementer
 #from plone import api
 import os
 from plone.namedfile.file import NamedBlobImage
+from plone.namedfile.file import NamedBlobFile
 
 from plone.base.interfaces import constrains
 from plone.base.interfaces.constrains import IConstrainTypes
@@ -63,6 +64,7 @@ def post_install(context):
     plone.api.group.grant_roles(groupname='can_parse', roles=['Project Manager'])
     plone.api.group.grant_roles(groupname='can_command_statements', roles=['Project Manager'])
     plone.api.group.grant_roles(groupname='can_document_manager', roles=['Project Manager'])
+    plone.api.group.grant_roles(groupname='PrjTeam', roles=['Member', 'Reader'])
     
     # permission = 'plone.app.controlpanel.UsersAndGroups'
     # roles_to_grant = ['Manager']  # or whatever role you want to grant
@@ -516,6 +518,17 @@ def _create_content(portal):
 
                 )
 
+                pdf_name = u'Action Item Help'
+                # if not action_folder.get(pdf_name, False):
+                pdf_file = plone.api.content.create(
+                            type='File',
+                            container=action_folder,
+                            id='ai-help.pdf',
+                            title=pdf_name,
+                            
+                        )
+                pdf_file.file = load_file()
+
 
             if not items.get('word-help', False):
                 word_folder = plone.api.content.create(
@@ -610,7 +623,13 @@ def load_image():
             filename='dummy.png'
         )
 
-
+def load_file():
+    filename = os.path.join(os.path.dirname(__file__), 'pdf', 'ai-help.pdf')
+    with open(filename, 'rb') as pdf_file:
+        return NamedBlobFile(
+            data=pdf_file.read(),
+            filename='ai-help.pdf'
+        )
 
 
 
