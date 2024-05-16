@@ -3,7 +3,16 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="plone">
  
- 
+  <!-- Remove default portlets here  -->
+  <assignment name="navigation" category="context" key="/"
+    manager="plone.leftcolumn" type="portlets.Classic" visible="False"  remove="True" />
+
+  <assignment name="news" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.News" visible="False"  remove="True" />
+
+  <assignment name="events" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.Events" visible="False"  remove="True" />
+  
   <!-- Extra portlets here  -->
 
   <portlet
