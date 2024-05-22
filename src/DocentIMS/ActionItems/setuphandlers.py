@@ -251,53 +251,14 @@ def _create_content(portal):
             folder = portal.get('events', False)
             plone.api.content.delete(obj=folder)
             
-        if not portal.get('templates', False):
-            images_folder = plone.api.content.create(
-                type='Folder',
-                container=portal,
-                id='templates',
-                title='Templates',
-                exclude_from_nav=True,
-            )
-                    
-        if not portal.get('images', False):
-            images_folder = plone.api.content.create(
-                type='Folder',
-                container=portal,
-                id='images',
-                title='Images',                 
-                exclude_from_nav=True,
-            )
+            
 
-
-        if not portal.get('downloads', False):
-            downloads = plone.api.content.create(
-                type='Folder',
-                container=portal,
-                id='downloads',
-                title='Downloads',
-                exclude_from_nav=True,
-
-            )
-
-            if not downloads.get('project_manager', False):
-                project_manager = plone.api.content.create(
-                    type='Folder',
-                    container=downloads,
-                    id='project_manager',
-                    title='Project Manager',
-                    exclude_from_nav=True,
-                )
-
-            if not downloads.get('team_member', False):
-                downloads = plone.api.content.create(
-                    type='Folder',
-                    container=downloads,
-                    id='team_member',
-                    title='Team Member',
-                    exclude_from_nav=True,
-                )
-
+        folder = portal.get('Members', False)
+        folder.title= 'Team'
+        folder.reindexObject(idxs=['Title'])
+            
+            
+            
 
         if not portal.get('action-items', False):
             action_items = plone.api.content.create(
@@ -327,33 +288,33 @@ def _create_content(portal):
                 )
                 
                 
-        if not portal.get('feedback', False):
-            feedback = plone.api.content.create(
+                
+                
+        if not portal.get('scope-analysis', False):
+            scopeanalysis = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                id='feedback',
-                title='Feedback',
-                default_page='feedback-collection',
+                id='scope-analysis',
+                title='Scope Breakdown',
+                default_page='sow-collection',
                 nextPreviousEnabled=1
+
             )
             
-            ## add collection inside
-            
-            
+            # Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
+            ## add collection inside here
 
-            if not feedback.get('feedback-collection', False):
-                feedback_collection = plone.api.content.create(
-                    type='Collection',
-                    container=feedback,
-                    id='feedback-collection',
-                    title='Feedback',
-                    layout='tabular_view',
-                    limit=2000,
-                    item_count=500,
-                    customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
-                )
-            
+            scopeoverview = plone.api.content.create(
+                type='Collection',
+                container=scopeanalysis,
+                id='sow-collection',
+                title='Scope Breakdown',
+                layout='sow-overview',
+                query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}],
+                limit=2000,
+                item_count=500,
+            )
+                
         if not portal.get('meeting', False):
             meeting = plone.api.content.create(
                 type='Folder',
@@ -374,6 +335,15 @@ def _create_content(portal):
                     title='Meetings',
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['meeting']}]
                 )
+                                
+                
+        if not portal.get('documents', False):
+            images_folder = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='documents',
+                title='Documents',
+            )     
                 
         if not portal.get('notes', False):
             notes = plone.api.content.create(
@@ -401,89 +371,45 @@ def _create_content(portal):
                     customViewFields = ['Title', 'CreationDate'],
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
                 )
-            
-
-
-            # This is for importing dummy content, will require action items to be present (installed)
-            # Dont remove, keep the code in case we need to install dummy content
-            
-            # try:
-            #     df = pd.read_excel( fullpath )
-            #     print(df)
-
-            #     my_dict = df.to_dict(orient='index')
-
-            #     for i in range(0, len(my_dict)):
-            #         print(my_dict[i])
-            #         title = my_dict[i].get('Title')
-            #         myid = "action_items-{id}".format(id=my_dict[i].get('ID'))
-            #         date = my_dict[i].get('Start')
-            #         date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
-
-            #         initial_due_date = my_dict[i].get('Finish')
-            #         initial_due_date_time_obj =  datetime.datetime.strptime(str(initial_due_date), '%Y-%m-%d %H:%M:%S')
-
-            #         texte = my_dict[i].get('Predecessors')
-            #         notes = my_dict[i].get('Notes')
-            #         bodytext = txt1 = "{texte}<(br/> {notes}".format(texte = texte, notes = notes)
-            #         action_item = plone.api.content.create(
-            #                     type='action_items',
-            #                     id=myid,
-            #                     container=action_items,
-            #                     title=title,
-            #                     date=date_time_obj,
-            #                     initial_due_date=initial_due_date_time_obj.date(),
-            #                     priority = str((i%3) + 1)    
-            #         )
-
-                    
-            # except FileNotFoundError:
-            #     pass
-
-
-        
-        if not portal.get('scope-analysis', False):
-            scopeanalysis = plone.api.content.create(
+                            
+                
+        if not portal.get('feedback', False):
+            feedback = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                id='scope-analysis',
-                title='Scope Breakdown',
-                default_page='sow-collection',
+                id='feedback',
+                title='Feedback',
+                default_page='feedback-collection',
                 nextPreviousEnabled=1
-
             )
             
-            # Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
-            ## add collection inside here
+            ## add collection inside
+            
+            
 
-            scopeoverview = plone.api.content.create(
-                type='Collection',
-                container=scopeanalysis,
-                id='sow-collection',
-                title='Scope Breakdown',
-                layout='sow-overview',
-                query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}],
-                limit=2000,
-                item_count=500,
-            )
+            if not feedback.get('feedback-collection', False):
+                feedback_collection = plone.api.content.create(
+                    type='Collection',
+                    container=feedback,
+                    id='feedback-collection',
+                    title='Feedback',
+                    layout='tabular_view',
+                    limit=2000,
+                    item_count=500,
+                    customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
+                )
+            
+                
 
-
-        if not portal.get('images', False):
-            items = plone.api.content.create(
-                type='Folder',
-                container=portal,
-                id='images',
-                title='Images',
-                exclude_from_nav=True,
-            )
         
         if not portal.get('help-files', False):
             items = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='help-files',
-                title='Help Files',
-                exclude_from_nav=True,
+                title='Help',
+                exclude_from_nav=False,
             )
 
             if not items.get('action-item-help', False):
@@ -599,14 +525,112 @@ def _create_content(portal):
                 )
 
             
-        # if not portal.get('frontpage', False):
-        #     fpage = plone.api.content.create(
-        #         type='FrontPage',
-        #         container=portal,
-        #         id='frontpage',
-        #         title='Front page' 
-        #     )
+                
+                
+                
+            
+        if not portal.get('templates', False):
+            images_folder = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='templates',
+                title='Templates',
+                exclude_from_nav=True,
+            )
+                    
+        if not portal.get('images', False):
+            images_folder = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='images',
+                title='Images',                 
+                exclude_from_nav=True,
+            )
 
+
+        if not portal.get('downloads', False):
+            downloads = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='downloads',
+                title='Downloads',
+                exclude_from_nav=True,
+
+            )
+
+            if not downloads.get('project_manager', False):
+                project_manager = plone.api.content.create(
+                    type='Folder',
+                    container=downloads,
+                    id='project_manager',
+                    title='Project Manager',
+                    exclude_from_nav=True,
+                )
+
+            if not downloads.get('team_member', False):
+                downloads = plone.api.content.create(
+                    type='Folder',
+                    container=downloads,
+                    id='team_member',
+                    title='Team Member',
+                    exclude_from_nav=True,
+                )
+
+
+                
+                
+
+
+
+
+            # This is for importing dummy content, will require action items to be present (installed)
+            # Dont remove, keep the code in case we need to install dummy content
+            
+            # try:
+            #     df = pd.read_excel( fullpath )
+            #     print(df)
+
+            #     my_dict = df.to_dict(orient='index')
+
+            #     for i in range(0, len(my_dict)):
+            #         print(my_dict[i])
+            #         title = my_dict[i].get('Title')
+            #         myid = "action_items-{id}".format(id=my_dict[i].get('ID'))
+            #         date = my_dict[i].get('Start')
+            #         date_time_obj =  datetime.datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
+
+            #         initial_due_date = my_dict[i].get('Finish')
+            #         initial_due_date_time_obj =  datetime.datetime.strptime(str(initial_due_date), '%Y-%m-%d %H:%M:%S')
+
+            #         texte = my_dict[i].get('Predecessors')
+            #         notes = my_dict[i].get('Notes')
+            #         bodytext = txt1 = "{texte}<(br/> {notes}".format(texte = texte, notes = notes)
+            #         action_item = plone.api.content.create(
+            #                     type='action_items',
+            #                     id=myid,
+            #                     container=action_items,
+            #                     title=title,
+            #                     date=date_time_obj,
+            #                     initial_due_date=initial_due_date_time_obj.date(),
+            #                     priority = str((i%3) + 1)    
+            #         )
+
+                    
+            # except FileNotFoundError:
+            #     pass
+
+
+        
+
+
+        if not portal.get('images', False):
+            items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='images',
+                title='Images',
+                exclude_from_nav=True,
+            )
 
  
 
