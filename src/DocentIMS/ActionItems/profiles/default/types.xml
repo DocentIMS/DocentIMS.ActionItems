@@ -8,4 +8,6 @@
   <object name="Notes" meta_type="Dexterity FTI"/>
   <object name="Feedback" meta_type="Dexterity FTI"/>
   <object name="Meeting" meta_type="Dexterity FTI"/>
+  <object name="docent_meeting_minutes" meta_type="Dexterity FTI"/>
+  <object name="docent_meeting_agenda" meta_type="Dexterity FTI"/>
 </object>

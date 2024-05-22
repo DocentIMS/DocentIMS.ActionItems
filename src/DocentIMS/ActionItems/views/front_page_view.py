@@ -56,18 +56,18 @@ class FrontPageView(BrowserView):
                 if self.context.frontpage_text:
                     return self.context.frontpage_text.output
             
-            if 'Project Manager' in roles:
-                    #User is project manager
-                    #import pdb; pdb.set_trace()
-                    current.setProperties(returning = True)
-                    if self.context.first_login_prjmgr:
-                        return self.context.first_login_prjmgr.output
+            # if 'Project Manager' in roles:
+            #         #User is project manager
+            #         #import pdb; pdb.set_trace()
+            #         current.setProperties(returning = True)
+            #         if self.context.first_login_prjmgr:
+            #             return self.context.first_login_prjmgr.output
                 
-            if current.getUserId() in pr_man_group.getAllGroupMemberIds():
-                    #User is project manager group
-                    current.setProperties(returning = True)
-                    if self.context.first_login_prjmgr:
-                        return self.context.first_login_prjmgr.output
+            # if current.getUserId() in pr_man_group.getAllGroupMemberIds():
+            #         #User is project manager group
+            #         current.setProperties(returning = True)
+            #         if self.context.first_login_prjmgr:
+            #             return self.context.first_login_prjmgr.output
                 
             #Check if user is part of PrjTEam group
             if current.getUserId() in group.getAllGroupMemberIds():

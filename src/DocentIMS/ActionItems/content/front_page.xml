@@ -14,11 +14,11 @@ xmlns="http://namespaces.plone.org/supermodel/schema">
       <title>Logged in users Frontpage text</title>
     </field>
  
-    <field name="first_login_prjmgr" type="plone.app.textfield.RichText">
+    <!-- <field name="first_login_prjmgr" type="plone.app.textfield.RichText">
       <description>Project Manager first logged in text</description>
       <required>False</required>
       <title>Project Manager first logged in text</title>
-    </field>
+    </field> -->
 
     <field name="first_login_teammbr" type="plone.app.textfield.RichText">
       <description>Team member first logged in text</description>

@@ -56,7 +56,7 @@
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Feedback Log&lt;/title&gt;
       &lt;/field&gt;
-      &lt;field name=&quot;do_you_want_feedback&quot; type=&quot;zope.schema.Bool&quot;&gt;
+      &lt;field name=&quot;reply&quot; type=&quot;zope.schema.Bool&quot;&gt;
         &lt;description&gt;Would you like to hear back from us?&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Do You Want Feedback?&lt;/title&gt;

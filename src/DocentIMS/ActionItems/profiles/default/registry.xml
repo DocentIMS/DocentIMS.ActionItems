@@ -159,7 +159,7 @@
 
 
           <records interface="plone.app.querystring.interfaces.IQueryField"
-              prefix="plone.app.querystring.field.do_you_want_feedback">
+              prefix="plone.app.querystring.field.reply">
        <value key="title">Feedback</value>
        <value key="description">Do you want feedback</value>
        <value key="enabled">True</value>

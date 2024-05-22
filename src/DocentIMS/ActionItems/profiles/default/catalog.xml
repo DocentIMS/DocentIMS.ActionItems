@@ -40,8 +40,8 @@
    <indexed_attr value="closed"/>
  </index>
 
- <index name="do_you_want_feedback" meta_type="BooleanIndex">
-  <indexed_attr value="do_you_want_feedback"/>
+ <index name="reply" meta_type="BooleanIndex">
+  <indexed_attr value="reply"/>
  </index>
 
  <index name="Review by Date" meta_type="DateIndex">
@@ -75,7 +75,7 @@
  <!-- <column value="out_of_the_scope"/> -->
  <column value="is_this_action_out_of_the_scope_of_work_"/> 
 
- <column value="do_you_want_feedback"/>
+  <column value="reply"/>
 
 
 

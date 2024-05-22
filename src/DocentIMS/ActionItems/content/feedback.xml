@@ -32,7 +32,7 @@
       <required>False</required>
       <title>Feedback Log</title>
     </field>
-    <field name="do_you_want_feedback" type="zope.schema.Bool">
+    <field name="reply" type="zope.schema.Bool">
       <description>Would you like to hear back from us?</description>
       <required>False</required>
       <title>Do You Want a Reply?</title>
