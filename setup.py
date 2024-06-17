@@ -70,6 +70,7 @@ setup(
         'numpy',
         'pandas',
         'openpyxl',
+        'onlyoffice.plone'
     ],
     extras_require={
         'test': [
