@@ -8,5 +8,7 @@
 
   <include package=".my_email" />
 
+  <include package=".personal_info" />
+
 
 </configure>
