@@ -71,7 +71,7 @@ class DocsInfo(object):
         #self.request.response.setStatus(401)
 
 
-class GetdocsInfo(Service):
+class GetDocsInfo(Service):
 
     def reply(self):
         service_factory = DocsInfo(self.context, self.request)
