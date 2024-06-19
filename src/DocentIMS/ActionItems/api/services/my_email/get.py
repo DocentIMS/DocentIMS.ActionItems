@@ -34,7 +34,10 @@ class MyEmail(object):
         # usermail = self.request.get('email', None)
         # Only users with special permissions can get info about other users
         # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
-        # user = api.user.get(username=usermail)      
+        # user = api.user.get(username=usermail) 
+        
+        companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
+              
             
         if user is not None:    
             result = {
@@ -55,7 +58,7 @@ class MyEmail(object):
                     'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
                     'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number'),   
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
-                    'companies' : api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')    
+                    'companies' :  companies  
                 },
             }
             
