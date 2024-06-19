@@ -9,7 +9,7 @@
   <plone:service
     method="GET"
     for="Products.CMFCore.interfaces.ISiteRoot"
-    factory=".GetDocsInfo"
+    factory="get.GetDocsInfo"
     name="@docs_info"
     permission="zope2.View"
     />
