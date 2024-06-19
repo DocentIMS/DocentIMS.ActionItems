@@ -38,17 +38,6 @@ class DocsInfo(object):
         if user is not None:    
             result = {
                 'docs_info': {
-                    'id': user.getProperty('id'),
-                    'email': user.getProperty('email'),
-                    'fullname' : user.getProperty('fullname'),   
-                    'groups': user.getGroups(),
-                    'roles' : user.getRoles(),
-                    'last_name' : user.getProperty('fullname'), 
-                    'first_name' : user.getProperty('first_name'), 
-                    'your_team_role': user.getProperty('your_team_role'), 
-                    'office_phone_number': user.getProperty('office_phone_number'), 
-                    'cellphone_number': user.getProperty('cellphone_number'), 
-                    'company' : user.getProperty('company'), 
                     'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                     'very_short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.very_short_name'),
                     'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
