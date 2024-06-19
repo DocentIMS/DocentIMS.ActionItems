@@ -185,7 +185,102 @@
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
       />
 
+  
+  <browser:page
+      name="onlyoffice-view-file"
+      for="*"
+      class=".actions.View"
+      permission="zope2.View"
+      template="templates/view.pt"
+      allowed_attributes="isAvailable"
+      />
+
  
+
+  <browser:page
+      name="onlyoffice-edit"
+      for="*"
+      class=".actions.Edit"
+      permission="cmf.ModifyPortalContent"
+      template="templates/view.pt"
+      allowed_attributes="isAvailable"
+      />
+
+  <browser:page
+      name="onlyoffice-fill-form"
+      for="*"
+      class=".actions.FillForm"
+      permission="cmf.ModifyPortalContent"
+      template="templates/view.pt"
+      allowed_attributes="isAvailable"
+      />
+
+  <browser:page
+      name="onlyoffice-callback"
+      for="*"
+      class=".api.Callback"
+      permission="zope2.Public"
+      />
+
+   
+
+  <browser:menuItem
+      for="*"
+      menu="plone_displayviews"
+      title="ONLYOFFICE View"
+      action="onlyoffice-view-file"
+      description="ONLYOFFICE View page"
+      permission="zope2.View"
+      />
+
+  
+
+  <browser:page
+      name="onlyoffice-convert-file-action"
+      for="*"
+      class=".api.Conversion"
+      permission="zope2.View"
+      />
+
+ 
+
+  <browser:page
+      name="onlyoffice-convert-file"
+      for="*"
+      class=".actions.ConversionForm"
+      permission="zope2.View"
+      allowed_attributes="isAvailable"
+      />
+
+ 
+
+ 
+  <browser:page
+      for="*"
+      name="onlyoffice-download-as-file"
+      class=".actions.DownloadAsForm"
+      permission="zope2.View"
+      allowed_attributes="isAvailable"
+      />
+
+ 
+
+  <utility
+      component=".interfaces.OnlyofficeConvertTypeVocabularyFactory"
+      name="onlyoffice.plone.OnlyofficeConvertType"
+      />
+
+ 
+
+  <browser:page
+      for="*"
+      name="onlyoffice-download-as-file-action"
+      class=".api.DownloadAs"
+      permission="zope2.View"
+      />
+
+  
+</configure>
 
 
 
