@@ -84,7 +84,7 @@ class ActionItemsAddForm(DefaultAddForm):
             if group.__name__ == 'connections':
                 if from_uid:
                     camefrom = api.content.get(UID=from_uid)
-                    if camefrom.Type() == 'Scope Brakdown':
+                    if camefrom.Type() == 'Scope Breakdown':
                         group.fields['related_sow_section'].field.default = from_uid
 
             
