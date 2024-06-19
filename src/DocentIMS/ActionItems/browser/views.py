@@ -162,6 +162,7 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['section_number'].readonly='readonly'
             self.widgets['IDublinCore.description'].mode = interfaces.HIDDEN_MODE
             
+            
                     
         if self.portal_type == 'project_companies':
             self.widgets['IDublinCore.title'].label = 'Short Company Name'
@@ -183,12 +184,17 @@ class ActionItemsEditForm(DefaultEditForm):
                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
 
+                    
+
                 if group.__name__ == 'all_dates':
                     #import pdb; pdb.set_trace()
                     #Not working
                     #group.widgets['initial_due_date'].disabled='disabled'
                     group.description = '{}<br/><p>Initial Due Date</p><input disabled class="form-control" value="{}"/>'.format(group.description , group.widgets['initial_due_date'].value)
                     group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
+                if group.__name__ == 'date':
+                    if self.portal_type == 'sow_analysis':
+                        group.label = None
 
                 if self.portal_type == 'sow_analysis':
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
