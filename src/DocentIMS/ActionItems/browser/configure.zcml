@@ -186,7 +186,7 @@
       />
 
   
-  <browser:page
+  <!-- <browser:page
       name="onlyoffice-view-file"
       for="*"
       class=".actions.View"
@@ -280,7 +280,7 @@
       />
 
   
-</configure>
+</configure> -->
 
 
 
