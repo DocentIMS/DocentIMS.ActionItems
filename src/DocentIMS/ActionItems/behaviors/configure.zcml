@@ -9,14 +9,14 @@
 
     <!-- -*- extra stuff goes here -*- -->
 
-    <plone:behavior
+    <!-- <plone:behavior
         name="DocentIMS.ActionItems.only_office_support"
         title="OnlyOfficeSupport"
         description="This behavior provides..."
         provides=".only_office_support.IOnlyOfficeSupport"
         factory=".only_office_support.OnlyOfficeSupport"
         marker=".only_office_support.IOnlyOfficeSupportMarker"
-        />
+        /> -->
 
 
 </configure>
