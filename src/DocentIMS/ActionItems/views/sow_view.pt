@@ -31,14 +31,14 @@
                   </span>
                 </p>
 
-                <div class="${view/get_css_urgency|None} colorborder calendarsheet">
+                <!-- <div class="${view/get_css_urgency|None} colorborder calendarsheet">
                   <p class="theading">
                     Workdays left:
                   </p>
                   <p class="days">
                     ${view/workdays_left}
                   </p>
-                </div>
+                </div> -->
 
 
                 <table>
