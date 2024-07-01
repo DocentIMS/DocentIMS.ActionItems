@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="docentIMS_collection_workflow" title="DocentIMS Collection Workflow" description="Unique WF created for collection to hide them and prevent deletion.  The Action Item Scope etc depend on a collection to show content.  want to ensure collection cant be deleted" state_variable="review_state" initial_state="private" manager_bypass="False">
+<dc-workflow workflow_id="docentMtgMin_WF" title="DocentIMS Meeting Minutes Workflow" description="Unique WF created for Meeting minutes" state_variable="review_state" initial_state="private" manager_bypass="False">
  <instance-creation-conditions>
    <guard>
     <guard-role>PrjMgr</guard-role>
@@ -10,8 +10,13 @@
  <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
+ <state state_id="Draft" title="">
+ </state>
+ <state state_id="Published" title="">
+ </state>
  <state state_id="private" title="Private">
   <description>Can only be seen and edited by the owner.</description>
+  <exit-transition transition_id="publish"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Contributor</permission-role>
    <permission-role>Editor</permission-role>
@@ -32,7 +37,12 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <transition transition_id="transition" title="" new_state="" trigger="USER">
+ <transition transition_id="approve" title="" new_state="" trigger="USER">
+  
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="publish" title="" new_state="Published" trigger="USER" before_script="" after_script="">
   
   <guard>
   </guard>

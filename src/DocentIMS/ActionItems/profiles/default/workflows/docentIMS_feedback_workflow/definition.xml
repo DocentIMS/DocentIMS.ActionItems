@@ -3,9 +3,9 @@
  <group>PrjMgr</group>
  <group>Site Administrators</group>
  <permission>Access contents information</permission>
+ <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <permission>Delete objects</permission>
  <state state_id="closed" title="Closed">
   <description>The feedback has been acted on if needed.</description>
   <exit-transition transition_id="Publish"/>
