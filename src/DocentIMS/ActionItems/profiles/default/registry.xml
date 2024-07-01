@@ -20,6 +20,53 @@
     </value>
   </record>
 
+     <record name="plone.icon.contenttype/Notes">
+      <field type="plone.registry.field.TextLine">
+        <title>Notes</title>
+      </field>
+      <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies.svg</value>
+    </record>
+
+
+    <record name="plone.icon.Notes">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies_neg.svg</value>
+    </record>
+
+
+     <record name="plone.icon.contenttype/Note">
+      <field type="plone.registry.field.TextLine">
+        <title>Note</title>
+      </field>
+      <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies.svg</value>
+    </record>
+
+
+    <record name="plone.icon.Nots">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies_neg.svg</value>
+    </record>
+
+
+         <record name="plone.icon.contenttype/Feedback">
+      <field type="plone.registry.field.TextLine">
+        <title>Feedback</title>
+      </field>
+      <value key="resource">++plone++DocentIMS.ActionItems/icons/chat-right-text.svg</value>
+    </record>
+
+
+    <record name="plone.icon.Feedback">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value key="resource">++plone++DocentIMS.ActionItems/icons/chat-right-text_neg.svg</value>
+    </record>
+
+
+
+
      <record name="plone.icon.contenttype/sow_analysis">
       <field type="plone.registry.field.TextLine">
         <title>Scope</title>
