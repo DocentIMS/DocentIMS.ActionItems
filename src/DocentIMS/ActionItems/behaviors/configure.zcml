@@ -7,16 +7,117 @@
 
     <include package="plone.behavior" file="meta.zcml"/>
 
-    <!-- -*- extra stuff goes here -*- -->
+   <!-- override event   behaviors-->
+  <plone:behavior
+      name="docent.eventlocation"
+      title="Event Location"
+      description="Location extension for Events."
+      provides=".behaviours.IMeetingLocation"
+      for="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+
+  <plone:behavior
+      name="docent.eventattendees"
+      title="Event Attendees"
+      description="Attendees extension for Events."
+      provides=".behaviours.IMeetingAttendees"
+      for="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+ 
+   <plone:behavior
+      name="docent.eventcontact"
+      title="Event Contact"
+      description="Contact extension for Events."
+      provides=".behaviours.IMeetingContact"
+      for="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+
+    <!-- -*- Behaviors and views for OnlyOffice -*- -->
 
     <plone:behavior
         name="DocentIMS.ActionItems.only_office_file"
         title="OnlyOfficeFile"
-        description="A file field that can be used with onlyoffice-plone"
-        provides=".only_office_file.IOnlyOfficeFile"
+        description="Makes your file field avalable to onlyoffice-plone"
+        provides=".only_office_file.IOnlyOfficeFileMarker"
         factory=".only_office_file.OnlyOfficeFile"
         marker=".only_office_file.IOnlyOfficeFileMarker"
         />
+
+   <!-- views etc for the onlyoffice behavior-->
+
+  <browser:page
+      name="onlyoffice-view-file"
+      for=".only_office_file.IOnlyOfficeFileMarker"
+      class="onlyoffice.plone.browser.actions.View"
+      permission="zope2.View"
+      allowed_attributes="isAvailable"
+      template="templates/view.pt"
+      />
+
+  <browser:page
+      name="onlyoffice-edit"
+      for=".only_office_file.IOnlyOfficeFileMarker"
+      class="onlyoffice.plone.browser.actions.Edit"
+      permission="cmf.ModifyPortalContent"
+      template="templates/view.pt"
+      allowed_attributes="isAvailable"
+      />
+
+  <browser:page
+      name="onlyoffice-fill-form"
+      for=".only_office_file.IOnlyOfficeFileMarker"
+	  class="onlyoffice.plone.browser.actions.FillForm"
+      permission="cmf.ModifyPortalContent"
+      allowed_attributes="isAvailable"
+      template="templates/view.pt"
+      />
+
+  <browser:page
+      name="onlyoffice-callback"
+      for=".only_office_file.IOnlyOfficeFileMarker" 
+	  class="onlyoffice.plone.browser.api.Callback"
+      permission="zope2.Public"
+      />
+
+  <browser:menuItem
+      for=".only_office_file.IOnlyOfficeFileMarker"
+	  menu="plone_displayviews"
+      title="ONLYOFFICE View"
+      action="onlyoffice-view-file"
+      description="ONLYOFFICE View page"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="onlyoffice-convert-file-action"
+      for=".only_office_file.IOnlyOfficeFileMarker"
+      class="onlyoffice.plone.browser.api.Conversion"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="onlyoffice-convert-file"
+      for=".only_office_file.IOnlyOfficeFileMarker"
+	  class="onlyoffice.plone.browser.actions.ConversionForm"
+      permission="zope2.View"
+      allowed_attributes="isAvailable"
+      />
+
+  <browser:page
+      for=".only_office_file.IOnlyOfficeFileMarker"
+	  name="onlyoffice-download-as-file"
+      class="onlyoffice.plone.browser.actions.DownloadAsForm"
+      permission="zope2.View"
+      allowed_attributes="isAvailable"
+      />
+
+ <browser:page
+      for=".only_office_file.IOnlyOfficeFileMarker" 
+	  name="onlyoffice-download-as-file-action"
+      class="onlyoffice.plone.browser.api.DownloadAs"
+      permission="zope2.View"
+    />
+
 
 
 </configure>
