@@ -20,16 +20,17 @@
  </property>
  <property name="default_view_fallback">False</property>
  <property name="add_permission">cmf.AddPortalContent</property>
- <property name="klass">plone.dexterity.content.Container</property>
+ <property name="klass">plone.dexterity.content.Item</property>
  <property name="behaviors">
   <element value="plone.dublincore"/>
   <element value="plone.namefromtitle"/>
+  <element value="DocentIMS.ActionItems.only_office_file"/>
  </property>
  <property name="schema"></property>
  <property
     name="model_source">&lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
   &lt;schema&gt;
-  &lt;field name=&quot;word_file&quot; type=&quot;plone.namedfile.field.NamedBlobFile&quot;&gt;
+  &lt;field name=&quot;file&quot; type=&quot;plone.namedfile.field.NamedBlobFile&quot;&gt;
   &lt;description&gt;The Word file for the document created with Docent local&lt;/description&gt;
   &lt;required&gt;False&lt;/required&gt;
   &lt;title&gt;Word File&lt;/title&gt;
@@ -52,42 +53,4 @@
     url_expr="string:${object_url}/edit" visible="True">
   <permission value="Modify portal content"/>
  </action>
-  <action
-      action_id="onlyoffice-edit"
-      category="object"
-      condition_expr="object/@@onlyoffice-edit/isAvailable"
-      i18n:domain="onlyoffice.plone"
-      i18n:attributes="title"
-      title="ONLYOFFICE Edit"
-      url_expr="string:${object_url}/onlyoffice-edit"
-      visible="True"
-      icon_expr="string:onlyoffice-logo">
-    <permission value="Modify portal content"/>
-  </action>
-
-  <action
-      action_id="onlyoffice-fill-form"
-      category="object"
-      condition_expr="object/@@onlyoffice-fill-form/isAvailable"
-      i18n:domain="onlyoffice.plone"
-      i18n:attributes="title"
-      title="Fill in form in ONLYOFFICE"
-      url_expr="string:${object_url}/onlyoffice-fill-form"
-      visible="True"
-      icon_expr="string:onlyoffice-logo">
-    <permission value="Modify portal content"/>
-  </action>
-
-  <action
-      action_id="onlyoffice-conversion-file"
-      category="object"
-      condition_expr="object/@@onlyoffice-convert-file/isAvailable"
-      i18n:domain="onlyoffice.plone"
-      i18n:attributes="title"
-      title="Conversion in ONLYOFFICE"
-      url_expr="string:${object_url}/onlyoffice-convert-file"
-      visible="True"
-      icon_expr="string:onlyoffice-logo">
-    <permission value="View"/>
-  </action>
-</object>
+ </object>
