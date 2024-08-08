@@ -70,28 +70,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
    </action>
   </actions>
  </rule>
- <rule name="rule-4" title="Move Scope Items" cascading="False"
-    description="Move all Scope Items to Scope folder" enabled="True"
-    event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    stop-after="False">
-  <conditions>
-   <condition type="plone.conditions.PortalType">
-    <property name="check_types">
-     <element>sow_analysis</element>
-    </property>
-   </condition>
-  </conditions>
-  <actions>
-   <action type="plone.actions.Move">
-    <property name="target_folder">/scope-analysis</property>
-   </action>
-  </actions>
- </rule>
- <rule name="rule-5" title="Move to Meeting Folder" cascading="False"
-    description="move all Meetings to the Meeting folder" enabled="True"
-    event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    stop-after="False">
-  <conditions>
+  
    <condition type="plone.conditions.PortalType">
     <property name="check_types">
      <element>Meeting</element>
