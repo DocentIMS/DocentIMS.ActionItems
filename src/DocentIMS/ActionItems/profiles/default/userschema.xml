@@ -17,22 +17,11 @@
       <vocabulary>DocentIMS.ActionItems.ProjectRolesVocabulary</vocabulary>
     </field>
 
-    <field name="office_phone_number" type="zope.schema.TextLine" users:forms="In User Profile">
-      <description/>
-      <required>False</required>
-      <title>Office Phone Number</title>
-    </field>
     <field name="cellphone_number" type="zope.schema.TextLine" users:forms="In User Profile">
       <description/>
       <title>Cellphone Number</title>
     </field>
 
-    <field name="company" type="zope.schema.Choice" users:forms="In User Profile">
-      <description>Which company do you work for?</description>
-      <required>True</required>
-      <title>Company</title>
-      <vocabulary>DocentIMS.ActionItems.CompanyVocabulary</vocabulary>
-    </field>
     <field name="description" type="zope.schema.Text" users:forms="In User Profile">
       <description i18n:translate="help_biography">
           A short overview of who you are and what you do. Will be displayed on your author page, linked from the items you create.

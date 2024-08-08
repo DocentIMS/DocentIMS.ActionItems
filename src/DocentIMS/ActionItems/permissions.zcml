@@ -21,19 +21,10 @@
         title="DocentIMS.ActionItems: Add Feedback"
     />
 
-    <permission
-        id="DocentIMS.ActionItems.AddNotes"
-        title="DocentIMS.ActionItems: Add Notes"
-    />
-
+    
     <permission
         id="DocentIMS.ActionItems.AddFrontPage"
         title="DocentIMS.ActionItems: Add FrontPage"
-    />
-
-    <permission
-        id="DocentIMS.ActionItems.AddSowAnalysis"
-        title="DocentIMS.ActionItems: Add Scope"
     />
 
     <permission
@@ -51,20 +42,6 @@
         title="DocentIMS.ActionItems: Delete ActionItems"
     />
 
-    <permission
-        id="DocentIMS.ActionItemsAdd.SOWItems"
-        title="DocentIMS.ActionItems: Add Scope"
-    />
-
-    <permission
-        id="DocentIMS.ActionItems.ArchiveSOWItems"
-        title="DocentIMS.ActionItems: Archive Scope"
-    />
-
-    <permission
-        id="DocentIMS.ActionItems.DeleteSOWItems"
-        title="DocentIMS.ActionItems: Delete Scope"
-    />
 
   </configure>
 
