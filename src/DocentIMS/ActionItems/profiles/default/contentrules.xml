@@ -106,29 +106,9 @@ Would prefer to have it redirect to the personal info page automatically, but th
   </actions>
  </rule>
  
- <rule name="rule-8" title="Move Feedback" cascading="False"
-    description="Move feedback items to the Feedback Folder" enabled="True"
-    event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    stop-after="False">
-  <conditions>
-   <condition type="plone.conditions.PortalType">
-    <property name="check_types">
-     <element>Feedback</element>
-    </property>
-   </condition>
-  </conditions>
-  <actions>
-   <action type="plone.actions.Move">
-    <property name="target_folder">/feedback</property>
-   </action>
-  </actions>
- </rule>
  <assignment name="rule-1" bubbles="True" enabled="True" location=""/>
  <assignment name="rule-2" bubbles="True" enabled="True" location=""/>
- <assignment name="rule-3" bubbles="True" enabled="True" location=""/>
- <assignment name="rule-4" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-3" bubbles="True" enabled="True" location=""/> 
  <assignment name="rule-5" bubbles="True" enabled="True" location=""/>
- <assignment name="rule-6" bubbles="True" enabled="True" location=""/>
- <assignment name="rule-7" bubbles="True" enabled="True" location=""/>
- <assignment name="rule-8" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-6" bubbles="True" enabled="True" location=""/> 
 </contentrules>
