@@ -70,7 +70,7 @@
       </object>
    </object>
 
-   <object name="object_buttons" meta_type="CMF Action Category">
+   <object name="object" meta_type="CMF Action Category">
       <object name="onlyoffice-edit" meta_type="CMF Action" i18n:domain="onlyoffice.plone">
          <property name="title" i18n:translate="">ONLYOFFICE Edit</property>
          <property name="description" i18n:translate=""></property>
@@ -80,13 +80,12 @@
          <property name="permissions">
             <element value="Modify portal conten"/>
          </property>
-         <property name="visible">True</property>
-         <property name="modal" type="text">{}</property>
+         <property name="visible">True</property> 
       </object>
    </object>
 
 
-   <object name="object_buttons" meta_type="CMF Action Category">
+   <object name="object" meta_type="CMF Action Category">
       <object name="onlyoffice-fill-form" meta_type="CMF Action" i18n:domain="onlyoffice.plone">
          <property name="title" i18n:translate="">Fill in form in ONLYOFFICE</property>
          <property name="description" i18n:translate=""></property>
@@ -96,12 +95,11 @@
          <property name="permissions">
             <element value="Modify portal conten"/>
          </property>
-         <property name="visible">True</property>
-         <property name="modal" type="text">{}</property>
+         <property name="visible">True</property> 
       </object>
    </object>
 
-   <object name="object_buttons" meta_type="CMF Action Category">
+   <object name="object" meta_type="CMF Action Category">
       <object name="onlyoffice-conversion-file" meta_type="CMF Action" i18n:domain="onlyoffice.plone">
          <property name="title" i18n:translate="">Conversion in ONLYOFFICE</property>
          <property name="description" i18n:translate=""></property>
@@ -111,8 +109,7 @@
          <property name="permissions">
             <element value="Modify portal conten"/>
          </property>
-         <property name="visible">True</property>
-         <property name="modal" type="text">{}</property>
+         <property name="visible">True</property> 
       </object>
    </object>
 
