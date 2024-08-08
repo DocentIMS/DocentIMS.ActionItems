@@ -105,28 +105,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
    </action>
   </actions>
  </rule>
- <rule name="rule-7" title="Move Notes" cascading="False"
-    description="Move Notes to the Notes Folder" enabled="True"
-    event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    stop-after="False">
-  <conditions>
-   <condition type="plone.conditions.PortalType">
-    <property name="check_types">
-     <element>Notes</element>
-    </property>
-   </condition>
-   <condition type="plone.conditions.PortalType">
-    <property name="check_types">
-     <element>Notes</element>
-    </property>
-   </condition>
-  </conditions>
-  <actions>
-   <action type="plone.actions.Move">
-    <property name="target_folder">/notes</property>
-   </action>
-  </actions>
- </rule>
+ 
  <rule name="rule-8" title="Move Feedback" cascading="False"
     description="Move feedback items to the Feedback Folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
