@@ -62,11 +62,11 @@ def post_install(context):
     #plone.api.user.create(email='cron@reverebeach.no', username='cron', password=None, roles=('Member',), properties=None)
     
     #Assign role to Group 'Project Manager'
-    #plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'Edit Controlpanel'])
-    #plone.api.group.grant_roles(groupname='can_parse', roles=['Project Manager'])
-    #plone.api.group.grant_roles(groupname='can_command_statements', roles=['Project Manager'])
-    #plone.api.group.grant_roles(groupname='can_document_manager', roles=['Project Manager'])
-    #plone.api.group.grant_roles(groupname='PrjTeam', roles=['Member', 'Reader'])
+    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'Edit Controlpanel'])
+    plone.api.group.grant_roles(groupname='can_parse', roles=['Project Manager'])
+    plone.api.group.grant_roles(groupname='can_command_statements', roles=['Project Manager'])
+    plone.api.group.grant_roles(groupname='can_document_manager', roles=['Project Manager'])
+    plone.api.group.grant_roles(groupname='PrjTeam', roles=['Member', 'Reader'])
     
     # permission = 'plone.app.controlpanel.UsersAndGroups'
     # roles_to_grant = ['Manager']  # or whatever role you want to grant
@@ -85,26 +85,74 @@ def post_install(context):
                                           {'row_field': 'duedate', 'row_title': 'Due date'}
                                          ])
     
-    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',
-    #                                     [  {'row_field': 'section_number', 'row_title': 'ID'}, 
-    #                                        {'row_field': 'title', 'row_title': 'Title'}, 
-    #                                        {'row_field': 'duedate', 'row_title': 'Due date'}, 
-    #                                        {'row_field': 'estimated_qc_time', 'row_title': 'Estimated QC'} 
-    #                                         ]
-    #                                    )
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',
+                                        [  {'row_field': 'section_number', 'row_title': 'ID'}, 
+                                           {'row_field': 'title', 'row_title': 'Title'}, 
+                                           {'row_field': 'duedate', 'row_title': 'Due date'}, 
+                                           {'row_field': 'estimated_qc_time', 'row_title': 'Estimated QC'} 
+                                            ]
+                                       )
     
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies',
-                                        [{'vocabulary_entry': 'Board Member'},
+                                        [{'vocabulary_entry': 'Project Manager'},
+                                            {'vocabulary_entry': 'Deputy Project Manager'},
+                                            {'vocabulary_entry': 'Project Team Member'},
+                                            {'vocabulary_entry': 'QC Manager'},
+                                            {'vocabulary_entry': 'Principal in Charge'},
+                                            {'vocabulary_entry': 'QA Manager'},
+                                            {'vocabulary_entry': 'Communications Lead'},
+                                            {'vocabulary_entry': 'Roadway Design Lead'},
+                                            {'vocabulary_entry': 'Roadway Designer'},
+                                            {'vocabulary_entry': 'Utilities Designer'},
+                                            {'vocabulary_entry': 'Transportation Planning Lead'},
+                                            {'vocabulary_entry': 'Traffic Operations'},
+                                            {'vocabulary_entry': 'Stormwater/ Hydraulics Lead'},
+                                            {'vocabulary_entry': 'Stormwater Designer'},
+                                            {'vocabulary_entry': 'Environmental Lead – Built Environment'},
+                                            {'vocabulary_entry': 'Environmental Lead – Natural Environment'},
+                                            {'vocabulary_entry': 'NEPA Documentation'},
+                                            {'vocabulary_entry': 'Permitting'},
+                                            {'vocabulary_entry': 'Historical/ Cultural Resources'},
+                                            {'vocabulary_entry': 'Eco Systems'},
+                                            {'vocabulary_entry': 'Structural Lead'},
+                                            {'vocabulary_entry': 'Structural Designer'},
+                                            {'vocabulary_entry': 'Geotechnical Lead'},
+                                            {'vocabulary_entry': 'Geotechnical Designer'},
+                                            {'vocabulary_entry': 'Travel Demand Forecaster'},
+                                            {'vocabulary_entry': 'Cost Estimator'},
+                                            {'vocabulary_entry': 'Graphics Lead'},
+                                            {'vocabulary_entry': 'Graphics Developer'},
+                                            {'vocabulary_entry': 'GIS'}, 
                                         ])
     
 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies3',
-                                        [   {'vocabulary_entry': 'Board member'},
+                                        [   {'vocabulary_entry': 'Prime'},
+                                            {'vocabulary_entry': 'Architect'},
+                                            {'vocabulary_entry': 'Geotechnical'},
+                                            {'vocabulary_entry': 'Outreach'},
                                         ])  
 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
-                                        [{'full_company_name': 'Meadows.'},
+                                        [{'full_company_name': 'Parametrix, Inc.',
+                                          'short_company_name': 'Parametrix' ,
+                                          'company_letter_kode': 'PMX',
+                                          'company_role': None,
+                                          'company_full_street_address': '719 2nd Avenue',
+                                          'company_other_address': 'Suite 200',
+                                          'company_city': 'Seattl',
+                                          'company_state': 'WA',
+                                          'company_zip': '98104'}, 
+                                         {'full_company_name': 'Docent IMS LLC',
+                                          'short_company_name': 'Docent' ,
+                                          'company_letter_kode': 'DOC',
+                                          'company_role': None,
+                                          'company_full_street_address': '141 Reservoir Ave',
+                                          'company_other_address': '',
+                                          'company_city': 'Revere',
+                                          'company_state': 'MA',
+                                          'company_zip': '02151'},
                                         ])
     
     
@@ -113,16 +161,16 @@ def post_install(context):
                                           
     # Create Folder to put everything in
     _create_content(portal)
-    #if not portal.get('frontpage', False):
-    #    fpage = plone.api.content.create(
-    #        type='FrontPage',
-    #        container=portal,
-    #        id='frontpage',
-    ##        title='Front page' 
-    #    )
-    #    plone.api.content.transition(obj=portal['frontpage'], transition='publish')
+    if not portal.get('frontpage', False):
+        fpage = plone.api.content.create(
+            type='FrontPage',
+            container=portal,
+            id='frontpage',
+            title='Front page' 
+        )
+        plone.api.content.transition(obj=portal['frontpage'], transition='publish')
         
-    #portal.default_page='frontpage'
+    portal.default_page='frontpage'
     
     #Restrict content types that can be added to folders
     action_folder = portal.get('action-items', False)
@@ -131,23 +179,23 @@ def post_install(context):
     behaviour.setImmediatelyAddableTypes(['action_items'])
     behaviour.setLocallyAllowedTypes(['action_items'])
 
-    #scope_analysis = portal.get('scope-analysis', False)
-    #behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
-    #behaviour.setConstrainTypesMode(constrains.ENABLED)
-    #behaviour.setImmediatelyAddableTypes(['sow_analysis'])
-    #behaviour.setLocallyAllowedTypes(['sow_analysis'])
+    scope_analysis = portal.get('scope-analysis', False)
+    behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['sow_analysis'])
+    behaviour.setLocallyAllowedTypes(['sow_analysis'])
     
-    #notes = portal.get('notes', False)
-    #behaviour = constrains.ISelectableConstrainTypes(notes)
-    #behaviour.setConstrainTypesMode(constrains.ENABLED)
-    #behaviour.setImmediatelyAddableTypes(['Notes',])
-    #behaviour.setLocallyAllowedTypes(['Notes'])
+    notes = portal.get('notes', False)
+    behaviour = constrains.ISelectableConstrainTypes(notes)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['Notes',])
+    behaviour.setLocallyAllowedTypes(['Notes'])
     
-    #feedback = portal.get('feedback', False)
-    #behaviour = constrains.ISelectableConstrainTypes(feedback)
-    #behaviour.setConstrainTypesMode(constrains.ENABLED)
-    ##behaviour.setImmediatelyAddableTypes(['Feedback'])
-    #behaviour.setLocallyAllowedTypes(['Feedback'])
+    feedback = portal.get('feedback', False)
+    behaviour = constrains.ISelectableConstrainTypes(feedback)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['Feedback'])
+    behaviour.setLocallyAllowedTypes(['Feedback'])
 
     meeting = portal.get('meeting', False)
     behaviour = constrains.ISelectableConstrainTypes(meeting)
@@ -161,14 +209,14 @@ def pre_install(context):
     portal = plone.api.portal.get()
     
     #create groups, wayne might need these for workflow
-    plone.api.group.create(groupname="Board", title="Board Member", description="Board Member Group")
-    #plone.api.group.create(groupname="PrjMgr", title="Project Manager", description="Person managing the project")
-    #plone.api.group.create(groupname="PrjTeam", title="Project Team", description="All Members of the Project")
-    #plone.api.group.create(groupname="PrjQcMgr", title="Project QC Manager", description="Person in charge of manage QC for the project")
+    plone.api.group.create(groupname="PrjCust", title="Project Customer", description="The customer for the project")
+    plone.api.group.create(groupname="PrjMgr", title="Project Manager", description="Person managing the project")
+    plone.api.group.create(groupname="PrjTeam", title="Project Team", description="All Members of the Project")
+    plone.api.group.create(groupname="PrjQcMgr", title="Project QC Manager", description="Person in charge of manage QC for the project")
     
-    #plone.api.group.create(groupname="can_parse", title="Can parse in Word", description="Can parse in Word")
-    #plone.api.group.create(groupname="can_command_statements", title="Can Command Statements in Word")
-    #plone.api.group.create(groupname="can_document_manager", title="Can document manager in Word")
+    plone.api.group.create(groupname="can_parse", title="Can parse in Word", description="Can parse in Word")
+    plone.api.group.create(groupname="can_command_statements", title="Can Command Statements in Word")
+    plone.api.group.create(groupname="can_document_manager", title="Can document manager in Word")
     
    
     #create content 
@@ -207,9 +255,9 @@ def _create_content(portal):
             
             
 
-        #folder = portal.get('Members', False)
-        #folder.title= 'Team'
-        #folder.reindexObject(idxs=['Title'])
+        folder = portal.get('Members', False)
+        folder.title= 'Team'
+        folder.reindexObject(idxs=['Title'])
             
             
             
@@ -244,30 +292,30 @@ def _create_content(portal):
                 
                 
                 
-        #if not portal.get('scope-analysis', False):
-        #    scopeanalysis = plone.api.content.create(
-        #        type='Folder',
-        #        container=portal,
-        #        id='scope-analysis',
-        #        title='Scope Breakdown',
-        #        default_page='sow-collection',
-        #        nextPreviousEnabled=1
+        if not portal.get('scope-analysis', False):
+            scopeanalysis = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='scope-analysis',
+                title='Scope Breakdown',
+                default_page='sow-collection',
+                nextPreviousEnabled=1
 
-        #    )
+            )
             
             # Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
             ## add collection inside here
 
-        #    scopeoverview = plone.api.content.create(
-        #        type='Collection',
-        #        container=scopeanalysis,
-        #        id='sow-collection',
-        ##        title='Scope Breakdown',
-        #        layout='sow-overview',
-        #        query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}],
-        #        limit=2000,
-        #        item_count=500,
-        #    )
+            scopeoverview = plone.api.content.create(
+                type='Collection',
+                container=scopeanalysis,
+                id='sow-collection',
+                title='Scope Breakdown',
+                layout='sow-overview',
+                query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}],
+                limit=2000,
+                item_count=500,
+            )
                 
         if not portal.get('meeting', False):
             meeting = plone.api.content.create(
@@ -299,60 +347,60 @@ def _create_content(portal):
                 title='Documents',
             )     
                 
-        # if not portal.get('notes', False):
-        #     notes = plone.api.content.create(
-        #         type='Folder',
-        #         container=portal,
-        #         id='notes',
-        #         title='Notes',
-        #         default_page='notes-collection',
-        #         nextPreviousEnabled=1
-        #     )
+        if not portal.get('notes', False):
+            notes = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='notes',
+                title='Notes',
+                default_page='notes-collection',
+                nextPreviousEnabled=1
+            )
             
-        #     ## add collection inside
+            ## add collection inside
             
             
 
-        #     if not notes.get('notes-collection', False):
-        #         notes_collection = plone.api.content.create(
-        #             type='Collection',
-        #             container=notes,
-        #             id='notes-collection',
-        #             title='Notes',
-        #             layout='tabular_view',
-        #             limit=2000,
-        #             item_count=500,
-        #             customViewFields = ['Title', 'CreationDate'],
-        #             query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
-        #         )
+            if not notes.get('notes-collection', False):
+                notes_collection = plone.api.content.create(
+                    type='Collection',
+                    container=notes,
+                    id='notes-collection',
+                    title='Notes',
+                    layout='tabular_view',
+                    limit=2000,
+                    item_count=500,
+                    customViewFields = ['Title', 'CreationDate'],
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
+                )
                             
                 
-        # if not portal.get('feedback', False):
-        #     feedback = plone.api.content.create(
-        #         type='Folder',
-        #         container=portal,
-        #         id='feedback',
-        #         title='Feedback',
-        #         default_page='feedback-collection',
-        #         nextPreviousEnabled=1
-        #     )
+        if not portal.get('feedback', False):
+            feedback = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='feedback',
+                title='Feedback',
+                default_page='feedback-collection',
+                nextPreviousEnabled=1
+            )
             
-        #     ## add collection inside
+            ## add collection inside
             
             
 
-        #     if not feedback.get('feedback-collection', False):
-        #         feedback_collection = plone.api.content.create(
-        #             type='Collection',
-        #             container=feedback,
-        #             id='feedback-collection',
-        #             title='Feedback',
-        #             layout='tabular_view',
-        #             limit=2000,
-        #             item_count=500,
-        #             customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
-        #             query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
-        #         )
+            if not feedback.get('feedback-collection', False):
+                feedback_collection = plone.api.content.create(
+                    type='Collection',
+                    container=feedback,
+                    id='feedback-collection',
+                    title='Feedback',
+                    layout='tabular_view',
+                    limit=2000,
+                    item_count=500,
+                    customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
+                )
             
                 
 
@@ -376,16 +424,16 @@ def _create_content(portal):
                 )
 
 
-            # wf_name = u'Action Item WF'
-            # if not action_folder.get(wf_name, False):
-            #     wf_image = plone.api.content.create(
-            #             type='Image',
-            #             container=action_folder,
-            #             id='action-item-wf',
-            #             title=wf_name,
+            wf_name = u'Action Item WF'
+            if not action_folder.get(wf_name, False):
+                wf_image = plone.api.content.create(
+                        type='Image',
+                        container=action_folder,
+                        id='action-item-wf',
+                        title=wf_name,
                         
-            #         )
-            #     wf_image.image = load_image()
+                    )
+                wf_image.image = load_image()
 
             
             if not action_folder.get('action-item-help', False):
@@ -444,39 +492,39 @@ def _create_content(portal):
 
                     )
 
-            # if not items.get('scope-help', False):
-            #     scope_folder = plone.api.content.create(
-            #         type='Folder',
-            #         container=items,
-            #         id='scope-help',
-            #         title='Scope Help',
-            #         exclude_from_nav=True,
-            #     )
+            if not items.get('scope-help', False):
+                scope_folder = plone.api.content.create(
+                    type='Folder',
+                    container=items,
+                    id='scope-help',
+                    title='Scope Help',
+                    exclude_from_nav=True,
+                )
 
 
-            # wf_name = u'Scope WF'
-            # if not scope_folder.get(wf_name, False):
-            #     wf_image = plone.api.content.create(
-            #             type='Image',
-            #             container=scope_folder,
-            #             id='scope-wf',
-            #             title=wf_name,
+            wf_name = u'Scope WF'
+            if not scope_folder.get(wf_name, False):
+                wf_image = plone.api.content.create(
+                        type='Image',
+                        container=scope_folder,
+                        id='scope-wf',
+                        title=wf_name,
                         
-            #         )
-            #     wf_image.image = load_image()
+                    )
+                wf_image.image = load_image()
 
             
 
 
-            # if not scope_folder.get('scope-help', False):
-            #     scope = plone.api.content.create(
-            #         type='Document',
-            #         Description=u'scope Help',
-            #         container=scope_folder,
-            #         id='scope-help',
-            #         title='Scope Help',
+            if not scope_folder.get('scope-help', False):
+                scope = plone.api.content.create(
+                    type='Document',
+                    Description=u'scope Help',
+                    container=scope_folder,
+                    id='scope-help',
+                    title='Scope Help',
 
-            #     )
+                )
 
             
                 
@@ -512,23 +560,23 @@ def _create_content(portal):
 
             )
 
-            # if not downloads.get('project_manager', False):
-            #     project_manager = plone.api.content.create(
-            #         type='Folder',
-            #         container=downloads,
-            #         id='project_manager',
-            #         title='Project Manager',
-            #         exclude_from_nav=True,
-            #     )
+            if not downloads.get('project_manager', False):
+                project_manager = plone.api.content.create(
+                    type='Folder',
+                    container=downloads,
+                    id='project_manager',
+                    title='Project Manager',
+                    exclude_from_nav=True,
+                )
 
-            # if not downloads.get('team_member', False):
-            #     downloads = plone.api.content.create(
-            #         type='Folder',
-            #         container=downloads,
-            #         id='team_member',
-            #         title='Team Member',
-            #         exclude_from_nav=True,
-            #     )
+            if not downloads.get('team_member', False):
+                downloads = plone.api.content.create(
+                    type='Folder',
+                    container=downloads,
+                    id='team_member',
+                    title='Team Member',
+                    exclude_from_nav=True,
+                )
 
 
                 

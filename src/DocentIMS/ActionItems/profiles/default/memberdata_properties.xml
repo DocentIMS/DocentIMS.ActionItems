@@ -16,8 +16,10 @@
  <property name="timezone" type="string"></property>
  <property name="your_team_role" type="string"></property>
  
+ <property name="office_phone_number" type="string"></property>
  <property name="cellphone_number" type="string"></property>
 
+ <property name="company" type="string"></property>
  <property name="description" type="text"></property>
  <property name="location" type="string"></property>
  <property name="returning" type="boolean">False</property>

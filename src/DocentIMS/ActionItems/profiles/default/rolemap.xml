@@ -25,9 +25,20 @@
       <role name="Owner"/>
       <role name="Contributor"/>
     </permission>
- 
 
-  
+    <permission name="DocentIMS.ActionItems: Add Feedback" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add Notes" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
 
     <permission name="DocentIMS.ActionItems: Add FrontPage" acquire="True">
       <role name="Manager"/>
@@ -36,7 +47,12 @@
       <role name="Contributor"/>
     </permission>
 
-   
+    <permission name="DocentIMS.ActionItems: Add Scope" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
 
     <permission name="DocentIMS.ActionItems: Add ActionItems" acquire="True">
       <role name="Manager"/>
@@ -57,7 +73,24 @@
       <role name="Site Administrator"/>
     </permission>
 
-  
+    <permission name="DocentIMS.ActionItems: Add Scope" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Archive Scope" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Delete Scope" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
 
   </permissions>
 </rolemap>
