@@ -70,7 +70,7 @@ class FrontPageView(BrowserView):
             #             return self.context.first_login_prjmgr.output
                 
             #Check if user is part of PrjTEam group
-            if group:
+            if group != None:
                 if current.getUserId() in group.getAllGroupMemberIds():
                     #User is team
                     current.setProperties(returning = True)
