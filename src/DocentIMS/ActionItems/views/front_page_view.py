@@ -43,7 +43,6 @@ class FrontPageView(BrowserView):
         #if current and current.getUserName() != 'Anonymous User':
         if not api.user.is_anonymous():
             alsoProvides(self.request, IDisableCSRFProtection)
-            import pdb; pdb.set_trace()
             current = api.user.get_current()
             returning_user =  current.getProperty('returning', False)
             group = api.group.get(groupname='PrjTeam') or None
