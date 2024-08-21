@@ -124,6 +124,11 @@
         <value>#123456</value>
       </record>
 
+      <record interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="planning_project">
+        <field type="plone.registry.field.Bool">
+        </field>
+        <value></value>
+      </record>
 
       <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings">
           <value key="project_title"></value>

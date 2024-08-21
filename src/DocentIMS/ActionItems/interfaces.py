@@ -290,7 +290,8 @@ class IDocentimsSettings(model.Schema):
             'project_contract_number',
             'project_document_naming_convention',
             'color1',
-            'color2'
+            'color2',
+            'planning_project'
             ],
         )
 
@@ -586,6 +587,12 @@ class IDocentimsSettings(model.Schema):
         # max_length=10,
         required=True,
         default="#ff0000"
+    )
+    
+    planning_project = schema.Bool(
+        title=u"Is Planning Project?",
+        required=False,
+        default=0,
     )
 
 alsoProvides(IDocentimsSettings, IMedialogControlpanelSettingsProvider)

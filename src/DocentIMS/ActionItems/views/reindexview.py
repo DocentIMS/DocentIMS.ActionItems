@@ -61,6 +61,8 @@ class ReindexView(BrowserView):
 
 
     def reindex(self):
+        import pdb; pdb.set_trace()
+        
         my_brains = self.context.portal_catalog(portal_type=['action_items', 'sow_analysis'])
         # red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
         
@@ -78,7 +80,7 @@ class ReindexView(BrowserView):
 
         self.email_charset = self.mail_settings.email_charset
         
-        for obj.urgenbrain in my_brains:
+        for brain in my_brains:
             obj = brain.getObject()
             #import pdb; pdb.set_trace()
             old_urgency = brain.urgency

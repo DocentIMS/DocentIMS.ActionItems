@@ -6,7 +6,7 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
-  <browser:viewlet
+  <!--browser:viewlet
      name="meeting-content-viewlet"
      for="DocentIMS.ActionItems.behaviors.IMeetingLocation"
      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
@@ -14,12 +14,23 @@
      class=".meeting_content_viewlet.MeetingContentViewlet"
      template="meeting-content-viewlet.pt"
      permission="zope2.View"
-     />
+     /-->
+
+  <!--browser:viewlet
+     name="css-viewlet"
+     for="*"
+     manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+     layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+     class=".css_viewlet.CSSViewlet"
+     template="css-viewlet.pt"
+     permission="zope2.View"
+     /-->
+
 
   <browser:viewlet
      name="css-viewlet"
      for="*"
-     manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+     manager="plone.app.layout.viewlets.interfaces.IGlobalStatusMessage"
      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
      class=".css_viewlet.CSSViewlet"
      template="css-viewlet.pt"
