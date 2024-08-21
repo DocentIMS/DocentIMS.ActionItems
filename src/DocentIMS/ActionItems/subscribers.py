@@ -29,17 +29,18 @@ def check_defaultpage(object, event):
     #Dont delete default page
     current = api.user.get_current()
     roles =  api.user.get_roles(user=current)
-    if 'Project Manager' in roles:
+    if 'Manager' in roles:
         #OK to delete
         pass
 
-    if hasattr(object, 'aq_parent') and object.aq_inner.aq_parent.id not in ['events', 'news']:
-        if hasattr(object.aq_inner.aq_parent, 'default_page') and  object.aq_inner.aq_parent.default_page  == object.id:
-            if not '@@fc-delete'  in object.REQUEST.getURL():
-                messages = IStatusMessage(object.REQUEST)
-                messages.addStatusMessage(u"You can not delete the default view of a folder.", type="error")
-            raise Redirect(object.absolute_url())
-    # pass
+    else:
+        if hasattr(object, 'aq_parent') and object.aq_inner.aq_parent.id not in ['events', 'news']:
+            if hasattr(object.aq_inner.aq_parent, 'default_page') and  object.aq_inner.aq_parent.default_page  == object.id:
+                if not '@@fc-delete'  in object.REQUEST.getURL():
+                    messages = IStatusMessage(object.REQUEST)
+                    messages.addStatusMessage(u"You can not delete the default view of a folder.", type="error")
+                raise Redirect(object.absolute_url())
+        # pass
  
 
         
