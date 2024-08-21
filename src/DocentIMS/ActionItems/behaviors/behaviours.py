@@ -43,10 +43,11 @@ class IMeetingContact( IEventContact):
 @provider(IFormFieldProvider)
 class IMeetingAttendees(IEventAttendees):
     """MEETING Attendees Schema."""
-    attendees = schema.List(
+    attendees = schema.Tuple(
         title= "Attendees",
         description= "List of attendees.",
         required=False,
+        missing_value=(),
         value_type=schema.Choice(
             title="Attendee",
             required=False,
