@@ -2,14 +2,8 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
+      i18n:domain="DocentIMS.ActionItems">
 
-  <body>
-        <metal:content-core fill-slot="content-core">
-           <h1>Reindexed ${view/reindex} item</h1>
-           <p>All done ${view/current_time}</p>
-
-        </metal:content-core>
-</body>
+<h1>Reindexed ${view/reindex} item</h1>
+<p>All done ${view/current_time}</p>
 </html>
