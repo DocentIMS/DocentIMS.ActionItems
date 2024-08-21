@@ -50,7 +50,7 @@ class IMeetingAttendees(IEventAttendees):
         value_type=schema.Choice(
             title="Attendee",
             required=False,
-            vocabulary=  'DocentIMS.ActionItems.FullnamesVocabulary'
+            vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary'
             
         )
     )
