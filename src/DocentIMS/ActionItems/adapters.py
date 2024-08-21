@@ -55,6 +55,26 @@ class AssignedMail(BaseSubstitution):
 
 
 @adapter(Interface)
+class Attendees(BaseSubstitution):
+    category = "All Content"
+    description = "Attendees"
+
+    def safe_call(self):
+      if hasattr(self.context, 'attendees'):
+        #return attendees users email
+        emaillist = []
+        attendees = self.context.attendees 
+        for attendee in self.context.attendees:
+            emaillist.append(api.user.get(userid=attendee).getProperty('email')) or None
+        return  ', '.join(emaillist)
+        
+        #return self.context.attendees 
+      
+      return 'wglover@docentims.com'
+
+
+
+@adapter(Interface)
 class AssignedFullName(BaseSubstitution):
     category = "All Content"
     description = "Assigned To Fullname"

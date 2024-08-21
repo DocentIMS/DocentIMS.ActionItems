@@ -109,7 +109,7 @@ def FullnamesVocabulary(context):
 
     if members:
         # Create a list of SimpleTerms for each full name
-        terms = [SimpleTerm(value=member.getProperty('fullname', ''), token=member.getId(), title=member.getProperty('fullname')) for member in members]
+        terms = [SimpleTerm(value=member.getId(), token=member.getId(), title=member.getProperty('fullname')) for member in members]
 
         return SimpleVocabulary(terms)
     

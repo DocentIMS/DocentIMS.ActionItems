@@ -217,5 +217,13 @@
         name="project_short_name"
     />
     
+
+    <adapter
+        factory=".adapters.Attendees"
+        provides="plone.stringinterp.interfaces.IStringSubstitution"
+        for="*"
+        name="attendees"
+    />
+    
  
 </configure>
