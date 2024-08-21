@@ -61,8 +61,6 @@ class ReindexView(BrowserView):
 
 
     def reindex(self):
-        import pdb; pdb.set_trace()
-        
         my_brains = self.context.portal_catalog(portal_type=['action_items', 'sow_analysis'])
         # red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
         
