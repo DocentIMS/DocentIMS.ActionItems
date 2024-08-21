@@ -38,18 +38,22 @@ class MyEmail(object):
         
         # companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
               
-            
         if user is not None: 
-            my_groups = user.getGroups()
-            members = []   
-            for mygroup in my_groups:
-                members.append(api.user.get_users(groupname=mygroup))
+            my_groups = user.getGroups() or None
+            members = []
+            if my_groups:   
+                ids = []
+                for mygroup in my_groups:
+                    groupmembers = api.user.get_users(groupname=mygroup)
+                    for groupmember in groupmembers:
+                        ids.append(groupmember.getId())
+                    members.append({mygroup: ids})
             result = {
                 'my_email': {
                     'id': user.getProperty('id'),
                     'email': user.getProperty('email'),
                     'fullname' : user.getProperty('fullname'),   
-                    'groups': user.my_groups,
+                    'groups': my_groups,
                     'members': members,
                     'roles' : user.getRoles(),
                     'last_name' : user.getProperty('fullname'), 
