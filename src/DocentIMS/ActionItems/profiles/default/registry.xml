@@ -117,6 +117,13 @@
         <value>#123456</value>
       </record>
 
+      <record interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"
+              field="color2">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value>#123456</value>
+      </record>
+
 
       <records interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings">
           <value key="project_title"></value>

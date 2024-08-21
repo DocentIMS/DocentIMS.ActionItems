@@ -49,6 +49,7 @@ class DocsInfo(object):
                     'office_phone_number': user.getProperty('office_phone_number'), 
                     'cellphone_number': user.getProperty('cellphone_number'), 
                     'company' : user.getProperty('company'), 
+                    'markingt_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
                     'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                     'very_short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.very_short_name'),
                     'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),

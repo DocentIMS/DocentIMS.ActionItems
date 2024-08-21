@@ -289,7 +289,8 @@ class IDocentimsSettings(model.Schema):
             'project_description',
             'project_contract_number',
             'project_document_naming_convention',
-            'color1'
+            'color1',
+            'color2'
             ],
         )
 
@@ -572,6 +573,15 @@ class IDocentimsSettings(model.Schema):
     widget(color1=ColorpickerFieldWidget)
     color1 = schema.TextLine(
         title=u"Project Color",
+        description=u"",
+        # max_length=10,
+        required=True,
+        default="#ff0000"
+    )
+    
+    widget(color2=ColorpickerFieldWidget)
+    color2 = schema.TextLine(
+        title=u"Markings Color",
         description=u"",
         # max_length=10,
         required=True,
