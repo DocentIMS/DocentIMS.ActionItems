@@ -25,9 +25,10 @@
               <hr class="hr" />
               <div class="alert alert-warning">
                 <p tal:condition="context/assigned_to|None">
-                  <b>Action Item Owner:</b>
+                  <b>Action Item Owner:</b>  
                   <span tal:define="owner view/get_owner|None" >
-                    ${owner/last_name|None}, ${owner/first_name|None} <tal:condition tal:condition="owner/company|None">–  ${owner/company|None}</tal:condition>
+                    ${python: owner['last_name']}, ${python: owner['first_name']} 
+                    <tal:condition tal:condition="python: owner['company']">–  ${python: owner['company']}</tal:condition>
                   </span>
                 </p>
 

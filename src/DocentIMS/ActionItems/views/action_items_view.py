@@ -169,7 +169,6 @@ class ActionItemsView(BrowserView):
         member = api.user.get(userid=self.context.assigned_to)
         if member:
             company_id =  member.getProperty('company')
-            #import pdb; pdb.set_trace()
             #if company_id:
             #    company = api.content.get(UID=company_id).Title()
             return  {'id': member.getProperty('id'),
@@ -177,7 +176,7 @@ class ActionItemsView(BrowserView):
                   'first_name': member.getProperty('first_name'),
                   'company': company_id,
                  }
-        return None
+        return 'None'
     
     def get_duedate(self):
         return self.context.revised_due_date or self.context.initial_due_date or None
