@@ -88,6 +88,10 @@ class ActionItemsAddForm(DefaultAddForm):
             self.fields['full_explanation'].field.default = exp_text
             
         for group in self.groups:
+            if group.__name__ == 'categorization':
+                    #group.mode = 'omitted'
+                    group.label = None
+                    
             if group.__name__ == 'connections':
                 if from_uid:
                     camefrom = api.content.get(UID=from_uid)
@@ -102,8 +106,7 @@ class ActionItemsAddForm(DefaultAddForm):
         
 
         for group in self.groups:
-            if group.__name__ == 'close_out' or group.__name__ == 'intermediate_actioins':
-                #group.mode = 'omitted'
+            if group.__name__ in ['close_out', 'intermediate_actioins', 'categorization']:
                 group.label = None
                 
                 
@@ -150,6 +153,7 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
             self.widgets["placeholder"].disabled = "disabled"
             
+            
             # #import pdb; pdb.set_trace()
             # for group in self.groups:
             #     if group.__name__ == 'all_dates':
@@ -190,6 +194,10 @@ class ActionItemsEditForm(DefaultEditForm):
                     group.label = None
                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+                
+                if group.__name__ == 'categorization':
+                    #group.mode = 'omitted'
+                    group.label = None
 
                     
 
