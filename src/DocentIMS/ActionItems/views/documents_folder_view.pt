@@ -23,7 +23,7 @@
             
               <div tal:repeat="item python: view.batch(contentype)">
                   <!-- <tal:obj tal:define="obj item/getObject"> -->
-                        <h5><a href="item/getURL">${item/Title}</a></h5>
+                        <h5><a href="${item/getURL}">${item/Title}</a></h5>
                         <p>${item/Description}</p>
                   <!-- </tal:obj> -->
               </div>
