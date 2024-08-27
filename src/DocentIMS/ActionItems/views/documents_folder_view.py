@@ -31,7 +31,7 @@ class DocumentsFolderView(BrowserView):
         folder = self.context  # Assuming the script is created inside the folder
         portal_types = [item.portal_type for item in folder.objectValues()]
 
-        return set(portal_types)
+        return sorted(set(portal_types))
         
     def batch(self, contentype):
         batch = self.context.restrictedTraverse('@@contentlisting')(sort_on='sortable_title',  portal_type=contentype, batch=True, b_size=400)
