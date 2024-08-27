@@ -103,4 +103,8 @@ class FrontPageView(BrowserView):
     @property
     def project_description(self):
         return api.portal.get_registry_record('project_description', interface=IDocentimsSettings)
+    
+    @property
+    def is_anon(self):
+        return api.user.is_anonymous()
             

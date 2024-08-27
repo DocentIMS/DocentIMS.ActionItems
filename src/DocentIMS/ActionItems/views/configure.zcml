@@ -62,6 +62,17 @@
    />
 
 
+  <browser:page
+   name="documents-folder-view"
+   for="plone.app.contenttypes.interfaces.IFolder"
+   class=".documents_folder_view.DocumentsFolderView"
+   template="documents_folder_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+
+
 
   <browser:page
    name="sow-overview"
