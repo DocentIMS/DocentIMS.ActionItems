@@ -14,34 +14,22 @@
         <div class="white-background">
           <!-- first tab -->
 
-          <div class="xpat-autotoc xautotabs"
+          <div class="pat-autotoc autotabs"
             data-pat-autotoc="section:fieldset;levels:legend;">
  
             <!-- Loop through each portal type in the grouped_items dictionary -->
-            <fieldset tal:repeat="group view/batch">
+            <fieldset  tal:repeat="contentype view/get_types">
+              <legend>${contentype}</legend> 
             
-              <!-- Display the portal type as a title -->
-              <h2>Type: ${group/Title}</h2>
-              
-
-               <!-- <div tal:define="xxx python:group" tal:repeat="gp group/items">
-                  ${python: gp}
-                  ${python: gp['tittel']}
-            
-               </div> -->
-
-              <!-- Loop through each item of the current portal type -->
-              <ul>
-                <tal:block tal:repeat="item group/items">
-                  <li>
-                    ${python: item[0]['tittel']}
-         
-                  </li>
-                </tal:block>
-              </ul>
-
+              <div tal:repeat="item python: view.batch(contentype)">
+                  <!-- <tal:obj tal:define="obj item/getObject"> -->
+                        <h5><a href="item/getURL">${item/Title}</a></h5>
+                        <p>${item/Description}</p>
+                  <!-- </tal:obj> -->
+              </div>
+              <div metal:use-macro="here/batch_macros/macros/navigation" />
             </fieldset>
-        </div>
+         </div>
     </div>
  
    
