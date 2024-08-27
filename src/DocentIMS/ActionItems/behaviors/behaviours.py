@@ -6,6 +6,10 @@ from plone.app.z3cform.widget import AjaxSelectFieldWidget
 from zope import schema
 from zope.interface import provider
 from plone.autoform.interfaces import IFormFieldProvider
+# from Products.CMFPlone.utils import safe_hasattr
+# from zope.component import adapter
+# from zope.interface import Interface
+# from zope.interface import implementer
 
 @provider(IFormFieldProvider)
 class IMeetingLocation(IEventLocation):
@@ -38,9 +42,11 @@ class IMeetingContact( IEventContact):
     # def contact_phone:
     #     return users phone  
     
-
+# class IMeetingAttendeesMarker(Interface):
+#     pass    
 
 @provider(IFormFieldProvider)
+# @adapter(IMeetingAttendeesMarker)
 class IMeetingAttendees(IEventAttendees):
     """MEETING Attendees Schema."""
     attendees = schema.Tuple(
@@ -56,3 +62,21 @@ class IMeetingAttendees(IEventAttendees):
         )
     )
     directives.widget("attendees",  AjaxSelectFieldWidget, vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary',  klass="event_attendees")
+
+
+# @implementer(IEventAttendees)
+# @adapter(IMeetingAttendeesMarker)
+# class  MeetingAttendees(object):
+#     def __init__(self, context):
+#         self.context = context
+
+#     @property
+#     def attendees(self):
+#         import pdb; pdb.set_trace()
+#         if safe_hasattr(self.context, 'attendees'):
+#             return 'self.context.attendees'
+#         return None
+
+#     @attendees.setter
+#     def attendees(self, value):
+#         self.context.attendees = 'value'
