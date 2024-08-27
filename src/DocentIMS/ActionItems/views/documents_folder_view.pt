@@ -1,18 +1,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="DocentIMS.ActionItems"
+  metal:use-macro="context/main_template/macros/master">
+  <body>
+    <metal:content-core fill-slot="content-core">
+      <metal:block define-macro="content-core">
 
-      <h2 i18n:translate="">Sample View</h2>
-      <!--<div tal:replace="view/my_custom_view_method" />-->
-      <!--<div tal:replace="context/my_custom_field" />-->
+        <!-- <h1 class="priority-${context/priority|None}">${context/Title}</h1> -->
+        <!-- <p class="lead"> ${context/Description|None}</p> -->
 
+        <div class="white-background">
+          <!-- first tab -->
+
+          <div class="xpat-autotoc xautotabs"
+            data-pat-autotoc="section:fieldset;levels:legend;">
+ 
+            <!-- Loop through each portal type in the grouped_items dictionary -->
+            <fieldset tal:repeat="group view/batch">
+            
+              <!-- Display the portal type as a title -->
+              <h2>Type: ${group/Title}</h2>
+              
+
+               <!-- <div tal:define="xxx python:group" tal:repeat="gp group/items">
+                  ${python: gp}
+                  ${python: gp['tittel']}
+            
+               </div> -->
+
+              <!-- Loop through each item of the current portal type -->
+              <ul>
+                <tal:block tal:repeat="item group/items">
+                  <li>
+                    ${python: item[0]['tittel']}
+         
+                  </li>
+                </tal:block>
+              </ul>
+
+            </fieldset>
+        </div>
+    </div>
+ 
+   
   </metal:block>
-  </metal:content-core>
+</metal:content-core>
 </body>
 </html>
+
+
+
+ 
