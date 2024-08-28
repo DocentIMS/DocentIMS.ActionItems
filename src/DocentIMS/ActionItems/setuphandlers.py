@@ -216,9 +216,21 @@ def pre_install(context):
     
     plone.api.group.create(groupname="can_parse", title="Can parse in Word", description="Can parse in Word")
     plone.api.group.create(groupname="can_command_statements", title="Can Command Statements in Word")
-    plone.api.group.create(groupname="can_document_manager", title="Can document manager in Word")
+    plone.api.group.create(groupname="can_document_manager", title="Can Document Manager in Word")
     
+    plone.api.group.create(groupname="docentMtgAgenda", title="Can Add Meeting Agenda")
+    plone.api.group.create(groupname="docentLetter", title="Can Add Letter")
+    
+    plone.api.group.create(groupname="docentMtgMin", title="Can Add Meeting Minutes")
+    plone.api.group.create(groupname="docentMemo", title="Can Add Memo")
+    plone.api.group.create(groupname="can_add_planning_document", title="Can Add Planning Document")
+    plone.api.group.create(groupname="can_parse", title="Can Parse in Word")
+    plone.api.group.create(groupname="can_add_project_scope", title="Can Add Scope")
+    plone.api.group.create(groupname="can_command_statements", title="Can Command Statements")
+    plone.api.group.create(groupname="can_add_meeting_agenda", title="Users Who Can Add Meeting Agenda")
+    plone.api.group.create(groupname="can_add_meeting_minutes", title="Users Who Can Add Meeting minutes")
    
+ 
     #create content 
     _create_content(portal)
 

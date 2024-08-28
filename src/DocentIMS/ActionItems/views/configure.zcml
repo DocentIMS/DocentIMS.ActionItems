@@ -63,7 +63,7 @@
 
 
   <browser:page
-   name="documents-folder-view"
+   name="folder-tabbed-view"
    for="plone.app.contenttypes.interfaces.IFolder"
    class=".documents_folder_view.DocumentsFolderView"
    template="documents_folder_view.pt"

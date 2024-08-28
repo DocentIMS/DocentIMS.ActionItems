@@ -14,6 +14,13 @@
       <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
     </field> 
 
+   <field name="submitted_by" type="zope.schema.Choice">
+      <description>Who submitted this feedback.</description>
+      <title>Feedback Submitted By</title>
+      <vocabulary>plone.app.vocabularies.Users</vocabulary>
+      <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
+    </field>  
+
    <field name="feedback_submitted_by" type="zope.schema.TextLine">
       <description>Who submitted this feedback.</description>
       <title>Feedback Submitted By</title>
