@@ -58,7 +58,7 @@ class ReindexView(BrowserView):
     
     def current_time(self):
         current_time = now.strftime("%H:%M:%S")
-        return  'current_time'
+        return  current_time
     
     # def set_oldurgency(self, urgency)
 
