@@ -32,6 +32,7 @@ from zope.interface import implementer, Interface
 from plone import api
 from datetime import datetime
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
+from plone.protect.utils import safeWrite
 
 
 now = datetime.now()
@@ -58,6 +59,8 @@ class ReindexView(BrowserView):
     def current_time(self):
         current_time = now.strftime("%H:%M:%S")
         return  current_time
+    
+    # def set_oldurgency(self, urgency)
 
 
     def reindex(self):
@@ -83,13 +86,16 @@ class ReindexView(BrowserView):
             #import pdb; pdb.set_trace()
             old_urgency = brain.urgency
             
+            
             #import pdb; pdb.set_trace;
             #if not hasattr(obj, 'urgency'):
             #    import pdb; pdb.set_trace;
             #    obj.urgency = old_urgency
             
             if hasattr(obj, 'urgency'):
+                
                 old_urgency = obj.urgency
+                
                 
                 daysleft = brain.daysleft
                 obj.reindexObject(idxs=["daysleft", "urgency"])
@@ -146,10 +152,10 @@ class ReindexView(BrowserView):
                             mailhost.send(outer.as_string())
                             
 
-                 
                 
+            safeWrite(obj, brain.urgency)
+            #obj.urgency = brain.urgency
             
-        
         return len(my_brains)
         #return ViewPageTemplateFile('reindex_view.pt')
 
