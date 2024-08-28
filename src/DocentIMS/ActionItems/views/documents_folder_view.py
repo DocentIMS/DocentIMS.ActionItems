@@ -5,6 +5,7 @@ from Products.Five.browser import BrowserView
 from zope.interface import Interface
 from Products.CMFCore.utils import getToolByName
 from plone import api
+from plone.base.batch import Batch
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -14,27 +15,30 @@ class IDocumentsFolderView(Interface):
 
 
 class DocumentsFolderView(BrowserView):
-    # If you want to define a template here, please remove the template from
-    # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('documents_folder_view.pt')
 
+    b_size = 25
+    
     def __call__(self):
-        # Implement your own actions:
         return self.index()
     
-    
-    # def batch(self):
-    #     batch = self.context.restrictedTraverse('@@contentlisting')(sort_on='sortable_title', batch=True, b_size=400);
-    #     return batch
-    
     def get_types(self):
-        folder = self.context  # Assuming the script is created inside the folder
-        portal_types = [item.portal_type for item in folder.objectValues()]
+        view = self.context.restrictedTraverse("@@folderListing")
+        ptypes = set()
+        for it in view(batch=False):
+            ptypes.add(it.portal_type)
+        return sorted(ptypes)
 
-        return sorted(set(portal_types))
+    def batch(self, ptype):
+        b_start_str = f"b_start_{ptype}"
+        b_start = self.request.get(b_start_str, 0)
+        listing = self.context.restrictedTraverse("@@folderListing")
+        items = listing(batch=False, portal_type=ptype)
+        return Batch(
+            items,
+            self.b_size,
+            b_start,
+            b_start_str=b_start_str,
+        )
+            
         
-    def batch(self, contentype):
-        batch = self.context.restrictedTraverse('@@contentlisting')(sort_on='sortable_title',  portal_type=contentype, batch=True, b_size=400)
-        return batch
- 
- 
