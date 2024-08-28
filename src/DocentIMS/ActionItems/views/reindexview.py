@@ -154,7 +154,7 @@ class ReindexView(BrowserView):
 
                 
             safeWrite(obj, brain.urgency)
-            #obj.urgency = brain.urgency
+            obj.urgency = brain.urgency
             
         return len(my_brains)
         #return ViewPageTemplateFile('reindex_view.pt')
