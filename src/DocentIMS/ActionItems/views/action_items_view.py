@@ -159,21 +159,33 @@ class ActionItemsView(BrowserView):
             NoneType = type(None)
             if not isinstance(company_obj, NoneType):
                 company = company_obj.Title()
+        last_name  = member.getProperty('last_name')
+        first_name = member.getProperty('first_name')
+        
+        if last_name== '' and first_name == '':
+            last_name = member.getProperty('full_name')
         return  {'id': member.getProperty('id'),
-                  'last_name': member.getProperty('last_name'),
-                  'first_name': member.getProperty('first_name'),
+                  'last_name':  last_name,
+                  'first_name':  first_name,
                   'company': company,
                  }
 
     def get_owner(self):
         member = api.user.get(userid=self.context.assigned_to)
         if member:
-            company_id =  member.getProperty('company')
+            company = ''
+            company_id = member.getProperty('company')
+            last_name  = member.getProperty('last_name')
+            first_name = member.getProperty('first_name')
+        
+            if last_name== '' and first_name == '':
+                last_name = member.getProperty('full_name')
+                company_id =  member.getProperty('company')
             #if company_id:
             #    company = api.content.get(UID=company_id).Title()
             return  {'id': member.getProperty('id'),
-                  'last_name': member.getProperty('last_name'),
-                  'first_name': member.getProperty('first_name'),
+                  'last_name': last_name,
+                  'first_name': first_name,
                   'company': company_id,
                  }
         return 'None'

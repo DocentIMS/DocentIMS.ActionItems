@@ -1,80 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="docentMtgAgenda_WF" title="DocentIMS Meeting Agenda Workflow" description="Unique WF created for Workflows" state_variable="review_state" initial_state="private" manager_bypass="False">
- <instance-creation-conditions>
-   <guard>
-    <guard-role>PrjMgr</guard-role>
-    <guard-group>PrjTeam</guard-group>
-   </guard>
- </instance-creation-conditions>
- <group>Administrators</group>
+<dc-workflow workflow_id="docentMtgAgenda_WF" title="docentMtgAgenda_WF" description="THIS USED ON FOR NOW UNTIL GET IT CHANGED IN THE PRODUCT TO USE NEW WF" state_variable="review_state" initial_state="visible" manager_bypass="False">
  <permission>Access contents information</permission>
- <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="Draft" title="">
-  <exit-transition transition_id="trn_final-review"/>
- </state>
- <state state_id="Final Review" title="Final Review">
-  <exit-transition transition_id="trn_publish"/>
- </state>
- <state state_id="Published" title="Published">
-  <exit-transition transition_id="trn_re_draft"/>
- </state>
  <state state_id="private" title="Private">
   <description>Can only be seen and edited by the owner.</description>
-  <exit-transition transition_id="trn_final-review"/>
-  <exit-transition transition_id="trn_private_draft"/>
+  <exit-transition transition_id="publish"/>
+  <exit-transition transition_id="show"/>
   <permission-map name="Access contents information" acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
    <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
    <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects" acquired="False">
-   <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <transition transition_id="trn_final-review" title="Final Review" new_state="Final Review" trigger="USER" before_script="" after_script="">
-  <description>Move Draft or private to Final review</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=final review" category="workflow" icon="">Final Review</action>
+ <state state_id="published" title="Published">
+  <description>Visible to everyone, not editable by the owner.</description>
+  <exit-transition transition_id="hide"/>
+  <exit-transition transition_id="retract"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="visible" title="Public draft">
+  <description>Visible to everyone, but not approved by the reviewers.</description>
+  <exit-transition transition_id="hide"/>
+  <exit-transition transition_id="publish"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="hide" title="Make private" new_state="private" trigger="USER" before_script="" after_script="">
+  <description>Making an item private means that it will not be visible to anyone but the owner and the site administrator.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=hide" category="workflow" icon="">Make private</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="trn_private_draft" title="Draft" new_state="Draft" trigger="USER" before_script="" after_script="">
-  <description>Move Private to Draft (Non-final review)</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=draft" category="workflow" icon="">Draft</action>
-  <guard>
-  </guard>
- </transition>
- <transition transition_id="trn_publish" title="Publish" new_state="Published" trigger="USER" before_script="" after_script="">
+ <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="">
+  <description>Publishing the item makes it visible to other users.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=publish" category="workflow" icon="">Publish</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="trn_re_draft" title="Re-Draft" new_state="Draft" trigger="USER" before_script="" after_script="">
-  <description>Only PMgr can move back to Draft state</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=redraft" category="workflow" icon="">Re-Draft</action>
+ <transition transition_id="retract" title="Retract" new_state="visible" trigger="USER" before_script="" after_script="">
+  <description>If you submitted the item by mistake or want to perform additional edits, this will take it back.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
   </guard>
  </transition>
- <worklist worklist_id="reviewer_queue" title="">
-  <description>Reviewer tasks</description>
-  <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>
+ <transition transition_id="show" title="Promote to public draft" new_state="visible" trigger="USER" before_script="" after_script="">
+  <description>Promotes your folder to public draft state.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=show" category="workflow" icon="">Promote to Draft</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Modify portal content</guard-permission>
   </guard>
-  <match name="review_state" values="pending"/>
- </worklist>
+ </transition>
  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
   <description>Previous transition</description>
   <default>
@@ -85,7 +102,7 @@
   </guard>
  </variable>
  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
-  <description>The ID of the user who performed the previous transition</description>
+  <description>The ID of the user who performed the last transition</description>
   <default>
    
    <expression>user/getId</expression>

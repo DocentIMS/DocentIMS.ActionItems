@@ -8,16 +8,17 @@
   i18n:domain="DocentIMS.ActionItems" 
   xmlns="http://namespaces.plone.org/supermodel/schema">
    <schema>
-    <field name="feedback_submitted_by" type="zope.schema.Choice">
-      <description>Who submitted this feedback.</description>
-      <title>Feedback Submitted By</title>
+    <field name="contact_person" type="zope.schema.Choice">
+      <title>Contact Person</title>
       <vocabulary>plone.app.vocabularies.Users</vocabulary>
       <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
-    </field>    
-   <!-- <field name="feedback_submitted_by" type="zope.schema.TextLine">
+    </field> 
+
+   <field name="feedback_submitted_by" type="zope.schema.TextLine">
       <description>Who submitted this feedback.</description>
       <title>Feedback Submitted By</title>
-    </field> -->
+      <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
+    </field>
     <field name="feedback_text" type="plone.app.textfield.RichText">
       <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
       <title>Feedback Text</title>

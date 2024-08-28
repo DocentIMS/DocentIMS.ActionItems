@@ -8,68 +8,70 @@
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="active" title="Active">
-  <description>The assigned owner has accepted the Action Item .</description>
-  <exit-transition transition_id="archive"/>
-  <exit-transition transition_id="complete"/>
-  <exit-transition transition_id="return_toReview"/>
- </state>
- <state state_id="archived" title="Archived">
-  <description>Action Items that are not and will not be completed.
-The "Archive' takes the place of "Trashcan'</description>
-  <exit-transition transition_id="return_toClosed"/>
- </state>
- <state state_id="closed" title="Closed">
-  <description>Action Item accepted as complete by PM.</description>
-  <exit-transition transition_id="archive"/>
-  <exit-transition transition_id="return_toCompleted"/>
- </state>
- <state state_id="completed" title="Completed">
-  <exit-transition transition_id="close"/>
-  <exit-transition transition_id="return_toActive"/>
- </state>
- <state state_id="private" title="Private">
-  <description>An Action Item you've created but have Not submitted.  Only the creator and the system administrator can see this Action Item
-When ready, use "Submit" to send to the PM for review.</description>
-  <exit-transition transition_id="archive"/>
+ <state state_id="1.Private" title="Private">
+  <description>Initial state - only visible to the Action Item creator</description>
   <exit-transition transition_id="submit"/>
  </state>
- <state state_id="review" title="Pending Review">
-  <description>The AI is awaiting review by assigned owner to determine if it is their responsibility.</description>
-  <exit-transition transition_id="accept"/>
-  <exit-transition transition_id="archive"/>
-  <exit-transition transition_id="retract"/>
+ <state state_id="2.Submitted" title="Submitted">
+  <description>Action Items submitted to PM for assignment.</description>
+  <exit-transition transition_id="assign"/>
  </state>
- <transition transition_id="accept" title="Accept" new_state="active" trigger="USER" before_script="" after_script="">
+ <state state_id="3.Assigned" title="Assigned">
+  <description>PM has assigned action item to team member.</description>
+  <exit-transition transition_id="accept"/>
+ </state>
+ <state state_id="4.Accepted" title="Accepted">
+  <description>The person assigned the action item has accepted responsibility.</description>
+  <exit-transition transition_id="complete"/>
+ </state>
+ <state state_id="5.Completed" title="Completed">
+  <description>Person assigned task submits as completed to PM to review.</description>
+  <exit-transition transition_id="close"/>
+ </state>
+ <state state_id="6.Closed" title="Closed">
+  <description>PM has accepted Action Item as complete and closed the AI</description>
+  <exit-transition transition_id="archive"/>
+ </state>
+ <state state_id="7.Archived" title="">
+ </state>
+ <transition transition_id="accept" title="Accept" new_state="4.Accepted" trigger="USER" before_script="" after_script="">
   <description>User accepts responsibility for the Action Item</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=accept" category="workflow" icon="">Accept</action>
   <guard>
   </guard>
  </transition>
- <transition transition_id="archive" title="Archive" new_state="archived" trigger="USER" before_script="" after_script="">
-  <description>Move Action Item to Archive State.  This is equivalent to deleting - the item will no longer be visible; however, it may be see by the PM and may be recovered.</description>
+ <transition transition_id="archive" title="" new_state="" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=archive" category="workflow" icon="">Archive</action>
+  <guard>
+   <guard-role>PrjMgr</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="assign" title="assign" new_state="3.Assigned" trigger="USER" before_script="" after_script="">
+  <description>designate person to complete action item</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=assign" category="workflow" icon="">Assign</action>
   <guard>
    <guard-group>PrjMgr</guard-group>
   </guard>
  </transition>
- <transition transition_id="close" title="Close" new_state="closed" trigger="USER" before_script="" after_script="">
+ <transition transition_id="close" title="Close" new_state="6.Closed" trigger="USER" before_script="" after_script="">
   <description>when AI is complete the PM closes</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
   <guard>
+   <guard-role>PrjMgr</guard-role>
   </guard>
  </transition>
- <transition transition_id="complete" title="Complete" new_state="completed" trigger="USER" before_script="" after_script="">
+ <transition transition_id="complete" title="Complete" new_state="5.Completed" trigger="USER" before_script="" after_script="">
   <description>Work on the Action Item is complete and PM moves it to Completed</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=complete" category="workflow" icon="">Complete</action>
   <guard>
    <guard-group>PrjMgr</guard-group>
   </guard>
  </transition>
- <transition transition_id="retract" title="Retract" new_state="private" trigger="USER" before_script="" after_script="">
+ <transition transition_id="retract" title="Retract" new_state="" trigger="USER" before_script="" after_script="">
   <description>Return AI to Creator</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
   <guard>
+   <guard-group>PrjTeam</guard-group>
   </guard>
  </transition>
  <transition transition_id="return_toActive" title="Return to Active" new_state="active" trigger="USER" before_script="" after_script="">
@@ -102,7 +104,7 @@ When ready, use "Submit" to send to the PM for review.</description>
   <guard>
   </guard>
  </transition>
- <transition transition_id="submit" title="Submit for Review" new_state="review" trigger="USER" before_script="" after_script="">
+ <transition transition_id="submit" title="Submit for Review" new_state="2.Submitted" trigger="USER" before_script="" after_script="">
   <description>Submits Action Item to the Owner initially identified by AI creator.  This sends to the proposed owner who may accept or reject.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" icon="">Submit for Acceptance</action>
   <guard>

@@ -3,6 +3,7 @@ from plone.autoform import directives
 
 from plone.app.event.dx.behaviors import IEventLocation, IEventAttendees, IEventContact
 from plone.app.z3cform.widget import AjaxSelectFieldWidget
+from plone.app.z3cform.widget import AjaxSelectWidget
 from zope import schema
 from zope.interface import provider
 from plone.autoform.interfaces import IFormFieldProvider
@@ -62,6 +63,13 @@ class IMeetingAttendees(IEventAttendees):
         )
     )
     directives.widget("attendees",  AjaxSelectFieldWidget, vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary',  klass="event_attendees")
+    
+    
+    # teste = schema.TextLine(
+    #     title="this is a tes",
+    #     required=False,
+    # )
+    # directives.widget("teste",  AjaxSelectWidget, allow_multiple=False, vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary', )
 
 
 # @implementer(IEventAttendees)

@@ -19,10 +19,10 @@
   <type portal_type="Meeting">
    <field name="any" difftype="Compound Diff for Dexterity types"/>
   </type>
-  <type portal_type="docent_meeting_agenda">
+  <type portal_type="Meeting Minutes">
    <field name="any" difftype="Compound Diff for Dexterity types"/>
   </type>
-  <type portal_type="docent_meeting_minutes">
+  <type portal_type="Meeting Agenda">
    <field name="any" difftype="Compound Diff for Dexterity types"/>
   </type>
  </difftypes>

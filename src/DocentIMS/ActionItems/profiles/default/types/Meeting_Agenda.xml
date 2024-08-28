@@ -5,16 +5,12 @@
     i18n:domain="DocentIMS.ActionItems">
 
   <!-- Basic properties -->
-  <property
-      i18n:translate=""
-      name="title">Meeting Agenda</property>
-  <property
-      i18n:translate=""
-      name="description"></property>
-
+ <property name="title" i18n:translate="">Docent Meeting Agenda</property>
+ <property name="description"
+    i18n:translate="">Meeting Agenda content type to link with Docent in Word.  A Word template is on the server.  When user uses the Docent toolbar to create a new document based on selection, Word, via API, gets the Word template for the doc type, creates new instance of doc type in Word.  users works in Word, when done, uploads Word file.  in addition, there are defined items uploaded via API so they can be shown in table.</property>
   <property name="allow_discussion">False</property>
   <property name="factory">Meeting Agenda</property>
-  <property name="icon_expr"></property>
+  <property name="icon_expr">string:contenttype/meeting</property>
   <property name="link_target"></property>
 
   <!-- Hierarchy control -->
@@ -40,6 +36,7 @@
     <element value="plone.publication"/>
     <element value="plone.categorization"/>
     <element value="plone.locking" />
+    <element value="DocentIMS.ActionItems.only_office_file"/>
     <!--<element value="plone.leadimage"/>-->
     <!--<element value="plone.relateditems"/>-->
     <!--<element value="plone.richtext"/>-->

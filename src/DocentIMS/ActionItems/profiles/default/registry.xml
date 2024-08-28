@@ -20,7 +20,7 @@
     </value>
   </record>
 
-     <record name="plone.icon.contenttype/notes">
+    <record name="plone.icon.contenttype/notes">
       <field type="plone.registry.field.TextLine">
         <title>Notes</title>
       </field>
@@ -31,6 +31,32 @@
         <field type="plone.registry.field.TextLine">
         </field>
         <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies_neg.svg</value>
+    </record>
+
+     <record name="plone.icon.contenttype/Notes">
+      <field type="plone.registry.field.TextLine">
+        <title>Notes</title>
+      </field>
+      <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies.svg</value>
+    </record>
+ 
+    <record name="plone.icon.Notes">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies.svg</value>
+    </record>
+
+    <record name="plone.icon.contenttype/Note">
+      <field type="plone.registry.field.TextLine">
+        <title>Notes</title>
+      </field>
+      <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies_neg.svg</value>
+    </record>
+ 
+    <record name="plone.icon.Note">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value key="resource">++plone++DocentIMS.ActionItems/icons/stickies.svg</value>
     </record>
 
     <record name="plone.icon.contenttype/feedback">
@@ -63,7 +89,7 @@
 
      <record name="plone.icon.contenttype/action_items">
       <field type="plone.registry.field.TextLine">
-        <title>Scope</title>
+        <title>Action item</title>
       </field>
       <value key="resource">++plone++DocentIMS.ActionItems/icons/action_icon.svg</value>
     </record>
@@ -75,6 +101,49 @@
         <value>++plone++DocentIMS.ActionItems/icons/action_icon_neg.svg</value>
       </record>
 
+      <record name="plone.icon.contenttype/meeting">
+        <field type="plone.registry.field.TextLine">
+          <title>Meeting</title>
+        </field>
+        <value>++plone++bootstrap-icons/calendar-event.svg</value>
+      </record>
+
+      <record name="plone.icon.meeting">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value>++plone++bootstrap-icons/calendar-event.svg</value>
+      </record>
+
+      <!-- this is icon for folder listing for meeting minutes-->
+      <!-- be sure to set current color in svg and add icon expression to content type in types/yourtype.xml -->
+      <record name="plone.icon.contenttype/meeting-minutes">
+        <field type="plone.registry.field.TextLine">
+          <title>Meeting Minutes</title>
+        </field>
+        <value>++plone++DocentIMS.ActionItems/icons/action_icon.svg</value>
+      </record>
+
+   
+     <record name="plone.icon.contenttype/meeting-agenda">
+      <field type="plone.registry.field.TextLine">
+        <title>Meeting Agenda</title>
+      </field>
+      <value key="resource">++plone++DocentIMS.ActionItems/icons/action_icon.svg</value>
+     </record>
+    
+
+      <record name="plone.icon.Meeting_Agenda">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value>++plone++DocentIMS.ActionItems/icons/action_icon_neg.svg</value>
+      </record>
+
+      <record name="plone.icon.docent_meeting_agenda">
+        <field type="plone.registry.field.TextLine">
+        </field>
+        <value>++plone++DocentIMS.ActionItems/icons/action_icon_neg.svg</value>
+      </record>
+ 
       
       <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_companies"
               interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings"

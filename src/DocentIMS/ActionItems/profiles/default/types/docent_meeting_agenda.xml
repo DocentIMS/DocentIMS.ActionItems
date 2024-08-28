@@ -4,7 +4,7 @@
  <property name="title" i18n:translate="">Docent Meeting Agenda</property>
  <property name="description"
     i18n:translate="">Meeting Agenda content type to link with Docent in Word.  A Word template is on the server.  When user uses the Docent toolbar to create a new document based on selection, Word, via API, gets the Word template for the doc type, creates new instance of doc type in Word.  users works in Word, when done, uploads Word file.  in addition, there are defined items uploaded via API so they can be shown in table.</property>
- <property name="icon_expr">string:file-earmark-text</property>
+ <property name="icon_expr"></property>
  <property name="factory">docent_meeting_agenda</property>
  <property
     name="add_view_expr">string:${folder_url}/++add++docent_meeting_agenda</property>
@@ -32,7 +32,7 @@
   &lt;schema&gt;
   &lt;field name=&quot;file&quot; type=&quot;plone.namedfile.field.NamedBlobFile&quot;&gt;
   &lt;description&gt;The Word file for the document created with Docent local&lt;/description&gt;
-  &lt;required&gt;False&lt;/required&gt;
+  &lt;required&gt;True&lt;/required&gt;
   &lt;title&gt;Word File&lt;/title&gt;
   &lt;/field&gt;
   &lt;/schema&gt;
