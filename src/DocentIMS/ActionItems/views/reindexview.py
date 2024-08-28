@@ -33,6 +33,12 @@ from plone import api
 from datetime import datetime
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 from plone.protect.utils import safeWrite
+# from plone.protect.utils import addTokenToUrl
+# from plone.protect.interfaces import IDisableCSRFProtection
+# from zope.interface import alsoProvides
+
+
+
 
 
 now = datetime.now()
@@ -51,10 +57,10 @@ class ReindexView(BrowserView):
     # the configure.zcml registration of this view.
     #template = ViewPageTemplateFile('reindex_view.pt')
 
-    def __call__(self):
-        # Implement your own actions:
-        #return self.reindex()
-        return self.index()
+    # def __call__(self):
+    #     # Implement your own actions:
+    #     #return self.reindex()
+    #     return self.index()
     
     def current_time(self):
         current_time = now.strftime("%H:%M:%S")
@@ -114,35 +120,22 @@ class ReindexView(BrowserView):
                         
                         if self.recipients:
                             # print('sending mail')
-                        
-                            # melding = """Hello {creators} This is a friendly reminder that:{tittel} is due in XX days.  
-                            #  If you believe that you will get this {tittel} done in time, no action is required.However, 
-                            # if you believe that you may miss the due date, please contact the project manager.<hr/> Sincerely,{manager}
-                            # Project Manager{project}<short name of project>""".format(creators = brain.assigned_to, tittel = brain.Title, manager='manager nam', project='project name')
-                            #${assigned} 
                             
-                            melding = """<p>Hello ${assignedfullname}<p> <p>This is a friendly reminder that:  <a href="${absolute_url}">${title}</a>  is due in <b>${daysleft} days</b>.   </p>
+                            melding = """<p>Hello ${assignedfullname}<p> <p>This is a friendly reminder that:  <a href="${absolute_url}">${title}</a>  is due in <b>${daysleft} work-days</b>.   </p>
                             <p>If you believe that you will get <a href="${absolute_url}">${title}</a> done in time, no action is required.</p>
                             <p>However,  
                             if you believe that you may miss the due date, please contact the project manager.</p><hr/> 
-                            <p>Sincerely, <b>xxx</b></p>
+                            <p>Sincerely, <b>-</b></p>
                             <p>Project Manager<br/> ${project_short_name}</p>
                             </p>""" 
-                            
-                            
                             # prepend interpolated message with \n to avoid interpretation
                             # of first line as header
                             message = f"\n{interpolator(melding)!s}"
-                            # print(message)
                             outer = MIMEMultipart('alternative')
                             outer['To'] = self.recipients
                             outer['From'] = self.mail_settings.email_from_address
-                            #api.portal.get_registry_record('plone.email_from_address')
-                            #outer['Subject'] =  interpolator(self.element.subject)
                             outer['Subject'] =  "Item due"
                             outer.epilogue = ''
-                            # Attach text part
-                            #text_part = MIMEText('body_plain', 'plain', _charset='UTF-8')
                             html_part = MIMEMultipart('related')
                             html_text = MIMEText(message, 'html', _charset='UTF-8')
                             html_part.attach(html_text)
@@ -153,10 +146,10 @@ class ReindexView(BrowserView):
                             
 
                 
-            safeWrite(obj, brain.urgency)
-            obj.urgency = brain.urgency
+            safeWrite(obj, self.request)
+            obj.urgency  = brain.urgency
+            obj.daysleft = brain.daysleft
+     
             
         return len(my_brains)
-        #return ViewPageTemplateFile('reindex_view.pt')
-
-
+        

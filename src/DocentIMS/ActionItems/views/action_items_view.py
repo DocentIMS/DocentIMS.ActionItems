@@ -179,8 +179,8 @@ class ActionItemsView(BrowserView):
             first_name = member.getProperty('first_name')
         
             if last_name== '' and first_name == '':
-                last_name = member.getProperty('full_name')
-                company_id =  member.getProperty('company')
+                last_name = member.getProperty('full_name', '?')
+                company_id =  member.getProperty('company', '')
             #if company_id:
             #    company = api.content.get(UID=company_id).Title()
             return  {'id': member.getProperty('id'),
