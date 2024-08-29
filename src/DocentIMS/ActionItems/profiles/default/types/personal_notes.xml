@@ -2,7 +2,7 @@
 <object name="personal_notes" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Personal Notes</property>
- <property name="icon_expr">string:file-earmark-text</property>
+ <property name="icon_expr">string:contenttype/personal_notes</property>
  <property name="factory">personal_notes</property>
  <property
     name="add_view_expr">string:${folder_url}/++add++personal_notes</property>
