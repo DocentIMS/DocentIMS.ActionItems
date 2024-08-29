@@ -17,18 +17,19 @@
                 <!-- Loop through each portal type in the grouped_items dictionary -->
                 <fieldset  tal:repeat="contentype view/get_types">
                   <legend>${contentype}</legend> 
-                  <tal:icon tal:replace="structure python:icons.tag(item_mime_type_icon)" />
+                   
                   <div tal:define="batch python:view.batch(contentype)">
                 
                   <div tal:repeat="item batch">
+                      
                       <h5 class="${item/ContentTypeClass}">
-                      <img src="${item/MimeTypeIcon}" alt="icon" title="icon" /> 
-                      <a href="${item/getURL}">
-                        ${item/Title}
-                      </a>
+                        <tal:icon tal:replace="structure python:icons.tag(contentype)" /> <a href="${item/getURL}">
+                          ${item/Title}
+                        </a>
                       </h5>
                       <p>${item/CroppedDescription}</p>
                       <p tal:condition="python: item.portal_type in ['File']">
+                        <img src="${item/MimeTypeIcon}" alt="icon" title="icon" /> 
                         ${item/getSize}
                       </p>
 

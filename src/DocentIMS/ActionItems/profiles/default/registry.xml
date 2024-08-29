@@ -120,28 +120,39 @@
         <field type="plone.registry.field.TextLine">
           <title>Meeting Minutes</title>
         </field>
-        <value>++plone++DocentIMS.ActionItems/icons/action_icon.svg</value>
+        <value>++plone++DocentIMS.ActionItems/icons/calendar2-check.svg</value>
       </record>
 
-   
-     <record name="plone.icon.contenttype/meeting-agenda">
+
+      <!-- Add icon -->
+
+      <record name="plone.icon.contenttype/FrontPage">
+        <field type="plone.registry.field.TextLine">
+          <title>Front Page</title>
+        </field>
+        <value>++plone++DocentIMS.ActionItems/icons/house.svg</value>
+      </record>
+
+
+      <!-- folder listing icon -->
+     <record name="plone.icon.contenttype/frontpage">
       <field type="plone.registry.field.TextLine">
-        <title>Meeting Agenda</title>
+        <title>Front Page</title>
       </field>
-      <value key="resource">++plone++DocentIMS.ActionItems/icons/action_icon.svg</value>
+      <value>++plone++DocentIMS.ActionItems/icons/house.svg</value>
      </record>
     
 
       <record name="plone.icon.Meeting_Agenda">
         <field type="plone.registry.field.TextLine">
         </field>
-        <value>++plone++DocentIMS.ActionItems/icons/action_icon_neg.svg</value>
+        <value>++plone++DocentIMS.ActionItems/icons/journal-bookmark.svg</value>
       </record>
 
       <record name="plone.icon.docent_meeting_agenda">
         <field type="plone.registry.field.TextLine">
         </field>
-        <value>++plone++DocentIMS.ActionItems/icons/action_icon_neg.svg</value>
+        <value>++plone++DocentIMS.ActionItems/icons/journal-bookmark.svg</value>
       </record>
  
       
