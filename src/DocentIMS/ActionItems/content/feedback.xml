@@ -14,18 +14,18 @@
       <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
     </field> 
 
-   <field name="submitted_by" type="zope.schema.Choice">
+   <field name="feedback_submitted_by" type="zope.schema.Choice">
       <description>Who submitted this feedback.</description>
       <title>Feedback Submitted By</title>
       <vocabulary>plone.app.vocabularies.Users</vocabulary>
       <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
     </field>  
 
-   <field name="feedback_submitted_by" type="zope.schema.TextLine">
+   <!-- <field name="feedback_submitted_by" type="zope.schema.TextLine">
       <description>Who submitted this feedback.</description>
       <title>Feedback Submitted By</title>
       <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
-    </field>
+    </field> -->
     <field name="feedback_text" type="plone.app.textfield.RichText">
       <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
       <title>Feedback Text</title>
