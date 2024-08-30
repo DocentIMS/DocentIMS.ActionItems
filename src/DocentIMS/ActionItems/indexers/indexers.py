@@ -23,7 +23,6 @@ def dummy(obj):
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def assigned_toIndexer(obj):
     """Index real name instead of username for assigned_to"""
-    #import pdb; pdb.set_trace()
     username = obj.assigned_to
     if username:
         return api.user.get(userid=username).getProperty('fullname')

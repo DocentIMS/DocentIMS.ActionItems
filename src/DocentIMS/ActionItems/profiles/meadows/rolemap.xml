@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <rolemap>
     <roles>
-      <role name="Project Manager"/>
+      <role name="Board President"/>
 
     </roles>
         
     <permissions>
     <permission name="Plone Site Setup: Users and Groups" acquire="True">
-      <role name="Project Manager"/>
+      <role name="Board President"/>
       <role name="Edit Controlpanel"/>
     </permission>
 
     <permission name="DocentIMS.ActionItems: Edit Controlpanel" acquire="True">
-      <role name="Project Manager"/>
+      <role name="Board President"/>
     </permission>
 
     <permission name="plone.restapi: Access Plone user information" acquire="True">
@@ -69,7 +69,7 @@
     </permission>
 
     <permission name="DocentIMS.ActionItems: Delete ActionItems" acquire="True">
-      <role name="Project Manager"/>
+      <role name="Board President"/>
       <role name="Site Administrator"/>
     </permission>
 

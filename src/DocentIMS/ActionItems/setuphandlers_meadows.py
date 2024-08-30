@@ -185,7 +185,7 @@ def pre_install(context):
     
     #create groups, wayne might need these for workflow
     plone.api.group.create(groupname="PrjCust", title="Project Customer", description="The customer for the project")
-    plone.api.group.create(groupname="PrjMgr", title="Project Manager", description="Person managing the project")
+    plone.api.group.create(groupname="PrjMgr", title="Board President", description="Board President")
     plone.api.group.create(groupname="PrjTeam", title="Project Team", description="All Members of the Project")
     plone.api.group.create(groupname="PrjQcMgr", title="Project QC Manager", description="Person in charge of manage QC for the project")
     
@@ -523,12 +523,12 @@ def _create_content(portal):
 
             )
 
-            if not downloads.get('project_manager', False):
+            if not downloads.get('board_president', False):
                 project_manager = plone.api.content.create(
                     type='Folder',
                     container=downloads,
-                    id='project_manager',
-                    title='Project Manager',
+                    id='board_president',
+                    title='Board President',
                     exclude_from_nav=True,
                 )
 

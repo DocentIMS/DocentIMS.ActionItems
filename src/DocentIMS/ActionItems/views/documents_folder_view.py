@@ -23,7 +23,7 @@ class DocumentsFolderView(BrowserView):
         return self.index()
     
     def get_types(self):
-        view = self.context.restrictedTraverse("@@folderListing")
+        view = self.context.restrictedTraverse("@@contentlisting")
         ptypes = set()
         for it in view(batch=False):
             ptypes.add(it.portal_type)
@@ -32,7 +32,7 @@ class DocumentsFolderView(BrowserView):
     def batch(self, ptype):
         b_start_str = f"b_start_{ptype}"
         b_start = self.request.get(b_start_str, 0)
-        listing = self.context.restrictedTraverse("@@folderListing")
+        listing = self.context.restrictedTraverse("@@contentlisting")
         items = listing(batch=False, portal_type=ptype)
         return Batch(
             items,
