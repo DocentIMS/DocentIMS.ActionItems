@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<rolemap>
+    <roles>
+      <role name="Project Manager"/>
+
+    </roles>
+        
+    <permissions>
+    <permission name="Plone Site Setup: Users and Groups" acquire="True">
+      <role name="Project Manager"/>
+      <role name="Edit Controlpanel"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Edit Controlpanel" acquire="True">
+      <role name="Project Manager"/>
+    </permission>
+
+    <permission name="plone.restapi: Access Plone user information" acquire="True">
+ 
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add Meeting" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add Feedback" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add Notes" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add FrontPage" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add Scope" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add ActionItems" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Archive ActionItems" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Delete ActionItems" acquire="True">
+      <role name="Project Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Add Scope" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Archive Scope" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="DocentIMS.ActionItems: Delete Scope" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+
+  </permissions>
+</rolemap>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object>
+ <difftypes>
+  <type portal_type="action_items">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
+  <type portal_type="sow_analysis">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
+  <type portal_type="FrontPage">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
+   <type portal_type="personal_notes">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
+  <type portal_type="Notes">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
+  <type portal_type="Meeting">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
+  <type portal_type="Meeting Minutes">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
+  <type portal_type="Meeting Agenda">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
+ </difftypes>
+</object>

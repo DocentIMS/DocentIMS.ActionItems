@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+ 
+  <!-- Remove default portlets here  -->
+  <assignment name="navigation" category="context" key="/"
+    manager="plone.leftcolumn" type="portlets.Classic" visible="False"  remove="True" />
+
+  <assignment name="news" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.News" visible="False"  remove="True" />
+
+  <assignment name="events" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.Events" visible="False"  remove="True" />
+  
+  <!-- Extra portlets here  -->
+
+  <portlet
+    addview="DocentIMS.ActionItems.portlets.AddActionItemPortlet"
+    title="Add Action Item portlet"
+    description="A portlet which can render weather of the given place."
+    i18n:attributes="title title_add_action_item_portlet;
+                     description description_add_action_item_portlet">
+
+    <!-- This will enable the portlet for right column,
+    left column and the footer too.
+    -->
+    <for interface="plone.app.portlets.interfaces.IColumn" />
+
+    <!--
+    This will enable the portlet in the dashboard.
+    -->
+    <!--<for interface="plone.app.portlets.interfaces.IDashboard" />-->
+
+  </portlet>
+
+ 
+  <!-- Assign a collection filter portlet -->
+  <assignment category="context"
+              key="/action-items/action-items-collection"
+              manager="plone.rightcolumn"
+              name="collectionfilterone"
+              type="collective.collectionfilter.portlets.CollectionFilter">
+      <property name="header">Tags</property>
+      <property name="group_by">Subject</property>
+      <property name="show_count">True</property>
+  </assignment>
+
+
+  <!-- Assign another collection filter portlet -->
+  <assignment category="context"
+              key="/action-items/action-items-collection"
+              manager="plone.rightcolumn"
+              name="collectionfilterone"
+              type="collective.collectionfilter.portlets.CollectionFilter">
+      <property name="header">Responsible</property>
+      <property name="group_by">Subject</property>
+      <property name="show_count">True</property>
+  </assignment>
+
+ 
+   <!-- Assign a collection filter portlet -->
+  <!-- <assignment category="context"
+          key="/action-items/action-items-collection"
+          manager="plone.rightcolumn"
+          name="collectionfilterp"
+          type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">Priority</property>
+    <property name="group_by">prioritystring</property>
+    <property name="show_count">True</property>
+ </assignment> -->
+ 
+
+  
+   <!-- Assign a collection filter portlet -->
+  <!-- <assignment category="context"
+          key="/action-items/action-items-collection"
+          manager="plone.rightcolumn"
+          name="collectionfilterthree"
+          type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">Urgency</property>
+    <property name="group_by">urgency</property>
+    <property name="show_count">True</property>
+ </assignment> -->
+  
+</portlets>

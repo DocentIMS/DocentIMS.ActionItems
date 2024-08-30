@@ -62,6 +62,7 @@ class MyEmail(object):
                     'office_phone_number': user.getProperty('office_phone_number'), 
                     'cellphone_number': user.getProperty('cellphone_number'), 
                     'company' : user.getProperty('company'), 
+                    'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
                     
                 },
             }

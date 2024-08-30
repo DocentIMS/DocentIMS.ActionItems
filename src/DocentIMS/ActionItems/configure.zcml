@@ -98,6 +98,15 @@
       />
 
 
+  <genericsetup:registerProfile
+      name="meadows"
+      title="DocentIMS.ActionItems"
+      directory="profiles/meadows"
+      description="Installs the Meadowa´ActionItems."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      pre_handler=".setuphandlers_meadows.pre_install"
+      post_handler=".setuphandlers_meadows.post_install"
+      />
 
   
   <genericsetup:registerProfile

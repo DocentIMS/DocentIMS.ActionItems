@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="action_items" meta_type="Dexterity FTI" i18n:domain="plone"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">Action Items</property>
+ <property name="description" i18n:translate="">action items</property>
+ <property name="icon_expr">string:action_items</property>
+ <property name="factory">action_items</property>
+ <property
+    name="add_view_expr">string:${portal_url}/action-items/++add++action_items</property>
+ <property name="link_target"></property>
+ <property name="immediate_view">view</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="personal_notes"/>
+ </property>
+ <property name="allow_discussion">True</property>
+ <property name="default_view">action-items-view</property>
+ <property name="view_methods">
+  <element value="view"/>
+  <element value="action-items-view"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <property name="add_permission">cmf.AddPortalContent</property>
+ <property name="klass">plone.dexterity.content.Container</property>
+ <property name="behaviors">
+  <element value="plone.versioning"/>
+  <element value="plone.allowdiscussion"/>
+  <element value="plone.relateditems"/>
+  
+  <element value="plone.locking"/>
+  <element value="plone.basic"/>
+ </property>
+ <property name="schema"></property>
+ <property
+    name="model_source">&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;utf8&#x27;?&gt;
+  &lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
+    &lt;schema&gt;
+      &lt;field name=&quot;full_explanation&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+        &lt;description&gt;Give all the details, including any references, documents, etc. that might be helpful.&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Full Explanation&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;priority&quot; type=&quot;zope.schema.Choice&quot;&gt;
+        &lt;description&gt;Establish a priority level 1-5 with &quot;1&quot; being the most critical&lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Priority&lt;/title&gt;
+        &lt;vocabulary&gt;DocentIMS.ActionItems.PriorityVocabulary&lt;/vocabulary&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
+        &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
+        &lt;required&gt;True&lt;/required&gt;
+        &lt;title&gt;Assigned to&lt;/title&gt;
+        &lt;vocabulary&gt;plone.app.vocabularies.Users&lt;/vocabulary&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;prioritystring&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;PriorityString&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;related_members&quot; type=&quot;zope.schema.Set&quot;&gt;
+       &lt;form:widget type=&quot;plone.app.z3cform.widget.AjaxSelectFieldWidget&quot;/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Identify other team members related to this action item&lt;/title&gt;
+        &lt;description&gt; &lt;/description&gt;
+        &lt;value_type type=&quot;zope.schema.Choice&quot;&gt;
+          &lt;vocabulary&gt;plone.app.vocabularies.Users&lt;/vocabulary&gt;
+        &lt;/value_type&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;related_item&quot; type=&quot;z3c.relationfield.schema.RelationChoice&quot;&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Related Item&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name=&quot;placeholder&quot; type=&quot;zope.schema.TextLine&quot;&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;placeholder&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;fieldset name=&quot;all_dates&quot; label=&quot;Dates&quot; description=&quot;Due Dates. The Initial Due Date Stays Unchanged. The Revised Due Date May be Changed&quot;&gt;
+        &lt;field name=&quot;initial_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Initial Due Date&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;revised_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Revised Due Date&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;duedate&quot; type=&quot;zope.schema.Date&quot; form:omitted=&quot;true&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Due Date&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;notes&quot; label=&quot;PM Notes&quot; description=&quot; &quot;&gt;
+        &lt;field name=&quot;notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt; &quot;Project Manager's Notes to Person Assigned This Action Item&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;With minor exceptions, all action items are driven by Scope requirements.&quot;&gt;
+        &lt;field name=&quot;is_this_action_out_of_the_scope_of_work_&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;default&gt;False&lt;/default&gt;
+          &lt;description&gt;If this Action Item is Not directly driven by the Scope, check the box and explain in the box that opens..&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Is This Action Out of the Scope of Work?&lt;/title&gt;
+          &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;explanation_for_out_of_scope_ai&quot; type=&quot;zope.schema.Text&quot;&gt;
+          &lt;description&gt;Explain why this Action Item is needed if it isn&#x27;t driven by Scope&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Explanation for Out of Scope AI&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;related_sow_section&quot; type=&quot;zope.schema.Choice&quot;&gt;
+          &lt;description&gt;Which section in the Scope drives this action item?&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Related Scope Section&lt;/title&gt;
+          &lt;vocabulary&gt;DocentIMS.ActionItems.ShowActionItemsVocabulary&lt;/vocabulary&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;intermediate_actioins&quot; label=&quot;Intermediate Actions&quot; description=&quot;Describe all the actions taken including intermediate work if it is a lengthy or complicated issue.&quot;&gt;
+        &lt;field name=&quot;actions_taken&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;description&gt;Explain the intermediate steps as a way to keep people updated on your actiions&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Actions Taken&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;close_out&quot; label=&quot;Close Out&quot; description=&quot;Explain in detail what you did to complete this action item.&quot;&gt;
+        &lt;field name=&quot;is_this_item_closed&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;default&gt;False&lt;/default&gt;
+          &lt;description&gt;have you finished&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Is this item closed&lt;/title&gt;
+          &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;actions_to_close_out&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;description&gt;Explain what you did to close this out.&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Actions to Close out&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;private_notes&quot; label=&quot;Your notes&quot;&gt;
+        &lt;field name=&quot;private_notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+          &lt;description/&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Private Notes - Only Visible to yourself.&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+    &lt;/schema&gt;
+  &lt;/model&gt;</property>
+ <property name="model_file"></property>
+ <property name="schema_policy">dexterity</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="@@edit"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="string:toolbar-action/view" link_target=""
+    url_expr="string:${object_url}" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="string:toolbar-action/edit" link_target=""
+    url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+</object>

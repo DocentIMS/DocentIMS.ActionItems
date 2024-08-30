@@ -55,7 +55,8 @@ class DocsInfo(object):
                     'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
                     'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number'),   
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
-                    'companies' :  companies  
+                    'companies' :  companies,
+                    'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
                 },
             }
             

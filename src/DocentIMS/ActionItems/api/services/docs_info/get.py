@@ -70,15 +70,16 @@ class DocsInfo(object):
         if user is not None:    
             result = {
                 'docs_info': {
+                    'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
                     'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
+                    'marking_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
                     'very_short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.very_short_name', None),
                     'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
                     'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number'),   
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'companies' :  companies,
                     'last_document_save_locations' : download_date,  
-                    'wf_states_list' : get_content_types_and_workflows(),
-
+                    'wf_states_list' : get_content_types_and_workflows(),                 
                 },
             }
             
