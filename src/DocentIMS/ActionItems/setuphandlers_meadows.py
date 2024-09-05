@@ -110,11 +110,11 @@ def post_install(context):
                                             {'vocabulary_entry': 'Outreach'},
                                         ])  
     
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
-                                        [{'vokabularies3': 'Board Meeting'},
-                                         {'vokabularies3': 'Executive Meeting'}, 
-                                         {'vokabularies3': 'Community Meeting'}, 
-                                        ])
+    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
+    #                                     [{'vokabularies3': 'Board Meeting'},
+    #                                      {'vokabularies3': 'Executive Meeting'}, 
+    #                                      {'vokabularies3': 'Community Meeting'}, 
+    #                                     ])
 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
                                         [{'full_company_name': 'Parametrix, Inc.',
