@@ -80,11 +80,7 @@ def post_install(context):
     #TODO: Maybe make a check 
     
     
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies3',
-                                        [{'vocabulary_entry': 'Board Meeting'},
-                                         {'vocabulary_entry': 'Executive Meeting'}, 
-                                         {'vocabulary_entry': 'Community Meeting'}, 
-                                        ])
+    
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
                                          [{'row_field': 'actionno', 'row_title': 'ID'}, 
@@ -116,6 +112,12 @@ def post_install(context):
                                             {'vocabulary_entry': 'Geotechnical'},
                                             {'vocabulary_entry': 'Outreach'},
                                         ])  
+    
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies5',
+                                        [{'vocabulary_entry': 'Board Meeting'},
+                                         {'vocabulary_entry': 'Executive Meeting'}, 
+                                         {'vocabulary_entry': 'Community Meeting'}, 
+                                        ])
 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
                                         [{'full_company_name': 'Parametrix, Inc.',
