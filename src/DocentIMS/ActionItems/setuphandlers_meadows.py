@@ -110,7 +110,7 @@ def post_install(context):
                                             {'vocabulary_entry': 'Outreach'},
                                         ])  
     
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies5',
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
                                         [{'vocabulary_entry': 'Board Meeting'},
                                          {'vocabulary_entry': 'Executive Meeting'}, 
                                          {'vocabulary_entry': 'Community Meeting'}, 
