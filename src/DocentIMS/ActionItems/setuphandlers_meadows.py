@@ -111,9 +111,9 @@ def post_install(context):
                                         ])  
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
-                                        [{'vocabulary_entry': 'Board Meeting'},
-                                         {'vocabulary_entry': 'Executive Meeting'}, 
-                                         {'vocabulary_entry': 'Community Meeting'}, 
+                                        [{'vokabularies3': 'Board Meeting'},
+                                         {'vokabularies3': 'Executive Meeting'}, 
+                                         {'vokabularies3': 'Community Meeting'}, 
                                         ])
 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
