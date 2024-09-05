@@ -79,8 +79,6 @@ def post_install(context):
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
      
-    
-    
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
                                          [{'row_field': 'actionno', 'row_title': 'ID'}, 
                                           {'row_field': 'title', 'row_title': 'Title'},
@@ -112,8 +110,11 @@ def post_install(context):
                                             {'vocabulary_entry': 'Outreach'},
                                         ])  
     
-    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
-    #                                     ['Board Meeting', 'Executive Meeting', 'Community Meeting', ])
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies5',
+                                        [{'vocabulary_entry': 'Board Meeting'},
+                                         {'vocabulary_entry': 'Executive Meeting'}, 
+                                         {'vocabulary_entry': 'Community Meeting'}, 
+                                        ])
 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
                                         [{'full_company_name': 'Parametrix, Inc.',
