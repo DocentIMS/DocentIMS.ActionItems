@@ -113,10 +113,7 @@ def post_install(context):
                                         ])  
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
-                                        [{'vocabulary_entry': 'Board Meeting'},
-                                         {'vocabulary_entry': 'Executive Meeting'}, 
-                                         {'vocabulary_entry': 'Community Meeting'}, 
-                                        ])
+                                        ['Board Meeting', 'Executive Meeting', 'Community Meeting', ])
 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
                                         [{'full_company_name': 'Parametrix, Inc.',

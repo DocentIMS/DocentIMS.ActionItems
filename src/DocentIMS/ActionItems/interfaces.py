@@ -527,6 +527,8 @@ class IDocentimsSettings(model.Schema):
         value_type=DictRow(schema=IVocabulari5),
         required=True,
     )
+    
+    
 
     # widget(vokabularies2=DataGridFieldFactory)
     # vokabularies2 = schema.List(
