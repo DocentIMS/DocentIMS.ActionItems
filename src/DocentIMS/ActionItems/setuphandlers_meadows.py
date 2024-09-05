@@ -78,6 +78,14 @@ def post_install(context):
     
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
+    
+    
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies3',
+                                        [{'vocabulary_entry': 'Board Meeting'},
+                                         {'vocabulary_entry': 'Executive Meeting'}, 
+                                         {'vocabulary_entry': 'Community Meeting'}, 
+                                        ])
+    
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
                                          [{'row_field': 'actionno', 'row_title': 'ID'}, 
                                           {'row_field': 'title', 'row_title': 'Title'},
@@ -156,7 +164,7 @@ def post_install(context):
 
     # scope_analysis = portal.get('scope-analysis', False)
     # behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
-    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    # behaviour.setConstrainTypesMode(constrains.ENABLED)
     # behaviour.setImmediatelyAddableTypes(['sow_analysis'])
     # behaviour.setLocallyAllowedTypes(['sow_analysis'])
     
@@ -455,39 +463,39 @@ def _create_content(portal):
 
                     )
 
-            if not items.get('scope-help', False):
-                scope_folder = plone.api.content.create(
-                    type='Folder',
-                    container=items,
-                    id='scope-help',
-                    title='Scope Help',
-                    exclude_from_nav=True,
-                )
+            # if not items.get('scope-help', False):
+            #     scope_folder = plone.api.content.create(
+            #         type='Folder',
+            #         container=items,
+            #         id='scope-help',
+            #         title='Scope Help',
+            #         exclude_from_nav=True,
+            #     )
 
 
-            wf_name = u'Scope WF'
-            if not scope_folder.get(wf_name, False):
-                wf_image = plone.api.content.create(
-                        type='Image',
-                        container=scope_folder,
-                        id='scope-wf',
-                        title=wf_name,
+            # wf_name = u'Scope WF'
+            # if not scope_folder.get(wf_name, False):
+            #     wf_image = plone.api.content.create(
+            #             type='Image',
+            #             container=scope_folder,
+            #             id='scope-wf',
+            #             title=wf_name,
                         
-                    )
-                wf_image.image = load_image()
+            #         )
+            #     wf_image.image = load_image()
 
             
 
 
-            if not scope_folder.get('scope-help', False):
-                scope = plone.api.content.create(
-                    type='Document',
-                    Description=u'scope Help',
-                    container=scope_folder,
-                    id='scope-help',
-                    title='Scope Help',
+            # if not scope_folder.get('scope-help', False):
+            #     scope = plone.api.content.create(
+            #         type='Document',
+            #         Description=u'scope Help',
+            #         container=scope_folder,
+            #         id='scope-help',
+            #         title='Scope Help',
 
-                )
+            #     )
 
             
                 
