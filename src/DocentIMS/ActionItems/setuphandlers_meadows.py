@@ -62,10 +62,10 @@ def post_install(context):
     #plone.api.user.create(email='cron@reverebeach.no', username='cron', password=None, roles=('Member',), properties=None)
     
     #Assign role to Group 'Project Manager'
-    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'Edit Controlpanel'])
-    plone.api.group.grant_roles(groupname='can_parse', roles=['Project Manager'])
-    plone.api.group.grant_roles(groupname='can_command_statements', roles=['Project Manager'])
-    plone.api.group.grant_roles(groupname='can_document_manager', roles=['Project Manager'])
+    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Board President', 'Edit Controlpanel'])
+    #plone.api.group.grant_roles(groupname='can_parse', roles=['Project Manager'])
+    #plone.api.group.grant_roles(groupname='can_command_statements', roles=['Project Manager'])
+    #plone.api.group.grant_roles(groupname='can_document_manager', roles=['Project Manager'])
     plone.api.group.grant_roles(groupname='PrjTeam', roles=['Member', 'Reader'])
     
     # permission = 'plone.app.controlpanel.UsersAndGroups'
@@ -191,24 +191,24 @@ def pre_install(context):
     portal = plone.api.portal.get()
     
     #create groups, wayne might need these for workflow
-    plone.api.group.create(groupname="PrjCust", title="Project Customer", description="The customer for the project")
+    #plone.api.group.create(groupname="PrjCust", title="Project Customer", description="The customer for the project")
     plone.api.group.create(groupname="PrjMgr", title="Board President", description="Board President")
-    plone.api.group.create(groupname="PrjTeam", title="Project Team", description="All Members of the Project")
-    plone.api.group.create(groupname="PrjQcMgr", title="Project QC Manager", description="Person in charge of manage QC for the project")
+    plone.api.group.create(groupname="PrjTeam", title="Meadows Board", description="All Members of the Meadows Board")
+    #plone.api.group.create(groupname="PrjQcMgr", title="Project QC Manager", description="Person in charge of manage QC for the project")
     
-    plone.api.group.create(groupname="can_parse", title="Can parse in Word", description="Can parse in Word")
-    plone.api.group.create(groupname="can_command_statements", title="Can Command Statements in Word")
-    plone.api.group.create(groupname="can_document_manager", title="Can Document Manager in Word")
+    #plone.api.group.create(groupname="can_parse", title="Can parse in Word", description="Can parse in Word")
+    #plone.api.group.create(groupname="can_command_statements", title="Can Command Statements in Word")
+    #plone.api.group.create(groupname="can_document_manager", title="Can Document Manager in Word")
     
     plone.api.group.create(groupname="docentMtgAgenda", title="Can Add Meeting Agenda")
-    plone.api.group.create(groupname="docentLetter", title="Can Add Letter")
+    #plone.api.group.create(groupname="docentLetter", title="Can Add Letter")
     
     plone.api.group.create(groupname="docentMtgMin", title="Can Add Meeting Minutes")
-    plone.api.group.create(groupname="docentMemo", title="Can Add Memo")
+    # plone.api.group.create(groupname="docentMemo", title="Can Add Memo")
     plone.api.group.create(groupname="can_add_planning_document", title="Can Add Planning Document")
     plone.api.group.create(groupname="can_parse", title="Can Parse in Word")
-    plone.api.group.create(groupname="can_add_project_scope", title="Can Add Scope")
-    plone.api.group.create(groupname="can_command_statements", title="Can Command Statements")
+    #plone.api.group.create(groupname="can_add_project_scope", title="Can Add Scope")
+    #plone.api.group.create(groupname="can_command_statements", title="Can Command Statements")
     plone.api.group.create(groupname="can_add_meeting_agenda", title="Users Who Can Add Meeting Agenda")
     plone.api.group.create(groupname="can_add_meeting_minutes", title="Users Who Can Add Meeting minutes")
    
@@ -365,6 +365,7 @@ def _create_content(portal):
                     container=feedback,
                     id='feedback-collection',
                     title='Feedback',
+                    Description=u"These are comments submitted by users of this website and Word Docent toolbar. The project manager should review all feedback items and respond if requested by the person submitting the Feedback",
                     layout='tabular_view',
                     limit=2000,
                     item_count=500,

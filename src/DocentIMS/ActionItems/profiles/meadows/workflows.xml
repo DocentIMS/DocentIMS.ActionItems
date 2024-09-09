@@ -2,43 +2,43 @@
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
  <property
     name="title">Contains workflow definitions for your portal</property>
- <object name="docentIMS_actionitem_workflow" meta_type="Workflow"/>
- <object name="docentIMS_collection_workflow" meta_type="Workflow"/>
- <object name="docentIMS_feedback_workflow" meta_type="Workflow"/>
- <object name="docentIMS_meeting_agenda_workflow" meta_type="Workflow"/>
- <object name="docentIMS_meeting_minutes_workflow" meta_type="Workflow"/>
- <object name="docentIMS_note_workflow" meta_type="Workflow"/>
- <object name="docentIMS_pmp_creation_workflow" meta_type="Workflow"/>
- <object name="docentIMS_scope_creation_workflow" meta_type="Workflow"/>
- <object name="docentIMS_scope_item_workflow" meta_type="Workflow"/>
- <object name="docentMtgAgenda_WF" meta_type="Workflow"/>
+ 
+ <object name="meadows_actionitem_workflow" meta_type="Workflow"/>
+ <object name="meadows_feedback_workflow" meta_type="Workflow"/>
  <object name="meadows_meeting_agenda_workflow" meta_type="Workflow"/>
  <object name="meadows_meeting_minutes_workflow" meta_type="Workflow"/>
+ <object name="meadows_meeting_workflow" meta_type="Workflow"/>
+ <object name="meadows_postIt_note_workflow" meta_type="Workflow"/>
+ <object name="meadows_single_state_workflow" meta_type="Workflow"/>
+ 
  <bindings>
+  <default>
+   <bound-workflow workflow_id="simple_publication_workflow"/>
+  </default>
+ 
+  <type type_id="Collection">
+   <bound-workflow workflow_id="meadows_single_state_workflow"/>
+  </type>
+  <type type_id="Discussion Item">
+   <bound-workflow workflow_id="comment_one_state_workflow"/>
+  </type>
   <type type_id="Feedback">
-   <bound-workflow workflow_id="docentIMS_feedback_workflow"/>
+   <bound-workflow workflow_id="meadows_feedback_workflow"/>
   </type>
-  <type type_id="File">
-   <bound-workflow workflow_id="docentIMS_meeting_minutes_workflow"/>
+  <type type_id="File"/>
+  <type type_id="Image"/>
+  <type type_id="Meeting">
+   <bound-workflow workflow_id="meadows_meeting_workflow"/>
   </type>
-  <type type_id="Notes">
-   <bound-workflow workflow_id="docentIMS_note_workflow"/>
+  <type type_id="Meeting Agenda">
+   <bound-workflow workflow_id="meadows_meeting_agenda_workflow"/>
+  </type>
+  <type type_id="Meeting Minutes">
+   <bound-workflow workflow_id="meadows_meeting_minutes_workflow"/>
   </type>
   <type type_id="Plone Site"/>
   <type type_id="action_items">
-   <bound-workflow workflow_id="docentIMS_actionitem_workflow"/>
-  </type>
-  <type type_id="Meeting Agenda">
-   <bound-workflow workflow_id="docentIMS_meeting_agenda_workflow"/>
-  </type>
-  <type type_id="Meeting Minutes">
-   <bound-workflow workflow_id="docentMtgAgenda_WF"/>
-  </type>
-  <type type_id="scope">
-   <bound-workflow workflow_id="docentIMS_scope_workflow"/>
-  </type>
-  <type type_id="sow_analysis">
-   <bound-workflow workflow_id="docentIMS_scope_workflow"/>
+   <bound-workflow workflow_id="meadows_actionitem_workflow"/>
   </type>
  </bindings>
 </object>

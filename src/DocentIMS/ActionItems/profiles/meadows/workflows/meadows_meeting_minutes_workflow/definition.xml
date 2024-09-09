@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="meadows_meeting_minutes_workflow" title="DocentIMS Meeting Minutes Workflow" description="Unique WF created for Meeting minutes" state_variable="review_state" initial_state="private" manager_bypass="False">
+<dc-workflow workflow_id="meadows _meeting_minutes_workflow" title="Meadows Meeting Minutes Workflow" description="Unique WF created for Meeting Minutes" state_variable="review_state" initial_state="1. Private" manager_bypass="False">
  <instance-creation-conditions>
    <guard>
-    <guard-role>PrjMgr</guard-role>
+    <guard-group>MeadowsBoard</guard-group>
    </guard>
  </instance-creation-conditions>
  <group>Administrators</group>
@@ -10,41 +10,71 @@
  <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="Draft" title="">
+ <state state_id="1. Private" title="Private">
+  <description>The initial state of the document.  
+The document is only visible to the originator.</description>
+  <exit-transition transition_id="draft"/>
  </state>
- <state state_id="Published" title="">
+ <state state_id="2. Draft" title="Draft">
+  <description>The content is now visible to all board members.
+
+    Draft - meant to be seen by smaller group of people.  The initial review team, for example
+    Review - after the initial team, this opens it to wider audience for review and comments.</description>
+  <exit-transition transition_id="review"/>
  </state>
- <state state_id="private" title="Private">
-  <description>Can only be seen and edited by the owner.</description>
+ <state state_id="3. Review" title="Review">
+  <description>All board members can now suggest edits and comment on this document.
+
+    Draft - meant to be seen by smaller group of people.  The initial review team, for example
+    Review - after the initial team, this opens it to wider audience for review and comments.</description>
   <exit-transition transition_id="publish"/>
-  <permission-map name="Access contents information" acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects" acquired="False">
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
  </state>
- <transition transition_id="approve" title="" new_state="" trigger="USER" before_script="" after_script="">
-  
+ <state state_id="4. Published" title="Published">
+  <description>The document is now visible to the board and other designated groups (e.g. residents)
+
+There may also be actions (e.g. sending email, moving to folder) when content is moved to this State.</description>
+  <exit-transition transition_id="return"/>
+ </state>
+ <state state_id="5. Archived" title="">
+ </state>
+ <transition transition_id="archive" title="Archive" new_state="5. Archived" trigger="USER" before_script="" after_script="">
+  <description>move to Archive</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=archive" category="workflow" icon="">Archive</action>
   <guard>
   </guard>
  </transition>
- <transition transition_id="publish" title="" new_state="Published" trigger="USER" before_script="" after_script="">
-  
+ <transition transition_id="draft" title="Draft" new_state="2. Draft" trigger="USER" before_script="" after_script="">
+  <description>Moves content to the draft state.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=draft" category="workflow" icon="">Draft</action>
   <guard>
+   <guard-role>Owner</guard-role>
+   <guard-group>SiteAdmin</guard-group>
+  </guard>
+ </transition>
+ <transition transition_id="publish" title="Publish" new_state="4. Published" trigger="USER" before_script="" after_script="">
+  <description>This publishes the WF.  certain actions (send email, move content, etc) may happen with this transition.  </description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=publish" category="workflow" icon="">Publish</action>
+  <guard>
+   <guard-role>Owner</guard-role>
+   <guard-group>SiteAdmin</guard-group>
+  </guard>
+ </transition>
+ <transition transition_id="return" title="return" new_state="1. Private" trigger="USER" before_script="" after_script="">
+  <description>This returns a published document to the "private" state.  For example, if a published content had to be edited or removed from circulation for any reason.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=return" category="workflow" icon="">Return</action>
+  <guard>
+   <guard-group>SiteAdmin</guard-group>
+  </guard>
+ </transition>
+ <transition transition_id="review" title="Review" new_state="3. Review" trigger="USER" before_script="" after_script="">
+  <description>moves to the review state.  The Draft and Review states are similar.  used to allow different groups to see and edit the content at different times.  
+    Draft - meant to be seen by smaller group of people.  The initial review team, for example
+    Review - after the initial team, this opens it to wider audience for review and comments.
+</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=review" category="workflow" icon="">review</action>
+  <guard>
+   <guard-role>Owner</guard-role>
+   <guard-group>SiteAdmin</guard-group>
   </guard>
  </transition>
  <worklist worklist_id="reviewer_queue" title="">

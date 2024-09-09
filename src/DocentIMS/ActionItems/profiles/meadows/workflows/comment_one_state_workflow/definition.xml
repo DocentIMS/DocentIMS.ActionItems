@@ -1,45 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="docentIMS_collection_workflow" title="DocentIMS Collection Workflow" description="Unique WF created for collection to hide them and prevent deletion.  The Action Item Scope etc depend on a collection to show content.  want to ensure collection cant be deleted" state_variable="review_state" initial_state="private" manager_bypass="False">
- <instance-creation-conditions>
-   <guard>
-    <guard-role>PrjMgr</guard-role>
-   </guard>
- </instance-creation-conditions>
- <group>Administrators</group>
+<dc-workflow workflow_id="comment_one_state_workflow" title="Single State Workflow" description="- Essentially a workflow with no transitions, but has a Published state, so portlets and applications that expect that state will continue to work." state_variable="review_state" initial_state="published" manager_bypass="False">
  <permission>Access contents information</permission>
- <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="private" title="Private">
-  <description>Can only be seen and edited by the owner.</description>
+ <state state_id="published" title="Published">
+  <description>Visible to everyone, editable by the owner.</description>
   <permission-map name="Access contents information" acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects" acquired="False">
-   <permission-role>Manager</permission-role>
+   <permission-role>Anonymous</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
+  <permission-map name="View" acquired="True">
   </permission-map>
  </state>
- <worklist worklist_id="reviewer_queue" title="">
-  <description>Reviewer tasks</description>
-  <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>
-  <guard>
-   <guard-permission>Review portal content</guard-permission>
-  </guard>
-  <match name="review_state" values="pending"/>
- </worklist>
  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
   <description>Previous transition</description>
   <default>

@@ -1,50 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="docentIMS_meeting_minutes_workflow" title="DocentIMS Meeting Minutes Workflow" description="Unique WF created for Meeting minutes" state_variable="review_state" initial_state="private" manager_bypass="False">
+<dc-workflow workflow_id="meadows _ postIt_note _workflow" title="Meadows PostIt Note Workflow" description="Notes are &quot;posit-Notes&quot; users may use as a quick reminder for future actiion" state_variable="review_state" initial_state="private" manager_bypass="False">
  <instance-creation-conditions>
    <guard>
-    <guard-role>PrjMgr</guard-role>
+    <guard-group>MeadowsBoard</guard-group>
    </guard>
  </instance-creation-conditions>
- <group>Administrators</group>
  <permission>Access contents information</permission>
- <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="Draft" title="">
+ <permission>DocentIMS.ActionItems: Add Notes</permission>
+ <state state_id="1. Private" title="Private">
+  <description>Visible only to content creator.  Stays private until person ready to get comments.</description>
+  <exit-transition transition_id="close"/>
  </state>
- <state state_id="Published" title="">
+ <state state_id="2. Closed" title="Closed">
+  <description>Any content that the required action, or usefulness of the content is over or completed.</description>
  </state>
- <state state_id="private" title="Private">
-  <description>Can only be seen and edited by the owner.</description>
-  <exit-transition transition_id="publish"/>
-  <permission-map name="Access contents information" acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects" acquired="False">
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
+ <state state_id="3. Archived" title="">
  </state>
- <transition transition_id="approve" title="" new_state="" trigger="USER" before_script="" after_script="">
+ <transition transition_id="archive" title="" new_state="" trigger="USER" before_script="" after_script="">
   
   <guard>
   </guard>
  </transition>
- <transition transition_id="publish" title="" new_state="Published" trigger="USER" before_script="" after_script="">
-  
+ <transition transition_id="close" title="Close" new_state="2. Closed" trigger="USER" before_script="" after_script="">
+  <description>Once person is done with note, it is simply closed.  Won't delte</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
   <guard>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <worklist worklist_id="reviewer_queue" title="">

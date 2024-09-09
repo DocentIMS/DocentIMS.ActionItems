@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="docentIMS_note_workflow" title="DocentIMS Note Workflow" description="Notes are &quot;posit-Notes&quot; users may use as a quick reminder for future actiion" state_variable="review_state" initial_state="private" manager_bypass="False">
- <instance-creation-conditions>
-   <guard>
-    <guard-group>PrjTeam</guard-group>
-   </guard>
- </instance-creation-conditions>
+<dc-workflow workflow_id="intranet_folder_workflow" title="Intranet Workflow for Folders" description=" - Normally used with the Intranet/Extranet workflow on folder types. - Only has two states: Private and Internal Draft." state_variable="review_state" initial_state="internal" manager_bypass="False">
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="closed" title="Closed">
-  <description>Removes from the list.  it is not deleted.</description>
+ <state state_id="internal" title="Internal draft">
+  <description>Visible to all intranet users.</description>
+  <exit-transition transition_id="hide"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
  </state>
  <state state_id="private" title="Private">
-  <description>Notes are intended for the person who created and not visible to others.  so no publishing, retract, etc.</description>
-  <exit-transition transition_id="close"/>
+  <description>Can only be seen and edited by the owner.</description>
+  <exit-transition transition_id="show_internally"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
@@ -37,21 +57,20 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <transition transition_id="close" title="Close" new_state="closed" trigger="USER" before_script="" after_script="">
-  <description>Once person is done with note, it is simply closed.  Won't delte</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
+ <transition transition_id="hide" title="Member makes content private" new_state="private" trigger="USER" before_script="" after_script="">
+  <description>Making an item private means that it will not be visible to anyone but the owner and the site administrator.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=hide" category="workflow" icon="">Make private</action>
   <guard>
-   <guard-role>Owner</guard-role>
+   <guard-permission>Modify portal content</guard-permission>
   </guard>
  </transition>
- <worklist worklist_id="reviewer_queue" title="">
-  <description>Reviewer tasks</description>
-  <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>
+ <transition transition_id="show_internally" title="Member makes content visible to other internal users" new_state="internal" trigger="USER" before_script="" after_script="">
+  <description>Makes the folder visible internally.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=show_internally" category="workflow" icon="">Show internally</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Modify portal content</guard-permission>
   </guard>
-  <match name="review_state" values="pending"/>
- </worklist>
+ </transition>
  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
   <description>Previous transition</description>
   <default>
@@ -62,7 +81,7 @@
   </guard>
  </variable>
  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
-  <description>The ID of the user who performed the previous transition</description>
+  <description>The ID of the user who performed the last transition</description>
   <default>
    
    <expression>user/getId</expression>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dc-workflow workflow_id="meadows_actionitem_workflow" title="Meadows Action Item workflow" description="The workflow for Meadows action items." state_variable="review_state" initial_state="1. Private" manager_bypass="True">
+ <instance-creation-conditions>
+   <guard>
+    <guard-group>MeadowsBoard</guard-group>
+   </guard>
+ </instance-creation-conditions>
+ <permission>Access contents information</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="1. Private" title="Private">
+  <description>Only visible to the person who created content and the admin.</description>
+  <exit-transition transition_id="publish"/>
+ </state>
+ <state state_id="2. Published" title="Published">
+  <description>Visible to all board members and ready to be worked.</description>
+  <exit-transition transition_id="review"/>
+ </state>
+ <state state_id="3. Review" title="Review">
+  <description>Waiting for board president to review and close.</description>
+  <exit-transition transition_id="close"/>
+ </state>
+ <state state_id="4. Closed" title="Closed">
+  <description>The board president has closed the action item.  
+   If there is a reason, the board president can return to the Review state.</description>
+  <exit-transition transition_id="return"/>
+ </state>
+ <transition transition_id="close" title="Close" new_state="3. Closed" trigger="USER" before_script="" after_script="">
+  <description>when AI is complete the PM closes</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
+  <guard>
+   <guard-group>board_president</guard-group>
+  </guard>
+ </transition>
+ <transition transition_id="publish" title="Publish" new_state="2. Published" trigger="USER" before_script="" after_script="">
+  <description>Make the action item active (visible to all) and notify the assigned person via email.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=publish" category="workflow" icon="">Publish</action>
+  <guard>
+   <guard-role>Owner</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="return" title="Return" new_state="2. Published" trigger="USER" before_script="" after_script="">
+  <description>Return an action item from Closed state to Published state in case changes need to be made</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=return" category="workflow" icon="">Return</action>
+  <guard>
+   <guard-group>board_president</guard-group>
+  </guard>
+ </transition>
+ <transition transition_id="review" title="Review" new_state="4. Closed" trigger="USER" before_script="" after_script="">
+  <description>Send the Action Item to board president for review.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=review" category="workflow" icon="">Review</action>
+  <guard>
+  </guard>
+ </transition>
+ <worklist worklist_id="active_queue" title="">
+  <description>All action items for you in the Active state</description>
+  <action url="" category="global" icon="">Active (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="active"/>
+ </worklist>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer Tasks</description>
+  <action url="" category="global" icon="">Review</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>Previous transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the previous transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comment about the last transition</description>
+  <default>
+   <value type="string">Enter commnts regarding your action.</value>
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+   <guard-group>PrjTeam</guard-group>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>When the previous transition was performed</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>

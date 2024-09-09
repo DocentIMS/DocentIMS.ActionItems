@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="docentIMS_feedback_workflow" title="DocentIMS Feedback Workflow" description="Feedback content type " state_variable="review_state" initial_state="created" manager_bypass="False">
+<dc-workflow workflow_id="meadows_feedback_workflow" title="Meadows Feedback Workflow" description="Feedback content type " state_variable="review_state" initial_state="private" manager_bypass="False">
+ <instance-creation-conditions>
+   <guard>
+    <guard-permission>DocentIMS.ActionItems: Add Feedback</guard-permission>
+   </guard>
+ </instance-creation-conditions>
  <group>PrjMgr</group>
  <group>Site Administrators</group>
+ <group>MeadowsBoard</group>
  <permission>Access contents information</permission>
  <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
+ <permission>DocentIMS.ActionItems: Add Feedback</permission>
  <state state_id="closed" title="Closed">
   <description>The feedback has been acted on if needed.</description>
   <exit-transition transition_id="Publish"/>
@@ -20,29 +27,34 @@
   <permission-map name="View" acquired="True">
   </permission-map>
  </state>
- <state state_id="created" title="Created">
-  <description>User has created a Note.</description>
+ <state state_id="private" title="Private">
+  <description>Visible only to content creator.  Stays private until person ready to get comments.
+
+All content starts in Private</description>
   <exit-transition transition_id="Publish"/>
   <permission-map name="Access contents information" acquired="True">
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="True">
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="DocentIMS.ActionItems: Add Feedback" acquired="True">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Authenticated</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Member</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Project Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects" acquired="False">
-   <permission-role>Project Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="True">
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="View" acquired="True">
-   <permission-role>Manager</permission-role>
-   <permission-role>Member</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Project Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
