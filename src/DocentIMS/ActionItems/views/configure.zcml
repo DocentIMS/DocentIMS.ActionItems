@@ -72,6 +72,37 @@
 
 
   <browser:page
+   name="meeting-view"
+   for="plone.app.contenttypes.content.Folder"
+   class=".meeting_view.MeetingView"
+   template="meeting_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+
+
+  <browser:page
+   name="agenda-view"
+   for="plone.dexterity.interfaces.IDexterityItem"
+   class=".agenda_view.AgendaView"
+   template="agenda_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+  
+  <browser:page
+   name="minutes-view"
+   for="plone.dexterity.interfaces.IDexterityItem"
+   class=".minutes_view.MinutesView"
+   template="minutes_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+
+  <browser:page
    name="folder-tabbed-view"
    for="plone.app.contenttypes.interfaces.IFolder"
    class=".documents_folder_view.DocumentsFolderView"

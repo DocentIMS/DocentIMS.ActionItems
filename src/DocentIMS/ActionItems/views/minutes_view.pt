@@ -8,10 +8,11 @@
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
-      <h2 i18n:translate="">Sample View</h2>
-      <!--<div tal:replace="view/my_custom_view_method" />-->
-      <!--<div tal:replace="context/my_custom_field" />-->
-
+   <hr class="hr" />
+    <tal:condition tal:condition="context/file|None">
+        <td><b>File:</b> <a href="${context/absolute_url}/@@download/fileg">Download File</a></td>
+    </tal:condition>
+ 
   </metal:block>
   </metal:content-core>
 </body>

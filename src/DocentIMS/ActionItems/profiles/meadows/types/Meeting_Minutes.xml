@@ -53,6 +53,8 @@
   <property name="immediate_view">view</property>
   <property name="view_methods">
     <element value="view"/>
+    <element value="minutes_view"/>
+
   </property>
 
   <!-- Method aliases -->
