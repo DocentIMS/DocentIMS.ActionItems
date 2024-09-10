@@ -61,10 +61,28 @@
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
    />
 
+  <browser:page
+   name="feedback-view"
+   for="plone.dexterity.interfaces.IDexterityItem"
+   class=".feedback_view.FeedbackView"
+   template="feedback_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
 
   <browser:page
    name="folder-tabbed-view"
    for="plone.app.contenttypes.interfaces.IFolder"
+   class=".documents_folder_view.DocumentsFolderView"
+   template="documents_folder_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+  <browser:page
+   name="folder-tabbed-view"
+   for="plone.app.contenttypes.interfaces.ICollection"
    class=".documents_folder_view.DocumentsFolderView"
    template="documents_folder_view.pt"
    permission="zope2.View"

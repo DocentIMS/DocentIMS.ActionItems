@@ -8,9 +8,36 @@
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
-      <h2 i18n:translate="">Sample View</h2>
-      <!--<div tal:replace="view/my_custom_view_method" />-->
-      <!--<div tal:replace="context/my_custom_field" />-->
+   <hr class="hr" />
+   <p><b>Feedback text:</b></p>
+
+   <div tal:content="structure context/feedback_text/output|None"></div> 
+
+
+   <div class="xcard xalert xalert-info" >
+    <table class="table table-primary table-bordered">
+      <tr>
+      <td><b>Contact person:</b> ${context/contact_person|None} </td>
+      <td><b>Submitted by: </b>${context/feedback_submitted_by|None}</td>
+ 
+    <tr>
+    <tal:condition tal:condition="context/feedback_attachment|None">
+        <td><b>Attachment:</b> <a href="${context/absolute_url}/@@download/feedback_attachment">Download Feedback Attachment</a> &nbsp;&nbsp;&nbsp;</td> 
+    </tal:condition>
+
+    <tal:condition tal:condition="context/feedback_log|None">
+        <td><b>Log:</b> <a href="${context/absolute_url}/@@download/feedback_log">Download log</a></td>
+    </tal:condition>
+    </tr>
+
+  
+    <tr>
+      <td><b>Reply requested?</b> ${context/reply|None}</td>
+      <td><b>Tool:</b> ${context/docent_tool_type|None}</td>
+    </tr>
+      </table>
+  
+    </div>
 
   </metal:block>
   </metal:content-core>

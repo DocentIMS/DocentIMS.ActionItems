@@ -27,21 +27,28 @@ from zope.component import getMultiAdapter
 
 def check_defaultpage(object, event):
     #Dont delete default page
-    current = api.user.get_current()
-    roles =  api.user.get_roles(user=current)
-    if 'Manager' in roles:
-        #OK to delete
-        pass
+    try:
+        membership_tool = object.portal_membership
 
-    else:
-        if hasattr(object, 'aq_parent') and object.aq_inner.aq_parent.id not in ['events', 'news']:
-            if hasattr(object.aq_inner.aq_parent, 'default_page') and  object.aq_inner.aq_parent.default_page  == object.id:
-                if not '@@fc-delete'  in object.REQUEST.getURL():
-                    messages = IStatusMessage(object.REQUEST)
-                    messages.addStatusMessage(u"You can not delete the default view of a folder.", type="error")
-                raise Redirect(object.absolute_url())
-        # pass
- 
+        # Get the current authenticated user
+        current_user = membership_tool.getAuthenticatedMember()
+        roles = current_user.getRoles()
+        if 'Manager' in roles:
+                # OK to delete since Manager should know what he/she is doing
+                pass
+
+        else:
+                if hasattr(object, 'aq_parent') and object.aq_inner.aq_parent.id not in ['events', 'news']:
+                    if hasattr(object.aq_inner.aq_parent, 'default_page') and  object.aq_inner.aq_parent.default_page  == object.id:
+                        if not '@@fc-delete'  in object.REQUEST.getURL():
+                            messages = IStatusMessage(object.REQUEST)
+                            messages.addStatusMessage(u"You can not delete the default view of a folder.", type="error")
+                        raise Redirect(object.absolute_url())
+                # pass
+                
+    except AttributeError:
+        pass        
+    
 
         
 def change_uuid(object, event):

@@ -14,6 +14,26 @@
               <div class="pat-autotoc autotabs"
                 data-pat-autotoc="section:fieldset;levels:legend;">
     
+                <!-- Show all folders as separate tabs -->
+                <fieldset  tal:repeat="folderitem python:context.restrictedTraverse('@@contentlisting')(portal_type='Folder')">
+                  <legend>${folderitem/Title}</legend> 
+                  <!-- <tal:repeat   tal:repeat="item python:current_folder.restrictedTraverse('@@contentlisting')"> -->
+                  <div tal:define="myfolder python: view.get_folder_content(folderitem.UID);
+                            batch myfolder">
+                  
+                   <div tal:repeat="item batch">
+                    <h5 class="${item/ContentTypeClass}">
+                        <tal:icon tal:define="contenttype item/portal_type"
+                            tal:replace="structure python:icons.tag(contenttype)" /> <a href="${item/getURL}">
+                          ${item/Title}
+                        </a>
+                      </h5>
+                      <p>${item/CroppedDescription}</p> 
+                    </div>
+                     <div metal:use-macro="here/batch_macros/macros/navigation" />
+                  </div> 
+                </fieldset>
+
                 <!-- Loop through each portal type in the grouped_items dictionary -->
                 <fieldset  tal:repeat="contentype view/get_types">
                   <legend>${contentype}</legend> 

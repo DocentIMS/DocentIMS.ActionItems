@@ -59,7 +59,8 @@ def post_install(context):
     
     portal = plone.api.portal.get()
     
-    #plone.api.user.create(email='cron@reverebeach.no', username='cron', password=None, roles=('Member',), properties=None)
+    plone.api.user.create(email='wglover@docentims.com', username='wglover@docentims.com', password=None, roles=('Member', 'Manager',), properties={'fullname': "Wayne Glover"})
+    plone.api.user.create(email='espen@medialog.no', username='espen@medialog.no', password=None, roles=('Member', 'Manager',), properties={'fullname': "Espen Moe-Nilssen"})
     
     #Assign role to Group 'Project Manager'
     plone.api.group.grant_roles(groupname='PrjMgr', roles=['Board President', 'Edit Controlpanel'])
