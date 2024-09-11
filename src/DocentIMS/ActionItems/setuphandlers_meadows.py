@@ -59,15 +59,17 @@ def post_install(context):
     
     portal = plone.api.portal.get()
     
-    plone.api.user.create(email='wglover@docentims.com', username='wglover@docentims.com', password=None, roles=('Member', 'Manager',), properties={'fullname': "Wayne Glover"})
-    plone.api.user.create(email='espen@medialog.no', username='espen@medialog.no', password=None, roles=('Member', 'Manager',), properties={'fullname': "Espen Moe-Nilssen"})
+    plone.api.user.create(email='wglover@docentims.com', username='wglover@docentims.com', password=None, roles=('Member', 'Manager',), properties={'fullname': "Wayne Glover", 'first_name': 'Wayne', 'last_name': 'Glover'})
+    plone.api.user.create(email='espen@medialog.no', username='espen@medialog.no', password=None, roles=('Member', 'Manager',), properties={'fullname': "Espen Moe-Nilssen", 'first_name': 'Espen', 'last_name': 'MN'})
+    plone.api.group.add_user(groupname='PrjTeam', username='wglover@docentims.com')
     
-    #Assign role to Group 'Project Manager'
+    #Assign roles
     plone.api.group.grant_roles(groupname='PrjMgr', roles=['Board President', 'Edit Controlpanel'])
+    plone.api.group.grant_roles(groupname='PrjTeam', roles=['Member', 'Reader'])
+    
     #plone.api.group.grant_roles(groupname='can_parse', roles=['Project Manager'])
     #plone.api.group.grant_roles(groupname='can_command_statements', roles=['Project Manager'])
     #plone.api.group.grant_roles(groupname='can_document_manager', roles=['Project Manager'])
-    plone.api.group.grant_roles(groupname='PrjTeam', roles=['Member', 'Reader'])
     
     # permission = 'plone.app.controlpanel.UsersAndGroups'
     # roles_to_grant = ['Manager']  # or whatever role you want to grant

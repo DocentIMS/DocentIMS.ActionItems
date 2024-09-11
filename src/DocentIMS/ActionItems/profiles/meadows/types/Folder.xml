@@ -6,5 +6,6 @@
   <property name="view_methods"
     purge="false">
     <element value="folder-tabbed-view" />
+    <element value="tabbed-documents-view" />
   </property>
 </object>

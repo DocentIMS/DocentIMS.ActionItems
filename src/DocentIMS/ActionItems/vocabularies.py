@@ -117,6 +117,27 @@ def FullnamesVocabulary(context):
 
 directlyProvides(FullnamesVocabulary, IVocabularyFactory)
 
+def TeamnamesVocabulary(context):
+    members = api.user.get_users(groupname='PrjTeam')
+         
+    if members:
+        
+        # terms = []
+        # for member in members:
+        #     userid = member.getId()
+        #     fullname = member.getProperty("fullname", None) or member.getId()
+        #     token = userid.encode("unicode_escape") if isinstance(userid, str) else userid
+        #     terms += [SimpleTerm(userid, token, fullname)]
+        
+        # Create a list of SimpleTerms for each full name
+        terms = [SimpleTerm(value=member.getId(), token=member.getId(), title=member.getProperty('fullname')) for member in members]
+        
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([SimpleTerm(value="", token=None, title="")])
+
+directlyProvides(TeamnamesVocabulary, IVocabularyFactory)
+
 
 #def SiteVocabulary(context):
 #    items  =  api.portal.get_registry_record('vokabulary', interface=IDocentimsSettings)

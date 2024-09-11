@@ -59,7 +59,12 @@
 
   <utility
   	  component=".vocabularies.FullnamesVocabulary"
-      name="DocentIMS.ActionItems.FullnamesVocabulary" />      
+      name="DocentIMS.ActionItems.FullnamesVocabulary" />     
+
+  <utility
+  	  component=".vocabularies.TeamnamesVocabulary"
+      name="DocentIMS.ActionItems.TeamnamesVocabulary" />    
+        
 
   <utility
   	  component=".vocabularies.MeetingTypesVocabulary"

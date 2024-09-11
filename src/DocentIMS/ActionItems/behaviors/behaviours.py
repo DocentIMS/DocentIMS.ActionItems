@@ -32,10 +32,15 @@ class IMeetingContact( IEventContact):
     directives.omitted('contact_email')
     directives.omitted('contact_phone') 
 
+    # contact_name = schema.Choice(
+    #     title="Contact Person", 
+    #     required=False,
+    #     vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary'
+    # )
     contact_name = schema.Choice(
         title="Contact Person", 
         required=False,
-        vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary'
+        vocabulary= 'DocentIMS.ActionItems.TeamnamesVocabulary'
     )
     directives.widget("contact_name", AjaxSelectFieldWidget, klass="event_contact_name")
     
@@ -58,33 +63,12 @@ class IMeetingAttendees(IEventAttendees):
         value_type=schema.Choice(
             title="Attendee",
             required=False,
-            vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary'
+            # vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary'
+            vocabulary= 'DocentIMS.ActionItems.TeamnamesVocabulary'
             
         )
     )
-    directives.widget("attendees",  AjaxSelectFieldWidget, vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary',  klass="event_attendees")
+    # directives.widget("attendees",  AjaxSelectFieldWidget, vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary',  klass="event_attendees")
+    directives.widget("attendees",  AjaxSelectFieldWidget, vocabulary= 'DocentIMS.ActionItems.TeamnamesVocabulary',  klass="event_attendees")
     
     
-    # teste = schema.TextLine(
-    #     title="this is a tes",
-    #     required=False,
-    # )
-    # directives.widget("teste",  AjaxSelectWidget, allow_multiple=False, vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary', )
-
-
-# @implementer(IEventAttendees)
-# @adapter(IMeetingAttendeesMarker)
-# class  MeetingAttendees(object):
-#     def __init__(self, context):
-#         self.context = context
-
-#     @property
-#     def attendees(self):
-#         import pdb; pdb.set_trace()
-#         if safe_hasattr(self.context, 'attendees'):
-#             return 'self.context.attendees'
-#         return None
-
-#     @attendees.setter
-#     def attendees(self, value):
-#         self.context.attendees = 'value'

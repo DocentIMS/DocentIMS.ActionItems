@@ -6,6 +6,9 @@
 
  <!-- -*- change * to content type (?) DocentIMS.ActionItems.content.action_items.IActionItems -*- -->
 
+  <!-- Event view -->
+
+
  <browser:pages
      for="plone.app.contenttypes.interfaces.ICollection"
      class=".action_items_over_view.ActionItemsCollectionView"
@@ -16,6 +19,7 @@
       name="action-overview"
       template="action_over_view.pt"
     />
+    
 
  </browser:pages>
  
@@ -73,12 +77,34 @@
 
   <browser:page
    name="meeting-view"
-   for="plone.app.contenttypes.content.Folder"
+   for="plone.event.interfaces.IEvent"
    class=".meeting_view.MeetingView"
    template="meeting_view.pt"
    permission="zope2.View"
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
    />
+
+
+  <browser:page
+      name="meeting_summary"
+      for="plone.event.interfaces.IEvent"
+      class="plone.app.event.browser.event_summary.EventSummaryView"
+      template="meeting_summary.pt"
+      permission="zope2.View"
+      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+
+  <browser:page
+   name="tabbed-documents-view"
+   for="plone.app.contenttypes.content.Folder"
+   class=".tabbed_documents_view.TabbedDocumentsView"
+   template="tabbed_documents_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+
+
 
 
 
@@ -151,6 +177,14 @@
     layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
     />
 
+  <browser:page
+    name="meadows-action-items-view"
+    for="*"
+    class=".action_items_view.ActionItemsView"
+    template="meadows_action_items_view.pt"
+    permission="zope2.View"
+    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+    />
 
     <browser:page
       name="ai-view"

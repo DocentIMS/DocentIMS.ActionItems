@@ -15,10 +15,10 @@
   <element value="personal_notes"/>
  </property>
  <property name="allow_discussion">True</property>
- <property name="default_view">action-items-view</property>
+ <property name="default_view">meadows-action-items-view</property>
  <property name="view_methods">
   <element value="view"/>
-  <element value="action-items-view"/>
+  <element value="meadows-action-items-view"/>
  </property>
  <property name="default_view_fallback">False</property>
  <property name="add_permission">cmf.AddPortalContent</property>
@@ -51,7 +51,7 @@
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
         &lt;required&gt;True&lt;/required&gt;
         &lt;title&gt;Assigned to&lt;/title&gt;
-        &lt;vocabulary&gt;plone.app.vocabularies.Users&lt;/vocabulary&gt;
+        &lt;vocabulary&gt;DocentIMS.ActionItems.TeamnamesVocabulary&lt;/vocabulary&gt;
       &lt;/field&gt;
       &lt;field name=&quot;prioritystring&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
         &lt;required&gt;False&lt;/required&gt;
@@ -63,7 +63,7 @@
         &lt;title&gt;Identify other team members related to this action item&lt;/title&gt;
         &lt;description&gt; &lt;/description&gt;
         &lt;value_type type=&quot;zope.schema.Choice&quot;&gt;
-          &lt;vocabulary&gt;plone.app.vocabularies.Users&lt;/vocabulary&gt;
+          &lt;vocabulary&gt;DocentIMS.ActionItems.TeamnamesVocabulary&lt;/vocabulary&gt;
         &lt;/value_type&gt;
       &lt;/field&gt;
       &lt;field name=&quot;related_item&quot; type=&quot;z3c.relationfield.schema.RelationChoice&quot;&gt;
@@ -97,26 +97,6 @@
         &lt;field name=&quot;notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt; &quot;Project Manager's Notes to Person Assigned This Action Item&lt;/title&gt;
-        &lt;/field&gt;
-      &lt;/fieldset&gt;
-      &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;With minor exceptions, all action items are driven by Scope requirements.&quot;&gt;
-        &lt;field name=&quot;is_this_action_out_of_the_scope_of_work_&quot; type=&quot;zope.schema.Bool&quot;&gt;
-          &lt;default&gt;False&lt;/default&gt;
-          &lt;description&gt;If this Action Item is Not directly driven by the Scope, check the box and explain in the box that opens..&lt;/description&gt;
-          &lt;required&gt;False&lt;/required&gt;
-          &lt;title&gt;Is This Action Out of the Scope of Work?&lt;/title&gt;
-          &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
-        &lt;/field&gt;
-        &lt;field name=&quot;explanation_for_out_of_scope_ai&quot; type=&quot;zope.schema.Text&quot;&gt;
-          &lt;description&gt;Explain why this Action Item is needed if it isn&#x27;t driven by Scope&lt;/description&gt;
-          &lt;required&gt;False&lt;/required&gt;
-          &lt;title&gt;Explanation for Out of Scope AI&lt;/title&gt;
-        &lt;/field&gt;
-        &lt;field name=&quot;related_sow_section&quot; type=&quot;zope.schema.Choice&quot;&gt;
-          &lt;description&gt;Which section in the Scope drives this action item?&lt;/description&gt;
-          &lt;required&gt;False&lt;/required&gt;
-          &lt;title&gt;Related Scope Section&lt;/title&gt;
-          &lt;vocabulary&gt;DocentIMS.ActionItems.ShowActionItemsVocabulary&lt;/vocabulary&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
       &lt;fieldset name=&quot;intermediate_actioins&quot; label=&quot;Intermediate Actions&quot; description=&quot;Describe all the actions taken including intermediate work if it is a lengthy or complicated issue.&quot;&gt;

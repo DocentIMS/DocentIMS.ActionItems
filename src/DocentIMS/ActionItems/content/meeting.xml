@@ -7,7 +7,7 @@
   <schema>
   <field name="meeting_type" type="zope.schema.Choice">
       <description/>
-      <required>False</required>
+      <required>True</required>
       <title>Meeting type</title>
       <vocabulary>DocentIMS.ActionItems.MeetingTypesVocabulary</vocabulary>
     </field>

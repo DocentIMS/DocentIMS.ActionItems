@@ -19,7 +19,7 @@ class IDocumentsFolderView(Interface):
 class DocumentsFolderView(BrowserView):
     # template = ViewPageTemplateFile('documents_folder_view.pt')
 
-    # b_size = 25
+    #b_size = 25
     
     
     def __call__(self):
@@ -31,7 +31,10 @@ class DocumentsFolderView(BrowserView):
 
     @property
     def b_size(self):
-        return getattr(self, "_b_size", self.collection_behavior.item_count)
+        # import pdb; pdb.set_trace()
+        if self.context.Type() == 'Collection':
+            return getattr(self, "_b_size", self.collection_behavior.item_count)
+        return getattr(self, "_b_size", 25)
     
     def get_types(self):
         view = self.context.restrictedTraverse("@@contentlisting")

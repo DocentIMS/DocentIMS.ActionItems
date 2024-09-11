@@ -28,7 +28,7 @@
                           ${item/Title}
                         </a>
                       </h5>
-                      <p>${item/CroppedDescription}</p> 
+                      <p class="lead">${item/CroppedDescription}</p> 
                     </div>
                      <div metal:use-macro="here/batch_macros/macros/navigation" />
                   </div> 
@@ -47,7 +47,7 @@
                           ${item/Title}
                         </a>
                       </h5>
-                      <p>${item/CroppedDescription}</p>
+                      <p class="lead">${item/CroppedDescription}</p>
                       <p tal:condition="python: item.portal_type in ['File']">
                         <img src="${item/MimeTypeIcon}" alt="icon" title="icon" /> 
                         ${item/getSize}
