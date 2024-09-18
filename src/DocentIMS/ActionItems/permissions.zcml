@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.AddPlanningBreakdown"
+        title="DocentIMS.ActionItems: Add PlanningBreakdown"
+    />
+
+
+    <permission
         id="DocentIMS.ActionItems.AddPlanningDocument"
         title="DocentIMS.ActionItems: Add PlanningDocument"
     />

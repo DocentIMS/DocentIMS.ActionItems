@@ -12,4 +12,5 @@
   <object name="Meeting Agenda" meta_type="Dexterity FTI"/>
   <object name="Folder" meta_type="Dexterity FTI"/>
   <object name="Planning Document" meta_type="Dexterity FTI"/>
+  <object name="Planning Breakdown" meta_type="Dexterity FTI"/>
 </object>
