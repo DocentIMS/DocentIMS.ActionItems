@@ -7,11 +7,10 @@
 <body>
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
-
-      <h2 i18n:translate="">Sample View</h2>
-      <!--<div tal:replace="view/my_custom_view_method" />-->
-      <!--<div tal:replace="context/my_custom_field" />-->
-
+    <p><b>Section Number:</b> ${context/section_number|None}</p>
+    <div tal:replace="structure  context/body_text/output|None" />
+    <p><b>Comment:</b> ${context/comment|None}</p>
+    <p><b>Commenter:</b> ${context/commenter|None}</p>
   </metal:block>
   </metal:content-core>
 </body>

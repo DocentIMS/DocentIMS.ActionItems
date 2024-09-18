@@ -50,11 +50,12 @@
 
   <!-- View information -->
   <property name="add_view_expr">string:${folder_url}/++add++PostIt Note</property>
-  <property name="default_view">view</property>
+  <property name="default_view">post-it-note-view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>
   <property name="view_methods">
     <element value="view"/>
+    <element value="post-it-note-view"/>
   </property>
 
   <!-- Method aliases -->

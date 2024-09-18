@@ -85,6 +85,7 @@
    />
 
 
+
   <browser:page
       name="meeting_summary"
       for="plone.event.interfaces.IEvent"
@@ -103,8 +104,32 @@
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
    />
 
+  <browser:page
+   name="post-it-note-view"
+   for="plone.dexterity.interfaces.IDexterityItem"
+   class=".post_it_note_view.PostItNoteView"
+   template="post_it_note_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
 
+  <browser:page
+   name="planning-document-view"
+   for="plone.dexterity.interfaces.IDexterityItem"
+   class=".planning_document_view.PlanningDocumentView"
+   template="planning_document_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
 
+  <browser:page
+   name="planning-breakdown-view"
+   for="plone.dexterity.interfaces.IDexterityItem"
+   class=".planning_breakdown_view.PlanningBreakdownView"
+   template="planning_breakdown_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
 
 
 
