@@ -4,6 +4,15 @@
     xmlns:form="http://namespaces.plone.org/supermodel/form"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
-  <schema>
+<schema>
+    <field name="my_note" type="plone.app.textfield.RichText">
+      <description>What do i want to remember?</description>
+      <title>My Note</title>
+    </field>
+    <field name="file" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <required>False</required>
+      <title>Attachment</title>
+    </field>
   </schema>
 </model>

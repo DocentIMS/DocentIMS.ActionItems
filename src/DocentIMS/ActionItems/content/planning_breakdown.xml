@@ -4,6 +4,26 @@
     xmlns:form="http://namespaces.plone.org/supermodel/form"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
-  <schema>
+<schema>
+    <field name="section_number" type="zope.schema.TextLine">
+      <description/>
+      <required>False</required>
+      <title>Section Number</title>
+    </field>
+    <field name="body_text" type="plone.app.textfield.RichText">
+      <description/>
+      <required>False</required>
+      <title>Body Text</title>
+    </field>
+    <field name="comment" type="zope.schema.TextLine">
+      <description/>
+      <required>False</required>
+      <title>comment</title>
+    </field>
+    <field name="commenter" type="zope.schema.TextLine">
+      <description/>
+      <required>False</required>
+      <title>commenter</title>
+    </field>
   </schema>
 </model>

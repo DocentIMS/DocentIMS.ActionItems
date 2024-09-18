@@ -4,6 +4,16 @@
     xmlns:form="http://namespaces.plone.org/supermodel/form"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
-  <schema>
+ <schema>
+    <field name="table" type="zope.schema.TextLine">
+      <description/>
+      <required>False</required>
+      <title>table</title>
+    </field>
+    <field name="file" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <required>False</required>
+      <title>upload</title>
+    </field>
   </schema>
 </model>
