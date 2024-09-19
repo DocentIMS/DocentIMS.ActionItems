@@ -67,7 +67,7 @@
 
   <browser:page
    name="feedback-view"
-   for="plone.dexterity.interfaces.IDexterityItem"
+   for="*"
    class=".feedback_view.FeedbackView"
    template="feedback_view.pt"
    permission="zope2.View"

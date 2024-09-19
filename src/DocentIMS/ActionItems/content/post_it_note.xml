@@ -14,5 +14,16 @@
       <required>False</required>
       <title>Attachment</title>
     </field>
+    <field name="color" type="zope.schema.Choice">
+        <title>Color</title>
+        <values>
+          <element>blue</element>
+          <element>green</element>
+          <element>yellow</element>
+          <element>brown</element>
+          <element>purple</element>
+          <element>orange</element>
+        </values>
+    </field>
   </schema>
 </model>
