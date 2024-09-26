@@ -14,4 +14,5 @@
   <object name="Planning Document" meta_type="Dexterity FTI"/>
   <object name="Planning Breakdown" meta_type="Dexterity FTI"/>
   <object name="PostIt Note" meta_type="Dexterity FTI"/>
+  <object name="Meeting Notes" meta_type="Dexterity FTI"/>
 </object>

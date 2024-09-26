@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.AddMeetingNotes"
+        title="DocentIMS.ActionItems: Add MeetingNotes"
+    />
+
+
+    <permission
         id="DocentIMS.ActionItems.AddPostItNote"
         title="DocentIMS.ActionItems: Add PostItNote"
     />
