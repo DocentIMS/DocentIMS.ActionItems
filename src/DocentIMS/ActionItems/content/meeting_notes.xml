@@ -28,14 +28,17 @@
         <title>Did Property Manager attend?</title>
         <form:widget type="z3c.form.browser.radio.RadioFieldWidget"/>
       </field>
-      <field name="memebers" type="zope.schema.Set">
+      <field name="members" type="zope.schema.List">
         <default/>
         <description>List community members who attended.</description>
         <required>False</required>
         <title>Community Members Who Attended Meeting,</title>
-        <value_type type="zope.schema.Choice">
-          <values/>
+        <value_type type="zope.schema.Text">
+          
         </value_type>
+        <!-- <value_type type="zope.schema.Choice">
+          <vocabulary>DocentIMS.ActionItems.TeamnamesVocabulary</vocabulary>
+        </value_type> -->
       </field>
       <field name="which_board_members_attended" type="zope.schema.Set">
         <description>Select board members that attended.</description>

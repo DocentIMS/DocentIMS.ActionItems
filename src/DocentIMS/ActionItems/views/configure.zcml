@@ -84,7 +84,14 @@
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
    />
 
-
+  <browser:page
+   name="meeting-notes-view"
+   for="*"
+   class=".meeting_notes_view.MeetingNotesView"
+   template="meeting_notes_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
 
   <browser:page
       name="meeting_summary"
