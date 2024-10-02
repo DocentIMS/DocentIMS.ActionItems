@@ -250,6 +250,8 @@ class MeetingEditForm(DefaultEditForm):
 
     def updateWidgets(self):
         super(MeetingEditForm, self).updateWidgets()
+        
+        # import pdb; pdb.set_trace()
          
         if self.portal_type == "Meeting" or self.portal_type == 'meeting':
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
@@ -260,7 +262,7 @@ class MeetingEditForm(DefaultEditForm):
     def update(self):
         super(MeetingEditForm, self).update()
         
-        if self.portal_type in  ["Meeting", "meeting", "Notes", "notes", "Feedback", "feedback"]:
+        if self.portal_type in  ["Meeting Notes", "Meeting", "meeting", "Notes", "notes", "Feedback", "feedback"]:
         
             for group in self.groups:
                 if group.__name__ == 'settings':
@@ -272,6 +274,9 @@ class MeetingEditForm(DefaultEditForm):
                 if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                     #group.mode = 'omitted'
                     group.label = None
+        
+        if self.portal_type in  ["Meeting Notes",]:         
+            self.default_fieldset_label = "Meeting Details"
             
         
         
