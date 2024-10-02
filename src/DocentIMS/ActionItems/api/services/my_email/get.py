@@ -42,12 +42,15 @@ class MyEmail(object):
             my_groups = user.getGroups() or None
             members = []
             if my_groups:   
-                ids = []
+               
                 for mygroup in my_groups:
+                    ids = []
                     groupmembers = api.user.get_users(groupname=mygroup)
                     for groupmember in groupmembers:
                         ids.append(groupmember.getId())
                     members.append({mygroup: ids})
+                    
+                 
             result = {
                 'my_email': {
                     'id': user.getProperty('id'),
