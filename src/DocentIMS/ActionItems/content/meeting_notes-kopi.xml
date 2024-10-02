@@ -12,16 +12,15 @@
         <title>Meeting Location</title>
         <vocabulary>DocentIMS.ActionItems.LocationsVocabulary</vocabulary>
       </field>
-      <!-- <field name="meeting_date_time" type="zope.schema.Date">
+      <field name="meeting_date_time" type="zope.schema.Date">
         <description>Scheduled meeting time</description>
         <required>False</required>
-        <title>Meeting Date</title>
-      </field> -->
-      <!-- <field name="call_to_order" type="zope.schema.Time">
-        <widget type="collective.z3cform.datetimewidget.widget.DatetimeFieldWidget"/> 
+        <title>Meeting Date &amp; Time</title>
+      </field>
+      <field name="call_to_order" type="zope.schema.TextLine">
         <required>False</required>
         <title>Call to Order</title>
-      </field> -->
+      </field>
       <field name="did_property_manager_attend" type="zope.schema.Bool">
         <description>Was the property manager at the meeting</description>
         <required>False</required>

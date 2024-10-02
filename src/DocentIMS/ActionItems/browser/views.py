@@ -405,7 +405,12 @@ class MeetingAddForm(DefaultAddForm):
         if self.portal_type in  ["Meeting", "meeting", "Notes", "Feedback"]:
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
-
+            
+        # Title is hard coded from todays date
+        if self.portal_type in  ["Meeting Notes",]: 
+            # self.widgets['title'].readonly='readonly'
+            self.widgets['title'].mode = interfaces.HIDDEN_MODE
+            self.widgets['description'].mode = interfaces.HIDDEN_MODE
 
     def updateFields(self):
         super(MeetingAddForm, self).updateFields()
@@ -413,8 +418,14 @@ class MeetingAddForm(DefaultAddForm):
     def update(self):
         super(MeetingAddForm, self).update()
         
-        if self.portal_type in  ["Meeting", "meeting", "Notes", "Feedback"]:
+       
+        if self.portal_type in  ["Meeting Notes", "Meeting", "meeting", "Notes", "Feedback"]:
+            if self.portal_type in  ["Meeting Notes",]:
+                    default_fieldset_label = 'Details'
+                    
             for group in self.groups:
+                #import pdb; pdb.set_trace()
+        
                 if group.__name__ == 'settings':
                     group.label = None
                     #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
@@ -423,6 +434,9 @@ class MeetingAddForm(DefaultAddForm):
                 if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                     #group.mode = 'omitted'
                     group.label = None
+                    
+                
+        
         
 
 

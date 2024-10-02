@@ -149,6 +149,15 @@
              name="Feedback"
         />
 
+    <adapter
+        factory=".views.MeetingAddFormView"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        for="*
+             DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
+             plone.dexterity.interfaces.IDexterityFTI"
+             name="Meeting Notes"
+        />
+
     <class class=".views.MeetingAddFormView">
     <require
         permission="cmf.AddPortalContent"
