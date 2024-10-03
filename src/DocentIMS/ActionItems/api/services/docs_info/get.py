@@ -25,9 +25,28 @@ def get_content_types_and_workflows():
         if workflows:
             workflow = workflows[0]  # Assuming one workflow per content type
             states = list(workflow.states)
+            # transitions = list(workflow.transitions) 
+            transitions = []
+            workflow_states = []
+            for transition_id, transition in workflow.transitions.items():
+                 transitions.append({ 
+                    'id': transition_id, 
+                    'title': transition.title or transition_id 
+                })
+                 
+            for state_id, workflow_state in workflow.states.items():
+                 workflow_states.append({ 
+                    'id': state_id, 
+                    'title': workflow_state.title or state_id 
+                })
+                 
+                
+            #import pdb; pdb.set_trace()
             result.append({
                 'content_type': name,
-                'workflow_states': states
+            # 'workflow_states': states,
+                'workflow_transitions': transitions,
+                'workflow_states': workflow_states 
             })
 
     return result

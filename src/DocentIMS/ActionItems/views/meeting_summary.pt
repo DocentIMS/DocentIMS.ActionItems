@@ -99,11 +99,14 @@
           <tal:cond condition="python:'contact' not in excludes">
 
             <div class="col event-contact mb-3" tal:define="
-                   user_id data/contact_name|None;
-                   user python:context.portal_membership.getMemberById(user_id);
+                   user_id data/contact_name|None; ">
+                  
+              <tal:check tal:condition="python: user_id != None">
+              <div class="d-flex"
+                   tal:define="user python:context.portal_membership.getMemberById(user_id);
                    name python:user.getProperty('fullname', None);
-                   mail python:user.getProperty('email', None) " tal:condition="python:name or mail">
-              <div class="d-flex">
+                   mail python:user.getProperty('email', None) " 
+                   tal:condition="python:name or mail">
                 <div>Contact Person: &nbsp;</div>
                 <div class="meta-icon">
                   <tal:icon replace="structure python:icons.tag('person', tag_class='icon-inline')" />
@@ -119,6 +122,7 @@
                   <p class="card-text" tal:condition="not:mail" tal:content="name">Name</p>
                 </div>
               </div>
+              </tal:check>
             </div>
 
             <div class="col event-phone mb-3" tal:condition="data/contact_phone">

@@ -27,6 +27,7 @@ class IMeetingNotes(model.Schema):
     """ Marker interface for MeetingNotes
     """
     
+   
     model.load("meeting_notes.xml")
     
     title = schema.TextLine(
@@ -52,3 +53,39 @@ class IMeetingNotes(model.Schema):
         title="Call to Order"
     )
  
+ 
+ 
+# @implementer(IMeetingNotes)
+# class MeetingNotes(Item):
+#     """
+#     """
+        
+#     # @property
+#     def title(self):
+#         return 'NN'
+    
+#     # @title.getter
+#     # def title(self):
+#     #     return 'N--N'
+    
+#     # @title.setter
+#     # def title(self, value):
+#     #     return 'N-N'
+#     #     # pass
+        
+#     # @property
+#     def Title(self):
+#         return 'NN'
+    
+#     # @property
+#     def getTitle(self):
+        return 'NN'
+    
+    # @Title.getter
+    # def Title(self):
+    #     return 'N--N'
+    
+    # @Title.setter
+    # def Title(self, value):
+    #     return 'N-N'
+    #     # pass
