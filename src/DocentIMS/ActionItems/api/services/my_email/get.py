@@ -47,7 +47,11 @@ class MyEmail(object):
                     ids = []
                     groupmembers = api.user.get_users(groupname=mygroup)
                     for groupmember in groupmembers:
-                        ids.append({'id': groupmember.getId(), 'fullname': groupmember.getProperty('fullname'), 'email': groupmember.getProperty('email')})
+                        ids.append({
+                            'id': groupmember.getId(), 
+                            'fullname': groupmember.getProperty('fullname'), 
+                            # 'email': groupmember.getProperty('email')
+                        })
                     members.append({mygroup: ids})
                     print(members)
                  

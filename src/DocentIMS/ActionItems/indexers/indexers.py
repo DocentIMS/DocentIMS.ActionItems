@@ -25,9 +25,12 @@ def assigned_toIndexer(obj):
     """Index real name instead of username for assigned_to"""
     username = obj.assigned_to
     if username:
-        return api.user.get(userid=username).getProperty('fullname')
+        fullname = api.user.get(userid=username).getProperty('fullname')
+        if fullname:
+            return fullname 
+        return username
 
-    return None
+    return obj.assigned_to
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def actionIndexer(obj):

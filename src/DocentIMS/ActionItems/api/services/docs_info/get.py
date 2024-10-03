@@ -24,29 +24,33 @@ def get_content_types_and_workflows():
         workflows = workflow_tool.getWorkflowsFor(fti.factory)
         if workflows:
             workflow = workflows[0]  # Assuming one workflow per content type
-            states = list(workflow.states)
+            #states = list(workflow.states)
             # transitions = list(workflow.transitions) 
             transitions = []
-            workflow_states = []
+            states = []
             for transition_id, transition in workflow.transitions.items():
-                 transitions.append({ 
+                transitions.append({ 
                     'id': transition_id, 
-                    'title': transition.title or transition_id 
+                    'title': transition.title or transition_id,
+                    'description': transition.description,
+                    'new_state_id': transition.new_state_id,
+                    'actbox_name': transition.actbox_name,
+                    
                 })
                  
             for state_id, workflow_state in workflow.states.items():
-                 workflow_states.append({ 
+                states.append({ 
                     'id': state_id, 
-                    'title': workflow_state.title or state_id 
+                    'title': workflow_state.title or state_id,
+                    'description': workflow_state.description,
+                    'transitions': workflow_state.transitions    
                 })
                  
                 
-            #import pdb; pdb.set_trace()
             result.append({
                 'content_type': name,
-            # 'workflow_states': states,
                 'workflow_transitions': transitions,
-                'workflow_states': workflow_states 
+                'workflow_states': states 
             })
 
     return result
