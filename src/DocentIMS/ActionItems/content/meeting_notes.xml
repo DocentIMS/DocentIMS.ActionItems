@@ -12,6 +12,11 @@
         <title>Meeting Location</title>
         <vocabulary>DocentIMS.ActionItems.LocationsVocabulary</vocabulary>
       </field>
+
+        <field name="parent_id" type="zope.schema.TextLine">
+            <required>False</required>
+            <form:widget mode="hidden" />
+        </field>
       <!-- <field name="meeting_date_time" type="zope.schema.Date">
         <description>Scheduled meeting time</description>
         <required>False</required>

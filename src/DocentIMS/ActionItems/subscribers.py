@@ -15,6 +15,7 @@ from zope.lifecycleevent import IObjectModifiedEvent
 # from zope.schema.interfaces import  InvalidValue
 # from AccessControl import Unauthorized
 from Products.statusmessages.interfaces import IStatusMessage
+from datetime import datetime
 
 # import transaction
 # from zope.container.contained import notifyContainerModified
@@ -49,6 +50,34 @@ def check_defaultpage(object, event):
     except AttributeError:
         pass        
     
+def add_meeting_types(object, event):
+    today = datetime.today().strftime('%Y-%m-%d')
+    if object.portal_type in  ['Meeting', 'meeting' ]:
+        context = object
+        parent_id = context.UID()
+        notes = api.content.create(
+                        type='Meeting Notes',
+                        container=context,
+                        parent_id=parent_id,
+                        title=f"Notes {today}",
+                        description="Notes taken during the meeting",
+                        id=f"notes-{parent_id}",
+        )
+        minutes = api.content.create(
+                        type='Meeting Minutes',
+                        container=context,
+                        parent_id=parent_id,
+                        title=f"Minutes {today}",
+                        id=f"minute-{parent_id}",                  
+        )
+        
+        agenda_content = api.content.create(
+                        type='Meeting Agenda',
+                        container=context,
+                        parent_id=parent_id,
+                        title=f"Agenda {today}",
+                        id=f"agenda-{parent_id}",
+        )
 
         
 def change_uuid(object, event):

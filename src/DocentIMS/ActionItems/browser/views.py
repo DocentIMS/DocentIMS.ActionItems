@@ -415,7 +415,7 @@ class MeetingAddForm(DefaultAddForm):
         if self.portal_type in  ["Meeting Notes",]: 
             # self.widgets['title'].readonly='readonly'
             self.widgets['title'].mode = interfaces.HIDDEN_MODE
-            self.widgets['description'].mode = interfaces.HIDDEN_MODE
+            self.widgets['description'].mode = interfaces.HIDDEN_MODE 
 
     def updateFields(self):
         super(MeetingAddForm, self).updateFields()

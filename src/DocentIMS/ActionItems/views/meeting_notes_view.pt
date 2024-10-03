@@ -1,34 +1,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
+  <body>
+    <metal:content-core fill-slot="content-core">
+      <metal:block define-macro="content-core">
 
-   <hr class="hr" />
-   <p><b>Meeting Notes:</b></p>
+        <hr class="hr" />
+        <p>
+          <b>Meeting Notes:</b>
+        </p>
 
-   <div tal:content="structure context/meeting_notes/output|None"></div> 
+        <div tal:content="structure context/meeting_notes/output|None"></div>
 
-   <div class="xcard xalert xalert-info" >
-    <table class="table table-primary table-bordered">
-      <tr>
-        <td><p><b>Location:</b></p><p> ${context/meeting_location|None}</p></td>
-        <td><p><b>Property manager: </b></p><p>${context/did_property_manager_attend|None}</p></td>
-        <td><p><b>Date: </b></p><p>${context/meeting_date_time|None}</p></td>
-        <td><p><b>Call to order: </b></p><p>${context/call_to_order|None}</p></td>
-        <td><p><b>Attend: </b></p><p tal:repeat="attend context/members|None">${attend}</p></td>
-        <td><p><b>Board Members: </b></p><p tal:repeat="attend view/get_attended|None">${attend}</p></td>
-    
-      </tr>
-    </table>
-  </div>
+        <div class="xcard xalert xalert-info">
+          <table class="table table-primary table-bordered">
+            <tr>
+              <td>
+                <p>
+                  <b>Location:</b>
+                </p>
+                <p> ${context/meeting_location|None}</p>
+              </td>
+              <td>
+                <p>
+                  <b>Property manager: </b>
+                </p>
+                <p>${context/did_property_manager_attend|None}</p>
+              </td>
+              <td>
+                <p>
+                  <b>Date: </b>
+                </p>
+                <p>${context/meeting_date_time|None}</p>
+              </td>
+              <td>
+                <p>
+                  <b>Call to order: </b>
+                </p>
+                <p>${context/call_to_order|None}</p>
+              </td>
+              <td>
+                <p>
+                  <b>Attend: </b>
+                </p>
+                <p tal:repeat="attend context/members|None">${attend}</p>
+              </td>
+              <td>
+                <p>
+                  <b>Board Members: </b>
+                </p>
+                <p tal:repeat="attend view/get_attended|None">${attend}</p>
+              </td>
 
- 
-  </metal:block>
-  </metal:content-core>
-</body>
+            </tr>
+          </table>
+        </div>
+
+      </metal:block>
+    </metal:content-core>
+  </body>
 </html>

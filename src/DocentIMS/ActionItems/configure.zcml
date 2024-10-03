@@ -144,7 +144,13 @@
       name="DocentIMS.ActionItems-hiddenprofiles"
       />
 
- 
+
+<!-- Add meeting subtypes after creation -->
+  <subscriber
+    for="Products.CMFCore.interfaces.IFolderish        
+        zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".subscribers.add_meeting_types"
+    />
 
 <!-- Change UUID after creation -->
   <subscriber

@@ -29,6 +29,9 @@
    <property name="allowed_content_types">
     <element value="File"/>
     <element value="Image"/>
+    <element value="Meeting Minutes"/>
+    <element value="Meeting Agenda"/>
+    <element value="Meeting Notes"/>
   </property>
 
   <!-- Enabled behaviors -->

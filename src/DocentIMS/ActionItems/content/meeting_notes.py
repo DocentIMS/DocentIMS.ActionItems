@@ -9,6 +9,8 @@ from plone.supermodel import model
 from zope.interface import implementer
 # from plone.dexterity.content import Container
 from plone.supermodel import model
+# from plone.autoform import directives as form
+ 
 
 
     
@@ -29,6 +31,14 @@ class IMeetingNotes(model.Schema):
     
    
     model.load("meeting_notes.xml")
+    
+    # form.mode(title='hidden')  # Hide the title field from the form
+    # title = schema.TextLine(
+    #     title=u"Title",
+    #     description=u"This is a computed field.",
+    #     required=False,
+    #     readonly=True
+    # )
     
     title = schema.TextLine(
         title=u"Title",
@@ -55,37 +65,11 @@ class IMeetingNotes(model.Schema):
  
  
  
-# @implementer(IMeetingNotes)
-# class MeetingNotes(Item):
-#     """
-#     """
+@implementer(IMeetingNotes)
+class MeetingNotes(Item):
+    """
+    """
         
-#     # @property
-#     def title(self):
-#         return 'NN'
-    
-#     # @title.getter
-#     # def title(self):
-#     #     return 'N--N'
-    
-#     # @title.setter
-#     # def title(self, value):
-#     #     return 'N-N'
-#     #     # pass
-        
-#     # @property
-#     def Title(self):
-#         return 'NN'
-    
-#     # @property
-#     def getTitle(self):
-        return 'NN'
-    
-    # @Title.getter
-    # def Title(self):
-    #     return 'N--N'
-    
-    # @Title.setter
-    # def Title(self, value):
-    #     return 'N-N'
-    #     # pass
+    def Title(self):
+        # Example: compute the title based on the description field or other logic
+        return 'Something'
