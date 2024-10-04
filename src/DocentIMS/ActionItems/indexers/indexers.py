@@ -19,23 +19,24 @@ def dummy(obj):
     """ Dummy to prevent indexing other objects thru acquisition """
     raise AttributeError('This field should not indexed here!')
 
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def assigned_idIndexer(obj):
+    """Index id instead of assigned_to"""
+    return obj.assigned_to
+    
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def assigned_toIndexer(obj):
     """Index real name instead of username for assigned_to"""
     username = obj.assigned_to
-    if username:
-        fullname = api.user.get(userid=username).getProperty('fullname')
-        if fullname:
-            return fullname 
-        return username
+    # if username:
+    #     fullname = api.user.get(userid=username).getProperty('fullname')
+    #     if fullname:
+    #         return fullname 
+    return username
 
-    return obj.assigned_to
+    
 
-@indexer(IDexterityContent)  # ADJUST THIS!
-def assigned_to_idIndexer(obj):
-    """Index real name instead of username for assigned_to"""
-    return obj.assigned_to
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def actionIndexer(obj):
