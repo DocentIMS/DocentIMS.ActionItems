@@ -50,7 +50,7 @@ class MyEmail(object):
                         ids.append({
                             'id': groupmember.getId(), 
                             'fullname': groupmember.getProperty('fullname'), 
-                            # 'email': groupmember.getProperty('email')
+                            'email': groupmember.getProperty('email')
                         })
                     members.append({mygroup: ids})
                     print(members)
