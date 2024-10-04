@@ -54,7 +54,7 @@
   <adapter factory=".indexers.urgencyIndexer"
       name="urgency" />
 
-  <adapter factory=".indexers.assigned_nameIndexer"
+  <adapter factory=".indexers.assigned_idIndexer"
       name="assigned_id" />
 
   <adapter factory=".indexers.assigned_toIndexer"
