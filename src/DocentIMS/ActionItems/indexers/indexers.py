@@ -29,10 +29,10 @@ def assigned_idIndexer(obj):
 def assigned_toIndexer(obj):
     """Index real name instead of username for assigned_to"""
     username = obj.assigned_to
-    # if username:
-    #     fullname = api.user.get(userid=username).getProperty('fullname')
-    #     if fullname:
-    #         return fullname 
+    if username:
+        fullname = api.user.get(userid=username).getProperty('fullname')
+        if fullname:
+            return fullname 
     return username
 
     
