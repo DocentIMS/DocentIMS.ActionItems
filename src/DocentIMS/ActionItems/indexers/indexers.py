@@ -32,6 +32,11 @@ def assigned_toIndexer(obj):
 
     return obj.assigned_to
 
+@indexer(IDexterityContent)  # ADJUST THIS!
+def assigned_to_idIndexer(obj):
+    """Index real name instead of username for assigned_to"""
+    return obj.assigned_to
+
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def actionIndexer(obj):
     """Calculate and return the value for the indexer"""

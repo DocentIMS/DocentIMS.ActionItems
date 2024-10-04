@@ -30,6 +30,11 @@
  <index name="assigned_to" meta_type="FieldIndex">
   <indexed_attr value="assigned_to"/>
  </index>
+
+  <index name="assigned_to_id" meta_type="FieldIndex">
+    <indexed_attr value="assigned_to"/>
+  </index>
+
  <index name="is_this_item_closed" meta_type="BooleanIndex">
   <indexed_attr value="is_this_item_closed"/>
  </index>
@@ -67,6 +72,7 @@
  <column value="duedate"/>
  <column value="daysleft"/>
  <column value="assigned_to"/>
+ <column value="assigned_to_id"/>
  <column value="is_this_item_closed"/>
  <column value="closed"/>
  <column value="actionno"/>
