@@ -308,7 +308,7 @@ def _create_content(portal):
                     container=meeting,
                     id='meeting-collection',
                     title='Meetings',
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['meeting']}]
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['meeting', 'Meeting']}]
                 )
                                 
                 
