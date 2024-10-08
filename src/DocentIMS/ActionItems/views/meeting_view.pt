@@ -60,8 +60,8 @@
                         
                         <img src="${item/MimeTypeIcon}" alt="icon" title="icon" /> 
                         
-                        <a href="${item/absolute_url}/@@download/file">${item/file/filename}</a>
-                         &nbsp; [ ${item/getSize} ]
+                        <a href="${item/absolute_url}/@@download/file">${item/file/filename|None}</a>
+                         &nbsp; [ ${item/getSize|None} ]
                       </p>
                     
                   </tal:condition>
