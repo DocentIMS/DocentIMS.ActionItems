@@ -58,16 +58,6 @@ def add_meeting_types(object, event):
         meeting_date_time = context.start
         location = context.location
         notes = api.content.create(
-                        type='Meeting Notes',
-                        container=context,
-                        parent_id=parent_id,
-                        meeting_date_time=meeting_date_time,
-                        title=f"Notes {meeting_date_time}",
-                        meeting_location=location,
-                        description="Notes taken during the meeting",
-                        id=f"notes-{parent_id}",
-        )
-        notes = api.content.create(
                         type='meeting_note',
                         container=context,
                         parent_id=parent_id,
@@ -75,10 +65,11 @@ def add_meeting_types(object, event):
                         title=f"Notes {meeting_date_time}",
                         meeting_location=location,
                         description="Notes taken during the meeting",
-                        id=f"notes-{parent_id}",
+                        id=f"note-{parent_id}",
         )
+        
         minutes = api.content.create(
-                        type='Meeting Minutes',
+                        type='meeting_minute',
                         container=context,
                         parent_id=parent_id,
                         title=f"Minutes {today}",
@@ -86,12 +77,38 @@ def add_meeting_types(object, event):
         )
         
         agenda_content = api.content.create(
-                        type='Meeting Agenda',
+                        type='meeting_agenda',
                         container=context,
                         parent_id=parent_id,
                         title=f"Agenda {today}",
                         id=f"agenda-{parent_id}",
         )
+        # notes = api.content.create(
+        #                 type='eeting Notes',
+        #                 container=context,
+        #                 parent_id=parent_id,
+        #                 meeting_date_time=meeting_date_time,
+        #                 title=f"Notes {meeting_date_time}",
+        #                 meeting_location=location,
+        #                 description="Notes taken during the meeting",
+        #                 id=f"notes-{parent_id}",
+        # )
+        
+        # minutes = api.content.create(
+        #                 type='Meeting Minutes',
+        #                 container=context,
+        #                 parent_id=parent_id,
+        #                 title=f"Minutes {today}",
+        #                 id=f"minute-{parent_id}",                  
+        # )
+        
+        # agenda_content = api.content.create(
+        #                 type='Meeting Agenda',
+        #                 container=context,
+        #                 parent_id=parent_id,
+        #                 title=f"Agenda {today}",
+        #                 id=f"agenda-{parent_id}",
+        # )
 
         
 def change_uuid(object, event):
