@@ -67,6 +67,16 @@ def add_meeting_types(object, event):
                         description="Notes taken during the meeting",
                         id=f"notes-{parent_id}",
         )
+        notes = api.content.create(
+                        type='meeting_note',
+                        container=context,
+                        parent_id=parent_id,
+                        meeting_date_time=meeting_date_time,
+                        title=f"Notes {meeting_date_time}",
+                        meeting_location=location,
+                        description="Notes taken during the meeting",
+                        id=f"notes-{parent_id}",
+        )
         minutes = api.content.create(
                         type='Meeting Minutes',
                         container=context,
