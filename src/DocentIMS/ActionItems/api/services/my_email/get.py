@@ -40,7 +40,7 @@ class MyEmail(object):
               
         if user is not None: 
             my_groups = user.getGroups() or None
-            members = None
+            members = []
             if my_groups:   
                
                 for mygroup in my_groups:
