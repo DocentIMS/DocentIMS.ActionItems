@@ -52,7 +52,7 @@ class MyEmail(object):
                             'fullname': groupmember.getProperty('fullname'), 
                             'email': groupmember.getProperty('email')
                         })
-                    members.append({mygroup: ids})
+                    members.append(mygroup, ids)
                     # print(members)
                  
             result = {
