@@ -55,11 +55,15 @@ def add_meeting_types(object, event):
     if object.portal_type in  ['Meeting', 'meeting' ]:
         context = object
         parent_id = context.UID()
+        meeting_date_time = context.start
+        location = context.location
         notes = api.content.create(
                         type='Meeting Notes',
                         container=context,
                         parent_id=parent_id,
-                        title=f"Notes {today}",
+                        meeting_date_time=meeting_date_time,
+                        title=f"Notes {meeting_date_time}",
+                        meeting_location=location,
                         description="Notes taken during the meeting",
                         id=f"notes-{parent_id}",
         )

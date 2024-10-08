@@ -8,8 +8,9 @@
 
         <hr class="hr" />
         <p>
-          <b>Meeting Notes:</b>
+          <b>Planned Meeting Info:</b>
         </p>
+
 
         <div tal:content="structure context/meeting_notes/output|None"></div>
 
@@ -22,17 +23,18 @@
                 </p>
                 <p> ${context/meeting_location|None}</p>
               </td>
-              <td>
+              <!-- <td>
                 <p>
                   <b>Property manager: </b>
                 </p>
                 <p>${context/did_property_manager_attend|None}</p>
-              </td>
+              </td> -->
               <td>
                 <p>
-                  <b>Date: </b>
+                  <b>Plannne Date and time: </b>
                 </p>
-                <p>${context/meeting_date_time|None}</p>
+
+                <p>Scheduled date: ${context/aq_parent/start}</p>
               </td>
               <td>
                 <p>
@@ -55,7 +57,69 @@
 
             </tr>
           </table>
+
+
+
         </div>
+
+        <p>&nbsp;</p>
+        <p>
+          <b>Actual Meeting Info:</b>
+        </p>
+
+        <table class="table table-secondary table-bordered">
+          <tr>
+            <td>
+              <p>
+                <b>Location:</b>
+              </p>
+              <p> ${context/aq_parent/meeting_location|None}</p>
+            </td>
+            <!-- <td>
+                <p>
+                  <b>Property manager: </b>
+                </p>
+                <p>${context/did_property_manager_attend|None}</p>
+              </td> -->
+            <td>
+              <p>
+                <b>Actual Date and time: </b>
+              </p>
+              <p>${context/meeting_date_time|None}</p>
+            </td>
+            <td>
+              <p>
+                <b>Call to order: </b>
+              </p>
+              <p>${context/call_to_order|None}</p>
+            </td>
+            <td>
+              <p>
+                <b>Attend: </b>
+              </p>
+              <p tal:repeat="attend context/members|None">${attend}</p>
+            </td>
+            <td>
+              <p>
+                <b>Board Members: </b>
+              </p>
+              <p tal:repeat="attend view/get_attended|None">${attend}</p>
+            </td>
+
+          </tr>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
 
       </metal:block>
     </metal:content-core>

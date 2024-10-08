@@ -17,11 +17,11 @@
             <required>False</required>
             <form:widget mode="hidden" />
         </field>
-      <!-- <field name="meeting_date_time" type="zope.schema.Date">
+      <field name="meeting_date_time" type="zope.schema.Date">
         <description>Scheduled meeting time</description>
         <required>False</required>
         <title>Meeting Date</title>
-      </field> -->
+      </field>
       <!-- <field name="call_to_order" type="zope.schema.Time">
         <widget type="collective.z3cform.datetimewidget.widget.DatetimeFieldWidget"/> 
         <required>False</required>

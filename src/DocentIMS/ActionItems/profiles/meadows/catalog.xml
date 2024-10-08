@@ -35,6 +35,10 @@
     <indexed_attr value="assigned_to"/>
   </index>
 
+ <index name="has_file" meta_type="BooleanIndex">
+  <indexed_attr value="file"/>
+ </index>
+
  <index name="is_this_item_closed" meta_type="BooleanIndex">
   <indexed_attr value="is_this_item_closed"/>
  </index>
@@ -77,6 +81,7 @@
  <column value="closed"/>
  <column value="actionno"/>
  <column value="urgency"/>
+ <column value="has_file"/>
 
  <!-- <column value="out_of_the_scope"/> -->
  <column value="is_this_action_out_of_the_scope_of_work_"/> 

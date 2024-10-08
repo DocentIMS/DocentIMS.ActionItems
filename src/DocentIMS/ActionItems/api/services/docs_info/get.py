@@ -91,6 +91,7 @@ class DocsInfo(object):
             download_date = team_member_folder.modified().strftime("%m/%d/%Y, %H:%M:%S")
         
         if user is not None:    
+            
             result = {
                 'docs_info': {
                     'meeting_locations': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names'),

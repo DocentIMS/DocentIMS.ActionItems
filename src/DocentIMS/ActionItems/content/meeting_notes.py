@@ -52,16 +52,16 @@ class IMeetingNotes(model.Schema):
         defaultFactory=default_description
     )
     
-    meeting_date_time = schema.Date(
-        description=u"Scheduled meeting time",
-        required=False,
-        title=u"Meeting Date"
-    )
+    # meeting_date_time = schema.Date(
+    #     description=u"Scheduled meeting time",
+    #     required=False,
+    #     title=u"Meeting Date"
+    # )
 
-    call_to_order= schema.Time(
-        required=False,
-        title="Call to Order"
-    )
+    # call_to_order= schema.Time(
+    #     required=False,
+    #     title="Call to Order"
+    # )
  
  
  
