@@ -211,7 +211,8 @@ class ActionItemsEditForm(DefaultEditForm):
                     if self.portal_type == 'sow_analysis':
                         group.label = None
 
-                if self.portal_type == 'sow_analysis':
+                import pdb; pdb.set_trace()
+                if self.portal_type ['sow_analysis', 'Meeting']:
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                         #group.mode = 'omitted'
                         group.label = None
@@ -257,10 +258,13 @@ class MeetingEditForm(DefaultEditForm):
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
+            
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
      
     def update(self):
         super(MeetingEditForm, self).update()
+        
         
         if self.portal_type in  ["Meeting Notes", "Meeting", "meeting", "Notes", "notes", "Feedback", "feedback"]:
         
@@ -400,19 +404,26 @@ class MeetingAddForm(DefaultAddForm):
     
     def __init__(self, context, request):
         super(MeetingAddForm, self).__init__(context, request)
+        
+        
+    # def default_title():
+    #     today = datetime.today().strftime('%Y-%m-%d')
+    #     return f"Notes {today}"
 
     def updateWidgets(self):
         super(MeetingAddForm, self).updateWidgets()
         if self.portal_type == 'Meeting' or self.portal_type == 'meeting':
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+            # self.fields['IBasic.title'].field.default = default_title()
+            # self.fields['IBasic.title'].mode = interfaces.HIDDEN_MODE
             
         if self.portal_type in  ["Meeting", "meeting", "Notes", "Feedback"]:
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
             
         # Title is hard coded from todays date
-        if self.portal_type in  ["Meeting Notes",]: 
+        if self.portal_type in  ["Meeting Notes"]: 
             # self.widgets['title'].readonly='readonly'
             self.widgets['title'].mode = interfaces.HIDDEN_MODE
             self.widgets['description'].mode = interfaces.HIDDEN_MODE 

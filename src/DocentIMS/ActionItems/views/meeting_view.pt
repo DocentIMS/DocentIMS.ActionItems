@@ -41,22 +41,35 @@
           </div>
 
         </tal:def>
-
-         <div class="white-background">
+        <div class="spacer m-5"  />
+         <div>
               <!-- first tab -->
 
-              <div class="pat-autotoc autotabs"
+              <div  class="pat-autotoc autotabs"
                 data-pat-autotoc="section:fieldset;levels:legend;">
     
                 <!-- Show all Pages as separate tabs -->
-                <fieldset tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()">
+                <fieldset style="background-color:#FCFCFC;" class="m-0 p-4" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()">
                   <legend>${item/Title}</legend> 
 
-                  <div class="xcard">
-                    <p class="lead"><a href="${item/getURL}" target="_blank">${item/Title}</a></p> 
+                  <!-- <div class="xcard"> -->
+                    <!-- <p class="lead"><a href="${item/getURL}" target="_blank">${item/Title}</a></p>  -->
                     <!-- <p class="lead">${item/Description}</p>  -->
-                  </div>
-                  <div tal:content="structure item/text/output|None"></div> 
+                  <!-- </div> -->
+                  <div class="card-body" tal:content="structure item/text/output|None"></div> 
+                  <tal:condition tal:condition="item/file|None">
+                      <p>
+                        
+                        <img src="${item/MimeTypeIcon}" alt="icon" title="icon" /> 
+                        
+                        <a href="${item/absolute_url}/@@download/file">${item/file/filename}</a>
+                         &nbsp; [ ${item/getSize} ]
+                      </p>
+                    
+                  </tal:condition>
+                  <!-- <p><hr class="hr" /></p> -->
+                  <p><a href="${item/getURL}" class="btn button standalone btn-sm btn-secondary" target="_blank"><b>Open … </b> ${item/Title}</a></p> 
+                  <hr class="hr" />
                   
                   <!-- <tal:itemview replace="structure context" /> -->
  
@@ -64,9 +77,12 @@
  
             </div>
         </div>
+        <style>
+          .pat-autotoc.autotabs .autotoc-nav {margin-bottom: 0 !important}
+        </style>
 
       </metal:block>
     </metal:content-core>
-
+  
   </body>
 </html>

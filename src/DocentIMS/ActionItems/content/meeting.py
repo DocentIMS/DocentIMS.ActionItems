@@ -6,6 +6,11 @@ from plone.supermodel import model
 class IMeeting(model.Schema):
     """ Marker interface for Meeting
     """
+    
+    # def default_title():
+    #     """Return default title 'Notes <Date>' where Date is today's date."""
+    #     today = datetime.today().strftime('%Y-%m-%d')
+    #     return f"Notes {today}"
 
     # @property
     # def getTitle(self):
