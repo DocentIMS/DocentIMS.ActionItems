@@ -40,6 +40,8 @@ class MyEmail(object):
               
         if user is not None: 
             my_groups = user.getGroups() or None
+            # my_groups = group.get_groups()
+            
             members = []
             if my_groups:   
                
@@ -54,13 +56,14 @@ class MyEmail(object):
                         })
                     members.append({mygroup: ids})
                     # print(members)
+                members=members
                  
             result = {
                 'my_email': {
                     'id': user.getProperty('id'),
                     'email': user.getProperty('email'),
                     'fullname' : user.getProperty('fullname'),   
-                    'groups': my_groups[0],
+                    'groups': my_groups,
                     'members': members,
                     'roles' : user.getRoles(),
                     'last_name' : user.getProperty('fullname'), 
