@@ -72,7 +72,7 @@ def add_meeting_types(object, event):
                         type='meeting_minute',
                         container=context,
                         parent_id=parent_id,
-                        title=f"Minutes {today}",
+                        title=f"Minutes {meeting_date_time}",
                         id=f"minute-{parent_id}",                  
         )
         
@@ -80,11 +80,11 @@ def add_meeting_types(object, event):
                         type='meeting_agenda',
                         container=context,
                         parent_id=parent_id,
-                        title=f"Agenda {today}",
+                        title=f"Agenda {meeting_date_time}",
                         id=f"agenda-{parent_id}",
         )
         # notes = api.content.create(
-        #                 type='eeting Notes',
+        #                 type='Meeting Notes',
         #                 container=context,
         #                 parent_id=parent_id,
         #                 meeting_date_time=meeting_date_time,
