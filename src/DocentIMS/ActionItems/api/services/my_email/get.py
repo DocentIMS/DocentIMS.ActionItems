@@ -40,7 +40,12 @@ class MyEmail(object):
               
         if user is not None: 
             my_groups = user.getGroups() or None
-            # my_groups = group.get_groups()
+            # Get all, something like this:
+            # my_groups = api.group.get_groups()
+            # need to serilize below
+            # and use id, not name
+            # group_names = [group.id for group in all_groups]
+            # Then a check if my_group is empty (did not need that check with own group because at least 'I' am part of it)
             
             members = []
             if my_groups:   

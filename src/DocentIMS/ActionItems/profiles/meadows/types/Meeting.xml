@@ -32,6 +32,9 @@
     <element value="Meeting Minutes"/>
     <element value="Meeting Agenda"/>
     <element value="Meeting Notes"/>
+    <element value="meeting_minute"/>
+    <element value="meeting_agenda"/>
+    <element value="meeting_note"/>
   </property>
 
   <!-- Enabled behaviors -->

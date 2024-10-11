@@ -118,7 +118,19 @@ def FullnamesVocabulary(context):
 directlyProvides(FullnamesVocabulary, IVocabularyFactory)
 
 def TeamnamesVocabulary(context):
-    members = api.user.get_users(groupname='PrjTeam')
+    all_groups =  api.group.get_groups()
+    members = []
+    #For Docent
+    
+    group_names = [group.id for group in all_groups]
+    
+    if 'PrjTeam' in group_names:
+        members = api.user.get_users(groupname='PrjTeam')
+      
+    #For Meadows  
+    if 'meadows_board' in group_names:
+        members =  api.user.get_users(groupname='meadows_board')  
+    
          
     if members:
         
