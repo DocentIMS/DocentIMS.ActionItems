@@ -6,6 +6,7 @@ from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
 from zExceptions import BadRequest
+from datetime import datetime
 
 from zope.component import getUtility
 from zope.component import getUtilitiesFor
@@ -103,7 +104,9 @@ class DocsInfo(object):
                     'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number'),   
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'companies' :  companies,
-                    'last_document_save_locations' : download_date,  
+                    'last_document_save_locations' : download_date,
+                    'time-now':  datetime.now().isoformat()     
+                    
                     # 'wf_states_list' : get_content_types_and_workflows(),                 
                 },
             }
