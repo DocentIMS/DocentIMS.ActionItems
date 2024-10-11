@@ -42,10 +42,10 @@
                         <span tal:condition="python: field['row_field']=='actionno'">
                            <tal:condition tal:condition="python: obj.id !='action_items'" 
                                   tal:define="ano python: obj.id.replace('action_items', '').replace('-', '')">
-                                  ${python: "{0:0=4d}".format(int(ano))}
+                                  ${python: "{0:0=3d}".format(int(ano))}
                            </tal:condition>
                            <tal:condition tal:condition="python: obj.id =='action_items'">
-                                 0000
+                                 000
                            </tal:condition> 
                         </span>
                         <span tal:condition="python: field['row_field']=='daysleft'">${item/daysleft|None}</span>
