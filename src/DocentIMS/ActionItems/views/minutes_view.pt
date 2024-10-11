@@ -12,8 +12,7 @@
             <b>File:</b>
             <a href="${context/absolute_url}/@@download/file">Download File</a>
           </td>
-
-          xxx
+ 
         <tal:replace="structure widget/@@ploneform-render-widget"/>
  
         
