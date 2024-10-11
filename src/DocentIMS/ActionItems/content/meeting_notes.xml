@@ -13,7 +13,7 @@
         <vocabulary>DocentIMS.ActionItems.LocationsVocabulary</vocabulary>
       </field>
 
-        <field name="parent_id" type="zope.schema.TextLine">
+        <field name="parent_id" type="zope.schema.TextLine" form:mode="z3c.form.interfaces.IForm:hidden">
             <required>False</required>
             <form:widget mode="hidden" />
         </field>

@@ -31,10 +31,10 @@
               </td> -->
               <td>
                 <p>
-                  <b>Plannne Date and time: </b>
+                  <b>Planned Date and time: </b>
                 </p>
 
-                <p>Scheduled date: ${context/aq_parent/start}</p>
+                <p>Scheduled date: <br/>${context/aq_parent/start/date}</p>
               </td>
               <td>
                 <p>
