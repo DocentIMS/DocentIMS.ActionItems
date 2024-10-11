@@ -10,6 +10,9 @@ from zope.component import getUtility
 from zope.component import getUtilitiesFor
 from plone.dexterity.interfaces import IDexterityFTI
 
+import json
+
+
 
 
 def get_content_types_and_workflows(portal_type):
@@ -20,15 +23,15 @@ def get_content_types_and_workflows(portal_type):
     content_types = getUtilitiesFor(IDexterityFTI)
 
     result = []
+    
+    
 
     # for name, fti in content_types:
     for name, fti in content_types:
-        if name == portal_type:
+        if name == portal_type or portal_type == None:
             workflows = workflow_tool.getWorkflowsFor(fti.factory)
             if workflows:
-                workflow = workflows[0]  # Assuming one workflow per content type
-                #states = list(workflow.states)
-                # transitions = list(workflow.transitions) 
+                workflow = workflows[0]  
                 transitions = []
                 states = []
                 for transition_id, transition in workflow.transitions.items():
@@ -72,19 +75,17 @@ class WorkflowInfo(object):
         self.request = request
 
     def __call__(self, expand=False):
-        import pdb; pdb.set_trace()
-        portal_type = self.request.portal_type or None
+        portal_type = None
+        if hasattr(self.request, "portal_type"):
+            portal_type = self.request.portal_type
+            
         result = {
-            'workflow_info': {
-                '@id': '{}/@workflow_info'.format(
-                    self.context.absolute_url(),
-                ),
-            },
+                'workflow_info': {
+                    'wf_states_list' : get_content_types_and_workflows(portal_type=portal_type),                 
+                },
         }
-        if not expand:
-            return result
-
-        result['wf_states_list']=  get_content_types_and_workflows(portal_type=portal_type),    
+        
+        
         return result
 
 
