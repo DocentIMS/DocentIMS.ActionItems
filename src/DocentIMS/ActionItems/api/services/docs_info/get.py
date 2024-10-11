@@ -13,48 +13,48 @@ from plone.dexterity.interfaces import IDexterityFTI
 from Products.CMFCore.utils import getToolByName
 import json
 
-def get_content_types_and_workflows():
-    portal = api.portal.get()
-    workflow_tool = getToolByName(portal, 'portal_workflow')
-    content_types = getUtilitiesFor(IDexterityFTI)
+# def get_content_types_and_workflows():
+#     portal = api.portal.get()
+#     workflow_tool = getToolByName(portal, 'portal_workflow')
+#     content_types = getUtilitiesFor(IDexterityFTI)
 
-    result = []
+#     result = []
 
-    for name, fti in content_types:
-        workflows = workflow_tool.getWorkflowsFor(fti.factory)
-        if workflows:
-            workflow = workflows[0]  # Assuming one workflow per content type
-            #states = list(workflow.states)
-            # transitions = list(workflow.transitions) 
-            transitions = []
-            states = []
-            for transition_id, transition in workflow.transitions.items():
-                transitions.append({ 
-                    'id': transition_id, 
-                    'title': transition.title or transition_id,
-                    'description': transition.description,
-                    'new_state_id': transition.new_state_id,
-                    'actbox_name': transition.actbox_name,
+#     for name, fti in content_types:
+#         workflows = workflow_tool.getWorkflowsFor(fti.factory)
+#         if workflows:
+#             workflow = workflows[0]  # Assuming one workflow per content type
+#             #states = list(workflow.states)
+#             # transitions = list(workflow.transitions) 
+#             transitions = []
+#             states = []
+#             for transition_id, transition in workflow.transitions.items():
+#                 transitions.append({ 
+#                     'id': transition_id, 
+#                     'title': transition.title or transition_id,
+#                     'description': transition.description,
+#                     'new_state_id': transition.new_state_id,
+#                     'actbox_name': transition.actbox_name,
                     
-                })
+#                 })
                  
-            for state_id, workflow_state in workflow.states.items():
-                states.append({ 
-                    'id': state_id, 
-                    'title': workflow_state.title or state_id,
-                    'description': workflow_state.description,
-                    'transitions': workflow_state.transitions    
-                })
+#             for state_id, workflow_state in workflow.states.items():
+#                 states.append({ 
+#                     'id': state_id, 
+#                     'title': workflow_state.title or state_id,
+#                     'description': workflow_state.description,
+#                     'transitions': workflow_state.transitions    
+#                 })
                  
                 
-            result.append({
-                'content_type': name,
-                'workflow_transitions': transitions,
-                'workflow_states': states 
-            })
+#             result.append({
+#                 'content_type': name,
+#                 'workflow_transitions': transitions,
+#                 'workflow_states': states 
+#             })
 
-    return result
-    #return json.dumps(result, indent=2)
+#     return result
+#     #return json.dumps(result, indent=2)
 
 
 
@@ -104,7 +104,7 @@ class DocsInfo(object):
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'companies' :  companies,
                     'last_document_save_locations' : download_date,  
-                    'wf_states_list' : get_content_types_and_workflows(),                 
+                    # 'wf_states_list' : get_content_types_and_workflows(),                 
                 },
             }
             

@@ -5,6 +5,62 @@ from plone.restapi.services import Service
 from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
+from Products.CMFCore.utils import getToolByName
+from zope.component import getUtility
+from zope.component import getUtilitiesFor
+from plone.dexterity.interfaces import IDexterityFTI
+
+
+
+def get_content_types_and_workflows(portal_type):
+    # portal_types = request.portal_type or None
+    portal = api.portal.get()
+    workflow_tool = getToolByName(portal, 'portal_workflow')
+    # wft = api.portal.get_tool('portal_workflow')
+    content_types = getUtilitiesFor(IDexterityFTI)
+
+    result = []
+
+    # for name, fti in content_types:
+    for name, fti in content_types:
+        if name == portal_type:
+            workflows = workflow_tool.getWorkflowsFor(fti.factory)
+            if workflows:
+                workflow = workflows[0]  # Assuming one workflow per content type
+                #states = list(workflow.states)
+                # transitions = list(workflow.transitions) 
+                transitions = []
+                states = []
+                for transition_id, transition in workflow.transitions.items():
+                    transitions.append({ 
+                        'id': transition_id, 
+                        'title': transition.title or transition_id,
+                        'description': transition.description,
+                        'new_state_id': transition.new_state_id,
+                        'actbox_name': transition.actbox_name,
+                        
+                    })
+                    
+                for state_id, workflow_state in workflow.states.items():
+                    states.append({ 
+                        'id': state_id, 
+                        'title': workflow_state.title or state_id,
+                        'description': workflow_state.description,
+                        'transitions': workflow_state.transitions    
+                    })
+                    
+                    
+                result.append({
+                    'content_type': name,
+                    'workflow_transitions': transitions,
+                    'workflow_states': states 
+                })
+
+    return result
+    #return json.dumps(result, indent=2)
+
+
+
 
 
 @implementer(IExpandableElement)
@@ -16,6 +72,8 @@ class WorkflowInfo(object):
         self.request = request
 
     def __call__(self, expand=False):
+        import pdb; pdb.set_trace()
+        portal_type = self.request.portal_type or None
         result = {
             'workflow_info': {
                 '@id': '{}/@workflow_info'.format(
@@ -26,31 +84,7 @@ class WorkflowInfo(object):
         if not expand:
             return result
 
-        # === Your custom code comes here ===
-
-        # Example:
-        try:
-            subjects = self.context.Subject()
-        except Exception as e:
-            print(e)
-            subjects = []
-        query = {}
-        query['portal_type'] = "Document"
-        query['Subject'] = {
-            'query': subjects,
-            'operator': 'or',
-        }
-        brains = api.content.find(**query)
-        items = []
-        for brain in brains:
-            # obj = brain.getObject()
-            # parent = obj.aq_inner.aq_parent
-            items.append({
-                'title': brain.Title,
-                'description': brain.Description,
-                '@id': brain.getURL(),
-            })
-        result['workflow_info']['items'] = items
+        result['wf_states_list']=  get_content_types_and_workflows(portal_type=portal_type),    
         return result
 
 

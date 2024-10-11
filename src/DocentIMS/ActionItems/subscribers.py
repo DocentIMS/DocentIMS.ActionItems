@@ -85,7 +85,7 @@ def add_meeting_types(object, event):
                             id=f"minute-{parent_id}",                  
             )
         
-        if 'meeting_agend' in content_types:
+        if 'meeting_agenda' in content_types:
             agenda_content = api.content.create(
                             type='meeting_agenda',
                             container=context,
@@ -121,7 +121,7 @@ def add_meeting_types(object, event):
                             parent_id=parent_id,
                             title=f"Agenda {today}",
                             id=f"agenda-{parent_id}",
-            )
+        )
 
         
 def change_uuid(object, event):
