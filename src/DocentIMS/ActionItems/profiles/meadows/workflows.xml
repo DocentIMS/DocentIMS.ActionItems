@@ -34,13 +34,17 @@
   <type type_id="Discussion Item">
    <bound-workflow workflow_id="comment_one_state_workflow"/>
   </type>
-  <type type_id="feedback">
+  <type type_id="Feedback">
    <bound-workflow workflow_id="docentIMS_feedback_workflow"/>
   </type>
   <type type_id="Image"/>
-   
-  
-  <type type_id="meeting_minutes">
+  <type type_id="Meeting">
+   <bound-workflow workflow_id="meadows_meeting_workflow"/>
+  </type>
+  <type type_id="Meeting Agenda">
+   <bound-workflow workflow_id="docentIMS_meeting_agenda_workflow"/>
+  </type>
+  <type type_id="Meeting Minutes">
    <bound-workflow workflow_id="docentMtgAgenda_WF"/>
   </type>
   <type type_id="Notes">
@@ -59,7 +63,7 @@
   <type type_id="meeting_minute">
    <bound-workflow workflow_id="meeting_workflow"/>
   </type>
-  <type type_id="meeting_notes">
+  <type type_id="meeting_note">
    <bound-workflow workflow_id="meeting_workflow"/>
   </type>
   <type type_id="scope">
