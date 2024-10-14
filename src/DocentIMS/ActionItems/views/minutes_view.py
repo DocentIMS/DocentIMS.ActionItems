@@ -19,3 +19,10 @@ class MinutesView(BrowserView):
     def __call__(self):
         # Implement your own actions:
         return self.index()
+    
+    def filename(self):
+        # import pdb; pdb.set_trace()
+        my_file = self.context.file
+        if my_file and my_file != None:
+            return my_file.filename
+        return ''

@@ -7,13 +7,20 @@
       <metal:block define-macro="content-core">
 
         <hr class="hr" />
-        <tal:condition tal:condition="context/file/filename|None">
-          <td>
+            <tal:condition tal:condition="context/file|None">
+        <td><b>File:</b> <a href="${context/absolute_url}/@@download/file">Download File</a></td>
+    </tal:condition>
+        
+        
+        <!-- <tal:condition tal:condition="python: view.filename and view.filename() != '' ">
+        
+ 
             <b>File:</b>
             <a href="${context/absolute_url}/@@download/file">Download File</a>
-          </td>
  
-        <tal:replace="structure widget/@@ploneform-render-widget"/>
+        </tal:condition> -->
+ 
+        <!-- <tal:replace="structure widget/@@ploneform-render-widget"/> -->
  
         
       </metal:block>
