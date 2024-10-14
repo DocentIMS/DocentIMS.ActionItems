@@ -11,6 +11,9 @@ from zope.component import getUtilitiesFor
 from plone.dexterity.interfaces import IDexterityFTI
 
 
+
+
+
 import json
 
 
@@ -60,8 +63,7 @@ def get_content_types_and_workflows(portal_type):
                     'workflow_states': states 
                 })
 
-    return result
-    #return json.dumps(result, indent=2)
+    return result 
 
 
 
@@ -82,7 +84,7 @@ class WorkflowInfo(object):
             
         result = {
                 'workflow_info': {
-                    'wf_states_list' : get_content_types_and_workflows(portal_type=portal_type),
+                'wf_states_list' : get_content_types_and_workflows(portal_type=portal_type),
                 },
         }
         

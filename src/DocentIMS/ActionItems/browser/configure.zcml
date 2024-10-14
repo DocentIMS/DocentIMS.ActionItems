@@ -140,14 +140,14 @@
              name="Notes"
         />
         
-    <!-- <adapter
+    <adapter
         factory=".views.PostNoteAddFormView"
         provides="zope.publisher.interfaces.browser.IBrowserPage"
         for="*
              DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
              plone.dexterity.interfaces.IDexterityFTI"
              name="postit_note"
-        /> -->
+        />
 
     <adapter
         factory=".views.MeetingAddFormView"

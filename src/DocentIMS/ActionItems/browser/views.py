@@ -31,25 +31,28 @@ from z3c.form.browser.textlines import TextLinesFieldWidget
 
 
 
-class APostNoteAddFormView(DefaultAddForm):
+class PostNoteAddFormView(DefaultAddForm):
     portal_type = "postit_note"
     default_fieldset_label = 'Home'
     
 
     def __init__(self, context, request):
-        super(ActionItemsAddForm, self).__init__(context, request)
+        super(PostNoteAddFormView, self).__init__(context, request)
 
     def updateWidgets(self):
-        super(ActionItemsAddForm, self).updateWidgets()
-        self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+        super(PostNoteAddFormView, self).updateWidgets()
+        # self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
         self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
+        self.widgets['IDublinCore.description'].label = 'My post it note'
+        
         
 
 
     def updateFields(self):
-        super(ActionItemsAddForm, self).updateFields()
+        super(PostNoteAddFormView, self).updateFields()
         
-            
+        self.fields['IDublinCore.title'].field.default = 'Post It Note'
+        
         for group in self.groups:
             if group.__name__ == 'categorization':
                     #group.mode = 'omitted'

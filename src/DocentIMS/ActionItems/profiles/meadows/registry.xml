@@ -237,6 +237,7 @@
           <value key="urgent_red">7</value>
           <value key="future_green">28</value>
           <value key="soon_yellow">14</value>
+          <value key="template_password">Password</value>
 
      </records>
 

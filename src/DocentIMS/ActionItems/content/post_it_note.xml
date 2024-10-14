@@ -5,10 +5,10 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
 <schema>
-    <field name="my_note" type="plone.app.textfield.RichText">
+    <!-- <field name="my_note" type="plone.app.textfield.RichText">
       <description>What do i want to remember?</description>
       <title>My Note</title>
-    </field>
+    </field> -->
     <field name="file" type="plone.namedfile.field.NamedBlobFile">
       <description/>
       <required>False</required>
@@ -16,6 +16,7 @@
     </field>
     <field name="color" type="zope.schema.Choice">
         <title>Color</title>
+        <required>False</required>
         <values>
           <element>blue</element>
           <element>green</element>

@@ -23,7 +23,8 @@
                     <h6 class="category">Note</h6>
                     <h4 class="title">${context/Title}</h4>
                     <p class="description">
-                      <span tal:replace="structure  context/my_note/output|None" />
+                       ${context/Description|None}
+                      <!-- <span tal:replace="structure  context/my_note/output|None" /> -->
                      </p>
                 </div>
             </div> <!-- end card -->

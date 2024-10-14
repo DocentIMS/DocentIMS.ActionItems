@@ -291,7 +291,8 @@ class IDocentimsSettings(model.Schema):
             'project_document_naming_convention',
             'color1',
             'color2',
-            'planning_project'
+            'planning_project',
+            'template_password'
             ],
         )
 
@@ -595,6 +596,11 @@ class IDocentimsSettings(model.Schema):
         title=u"Is Planning Project?",
         required=False,
         default=0,
+    )
+    
+    template_password = schema.TextLine(
+        title=u"Template Password",
+        required=True,
     )
 
 alsoProvides(IDocentimsSettings, IMedialogControlpanelSettingsProvider)
