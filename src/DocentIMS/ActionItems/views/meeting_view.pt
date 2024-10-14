@@ -42,35 +42,41 @@
         <div class="spacer m-5" />
         <div>
           <!-- first tab -->
-           <!-- <hr class="hr border-3 border border-dark" /> -->
+          <!-- <hr class="hr border-3 border border-dark" /> -->
           <dir class="hr border-3 border border-dark" />
           <div class="xpat-autotoc xautotabs flex flex-wrap d-inline-flex xp-2 m--1" data-pat-autotoc="section:fieldset;levels:legend;">
 
             <!-- Show all Pages as separate tabs -->
             <!-- <fieldset style="background-color:#FCFCFC;" class="m-1 p-3 border w-auto" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()"> -->
-             <div style="background-color:#FCFCFC;" class="m-1 p-3 border w-25" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()">
-              <legend> 
-                <a class="noborder" href="${item/getURL}"  target="_blank"><span condition tal:condition="not: item/file|None">&#x1f441; </span>${python: item.Title().split()[0]} </a>
+            <div style="background-color:#FCFCFC;" class="m-1 p-3 border w-25" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()">
+              <legend>
+                <a class="noborder" href="${item/getURL}" target="_blank">
+                  <span condition tal:condition="not: item/file|None">&#x1f441; </span>${python: item.Title().split()[0]} </a>
               </legend>
 
               <!-- <div class="xcard"> -->
               <!-- <p class="lead"><a href="${item/getURL}" target="_blank">${item/Title}</a></p>  -->
               <!-- <p class="lead">${item/Description}</p>  -->
               <!-- </div> -->
-              
+
               <div class="card-body" tal:content="structure item/text/output|None"></div>
               <div:condition class="flex" tal:condition="item/file|None">
                 <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" target="_blank">
-                     <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="icon" title="icon" />
-                  </a>
-                  <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a>
-                    <!-- &nbsp; [ ${item/getSize|None} ] -->
-                  
+                  <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="icon" title="icon" />
+                </a>
+                <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a>
+                <!-- &nbsp; [ ${item/getSize|None} ] -->
 
+
+              </div:condition>
+              <div:condition class="flex" tal:condition="python: item.portal_type in ['meeting_note', 'Meeting Note', 'Meeting Notes' ]">
+                <a href="${item/getURL}" class="block w-25 xp-1" target="_blank">
+                  <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" />
+                </a>
               </div:condition>
               <!-- <p><hr class="hr" /></p> -->
               <!-- <p condition tal:condition="not: item/file|None">
-                <a href="${item/getURL}"  target="_blank">✎</a>
+                <a href="${item/getURL}" target="_blank">✎</a>
 
               </p> -->
               <!-- <p condition tal:condition="not: item/file|None">
@@ -83,9 +89,9 @@
 
               <!-- <tal:itemview replace="structure context" /> -->
 
-            <!-- </fieldset> -->
+              <!-- </fieldset> -->
             </div>
-             <hr class="hr" />
+            <hr class="hr" />
 
           </div>
         </div>
