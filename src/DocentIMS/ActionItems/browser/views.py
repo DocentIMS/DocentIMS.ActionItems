@@ -37,6 +37,7 @@ class PostNoteAddFormView(DefaultAddForm):
     
 
     def __init__(self, context, request):
+        import pdb; pdb.set_trace()
         super(PostNoteAddFormView, self).__init__(context, request)
 
     def updateWidgets(self):
