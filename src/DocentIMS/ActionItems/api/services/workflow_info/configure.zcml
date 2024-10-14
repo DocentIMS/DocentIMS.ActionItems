@@ -4,13 +4,13 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     >
 
-  <adapter factory=".get.WorkflowInfo" name="work_flow_info"/>
+  <adapter factory=".get.WorkflowInfo" name="workflow_info"/>
 
   <plone:service
     method="GET"
      for="Products.CMFCore.interfaces.ISiteRoot"
     factory=".get.WorkflowInfoGet"
-    name="@work_flow_info"
+    name="@workflow_info"
     permission="zope2.View"
     />
 
