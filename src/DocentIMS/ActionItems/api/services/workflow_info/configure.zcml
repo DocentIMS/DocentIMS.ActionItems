@@ -2,13 +2,13 @@
   xmlns="http://namespaces.zope.org/zope"
   xmlns:plone="http://namespaces.plone.org/plone">
 
-  <adapter factory=".get.WorkflowInfo" name="workflow_info"/>
+  <adapter factory=".get.WorkflowInfo" name="work_flow_info"/>
 
   <plone:service
     method="GET"
     for="zope.interface.Interface"
     factory=".get.WorkflowInfoGet"
-    name="@workflow_info"
+    name="@work_flow_info"
     permission="zope2.View"
     />
 

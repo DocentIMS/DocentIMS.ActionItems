@@ -81,7 +81,7 @@ class WorkflowInfo(object):
             portal_type = self.request.portal_type
             
         result = {
-                'workflow_info': {
+                'work_flow_info': {
                     'wf_states_list' : get_content_types_and_workflows(portal_type=portal_type),
                 },
         }
@@ -94,4 +94,4 @@ class WorkflowInfoGet(Service):
 
     def reply(self):
         service_factory = WorkflowInfo(self.context, self.request)
-        return service_factory(expand=True)['workflow_info']
+        return service_factory(expand=True)['work_flow_info']
