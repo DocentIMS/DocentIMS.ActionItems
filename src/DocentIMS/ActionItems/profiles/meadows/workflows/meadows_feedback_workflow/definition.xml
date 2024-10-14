@@ -10,9 +10,9 @@
  <group>MeadowsBoard</group>
  <permission>Access contents information</permission>
  <permission>Delete objects</permission>
+ <permission>DocentIMS.ActionItems: Add Feedback</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <permission>DocentIMS.ActionItems: Add Feedback</permission>
  <state state_id="closed" title="Closed">
   <description>The feedback has been acted on if needed.</description>
   <exit-transition transition_id="Publish"/>
@@ -29,7 +29,6 @@
  </state>
  <state state_id="private" title="Private">
   <description>Visible only to content creator.  Stays private until person ready to get comments.
-
 All content starts in Private</description>
   <exit-transition transition_id="Publish"/>
   <permission-map name="Access contents information" acquired="True">

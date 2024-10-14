@@ -22,7 +22,7 @@
  </state>
  <state state_id="4. Closed" title="Closed">
   <description>The board president has closed the action item.  
-   If there is a reason, the board president can return to the Review state.</description>
+If there is a reason, the board president can return to the Review state.</description>
   <exit-transition transition_id="return"/>
  </state>
  <transition transition_id="close" title="Close" new_state="3. Closed" trigger="USER" before_script="" after_script="">

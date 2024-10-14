@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="meadows _meeting_minutes_workflow" title="Meadows Meeting Minutes Workflow" description="Unique WF created for Meeting Minutes" state_variable="review_state" initial_state="1. Private" manager_bypass="False">
+<dc-workflow workflow_id="meadows_meeting_minutes_workflow" title="Meadows Meeting Minutes Workflow" description="Unique WF created for Meeting Minutes" state_variable="review_state" initial_state="1. Private" manager_bypass="False">
  <instance-creation-conditions>
    <guard>
     <guard-group>MeadowsBoard</guard-group>
@@ -17,21 +17,18 @@ The document is only visible to the originator.</description>
  </state>
  <state state_id="2. Draft" title="Draft">
   <description>The content is now visible to all board members.
-
-    Draft - meant to be seen by smaller group of people.  The initial review team, for example
-    Review - after the initial team, this opens it to wider audience for review and comments.</description>
+Draft - meant to be seen by smaller group of people.  The initial review team, for example
+Review - after the initial team, this opens it to wider audience for review and comments.</description>
   <exit-transition transition_id="review"/>
  </state>
  <state state_id="3. Review" title="Review">
   <description>All board members can now suggest edits and comment on this document.
-
-    Draft - meant to be seen by smaller group of people.  The initial review team, for example
-    Review - after the initial team, this opens it to wider audience for review and comments.</description>
+Draft - meant to be seen by smaller group of people.  The initial review team, for example
+Review - after the initial team, this opens it to wider audience for review and comments.</description>
   <exit-transition transition_id="publish"/>
  </state>
  <state state_id="4. Published" title="Published">
   <description>The document is now visible to the board and other designated groups (e.g. residents)
-
 There may also be actions (e.g. sending email, moving to folder) when content is moved to this State.</description>
   <exit-transition transition_id="return"/>
  </state>
@@ -52,7 +49,7 @@ There may also be actions (e.g. sending email, moving to folder) when content is
   </guard>
  </transition>
  <transition transition_id="publish" title="Publish" new_state="4. Published" trigger="USER" before_script="" after_script="">
-  <description>This publishes the WF.  certain actions (send email, move content, etc) may happen with this transition.  </description>
+  <description>This publishes the WF.  certain actions (send email, move content, etc) may happen with this transition.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=publish" category="workflow" icon="">Publish</action>
   <guard>
    <guard-role>Owner</guard-role>
@@ -68,9 +65,8 @@ There may also be actions (e.g. sending email, moving to folder) when content is
  </transition>
  <transition transition_id="review" title="Review" new_state="3. Review" trigger="USER" before_script="" after_script="">
   <description>moves to the review state.  The Draft and Review states are similar.  used to allow different groups to see and edit the content at different times.  
-    Draft - meant to be seen by smaller group of people.  The initial review team, for example
-    Review - after the initial team, this opens it to wider audience for review and comments.
-</description>
+Draft - meant to be seen by smaller group of people.  The initial review team, for example
+Review - after the initial team, this opens it to wider audience for review and comments.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=review" category="workflow" icon="">review</action>
   <guard>
    <guard-role>Owner</guard-role>
