@@ -7,7 +7,7 @@
  <property name="icon_expr">string:Feedback</property>
  <property name="factory">Feedback</property>
  <property
-    name="add_view_expr">string:${folder_url}/++add++Feedback</property>
+    name="add_view_expr">string:${folder_url}/++add++feedback</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>

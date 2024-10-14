@@ -1,25 +1,28 @@
 <?xml version="1.0"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    name="Meeting Minutes"
+    name="Planning Breakdown"
     meta_type="Dexterity FTI"
     i18n:domain="DocentIMS.ActionItems">
 
   <!-- Basic properties -->
-  <property name="title" i18n:translate="">Docent Meeting Minutes</property>
-  <property name="description"
-      i18n:translate="">Meeting minutes content type to link with Docent in Word.  A Word template is on the server.  When user uses the Docent toolbar to create a new document based on selection, Word, via API, gets the Word template for the doc type, creates new instance of doc type in Word.  users works in Word, when done, uploads Word file.  in addition, there are defined items uploaded via API so they can be shown in table.</property>
-  
+  <property
+      i18n:translate=""
+      name="title">Planning Breakdown</property>
+  <property
+      i18n:translate=""
+      name="description">Sections</property>
+
   <property name="allow_discussion">False</property>
-  <property name="factory">Meeting Minutes</property>
-  <property name="icon_expr">string:contenttype/meeting-minutes</property>
+  <property name="factory">Planning Breakdown</property>
+  <property name="icon_expr"></property>
   <property name="link_target"></property>
 
   <!-- Hierarchy control -->
-  <property name="global_allow">False</property>
+  <property name="global_allow">True</property>
   <!-- Schema, class and security -->
-  <property name="add_permission">DocentIMS.ActionItems.AddMeetingMinutes</property>
+  <property name="add_permission">DocentIMS.ActionItems.AddPlanningBreakdown</property>
   <property name="klass">plone.dexterity.content.Item</property>
-  <property name="model_file">DocentIMS.ActionItems.content:meeting_minutes.xml</property>
+  <property name="model_file">DocentIMS.ActionItems.content:planning_breakdown.xml</property>
   <property name="model_source"></property>
   <property name="schema"></property>
 
@@ -37,7 +40,6 @@
     <element value="plone.publication"/>
     <element value="plone.categorization"/>
     <element value="plone.locking" />
-    <element value="DocentIMS.ActionItems.only_office_file"/>
     <!--<element value="plone.leadimage"/>-->
     <!--<element value="plone.relateditems"/>-->
     <!--<element value="plone.richtext"/>-->
@@ -47,14 +49,13 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Meeting Minutes</property>
-  <property name="default_view">minutes-view</property>
+  <property name="add_view_expr">string:${folder_url}/++add++planning_breakdown</property>
+  <property name="default_view">planning-breakdown-view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>
   <property name="view_methods">
     <element value="view"/>
-    <element value="minutes-view"/>
-
+    <element value="planning-breakdown-view"/>
   </property>
 
   <!-- Method aliases -->

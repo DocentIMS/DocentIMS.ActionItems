@@ -106,7 +106,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
    </action>
   </actions>
  </rule>
- <rule name="rule-7" title="Move Notes" cascading="False"
+ <!-- <rule name="rule-7" title="Move Notes" cascading="False"
     description="Move Notes to the Notes Folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">
@@ -127,7 +127,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
     <property name="target_folder">/notes</property>
    </action>
   </actions>
- </rule>
+ </rule> -->
  <rule name="rule-8" title="Move Feedback" cascading="False"
     description="Move feedback items to the Feedback Folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
@@ -150,6 +150,6 @@ Would prefer to have it redirect to the personal info page automatically, but th
  <assignment name="rule-3" bubbles="True" enabled="True" location=""/>
  <assignment name="rule-5" bubbles="True" enabled="True" location=""/>
  <assignment name="rule-6" bubbles="True" enabled="True" location=""/>
- <assignment name="rule-7" bubbles="True" enabled="True" location=""/>
+ <!-- <assignment name="rule-7" bubbles="True" enabled="True" location=""/> -->
  <assignment name="rule-8" bubbles="True" enabled="True" location=""/>
 </contentrules>

@@ -170,23 +170,23 @@ def post_install(context):
     # behaviour.setImmediatelyAddableTypes(['sow_analysis'])
     # behaviour.setLocallyAllowedTypes(['sow_analysis'])
     
-    notes = portal.get('notes', False)
-    behaviour = constrains.ISelectableConstrainTypes(notes)
-    behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Notes',])
-    behaviour.setLocallyAllowedTypes(['Notes'])
+    # notes = portal.get('notes', False)
+    # behaviour = constrains.ISelectableConstrainTypes(notes)
+    # behaviour.setConstrainTypesMode(constrains.ENABLED)
+    # behaviour.setImmediatelyAddableTypes(['otes',])
+    # behaviour.setLocallyAllowedTypes(['Notes'])
     
     feedback = portal.get('feedback', False)
     behaviour = constrains.ISelectableConstrainTypes(feedback)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Feedback'])
-    behaviour.setLocallyAllowedTypes(['Feedback'])
+    behaviour.setImmediatelyAddableTypes(['feedback'])
+    behaviour.setLocallyAllowedTypes(['feedback'])
 
     meeting = portal.get('meeting', False)
     behaviour = constrains.ISelectableConstrainTypes(meeting)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['Meeting'])
-    behaviour.setLocallyAllowedTypes(['Meeting'])
+    behaviour.setImmediatelyAddableTypes(['meeting'])
+    behaviour.setLocallyAllowedTypes(['meeting'])
 
 def pre_install(context):
     """Pre install script"""
@@ -320,32 +320,32 @@ def _create_content(portal):
                 title='Documents',
             )     
                 
-        if not portal.get('notes', False):
-            notes = plone.api.content.create(
-                type='Folder',
-                container=portal,
-                id='notes',
-                title='Notes',
-                default_page='notes-collection',
-                nextPreviousEnabled=1
-            )
+        # if not portal.get('notes', False):
+        #     notes = plone.api.content.create(
+        #         type='Folder',
+        #         container=portal,
+        #         id='notes',
+        #         title='Notes',
+        #         default_page='notes-collection',
+        #         nextPreviousEnabled=1
+        #     )
             
             ## add collection inside
             
             
 
-            if not notes.get('notes-collection', False):
-                notes_collection = plone.api.content.create(
-                    type='Collection',
-                    container=notes,
-                    id='notes-collection',
-                    title='Notes',
-                    layout='tabular_view',
-                    limit=2000,
-                    item_count=500,
-                    customViewFields = ['Title', 'CreationDate'],
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
-                )
+            # if not notes.get('notes-collection', False):
+            #     notes_collection = plone.api.content.create(
+            #         type='Collection',
+            #         container=notes,
+            #         id='notes-collection',
+            #         title='Notes',
+            #         layout='tabular_view',
+            #         limit=2000,
+            #         item_count=500,
+            #         customViewFields = ['Title', 'CreationDate'],
+            #         query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Notes']}]
+            #     )
                             
                 
         if not portal.get('feedback', False):
@@ -373,7 +373,7 @@ def _create_content(portal):
                     limit=2000,
                     item_count=500,
                     customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Feedback']}]
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['feedback']}]
                 )
             
                 

@@ -1,30 +1,41 @@
 <?xml version="1.0"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    name="Planning Breakdown"
+    name="Meeting"
     meta_type="Dexterity FTI"
     i18n:domain="DocentIMS.ActionItems">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Planning Breakdown</property>
+      name="title">Meeting</property>
   <property
       i18n:translate=""
-      name="description">Sections</property>
+      name="description">Meeting Event Type</property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Planning Breakdown</property>
-  <property name="icon_expr"></property>
+  <property name="factory">Meeting</property>
+  <property name="icon_expr">string:contenttype/meeting</property>
   <property name="link_target"></property>
 
   <!-- Hierarchy control -->
   <property name="global_allow">True</property>
   <!-- Schema, class and security -->
-  <property name="add_permission">DocentIMS.ActionItems.AddPlanningBreakdown</property>
-  <property name="klass">plone.dexterity.content.Item</property>
-  <property name="model_file">DocentIMS.ActionItems.content:planning_breakdown.xml</property>
+  <property name="add_permission">DocentIMS.ActionItems.AddMeeting</property>
+  <property name="klass">plone.app.contenttypes.content.Folder</property>
+  <property name="model_file">DocentIMS.ActionItems.content:meeting.xml</property>
   <property name="model_source"></property>
   <property name="schema"></property>
+
+   <property name="allowed_content_types">
+    <element value="File"/>
+    <element value="Image"/>
+    <!-- <element value="Meeting Minutes"/> -->
+    <!-- <element value="Meeting Agenda"/> -->
+    <!-- <element value="Meeting Notes"/> -->
+    <element value="meeting_minutes"/>
+    <element value="meeting_agenda"/>
+    <element value="meeting_notes"/>
+  </property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
@@ -40,22 +51,28 @@
     <element value="plone.publication"/>
     <element value="plone.categorization"/>
     <element value="plone.locking" />
+    <element value="plone.eventbasic" />
+    <element value="docent.eventlocation" />
+    <element value="docent.eventattendees" />
+    <element value="docent.eventcontact" />
     <!--<element value="plone.leadimage"/>-->
     <!--<element value="plone.relateditems"/>-->
-    <!--<element value="plone.richtext"/>-->
-    <!--<element value="plone.tableofcontents"/>-->
+    <element value="plone.richtext"/>
+    <element value="plone.tableofcontents"/>
     <!--<element value="plone.versioning" />-->
     <!--<element value="plone.translatable" />-->
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Planning Breakdown</property>
-  <property name="default_view">planning-breakdown-view</property>
+  <property name="add_view_expr">string:${folder_url}/++add++meeting</property>
+  <property name="default_view">meeting-view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>
   <property name="view_methods">
     <element value="view"/>
-    <element value="planning-breakdown-view"/>
+    <element value="event_view"/>
+    <element value="meeting-view"/>
+    
   </property>
 
   <!-- Method aliases -->

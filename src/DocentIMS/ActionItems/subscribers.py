@@ -64,9 +64,9 @@ def add_meeting_types(object, event):
         content_types = portal_types.objectIds()
         
         
-        if 'meeting_note' in content_types:
+        if 'meeting_notes' in content_types:
             notes = api.content.create(
-                            type='meeting_note',
+                            type='meeting_notes',
                             container=context,
                             parent_id=parent_id,
                             meeting_date_time=meeting_date_time,
@@ -76,9 +76,9 @@ def add_meeting_types(object, event):
                             id=f"note-{parent_id}",
             )
         
-        if 'meeting_minute' in content_types:
+        if 'meeting_minutes' in content_types:
             minutes = api.content.create(
-                            type='meeting_minute',
+                            type='meeting_minutes',
                             container=context,
                             parent_id=parent_id,
                             title=f"Minutes {meeting_date_time}",

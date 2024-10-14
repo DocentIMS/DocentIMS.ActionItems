@@ -128,7 +128,7 @@
         for="*
              DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
              plone.dexterity.interfaces.IDexterityFTI"
-             name="Meeting"
+             name="meeting"
         />
 
     <adapter
@@ -139,6 +139,15 @@
              plone.dexterity.interfaces.IDexterityFTI"
              name="Notes"
         />
+        
+    <!-- <adapter
+        factory=".views.PostNoteAddFormView"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        for="*
+             DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
+             plone.dexterity.interfaces.IDexterityFTI"
+             name="postit_note"
+        /> -->
 
     <adapter
         factory=".views.MeetingAddFormView"
@@ -146,7 +155,7 @@
         for="*
              DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
              plone.dexterity.interfaces.IDexterityFTI"
-             name="Feedback"
+             name="feedback"
         />
 
     <adapter
@@ -155,7 +164,7 @@
         for="*
              DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
              plone.dexterity.interfaces.IDexterityFTI"
-             name="Meeting Notes"
+             name="meeting_notes"
         />
 
     <class class=".views.MeetingAddFormView">
