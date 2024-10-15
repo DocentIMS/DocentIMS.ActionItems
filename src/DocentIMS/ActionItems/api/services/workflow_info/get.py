@@ -21,6 +21,7 @@ import json
 
 def get_content_types_and_workflows(portal_type):
     # portal_types = request.portal_type or None
+    
     portal = api.portal.get()
     workflow_tool = getToolByName(portal, 'portal_workflow')
     # wft = api.portal.get_tool('portal_workflow')
@@ -32,7 +33,7 @@ def get_content_types_and_workflows(portal_type):
 
     # for name, fti in content_types:
     for name, fti in content_types:
-        if name == portal_type or portal_type == None:
+        if name == portal_type or portal_type == "*":
             workflows = workflow_tool.getWorkflowsFor(fti.factory)
             if workflows:
                 workflow = workflows[0]  
@@ -63,7 +64,8 @@ def get_content_types_and_workflows(portal_type):
                     'workflow_states': states 
                 })
 
-    return result 
+    return result
+     
 
 
 
@@ -78,18 +80,28 @@ class WorkflowInfo(object):
         self.request = request
 
     def __call__(self, expand=False):
+        # if not expand:
+        #     return result
+        
         portal_type = None
         if hasattr(self.request, "portal_type"):
             portal_type = self.request.portal_type
             
-        result = {
-                'workflow_info': {
-                'wf_states_list' : get_content_types_and_workflows(portal_type=portal_type),
-                },
+            
+            
+            return {
+                    'workflow_info': {
+                    'wf_states_list' : get_content_types_and_workflows(portal_type=portal_type),
+                    },
+            }
+        
+        return  {
+            'workflow_info': {
+                '@id': '{}/workflow_info'.format(
+                    self.context.absolute_url(),
+                ),
+            },
         }
-        
-        
-        return result
 
 
 class WorkflowInfoGet(Service):
