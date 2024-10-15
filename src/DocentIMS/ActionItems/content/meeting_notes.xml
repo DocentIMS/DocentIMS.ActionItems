@@ -1,61 +1,53 @@
-<model
-    xmlns="http://namespaces.plone.org/supermodel/schema"
-    xmlns:security="http://namespaces.plone.org/supermodel/security"
-    xmlns:form="http://namespaces.plone.org/supermodel/form"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="DocentIMS.ActionItems">
-<schema>
-    <!-- <fieldset name="default" label="Meeting Details" description="Basics of the meeting."> -->
-      <field name="meeting_location" type="zope.schema.Choice">
-        <description>Where was the meeting held?</description>
-        <required>False</required>
-        <title>Meeting Location</title>
-        <vocabulary>DocentIMS.ActionItems.LocationsVocabulary</vocabulary>
-      </field>
-
-        <field name="parent_id" type="zope.schema.TextLine" form:mode="z3c.form.interfaces.IForm:hidden">
-            <required>False</required>
-            <form:widget mode="hidden" />
-        </field>
-      <field name="meeting_date_time" type="zope.schema.Date">
-        <description>Scheduled meeting time</description>
-        <required>False</required>
-        <title>Meeting Date</title>
-      </field>
-      <!-- <field name="call_to_order" type="zope.schema.Time">
-        <widget type="collective.z3cform.datetimewidget.widget.DatetimeFieldWidget"/> 
-        <required>False</required>
-        <title>Call to Order</title>
-      </field> -->
-      <field name="did_property_manager_attend" type="zope.schema.Bool">
-        <description>Was the property manager at the meeting</description>
-        <required>False</required>
-        <title>Did Property Manager attend?</title>
-        <form:widget type="z3c.form.browser.radio.RadioFieldWidget"/>
-      </field>
-      <field name="members" type="zope.schema.List">
-        <default/>
-        <description>List community members who attended.</description>
-        <required>False</required>
-        <title>Community Members Who Attended Meeting,</title>
-        <value_type type="zope.schema.Text">
-          
-        </value_type>
-        <!-- <value_type type="zope.schema.Choice">
-          <vocabulary>DocentIMS.ActionItems.TeamnamesVocabulary</vocabulary>
-        </value_type> -->
-      </field>
-      <field name="which_board_members_attended" type="zope.schema.Set">
-        <description>Select board members that attended.</description>
-        <required>False</required>
-        <title>Which Board Members Attended</title>
- 
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
+    <field name="title" type="zope.schema.TextLine">
+      <default>Notes 2024-10-14</default>
+      <title>Title</title>
+    </field>
+    <field name="description" type="zope.schema.TextLine">
+      <default>Notes taken during the meeting</default>
+      <title>Description</title>
+    </field>
+    <field name="meeting_location" type="zope.schema.Choice">
+      <description>Where was the meeting held?</description>
+      <required>False</required>
+      <title>Meeting Location</title>
+      <vocabulary>DocentIMS.ActionItems.LocationsVocabulary</vocabulary>
+    </field>
+    <field name="parent_id" type="zope.schema.TextLine" form:mode="z3c.form.interfaces.IForm:hidden">
+      <required>False</required>
+    </field>
+    <field name="meeting_date_time" type="zope.schema.Date">
+      <description>Scheduled meeting time</description>
+      <required>False</required>
+      <title>Meeting Date</title>
+    </field>
+    <field name="did_property_manager_attend" type="zope.schema.Bool">
+      <description>Was the property manager at the meeting</description>
+      <required>False</required>
+      <title>Did Property Manager attend?</title>
+      <form:widget type="z3c.form.browser.radio.RadioFieldWidget"/>
+    </field>
+    <field name="members" type="zope.schema.List">
+      <default/>
+      <description>List community members who attended.</description>
+      <required>False</required>
+      <title>Community Members Who Attended Meeting,</title>
+      <value_type type="zope.schema.Text"/>
+    </field>
+    <field name="which_board_members_attended" type="zope.schema.Set">
+      <description>Select board members that attended.</description>
+      <required>False</required>
+      <title>Which Board Members Attended</title>
       <value_type type="zope.schema.Choice">
         <vocabulary>DocentIMS.ActionItems.TeamnamesVocabulary</vocabulary>
       </value_type>
-    
-      </field>
-    <!-- </fieldset> -->
+    </field>
+    <field name="file" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <required>False</required>
+      <title>file</title>
+    </field>
     <fieldset name="meeting_notes" label="Meeting Notes" description="My notes during the meeting.">
       <field name="meeting_notes" type="plone.app.textfield.RichText">
         <description>Include all information to create minutes.</description>

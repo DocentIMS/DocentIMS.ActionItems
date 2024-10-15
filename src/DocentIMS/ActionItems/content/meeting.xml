@@ -1,13 +1,7 @@
-<model
-    xmlns="http://namespaces.plone.org/supermodel/schema"
-    xmlns:security="http://namespaces.plone.org/supermodel/security"
-    xmlns:form="http://namespaces.plone.org/supermodel/form"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="DocentIMS.ActionItems">
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
   <schema>
-  <field name="meeting_type" type="zope.schema.Choice">
+    <field name="meeting_type" type="zope.schema.Choice">
       <description/>
-      <required>True</required>
       <title>Meeting type</title>
       <vocabulary>DocentIMS.ActionItems.MeetingTypesVocabulary</vocabulary>
     </field>

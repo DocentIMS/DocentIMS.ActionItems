@@ -1,31 +1,16 @@
-<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
-  xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" 
-  xmlns:form="http://namespaces.plone.org/supermodel/form" 
-  xmlns:security="http://namespaces.plone.org/supermodel/security" 
-  xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" 
-  xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" 
-  xmlns:users="http://namespaces.plone.org/supermodel/users"
-  i18n:domain="DocentIMS.ActionItems" 
-  xmlns="http://namespaces.plone.org/supermodel/schema">
-   <schema>
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
     <field name="contact_person" type="zope.schema.Choice">
+      <default>wayne-glover</default>
       <title>Contact Person</title>
       <vocabulary>plone.app.vocabularies.Users</vocabulary>
-      <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
-    </field> 
-
-   <field name="feedback_submitted_by" type="zope.schema.Choice">
+    </field>
+    <field name="feedback_submitted_by" type="zope.schema.Choice">
+      <default>wayne-glover</default>
       <description>Who submitted this feedback.</description>
       <title>Feedback Submitted By</title>
       <vocabulary>plone.app.vocabularies.Users</vocabulary>
-      <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
-    </field>  
-
-   <!-- <field name="feedback_submitted_by" type="zope.schema.TextLine">
-      <description>Who submitted this feedback.</description>
-      <title>Feedback Submitted By</title>
-      <defaultFactory>DocentIMS.ActionItems.current_user.getUserId</defaultFactory> 
-    </field> -->
+    </field>
     <field name="feedback_text" type="plone.app.textfield.RichText">
       <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
       <title>Feedback Text</title>
@@ -44,12 +29,12 @@
       <description>Would you like to hear back from us?</description>
       <required>False</required>
       <title>Do You Want a Reply?</title>
-       <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
+      <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
     </field>
     <field name="docent_tool_type" type="zope.schema.TextLine">
       <description/>
       <required>False</required>
       <title>Docent Tool Type</title>
-    </field> 
-    </schema>
+    </field>
+  </schema>
 </model>
