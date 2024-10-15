@@ -19,6 +19,7 @@ from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile as Z3View
 from urllib.parse import unquote
 
 from z3c.form import button
+from datetime import datetime
 
 
 	
@@ -31,35 +32,75 @@ from z3c.form.browser.textlines import TextLinesFieldWidget
 
 
 
-class PostNoteAddFormView(DefaultAddForm):
-    portal_type = "postit_note"
+class PostItNoteAddForm(DefaultAddForm):
+    # portal_type = "postit_note"
     default_fieldset_label = 'Home'
     
 
     def __init__(self, context, request):
-        import pdb; pdb.set_trace()
-        super(PostNoteAddFormView, self).__init__(context, request)
-
-    def updateWidgets(self):
-        super(PostNoteAddFormView, self).updateWidgets()
-        # self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
-        self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
-        self.widgets['IDublinCore.description'].label = 'My post it note'
+        super(PostItNoteAddForm, self).__init__(context, request)
         
-        
-
-
-    def updateFields(self):
-        super(PostNoteAddFormView, self).updateFields()
-        
-        self.fields['IDublinCore.title'].field.default = 'Post It Note'
+    def update(self):
+        super(PostItNoteAddForm, self).update()
         
         for group in self.groups:
-            if group.__name__ == 'categorization':
-                    #group.mode = 'omitted'
+                if group.__name__ == 'settings':
                     group.label = None
+                    #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                    group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+                    
+                if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                    group.label = None
+
+    def updateWidgets(self):
+        super(PostItNoteAddForm, self).updateWidgets()
+        # self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+        
+    def updateFields(self):
+        super(PostItNoteAddForm, self).updateFields()
+        # 
+        today = datetime.today().strftime('%Y-%m-%d')
+        
+        self.fields['IBasic.title'].field.default = f"Post It Note {today}"
             
             
+class PostItNoteAddFormView(DefaultAddView):
+    form = PostItNoteAddForm
+
+
+
+# class PostItNoteEditForm(DefaultEditForm):
+#     portal_type = "postit_note"
+#     default_fieldset_label = 'Home'
+
+#     def __init__(self, context, request):
+#         
+#         super(PostItNoteEditForm, self).__init__(context, request)
+
+#     def updateWidgets(self):
+#         super(PostItNoteEditForm, self).updateWidgets()
+#         # if self.portal_type == 'sow_analysis':
+#         #     self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            
+#     def updateFields(self):
+#         super(PostItNoteEditForm, self).updateFields()
+
+#     def update(self):
+#         super(PostItNoteEditForm, self).update()
+
+#         if self.portal_type == 'postit_note':
+#             for group in self.groups:
+#                 if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+#                     #group.mode = 'omitted'
+#                     group.label = None
+#                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+#                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+
+
+# class PostItNotesEditFormView(DefaultEditView):
+#     portal_type = "postit_note"
+#     default_fieldset_label = 'Home'
+#     form = PostItNoteEditForm
 
 
 #OnlyOffic support
@@ -109,7 +150,7 @@ class ActionItemsAddForm(DefaultAddForm):
         
         if to_uuid:
             self.fields['placeholder'].field.default = to_uuid
-            #import pdb; pdb.set_trace()
+            #
             # self.fields['IBasic.description'].field.default = to_uuid
 
         if exp_text:
@@ -172,7 +213,7 @@ class ActionItemsEditForm(DefaultEditForm):
         super(ActionItemsEditForm, self).__init__(context, request)
 
     def updateWidgets(self):
-        super(ActionItemsEditForm, self).updateWidgets()
+        super(ActionItemsEditForm, self).updateWidgets() 
         
         #Hide input field 'change note'
         #if 'IVersionable.changeNote' in self.widgets
@@ -184,8 +225,7 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
             self.widgets["placeholder"].disabled = "disabled"
             
-            
-            # #import pdb; pdb.set_trace()
+             
             # for group in self.groups:
             #     if group.__name__ == 'all_dates':
             #         self.groups['all_dates'].widgets['initial_due_date'].disabled='disabled'
@@ -233,7 +273,7 @@ class ActionItemsEditForm(DefaultEditForm):
                     
 
                 if group.__name__ == 'all_dates':
-                    #import pdb; pdb.set_trace()
+                    #
                     #Not working
                     #group.widgets['initial_due_date'].disabled='disabled'
                     group.description = '{}<br/><p>Initial Due Date</p><input disabled class="form-control" value="{}"/>'.format(group.description , group.widgets['initial_due_date'].value)
@@ -242,7 +282,6 @@ class ActionItemsEditForm(DefaultEditForm):
                     if self.portal_type == 'sow_analysis':
                         group.label = None
 
-                import pdb; pdb.set_trace()
                 if self.portal_type ['sow_analysis', 'meeting']:
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                         #group.mode = 'omitted'
@@ -283,9 +322,7 @@ class MeetingEditForm(DefaultEditForm):
     def updateWidgets(self):
         super(MeetingEditForm, self).updateWidgets()
         
-        # import pdb; pdb.set_trace()
-         
-        if self.portal_type == "meeting":
+        if self.portal_type in "meeting":
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
@@ -297,7 +334,7 @@ class MeetingEditForm(DefaultEditForm):
         super(MeetingEditForm, self).update()
         
         
-        if self.portal_type in  ["meeting_notes", "meeting", "Notes", "notes", "feedback"]:
+        if self.portal_type in  ["meeting_notes", "meeting", "Notes", "notes", "feedback", "postit_note"]:
         
             for group in self.groups:
                 if group.__name__ == 'settings':
@@ -326,71 +363,71 @@ class MeetingEditFormView(DefaultEditView):
 
 
 
-class CompanyInformationAddForm(DefaultAddForm):
-    portal_type = "project_companies"
-    default_fieldset_label = 'Company'
+# class CompanyInformationAddForm(DefaultAddForm):
+#     portal_type = "project_companies"
+#     default_fieldset_label = 'Company'
 
-    def __init__(self, context, request):
-        super(CompanyInformationAddForm, self).__init__(context, request)
+#     def __init__(self, context, request):
+#         super(CompanyInformationAddForm, self).__init__(context, request)
 
-    def updateWidgets(self):
-        super(CompanyInformationAddForm, self).updateWidgets()
-        self.widgets['IDublinCore.title'].label = 'Short Company Name'
-        self.widgets['IDublinCore.description'].label = 'Full Company Name'
-        self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
-
-
-
-    def updateFields(self):
-        super(CompanyInformationAddForm, self).updateFields()
-
-    def update(self):
-        super(CompanyInformationAddForm, self).update()
-        #self.fields['IDublinCore.title'].widgetFactory = TextWidget
+#     def updateWidgets(self):
+#         super(CompanyInformationAddForm, self).updateWidgets()
+#         self.widgets['IDublinCore.title'].label = 'Short Company Name'
+#         self.widgets['IDublinCore.description'].label = 'Full Company Name'
+#         self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
 
-        for group in self.groups:
-            if group.__name__ == 'settings':
-                #group.mode = 'omitted'
-                group.label = None
-                group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
-                group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
 
-class CompanyInformationAddFormView(DefaultAddView):
-    form = CompanyInformationAddForm
+#     def updateFields(self):
+#         super(CompanyInformationAddForm, self).updateFields()
 
-class CompanyInformationEditForm(DefaultEditForm):
-    portal_type = "project_companies"
-    default_fieldset_label = 'Company'
-
-    def __init__(self, context, request):
-        super(CompanyInformationEditForm, self).__init__(context, request)
-
-    def updateWidgets(self):
-        super(CompanyInformationEditForm, self).updateWidgets()
-        self.widgets['IDublinCore.title'].label = 'Short Company Name'
-        self.widgets['IDublinCore.description'].label = 'Full Company Name'
-
-    def updateFields(self):
-        super(CompanyInformationEditForm, self).updateFields()
+#     def update(self):
+#         super(CompanyInformationAddForm, self).update()
+#         #self.fields['IDublinCore.title'].widgetFactory = TextWidget
 
 
-    def update(self):
-        super(CompanyInformationEditForm, self).update()
+#         for group in self.groups:
+#             if group.__name__ == 'settings':
+#                 #group.mode = 'omitted'
+#                 group.label = None
+#                 group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+#                 group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
 
-        if self.portal_type == 'project_companies':
-            for group in self.groups:
-                if group.__name__ == 'settings':
-                    #group.mode = 'omitted'
-                    group.label = None
-                    group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
-                    group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+# class CompanyInformationAddFormView(DefaultAddView):
+#     form = CompanyInformationAddForm
+
+# class CompanyInformationEditForm(DefaultEditForm):
+#     portal_type = "project_companies"
+#     default_fieldset_label = 'Company'
+
+#     def __init__(self, context, request):
+#         super(CompanyInformationEditForm, self).__init__(context, request)
+
+#     def updateWidgets(self):
+#         super(CompanyInformationEditForm, self).updateWidgets()
+#         self.widgets['IDublinCore.title'].label = 'Short Company Name'
+#         self.widgets['IDublinCore.description'].label = 'Full Company Name'
+
+#     def updateFields(self):
+#         super(CompanyInformationEditForm, self).updateFields()
 
 
-class CompanyInformationEditFormView(DefaultEditView):
-    portal_type = "project_companies"
-    default_fieldset_label = 'Company'
-    form = CompanyInformationEditForm
+#     def update(self):
+#         super(CompanyInformationEditForm, self).update()
+
+#         if self.portal_type == 'project_companies':
+#             for group in self.groups:
+#                 if group.__name__ == 'settings':
+#                     #group.mode = 'omitted'
+#                     group.label = None
+#                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+#                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+
+
+# class CompanyInformationEditFormView(DefaultEditView):
+#     portal_type = "project_companies"
+#     default_fieldset_label = 'Company'
+#     form = CompanyInformationEditForm
 
 
 
@@ -465,13 +502,13 @@ class MeetingAddForm(DefaultAddForm):
     def update(self):
         super(MeetingAddForm, self).update()
         
-       
+        # 
         if self.portal_type in  ["meeting_notes", "meeting", "Notes", "feedback"]:
             if self.portal_type in  ["meeting_notes",]:
                     default_fieldset_label = 'Details'
                     
             for group in self.groups:
-                #import pdb; pdb.set_trace()
+                #
         
                 if group.__name__ == 'settings':
                     group.label = None
