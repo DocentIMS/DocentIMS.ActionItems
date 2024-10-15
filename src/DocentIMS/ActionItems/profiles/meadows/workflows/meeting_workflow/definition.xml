@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="meeting_workflow" title="Meadows Meeting Workflow" description="One CT will cover both meeting types.  First selection is “Community Meeting” or “Board-Only Meeting”.
-  Also covers the Notes, Agenda, and Minutes" state_variable="review_state" initial_state="1. Private" manager_bypass="False">
- <instance-creation-conditions>
-   <guard>
-    <guard-permission>DocentIMS.ActionItems: Add Meeting</guard-permission>
-   </guard>
- </instance-creation-conditions>
+<dc-workflow workflow_id="meeting_workflow" title="Meeting Workflow" description="One CT will cover both meeting types.  First selection is “Community Meeting” or “Board-Only Meeting”.   Also covers the Notes, Agenda, and Minutes
+
+ Used with DocentIMS." state_variable="review_state" initial_state="1. Private" manager_bypass="False">
  <group>Administrators</group>
  <permission>Access contents information</permission>
  <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <permission>DocentIMS.ActionItems: Add Meeting</permission>
  <state state_id="1. Private" title="Private">
   <description>Visible only to content creator.  Stays private until person ready to get comments.</description>
   <exit-transition transition_id="publish"/>
  </state>
  <state state_id="2. Review" title="Review">
   <description>This sends the content for final internal review (at a higher company level) before submitted to the client.
-   Only the team can see this content – not client.
-</description>
+Only the team can see this content – not client.</description>
   <exit-transition transition_id="publish"/>
   <exit-transition transition_id="retract"/>
  </state>
@@ -32,7 +26,7 @@
   <exit-transition transition_id="retract"/>
  </state>
  <state state_id="5. Archived" title="Archived">
-  <description>As if deleted.  This removes it from the system the PrjMgr can still see and retrieve the document.  </description>
+  <description>As if deleted.  This removes it from the system the PrjMgr can still see and retrieve the document.</description>
   <exit-transition transition_id="retract"/>
  </state>
  <transition transition_id="archive" title="Archive" new_state="5. Archived" trigger="USER" before_script="" after_script="">

@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dc-workflow workflow_id="action_item_workflow" title="Action Item workflow" description="The workflow for action items." state_variable="review_state" initial_state="1. Private" manager_bypass="True">
- <instance-creation-conditions>
-   <guard>
-    <guard-group>meadows_board</guard-group>
-   </guard>
- </instance-creation-conditions>
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
@@ -36,7 +31,6 @@ If there is a reason, the board president can return to the Review state.</descr
   <description>Make the action item active (visible to all) and notify the assigned person via email.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=publish" category="workflow" icon="">Publish</action>
   <guard>
-   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="return" title="Return" new_state="2. Published" trigger="USER" before_script="" after_script="">

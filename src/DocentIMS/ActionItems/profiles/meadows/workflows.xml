@@ -6,9 +6,8 @@
  <object name="comment_one_state_workflow" meta_type="Workflow"/>
  <object name="comment_review_workflow" meta_type="Workflow"/>
  <object name="folder_workflow" meta_type="Workflow"/>
- <object name="intranet_folder_workflow" meta_type="Workflow"/>
- <object name="intranet_workflow" meta_type="Workflow"/>
  <object name="meeting_workflow" meta_type="Workflow"/>
+ <object name="one_state_workflow" meta_type="Workflow"/>
  <object name="planning_breakdown_workflow" meta_type="Workflow"/>
  <object name="plone_workflow" meta_type="Workflow"/>
  <object name="postit_note_workflow" meta_type="Workflow"/>
@@ -37,6 +36,7 @@
   <type type_id="Feedback">
    <bound-workflow workflow_id="docentIMS_feedback_workflow"/>
   </type>
+  <type type_id="File"/>
   <type type_id="Image"/>
   <type type_id="Meeting">
    <bound-workflow workflow_id="meadows_meeting_workflow"/>
@@ -51,6 +51,9 @@
    <bound-workflow workflow_id="docentIMS_note_workflow"/>
   </type>
   <type type_id="Plone Site"/>
+  <type type_id="action_items">
+   <bound-workflow workflow_id="action_item_workflow"/>
+  </type>
   <type type_id="meeting">
    <bound-workflow workflow_id="meeting_workflow"/>
   </type>
@@ -63,7 +66,13 @@
   <type type_id="meeting_minute">
    <bound-workflow workflow_id="meeting_workflow"/>
   </type>
+  <type type_id="meeting_minutes">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
   <type type_id="meeting_note">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="meeting_notes">
    <bound-workflow workflow_id="meeting_workflow"/>
   </type>
   <type type_id="scope">

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="postit_note_workflow" title="Simple Publication Workflow" description=" - Simple workflow that is useful for basic web sites. - Things start out as private, and can either be submitted for review, or published directly. - The creator of a content item can edit the item even after it is published." state_variable="review_state" initial_state="private" manager_bypass="False">
+<dc-workflow workflow_id="postit_note_workflow" title="PostIt Note Workflow" description="Workflow for the private Postit Notes.
+
+ Used with DocentIMS." state_variable="review_state" initial_state="private" manager_bypass="False">
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
