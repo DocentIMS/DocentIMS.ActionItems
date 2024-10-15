@@ -163,7 +163,7 @@ class ActionItemsView(BrowserView):
         first_name = member.getProperty('first_name')
         
         if last_name== '' and first_name == '':
-            last_name = member.getProperty('full_name')
+            last_name = member.getProperty('fullname')
         return  {'id': member.getProperty('id'),
                   'last_name':  last_name,
                   'first_name':  first_name,

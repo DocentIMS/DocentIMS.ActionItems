@@ -315,6 +315,7 @@ def _create_content(portal):
                     container=meeting,
                     id='meeting-collection',
                     title='Meetings',
+                    layout="tabular_view",
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['meeting', 'Meeting']}]
                 )
                                 
@@ -343,7 +344,7 @@ def _create_content(portal):
                     container=postit_notes,
                     id='postit-collection',
                     title='Post It Notes',
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['postit_notes']}]
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['postit_notes', 'postit_note', 'PostIt Notes']}]
                 )
                          
                 
