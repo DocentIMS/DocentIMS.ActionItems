@@ -23,18 +23,22 @@ def get_content_types_and_workflows(portal_type):
     # portal_types = request.portal_type or None
     
     portal = api.portal.get()
+    types = api.portal.get_tool('portal_types')
     workflow_tool = getToolByName(portal, 'portal_workflow')
     # wft = api.portal.get_tool('portal_workflow')
-    content_types = getUtilitiesFor(IDexterityFTI)
+    # content_types = getUtilitiesFor(IDexterityFTI)
+    content_types =  types.listContentTypes()
 
     result = []
     
     
+    
 
     # for name, fti in content_types:
-    for name, fti in content_types:
-        if name == portal_type or portal_type == "*":
-            workflows = workflow_tool.getWorkflowsFor(fti.factory)
+    for c_type in content_types:
+        if c_type == portal_type or c_type.lower() == portal_type or c_type.lower().replace(" ", "_") == portal_type or portal_type == "*":
+        
+            workflows = workflow_tool.getWorkflowsFor(c_type)
             if workflows:
                 workflow = workflows[0]  
                 transitions = []
@@ -59,7 +63,7 @@ def get_content_types_and_workflows(portal_type):
                     
                     
                 result.append({
-                    'content_type': name,
+                    'content_type': c_type,
                     'workflow_transitions': transitions,
                     'workflow_states': states 
                 })
