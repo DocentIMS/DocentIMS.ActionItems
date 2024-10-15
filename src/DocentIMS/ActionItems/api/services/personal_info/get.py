@@ -57,6 +57,7 @@ class DocsInfo(object):
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'companies' :  companies,
                     'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
+                    'template_password': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.template_password')
                 },
             }
             
