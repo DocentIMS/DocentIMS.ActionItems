@@ -203,17 +203,24 @@ def pre_install(context):
     #plone.api.group.create(groupname="can_command_statements", title="Can Command Statements in Word")
     #plone.api.group.create(groupname="can_document_manager", title="Can Document Manager in Word")
     
-    plone.api.group.create(groupname="docentMtgAgenda", title="Can Add Meeting Agenda")
+    #plone.api.group.create(groupname="docentMtgAgenda", title="Can Add Meeting Agenda")
     #plone.api.group.create(groupname="docentLetter", title="Can Add Letter")
     
-    plone.api.group.create(groupname="docentMtgMin", title="Can Add Meeting Minutes")
+    # plone.api.group.create(groupname="docentMtgMin", title="Can Add Meeting Minutes")
     # plone.api.group.create(groupname="docentMemo", title="Can Add Memo")
-    plone.api.group.create(groupname="can_add_planning_document", title="Can Add Planning Document")
-    plone.api.group.create(groupname="can_parse", title="Can Parse in Word")
+    # plone.api.group.create(groupname="can_parse", title="Can Parse in Word")
     #plone.api.group.create(groupname="can_add_project_scope", title="Can Add Scope")
     #plone.api.group.create(groupname="can_command_statements", title="Can Command Statements")
-    plone.api.group.create(groupname="can_add_meeting_agenda", title="Users Who Can Add Meeting Agenda")
-    plone.api.group.create(groupname="can_add_meeting_minutes", title="Users Who Can Add Meeting minutes")
+     
+    plone.api.group.create(groupname="can_modify_templates", title="Can Modify Templates", description="Controls who can modify the templates used in Word to create Docent documents.")
+    plone.api.group.create(groupname="can_add_planning_document", title="Can Add Planning Document", description="Planning documents are those reviewed when the Project is still in Planning phase.  These documents are to help prepare to study the project.")
+    plone.api.group.create(groupname="can_add_meeting_agenda", title="Can Add Meeting Agenda", description="People allowed to add agenda.  This is separate from users who can add meetings.  I expect the board to be able to add minutes, but only President allowed to add meeting.")
+    plone.api.group.create(groupname="can_add_meeting_minutes", title="Can Add Meeting Minutes", description="People allowed to add Minutes.  This is separate from users who can add meetings.  I expect the board to be able to add minutes, but only President allowed to add meeting.")
+    plone.api.group.create(groupname="can_add_documents", title="Can Add Documents", description="Top level control over who can add any document.")
+    plone.api.group.create(groupname="can_add_meeting", title="Can Add Meetings", description="People allowed to add Meeting.  This is separate from users who can add agenda, minutes, etc.  I expect the board to be able to add minutes, but only President allowed to add meeting.")
+    
+    
+    
    
  
     #create content 

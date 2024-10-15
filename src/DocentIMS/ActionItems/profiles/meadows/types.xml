@@ -5,7 +5,7 @@
   <object name="personal_notes" meta_type="Dexterity FTI"/>
   <!-- <object name="sow_analysis" meta_type="Dexterity FTI"/> -->
   <object name="FrontPage" meta_type="Dexterity FTI"/>
-  <object name="Notes" meta_type="Dexterity FTI"/>
+  <!-- <object name="Notes" meta_type="Dexterity FTI"/> -->
   <object name="feedback" meta_type="Dexterity FTI"/>
   <object name="meeting" meta_type="Dexterity FTI"/>
   <object name="meeting_minutes" meta_type="Dexterity FTI"/>
