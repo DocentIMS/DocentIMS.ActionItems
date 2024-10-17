@@ -71,7 +71,8 @@
 
 
               </div:condition>
-              <div:condition class="flex" tal:condition="python: item.portal_type in ['meeting_note', 'Meeting Note', 'Meeting Notes' ]">
+              <div:condition class="flex" tal:condition="python: item.portal_type in ['meeting_note', meeting_notes', 'Meeting Note', 'Meeting Notes' ]">
+              NOTE
                 <a href="${item/getURL}" class="block w-25 xp-1" target="_blank">
                   <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" />
                 </a>
