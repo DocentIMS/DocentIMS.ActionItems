@@ -129,7 +129,7 @@
                <h4 class="pa3">Workflow</h4>
                 <p>Workflow shows a flowchart of the states the Action Item flows through.</p>
                 <p>&nbsp;</p>
-                <img src='${view/portal_url}/help-files/action-item-help/action-item-wf' alt="help image workflow" width="200">
+                <img src='${view/portal_url}/help-files/action-item-help/action-item-wf' alt="help image workflow" width="400">
                 
 
                 </div>
