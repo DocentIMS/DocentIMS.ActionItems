@@ -77,7 +77,7 @@
                 </a>
               </div:condition>
               <p tal:condition="item/file|None">
-                <a class="noborder" href="${item/getURL}/onlyoffice-view-file">Onlyoffice</a>
+                <a class="btn button standalone btn-sm btn-secondary" href="${item/getURL}/onlyoffice-view-file">OnlyOffice</a>
               </p>
               <!-- <p><hr class="hr" /></p> -->
               <!-- <p condition tal:condition="not: item/file|None">
