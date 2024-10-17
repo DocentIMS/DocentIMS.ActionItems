@@ -425,7 +425,7 @@ class IDocentimsSettings(model.Schema):
 #                   default=u"")
 #     )
     
-    widget(project_document_naming_variables=SelectFieldWidget)
+    widget(project_document_naming_convention=SelectFieldWidget)
     project_document_naming_convention = schema.List(
         title=u"Project Document Naming Fields",
         value_type=schema.Choice(values=[
