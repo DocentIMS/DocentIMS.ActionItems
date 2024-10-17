@@ -49,7 +49,7 @@ class PostItNoteAddForm(DefaultAddForm):
                     #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
                     
-                if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                if group.__name__ in ['settings', 'dates', 'categorization', 'ownership']:
                     group.label = None
 
     def updateWidgets(self):
@@ -283,7 +283,7 @@ class ActionItemsEditForm(DefaultEditForm):
                     if self.portal_type == 'sow_analysis':
                         group.label = None
 
-                if self.portal_type ['sow_analysis', 'meeting', "Meeting"]:
+                if self.portal_type in  ['sow_analysis', 'meeting', "Meeting"]:
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                         #group.mode = 'omitted'
                         group.label = None

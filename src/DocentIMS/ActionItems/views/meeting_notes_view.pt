@@ -119,8 +119,6 @@ ${context/aq_parent/start/date}</p>
           </td>
         </tal:condition>
 
- 
-
 
 
       </metal:block>
