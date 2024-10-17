@@ -63,7 +63,24 @@ def add_meeting_types(object, event):
         # List all content types
         content_types = portal_types.objectIds()
         
-        
+        if 'meeting_agenda' in content_types:
+            agenda_content = api.content.create(
+                            type='meeting_agenda',
+                            container=context,
+                            parent_id=parent_id,
+                            title=f"Agenda {meeting_date_time}",
+                            id=f"agenda-{parent_id}",
+        )
+            
+        if 'Meeting Agenda' in content_types:
+            agenda_content = api.content.create(
+                            type='Meeting Agenda',
+                            container=context,
+                            parent_id=parent_id,
+                            title=f"Agenda {today}",
+                            id=f"agenda-{parent_id}",
+        )
+            
         if 'meeting_notes' in content_types:
             notes = api.content.create(
                             type='meeting_notes',
@@ -75,24 +92,7 @@ def add_meeting_types(object, event):
                             description="Notes taken during the meeting",
                             id=f"note-{parent_id}",
             )
-        
-        if 'meeting_minutes' in content_types:
-            minutes = api.content.create(
-                            type='meeting_minutes',
-                            container=context,
-                            parent_id=parent_id,
-                            title=f"Minutes {meeting_date_time}",
-                            id=f"minute-{parent_id}",                  
-            )
-        
-        if 'meeting_agenda' in content_types:
-            agenda_content = api.content.create(
-                            type='meeting_agenda',
-                            container=context,
-                            parent_id=parent_id,
-                            title=f"Agenda {meeting_date_time}",
-                            id=f"agenda-{parent_id}",
-        )
+            
         if 'Meeting Notes' in content_types:
             notes = api.content.create(
                             type='Meeting Notes',
@@ -105,6 +105,18 @@ def add_meeting_types(object, event):
                             id=f"notes-{parent_id}",
             )
         
+        if 'meeting_minutes' in content_types:
+            minutes = api.content.create(
+                            type='meeting_minutes',
+                            container=context,
+                            parent_id=parent_id,
+                            title=f"Minutes {meeting_date_time}",
+                            id=f"minute-{parent_id}",                  
+            )
+        
+        
+        
+        
         if 'Meeting Minutes' in content_types:
             minutes = api.content.create(
                             type='Meeting Minutes',
@@ -114,14 +126,7 @@ def add_meeting_types(object, event):
                             id=f"minute-{parent_id}",                  
             )
         
-        if 'Meeting Agenda' in content_types:
-            agenda_content = api.content.create(
-                            type='Meeting Agenda',
-                            container=context,
-                            parent_id=parent_id,
-                            title=f"Agenda {today}",
-                            id=f"agenda-{parent_id}",
-        )
+       
 
         
 def change_uuid(object, event):
