@@ -289,7 +289,6 @@ class IDocentimsSettings(model.Schema):
             'project_description',
             'project_contract_number',
             'project_document_naming_convention',
-            'project_document_naming_variables',
             'color1',
             'color2',
             'planning_project',
