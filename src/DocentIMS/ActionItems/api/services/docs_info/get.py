@@ -105,7 +105,6 @@ class DocsInfo(object):
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'companies' :  companies,
                     'last_document_save_locations' : download_date,
-                    'time-now':  datetime.now().isoformat(),
                     'time_now':  datetime.now().isoformat(),
                     'template_password': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.template_password')
                     # 'wf_states_list' : get_content_types_and_workflows(),                 

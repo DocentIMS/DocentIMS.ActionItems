@@ -418,16 +418,11 @@ class IDocentimsSettings(model.Schema):
         description=_(u"",
                       default=u"")
         )
-# project_document_naming_convention = schema.TextLine(
-#     required = False,
-#     title=_(u"label_project_document_naming_convention", default=u"Project Document Naming Convention"),
-#     description=_(u"",
-#                   default=u"")
-#     )
+ 
     
     widget(project_document_naming_convention=SelectFieldWidget)
     project_document_naming_convention = schema.List(
-        title=u"Project Document Naming Fields",
+        title=u"Project Document Naming Convention",
         value_type=schema.Choice(values=[
             u'PrjName',
             u'ContractNumber',
