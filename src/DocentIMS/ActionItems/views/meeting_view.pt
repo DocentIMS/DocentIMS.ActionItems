@@ -76,7 +76,7 @@
                   <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" />
                 </a>
               </div:condition>
-              <p tal:condition="item/file|None">
+              <p tal:condition="item/file|None" style="text-align:right">
                 <a class="btn button standalone btn-sm btn-secondary" href="${item/getURL}/onlyoffice-view-file">OnlyOffice</a>
               </p>
               <!-- <p><hr class="hr" /></p> -->
