@@ -46,6 +46,7 @@
     <!--<element value="plone.tableofcontents"/>-->
     <element value="plone.versioning" />
     <!--<element value="plone.translatable" />-->
+    <element value="DocentIMS.ActionItems.only_office_file"/>
   </property>
 
   <!-- View information -->
