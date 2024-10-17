@@ -48,14 +48,12 @@
 
             <!-- Show all Pages as separate tabs -->
             <!-- <fieldset style="background-color:#FCFCFC;" class="m-1 p-3 border w-auto" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()"> -->
-            <div style="background-color:#FCFCFC;" class="m-1 p-3 border w-25 hasfile-${item/file|None}" 
-                tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()">
-              <legend> 
-              <a class="noborder" href="${item/getURL}/onlyoffice-view-file" tal:condition="item/file|None">Onlyoffice</a>
-              onlyoffice-view-file
+            <div style="background-color:#FCFCFC;" class="m-1 p-3 border w-25 hasfile-${item/file|None}" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()">
+              <legend>
+
                 <a class="noborder" href="${item/getURL}/view" tal:condition="item/file|None">
                   <span condition tal:condition="not: item/file|None">&#x1f441; </span>${python: item.Title().split()[0]} </a>
-                  <tal:condition tal:condition="not: item/file|None">${python: item.Title().split()[0]} </tal:condition>
+                <tal:condition tal:condition="not: item/file|None">${python: item.Title().split()[0]} </tal:condition>
               </legend>
 
               <!-- <div class="xcard"> -->
@@ -78,6 +76,9 @@
                   <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" />
                 </a>
               </div:condition>
+              <p tal:condition="item/file|None">
+                <a class="noborder" href="${item/getURL}/onlyoffice-view-file">Onlyoffice</a>
+              </p>
               <!-- <p><hr class="hr" /></p> -->
               <!-- <p condition tal:condition="not: item/file|None">
                 <a href="${item/getURL}" target="_blank">✎</a>
