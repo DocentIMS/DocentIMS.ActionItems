@@ -289,6 +289,7 @@ class IDocentimsSettings(model.Schema):
             'project_description',
             'project_contract_number',
             'project_document_naming_convention',
+            'project_document_naming_variables',
             'color1',
             'color2',
             'planning_project',
@@ -424,6 +425,21 @@ class IDocentimsSettings(model.Schema):
         description=_(u"",
                       default=u"")
         )
+    
+    widget(project_document_naming_variables=SelectFieldWidget)
+    project_document_naming_variables = schema.List(
+        title=u"Project Document Naming Fields",
+        value_type=schema.Choice(values=[
+            u'PrjName',
+            u'ContractNumber',
+            u'DocState',
+            u'Doctype',
+            u'DocDate',
+        ]),
+        required=False,
+        default=[],
+        missing_value=[],
+    )
     
     urgent_red = schema.Int(
         title=_(u"label_red", default=u"Urgent days/value (displayed as Red)"),
