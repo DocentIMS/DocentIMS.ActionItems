@@ -63,7 +63,7 @@
 
               <div class="card-body" tal:content="structure item/text/output|None"></div>
               <div:condition class="flex" tal:condition="item/file|None">
-                <a href="${item/getURL}/@@download/file" class="block w-25 xp-1">
+                <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
                   <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="icon" title="icon" />
                 </a>
                 <!-- <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a> -->
@@ -77,7 +77,7 @@
                 </a>
               </div:condition>
               <p tal:condition="item/file|None" style="text-align:right">
-                <a class="btn button standalone btn-sm btn-secondary" href="${item/getURL}/onlyoffice-view-file">OnlyOffice</a>
+                <a class="btn button standalone btn-sm btn-secondary" alt="Open in Only Office" title="Open in Only Office" href="${item/getURL}/onlyoffice-view-file">OnlyOffice</a>
               </p>
               <!-- <p><hr class="hr" /></p> -->
               <!-- <p condition tal:condition="not: item/file|None">
