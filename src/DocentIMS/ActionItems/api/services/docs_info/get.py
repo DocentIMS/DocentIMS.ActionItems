@@ -111,7 +111,6 @@ class DocsInfo(object):
                 },
             }
             
-            
         
             return result
         
