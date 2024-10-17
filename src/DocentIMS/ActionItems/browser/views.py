@@ -55,6 +55,7 @@ class PostItNoteAddForm(DefaultAddForm):
     def updateWidgets(self):
         super(PostItNoteAddForm, self).updateWidgets()
         # self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+        self.widgets['IBasic.description'].rows=7 
         
     def updateFields(self):
         super(PostItNoteAddForm, self).updateFields()
@@ -329,6 +330,9 @@ class MeetingEditForm(DefaultEditForm):
             self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
             
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
+        
+        if self.portal_type in  ["postit_note"]:    
+            self.widgets['IBasic.description'].rows=7 
      
     def update(self):
         super(MeetingEditForm, self).update()

@@ -19,3 +19,8 @@ class PostItNoteView(BrowserView):
     def __call__(self):
         # Implement your own actions:
         return self.index()
+    
+    def shortdescription(self):
+        description = self.context.Description().split()
+        return ' '.join(description[:5])
+         

@@ -10,13 +10,9 @@ from zope.component import getUtility
 from zope.component import getUtilitiesFor
 from plone.dexterity.interfaces import IDexterityFTI
 
-
-
-
-
 import json
 
-
+# curl -i -X GET https://mymeadows.org/@workflow_info?portal_type=* -H "Accept: application/json" -k --user user:password
 
 
 def get_content_types_and_workflows(portal_type):
