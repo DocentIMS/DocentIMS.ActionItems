@@ -64,7 +64,7 @@
               <div class="card-body" tal:content="structure item/text/output|None"></div>
               <div:condition class="flex" tal:condition="item/file|None">
                 <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
-                  <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="icon" title="icon" />
+                  <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="icon"  title="Download Document" />
                 </a>
                 <!-- <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a> -->
                 <!-- &nbsp; [ ${item/getSize|None} ] -->
