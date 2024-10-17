@@ -221,6 +221,7 @@ def pre_install(context):
     
     
     
+    
    
  
     #create content 
@@ -344,7 +345,10 @@ def _create_content(portal):
                     container=postit_notes,
                     id='postit-collection',
                     title='Post It Notes',
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['postit_notes', 'postit_note', 'PostIt Notes']}]
+                    query = [
+                        {'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['postit_notes', 'postit_note', 'PostIt Notes']},
+                        {  "i":"Creator",  "o":"plone.app.querystring.operation.string.currentUser", "v":""  }
+                        ]
                 )
                          
                 

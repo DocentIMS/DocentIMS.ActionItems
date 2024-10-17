@@ -17,7 +17,6 @@
         title="DocentIMS.ActionItems: Add PostItNote"
     />
 
-
     <permission
         id="DocentIMS.ActionItems.AddPlanningBreakdown"
         title="DocentIMS.ActionItems: Add PlanningBreakdown"
@@ -29,18 +28,25 @@
         title="DocentIMS.ActionItems: Add PlanningDocument"
     />
 
+    <permission
+        id="DocentIMS.ActionItems.AddDocuments"
+        title="DocentIMS.ActionItems: Add Documents"
+    />
+
+    <permission
+        id="DocentIMS.ActionItems.ModifyTemplates"
+        title="DocentIMS.ActionItems: Modify Templates"
+    />
 
     <permission
         id="DocentIMS.ActionItems.AddMeetingAgenda"
         title="DocentIMS.ActionItems: Add MeetingAgenda"
     />
 
-
     <permission
         id="DocentIMS.ActionItems.AddMeetingMinutes"
         title="DocentIMS.ActionItems: Add MeetingMinutes"
     />
-
 
     <permission
         id="DocentIMS.ActionItems.EditControlpanel"
@@ -51,6 +57,12 @@
         id="DocentIMS.ActionItems.AddMeeting"
         title="DocentIMS.ActionItems: Add Meeting"
     />
+
+    <permission
+        id="DocentIMS.ActionItems.AddCommentStatements"
+        title="DocentIMS.ActionItems: Add Comment Statements"
+    />
+
 
     <permission
         id="DocentIMS.ActionItems.AddFeedback"
@@ -73,8 +85,18 @@
     />
 
     <permission
+        id="DocentIMS.ActionItems.ArchiveDeleteSow"
+        title="DocentIMS.ActionItems: Archive Delete Scope"
+    />
+
+    <permission
         id="DocentIMS.ActionItems.AddActionItems"
         title="DocentIMS.ActionItems: Add ActionItems"
+    />
+
+    <permission
+        id="DocentIMS.ActionItems.ArchiveDeleteActionItems"
+        title="DocentIMS.ActionItems: Archive Delete ActionItems"
     />
 
     <permission

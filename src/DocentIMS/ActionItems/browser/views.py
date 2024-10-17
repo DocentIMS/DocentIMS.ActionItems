@@ -283,7 +283,7 @@ class ActionItemsEditForm(DefaultEditForm):
                     if self.portal_type == 'sow_analysis':
                         group.label = None
 
-                if self.portal_type ['sow_analysis', 'meeting']:
+                if self.portal_type ['sow_analysis', 'meeting', "Meeting"]:
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                         #group.mode = 'omitted'
                         group.label = None
@@ -323,7 +323,7 @@ class MeetingEditForm(DefaultEditForm):
     def updateWidgets(self):
         super(MeetingEditForm, self).updateWidgets()
         
-        if self.portal_type in "meeting":
+        if self.portal_type in ["meeting", "Meeting"]:
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
@@ -331,14 +331,14 @@ class MeetingEditForm(DefaultEditForm):
             
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
         
-        if self.portal_type in  ["postit_note"]:    
+        if self.portal_type in  ["postit_note", "PostIt Note"]:    
             self.widgets['IBasic.description'].rows=7 
      
     def update(self):
         super(MeetingEditForm, self).update()
         
         
-        if self.portal_type in  ["meeting_notes", "meeting", "Notes", "notes", "feedback", "postit_note"]:
+        if self.portal_type in  ["meeting_notes", "Meeting Notes", "Meeting", "meeting", "Notes", "notes", "feedback", "Feedback", "PostIt Note", "postit_note"]:
         
             for group in self.groups:
                 if group.__name__ == 'settings':
@@ -351,7 +351,7 @@ class MeetingEditForm(DefaultEditForm):
                     #group.mode = 'omitted'
                     group.label = None
         
-        if self.portal_type in  ["meeting_notes",]:         
+        if self.portal_type in  ["meeting_notes", "Meeting Notes"]:         
             self.default_fieldset_label = "Meeting Details"
             
         
@@ -472,7 +472,8 @@ class SowAnalysisAddFormView(DefaultAddView):
 
 class MeetingAddForm(DefaultAddForm):
 
-    #portal_type = "Meeting"
+    # portal_type = "Meeting"
+    #portal_type = "meeting"
     
     def __init__(self, context, request):
         super(MeetingAddForm, self).__init__(context, request)
@@ -484,21 +485,23 @@ class MeetingAddForm(DefaultAddForm):
 
     def updateWidgets(self):
         super(MeetingAddForm, self).updateWidgets()
-        if self.portal_type == 'meeting':
+        if self.portal_type in  ['meeting', "Meeting"]:
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
             # self.fields['IBasic.title'].field.default = default_title()
             # self.fields['IBasic.title'].mode = interfaces.HIDDEN_MODE
             
-        if self.portal_type in  ["meeting", "Notes", "feedback"]:
+        if self.portal_type in  ["meeting", "Meeting", "Notes", "notes", "Feedback", "feedback"]:
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
             
         # Title is hard coded from todays date
-        if self.portal_type in  ["meeting_notes"]: 
+        if self.portal_type in  ["meeting_notes", "Meeting Notes"]: 
             # self.widgets['title'].readonly='readonly'
             self.widgets['title'].mode = interfaces.HIDDEN_MODE
             self.widgets['description'].mode = interfaces.HIDDEN_MODE 
+            
+ 
 
     def updateFields(self):
         super(MeetingAddForm, self).updateFields()
@@ -507,7 +510,7 @@ class MeetingAddForm(DefaultAddForm):
         super(MeetingAddForm, self).update()
         
         # 
-        if self.portal_type in  ["meeting_notes", "meeting", "Notes", "feedback"]:
+        if self.portal_type in  ["meeting_notes", "Meeting Notes", "meeting", "Meeting", "Notes", "notes", "Feedback", "feedback"]:
             if self.portal_type in  ["meeting_notes",]:
                     default_fieldset_label = 'Details'
                     
