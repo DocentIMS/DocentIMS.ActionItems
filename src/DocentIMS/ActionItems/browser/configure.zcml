@@ -154,7 +154,7 @@
 
     <!-- note: Name must be same as content type -->
     <adapter
-        factory=".views.MeetingAddFormView"
+        factory=".views.MeetingCustomAddFormView"
         provides="zope.publisher.interfaces.browser.IBrowserPage"
         for="*
              DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
@@ -162,14 +162,7 @@
              name="Meeting"
         />
 
-    <adapter
-        factory=".views.MeetingAddFormView"
-        provides="zope.publisher.interfaces.browser.IBrowserPage"
-        for="*
-             DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
-             plone.dexterity.interfaces.IDexterityFTI"
-             name="meeting"
-        />
+
 
     <adapter
         factory=".views.MeetingAddFormView"
@@ -235,7 +228,12 @@
         />
     </class>
 
-
+    <class class=".views.MeetingCustomAddFormView">
+    <require
+        permission="cmf.AddPortalContent"
+        interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+    </class>
 
 
     <!--browser:page

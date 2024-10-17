@@ -54,7 +54,7 @@ class PostItNoteAddForm(DefaultAddForm):
 
     def updateWidgets(self):
         super(PostItNoteAddForm, self).updateWidgets()
-        # self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+        self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
         self.widgets['IBasic.description'].rows=7 
         
     def updateFields(self):
@@ -252,9 +252,9 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
             self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
-        if self.portal_type == 'meeting':
-            self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
-            self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+        # if self.portal_type == 'meeting':
+        #     self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
+        #     self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
     
     def update(self):
         super(ActionItemsEditForm, self).update()
@@ -534,6 +534,61 @@ class MeetingAddForm(DefaultAddForm):
 class MeetingAddFormView(DefaultAddView):
     form = MeetingAddForm
 
+
+
+
+
+
+class MeetingCustomAddForm(DefaultAddForm):
+    today = datetime.today().strftime('%Y-%m-%d')
+
+    def __init__(self, context, request):
+        super(MeetingCustomAddForm, self).__init__(context, request)
+        
+    def updateWidgets(self):
+        super(MeetingCustomAddForm, self).updateWidgets()
+        self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
+        self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+        self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+        
+        #To do: set correct empty value according to field type
+        if self.widgets['meeting_type'].value in  [(), None, '']:
+            for widgetname in self.widgets:
+                if widgetname != 'meeting_type':
+                    self.widgets[widgetname].mode = interfaces.HIDDEN_MODE
+        else:
+            if self.widgets['meeting_type'].value != None:
+                meeting_rows = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')[0]
+                # self.fields['IBasic.description'].field.default = f"Meeting {self.widgets['meeting_type'].value[0]}"
+                
+                
+                self.fields['IBasic.description'].field.default = meeting_rows['meeting_summary']
+                self.fields['IBasic.title'].field.default =  meeting_rows['meeting_title']
+                # self.fields['IEventContact-contact_name']=  meeting_rows['meeting_contact']
+                #self.fields['IEventAttendees-attendees']  = meeting_rows['meeting_attendees']
+                
+
+    def updateFields(self):
+        super(MeetingCustomAddForm, self).updateFields()
+
+    def update(self):
+        # import pdb; pdb.set_trace()
+        super(MeetingCustomAddForm, self).update()
+        for group in self.groups:
+            if group.__name__ == 'settings':
+                group.label = None
+                group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE  
+            if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                group.label = None
+                    
+ 
+class MeetingCustomAddFormView(DefaultAddView):
+    form = MeetingCustomAddForm
+
+
+
+
+ 
 
 # class SowAnalysisEditForm(DefaultEditForm):
 #     portal_type = "sow_analysis"

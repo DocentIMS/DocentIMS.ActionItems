@@ -113,13 +113,40 @@ class IVocabulari4(model.Schema):
         required=False,
     )
     
-class IVocabulari5(model.Schema):
+
+
+
+class IMeetingRows(model.Schema):
     meeting_type = schema.TextLine(
-        title=_(u'Vocabulary entries', 'Meeting Type'),
-        description=u"Meeting Type",
+        title=_(u'meeting_type', 'DefaultType'),
+        # description=u"Meeting Type",
         required=False,
     )
     
+    meeting_title = schema.TextLine(
+        title=_(u'meeting_title', 'Default Title'),
+        # description=u"Default Meeting Title",
+        required=False,
+    )
+     
+    meeting_summary = schema.Text(
+        title=_(u'Vmeeting_summary', 'Summary'),
+        # description=u"Default Summary",
+        required=False,
+    )
+    
+    widget(meeting_attendees=SelectFieldWidget)
+    meeting_attendees = schema.Choice(
+        vocabulary=u"plone.app.vocabularies.Groups",
+        # title=_(u"Default Attendees", default=u"Default Attendees"),
+        required=False,
+    )
+    
+    meeting_contact = schema.Choice(
+        vocabulary=u"DocentIMS.ActionItems.TeamnamesVocabulary",
+        title=_(u"meeting_contact", default=u"Default Contact"),
+        required=False,
+    )   
 
 
 
@@ -535,7 +562,7 @@ class IDocentimsSettings(model.Schema):
     meeting_types = schema.List(
         title = _(u" ",
             default=u""),
-        value_type=DictRow(schema=IVocabulari5),
+        value_type=DictRow(schema=IMeetingRows),
         required=True,
     )
     

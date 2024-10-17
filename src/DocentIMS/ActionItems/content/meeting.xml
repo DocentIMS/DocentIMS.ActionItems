@@ -4,6 +4,7 @@
       <description/>
       <title>Meeting type</title>
       <vocabulary>DocentIMS.ActionItems.MeetingTypesVocabulary</vocabulary>
+       <required>False</required>
     </field>
   </schema>
 </model>
