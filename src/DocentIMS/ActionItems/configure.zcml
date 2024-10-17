@@ -159,6 +159,14 @@
     handler=".subscribers.change_uuid"
     />
 
+<!-- Change POST IT NOTE title after creation -->
+  <subscriber
+    for="plone.dexterity.content.Item       
+        zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".subscribers.change_title"
+    />
+
+
 <!-- Disable deletion of default page -->
   <subscriber
     for="*       

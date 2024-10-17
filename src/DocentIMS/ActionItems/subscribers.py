@@ -146,6 +146,14 @@ def remove_description(object, event):
         if hasattr(object, 'Description'):
             a=1
             # object.setDescription('')
+
+def change_title(object, event):  
+    if object.portal_type in  ['postit_note', 'PostIt Note' ]:
+        if hasattr(object, 'Description'):
+            description = object.Description().split()
+            tittel =  ' '.join(description[:5])
+            setattr(object, 'title', tittel) 
+            transaction.commit()
         
 def last_state(object, event):
     #subscribers.last_state

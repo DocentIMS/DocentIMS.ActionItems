@@ -420,7 +420,7 @@ class IDocentimsSettings(model.Schema):
         )
  
     
-    widget(project_document_naming_convention=SelectFieldWidget)
+    # widget(project_document_naming_convention=SelectFieldWidget)
     project_document_naming_convention = schema.List(
         title=u"Project Document Naming Convention",
         value_type=schema.Choice(values=[
