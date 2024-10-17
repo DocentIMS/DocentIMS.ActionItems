@@ -34,7 +34,8 @@
                   <b>Planned Date and time: </b>
                 </p>
 
-                <p>Scheduled date: <br/>${context/aq_parent/start/date}</p>
+                <p>Scheduled date: <br/>
+${context/aq_parent/start/date}</p>
               </td>
               <td>
                 <p>
@@ -110,14 +111,15 @@
         </table>
 
 
+        <hr class="hr" />
+        <tal:condition tal:condition="context/file|None">
+          <td>
+            <b>File:</b>
+            <a href="${context/absolute_url}/@@download/file">Download File</a>
+          </td>
+        </tal:condition>
 
-
-
-
-
-
-
-
+ 
 
 
 
