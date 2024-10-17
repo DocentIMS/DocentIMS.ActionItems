@@ -104,6 +104,8 @@
             <fieldset>
               <legend>Priority</legend>
               <h4 class="pa3">Priority</h4>
+              <p>Priority is assigned by the Project Manager and indicates the relative importance of the Action Item.</p>
+
               
               <div class="flex flex-wrap">
                 <div id="div-bar"><!-- Plotly chart will be drawn inside this DIV --></div>
@@ -114,6 +116,8 @@
              <fieldset>
               <legend>Urgency</legend>
               <h4 class="pa3">Urgency</h4>
+              <p>Urgency is the measure of number of days until the action item is due.  The number of days until due for the three categories are assigned by the Project Manager</p>
+
                 <div>
                   <div id="urgency-bar" ><!-- Plotly chart will be drawn inside this DIV --></div>
                 </div>
@@ -122,6 +126,9 @@
             <fieldset>
               <legend>Workflow</legend>
               <div>
+               <h4 class="pa3">Workflow</h4>
+                <p>Workflow shows a flowchart of the states the Action Item flows through.</p>
+                <p>&nbsp;</p>
                 <img src='${view/portal_url}/help-files/action-item-help/action-item-wf' alt="help image workflow">
                 
 
