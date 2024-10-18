@@ -402,7 +402,7 @@ def _create_content(portal):
                     container=feedback,
                     id='feedback-collection',
                     title='Feedback',
-                    Description=u"""These are comments submitted by users of this website and Word Docent toolbar. The project manager should review all feedback items and respond if requested by the person submitting the Feedback""",
+                    description=u"""These are comments submitted by users of this website and Word Docent toolbar. The project manager should review all feedback items and respond if requested by the person submitting the Feedback""",
                     layout='tabular_view',
                     limit=2000,
                     item_count=500,
@@ -447,7 +447,7 @@ def _create_content(portal):
             if not action_folder.get('action-item-help', False):
                 action_items = plone.api.content.create(
                     type='Document',
-                    Description=u'Action Item Help',
+                    description=u'Action Item Help',
                     container=action_folder,
                     id='action-item-help',
                     title='Action Item Help',
@@ -493,7 +493,7 @@ def _create_content(portal):
                 if not word_folder.get('word-help', False):
                     word = plone.api.content.create(
                         type='Document',
-                        Description=u'Word Help',
+                        description=u'Word Help',
                         container=word_folder,
                         id='word-help',
                         title='Word Help',
@@ -527,7 +527,7 @@ def _create_content(portal):
             # if not scope_folder.get('scope-help', False):
             #     scope = plone.api.content.create(
             #         type='Document',
-            #         Description=u'scope Help',
+            #         description=u'scope Help',
             #         container=scope_folder,
             #         id='scope-help',
             #         title='Scope Help',
