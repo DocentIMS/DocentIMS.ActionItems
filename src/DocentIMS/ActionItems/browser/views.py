@@ -568,15 +568,14 @@ class MeetingCustomAddForm(DefaultAddForm):
         meeeting_value = self.widgets['meeting_type'].value
          
         if meeeting_value in  [(), None, '']:
-            messages = IStatusMessage(self.request)
-            messages.addStatusMessage(u"Please set a meeting date", type="info") 
             for widgetname in self.widgets:
                 if widgetname != 'meeting_type':
                     self.widgets[widgetname].mode = interfaces.HIDDEN_MODE
                     
 
         else:
-           
+            messages = IStatusMessage(self.request)
+            messages.addStatusMessage(u"Please check that meeting date is correct", type="info") 
             
             meeting_definitions = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
             meeting_rows = [meeting for meeting in meeting_definitions if meeting['meeting_type'] == meeeting_value[0]]
