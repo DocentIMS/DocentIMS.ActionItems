@@ -585,25 +585,27 @@ class MeetingCustomAddForm(DefaultAddForm):
             
             meeting_definitions = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
             meeting_rows = [meeting for meeting in meeting_definitions if meeting['meeting_type'] == meeeting_value[0]]
-            self.widgets['IBasic.description'].value = meeting_rows[0]['meeting_summary']
-            self.widgets['IBasic.title'].value =  meeting_rows[0]['meeting_title']
-            self.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
-            meeting_group =  meeting_rows[0]['meeting_attendees'] # Some group
-                
-            if meeting_group and meeting_group != []:
-                groupmembers = api.user.get_users(groupname=meeting_group)
-                
-                ids= [ groupmember.getId() for groupmember in groupmembers]
-                
-                if ids and ids != []: 
-                    self.widget['IMeetingAttendees.attendees'].value  = tuple(ids)
-                
-                #  'IMeetingLocation.location'
-                #  'IMeetingAttendees.attendees'
-                #  IMeetingContact.event_url'
-                #  IMeetingContact.contact_name' 
-                
-        
+            
+            if meeting_rows and meeting_rows != None:
+                self.widgets['IBasic.description'].value = meeting_rows[0]['meeting_summary']
+                self.widgets['IBasic.title'].value =  meeting_rows[0]['meeting_title']
+                self.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
+                meeting_group =  meeting_rows[0]['meeting_attendees'] # Some group
+                    
+                if meeting_group and meeting_group != []:
+                    groupmembers = api.user.get_users(groupname=meeting_group)
+                    
+                    ids= [ groupmember.getId() for groupmember in groupmembers]
+                    
+                    if ids and ids != []: 
+                        self.widgets['IMeetingAttendees.attendees'].value  = tuple(ids)
+                    
+                    #  'IMeetingLocation.location'
+                    #  'IMeetingAttendees.attendees'
+                    #  IMeetingContact.event_url'
+                    #  IMeetingContact.contact_name' 
+                    
+            
 
                 
 
