@@ -220,6 +220,8 @@ class ActionItemsEditForm(DefaultEditForm):
     def updateWidgets(self):
         super(ActionItemsEditForm, self).updateWidgets() 
         
+        import pdb; pdb.set_trace()
+        
         
         #Hide input field 'change note'
         #if 'IVersionable.changeNote' in self.widgets
@@ -566,19 +568,11 @@ class MeetingCustomAddForm(DefaultAddForm):
         meeeting_value = self.widgets['meeting_type'].value
          
         if meeeting_value in  [(), None, '']:
-            # self.fields['IBasic.description'].field.default = ''
-            # self.fields['IBasic.title'].field.default = ''
-            # self.fields['IMeetingContact.contact_name'].field.default = None
-            # self.fields['IMeetingAttendees.attendees'].field.default  = ()
-            
             for widgetname in self.widgets:
                 if widgetname != 'meeting_type':
                     self.widgets[widgetname].mode = interfaces.HIDDEN_MODE
                     
-            
-                    
-                    
-        # # WARNING, dont use this, it will remember last 'setting'
+
         else:
             messages = IStatusMessage(self.request)
             messages.addStatusMessage(u"Please set a meeting date", type="info") 
@@ -597,17 +591,11 @@ class MeetingCustomAddForm(DefaultAddForm):
                     
                     ids= [ groupmember.getId() for groupmember in groupmembers]
                     
-                    # if ids and ids != []: 
-                    #     self.widgets['IMeetingAttendees.attendees'].value  = ids
-                    
-                    #  'IMeetingLocation.location'
-                    #  'IMeetingAttendees.attendees'
-                    #  IMeetingContact.event_url'
-                    #  IMeetingContact.contact_name' 
-                    
-            
-
-                
+                    if ids and ids != []: 
+                        # self.widgets['IMeetingAttendees.attendees'].value  = ids
+                        self.widgets['IMeetingAttendees.attendees'].value  = ";".join(ids)
+                        
+    
 
     # def updateFields(self):
     #     super(MeetingCustomAddForm, self).updateFields()
