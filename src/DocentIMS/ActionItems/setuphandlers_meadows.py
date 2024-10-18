@@ -402,7 +402,7 @@ def _create_content(portal):
                     container=feedback,
                     id='feedback-collection',
                     title='Feedback',
-                    Description=u"These are comments submitted by users of this website and Word Docent toolbar. The project manager should review all feedback items and respond if requested by the person submitting the Feedback",
+                    Description=u"""These are comments submitted by users of this website and Word Docent toolbar. The project manager should review all feedback items and respond if requested by the person submitting the Feedback""",
                     layout='tabular_view',
                     limit=2000,
                     item_count=500,

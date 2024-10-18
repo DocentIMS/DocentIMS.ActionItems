@@ -220,8 +220,6 @@ class ActionItemsEditForm(DefaultEditForm):
     def updateWidgets(self):
         super(ActionItemsEditForm, self).updateWidgets() 
         
-        import pdb; pdb.set_trace()
-        
         
         #Hide input field 'change note'
         #if 'IVersionable.changeNote' in self.widgets
