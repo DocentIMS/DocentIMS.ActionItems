@@ -7,6 +7,7 @@ from plone.dexterity.browser.add import DefaultAddView
 from plone.dexterity.browser.add import DefaultAddForm
 from plone.dexterity.browser.edit import DefaultEditView
 from plone.dexterity.browser.edit import DefaultEditForm
+from Products.statusmessages.interfaces import IStatusMessage
 
 from zope.intid.interfaces import IIntIds
 from z3c.relationfield import RelationValue
@@ -177,6 +178,8 @@ class ActionItemsAddForm(DefaultAddForm):
     def update(self): 
         super(ActionItemsAddForm, self).update()
         
+        
+        
 
         for group in self.groups:
             if group.__name__ in ['close_out', 'intermediate_actioins', 'categorization']:
@@ -212,9 +215,11 @@ class ActionItemsEditForm(DefaultEditForm):
     
     def __init__(self, context, request):
         super(ActionItemsEditForm, self).__init__(context, request)
+        
 
     def updateWidgets(self):
         super(ActionItemsEditForm, self).updateWidgets() 
+        
         
         #Hide input field 'change note'
         #if 'IVersionable.changeNote' in self.widgets
@@ -252,9 +257,11 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['IDublinCore.description'].label = 'Full Company Name'
             self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
 
-        # if self.portal_type == 'meeting':
-        #     self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
-        #     self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+        if self.portal_type == 'meeting':
+            self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+            
+            
     
     def update(self):
         super(ActionItemsEditForm, self).update()
@@ -312,55 +319,58 @@ class ActionItemsEditFormView(DefaultEditView):
 
 
 
-class MeetingEditForm(DefaultEditForm):
-    ## Does not take portal type into action, so this is used FOR ALL content items that are defined as 'Item'
-    portal_type = "meeting"
+# class MeetingEditForm(DefaultEditForm):
+#     ## Does not take portal type into action, so this is used FOR ALL content items that are defined as 'Item'
+#     portal_type = "meeting"
      
      
-    def __init__(self, context, request):
-        super(MeetingEditForm, self).__init__(context, request)
+#     def __init__(self, context, request):
+#         super(MeetingEditForm, self).__init__(context, request)
 
-    def updateWidgets(self):
-        super(MeetingEditForm, self).updateWidgets()
+#     def updateWidgets(self):
+#         super(MeetingEditForm, self).updateWidgets()
         
-        if self.portal_type in ["meeting", "Meeting"]:
-            self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
-            self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
-            self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
-            self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
+#   
+        
+        
+#         if self.portal_type in ["meeting", "Meeting"]:
+#             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
+#             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+#             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+#             self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
             
-            #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
+#             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
         
-        if self.portal_type in  ["postit_note", "PostIt Note"]:    
-            self.widgets['IBasic.description'].rows=7 
+#         if self.portal_type in  ["postit_note", "PostIt Note"]:    
+#             self.widgets['IBasic.description'].rows=7 
      
-    def update(self):
-        super(MeetingEditForm, self).update()
+#     def update(self):
+#         super(MeetingEditForm, self).update()
         
         
-        if self.portal_type in  ["meeting_notes", "Meeting Notes", "Meeting", "meeting", "Notes", "notes", "feedback", "Feedback", "PostIt Note", "postit_note"]:
+#         if self.portal_type in  ["meeting_notes", "Meeting Notes", "Meeting", "meeting", "Notes", "notes", "feedback", "Feedback", "PostIt Note", "postit_note"]:
         
-            for group in self.groups:
-                if group.__name__ == 'settings':
-                    group.label = None
-                    #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
-                    group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+#             for group in self.groups:
+#                 if group.__name__ == 'settings':
+#                     group.label = None
+#                     #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+#                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
                     
                     
-                if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
-                    #group.mode = 'omitted'
-                    group.label = None
+#                 if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+#                     #group.mode = 'omitted'
+#                     group.label = None
         
-        if self.portal_type in  ["meeting_notes", "Meeting Notes"]:         
-            self.default_fieldset_label = "Meeting Details"
+#         if self.portal_type in  ["meeting_notes", "Meeting Notes"]:         
+#             self.default_fieldset_label = "Meeting Details"
             
         
         
          
 
-class MeetingEditFormView(DefaultEditView):
-    portal_type = "meeting"
-    form = MeetingEditForm
+# class MeetingEditFormView(DefaultEditView):
+#     portal_type = "meeting"
+#     form = MeetingEditForm
 
  
 
@@ -540,7 +550,7 @@ class MeetingAddFormView(DefaultAddView):
 
 
 class MeetingCustomAddForm(DefaultAddForm):
-    today = datetime.today().strftime('%Y-%m-%d')
+    # today = datetime.today().strftime('%Y-%m-%d')
 
     def __init__(self, context, request):
         super(MeetingCustomAddForm, self).__init__(context, request)
@@ -551,29 +561,58 @@ class MeetingCustomAddForm(DefaultAddForm):
         self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
         self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
         
-        #To do: set correct empty value according to field type
-        if self.widgets['meeting_type'].value in  [(), None, '']:
+        # To do: set correct empty value according to field type
+        
+        meeeting_value = self.widgets['meeting_type'].value
+         
+        if meeeting_value in  [(), None, '']:
+            # self.fields['IBasic.description'].field.default = ''
+            # self.fields['IBasic.title'].field.default = ''
+            # self.fields['IMeetingContact.contact_name'].field.default = None
+            # self.fields['IMeetingAttendees.attendees'].field.default  = ()
+            
             for widgetname in self.widgets:
                 if widgetname != 'meeting_type':
                     self.widgets[widgetname].mode = interfaces.HIDDEN_MODE
+                    
+            
+                    
+                    
+        # # WARNING, dont use this, it will remember last 'setting'
         else:
-            if self.widgets['meeting_type'].value != None:
-                meeting_rows = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')[0]
-                # self.fields['IBasic.description'].field.default = f"Meeting {self.widgets['meeting_type'].value[0]}"
+            messages = IStatusMessage(self.request)
+            messages.addStatusMessage(u"Please set a meeting date", type="info") 
+            
+            meeting_definitions = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
+            meeting_rows = [meeting for meeting in meeting_definitions if meeting['meeting_type'] == meeeting_value[0]]
+            self.widgets['IBasic.description'].value = meeting_rows[0]['meeting_summary']
+            self.widgets['IBasic.title'].value =  meeting_rows[0]['meeting_title']
+            self.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
+            meeting_group =  meeting_rows[0]['meeting_attendees'] # Some group
                 
+            if meeting_group and meeting_group != []:
+                groupmembers = api.user.get_users(groupname=meeting_group)
                 
-                self.fields['IBasic.description'].field.default = meeting_rows['meeting_summary']
-                self.fields['IBasic.title'].field.default =  meeting_rows['meeting_title']
-                # self.fields['IEventContact-contact_name']=  meeting_rows['meeting_contact']
-                #self.fields['IEventAttendees-attendees']  = meeting_rows['meeting_attendees']
+                ids= [ groupmember.getId() for groupmember in groupmembers]
+                
+                if ids and ids != []: 
+                    self.widget['IMeetingAttendees.attendees'].value  = tuple(ids)
+                
+                #  'IMeetingLocation.location'
+                #  'IMeetingAttendees.attendees'
+                #  IMeetingContact.event_url'
+                #  IMeetingContact.contact_name' 
+                
+        
+
                 
 
-    def updateFields(self):
-        super(MeetingCustomAddForm, self).updateFields()
+    # def updateFields(self):
+    #     super(MeetingCustomAddForm, self).updateFields()
 
     def update(self):
-        # import pdb; pdb.set_trace()
         super(MeetingCustomAddForm, self).update()
+        
         for group in self.groups:
             if group.__name__ == 'settings':
                 group.label = None
