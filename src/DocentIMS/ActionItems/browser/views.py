@@ -575,6 +575,7 @@ class MeetingCustomAddForm(DefaultAddForm):
 
         else:
             messages = IStatusMessage(self.request)
+            messages.show()
             messages.addStatusMessage(u"Please check that meeting date is correct", type="info") 
             
             meeting_definitions = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
