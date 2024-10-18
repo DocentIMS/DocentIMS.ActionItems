@@ -598,7 +598,7 @@ class MeetingCustomAddForm(DefaultAddForm):
                     ids= [ groupmember.getId() for groupmember in groupmembers]
                     
                     if ids and ids != []: 
-                        self.widgets['IMeetingAttendees.attendees'].value  = tuple(ids)
+                        self.widgets['IMeetingAttendees.attendees'].value  = ids
                     
                     #  'IMeetingLocation.location'
                     #  'IMeetingAttendees.attendees'
