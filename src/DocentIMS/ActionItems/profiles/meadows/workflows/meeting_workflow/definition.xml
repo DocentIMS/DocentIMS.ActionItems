@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="meeting_workflow" title="Meeting Workflow" description="One CT will cover both meeting types.  First selection is “Community Meeting” or “Board-Only Meeting”.   Also covers the Notes, Agenda, and Minutes
-
- Used with DocentIMS." state_variable="review_state" initial_state="1. Private" manager_bypass="False">
+<dc-workflow workflow_id="meeting_workflow" title="Meeting Workflow" description="One CT will cover both meeting types.  First selection is “Community Meeting” or “Board-Only Meeting”.   Also covers the Notes, Agenda, and Minutes   Used with DocentIMS." state_variable="review_state" initial_state="1. Private" manager_bypass="False">
  <group>Administrators</group>
  <permission>Access contents information</permission>
  <permission>Delete objects</permission>
@@ -36,22 +34,25 @@ Only the team can see this content – not client.</description>
   </guard>
  </transition>
  <transition transition_id="close" title="Close" new_state="4. Closed" trigger="USER" before_script="" after_script="">
+  <description>The content has been completed and closing removes it from reporting requirements.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
   <guard>
   </guard>
  </transition>
  <transition transition_id="publish" title="Publish" new_state="3. Published" trigger="USER" before_script="" after_script="">
-  <description>Publish</description>
+  <description>Moves to publish.  Allows all people, based on permissions to see content.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=publish" category="workflow" icon="">Publish</action>
   <guard>
   </guard>
  </transition>
  <transition transition_id="retract" title="Retract" new_state="1. Private" trigger="USER" before_script="" after_script="">
+  <description>Allows the owner or the PrjMgr to retract content to make changes or remove it.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
   <guard>
   </guard>
  </transition>
  <transition transition_id="review" title="Review" new_state="2. Review" trigger="USER" before_script="" after_script="">
+  <description>The content is ready for review by whomever is assigned.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=review" category="workflow" icon="">Review</action>
   <guard>
   </guard>

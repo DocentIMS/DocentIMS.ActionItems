@@ -6,6 +6,8 @@
  <object name="comment_one_state_workflow" meta_type="Workflow"/>
  <object name="comment_review_workflow" meta_type="Workflow"/>
  <object name="folder_workflow" meta_type="Workflow"/>
+ <object name="intranet_folder_workflow" meta_type="Workflow"/>
+ <object name="intranet_workflow" meta_type="Workflow"/>
  <object name="meeting_workflow" meta_type="Workflow"/>
  <object name="one_state_workflow" meta_type="Workflow"/>
  <object name="planning_breakdown_workflow" meta_type="Workflow"/>
@@ -30,14 +32,18 @@
   <type type_id="ATSimpleIntCriterion"/>
   <type type_id="ATSimpleStringCriterion"/>
   <type type_id="ATSortCriterion"/>
+  <type type_id="Collection">
+   <bound-workflow workflow_id="single_state_workflow"/>
+  </type>
   <type type_id="Discussion Item">
    <bound-workflow workflow_id="comment_one_state_workflow"/>
   </type>
   <type type_id="Feedback">
    <bound-workflow workflow_id="docentIMS_feedback_workflow"/>
   </type>
-  <type type_id="File"/>
-  <type type_id="Image"/>
+  <type type_id="File">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
   <type type_id="Meeting">
    <bound-workflow workflow_id="meadows_meeting_workflow"/>
   </type>
@@ -50,9 +56,14 @@
   <type type_id="Notes">
    <bound-workflow workflow_id="docentIMS_note_workflow"/>
   </type>
-  <type type_id="Plone Site"/>
+  <type type_id="Plone Site">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
   <type type_id="action_items">
    <bound-workflow workflow_id="action_item_workflow"/>
+  </type>
+  <type type_id="feedback">
+   <bound-workflow workflow_id="postit_note_workflow"/>
   </type>
   <type type_id="meeting">
    <bound-workflow workflow_id="meeting_workflow"/>
@@ -74,6 +85,15 @@
   </type>
   <type type_id="meeting_notes">
    <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="planning_breakdown">
+   <bound-workflow workflow_id="planning_breakdown_workflow"/>
+  </type>
+  <type type_id="planning_document">
+   <bound-workflow workflow_id="planning_breakdown_workflow"/>
+  </type>
+  <type type_id="postit_note">
+   <bound-workflow workflow_id="postit_note_workflow"/>
   </type>
   <type type_id="scope">
    <bound-workflow workflow_id="docentIMS_scope_workflow"/>
