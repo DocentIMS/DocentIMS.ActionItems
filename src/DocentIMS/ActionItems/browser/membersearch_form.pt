@@ -21,6 +21,8 @@
         </div>
       </article>
 
+
+xxxxxx
       <tal:block condition="view/submitted">
         <article id="content"
                  tal:define="

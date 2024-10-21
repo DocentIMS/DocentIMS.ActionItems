@@ -251,6 +251,7 @@
       class=".exporter.ActionItemsCSV"
       permission="cmf.ManagePortal"
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      
     />
 
 
@@ -260,6 +261,7 @@
       class=".membersearch.ActionMemberSearchForm"
       permission="zope2.View"
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      template="action_membersearch_form.pt"
       />
 
   
