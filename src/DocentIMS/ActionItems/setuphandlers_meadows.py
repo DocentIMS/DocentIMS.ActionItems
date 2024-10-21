@@ -113,11 +113,23 @@ def post_install(context):
                                             {'vocabulary_entry': 'Outreach'},
                                         ])  
     
-    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
-    #                                     [{'meeting_type': 'Board Meeting', 'meeting_title': "Board Meeting"},
-    #                                      {'meeting_type': 'Executive Meeting', 'meeting_title': 'Executive Meeting'}, 
-    #                                      {'meeting_type': 'Community Meeting'}, 
-    #                                     ])
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
+      [ {'meeting_type': 'Board-Only Meeting', 
+         'meeting_title': 'Board Members Only Meeting', 
+         'meeting_summary': 'This meeting is only for board members and is used to work on specific work.', 
+         'meeting_attendees': 'PrjTeam', 
+         'meeting_contact': 'wglover@docentims.com'},
+        {'meeting_type': 'Community Meeting', 
+         'meeting_title': 'Meadows Community Meeting', 
+         'meeting_summary': 'Monthly board meeting with all residents invited.', 
+         'meeting_attendees': 'PrjTeam', 
+         'meeting_contact': 'wglover@docentims.com'},
+        {'meeting_type': 'Executive Session', 
+         'meeting_title': 'Board Executive Session', 
+         'meeting_summary': 'Board-only discussions', 
+         'meeting_attendees': 'PrjTeam', 
+         'meeting_contact': 'wglover@docentims.com'},
+      ])
     
  
 
@@ -429,6 +441,7 @@ def _create_content(portal):
                     id='action-item-help',
                     title='Action Item Help',
                     exclude_from_nav=True,
+                    layout='tabular_view',
                 )
 
 
@@ -473,6 +486,7 @@ def _create_content(portal):
                     id='word-help',
                     title='Word Help',
                     exclude_from_nav=True,
+                    layout='tabular_view',
                 )
 
 
@@ -540,13 +554,30 @@ def _create_content(portal):
                 
             
         if not portal.get('templates', False):
-            images_folder = plone.api.content.create(
+            templates_folder = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='templates',
                 title='Templates',
                 exclude_from_nav=True,
+                layout='tabular_view',
             )
+            
+            wordfiles = [
+                {'filetitle': 'main-template.docx.dot', 'filename': 'main-template.docx.dot'},
+                {'filetitle': 'Meeting Agenda', 'filename': 'Meeting_Agenda.docm'},
+                {'filetitle': 'Meeting Minutes', 'filename': 'Meeting_Minutes.docx'},
+                {'filetitle': 'Meeting Notes', 'filename': 'Meeting_Notes.docm'},
+            ]
+            
+            for wordfile in wordfiles:
+            
+                file = plone.api.content.create(
+                    type='File',
+                    container=templates_folder,
+                    title=wordfile['filetitle'],
+                )
+                file.file = load_word_file(wordfile['filename'])
                     
         if not portal.get('images', False):
             images_folder = plone.api.content.create(
@@ -565,6 +596,7 @@ def _create_content(portal):
                 id='downloads',
                 title='Downloads',
                 exclude_from_nav=True,
+                layout='tabular_view',
 
             )
 
@@ -575,6 +607,7 @@ def _create_content(portal):
                     id='board_president',
                     title='Board President',
                     exclude_from_nav=True,
+                    layout='tabular_view',
                 )
 
             if not downloads.get('team_member', False):
@@ -584,6 +617,7 @@ def _create_content(portal):
                     id='team_member',
                     title='Team Member',
                     exclude_from_nav=True,
+                    layout='tabular_view',
                 )
 
 
@@ -625,6 +659,16 @@ def load_file():
             data=pdf_file.read(),
             filename='ai-help.pdf'
         )
+        
+        
+def load_word_file(filename):
+    filename = os.path.join(os.path.dirname(__file__), 'word', filename)
+    with open(filename, 'rb') as word_file:
+        return NamedBlobFile(
+            data=word_file.read(),
+            filename=filename
+        )
+
 
 
 

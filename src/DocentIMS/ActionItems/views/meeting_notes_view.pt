@@ -113,10 +113,17 @@ ${context/aq_parent/start/date}</p>
 
         <hr class="hr" />
         <tal:condition tal:condition="context/file|None">
-          <td>
-            <b>File:</b>
+          <a href="${context/absolute_url}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
+            <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="icon" title="Download Document" />
+          </a>
+          <p>
             <a href="${context/absolute_url}/@@download/file">Download File</a>
-          </td>
+          </p>
+
+
+          <p style="text-align:left">
+            <a class="btn button standalone btn-sm btn-secondary" alt="Open in Only Office" title="Open in Only Office" href="${context/absolute_url}/onlyoffice-view-file">Open in OnlyOffice</a>
+          </p>
         </tal:condition>
 
 
