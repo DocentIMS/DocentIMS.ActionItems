@@ -565,9 +565,9 @@ def _create_content(portal):
             
             wordfiles = [
                 {'filetitle': 'main-template.docx.dot', 'filename': 'main-template.docx.dot'},
-                {'filetitle': 'Meeting Agenda', 'filename': 'Meeting_Agenda.docm'},
-                {'filetitle': 'Meeting Minutes', 'filename': 'Meeting_Minutes.docx'},
-                {'filetitle': 'Meeting Notes', 'filename': 'Meeting_Notes.docm'},
+                {'filetitle': 'Meeting Agenda.docm', 'filename': 'Meeting_Agenda.docm'},
+                {'filetitle': 'Meeting Minutes.docx', 'filename': 'Meeting_Minutes.docx'},
+                {'filetitle': 'Meeting Notes.docm', 'filename': 'Meeting_Notes.docm'},
             ]
             
             for wordfile in wordfiles:
@@ -661,12 +661,12 @@ def load_file():
         )
         
         
-def load_word_file(filename):
-    filename = os.path.join(os.path.dirname(__file__), 'word', filename)
+def load_word_file(name):
+    filename = os.path.join(os.path.dirname(__file__), 'word', name)
     with open(filename, 'rb') as word_file:
         return NamedBlobFile(
             data=word_file.read(),
-            filename=filename
+            filename=name
         )
 
 
