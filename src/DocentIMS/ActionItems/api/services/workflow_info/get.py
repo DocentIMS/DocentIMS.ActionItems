@@ -61,7 +61,8 @@ def get_content_types_and_workflows(portal_type):
                 result.append({
                     'content_type': c_type,
                     'workflow_transitions': transitions,
-                    'workflow_states': states 
+                    'workflow_states': states,
+                    'initial_state' :  workflow.initial_state,
                 })
 
     return result
