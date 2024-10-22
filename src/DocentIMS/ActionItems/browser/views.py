@@ -268,6 +268,11 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
             
+    def updateFields(self):
+        super(ActionItemsEditForm, self).updateFields()
+        if self.portal_type in  ["meeting", "Meeting"]:
+            move(self, "attendees_group", before="IMeetingAttendees.attendees")
+            
             
     
     def update(self):
@@ -345,6 +350,7 @@ class MeetingEditForm(DefaultEditForm):
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
+            move(self, "attendees_group", before="IMeetingAttendees.attendees")
             
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
         
@@ -521,6 +527,7 @@ class MeetingAddForm(DefaultAddForm):
 
     def updateFields(self):
         super(MeetingAddForm, self).updateFields()
+        
         
     def update(self):
         super(MeetingAddForm, self).update()

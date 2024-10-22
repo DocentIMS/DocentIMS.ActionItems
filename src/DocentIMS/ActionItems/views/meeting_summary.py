@@ -24,8 +24,8 @@ class MeetingSummaryView(EventSummaryView):
     def get_attendees(self):
         attendees = list(self.data.attendees)
         attendees_groups = self.context.attendees_group
-        # if  attendees_groups:
-        for meeting_group in attendees_groups:
+        if  attendees_groups:
+            for meeting_group in attendees_groups:
                 groupmembers = api.user.get_users(groupname=meeting_group)
                 for groupmember in groupmembers:
                     attendees.append(groupmember.getId())

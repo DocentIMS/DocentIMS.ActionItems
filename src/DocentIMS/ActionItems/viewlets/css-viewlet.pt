@@ -7,6 +7,8 @@
    .section-Members #formfield-form-widgets-login div.form-text, 
    .section-Members div#formfield-form-widgets-email, 
    .section-Members #formfield-form-widgets-fullname label {}
+   fieldset .select2-container {clear:both; display: block;}
+   fieldset .select2-container-multi .select2-choices {border: 1px solid #CCC !important;} 
 </style>
 
 <div tal:condition="view/planningcolor|None" class="alert planning"><b>-- This is a planning project --</b></div>
