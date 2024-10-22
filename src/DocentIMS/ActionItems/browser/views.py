@@ -32,7 +32,8 @@ from z3c.form.browser.textlines import TextLinesFieldWidget
 
 
 
-# Use meeting instead
+# TO DO: Clean up, we dont need this many forms
+
 class PostItNoteAddForm(DefaultAddForm):
     portal_type = "postit_note"
     default_fieldset_label = 'Home'
