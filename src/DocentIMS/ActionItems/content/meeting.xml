@@ -13,16 +13,16 @@
       <vocabulary>DocentIMS.ActionItems.MeetingTypesVocabulary</vocabulary>
       <required>False</required>
     </field>
-  </schema>
-  <field name="attendees_group" type="zope.schema.Set">
-    <form:widget type="plone.app.z3cform.widget.AjaxSelectFieldWidget" />
-    <description/>
-    <required>False</required>
-    <title>Attendees Group</title>
-    <value_type type="zope.schema.Choice">
-      <vocabulary>plone.app.vocabularies.Groups</vocabulary>
-    </value_type>
-  </field>
-</model>
 
- <!-- form:mode="z3c.form.interfaces.IForm:hidden z3c.form.interfaces.IEditForm:input -->
+    <field name="attendees_group" type="zope.schema.Set">
+      <form:widget type="plone.app.z3cform.widget.AjaxSelectFieldWidget" />
+      <description/>
+      <required>False</required>
+      <title>Attendees Group</title>
+      <value_type type="zope.schema.Choice">
+        <vocabulary>plone.app.vocabularies.Groups</vocabulary>
+      </value_type>
+    </field>
+  </model>
+</schema>
+<!-- form:mode="z3c.form.interfaces.IForm:hidden z3c.form.interfaces.IEditForm:input -->
