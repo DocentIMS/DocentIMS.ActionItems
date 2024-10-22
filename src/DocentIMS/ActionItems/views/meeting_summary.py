@@ -35,7 +35,7 @@ class MeetingSummaryView(EventSummaryView):
                     attendees.append(groupmember.getId())
             attendees = set(attendees)
             
-            self.data.attendees = attendees        
+            # self.data.attendees = attendees        
         return tuple(attendees)
     
  
