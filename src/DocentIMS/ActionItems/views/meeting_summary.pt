@@ -139,7 +139,8 @@
               </div>
             </div>
 
-            <div class="col event-attendees mb-3" tal:condition="data/attendees|nothing">
+          
+            <div class="col event-attendees mb-3" tal:condition="view/get_attendees|nothing">
               <div class="d-flex">
                   <div>Attendees: &nbsp;</div>
                 <div class="meta-icon">
@@ -148,7 +149,7 @@
                 <div>
                   <strong class="meta-label" i18n:translate="contact_attendees">Attendees</strong>
                   <p class="card-text">
-                    <tal:attendees tal:repeat="item data/attendees">
+                    <tal:attendees tal:repeat="item view/get_attendees">
                       <span class="text-no-wrap">
                         <tal:define tal:define="
                             user_id item|None;

@@ -96,7 +96,7 @@
   <browser:page
       name="meeting_summary"
       for="plone.event.interfaces.IEvent"
-      class="plone.app.event.browser.event_summary.EventSummaryView"
+      class=".meeting_summary.MeetingSummaryView"
       template="meeting_summary.pt"
       permission="zope2.View"
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"

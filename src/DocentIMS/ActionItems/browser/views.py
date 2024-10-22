@@ -20,6 +20,7 @@ from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile as Z3View
 from urllib.parse import unquote
 
 from z3c.form import button
+from plone.z3cform.fieldsets.utils import move
 from datetime import datetime
 
 
@@ -603,6 +604,7 @@ class MeetingCustomAddForm(DefaultAddForm):
 
     def updateFields(self):
         super(MeetingCustomAddForm, self).updateFields()
+        move(self, "attendees_group", before="IMeetingAttendees.attendees")
 
     def update(self):
         super(MeetingCustomAddForm, self).update()

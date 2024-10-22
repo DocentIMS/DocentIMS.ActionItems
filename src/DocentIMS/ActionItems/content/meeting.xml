@@ -1,10 +1,28 @@
-<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:marshal="http://namespaces.plone.org/supermodel/marshal"
+  xmlns:form="http://namespaces.plone.org/supermodel/form"
+  xmlns:security="http://namespaces.plone.org/supermodel/security"
+  xmlns:indexer="http://namespaces.plone.org/supermodel/indexer"
+  xmlns:lingua="http://namespaces.plone.org/supermodel/lingua"
+  xmlns:users="http://namespaces.plone.org/supermodel/users"
+  xmlns="http://namespaces.plone.org/supermodel/schema">
   <schema>
     <field name="meeting_type" type="zope.schema.Choice">
       <description/>
       <title>Meeting type</title>
       <vocabulary>DocentIMS.ActionItems.MeetingTypesVocabulary</vocabulary>
-       <required>False</required>
+      <required>False</required>
     </field>
   </schema>
+  <field name="attendees_group" type="zope.schema.Set">
+    <form:widget type="plone.app.z3cform.widget.AjaxSelectFieldWidget" />
+    <description/>
+    <required>False</required>
+    <title>Attendees Group</title>
+    <value_type type="zope.schema.Choice">
+      <vocabulary>plone.app.vocabularies.Groups</vocabulary>
+    </value_type>
+  </field>
 </model>
+
+ <!-- form:mode="z3c.form.interfaces.IForm:hidden z3c.form.interfaces.IEditForm:input -->

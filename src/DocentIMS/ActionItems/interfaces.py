@@ -138,7 +138,7 @@ class IMeetingRows(model.Schema):
     widget(meeting_attendees=SelectFieldWidget)
     meeting_attendees = schema.Choice(
         vocabulary=u"plone.app.vocabularies.Groups",
-        # title=_(u"Default Attendees", default=u"Default Attendees"),
+        title=_(u"Attendees from group", default=u"Attendees f/group"),
         required=False,
     )
     
