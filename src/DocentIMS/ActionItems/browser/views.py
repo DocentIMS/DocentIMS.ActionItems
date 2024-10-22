@@ -32,7 +32,7 @@ from z3c.form.browser.textlines import TextLinesFieldWidget
 
 
 
-
+# Use meeting instead
 class PostItNoteAddForm(DefaultAddForm):
     portal_type = "postit_note"
     default_fieldset_label = 'Home'
@@ -44,27 +44,32 @@ class PostItNoteAddForm(DefaultAddForm):
     def update(self):
         super(PostItNoteAddForm, self).update()
         
-        for group in self.groups:
-                if group.__name__ == 'settings':
-                    group.label = None
-                    #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
-                    group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
-                    
-                if group.__name__ in ['settings', 'dates', 'categorization', 'ownership']:
-                    group.label = None
+        if self.portal_type in ['postit_note', 'PostIt Note']:
+            for group in self.groups:
+                    if group.__name__ == 'settings':
+                        group.label = None
+                        #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                        group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+                        
+                    if group.__name__ in ['settings', 'dates', 'categorization', 'ownership']:
+                        group.label = None
 
     def updateWidgets(self):
         super(PostItNoteAddForm, self).updateWidgets()
-        self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
-        self.widgets['IBasic.description'].rows=7 
-        
+        if self.portal_type in ['postit_note', 'PostIt Note']:
+            self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IBasic.description'].rows=7 
+            today = datetime.today().strftime('%Y-%m-%d')
+            self.widgets['IBasic.title'].value = f"Post It Note {today}"
+            
     def updateFields(self):
         super(PostItNoteAddForm, self).updateFields()
         # 
-        today = datetime.today().strftime('%Y-%m-%d')
-        
-        self.fields['IBasic.title'].field.default = f"Post It Note {today}"
+        # if self.portal_type in ['postit_note', 'PostIt Note']:
+        #     self.fields['IBasic.title'].field.value = f"Post It Note {today}"
             
+            
+                
             
 class PostItNoteAddFormView(DefaultAddView):
     form = PostItNoteAddForm
@@ -497,8 +502,7 @@ class MeetingAddForm(DefaultAddForm):
         super(MeetingAddForm, self).updateWidgets()
         if self.portal_type in  ['meeting', "Meeting"]:
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
-            self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
-            # self.fields['IBasic.title'].field.default = default_title()
+            self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE 
             # self.fields['IBasic.title'].mode = interfaces.HIDDEN_MODE
             
         if self.portal_type in  ["meeting", "Meeting", "Notes", "notes", "Feedback", "feedback"]:
@@ -596,8 +600,8 @@ class MeetingCustomAddForm(DefaultAddForm):
                         
     
 
-    # def updateFields(self):
-    #     super(MeetingCustomAddForm, self).updateFields()
+    def updateFields(self):
+        super(MeetingCustomAddForm, self).updateFields()
 
     def update(self):
         super(MeetingCustomAddForm, self).update()

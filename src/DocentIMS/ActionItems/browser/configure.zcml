@@ -210,8 +210,8 @@
              name="Feedback"
         />
 
-    <adapter
-        factory=".views.MeetingAddFormView"
+  <adapter
+        factory=".views.PostItNoteAddFormView"
         provides="zope.publisher.interfaces.browser.IBrowserPage"
         for="*
              DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
@@ -221,12 +221,12 @@
 
 
 
-    <class class=".views.MeetingAddFormView">
+    <!-- <class class=".views.PostItNoteAddFormView">
     <require
         permission="cmf.AddPortalContent"
         interface="zope.publisher.interfaces.browser.IBrowserPage"
         />
-    </class>
+    </class> -->
 
     <class class=".views.MeetingCustomAddFormView">
     <require
