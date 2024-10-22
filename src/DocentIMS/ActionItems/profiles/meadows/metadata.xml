@@ -19,5 +19,6 @@
     <dependency>profile-collective.searchandreplace:default</dependency>
     <dependency>profile-collective.z3cform.colorpicker:default</dependency>
     <dependency>profile-Products.PloneKeywordManager:default</dependency>
+    <dependency>profile-onlyoffice.plone:default</dependency>
    </dependencies>
 </metadata>

@@ -77,7 +77,7 @@ def add_meeting_types(object, event):
                             type='Meeting Agenda',
                             container=context,
                             parent_id=parent_id,
-                            title=f"Agenda {today}",
+                            title=f"Agenda {meeting_date_time}",
                             id=f"agenda-{parent_id}",
         )
             

@@ -64,13 +64,13 @@
         />
 
 
-    <!-- <browser:page
+    <browser:page
         name="edit"
         for="plone.dexterity.content.Item"
         class=".views.MeetingEditFormView"
         permission="cmf.ModifyPortalContent"
         layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
-        /> -->
+        /> 
         
         
  

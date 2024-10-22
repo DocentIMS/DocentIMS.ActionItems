@@ -34,7 +34,7 @@ from z3c.form.browser.textlines import TextLinesFieldWidget
 
 
 class PostItNoteAddForm(DefaultAddForm):
-    # portal_type = "postit_note"
+    portal_type = "postit_note"
     default_fieldset_label = 'Home'
     
 
@@ -319,58 +319,58 @@ class ActionItemsEditFormView(DefaultEditView):
 
 
 
-# class MeetingEditForm(DefaultEditForm):
-#     ## Does not take portal type into action, so this is used FOR ALL content items that are defined as 'Item'
-#     portal_type = "meeting"
+class MeetingEditForm(DefaultEditForm):
+    ## Does not take portal type into action, so this is used FOR ALL content items that are defined as 'Item'
+    portal_type = "meeting"
      
      
-#     def __init__(self, context, request):
-#         super(MeetingEditForm, self).__init__(context, request)
+    def __init__(self, context, request):
+        super(MeetingEditForm, self).__init__(context, request)
 
-#     def updateWidgets(self):
-#         super(MeetingEditForm, self).updateWidgets()
+    def updateWidgets(self):
+        super(MeetingEditForm, self).updateWidgets()
         
-#   
+  
         
         
-#         if self.portal_type in ["meeting", "Meeting"]:
-#             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
-#             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
-#             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
-#             self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
+        if self.portal_type in ["meeting", "Meeting"]:
+            self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
+            self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
             
-#             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
+            #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
         
-#         if self.portal_type in  ["postit_note", "PostIt Note"]:    
-#             self.widgets['IBasic.description'].rows=7 
+        if self.portal_type in  ["postit_note", "PostIt Note"]:    
+            self.widgets['IBasic.description'].rows=7 
      
-#     def update(self):
-#         super(MeetingEditForm, self).update()
+    def update(self):
+        super(MeetingEditForm, self).update()
         
         
-#         if self.portal_type in  ["meeting_notes", "Meeting Notes", "Meeting", "meeting", "Notes", "notes", "feedback", "Feedback", "PostIt Note", "postit_note"]:
+        if self.portal_type in  ["meeting_notes", "Meeting Notes", "Meeting", "meeting", "Notes", "notes", "feedback", "Feedback", "PostIt Note", "postit_note"]:
         
-#             for group in self.groups:
-#                 if group.__name__ == 'settings':
-#                     group.label = None
-#                     #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
-#                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+            for group in self.groups:
+                if group.__name__ == 'settings':
+                    group.label = None
+                    #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
+                    group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
                     
                     
-#                 if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
-#                     #group.mode = 'omitted'
-#                     group.label = None
+                if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                    #group.mode = 'omitted'
+                    group.label = None
         
-#         if self.portal_type in  ["meeting_notes", "Meeting Notes"]:         
-#             self.default_fieldset_label = "Meeting Details"
+        if self.portal_type in  ["meeting_notes", "Meeting Notes"]:         
+            self.default_fieldset_label = "Meeting Details"
             
         
         
          
 
-# class MeetingEditFormView(DefaultEditView):
-#     portal_type = "meeting"
-#     form = MeetingEditForm
+class MeetingEditFormView(DefaultEditView):
+    portal_type = "meeting"
+    form = MeetingEditForm
 
  
 

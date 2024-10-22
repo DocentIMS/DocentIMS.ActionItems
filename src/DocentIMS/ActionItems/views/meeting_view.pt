@@ -53,7 +53,10 @@
 
                 <!-- <a class="noborder" href="${item/getURL}/view" tal:condition="item/file|None">
                   <span condition tal:condition="not: item/file|None">&#x1f441; </span>${python: item.Title().split()[0]} </a> -->
-                <tal:condition tal:condition="not: item/file|None">${python: item.Title().split()[0]} </tal:condition>
+                <!-- <tal:condition tal:condition="not: item/file|None" class="opacity-30">${python: item.Title().split()[0]} </tal:condition-->
+
+                <span class="opacity-30">${python: item.Title().split()[0]} </span>
+
               </legend>
 
               <!-- <div class="xcard"> -->
@@ -71,7 +74,10 @@
                   </a>
                 </tal:condition>
                 <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
-                  <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="icon" title="Download Document" />
+                  <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" />
+                </a>
+                <a href="${item/getURL}//onlyoffice-view-file" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
+                  <img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" />
                 </a>
                 <!-- <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a> -->
                 <!-- &nbsp; [ ${item/getSize|None} ] -->
@@ -81,9 +87,10 @@
 
               </div:condition>
 
-              <p tal:condition="item/file|None" style="text-align:right">
+              <!-- <p tal:condition="item/file|None" style="text-align:right">
+         
                 <a class="btn button standalone btn-sm btn-secondary" alt="Open in Only Office" title="Open in Only Office" href="${item/getURL}/onlyoffice-view-file">OnlyOffice</a>
-              </p>
+              </p> -->
               <!-- <p><hr class="hr" /></p> -->
               <!-- <p condition tal:condition="not: item/file|None">
                 <a href="${item/getURL}" target="_blank">✎</a>
@@ -111,7 +118,7 @@
           .flex-wrap {flex-wrap: wrap}
           .noborder {text-decoration: none}
           .block {display: block}
-          .hasfile- { opacity: 0.30}
+          .opacity-30, .hasfile- { opacity: 0.30}
         </style>
 
       </metal:block>
