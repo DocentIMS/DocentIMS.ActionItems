@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
 
+ <index name="meeting_type" meta_type="FieldIndex">
+  <indexed_attr value="meeting_type"/>
+ </index>
 
  <index name="priority" meta_type="FieldIndex">
   <indexed_attr value="priority"/>
@@ -82,6 +85,8 @@
  <column value="actionno"/>
  <column value="urgency"/>
  <column value="has_file"/>
+ <column value="meeting_type"/>
+
 
  <!-- <column value="out_of_the_scope"/> -->
  <column value="is_this_action_out_of_the_scope_of_work_"/> 

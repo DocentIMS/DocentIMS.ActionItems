@@ -23,6 +23,6 @@
         <vocabulary>plone.app.vocabularies.Groups</vocabulary>
       </value_type>
     </field>
-  </model>
+
 </schema>
 <!-- form:mode="z3c.form.interfaces.IForm:hidden z3c.form.interfaces.IEditForm:input -->
