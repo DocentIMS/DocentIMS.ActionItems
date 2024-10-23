@@ -31,7 +31,7 @@ class AppView(BrowserView):
         urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
         if urgencies:
             urgency_list = []
-            for urgency in urgencies:
+            for urgency in reversed(urgencies):
                 my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency)
                 urgency_list.append({'name': urgency, 'count': len(my_brains)})
             return urgency_list
