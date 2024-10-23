@@ -9,6 +9,8 @@
    .section-Members #formfield-form-widgets-fullname label {}
    fieldset .select2-container {clear:both; display: block;}
    fieldset .select2-container-multi .select2-choices {border: 1px solid #CCC !important;} 
+   .portaltype-folder p.discreet { display:none !important; } 
+   
 </style>
 
 <div tal:condition="view/planningcolor|None" class="alert planning"><b>-- This is a planning project --</b></div>

@@ -336,7 +336,7 @@ def _create_content(portal):
                 id='meeting',
                 title='Meetings',
                 default_page='meeting-collection',
-                nextPreviousEnabled=0
+                nextPreviousEnabled=1
             )
             
             ## add collection inside

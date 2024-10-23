@@ -3,21 +3,19 @@
 # from DocentIMS.ActionItems import _
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
-from plone.app.event.browser.event_view import EventView
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
-class IMeetingView(Interface):
-    """ Marker Interface for IMeetingView"""
+class IAppView(Interface):
+    """ Marker Interface for IAppView"""
 
 
-class MeetingView(EventView):
+class AppView(BrowserView):
     # If you want to define a template here, please remove the template from
     # the configure.zcml registration of this view.
-    # template = ViewPageTemplateFile('meeting_view.pt')
+    # template = ViewPageTemplateFile('app_view.pt')
 
     def __call__(self):
         # Implement your own actions:
         return self.index()
-    
