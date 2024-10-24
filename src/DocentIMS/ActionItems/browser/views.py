@@ -7,7 +7,7 @@ from plone.dexterity.browser.add import DefaultAddView
 from plone.dexterity.browser.add import DefaultAddForm
 from plone.dexterity.browser.edit import DefaultEditView
 from plone.dexterity.browser.edit import DefaultEditForm
-from Products.statusmessages.interfaces import IStatusMessage
+# from Products.statusmessages.interfaces import IStatusMessage
 
 from zope.intid.interfaces import IIntIds
 from z3c.relationfield import RelationValue
@@ -267,6 +267,7 @@ class ActionItemsEditForm(DefaultEditForm):
         if self.portal_type == 'meeting':
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
+            self.widgets['meeting_type'].mode = interfaces.HIDDEN_MODE
             
     def updateFields(self):
         super(ActionItemsEditForm, self).updateFields()
@@ -350,7 +351,9 @@ class MeetingEditForm(DefaultEditForm):
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
+            self.widgets['meeting_type'].mode = interfaces.HIDDEN_MODE
             move(self, "attendees_group", before="IMeetingAttendees.attendees")
+            
             
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
         
@@ -585,9 +588,9 @@ class MeetingCustomAddForm(DefaultAddForm):
                     
 
         else:
-            messages = IStatusMessage(self.request)
-            messages.show()
-            messages.addStatusMessage(u"Please check meeting date/time", type="info") 
+            # messages = IStatusMessage(self.request)
+            # messages.show()
+            # messages.addStatusMessage(u"Please check meeting date/time", type="info") 
             
             meeting_definitions = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
             meeting_rows = [meeting for meeting in meeting_definitions if meeting['meeting_type'] == meeeting_value[0]]
@@ -596,6 +599,7 @@ class MeetingCustomAddForm(DefaultAddForm):
                 self.widgets['IBasic.description'].value = meeting_rows[0]['meeting_summary']
                 self.widgets['IBasic.title'].value =  meeting_rows[0]['meeting_title']
                 self.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
+                self.widgets['meeting_type'].mode = interfaces.HIDDEN_MODE
                 meeting_group =  meeting_rows[0]['meeting_attendees'] # Some group
                     
                 if meeting_group and meeting_group != []:

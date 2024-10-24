@@ -10,7 +10,7 @@
                    data nocall:view/data;
                  ">
 
-          <p>Type: ${context/meeting_type} </p>
+          <!-- <p>Type: ${context/meeting_type} </p> -->
 
 
 

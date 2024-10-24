@@ -20,7 +20,7 @@
   <!-- Hierarchy control -->
   <property name="global_allow">False</property>
   <!-- Schema, class and security -->
-  <property name="add_permission">DocentIMS.ActionItems.AddMeetingNotes</property>
+  <property name="add_permission">DocentIMS.ActionItems.AddMeeting</property>
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file">DocentIMS.ActionItems.content:meeting_notes.xml</property>
   <property name="model_source"></property>

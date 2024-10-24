@@ -26,6 +26,30 @@ class MeetingSummaryView(EventSummaryView):
         return tuple(attendees)
     
     
+    @property
+    def get_groups(self):
+        # alsoProvides(self.request, IDisableCSRFProtection)
+        attendees_groups = self.context.attendees_group
+        if  attendees_groups and attendees_groups != None:
+            groups = []
+            for group in attendees_groups:
+                group_this = api.group.get(groupname=group)
+                 
+                # groups.append(group.title)
+                groups.append(group_this.title)
+            
+            return ", ".join(groups)
+            # for meeting_group in attendees_groups:
+            #     groupmembers = api.user.get_users(groupname=meeting_group)
+            #     for groupmember in groupmembers:
+            #         attendees.append(groupmember.getId())
+            # attendees = set(attendees)
+            
+            # self.data.attendees = attendees        
+        return None
+    
+    
+    
 
     
  

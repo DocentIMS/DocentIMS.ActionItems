@@ -100,28 +100,26 @@
 
             <div class="col event-contact mb-3" tal:define="
                    user_id data/contact_name|None; ">
-                  
+
               <tal:check tal:condition="python: user_id != None">
-              <div class="d-flex"
-                   tal:define="user python:context.portal_membership.getMemberById(user_id);
+                <div class="d-flex" tal:define="user python:context.portal_membership.getMemberById(user_id);
                    name python:user.getProperty('fullname', None);
-                   mail python:user.getProperty('email', None) " 
-                   tal:condition="python:name or mail">
-                <div>Contact Person: &nbsp;</div>
-                <div class="meta-icon">
-                  <tal:icon replace="structure python:icons.tag('person', tag_class='icon-inline')" />
-                </div>
-                <div>
- 
-                  <strong class="meta-label" i18n:translate="contact_name">Contact Name</strong>
-                  <p class="card-text" tal:condition="mail">
-                    <a class="email" tal:content="python: name if name is not None else mail" tal:attributes="
+                   mail python:user.getProperty('email', None) " tal:condition="python:name or mail">
+                  <div>Contact Person: &nbsp;</div>
+                  <div class="meta-icon">
+                    <tal:icon replace="structure python:icons.tag('person', tag_class='icon-inline')" />
+                  </div>
+                  <div>
+
+                    <strong class="meta-label" i18n:translate="contact_name">Contact Name</strong>
+                    <p class="card-text" tal:condition="mail">
+                      <a class="email" tal:content="python: name if name is not None else mail" tal:attributes="
                          href string:mailto:${mail};
                        ">Mail</a>
-                  </p>
-                  <p class="card-text" tal:condition="not:mail" tal:content="name">Name</p>
+                    </p>
+                    <p class="card-text" tal:condition="not:mail" tal:content="name">Name</p>
+                  </div>
                 </div>
-              </div>
               </tal:check>
             </div>
 
@@ -139,16 +137,21 @@
               </div>
             </div>
 
-          
-            <div class="col event-attendees mb-3" tal:condition="view/get_attendees|nothing">
-              <div class="d-flex">
-                  <div>Attendees: &nbsp;</div>
-                <div class="meta-icon">
-                  <tal:icon replace="structure python:icons.tag('people', tag_class='icon-inline')" />
+
+            <div class="col event-attendees mb-3" tal:condition="data/attendees|nothing">
+              <div class="xd-flex">
+                <div>Attendees: &nbsp;</div>
+                <div>
+                  <p>Teams: ${view/get_groups|None}</p>
                 </div>
+               
                 <div>
                   <strong class="meta-label" i18n:translate="contact_attendees">Attendees</strong>
+                  
                   <p class="card-text">
+                   <span class="meta-icon">
+                  <tal:icon replace="structure python:icons.tag('people', tag_class='icon-inline')" />
+                </span>
                     <tal:attendees tal:repeat="item view/get_attendees">
                       <span class="text-no-wrap">
                         <tal:define tal:define="
@@ -168,8 +171,11 @@
                         </span>
                       </tal:attendees>
                     </p>
+
                   </div>
+
                 </div>
+
               </div>
 
             </tal:cond>

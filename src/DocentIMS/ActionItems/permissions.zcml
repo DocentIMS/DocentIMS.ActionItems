@@ -6,16 +6,16 @@
   <configure zcml:condition="installed AccessControl.security">
   <!-- -*- extra stuff goes here -*- -->
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddMeetingNotes"
         title="DocentIMS.ActionItems: Add MeetingNotes"
-    />
+    /> -->
 
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddPostItNote"
         title="DocentIMS.ActionItems: Add PostItNote"
-    />
+    /> -->
 
     <permission
         id="DocentIMS.ActionItems.AddPlanningBreakdown"
@@ -43,10 +43,10 @@
         title="DocentIMS.ActionItems: Add MeetingAgenda"
     /> -->
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddMeetingMinutes"
         title="DocentIMS.ActionItems: Add MeetingMinutes"
-    />
+    /> -->
 
     <permission
         id="DocentIMS.ActionItems.EditControlpanel"
@@ -69,10 +69,10 @@
         title="DocentIMS.ActionItems: Add Feedback"
     />
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddNotes"
         title="DocentIMS.ActionItems: Add Notes"
-    />
+    /> -->
 
     <permission
         id="DocentIMS.ActionItems.AddFrontPage"
