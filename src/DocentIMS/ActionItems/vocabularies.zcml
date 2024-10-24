@@ -65,6 +65,9 @@
   	  component=".vocabularies.TeamnamesVocabulary"
       name="DocentIMS.ActionItems.TeamnamesVocabulary" />    
         
+  <utility
+  	  component=".vocabularies.TeamIdsVocabulary"
+      name="DocentIMS.ActionItems.TeamIdsVocabulary" />    
 
   <utility
   	  component=".vocabularies.MeetingTypesVocabulary"

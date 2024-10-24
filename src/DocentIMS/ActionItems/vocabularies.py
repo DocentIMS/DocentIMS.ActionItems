@@ -150,6 +150,31 @@ def TeamnamesVocabulary(context):
 
 directlyProvides(TeamnamesVocabulary, IVocabularyFactory)
 
+def TeamIdsVocabulary(context):
+    all_groups =  api.group.get_groups()
+    members = []
+    #For Docent
+    
+    group_names = [group.id for group in all_groups]
+    
+    if 'PrjTeam' in group_names:
+        members = api.user.get_users(groupname='PrjTeam')
+      
+    #For Meadows  
+    if 'meadows_board' in group_names:
+        members =  api.user.get_users(groupname='meadows_board')  
+    
+         
+    if members:
+        
+        # Create a list of SimpleTerms for each full name
+        terms = [SimpleTerm(value=member.getProperty('fullname'), token=member.getId(), title=member.getProperty('fullname')) for member in members]
+        
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([SimpleTerm(value="", token=None, title="")])
+
+directlyProvides(TeamIdsVocabulary, IVocabularyFactory)
 
 #def SiteVocabulary(context):
 #    items  =  api.portal.get_registry_record('vokabulary', interface=IDocentimsSettings)
