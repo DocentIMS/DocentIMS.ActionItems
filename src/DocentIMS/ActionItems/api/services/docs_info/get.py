@@ -112,7 +112,7 @@ class DocsInfo(object):
                     'time_now_user': datetime.now().astimezone(timezone(user_timezone)).isoformat(),
                     'user_timezone': user_timezone,
                     'portal_timezone': portal_timezone, 
-                    'time_now_isoformat':  datetime.now().isoformat(),
+                    # 'time_now_isoformat':  datetime.now().isoformat(),
                     'template_password': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.template_password')
                     # 'wf_states_list' : get_content_types_and_workflows(),                 
                 },
