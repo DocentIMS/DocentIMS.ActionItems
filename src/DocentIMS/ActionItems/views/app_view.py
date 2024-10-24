@@ -3,6 +3,7 @@
 # from DocentIMS.ActionItems import _
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
+import requests
 # from Products.CMFCore.utils import getToolByName
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -29,10 +30,19 @@ class AppView(BrowserView):
     
     def count_ais(self):
         urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
+        # Change to own api endpoint
+        # response = requests.get('http://ubuntu.local:8605/Plone14/@search', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+        # body = response.json()
+        # items_total =  body['items_total']
+        # return items_total
+        # something.body
+     
+        # print(something)
         if urgencies:
             urgency_list = []
             for urgency in reversed(urgencies):
                 my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency)
+                
                 urgency_list.append({'name': urgency, 'count': len(my_brains)})
             return urgency_list
             

@@ -1,0 +1,15 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:plone="http://namespaces.plone.org/plone">
+
+  <adapter factory=".get.ItemCount" name="item_count"/>
+
+  <plone:service
+    method="GET"
+    for="zope.interface.Interface"
+    factory=".get.ItemCountGet"
+    name="@item_count"
+    permission="zope2.View"
+    />
+
+</configure>
