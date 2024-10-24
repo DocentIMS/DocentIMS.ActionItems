@@ -25,6 +25,7 @@
           <element>purple</element>
           <element>orange</element>
         </values>
+        <default>yellow</default>
     </field>
   </schema>
 </model>

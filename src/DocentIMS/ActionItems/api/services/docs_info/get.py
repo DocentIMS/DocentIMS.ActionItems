@@ -7,6 +7,7 @@ from zope.interface import Interface
 from zope.interface import implementer
 from zExceptions import BadRequest
 from datetime import datetime
+from pytz import timezone
 
 from zope.component import getUtility
 from zope.component import getUtilitiesFor
@@ -107,6 +108,7 @@ class DocsInfo(object):
                     'companies' :  companies,
                     'last_document_save_locations' : download_date,
                     'last_document_save_location':  down_load_date,
+                    'time_now_la': datetime.now().astimezone(timezone('America/Los_Angeles')).isoformat(),
                     'time_now':  datetime.now().isoformat(),
                     'template_password': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.template_password')
                     # 'wf_states_list' : get_content_types_and_workflows(),                 
