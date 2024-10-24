@@ -51,11 +51,8 @@
             <div style="background-color:#FCFCFC;" class="m-1 p-3 border w-25 hasfile-${item/file|None}" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()">
               <legend>
 
-                <!-- <a class="noborder" href="${item/getURL}/view" tal:condition="item/file|None">
-                  <span condition tal:condition="not: item/file|None">&#x1f441; </span>${python: item.Title().split()[0]} </a> -->
-                <!-- <tal:condition tal:condition="not: item/file|None" class="opacity-30">${python: item.Title().split()[0]} </tal:condition-->
-
-                <span class="opacity-30">${python: item.Title().split()[0]} </span>
+                ${ item/Type|None}  
+                <!-- <span class="opacity-30">${python: item.Title().split()[0]} </span> -->
 
               </legend>
 
@@ -66,18 +63,20 @@
 
               <div class="card-body" tal:content="structure item/text/output|None"></div>
               <div:condition class="flex" tal:condition="item/file|None">
-                <tal:condition tal:condition="python: item.portal_type in ['meeting_note', 'meeting_notes', 'Meeting Note', 'Meeting Notes' ]">
+                <!-- <tal:condition tal:condition="python: item.portal_type in ['meeting_note', 'meeting_notes', 'Meeting Note', 'Meeting Notes' ]"> -->
 
                   <!-- <a tal:condition="not: item/file|None" href="${item/getURL}" class="block w-25 xp-1" target="_blank">            -->
-                  <a href="${item/getURL}" class="block w-25 xp-1" target="_blank">
-                    <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" />
-                  </a>
-                </tal:condition>
+                  <!-- <a href="${item/getURL}" class="block w-25 xp-1" target="_blank"> -->
+                    <!-- <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" /> -->
+                  <!-- </a> -->
+                <!-- </tal:condition> -->
                 <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
-                  <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" />
-                </a>
+                  <p style="text-align: center"><img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" /></p>
+                  <p style="text-align: center">Download </p>
+                </a> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
                 <a href="${item/getURL}//onlyoffice-view-file" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
-                  <img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" />
+                  <p style="text-align: center"><img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" /></p>
+                  <p style="text-align: center">Edit</p>
                 </a>
                 <!-- <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a> -->
                 <!-- &nbsp; [ ${item/getSize|None} ] -->

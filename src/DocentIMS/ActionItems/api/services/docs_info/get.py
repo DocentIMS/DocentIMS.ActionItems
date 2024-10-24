@@ -90,7 +90,6 @@ class DocsInfo(object):
         
         portal_timezone = api.portal.get_registry_record('plone.portal_timezone')
             
-            
         if  team_member_folder:
             down_load_date = team_member_folder.modified().asdatetime().astimezone(timezone(portal_timezone)).isoformat()
         

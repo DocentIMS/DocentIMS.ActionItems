@@ -38,10 +38,10 @@
         title="DocentIMS.ActionItems: Modify Templates"
     />
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddMeetingAgenda"
         title="DocentIMS.ActionItems: Add MeetingAgenda"
-    />
+    /> -->
 
     <permission
         id="DocentIMS.ActionItems.AddMeetingMinutes"
