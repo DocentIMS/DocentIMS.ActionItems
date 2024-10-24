@@ -89,7 +89,7 @@ class DocsInfo(object):
         team_member_folder =  downloads_folder.get('team_member', False)
         
         if  team_member_folder:
-            down_load_date = team_member_folder.modified().asdatetime().isoformat()
+            down_load_date = team_member_folder.modified().asdatetime().astimezone(timezone(portal_timezone)).isoformat()
         
         if user is not None:    
             
@@ -107,7 +107,7 @@ class DocsInfo(object):
                     'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number'),   
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'companies' :  companies,
-                    'last_document_save_location':  down_load_date,
+                    'last_document_save_location': down_load_date,
                     'time_now_portal': datetime.now().astimezone(timezone(portal_timezone)).isoformat(),
                     'time_now_user': datetime.now().astimezone(timezone(user_timezone)).isoformat(),
                     'user_timezone': user_timezone,
