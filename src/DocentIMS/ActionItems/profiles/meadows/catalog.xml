@@ -35,7 +35,7 @@
  </index>
 
   <index name="assigned_id" meta_type="FieldIndex">
-    <indexed_attr value="assigned_to"/>
+    <indexed_attr value="assigned_id"/>
   </index>
 
  <index name="has_file" meta_type="BooleanIndex">

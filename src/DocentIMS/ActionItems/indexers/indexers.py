@@ -22,8 +22,8 @@ def dummy(obj):
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def assigned_idIndexer(obj):
     """Index id instead of assigned_to"""
-    return obj.assigned_to
-    
+    u_id = obj.assigned_to
+    return u_id
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def assigned_toIndexer(obj):
