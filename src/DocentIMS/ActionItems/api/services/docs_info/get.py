@@ -94,7 +94,6 @@ class DocsInfo(object):
         if user is not None:    
             
             portal_timezone = api.portal.get_registry_record('plone.portal_timezone')
-            import pdb; pdb.set_trace()
             user_timezone = user.getProperty('timezone') 
             
             result = {
