@@ -85,15 +85,17 @@ class DocsInfo(object):
         portal = api.portal.get()
     
         companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
-        download_date = ''
         downloads_folder = portal.get('downloads', False)
         team_member_folder =  downloads_folder.get('team_member', False)
         
         if  team_member_folder:
-            download_date = team_member_folder.modified().strftime("%m/%d/%Y, %H:%M:%S")
             down_load_date = team_member_folder.modified().asdatetime().isoformat()
         
         if user is not None:    
+            
+            portal_timezone = api.portal.get_registry_record('plone.portal_timezone')
+            import pdb; pdb.set_trace()
+            user_timezone = user.getProperty('timezone') 
             
             result = {
                 'docs_info': {
@@ -106,10 +108,12 @@ class DocsInfo(object):
                     'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number'),   
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'companies' :  companies,
-                    'last_document_save_locations' : download_date,
                     'last_document_save_location':  down_load_date,
-                    'time_now_la': datetime.now().astimezone(timezone('America/Los_Angeles')).isoformat(),
-                    'time_now':  datetime.now().isoformat(),
+                    'time_now_portal': datetime.now().astimezone(timezone(portal_timezone)).isoformat(),
+                    'time_now_user': datetime.now().astimezone(timezone(user_timezone)).isoformat(),
+                    'user_timezone': user_timezone,
+                    'portal_timezone': portal_timezone, 
+                    'time_now_isoformat':  datetime.now().isoformat(),
                     'template_password': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.template_password')
                     # 'wf_states_list' : get_content_types_and_workflows(),                 
                 },
