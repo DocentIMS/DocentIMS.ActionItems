@@ -34,18 +34,10 @@ class MeetingSummaryView(EventSummaryView):
             groups = []
             for group in attendees_groups:
                 group_this = api.group.get(groupname=group)
-                 
-                # groups.append(group.title)
-                groups.append(group_this.title)
-            
+                groups.append(group_this.getGroupTitleOrName())
+                
             return ", ".join(groups)
-            # for meeting_group in attendees_groups:
-            #     groupmembers = api.user.get_users(groupname=meeting_group)
-            #     for groupmember in groupmembers:
-            #         attendees.append(groupmember.getId())
-            # attendees = set(attendees)
-            
-            # self.data.attendees = attendees        
+        
         return None
     
     

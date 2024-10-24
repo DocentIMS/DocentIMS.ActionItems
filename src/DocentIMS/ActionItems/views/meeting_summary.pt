@@ -140,18 +140,21 @@
 
             <div class="col event-attendees mb-3" tal:condition="data/attendees|nothing">
               <div class="xd-flex">
-                <div>Attendees: &nbsp;</div>
+                <div>
+                  <b>Attendees: &nbsp;</b>
+                </div>
                 <div>
                   <p>Teams: ${view/get_groups|None}</p>
-                </div>
-               
-                <div>
+
                   <strong class="meta-label" i18n:translate="contact_attendees">Attendees</strong>
-                  
+
                   <p class="card-text">
-                   <span class="meta-icon">
-                  <tal:icon replace="structure python:icons.tag('people', tag_class='icon-inline')" />
-                </span>
+                     
+                     Individuals: &nbsp; 
+                     
+                    <span class="meta-icon">
+                      <tal:icon replace="structure python:icons.tag('people', tag_class='icon-inline')" />
+                    </span>
                     <tal:attendees tal:repeat="item view/get_attendees">
                       <span class="text-no-wrap">
                         <tal:define tal:define="
