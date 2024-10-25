@@ -3,12 +3,13 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
-<body>
+      metal:use-macro="context/main_template/macros/master;">
+<body tal:define="dashboard_items view/get_dashboard_info; dashboard_list python: dashboard_items['dashboard-list']">
   <metal:content-core fill-slot="content">
   <metal:block define-macro="content">
 
-   <main class="appWrapper"  tal:define="dashboard_items view/get_dashboard_info">
+
+   <main class="appWrapper"  >
       <!-- sidebar -->
       <div class="sideBar">
          <div class="topInfo">
@@ -151,7 +152,7 @@
                </div>
             </div>
          </div>
-         <div class="projectPreview" tal:define="dashboard_list python: dashboard_items['dashboard-list']">
+         <div class="projectPreview" >
             <div class="tab-content" id="myTabContent">
                <div class="tab-pane fade show active" id="project1" role="tabpanel" aria-labelledby="home-tab"
                   tabindex="0">
@@ -293,11 +294,11 @@
             </div>
          </div>
       </div>
-   </main>
-   <!-- <script src="./asset/js/bootstrap.bundle.min.js"></script> -->
+
 
 
 <style>
+
 #hero,
 #above-content-wrapper,
 #content-header, 
@@ -912,6 +913,9 @@ body {
 
 
 </style> 
+
+   </main>
+   <!-- <script src="./asset/js/bootstrap.bundle.min.js"></script> -->
   </metal:block>
   </metal:content-core>
 </body>

@@ -71,7 +71,15 @@ class ItemCount(object):
                 urgency_list.append({'name': urgency, 'count': len(my_brains)})
             
         
-        meetings_and_ais = { 'meetings': all_meetings, 'meeting_list': meeting_list, 'ais': all_ais, 'urgency_list': urgency_list, 'user':  fullname}
+        meetings_and_ais = { 
+                            'meetings': all_meetings, 
+                            'meeting_list': meeting_list, 
+                            'ais': all_ais, 
+                            'urgency_list': urgency_list, 
+                            'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
+                            'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),                                        
+                            'user':  fullname}
+        
         # current_user.getProperty("fullname"
         
         result['item_count']['dashboard-list'] =  meetings_and_ais
