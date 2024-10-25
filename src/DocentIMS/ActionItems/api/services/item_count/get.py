@@ -34,7 +34,10 @@ class ItemCount(object):
         
         # portal = api.portal.get()
         # current_user = api.user.get_current()
+        fullname = "Unknown user"
         current_user =  api.user.get(userid='wglover@docentims.com') 
+        if current_user:
+            current_user.getProperty("fullname")
         
         #Count meetings
         query = {}
@@ -68,7 +71,7 @@ class ItemCount(object):
                 urgency_list.append({'name': urgency, 'count': len(my_brains)})
             
         
-        meetings_and_ais = { 'meetings': all_meetings, 'meeting_list': meeting_list, 'ais': all_ais, 'urgency_list': urgency_list, 'user':  current_user.getProperty("fullname")}
+        meetings_and_ais = { 'meetings': all_meetings, 'meeting_list': meeting_list, 'ais': all_ais, 'urgency_list': urgency_list, 'user':  fullname}
         # current_user.getProperty("fullname"
         
         result['item_count']['dashboard-list'] =  meetings_and_ais
