@@ -21,7 +21,7 @@ from urllib.parse import unquote
 
 from z3c.form import button
 from plone.z3cform.fieldsets.utils import move
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 	
@@ -599,6 +599,9 @@ class MeetingCustomAddForm(DefaultAddForm):
                 self.widgets['IBasic.description'].value = meeting_rows[0]['meeting_summary']
                 self.widgets['IBasic.title'].value =  meeting_rows[0]['meeting_title']
                 self.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
+                # self.widgets['IEventBasic.start'].default = self.fields['IEventBasic.start'].field.default + timedelta(days=1)
+                # self.widgets['IEventBasic.end'].default = self.fields['IEventBasic.start'].field.default + timedelta(days=1, hours=2)
+                
                 self.widgets['meeting_type'].mode = interfaces.HIDDEN_MODE
                 meeting_group =  meeting_rows[0]['meeting_attendees'] # Some group
                     
@@ -616,6 +619,9 @@ class MeetingCustomAddForm(DefaultAddForm):
     def updateFields(self):
         super(MeetingCustomAddForm, self).updateFields()
         move(self, "attendees_group", before="IMeetingAttendees.attendees")
+        self.fields['IEventBasic.start'].field.value = self.fields['IEventBasic.start'].field.default + timedelta(days=1)
+        self.fields['IEventBasic.end'].field.value = self.fields['IEventBasic.start'].field.default + timedelta(days=1, hours=2)
+    
 
     def update(self):
         super(MeetingCustomAddForm, self).update()
