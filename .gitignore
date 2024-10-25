@@ -9,3 +9,4 @@ src/DocentIMS/ActionItems/browser/static/.DS_Store
 src/DocentIMS/ActionItems/firstloggedin-kopi.py
 src/DocentIMS/ActionItems/browser/views-kopi.py
 src/DocentIMS/ActionItems/browser/kopi view delete
+src/DocentIMS/ActionItems/views/app_view-kopi.pt
