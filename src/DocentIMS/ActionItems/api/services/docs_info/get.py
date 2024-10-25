@@ -89,13 +89,15 @@ class DocsInfo(object):
         team_member_folder =  downloads_folder.get('team_member', False)
         
         portal_timezone = api.portal.get_registry_record('plone.portal_timezone')
+        user_timezone = user.getProperty('timezone') or portal_timezone
             
         if  team_member_folder:
             down_load_date = team_member_folder.modified().asdatetime().astimezone(timezone(portal_timezone)).isoformat()
         
         if user is not None:    
             
-            user_timezone = user.getProperty('timezone') 
+            # if user.getProperty('timezone')  and user.getProperty('timezone')  != None:
+            #     user_timezone = user.getProperty('timezone') 
             
             result = {
                 'docs_info': {
