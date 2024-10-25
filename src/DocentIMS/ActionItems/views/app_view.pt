@@ -3,301 +3,270 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master;">
-<body tal:define="dashboard_items view/get_dashboard_info; dashboard_list python: dashboard_items['dashboard-list']">
+      metal:use-macro="context/main_template/macros/master">
+<body>
   <metal:content-core fill-slot="content">
   <metal:block define-macro="content">
 
-
-   <main class="appWrapper"  >
-      <!-- sidebar -->
-      <div class="sideBar">
-         <div class="topInfo">
-            <div class="logoBox">
-               <a href="/">
-                  <img class="img-fluid" src="++plone++DocentIMS.ActionItems//logo.jpg" alt="logo">
-               </a>
-            </div>
-            <div class="menuBox">
-               <nav>
-                  <ul>
-                     <li>
-                        <a href="#" class="active">
-                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                              stroke="currentColor" class="size-6">
-                              <path stroke-linecap="round" stroke-linejoin="round"
-                                 d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                           </svg>
-                           <span>My Project</span>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#">
-                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                              stroke="currentColor" class="size-6">
-                              <path stroke-linecap="round" stroke-linejoin="round"
-                                 d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                           </svg>
-                           <span>Project Manager</span>
-                        </a>
-                     </li>
-                  </ul>
-               </nav>
-            </div>
-         </div>
-         <div class="bottomInfo">
-            <p>App version 23.5.12</p>
-         </div>
-      </div>
-      <!-- mobile header -->
-      <div class="mobileHeader">
-         <div class="row align-items-center">
-            <div class="col-6">
-               <div class="LogoBox">
-                  <a href="/">
-                     <img class="img-fluid" src="./asset/img/logo.jpg" alt="">
-                  </a>
-               </div>
-            </div>
-            <div class="col-6">
-               <div class="toggleButton">
-                  <button type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                           d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
-                     </svg>
-                  </button>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- mobileSidebar -->
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="offcanvasExampleLabel">
-         <div class="offcanvas-header">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-         </div>
-         <div class="offcanvas-body">
-            <div class="topInfo">
-               <div class="menuBox">
-                  <nav>
-                     <ul>
-                        <li>
-                           <a href="#" class="active">
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="size-6">
-                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                              </svg>
-                              <span>My Project</span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#">
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="size-6">
-                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                              </svg>
-                              <span>Project Manager</span>
-                           </a>
-                        </li>
-                     </ul>
-                  </nav>
-               </div>
-            </div>
-            <div class="bottomInfo">
-               <p>App version 23.5.12</p>
-            </div>
-         </div>
-      </div>
-      <!-- main app content -->
-      <div class="wrapper">
-         <div class="pageHeading">
-            <h2>My Projects</h2>
-         </div>
-         <div class="projectButton">
-            <div class="card">
-               <div class="card-body">
-                  <ul class="nav nav-tabs" id="myTab" role="tablist">
-                     <li class="nav-item" role="presentation">
-                        <button class="active btn p1" data-bs-toggle="tab" data-bs-target="#project1" type="button"
-                           role="tab" aria-selected="true">Project 1</button>
-                     </li>
-                     <li class="nav-item" role="presentation">
-                        <button class="btn p2" data-bs-toggle="tab" data-bs-target="#project2" type="button" role="tab"
-                           aria-selected="false">Project 2</button>
-                     </li>
-                     <li class="nav-item" role="presentation">
-                        <button class="btn p3" data-bs-toggle="tab" data-bs-target="#project3" type="button" role="tab"
-                           aria-selected="false">Project 3</button>
-                     </li>
-                     <li class="nav-item" role="presentation">
-                        <button class="btn p4" data-bs-toggle="tab" data-bs-target="#project4" type="button" role="tab"
-                           aria-selected="false">Project 4</button>
-                     </li>
-                     <li class="nav-item" role="presentation">
-                        <button class="btn p5" data-bs-toggle="tab" data-bs-target="#project5" type="button" role="tab"
-                           aria-selected="false">Project 5</button>
-                     </li>
-                     <li class="nav-item" role="presentation">
-                        <button class="btn p6" data-bs-toggle="tab" data-bs-target="#project6" type="button" role="tab"
-                           aria-selected="false">Project 6</button>
-                     </li>
-                     <li class="nav-item" role="presentation">
-                        <button class="btn p7" data-bs-toggle="tab" data-bs-target="#project7" type="button" role="tab"
-                           aria-selected="false">Project 7</button>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-         <div class="projectPreview" >
-            <div class="tab-content" id="myTabContent">
-               <div class="tab-pane fade show active" id="project1" role="tabpanel" aria-labelledby="home-tab"
-                  tabindex="0">
+         <tal:define tal:define="dashboard_items view/get_dashboard_info">
+            <main class="appWrapper" tal:define="dashboard_list python: dashboard_items['dashboard-list']">
+               <!-- sidebar -->
+               <div class="sideBar">
                   <div class="topInfo">
-                     <h3>Project 1</h3>
+                     <div class="logoBox">
+                        <a href="/">
+                           <img class="img-fluid" src="++plone++DocentIMS.ActionItems//logo.jpg" alt="logo">
+                           </a>
+                        </div>
+                        <div class="menuBox">
+                           <nav>
+                              <ul>
+                                 <li>
+                                    <a href="#" class="active">
+                                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                                       </svg>
+                                       <span>${dashboard_list/short_name|None}</span>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="#">
+                                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                       </svg>
+                                       <span class="white-text">Project Manager</span>
+                                    </a>
+                                 </li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                     <div class="bottomInfo">
+                        <p>App version 23.5.12</p>
+                     </div>
                   </div>
-                  <div class="userInfo">
-                     <h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                           <path fill-rule="evenodd"
-                              d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                              clip-rule="evenodd" />
-                        </svg>
-                        <span>${dashboard_list/user}</span>
-                      </h4>
-                  </div>
-                  <div class="card">
-                     <div class="card-body">
-                        <div class="topItemBox">
-                           <div class="top">
-                              <h3>Your Action Items</h3>
+         
+               <!-- mobile header -->
+               <div class="mobileHeader">
+                  <div class="row align-items-center">
+                     <div class="col-6">
+                        <div class="LogoBox">
+                           <a href="/">
+                              <img class="img-fluid" src="./asset/img/logo.jpg" alt="">
+                              </a>
                            </div>
-                           <div class="itemWrapper">
-                              <div class="row">
-                                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                                    <div class="singleItem">
-                                       <h4>Your Total Action <br> Items</h4>
-                                       <h2>${dashboard_list/ais|None}</h2>
-                                       <div class="detailsBtn">
-                                          <a href="#">
-                                             More Details
-                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                   d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                                             </svg>
-                                          </a>
+                        </div>
+                        <div class="col-6">
+                           <div class="toggleButton">
+                              <button type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
+                                 </svg>
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- mobileSidebar -->
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="offcanvasExampleLabel">
+                     <div class="offcanvas-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                     </div>
+                     <div class="offcanvas-body">
+                        <div class="topInfo">
+                           <div class="menuBox">
+                              <nav>
+                                 <ul>
+                                    <li>
+                                       <a href="#" class="active">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                                          </svg>
+                                          <span>${dashboard_list/short_name|None}</span>
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <a href="#">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                          </svg>
+                                          <span>Project Manager</span>
+                                       </a>
+                                    </li>
+                                 </ul>
+                              </nav>
+                           </div>
+                        </div>
+                        <div class="bottomInfo">
+                           <p>App version 23.5.12</p>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- main app content -->
+                  <div class="wrapper">
+                     <div class="pageHeading">
+                        <h2>My Projects</h2>
+                     </div>
+                     <div class="projectButton">
+                        <div class="card">
+                           <div class="card-body">
+                              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                 <li class="nav-item" role="presentation">
+                                    <button class="active btn p1" data-bs-toggle="tab" data-bs-target="#project1" type="button" role="tab" aria-selected="true">${dashboard_list/short_name|None}</button>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                    <button class="btn p2" data-bs-toggle="tab" data-bs-target="#project2" type="button" role="tab" aria-selected="false">Project 2</button>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                    <button class="btn p3" data-bs-toggle="tab" data-bs-target="#project3" type="button" role="tab" aria-selected="false">Project 3</button>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                    <button class="btn p4" data-bs-toggle="tab" data-bs-target="#project4" type="button" role="tab" aria-selected="false">Project 4</button>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                    <button class="btn p5" data-bs-toggle="tab" data-bs-target="#project5" type="button" role="tab" aria-selected="false">Project 5</button>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                    <button class="btn p6" data-bs-toggle="tab" data-bs-target="#project6" type="button" role="tab" aria-selected="false">Project 6</button>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                    <button class="btn p7" data-bs-toggle="tab" data-bs-target="#project7" type="button" role="tab" aria-selected="false">Project 7</button>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="projectPreview">
+                        <div class="tab-content" id="myTabContent">
+                           <div class="tab-pane fade show active" id="project1" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                              <div class="topInfo">
+                                 <h3>${dashboard_list/short_name|None}</h3>
+                              </div>
+                              <div class="userInfo">
+                                 <h4>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                       <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>${dashboard_list/user}</span>
+                                 </h4>
+                              </div>
+                              <div class="card">
+                                 <div class="card-body">
+                                    <div class="topItemBox">
+                                       <div class="top">
+                                          <h3>Your Action Items</h3>
                                        </div>
-                                    </div>
-                                 </div>
-                                 
-                                 <div tal:repeat="urgency python: dashboard_list['urgency_list']" class="col-xl-3 col-lg-6 col-md-6 col-12">
-                                    <div class="singleItem">
-                                    
-                                       <h4>${urgency/name} <br> Items</h4>
-                                       <h2>${urgency/count}</h2>
-                                       <div class="detailsBtn">
-                                          <a href="#">
+                                       <div class="itemWrapper">
+                                          <div class="row">
+                                             <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                                                <div class="singleItem">
+                                                   <h4>Your Total Action <br> Items</h4>
+                                                      <h2>${dashboard_list/ais|None}</h2>
+                                                      <div class="detailsBtn">
+                                                         <a href="#" class="white-text">
                                              More Details
-                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                   d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                                             </svg>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                               <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                                            </svg>
+                                                         </a>
+                                                      </div>
+                                                   </div>
+                                                </div>
+
+                                                <div tal:repeat="urgency python: dashboard_list['urgency_list']" class="col-xl-3 col-lg-6 col-md-6 col-12">
+                                                   <div class="singleItem">
+
+                                                      <h4>${urgency/name} <br> Items</h4>
+                                                         <h2>${urgency/count}</h2>
+                                                         <div class="detailsBtn">
+                                                            <a href="#" class="white-text">
+                                             More Details
+                                                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                                               </svg>
+                                                            </a>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                                     <div class="singleItem">
                                        <h4>More Then 30 Day Late Action <br> Items</h4>
                                        <h2>158</h2>
                                        <div class="detailsBtn">
                                           <a href="#">
                                              More Details
-                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                   d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                              </svg>
                                           </a>
                                        </div>
                                     </div>
                                  </div> -->
-                              </div>
-                           </div>
-                        </div>
-                        <div class="bottomItemBox">
-                           <div class="top">
-                              <h3>Meeting Dates</h3>
-                           </div>
-                           <div class="itemWrapper">
-                              <div class="row">
-                                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                                    <div class="singleItem">
-                                       <h4>Meetings</h4>
-                                       <h2>${dashboard_list/meetings|None}</h2>
-                                       <div class="detailsBtn">
-                                          <a href="#">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="bottomItemBox">
+                                             <div class="top">
+                                                <h3>Meeting Dates</h3>
+                                             </div>
+                                             <div class="itemWrapper">
+                                                <div class="row">
+                                                   <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                                                      <div class="singleItem">
+                                                         <h4>Meetings</h4>
+                                                         <h2>${dashboard_list/meetings|None}</h2>
+                                                         <div class="detailsBtn">
+                                                            <a href="#" class="white-text">
                                              More Details
-                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                   d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                                             </svg>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div> 
-                                 <div tal:repeat="meeting dashboard_list/meeting_list" class="col-xl-3 col-lg-6 col-md-6 col-12">
-                                    <div class="singleItem">
-                                       <h4>${meeting/name}</h4>
-                                       <h2>${meeting/count}</h2>
-                                       <div class="detailsBtn">
-                                          <a href="#">
+                                                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                                               </svg>
+                                                            </a>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div tal:repeat="meeting dashboard_list/meeting_list" class="col-xl-3 col-lg-6 col-md-6 col-12">
+                                                      <div class="singleItem">
+                                                         <h4>${meeting/name}</h4>
+                                                         <h2>${meeting/count}</h2>
+                                                         <div class="detailsBtn">
+                                                            <a href="#" class="white-text">
                                              More Details
-                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                   d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                                             </svg>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                                                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                                               </svg>
+                                                            </a>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                                     <div class="singleItem">
                                        <h4>Xx Meetings</h4>
                                        <h2>18</h2>
                                        <div class="detailsBtn">
                                           <a href="#">
                                              More Details
-                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                   d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                              </svg>
                                           </a>
                                        </div>
                                     </div>
                                  </div> -->
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
                               </div>
                            </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-                
-            </div>
-         </div>
-      </div>
 
 
 
-<style>
+
+                           <style>
 
 #hero,
 #above-content-wrapper,
@@ -337,11 +306,13 @@ ul li {
 #main-container h1,h2,h3,h4,h5,h6 {
 	margin: 0;
 	padding: 0;
-	font-family: "Roboto",sans-serif
+	font-family: "Roboto",sans-serif;
+   color: ${dashboard_list/project_color|None};
 }
 
 body {
-	background-color: #F3FEF6
+	xbackground-color: #F3FEF6;
+   background-color: whitesmoke;
 }
 
 #main-container p {
@@ -361,14 +332,19 @@ body {
 	top: 0;
 	left: 0;
 	width: 280px;
-	background-color: #378DA4;
+	background-color: ${dashboard_list/project_color|None};
 	border-radius: 0px 30px 30px 0px;
 	max-height: 100dvh;
 	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 	box-shadow: 8px 4px 25px rgba(0,0,0,0.1);
-	height: 100%
+	height: 100%;
+   color: white;
+}
+
+.white-text {
+	  color: white !important;
 }
 
 .appWrapper .sideBar .topInfo {
@@ -521,13 +497,16 @@ body {
 	min-width: 150px
 }
 
+.projectButton  {
+	opacity: 0.8
+}
 .projectButton .btn.active {
-	background-color: #511682;
-	color: #fff
+	opacity: 1;
 }
 
 .projectButton .p1 {
-	background-color: #51168244
+	background-color: ${dashboard_list/project_color|None};
+   color: #fff
 }
 
 .projectButton .p2 {
@@ -565,7 +544,8 @@ body {
 
 .projectPreview .topInfo h3 {
 	font-weight: 600;
-	font-size: 20px
+	font-size: 20px;
+   color: ${dashboard_list/project_color|None};
 }
 
 .projectPreview .userInfo {
@@ -596,7 +576,8 @@ body {
 
 .projectPreview .card .card-body .top h3 {
 	font-weight: 500;
-	font-size: 18px
+	font-size: 18px;
+    color: ${dashboard_list/project_color|None};
 }
 
 .projectPreview .card .card-body .itemWrapper {
@@ -604,7 +585,8 @@ body {
 }
 
 .projectPreview .card .card-body .itemWrapper .singleItem {
-	background-color: #378DA4;
+	xbackground-color: #378DA4;
+  background-color:  ${dashboard_list/project_color|None};
 	border-radius: 10px;
 	padding: 20px 20px;
 	height: 100%
@@ -899,7 +881,8 @@ body {
 }
 
 .projectPreview .topInfo h3 {
-	font-size: 16px
+	font-size: 16px;
+   color: ${dashboard_list/project_color|None};
 }
 
 .projectPreview .userInfo h4 {
@@ -912,11 +895,12 @@ body {
 }
 
 
-</style> 
+                           </style>
 
-   </main>
-   <!-- <script src="./asset/js/bootstrap.bundle.min.js"></script> -->
-  </metal:block>
-  </metal:content-core>
-</body>
-</html>
+                        </main>
+                        <!-- <script src="./asset/js/bootstrap.bundle.min.js"></script> -->
+                     </tal:define>
+                  </metal:block>
+               </metal:content-core>
+            </body>
+         </html>
