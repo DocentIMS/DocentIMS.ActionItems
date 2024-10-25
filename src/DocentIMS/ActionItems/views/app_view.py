@@ -42,7 +42,6 @@ class AppView(BrowserView):
         # response = requests.get('http://ubuntu.local:8605/Plone15/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
         response = requests.get('https://mymeadows.org/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
         
-        import pdb; pdb.set_trace()
         if response:
             body = response.json()
             return body
