@@ -27,8 +27,8 @@ class AppView(BrowserView):
         
         if my_brains:        
             return len(my_brains)
-    
-    def count_ais(self):
+
+    def get_dashboard_info(self):
         urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
         # Change to own api endpoint
         # response = requests.get('http://ubuntu.local:8605/Plone14/@search', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
@@ -36,8 +36,20 @@ class AppView(BrowserView):
         # items_total =  body['items_total']
         # return items_total
         # something.body
-     
-        # print(something)
+        
+        # TO DO, change admin
+        
+        # response = requests.get('http://ubuntu.local:8605/Plone15/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+        response = requests.get('https://mymeadows.org/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+        
+        if response:
+            body = response.json()
+            return body
+            
+        return None
+    
+    def count_ais(self):
+        urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
         if urgencies:
             urgency_list = []
             for urgency in reversed(urgencies):

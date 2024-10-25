@@ -8,7 +8,7 @@
   <metal:content-core fill-slot="content">
   <metal:block define-macro="content">
 
-   <main class="appWrapper">
+   <main class="appWrapper"  tal:define="dashboard_items view/get_dashboard_info">
       <!-- sidebar -->
       <div class="sideBar">
          <div class="topInfo">
@@ -151,7 +151,7 @@
                </div>
             </div>
          </div>
-         <div class="projectPreview">
+         <div class="projectPreview" tal:define="dashboard_list python: dashboard_items['dashboard-list']">
             <div class="tab-content" id="myTabContent">
                <div class="tab-pane fade show active" id="project1" role="tabpanel" aria-labelledby="home-tab"
                   tabindex="0">
@@ -165,8 +165,8 @@
                               d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
                               clip-rule="evenodd" />
                         </svg>
-                        <span>Admin</span>
-                     </h4>
+                        <span>${dashboard_list/user}</span>
+                      </h4>
                   </div>
                   <div class="card">
                      <div class="card-body">
@@ -179,7 +179,7 @@
                                  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                                     <div class="singleItem">
                                        <h4>Your Total Action <br> Items</h4>
-                                       <h2>${view/len_ais} </h2>
+                                       <h2>${dashboard_list/ais|None}</h2>
                                        <div class="detailsBtn">
                                           <a href="#">
                                              More Details
@@ -192,8 +192,10 @@
                                        </div>
                                     </div>
                                  </div>
-                                 <div tal:repeat="urgency view/count_ais" class="col-xl-3 col-lg-6 col-md-6 col-12">
+                                 
+                                 <div tal:repeat="urgency python: dashboard_list['urgency_list']" class="col-xl-3 col-lg-6 col-md-6 col-12">
                                     <div class="singleItem">
+                                    
                                        <h4>${urgency/name} <br> Items</h4>
                                        <h2>${urgency/count}</h2>
                                        <div class="detailsBtn">
@@ -236,7 +238,7 @@
                                  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                                     <div class="singleItem">
                                        <h4>Meetings</h4>
-                                       <h2>${view/len_meetings}</h2>
+                                       <h2>${dashboard_list/meetings|None}</h2>
                                        <div class="detailsBtn">
                                           <a href="#">
                                              More Details
@@ -248,8 +250,8 @@
                                           </a>
                                        </div>
                                     </div>
-                                 </div>
-                                 <div tal:repeat="meeting view/count_meetings" class="col-xl-3 col-lg-6 col-md-6 col-12">
+                                 </div> 
+                                 <div tal:repeat="meeting dashboard_list/meeting_list" class="col-xl-3 col-lg-6 col-md-6 col-12">
                                     <div class="singleItem">
                                        <h4>${meeting/name}</h4>
                                        <h2>${meeting/count}</h2>
@@ -295,7 +297,13 @@
    <!-- <script src="./asset/js/bootstrap.bundle.min.js"></script> -->
 
 
-<style>#edit-bar {
+<style>
+#hero,
+#above-content-wrapper,
+#content-header, 
+#portal-footer-wrapper,
+#edit-bar,
+#mainnavigation-wrapper {
 	display: none !important
 }
 
@@ -901,6 +909,8 @@ body {
 .offcanvas {
 	width: 90% !important
 }
+
+
 </style> 
   </metal:block>
   </metal:content-core>
