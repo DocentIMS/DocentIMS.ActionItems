@@ -72,13 +72,14 @@ class ItemCount(object):
             
         
         meetings_and_ais = { 
+                            'site_url': self.context.absolute_url(), 
                             'meetings': all_meetings, 
                             'meeting_list': meeting_list, 
                             'ais': all_ais, 
                             'urgency_list': urgency_list, 
                             'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                             'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),                                        
-                            'user':  fullname}
+                            'user': fullname }
         
         # current_user.getProperty("fullname"
         

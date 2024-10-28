@@ -3,6 +3,7 @@
 # from DocentIMS.ActionItems import _
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
+import requests
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -16,6 +17,27 @@ class AppInjectView(BrowserView):
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('app_inject_view.pt')
 
+    # def __init__(self, context, request):
+    #     self.request = request
+        
+        
     def __call__(self):
         # Implement your own actions:
         return self.index()
+    
+    
+    def get_dashboard_info(self):
+        # import pdb; pdb.set_trace()
+        # Change to own api endpoint
+        # response = requests.get('http://ubuntu.local:8605/Plone14/@search', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+        siteurl = self.request.get('siteurl', 'https://mymeadows.org')
+        
+        response = requests.get(f'{siteurl}/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+            
+        if response:
+                body = response.json()
+                return body
+            
+        return None
+     
+     

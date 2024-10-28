@@ -27,25 +27,35 @@ class AppView(BrowserView):
         
         if my_brains:        
             return len(my_brains)
+        
+    def get_buttons(self):
+        urls = ["https://mymeadows.org", "http://ubuntu.local:8605/Plone16"]
+        buttons = []
+        
+        for siteurl in urls:
+            response = requests.get(f'{siteurl}/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+            if response:
+                body = response.json()
+                buttons.append({'name': body['dashboard-list']['short_name'], 'url': siteurl, 'project_color': body['dashboard-list']['project_color']})
+        
+        return buttons
+    
+        
 
     def get_dashboard_info(self):
-        import pdb; pdb.set_trace()
-        urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
         # Change to own api endpoint
         # response = requests.get('http://ubuntu.local:8605/Plone14/@search', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
-        # body = response.json()
-        # items_total =  body['items_total']
-        # return items_total
-        # something.body
         
         # TO DO, change admin
         
-        # response = requests.get('http://ubuntu.local:8605/Plone15/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
-        response = requests.get('https://mymeadows.org/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+        request = self.request
+        siteurl = self.request.siteurl
         
+        response = requests.get(f'{siteurl}/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+            
         if response:
-            body = response.json()
-            return body
+                body = response.json()
+                return body
             
         return None
     
