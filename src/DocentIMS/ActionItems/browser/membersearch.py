@@ -39,12 +39,12 @@ class IActionMemberSearchSchema(IMemberSearchSchema):
 
     # fields=["login", "email", "fullname"],
     
-    login = schema.TextLine(
+    login = schema.Choice(
         title=_("label_name", default="Full Name"),
         description=_(
             "help_search_name", default="Use search criteria to find team members/ Select user to display a contact form and their created content"
         ),
-        # vocabulary="DocentIMS.ActionItems.FullnamesVocabulary",
+        vocabulary="DocentIMS.ActionItems.FullnamesVocabulary",
         required=False,
     )
     
@@ -56,7 +56,7 @@ class IActionMemberSearchSchema(IMemberSearchSchema):
     
     # form.omitted('login') 
     form.omitted('email') 
-    form.omitted('fullname') 
+    #form.omitted('fullname') 
     directives.widget('login', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.FullnamesVocabulary", description="Select user to display a contact form and their created content")
     # directives.widget('fullname', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.FullnamesVocabulary", description="Select user to display a contact form and their created content")
    
