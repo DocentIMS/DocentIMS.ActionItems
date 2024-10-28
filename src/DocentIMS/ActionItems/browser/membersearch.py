@@ -44,7 +44,7 @@ class IActionMemberSearchSchema(IMemberSearchSchema):
         description=_(
             "help_search_name", default="Use search criteria to find team members/ Select user to display a contact form and their created content"
         ),
-        vocabulary="DocentIMS.ActionItems.FullnamesVocabulary",
+        # vocabulary="DocentIMS.ActionItems.FullnamesVocabulary",
         required=False,
     )
     
