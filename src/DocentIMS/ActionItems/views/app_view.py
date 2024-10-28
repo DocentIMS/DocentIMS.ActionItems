@@ -29,7 +29,7 @@ class AppView(BrowserView):
             return len(my_brains)
         
     def get_buttons(self):
-        urls = ["https://mymeadows.org", "http://ubuntu.local:8605/Plone16"]
+        urls = ["https://mymeadows.org", "http://mymeadows.org:8084/Plone"]
         buttons = []
         
         for siteurl in urls:
