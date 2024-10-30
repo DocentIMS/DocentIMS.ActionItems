@@ -456,6 +456,7 @@ class IDocentimsSettings(model.Schema):
             u'DocState',
             u'Doctype',
             u'DocDate',
+            u'DocTime',
         ]),
         required=False,
         default=[],
