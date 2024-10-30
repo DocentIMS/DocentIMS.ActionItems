@@ -64,7 +64,7 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++meeting</property>
+  <property name="add_view_expr">string:${portal_url}/meeting/++add++meeting</property>
   <property name="default_view">meeting-view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>
