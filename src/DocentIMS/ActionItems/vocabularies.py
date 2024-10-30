@@ -324,8 +324,6 @@ directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
 def CompanyRolesVocabulary(context):
     items = api.portal.get_registry_record('vokabularies3', interface=IDocentimsSettings)
     
-    #   import pdb; pdb.set_trace()
-
     if items:
         # Extract unique entries from items and convert to lowercase for case-insensitive comparison
         
