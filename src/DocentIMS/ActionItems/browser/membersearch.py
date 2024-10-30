@@ -39,21 +39,12 @@ class IActionMemberSearchSchema(IMemberSearchSchema):
 
     # fields=["login", "email", "fullname"],
     
-    fullname = schema.Choice(
-        title=_("label_name", default="Full Name"),
-        description=_(
-            "help_search_name", default="Use search criteria to find team members/ Select user to display a contact form and their created content"
-        ),
-        vocabulary="DocentIMS.ActionItems.TeamIdsVocabulary",
-        required=False,
-    )
-    
     login = schema.Choice(
         title=_("label_name", default="Full Name"),
         description=_(
             "help_search_name", default="Use search criteria to find team members/ Select user to display a contact form and their created content"
         ),
-        vocabulary="DocentIMS.ActionItems.TeamIdsVocabulary",
+        vocabulary="DocentIMS.ActionItems.FullnamesVocabulary",
         required=False,
     )
     
@@ -65,9 +56,8 @@ class IActionMemberSearchSchema(IMemberSearchSchema):
     
     # form.omitted('login') 
     form.omitted('email') 
-    #form.omitted('fullname') 
-    # directives.widget('login', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.TeamnamesVocabulary", description="Select user to display a contact form and their created content")
-    # directives.widget('fullname', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.FullnamesVocabulary", description="Select user to display a contact form and their created content")
+    form.omitted('fullname') 
+    directives.widget('login', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.FullnamesVocabulary", description="Select user to display a contact form and their created content")
     # directives.widget('fullname', AjaxSelectFieldWidget,   vocabulary="DocentIMS.ActionItems.FullnamesVocabulary", description="Select user to display a contact form and their created content")
    
 def extractCriteriaFromRequest(criteria):
@@ -82,7 +72,6 @@ def extractCriteriaFromRequest(criteria):
         if key in criteria:
             del criteria[key]
     for key, value in list(criteria.items()):
-        import pdb; pdb.set_trace
         if not value:
             del criteria[key]
         else:
