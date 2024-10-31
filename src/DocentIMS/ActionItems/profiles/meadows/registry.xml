@@ -107,6 +107,7 @@
           <element>DocState</element>
           <element>Doctype</element>
           <element>DocDate</element>
+          <element>DocTime</element>
         </values>
       </value_type>
     </field>
@@ -116,6 +117,7 @@
       <element>DocState</element>
       <element>ContractNumber</element>
       <element>DocDate</element>
+      <element>DocTime</element>
     </value>
   </record>
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_short_name">
