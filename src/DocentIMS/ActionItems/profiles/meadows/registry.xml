@@ -219,7 +219,6 @@
       <default>
         <element>Collection</element>
         <element>Document</element>
-        <element>Event</element>
         <element>File</element>
         <element>Folder</element>
         <element>Image</element>
@@ -235,7 +234,6 @@
     <value>
       <element>Collection</element>
       <element>Document</element>
-      <element>Event</element>
       <element>File</element>
       <element>Folder</element>
       <element>Image</element>
