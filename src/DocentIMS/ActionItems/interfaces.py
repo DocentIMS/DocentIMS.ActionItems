@@ -121,19 +121,19 @@ class IVocabulari4(model.Schema):
 
 class IMeetingRows(model.Schema):
     meeting_type = schema.TextLine(
-        title=_(u'meeting_type', 'DefaultType'),
+        title=_(u'meeting_type', 'Meeting Type'),
         # description=u"Meeting Type",
         required=False,
     )
     
     meeting_title = schema.TextLine(
-        title=_(u'meeting_title', 'Default Title'),
+        title=_(u'meeting_title', 'Meeting Title'),
         # description=u"Default Meeting Title",
         required=False,
     )
      
     meeting_summary = schema.Text(
-        title=_(u'Vmeeting_summary', 'Summary'),
+        title=_(u'Vmeeting_summary', 'Meeting'),
         # description=u"Default Summary",
         required=False,
     )
@@ -151,7 +151,7 @@ class IMeetingRows(model.Schema):
     #  <form:widget type="plone.app.z3cform.widget.AjaxSelectFieldWidget" />
     
     meeting_attendees = schema.Set(
-        title=_("label_attendees_groups", default="Attendees f/group"),
+        title=_("label_attendees_groups", default="Attendees groups"),
         description="",
         required=False,
         value_type=schema.Choice(vocabulary="plone.app.users.group_ids"),
@@ -164,7 +164,7 @@ class IMeetingRows(model.Schema):
     
     meeting_contact = schema.Choice(
         vocabulary=u"DocentIMS.ActionItems.TeamnamesVocabulary",
-        title=_(u"meeting_contact", default=u"Default Contact"),
+        title=_(u"meeting_contact", default=u"Contact Person"),
         required=False,
     )   
 

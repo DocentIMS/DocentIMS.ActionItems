@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='DocentIMS.ActionItems',
-    version='1.0a1',
+    version='1.0b1',
     description="Docent Actionitems for Plone",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
