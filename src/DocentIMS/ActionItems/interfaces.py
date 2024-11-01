@@ -157,10 +157,7 @@ class IMeetingRows(model.Schema):
         value_type=schema.Choice(vocabulary="plone.app.users.group_ids"),
     )
     
-    
- 
-    
-    
+     
     
     meeting_contact = schema.Choice(
         vocabulary=u"DocentIMS.ActionItems.TeamnamesVocabulary",
