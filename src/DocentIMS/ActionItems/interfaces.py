@@ -13,12 +13,15 @@ from plone.app.textfield import RichText
 from plone.app.z3cform.widgets.richtext import RichTextFieldWidget
 from plone.registry.field import PersistentField
 from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
-from plone.app.z3cform.widget import SelectFieldWidget
+from plone.app.z3cform.widget import SelectFieldWidget, SelectWidget
 from collective.z3cform.colorpicker.colorpicker  import ColorpickerFieldWidget
 from zope.schema.interfaces import  InvalidValue
 from plone.api.portal import show_message
 from plone.namedfile import field
 from plone.app.contentrules.handlers  import execute_user_rules
+from plone.app.z3cform.widget import AjaxSelectFieldWidget
+
+
 
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
@@ -135,12 +138,29 @@ class IMeetingRows(model.Schema):
         required=False,
     )
     
-    widget(meeting_attendees=SelectFieldWidget)
-    meeting_attendees = schema.Choice(
-        vocabulary=u"plone.app.vocabularies.Groups",
-        title=_(u"Attendees from group", default=u"Attendees f/group"),
+    # widget(meeting_attendees=SelectWidget)
+    # value_type=schema.Choice(vocabulary="plone.app.users.group_ids"),
+    # meeting_attendees = schema.List(
+    #     title=_("label_attendees_groups", default="Attendees f/group"),
+    #     description="",
+    #     required=False,
+    #     value_type=schema.Choice(vocabulary="plone.app.users.group_ids"),
+    # )
+    
+    
+    #  <form:widget type="plone.app.z3cform.widget.AjaxSelectFieldWidget" />
+    
+    meeting_attendees = schema.Set(
+        title=_("label_attendees_groups", default="Attendees f/group"),
+        description="",
         required=False,
+        value_type=schema.Choice(vocabulary="plone.app.users.group_ids"),
     )
+    
+    
+ 
+    
+    
     
     meeting_contact = schema.Choice(
         vocabulary=u"DocentIMS.ActionItems.TeamnamesVocabulary",

@@ -603,16 +603,25 @@ class MeetingCustomAddForm(DefaultAddForm):
                 # self.widgets['IEventBasic.end'].default = self.fields['IEventBasic.start'].field.default + timedelta(days=1, hours=2)
                 
                 self.widgets['meeting_type'].mode = interfaces.HIDDEN_MODE
-                meeting_group =  meeting_rows[0]['meeting_attendees'] # Some group
+                meeting_groups =  meeting_rows[0]['meeting_attendees'] # Some group
                     
-                if meeting_group and meeting_group != []:
-                    groupmembers = api.user.get_users(groupname=meeting_group)
+                if meeting_groups and meeting_groups != {}:
                     
-                    ids= [ groupmember.getId() for groupmember in groupmembers]
+                    self.widgets['attendees_group'].value =  ";".join(meeting_groups)
                     
-                    if ids and ids != []: 
-                        # self.widgets['IMeetingAttendees.attendees'].value  = ids
-                        self.widgets['IMeetingAttendees.attendees'].value  = ";".join(ids)
+                    ## Old code to add one and one member
+                    # ids = []
+                    # for meeting_group in meeting_groups:
+                    #     groupmembers = api.user.get_users(groupname=meeting_group)
+                        
+                    #     #TO DO: Is there a group id directly in vocabulary group_ids?
+                    #     new_ids= [ groupmember.getId() for groupmember in groupmembers]
+                    #     ids.append(new_ids)
+                        
+                    # if ids and ids != []: 
+                    #     # self.widgets['IMeetingAttendees.attendees'].value  = ids
+                    #     import pdb; pdb.set_trace()
+                    #     self.widgets['IMeetingAttendees.attendees'].value  = ";".join(set(ids))
                         
     
 

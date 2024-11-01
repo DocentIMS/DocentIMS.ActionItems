@@ -139,7 +139,7 @@
             </div>
 
 
-            <div class="col event-attendees mb-3" tal:condition="data/attendees|nothing">
+            <div class="col event-attendees mb-3">
               <div class="xd-flex">
                 <div>
                   <b>Attendees: &nbsp;</b>
