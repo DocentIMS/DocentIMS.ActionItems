@@ -102,7 +102,7 @@ class DocsInfo(object):
             result = {
                 'docs_info': {
                     'meeting_locations': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names'),
-                    'meeting_types':  json.dumps(api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')), 
+                    # 'meeting_types':  json.dumps(api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')), 
                     'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
                     'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                     'marking_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
