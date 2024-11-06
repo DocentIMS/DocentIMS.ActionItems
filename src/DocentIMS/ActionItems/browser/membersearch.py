@@ -71,7 +71,6 @@ def extractCriteriaFromRequest(criteria):
     ]:
         if key in criteria:
             del criteria[key]
-    import pdb; pdb.set_trace()
     for key, value in list(criteria.items()):
         if not value:
             del criteria[key]
