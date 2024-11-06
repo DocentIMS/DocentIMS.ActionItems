@@ -99,30 +99,30 @@
         title="DocentIMS.ActionItems: Archive Delete ActionItems"
     />
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.ArchiveActionItems"
         title="DocentIMS.ActionItems: Archive ActionItems"
-    />
+    /> -->
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.DeleteActionItems"
         title="DocentIMS.ActionItems: Delete ActionItems"
-    />
+    /> -->
 
     <permission
         id="DocentIMS.ActionItemsAdd.SOWItems"
         title="DocentIMS.ActionItems: Add Scope"
     />
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.ArchiveSOWItems"
         title="DocentIMS.ActionItems: Archive Scope"
-    />
+    /> -->
     
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.DeleteSOWItems"
         title="DocentIMS.ActionItems: Delete Scope"
-    />
+    /> -->
 
   </configure>
 

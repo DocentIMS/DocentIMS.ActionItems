@@ -49,6 +49,7 @@
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
         &lt;title&gt;Assigned to&lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
         &lt;vocabulary&gt;DocentIMS.ActionItems.TeamnamesVocabulary&lt;/vocabulary&gt;
       &lt;/field&gt;
       &lt;field name=&quot;prioritystring&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
