@@ -10,7 +10,7 @@ from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
 @adapter(Interface)
 class AssignedTo(BaseSubstitution):
-    category = "All Content"
+    category = "Users"
     description = "Assigned To"
 
     def safe_call(self):
@@ -20,7 +20,7 @@ class AssignedTo(BaseSubstitution):
 
 class DaysLeft(BaseSubstitution):
     category = "All Content"
-    description = "Assigned To"
+    description = "Days left"
 
     def safe_call(self):
       if hasattr(self.context, 'daysleft'):
@@ -43,9 +43,8 @@ class DateChanged(BaseSubstitution):
 
 @adapter(Interface)
 class AssignedMail(BaseSubstitution):
-    category = "All Content"
+    category = "Users"
     description = "Assigned To Email"
-
     def safe_call(self):
       if hasattr(self.context, 'assigned_to'):
         #return assigned users email
@@ -56,7 +55,7 @@ class AssignedMail(BaseSubstitution):
 
 @adapter(Interface)
 class Attendees(BaseSubstitution):
-    category = "All Content"
+    category = "Users"
     description = "Attendees"
 
     def safe_call(self):
@@ -76,7 +75,7 @@ class Attendees(BaseSubstitution):
 
 @adapter(Interface)
 class AssignedFullName(BaseSubstitution):
-    category = "All Content"
+    category = "Users"
     description = "Assigned To Fullname"
 
     def safe_call(self):
