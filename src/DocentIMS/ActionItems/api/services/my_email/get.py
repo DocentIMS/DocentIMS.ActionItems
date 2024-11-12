@@ -37,8 +37,7 @@ class MyEmail(object):
         # user = api.user.get(username=usermail) 
         
         # companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
-              
-        if user is not None: 
+        if user.name != 'Anonymous User' and  user is not None: 
             my_groups = user.getGroups() or None
             # Get all, something like this:
             # my_groups = api.group.get_groups()
@@ -59,7 +58,9 @@ class MyEmail(object):
                             'fullname': groupmember.getProperty('fullname'), 
                             'email': groupmember.getProperty('email')
                         })
-                    members.append({mygroup: ids})
+                        
+                    
+                    members.append({'id': mygroup.getId(), 'id': mygroup.getGroupName(), 'members': ids})
                     # print(members)
                 members=members
                  
@@ -68,8 +69,8 @@ class MyEmail(object):
                     'id': user.getProperty('id'),
                     'email': user.getProperty('email'),
                     'fullname' : user.getProperty('fullname'),   
-                    'groups': my_groups,
-                    'members': members,
+                    # 'old_groups': my_groups,
+                    'groups': members,
                     'roles' : user.getRoles(),
                     'last_name' : user.getProperty('fullname'), 
                     'first_name' : user.getProperty('first_name'), 
