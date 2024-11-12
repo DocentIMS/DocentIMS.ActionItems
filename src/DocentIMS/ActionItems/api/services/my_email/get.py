@@ -37,7 +37,7 @@ class MyEmail(object):
         # user = api.user.get(username=usermail) 
         
         # companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
-        if user.name != 'Anonymous User' and  user is not None: 
+        if  user is not None: 
             my_groups = user.getGroups() or None
             # Get all, something like this:
             # my_groups = api.group.get_groups()
