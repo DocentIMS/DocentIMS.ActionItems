@@ -60,7 +60,6 @@ class MyEmail(object):
                             'email': groupmember.getProperty('email')
                         })
                         
-                    # import pdb; pdb.set_trace()
                     members.append({'id': group.getId(), 'title': group.getGroupName(), 'groupMembers': ids})
                     # print(members)
                 members=members
