@@ -52,6 +52,7 @@ class MyEmail(object):
                 for mygroup in my_groups:
                     ids = []
                     groupmembers = api.user.get_users(groupname=mygroup)
+                    group = api.group.get(groupname=mygroup)
                     for groupmember in groupmembers:
                         ids.append({
                             'id': groupmember.getId(), 
@@ -59,8 +60,8 @@ class MyEmail(object):
                             'email': groupmember.getProperty('email')
                         })
                         
-                    import pdb; pdb.set_trace()
-                    members.append({'id': mygroup.getId(), 'title': mygroup.getGroupName(), 'groupMembers': ids})
+                    # import pdb; pdb.set_trace()
+                    members.append({'id': group.getId(), 'title': group.getGroupName(), 'groupMembers': ids})
                     # print(members)
                 members=members
                  
