@@ -3,6 +3,18 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
 
+    <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="location_names">
+    <field type="plone.registry.field.List">
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate=""> </title>
+    </field>
+    <value>
+      <element>{'location_name': 'Zoom'}</element>
+      <element>{'location_name': 'Clubhouse'}</element>
+      <element>{'location_name': 'Clubhouse and Zoom'}</element>
+      <element>{'location_name': None}</element>
+    </value>
+    </record>
+
     <record name="plone.allowed_types" interface="plone.base.interfaces.controlpanel.IMarkupSchema" field="allowed_types">
     <field type="plone.registry.field.Tuple">
       <default>

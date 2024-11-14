@@ -1,4 +1,5 @@
 <registry>
+
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="color1">
     <field type="plone.registry.field.TextLine">
       <default>#ff0000</default>
@@ -357,7 +358,7 @@
       <required>False</required>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Allow anyone to view 'about' information</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.allow_external_login_sites" interface="plone.base.interfaces.controlpanel.ILoginSchema" field="allow_external_login_sites">
     <field type="plone.registry.field.Tuple">

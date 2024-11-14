@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <adapter factory=".attendees.dummy"
+    name="attendees" />
+
+  <adapter factory=".attendees.attendees"
+    name="attendees" />
+
+</configure>

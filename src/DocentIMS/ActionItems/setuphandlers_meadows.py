@@ -81,7 +81,14 @@ def post_install(context):
     
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
-     
+    
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names', 
+                                         [{'location_name': 'Zoom'}, 
+                                          {'location_name': 'Clubhouse'},
+                                          {'location_name': 'Clubhouse and Zoom'}
+                                         ])
+    
+    
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
                                          [{'row_field': 'actionno', 'row_title': 'ID'}, 
                                           {'row_field': 'title', 'row_title': 'Title'},
