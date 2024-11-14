@@ -80,12 +80,12 @@
       <role name="Contributor"/>
     </permission>
 
-    <permission name="DocentIMS.ActionItems: Archive Scope" acquire="True">
+    <!-- <permission name="DocentIMS.ActionItems: Archive Scope" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
-    </permission>
+    </permission> -->
 
     <permission name="DocentIMS.ActionItems: Delete Scope" acquire="True">
       <role name="Manager"/>
