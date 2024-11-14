@@ -87,10 +87,10 @@
       <role name="Contributor"/>
     </permission> -->
 
-    <permission name="DocentIMS.ActionItems: Delete Scope" acquire="True">
+    <!-- <permission name="DocentIMS.ActionItems: Delete Scope" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
-    </permission>
+    </permission> -->
 
   </permissions>
 </rolemap>
