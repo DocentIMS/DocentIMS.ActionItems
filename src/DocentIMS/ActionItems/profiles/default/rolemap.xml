@@ -33,12 +33,12 @@
       <role name="Contributor"/>
     </permission>
 
-    <permission name="DocentIMS.ActionItems: Add Notes" acquire="True">
+    <!-- <permission name="DocentIMS.ActionItems: Add Notes" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
-    </permission>
+    </permission> -->
 
     <permission name="DocentIMS.ActionItems: Add FrontPage" acquire="True">
       <role name="Manager"/>
@@ -61,12 +61,12 @@
       <role name="Contributor"/>
     </permission>
 
-    <permission name="DocentIMS.ActionItems: Archive ActionItems" acquire="True">
+    <!-- <permission name="DocentIMS.ActionItems: Archive ActionItems" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
-    </permission>
+    </permission> -->
 
     <permission name="DocentIMS.ActionItems: Delete ActionItems" acquire="True">
       <role name="Project Manager"/>
