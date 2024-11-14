@@ -69,10 +69,10 @@
         title="DocentIMS.ActionItems: Add Feedback"
     />
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddNotes"
         title="DocentIMS.ActionItems: Add Notes"
-    />
+    /> -->
 
     <permission
         id="DocentIMS.ActionItems.AddFrontPage"
