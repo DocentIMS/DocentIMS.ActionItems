@@ -94,10 +94,10 @@
         title="DocentIMS.ActionItems: Add ActionItems"
     />
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.ArchiveDeleteActionItems"
         title="DocentIMS.ActionItems: Archive Delete ActionItems"
-    />
+    /> -->
 
     <!-- <permission
         id="DocentIMS.ActionItems.ArchiveActionItems"

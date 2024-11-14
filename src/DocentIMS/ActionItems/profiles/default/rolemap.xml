@@ -68,10 +68,10 @@
       <role name="Contributor"/>
     </permission> -->
 
-    <permission name="DocentIMS.ActionItems: Delete ActionItems" acquire="True">
+    <!-- <permission name="DocentIMS.ActionItems: Delete ActionItems" acquire="True">
       <role name="Project Manager"/>
       <role name="Site Administrator"/>
-    </permission>
+    </permission> -->
 
     <permission name="DocentIMS.ActionItems: Add Scope" acquire="True">
       <role name="Manager"/>
