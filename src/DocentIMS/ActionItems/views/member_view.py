@@ -3,6 +3,25 @@
 # from DocentIMS.ActionItems import _
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
+from plone.dexterity.utils import iterSchemata
+from zope.schema import getFields
+from plone import api
+
+
+# ## -*- coding: utf-8 -*-
+# from zope.interface import  Interface
+
+# from Products.Five import BrowserView
+ 
+# 
+
+# from Products.CMFCore.utils import getToolByName
+ 
+ 
+
+# import logging
+
+# logger = logging.getLogger(__file__)
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -19,3 +38,32 @@ class MemberView(BrowserView):
     def __call__(self):
         # Implement your own actions:
         return self.index()
+
+    # def all_users(self):
+    #     return api.user.get_users()
+
+    @property
+    def group_users(self):
+        userlist = []
+        for member in api.user.get_users():
+            userlist.append(
+                { 'id': member.getProperty('id'), 
+                'email': member.getProperty('email'),
+                # 'fullname': member.getProperty('"fullname'),
+                'last_name': member.getProperty('last_name'),
+                'first_name': member.getProperty('first_name'),
+                'your_team_role': member.getProperty('your_team_role'),
+                'office_phone_number': member.getProperty('office_phone_number'),
+                'cellphone_number': member.getProperty('cellphone_number'),
+                'company': member.getProperty('company'),
+                'returning': member.getProperty('returning'),
+                'login_time': member.getProperty('login_time'),
+                'verified': (member.getProperty('login_time').strftime('%Y') == '2000'),
+                 })
+
+        return sorted(userlist, key=lambda medlem: medlem['last_name'])
+        #return userlist
+
+ 
+ 
+

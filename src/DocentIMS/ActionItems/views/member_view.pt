@@ -1,18 +1,83 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
+  <body>
+    <metal:content-core fill-slot="content">
+      <metal:block define-macro="content-core">
+        <h1>Members</h1>
 
-      <h2 i18n:translate="">Sample View</h2>
-      <!--<div tal:replace="view/my_custom_view_method" />-->
-      <!--<div tal:replace="context/my_custom_field" />-->
+        <p class="discreet">Click on headers to sort</p>
 
-  </metal:block>
-  </metal:content-core>
-</body>
+        <table class="sortable pat-tablesorter listing xtable-bordered ">
+          <thead class="">
+            <tr>
+              <th>ID</th>
+              <th>Mail</th>
+              <th>Last Name</th>
+              <th>First Name</th>
+              <th>Team Role</th>
+              <th>Office No</th>
+              <th>Cellphone</th>
+              <th>Company</th>
+              <!-- <th>Returning</th>
+               <th>Login Time</th>
+              <th>Verifisert?</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tal:repeat tal:repeat="medlem view/group_users">
+              <tr>
+
+                <td>${medlem/id}</td>
+                <td>${medlem/email}</td>
+                <!-- <td>${medlem/fullname}</td> -->
+                <td>${medlem/last_name}</td>
+                <td>${medlem/first_name}</td>
+                <td>${medlem/your_team_role}</td>
+                <td>${medlem/office_phone_number}</td>
+                <td>${medlem/cellphone_number}</td>
+                <td>${medlem/company}</td>
+                <!-- <td>${medlem/returning}</td>
+                <td>${medlem/login_time}</td>
+
+                <td tal:define="verifisert medlem/verified">
+                  <span tal:condition="verifisert">No</span>
+                </td> -->
+              </tr>
+            </tal:repeat>
+          </tbody>
+
+        </table>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/js/jquery.tablesorter.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/filtertable@0.1.2/filtertable.min.js"></script>
+        <script>
+$(function(){
+  $('table.sortable').tablesorter({ sortList: [[2,0],] });
+});
+        </script>
+
+
+        <script>
+       $('table').filterTable();
+        </script>
+
+        <style>
+.tablesorter-header.tablesorter-headerAsc {
+    background:whitesmoke;
+    <!-- border: 1px solid silver; -->
+}
+
+.tablesorter-header.tablesorter-headerDesc {
+    background:#EEE;
+}
+
+	
+        </style>
+
+
+      </metal:block>
+    </metal:content-core>
+  </body>
 </html>
