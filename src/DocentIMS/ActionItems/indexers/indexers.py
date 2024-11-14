@@ -14,6 +14,14 @@ import datetime
 import holidays
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
+
+@indexer(IDexterityContent)
+def dummy(obj):
+    """ Dummy to prevent indexing other objects thru acquisition """
+    raise AttributeError('This field should not indexed here!')
+
+
+
 @indexer(IDexterityContent)
 def dummy(obj):
     """ Dummy to prevent indexing other objects thru acquisition """
@@ -35,7 +43,27 @@ def assigned_toIndexer(obj):
             return fullname 
     return username
 
-    
+
+
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def attendeesIndexer(obj):
+    """Calculate and return the value for the indexer"""
+    if obj.portal_type in  ['Meeting', 'meeting']:
+        attendees = obj.attendees
+        groups = obj.attendees_group
+        if groups and groups != None:
+            all_users = list(attendees)
+            for group in groups:
+                 groupmembers = api.user.get_users(groupname=group)
+                 if groupmembers and groupmembers != None:
+                     for groupmember in groupmembers:
+                        all_users.append(groupmember.getId())
+                         
+            return tuple(all_users)
+        
+        return attendees
+
+
 
 
 @indexer(IDexterityContainer)  # ADJUST THIS!

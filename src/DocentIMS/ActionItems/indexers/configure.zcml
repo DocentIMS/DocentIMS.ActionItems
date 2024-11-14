@@ -1,6 +1,9 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
   <adapter factory=".indexers.dummy"
+    name="attendees" />
+
+  <adapter factory=".indexers.dummy"
     name="actionno" />
 
   <adapter factory=".indexers.dummy"
@@ -29,6 +32,9 @@
 
   <adapter factory=".indexers.dummy"
     name="urgency" />
+
+  <adapter factory=".indexers.attendeesIndexer"
+    name="attendees" />
 
   <adapter factory=".indexers.actionIndexer"
     name="actionno" />

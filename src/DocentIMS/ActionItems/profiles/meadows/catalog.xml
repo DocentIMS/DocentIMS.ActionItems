@@ -5,6 +5,10 @@
   <indexed_attr value="meeting_type"/>
  </index>
 
+ <index name="attendees" meta_type="KeywordIndex">
+  <indexed_attr value="attendees"/>
+ </index>
+
  <index name="priority" meta_type="FieldIndex">
   <indexed_attr value="priority"/>
  </index>
@@ -86,6 +90,7 @@
  <column value="urgency"/>
  <column value="has_file"/>
  <column value="meeting_type"/>
+  <column value="attendees"/>
 
 
  <!-- <column value="out_of_the_scope"/> -->
