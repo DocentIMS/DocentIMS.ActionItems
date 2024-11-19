@@ -84,10 +84,10 @@
         title="DocentIMS.ActionItems: Add Scope"
     />
 
-    <!-- <permission
+    <permission
         id="DocentIMS.ActionItems.ArchiveDeleteSow"
         title="DocentIMS.ActionItems: Archive Delete Scope"
-    /> -->
+    />
 
     <permission
         id="DocentIMS.ActionItems.AddActionItems"

@@ -20,9 +20,9 @@
               <th>Office No</th>
               <th>Cellphone</th>
               <th>Company</th>
-              <!-- <th>Returning</th>
+              <!-- <th>Returning</th-->
                <th>Login Time</th>
-              <th>Verifisert?</th> -->
+              <th>Verifisert?</th>
             </tr>
           </thead>
           <tbody>
@@ -38,12 +38,12 @@
                 <td>${medlem/office_phone_number}</td>
                 <td>${medlem/cellphone_number}</td>
                 <td>${medlem/company}</td>
-                <!-- <td>${medlem/returning}</td>
+                <!-- <td>${medlem/returning}</td-->
                 <td>${medlem/login_time}</td>
 
                 <td tal:define="verifisert medlem/verified">
                   <span tal:condition="verifisert">No</span>
-                </td> -->
+                </td>  
               </tr>
             </tal:repeat>
           </tbody>
