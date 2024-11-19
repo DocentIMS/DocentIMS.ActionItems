@@ -19,7 +19,7 @@ class IMeetingLocation(IEventLocation):
     location = schema.Choice(
         title="Meeting Location",
         description="Location of the meeting",
-        required=False,
+        required=True,
         vocabulary= 'DocentIMS.ActionItems.LocationsVocabulary'
     )
     directives.widget("location", AjaxSelectFieldWidget, klass="event_location")

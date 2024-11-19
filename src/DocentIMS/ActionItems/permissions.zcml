@@ -17,10 +17,10 @@
         title="DocentIMS.ActionItems: Add PostItNote"
     /> -->
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddPlanningBreakdown"
         title="DocentIMS.ActionItems: Add PlanningBreakdown"
-    />
+    /> -->
 
 
     <permission
@@ -59,45 +59,45 @@
     />
 
     <permission
-        id="DocentIMS.ActionItems.AddCommentStatements"
-        title="DocentIMS.ActionItems: Add Comment Statements"
+        id="DocentIMS.ActionItems.AddCommandStatements"
+        title="DocentIMS.ActionItems: Add Command Statements"
     />
 
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddFeedback"
         title="DocentIMS.ActionItems: Add Feedback"
-    />
+    /> -->
 
     <!-- <permission
         id="DocentIMS.ActionItems.AddNotes"
         title="DocentIMS.ActionItems: Add Notes"
     /> -->
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.AddFrontPage"
         title="DocentIMS.ActionItems: Add FrontPage"
-    />
+    /> -->
 
     <permission
         id="DocentIMS.ActionItems.AddSowAnalysis"
         title="DocentIMS.ActionItems: Add Scope"
     />
 
-    <permission
+    <!-- <permission
         id="DocentIMS.ActionItems.ArchiveDeleteSow"
         title="DocentIMS.ActionItems: Archive Delete Scope"
-    />
+    /> -->
 
     <permission
         id="DocentIMS.ActionItems.AddActionItems"
         title="DocentIMS.ActionItems: Add ActionItems"
     />
 
-    <!-- <permission
+    <permission
         id="DocentIMS.ActionItems.ArchiveDeleteActionItems"
         title="DocentIMS.ActionItems: Archive Delete ActionItems"
-    /> -->
+    />
 
     <!-- <permission
         id="DocentIMS.ActionItems.ArchiveActionItems"

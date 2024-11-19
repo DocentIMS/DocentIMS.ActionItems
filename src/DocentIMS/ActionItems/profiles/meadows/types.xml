@@ -2,7 +2,7 @@
 <object name="portal_types" meta_type="Plone Types Tool">
   <property name="title">Controls the available contenttypes in your portal</property>
   <object name="action_items" meta_type="Dexterity FTI"/>
-  <object name="personal_notes" meta_type="Dexterity FTI"/>
+  <!-- <object name="personal_notes" meta_type="Dexterity FTI"/> -->
   <!-- <object name="sow_analysis" meta_type="Dexterity FTI"/> -->
   <object name="FrontPage" meta_type="Dexterity FTI"/>
   <!-- <object name="Notes" meta_type="Dexterity FTI"/> -->
@@ -11,6 +11,9 @@
   <object name="meeting_minutes" meta_type="Dexterity FTI"/>
   <object name="meeting_agenda" meta_type="Dexterity FTI"/>
   <object name="Folder" meta_type="Dexterity FTI"/>
+  <object name="Event" meta_type="Dexterity FTI"/>
+  <object name="News Item" meta_type="Dexterity FTI"/>
+  <object name="Link" meta_type="Dexterity FTI"/>
   <object name="planning_document" meta_type="Dexterity FTI"/>
   <object name="planning_breakdown" meta_type="Dexterity FTI"/>
   <object name="postit_note" meta_type="Dexterity FTI"/>

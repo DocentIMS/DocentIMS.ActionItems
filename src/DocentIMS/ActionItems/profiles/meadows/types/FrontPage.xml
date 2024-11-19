@@ -20,7 +20,7 @@
   <!-- Hierarchy control -->
   <property name="global_allow">True</property>
   <!-- Schema, class and security -->
-  <property name="add_permission">DocentIMS.ActionItems.AddFrontPage</property>
+  <property name="add_permission">cmf.AddPortalContent</property>
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file">DocentIMS.ActionItems.content:front_page.xml</property>
   <property name="model_source"></property>

@@ -350,6 +350,14 @@ def _create_content(portal):
                 title='Documents',
             )  
             
+        # if not portal.get('documents', False):
+        #     images_folder = plone.api.content.create(
+        #         type='Folder',
+        #         container=portal,
+        #         id='documents',
+        #         title='Documents',
+        #     )
+            
         if not portal.get('postit_notes', False):
             postit_notes = plone.api.content.create(
                 type='Folder',
@@ -368,7 +376,7 @@ def _create_content(portal):
                     title='Post It Notes',
                     query = [
                         {'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['postit_notes', 'postit_note', 'PostIt Notes']},
-                        {  "i":"Creator",  "o":"plone.app.querystring.operation.string.currentUser", "v":""  }
+                        { "i":"Creator",  "o":"plone.app.querystring.operation.string.currentUser", "v":""  }
                         ]
                 )
                          
