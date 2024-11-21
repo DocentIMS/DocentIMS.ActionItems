@@ -301,7 +301,6 @@ def _create_content(portal):
             
             ## add collection inside here
             
-            
 
             if not action_items.get('action-items-collection', False):
                 action_items_collection = plone.api.content.create(

@@ -28,17 +28,25 @@ class MyEmail(object):
             return result
 
         # === Your custom code comes here ===
-
-        user = api.user.get_current()   
+        
+        users = [api.user.get_current()]
         # We are not using the option to get another user
-        # usermail = self.request.get('email', None)
+        usermail = self.request.get('email', None)
         # Only users with special permissions can get info about other users
         # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
-        # user = api.user.get(username=usermail) 
+        if usermail and usermail is not None and usermail != '*':
+            users = [api.user.get(username=usermail)] 
+        elif usermail == '*':
+            users = api.user.get_users()
+             
         
         # companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
-        if  user is not None: 
-            my_groups = user.getGroups() or None
+        
+        members = []
+        result = []
+        
+        if  users is not None and len(users)== 1: 
+            my_groups = users[0].getGroups() or None
             # Get all, something like this:
             # my_groups = api.group.get_groups()
             # need to serilize below
@@ -63,13 +71,12 @@ class MyEmail(object):
                     members.append({'id': group.getId(), 'title': group.getGroupName(), 'groupMembers': ids})
                     # print(members)
                 members=members
-                 
-            result = {
-                'my_email': {
+        
+        for user in users:
+            result.append({
                     'id': user.getProperty('id'),
                     'email': user.getProperty('email'),
                     'fullname' : user.getProperty('fullname'),   
-                    # 'old_groups': my_groups,
                     'groups': members,
                     'roles' : user.getRoles(),
                     'last_name' : user.getProperty('fullname'), 
@@ -78,13 +85,12 @@ class MyEmail(object):
                     'office_phone_number': user.getProperty('office_phone_number'), 
                     'cellphone_number': user.getProperty('cellphone_number'), 
                     'company' : user.getProperty('company'), 
-                    'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
-                    
-                },
-            }
-            
+                
+            })
         
-            return result
+        
+        
+        return result
         
         #raise BadRequest("Parameters supplied are not valid")
         result = {
@@ -100,4 +106,5 @@ class MyEmailGet(Service):
 
     def reply(self):
         service_factory = MyEmail(self.context, self.request)
-        return service_factory(expand=True)['my_email']
+        return service_factory(expand=True) 
+        # return service_factory(expand=True)['my_email']
