@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    name="Notification"
+    meta_type="Dexterity FTI"
+    i18n:domain="medialog.notifications">
+ 
+  <!-- Enabled behaviors -->
+  <property name="behaviors" purge="true">
+ 
+  </property>
+ 
+
+</object>

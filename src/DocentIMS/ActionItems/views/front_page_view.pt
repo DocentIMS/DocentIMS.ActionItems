@@ -8,6 +8,12 @@
   <metal:content-core fill-slot="content">
   <metal:block define-macro="content">
 
+  <div tal:define="portal_state context/@@plone_portal_state" 
+    tal:condition="view/count_items" class="notification-viewlet portalMessage statusmessage statusmessage-info alert alert-info">
+    <a title="see noticitions" href="${portal_state/portal_url}/notifications-view">${view/get_user} has <b>${view/count_items}</b> new notification(s). <b>Click to see</b></a>
+</div>
+ 
+
     <!--p>${view/last_login|None}</p-->
     <h1 class="documentFirstHeading">${view/project_title|None}</h1>
     <h3>${view/project_short_name|None}</h3>

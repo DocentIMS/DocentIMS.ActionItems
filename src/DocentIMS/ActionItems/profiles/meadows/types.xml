@@ -18,4 +18,5 @@
   <object name="planning_breakdown" meta_type="Dexterity FTI"/>
   <object name="postit_note" meta_type="Dexterity FTI"/>
   <object name="meeting_notes" meta_type="Dexterity FTI"/>
+    <object name="Notification" meta_type="Dexterity FTI"/>
 </object>

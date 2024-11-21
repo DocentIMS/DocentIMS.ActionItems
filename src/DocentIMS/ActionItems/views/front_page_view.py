@@ -107,4 +107,29 @@ class FrontPageView(BrowserView):
     @property
     def is_anon(self):
         return api.user.is_anonymous()
+    
+    
+ 
+    # #TO DO, cache (?)
+    def get_user(self):
+        user = api.user.get_current()
+        user_id = user.getId()
+        
+        if user_id:
+            return user.getProperty("fullname")
+        
+ 
+
+    #TO DO, cache (?)
+    def count_items(self):
+        today = datetime.now()
+        
+        user = api.user.get_current()
+        user_id = user.getId()
+        items =  self.context.portal_catalog(portal_type=['Notification'], message_assigned=user_id, effective={"query": today, "range": "max"})
+        
+        
+        if items:
+            return len(items)
+        
             
