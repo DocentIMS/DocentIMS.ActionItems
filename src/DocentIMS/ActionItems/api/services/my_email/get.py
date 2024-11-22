@@ -29,10 +29,15 @@ class MyEmail(object):
 
         # === Your custom code comes here ===
         
+        current = api.user.get_current()
         users = [api.user.get_current()]
+        
+        # if api.user.get_current() is not in some group:
+            
         # We are not using the option to get another user
         usermail = self.request.get('email', None)
         # Only users with special permissions can get info about other users
+        # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
         # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
         if usermail and usermail is not None and usermail != '*':
             users = [api.user.get(username=usermail)] 
@@ -45,8 +50,7 @@ class MyEmail(object):
         members = []
         result = []
         
-        if  users is not None and len(users)== 1: 
-            my_groups = users[0].getGroups() or None
+        my_groups = current.getGroups() or None
             # Get all, something like this:
             # my_groups = api.group.get_groups()
             # need to serilize below
@@ -54,8 +58,8 @@ class MyEmail(object):
             # group_names = [group.id for group in all_groups]
             # Then a check if my_group is empty (did not need that check with own group because at least 'I' am part of it)
             
-            members = []
-            if my_groups:   
+        members = []
+        if my_groups:   
                
                 for mygroup in my_groups:
                     ids = []
@@ -89,17 +93,11 @@ class MyEmail(object):
             })
         
         
+        # result.append('groupmembers': {'members': members})
         
         return result
         
-        #raise BadRequest("Parameters supplied are not valid")
-        result = {
-                'my_email': {
-                    'id': None,
-                },
-            }
-        return result
-        #self.request.response.setStatus(401)
+        
 
 
 class MyEmailGet(Service):
