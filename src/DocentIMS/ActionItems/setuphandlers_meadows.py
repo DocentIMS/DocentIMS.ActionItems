@@ -118,6 +118,7 @@ def post_install(context):
                                             {'vocabulary_entry': 'Architect'},
                                             {'vocabulary_entry': 'Geotechnical'},
                                             {'vocabulary_entry': 'Outreach'},
+                                            {'vocabulary_entry': 'Property Manager'},                                            
                                         ])  
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
