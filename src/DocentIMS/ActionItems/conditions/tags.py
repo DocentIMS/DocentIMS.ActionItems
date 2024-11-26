@@ -14,8 +14,11 @@ from plone.autoform import directives
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
+# from plone.supermodel import model
  
 from plone.app.z3cform.widgets.select import AjaxSelectFieldWidget
+
+# subjects
 
 
 
@@ -25,10 +28,10 @@ class ITagsCondition(Interface):
     This is also used to create add and edit forms, below.
     """
     
-    directives.widget(
-        "tagsn", AjaxSelectFieldWidget, vocabulary="plone.app.vocabularies.Keywords"
-    )
-    tagsn = schema.Tuple(
+    # directives.widget(
+    #     "subjects", AjaxSelectFieldWidget, vocabulary="plone.app.vocabularies.Keywords"
+    # )
+    subjects = schema.Tuple(
         title=_("label_tags", default="Tags"),
         description=_(
             "help_tags",
@@ -38,6 +41,9 @@ class ITagsCondition(Interface):
         required=True,
         missing_value=(),
     )
+    directives.widget(
+         "subjects", AjaxSelectFieldWidget, vocabulary="plone.app.vocabularies.Keywords"
+    )
     
  
 @implementer(ITagsCondition, IRuleElementData)
@@ -46,14 +52,14 @@ class TagsCondition(SimpleItem):
     element.
     """
 
-    tagsn = ""
+    subjects = ""
     element = "plone.conditions.Tags"
 
     @property
     def summary(self):
         return _(
-            "TAGS is: ${tagsn}",
-            mapping={"tagsn": self.tagsn},
+            "TAGS is: ${subjects}",
+            mapping={"subjects": self.subjects},
         )
 
 
@@ -72,14 +78,14 @@ class TagsConditionExecutor:
 
     def __call__(self):
         object = self.event.object
-        tagsn = self.element.tagsn
+        subjects = self.element.subjects
         # Specify the tags to check for  
         tags = object.Subject()
         
         # Check if the object's tags contains tag
         # Later we probably do a loop or a lookup
         for tag in tags:
-            return tag in tagsn
+            return tag in subjects
         return False
     
 

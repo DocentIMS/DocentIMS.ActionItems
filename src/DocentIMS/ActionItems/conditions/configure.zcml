@@ -27,7 +27,7 @@
 
   <plone:ruleCondition
       name="plone.conditions.Tags"
-      title="TAGS "
+      title="TAGS"
       description="Apply only when the result of a TAGS is True"
       for="*"
       event="*"
