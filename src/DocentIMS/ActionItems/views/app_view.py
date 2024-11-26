@@ -23,11 +23,7 @@ class AppView(BrowserView):
         # Implement your own actions:
         return self.index()
     
-    def len_ais(self):
-        my_brains = self.context.portal_catalog(portal_type=['action_items'])
-        
-        if my_brains:        
-            return len(my_brains)
+
         
     def get_buttons(self):
         urls = ["https://mymeadows.org", "http://mymeadows.org:8084/Plone_24_10_24"]
@@ -42,6 +38,7 @@ class AppView(BrowserView):
         return buttons
     
     def get_current(self):
+        import pdb; pdb.set_trace()
         current = api.user.get_current()
         #return current.getId()
         return current.getProperty('email'),
@@ -73,6 +70,14 @@ class AppView(BrowserView):
                 return body
             
         return None
+    
+
+
+    def len_ais(self):
+        my_brains = self.context.portal_catalog(portal_type=['action_items'], assigned_id=self.get_current())
+        
+        if my_brains:        
+            return len(my_brains)
     
     def count_ais(self):
         urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
