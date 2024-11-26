@@ -21,8 +21,7 @@ class AppView(BrowserView):
 
     def __call__(self):
         # Implement your own actions:
-        return self.index()
-    
+        return self.index()    
 
         
     def get_buttons(self):

@@ -436,6 +436,32 @@ def _create_content(portal):
                     customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['feedback']}]
                 )
+                
+        # if not portal.get('site-collections', False):
+        #     items = plone.api.content.create(
+        #         type='Folder',
+        #         container=portal,
+        #         id='site-collections',
+        #         title='Site Collections',
+        #         exclude_from_nav=False,
+        #     )
+            
+        #     collection-of-collections = plone.api.content.create(
+        #             type='Collection',
+        #             container=feedback,
+        #             id='feedback-collection',
+        #             title='Feedback',
+        #             description=u"""  This collects all the collections on the site.   This helps me keep track of the collections i have and where they are.  helps avoid duplication.""",
+        #             layout='tabular_view',
+        #             limit=2000,
+        #             item_count=500,
+        #             customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
+        #             query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['feedback']}]
+        #         )
+                
+       
+            
+            
             
                 
 

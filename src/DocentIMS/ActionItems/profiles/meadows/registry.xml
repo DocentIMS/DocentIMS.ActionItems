@@ -892,6 +892,67 @@
   </record>
 
 
+
+
+  <record name="plone.app.querystring.field.meeting_type.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.meeting_type.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.meeting_type.fetch_vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="fetch_vocabulary">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <title>Fetch vocabulary</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.meeting_type.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.meeting_type.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <!-- <element>plone.app.querystring.operation.string.is</element> -->
+      <element>plone.app.querystring.operation.selection.any</element>
+      <element>plone.app.querystring.operation.selection.none</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.meeting_type.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.meeting_type.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Meeting Type</value>
+  </record>
+  <record name="plone.app.querystring.field.meeting_type.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value>DocentIMS.ActionItems.MeetingTypesVocabulary</value>
+  </record>
+
+
+
   <record name="plone.app.querystring.field.assigned_id.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
