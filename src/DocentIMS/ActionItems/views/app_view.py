@@ -60,6 +60,8 @@ class AppView(BrowserView):
         #******
         #******
         
+        import pdb; pdb.set_trace()
+        
         request = self.request
         siteurl = self.request.siteurl
         user = self.get_current()
@@ -87,7 +89,7 @@ class AppView(BrowserView):
 
     def len_meetings(self):
         # urgencies = self.context.portal_catalog.uniqueValuesFor("meeting_types")
-        my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], assigned_id=self.get_current()  )
+        my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees=self.get_current()  )
         return len(my_brains)
         # return None
         
@@ -96,7 +98,7 @@ class AppView(BrowserView):
         if meeting_types:
             meeting_list = []
             for meeting_type in meeting_types:
-                my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], assigned_id=self.get_current(), meeting_type=meeting_type)
+                my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees=self.get_current(), meeting_type=meeting_type)
                 meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
             return meeting_list
             
