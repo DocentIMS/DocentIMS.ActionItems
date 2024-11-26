@@ -11,7 +11,6 @@
   <i18n:registerTranslations directory="locales" />
 
 <include package="zope.annotation" />
- 
 
  
   <include file="permissions.zcml" />
@@ -24,6 +23,7 @@
   <include package=".views" />
   <include package=".behaviors"/>
   <include package=".api" />
+  <include package=".conditions" />
 
 
 
@@ -100,7 +100,7 @@
 
   <genericsetup:registerProfile
       name="meadows"
-      title="DocentIMS.ActionItems"
+      title="Meadows"
       directory="profiles/meadows"
       description="Installs the Meadowa´ActionItems."
       provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -119,15 +119,6 @@
       post_handler=".setuphandlers.post_install"
       /> -->
 
-
-  <genericsetup:registerProfile
-      name="import"
-      title="DocentIMS.ActionItems"
-      directory="profiles/import"
-      description="Installs the DocentIMS.ActionItems add-on."
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.post_import"
-      />
 
 
   <genericsetup:registerProfile

@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="DocentIMS.ActionItems">
+
+  <include package="plone.contentrules" />
+  <include package="zope.component" />
+ 
+  <!-- TAGS  condition -->
+ 
+  <adapter factory=".tags.TagsConditionExecutor" />
+
+  <browser:page
+      name="plone.conditions.Tags"
+      for="plone.app.contentrules.browser.interfaces.IRuleConditionAdding"
+      class=".tags.TagsAddFormView"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      name="edit"
+      for=".tags.ITagsCondition"
+      class=".tags.TagsEditFormView"
+      permission="cmf.ManagePortal"
+      />
+
+  <plone:ruleCondition
+      name="plone.conditions.Tags"
+      title="TAGS "
+      description="Apply only when the result of a TAGS is True"
+      for="*"
+      event="*"
+      schema=".tags.ITagsCondition"
+      factory=".tags.TagsCondition"
+      addview="plone.conditions.Tags"
+      editview="edit"
+      />
+
+</configure>

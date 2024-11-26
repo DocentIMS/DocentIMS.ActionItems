@@ -31,12 +31,20 @@ def dummy(obj):
 def assigned_idIndexer(obj):
     """Index id instead of assigned_to"""
     u_id = obj.assigned_to
+    
+    if not u_id:
+        return "None"
+    
     return u_id
 
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def assigned_toIndexer(obj):
     """Index real name instead of username for assigned_to"""
     username = obj.assigned_to
+    
+    if not username:
+        return 'Nobody'
+    
     if username:
         fullname = api.user.get(userid=username).getProperty('fullname')
         if fullname:
