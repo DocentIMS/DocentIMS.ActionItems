@@ -109,7 +109,7 @@
       />
 
   
-  <genericsetup:registerProfile
+  <!-- <genericsetup:registerProfile
       name="default"
       title="DocentIMS.ActionItems"
       directory="profiles/default"
@@ -117,7 +117,7 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       pre_handler=".setuphandlers.pre_install"
       post_handler=".setuphandlers.post_install"
-      />
+      /> -->
 
 
   <genericsetup:registerProfile

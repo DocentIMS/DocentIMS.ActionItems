@@ -43,7 +43,9 @@ class AppView(BrowserView):
     
     def get_current(self):
         current = api.user.get_current()
-        return current.getId()
+        #return current.getId()
+        return current.getProperty('email'),
+ 
 
     def get_dashboard_info(self):
         # Change to own api endpoint
