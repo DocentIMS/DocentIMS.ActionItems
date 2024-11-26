@@ -38,8 +38,17 @@
 							</div>
 						</div>						<!-- buttons-->
 						<div id="appWrapper" class="projectPreview">
-						 Please select project…
+						<a tal:condition="not: view/get_current|None"
+							class="plone-btn plone-btn-large plone-btn-primary pat-plone-modal"
+							data-pat-plone-modal="width: 400"
+							title="Log in" href="login" 
+							icon="plone-login">Please Log in first
+						</a>
+						 <span tal:condition="view/get_current|None">Please select project…</span>
+						 ${view/get_current}
 						</div>
+
+						
 
 
 						<style>

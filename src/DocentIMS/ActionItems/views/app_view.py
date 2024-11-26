@@ -4,6 +4,7 @@
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
 import requests
+from plone import api
 # from Products.CMFCore.utils import getToolByName
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -40,7 +41,9 @@ class AppView(BrowserView):
         
         return buttons
     
-        
+    def get_current(self):
+        current = api.user.get_current()
+        return current.getId()
 
     def get_dashboard_info(self):
         # Change to own api endpoint
@@ -48,10 +51,18 @@ class AppView(BrowserView):
         
         # TO DO, change admin
         
+        #******
+        #******
+        #******
+        #******
+        #******
+        #******
+        
         request = self.request
         siteurl = self.request.siteurl
+        user = self.get_current()
         
-        response = requests.get(f'{siteurl}/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+        response = requests.get(f'{siteurl}/@item_count?user={user}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
             
         if response:
                 body = response.json()
@@ -64,7 +75,7 @@ class AppView(BrowserView):
         if urgencies:
             urgency_list = []
             for urgency in reversed(urgencies):
-                my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency)
+                my_brains = self.context.portal_catalog(portal_type=['action_items'], assigned_id=self.get_current(), urgency=urgency)
                 
                 urgency_list.append({'name': urgency, 'count': len(my_brains)})
             return urgency_list
@@ -74,7 +85,7 @@ class AppView(BrowserView):
 
     def len_meetings(self):
         # urgencies = self.context.portal_catalog.uniqueValuesFor("meeting_types")
-        my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'] )
+        my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], assigned_id=self.get_current()  )
         return len(my_brains)
         # return None
         
@@ -83,7 +94,7 @@ class AppView(BrowserView):
         if meeting_types:
             meeting_list = []
             for meeting_type in meeting_types:
-                my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], meeting_type=meeting_type)
+                my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], assigned_id=self.get_current(), meeting_type=meeting_type)
                 meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
             return meeting_list
             

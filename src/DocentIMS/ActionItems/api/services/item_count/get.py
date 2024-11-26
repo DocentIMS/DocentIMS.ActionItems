@@ -16,9 +16,9 @@ class ItemCount(object):
         self.request = request
 
     def __call__(self, expand=False):
-        # user = None
-        # if hasattr(self.request, "user"):
-        #     user = self.request.user
+        user = None
+        if hasattr(self.request, "user"):
+            user = self.request.user
         
         result = {
             'item_count': {
@@ -35,7 +35,7 @@ class ItemCount(object):
         # portal = api.portal.get()
         # current_user = api.user.get_current()
         fullname = "Unknown user"
-        current_user =  api.user.get(userid='wglover@docentims.com') 
+        current_user =  api.user.get(userid=user) 
         if current_user:
             current_user.getProperty("fullname")
         
