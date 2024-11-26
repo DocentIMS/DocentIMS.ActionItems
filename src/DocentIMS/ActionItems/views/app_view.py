@@ -38,10 +38,9 @@ class AppView(BrowserView):
         return buttons
     
     def get_current(self):
-        import pdb; pdb.set_trace()
         current = api.user.get_current()
         #return current.getId()
-        return current.getProperty('email'),
+        return current.getProperty('email')
  
 
     def get_dashboard_info(self):
@@ -56,8 +55,6 @@ class AppView(BrowserView):
         #******
         #******
         #******
-        
-        import pdb; pdb.set_trace()
         
         request = self.request
         siteurl = self.request.siteurl
