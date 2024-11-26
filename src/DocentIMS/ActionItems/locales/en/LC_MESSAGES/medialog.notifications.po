@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2024-11-25 14:45+0000\n"
-"PO-Revision-Date: 2024-11-25 16:31+0100\n"
+"PO-Revision-Date: 2024-11-26 15:41+0100\n"
 "Last-Translator: espenm <post@medialog.no>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: content/notification.py:245
 msgid "(From) what time of day, hours:minutes"
-msgstr ""
+msgstr " _"
 
 #: contentrules/notifyadd.py:131
 msgid "A notify action can show a message to the user."
@@ -82,7 +82,7 @@ msgstr ""
 
 #: content/notification.py:263
 msgid "Specific date to show notification"
-msgstr ""
+msgstr "Day"
 
 #: content/notification.py:192
 msgid "The message shown to the user. NOTE: You can use  '${}' variables (see below))"
@@ -90,7 +90,7 @@ msgstr ""
 
 #: content/notification.py:244
 msgid "Time of day"
-msgstr ""
+msgstr "Time"
 
 #: configure.zcml:36
 msgid "Uninstalls the medialog.notifications add-on."
@@ -123,7 +123,7 @@ msgstr ""
 #. Default: "Show immidiately"
 #: content/notification.py:235
 msgid "label_time_filter"
-msgstr ""
+msgstr "Notify Immediately"
 
 #. Default: "Show Notifications immidiately"
 #: content/notification.py:236
