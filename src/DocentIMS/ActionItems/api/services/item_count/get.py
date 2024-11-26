@@ -34,6 +34,7 @@ class ItemCount(object):
         
         # portal = api.portal.get()
         # current_user = api.user.get_current()
+        
         fullname = "Unknown user"
         current_user =  api.user.get(userid=user) 
         if current_user:

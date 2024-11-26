@@ -34,7 +34,7 @@ class AppView(BrowserView):
         buttons = []
         
         for siteurl in urls:
-            response = requests.get(f'{siteurl}/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+            response = requests.get(f'{siteurl}/@item_count?user={self.get_current()}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
             if response:
                 body = response.json()
                 buttons.append({'name': body['dashboard-list']['short_name'], 'url': siteurl, 'project_color': body['dashboard-list']['project_color']})
