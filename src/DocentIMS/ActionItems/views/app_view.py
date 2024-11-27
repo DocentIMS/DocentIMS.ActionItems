@@ -25,7 +25,7 @@ class AppView(BrowserView):
 
         
     def get_buttons(self):
-        urls = ["https://mymeadows.org", "http://mymeadows.org:8084/Plone_24_10_24"]
+        urls = ["https://mymeadows.org", "http://mymeadows.org:8084/Plone_24_10_24", "http://ubuntu.local:8605/Plone47"]
         buttons = []
         
         for siteurl in urls:
@@ -42,65 +42,63 @@ class AppView(BrowserView):
         return current.getProperty('email')
  
 
-    def get_dashboard_info(self):
-        # Change to own api endpoint
-        # response = requests.get('http://ubuntu.local:8605/Plone14/@search', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+    # def get_dashboard_info(self):
+    #     # Change to own api endpoint
+    #     # TO DO, change admin
         
-        # TO DO, change admin
+    #     #******
+    #     #******
+    #     #******
+    #     #******
+    #     #******
+    #     #******
         
-        #******
-        #******
-        #******
-        #******
-        #******
-        #******
+    #     request = self.request
+    #     siteurl = self.request.siteurl
+    #     user = self.get_current()
         
-        request = self.request
-        siteurl = self.request.siteurl
-        user = self.get_current()
-        
-        response = requests.get(f'{siteurl}/@item_count?user={user}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+    #     response = requests.get(f'{siteurl}/@item_count?user={user}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
             
-        if response:
-                body = response.json()
-                return body
+    #     if response:
+    #             body = response.json()
+    #             return body
             
-        return None
+    #     return None
     
 
 
-    def len_ais(self):
-        my_brains = self.context.portal_catalog(portal_type=['action_items'], assigned_id=self.get_current())
+    # def len_ais(self):
+    #     my_brains = self.context.portal_catalog(portal_type=['action_items'], assigned_id=self.get_current())
         
-        if my_brains:        
-            return len(my_brains)
+    #     if my_brains:        
+    #         return len(my_brains)
     
-    def count_ais(self):
-        urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
-        if urgencies:
-            urgency_list = []
-            for urgency in reversed(urgencies):
-                my_brains = self.context.portal_catalog(portal_type=['action_items'], assigned_id=self.get_current(), urgency=urgency)
+    # def count_ais(self):
+    #     urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
+    #     if urgencies:
+    #         urgency_list = []
+    #         for urgency in reversed(urgencies):
+    #             my_brains = self.context.portal_catalog(portal_type=['action_items'], assigned_id=self.get_current(), urgency=urgency)
                 
-                urgency_list.append({'name': urgency, 'count': len(my_brains)})
-            return urgency_list
+    #             urgency_list.append({'name': urgency, 'count': len(my_brains)})
+    #         return urgency_list
             
-        return None
+    #     return None
 
 
-    def len_meetings(self):
-        # urgencies = self.context.portal_catalog.uniqueValuesFor("meeting_types")
-        my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees=self.get_current()  )
-        return len(my_brains)
-        # return None
+    # def len_meetings(self):
+    #     # urgencies = self.context.portal_catalog.uniqueValuesFor("meeting_types")
+    #     my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees=self.get_current()  )
+    #     return len(my_brains)
+    #     # return None
         
-    def count_meetings(self):
-        meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
-        if meeting_types:
-            meeting_list = []
-            for meeting_type in meeting_types:
-                my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees=self.get_current(), meeting_type=meeting_type)
-                meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
-            return meeting_list
+    # def count_meetings(self):
+    #     meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
+    #     if meeting_types:
+    #         meeting_list = []
+    #         for meeting_type in meeting_types:
+    #             my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees=self.get_current(), meeting_type=meeting_type)
+    #             meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
+    #         return meeting_list
             
-        return None
+    #     return None

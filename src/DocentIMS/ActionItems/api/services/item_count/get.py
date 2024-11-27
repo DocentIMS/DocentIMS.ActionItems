@@ -17,8 +17,7 @@ class ItemCount(object):
 
     def __call__(self, expand=False):
         user = None
-        if hasattr(self.request, "user"):
-            user = self.request.user
+        
         
         result = {
             'item_count': {
@@ -31,61 +30,65 @@ class ItemCount(object):
             return result
 
         # === Your custom code comes here ===
-        
-        # portal = api.portal.get()
-        # current_user = api.user.get_current()
+        if hasattr(self.request, "user"):
+            user = self.request.user
         
         fullname = "Unknown user"
         current_user =  api.user.get(userid=user) 
         if current_user:
-            current_user.getProperty("fullname")
+            user_id = current_user.getProperty("id")
+            fullname = current_user.getProperty("fullname")
         
-        #Count meetings
-        query = {}
-        query['portal_type'] = "meeting"
-        #query['something'] = Find my meeetings, might have to search on group
-        #Total number of Meetings
-        queryresult =  api.content.find(**query)
-        all_meetings = len(queryresult)
-        
-        meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
-        # Meeting list will show count of diffrent meeting types
-        meeting_list = []
-        if meeting_types:
-            for meeting_type in meeting_types:
-                my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], meeting_type=meeting_type)
-                meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
+            #Count meetings
+            query = {}
+            query['portal_type'] = "meeting"
+            query['attendees'] = user_id
+            #query['something'] = Find my meeetings, might have to search on group
+            #Total number of Meetings
+            queryresult =  api.content.find(**query)
+            all_meetings = len(queryresult)
             
-        query = {}
-        query['portal_type'] = "action_items"
-        queryresult =  api.content.find(**query)
-        all_ais = len(queryresult)
-        
-        
-        urgency_list = []
-        urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
-        if urgencies:
-            for urgency in reversed(urgencies):
-                my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency)
+            meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
+            # Meeting list will show count of diffrent meeting types
+            meeting_list = []
+            if meeting_types:
+                for meeting_type in meeting_types:
+                    my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees= user_id, meeting_type=meeting_type)
+                    meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
                 
-                # list of all action items 'sorted on urgency'
-                urgency_list.append({'name': urgency, 'count': len(my_brains)})
+            query = {}
+            query['portal_type'] = "action_items"
+            query['assigned_to'] = user_id
+            queryresult =  api.content.find(**query)
+            all_ais = len(queryresult)
             
+            
+            urgency_list = []
+            urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
+            if urgencies:
+                for urgency in reversed(urgencies):
+                    my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_id = user_id)
+                    
+                    # list of all action items 'sorted on urgency'
+                    urgency_list.append({'name': urgency, 'count': len(my_brains)})
+                
+            
+            meetings_and_ais = { 
+                                'site_url': self.context.absolute_url(), 
+                                'meetings': all_meetings, 
+                                'meeting_list': meeting_list, 
+                                'ais': all_ais, 
+                                'urgency_list': urgency_list, 
+                                'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
+                                'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),                                        
+                                'user': fullname }
+            
+            # current_user.getProperty("fullname"
+            
+            result['item_count']['dashboard-list'] =  meetings_and_ais
+            return result
         
-        meetings_and_ais = { 
-                            'site_url': self.context.absolute_url(), 
-                            'meetings': all_meetings, 
-                            'meeting_list': meeting_list, 
-                            'ais': all_ais, 
-                            'urgency_list': urgency_list, 
-                            'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
-                            'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),                                        
-                            'user': fullname }
-        
-        # current_user.getProperty("fullname"
-        
-        result['item_count']['dashboard-list'] =  meetings_and_ais
-        return result
+        return None
 
 
 class ItemCountGet(Service):

@@ -4,6 +4,7 @@
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
 import requests
+from plone import api
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -25,6 +26,11 @@ class AppInjectView(BrowserView):
         # Implement your own actions:
         return self.index()
     
+    def get_current(self):
+        current = api.user.get_current()
+        #return current.getId()
+        return current.getProperty('email')
+    
     
     def get_dashboard_info(self):
         # import pdb; pdb.set_trace()
@@ -32,7 +38,7 @@ class AppInjectView(BrowserView):
         # response = requests.get('http://ubuntu.local:8605/Plone14/@search', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
         siteurl = self.request.get('siteurl', 'https://mymeadows.org')
         
-        response = requests.get(f'{siteurl}/@item_count', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+        response = requests.get(f'{siteurl}/@item_count?user={self.get_current()}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
             
         if response:
                 body = response.json()
