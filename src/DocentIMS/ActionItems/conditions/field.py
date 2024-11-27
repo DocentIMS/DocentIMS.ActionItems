@@ -10,7 +10,7 @@ from Products.CMFCore.Expression import Expression
 from Products.CMFCore.utils import getToolByName
 from z3c.form import form
 from zope import schema
-from plone.autoform import directives 
+# from plone.autoform import directives 
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
