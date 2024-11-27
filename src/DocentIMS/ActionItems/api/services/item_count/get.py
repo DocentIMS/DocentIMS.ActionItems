@@ -58,7 +58,7 @@ class ItemCount(object):
                 
             query = {}
             query['portal_type'] = "action_items"
-            query['assigned_to'] = user_id
+            query['assigned_id'] = user_id
             queryresult =  api.content.find(**query)
             all_ais = len(queryresult)
             
@@ -67,7 +67,7 @@ class ItemCount(object):
             urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
             if urgencies:
                 for urgency in reversed(urgencies):
-                    my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_id = user_id)
+                    my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_to = user_id)
                     
                     # list of all action items 'sorted on urgency'
                     urgency_list.append({'name': urgency, 'count': len(my_brains)})
