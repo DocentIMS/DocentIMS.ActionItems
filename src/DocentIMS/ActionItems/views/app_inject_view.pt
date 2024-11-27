@@ -28,7 +28,7 @@
                     </a>
                     <a tal:condition="dashboard_list/notifications|None" 
                     href="${url}/notifications-view"
-                    class="rounded-alert alert-info" 
+                    class="rounded-alert alert-danger xstatusmessage-info alert" 
                     title="Alerts / Notifications on ${dashboard_list/short_name|None}"
                     alt="Alerts / Notifications"
                     role="alert">${dashboard_list/notifications|None}</a></h3>
@@ -144,10 +144,15 @@
       xdisplay: inline-block; /* Keeps it compact */
     }
      
-    a.alert-info {
-      xbackground-color: #17a2b8;
-      background-color: rgb(221, 35, 52);
+    a.alert-info,
+    a.alert,
+    a.alert-danger {
       color: #fff !important;
+    }
+
+    .alert-danger {
+      background-color: rgb(221, 35, 52);
+      border-color: orange;
     }
     
   </style>
