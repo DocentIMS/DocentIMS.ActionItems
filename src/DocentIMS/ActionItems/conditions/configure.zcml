@@ -37,4 +37,35 @@
       editview="edit"
       />
 
+
+  <!-- Field value condition -->
+
+  <adapter factory=".field.FieldConditionExecutor" />
+
+  <browser:page
+      name="plone.conditions.Field"
+      for="plone.app.contentrules.browser.interfaces.IRuleConditionAdding"
+      class=".field.FieldAddFormView"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      name="edit"
+      for=".field.IFieldCondition"
+      class=".field.FieldEditFormView"
+      permission="cmf.ManagePortal"
+      />
+
+  <plone:ruleCondition
+      name="plone.conditions.Field"
+      title="Field value"
+      description="Apply only when the result of a Field value is True"
+      for="*"
+      event="*"
+      schema=".field.IFieldCondition"
+      factory=".field.FieldCondition"
+      addview="plone.conditions.Field"
+      editview="edit"
+      />
+
 </configure>
