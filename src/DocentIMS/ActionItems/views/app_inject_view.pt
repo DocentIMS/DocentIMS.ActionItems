@@ -8,7 +8,10 @@
 
         <div id="appWrapper">
           <div tal:define="dashboard_items view/get_dashboard_info">
-            <main class="appWrapper" tal:define="dashboard_items view/get_dashboard_info; dashboard_list dashboard_items/dashboard-list">
+            <main class="appWrapper" 
+            tal:define="dashboard_items view/get_dashboard_info; 
+            dashboard_list dashboard_items/dashboard-list;
+            url dashboard_list/site_url">
 
 
               <!-- main app content -->
@@ -20,7 +23,12 @@
 
 
               <div class="topInfo">
-                <h3>${dashboard_list/short_name|None}</h3>
+                <h3>${dashboard_list/short_name|None} <a tal:condition="dashboard_list/notifications|None" 
+                    href="${url}/notifications-view"
+                    class="rounded-alert alert-info" 
+                    title="Alerts / Notifications on ${dashboard_list/short_name|None}"
+                    alt="Alerts / Notifications"
+                    role="alert">${dashboard_list/notifications|None}</a></h3>
               </div>
               <div class="userInfo">
                 <h4>
@@ -28,8 +36,7 @@
                     <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
                   </svg>
                   <span>${dashboard_list/user} 
-                  <span tal:condition="dashboard_list/notifications|None" class="rounded-alert alert-info" 
-                    role="alert">${dashboard_list/notifications|None}</span></span>
+                  </span>
                 </h4>
                  
               </div>
@@ -46,7 +53,7 @@
                             <h4>Your Total Action <br> Items</h4>
                               <h2>${dashboard_list/ais|None}</h2>  
                               <div class="detailsBtn">
-                                <a href="${dashboard_list/site_url}/action-items" class="white-text">
+                                <a href="${url}/action-items" class="white-text">
                                              More Details
                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -62,7 +69,7 @@
                               <h4>${urgency/name} <br> Items</h4>
                                 <h2>${urgency/count}</h2>
                                 <div class="detailsBtn">
-                                  <a href="${dashboard_list/site_url}/action-items?collectionfilter=1&urgency=${urgency/name}" class="white-text">
+                                  <a href="${url}/action-items?collectionfilter=1&urgency=${urgency/name}" class="white-text">
                                              More Details
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -90,7 +97,7 @@
                                           <h4>Meetings</h4>
                                           <h2>${dashboard_list/meetings|None}</h2>
                                           <div class="detailsBtn">
-                                            <a href="${dashboard_list/site_url}/meeting" class="white-text">
+                                            <a href="${url}/meeting" class="white-text">
                                              More Details
                                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -104,7 +111,7 @@
                                           <h4>${meeting/name}</h4>
                                           <h2>${meeting/count}</h2>
                                           <div class="detailsBtn">
-                                            <a href="${dashboard_list/site_url}/meeting" class="white-text">
+                                            <a href="${url}/meeting" class="white-text">
                                              More Details
                                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -129,14 +136,17 @@
    .singleItem { background-color: ${dashboard_list/project_color|None} } 
     .rounded-alert {
       border-radius: 50%; /* Makes the alert rounded */
-      padding: 10px 15px;
+      padding: 5px 10px;
+      margin-left: 1rem;
       xdisplay: inline-block; /* Keeps it compact */
     }
      
-    .alert-info {
-      background-color: #17a2b8;
-      color: #fff;
+    a.alert-info {
+      xbackground-color: #17a2b8;
+      background-color: rgb(221, 35, 52);
+      color: #fff !important;
     }
+    
   </style>
 
                 </main>
