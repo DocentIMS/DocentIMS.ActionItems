@@ -1,0 +1,573 @@
+#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+#SOME DESCRIPTIVE TITLE.
+#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2024-11-27 10:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DocentIMS.ActionItems\n"
+
+#: ./interfaces.py:418
+msgid ""
+msgstr ""
+
+#: ./interfaces.py:556
+msgid " "
+msgstr ""
+
+#: ./vocabularies.py:271
+msgid " Responsible"
+msgstr ""
+
+#: ./vocabularies.py:240
+msgid "1 Important"
+msgstr ""
+
+#: ./vocabularies.py:241
+msgid "2 Medium"
+msgstr ""
+
+#: ./vocabularies.py:242
+msgid "3 Low"
+msgstr ""
+
+#: ./conditions/tags.py:98
+msgid "A TAG condition makes the rule apply only if TAG is not False in context."
+msgstr ""
+
+#: ./conditions/tags.py:119
+msgid "A TAGS condition makes the rule apply only if TAG is not False in context."
+msgstr ""
+
+#: ./profiles/default/types/FrontPage.xml
+#: ./profiles/meadows/types/FrontPage.xml
+msgid "A content types that shows different rich text field to different users based on logged in or not"
+msgstr ""
+
+#: ./firstloggedin-kopi 2.py:109
+#: ./firstloggedin.py:115
+msgid "A relative url to redirect to."
+msgstr ""
+
+#: ./vocabularies.py:268
+msgid "AI Number"
+msgstr ""
+
+#: ./interfaces.py:401
+msgid "Action Item Table"
+msgstr ""
+
+#: ./portlets/add_action_item_portlet.py:39
+msgid "Add Action item portlet"
+msgstr ""
+
+#: ./conditions/tags.py:97
+msgid "Add TAG Condition"
+msgstr ""
+
+#: ./portlets/add_action_item_portlet.py:32
+msgid "Add action item"
+msgstr ""
+
+#: ./profiles/default/types/Planning_Document.xml
+#: ./profiles/meadows/types/planning_document.xml
+msgid "Any document reviewed for relation to the project."
+msgstr ""
+
+#: ./conditions/configure.zcml:38
+msgid "Apply only when the result of a TAGS is True"
+msgstr ""
+
+#: ./vocabularies.py:291
+msgid "Breakdown Number"
+msgstr ""
+
+#: ./portlets/add_action_item_portlet.py:20
+msgid "Button text"
+msgstr ""
+
+#: ./vocabularies.py:297
+msgid "Closed"
+msgstr ""
+
+#: ./vocabularies.py:278
+msgid "Closed?"
+msgstr ""
+
+#: ./interfaces.py:392
+msgid "Companies"
+msgstr ""
+
+#: ./interfaces.py:371
+msgid "Company Roles"
+msgstr ""
+
+#: ./conditions/tags.py:102
+#: ./firstloggedin-kopi 2.py:93
+#: ./firstloggedin.py:99
+msgid "Configure element"
+msgstr ""
+
+#: ./vocabularies.py:272
+msgid "Creator"
+msgstr ""
+
+#: ./vocabularies.py:252
+msgid "DD"
+msgstr ""
+
+#: ./vocabularies.py:253
+msgid "DQC"
+msgstr ""
+
+#: ./vocabularies.py:275
+msgid "Date Modified"
+msgstr ""
+
+#: ./profiles/default/types/Meeting_Agenda.xml
+msgid "Docent Meeting Agenda"
+msgstr ""
+
+#: ./profiles/default/types/Meeting_Minutes.xml
+msgid "Docent Meeting Minutes"
+msgstr ""
+
+#: ./configure.zcml:131
+msgid "DocentIMS.ActionItems (uninstall)"
+msgstr ""
+
+#: ./vocabularies.py:274
+msgid "Due Date"
+msgstr ""
+
+#: ./portlets/add_action_item_portlet.py:51
+msgid "Edit Portlet"
+msgstr ""
+
+#: ./firstloggedin-kopi 2.py:108
+#: ./firstloggedin.py:114
+msgid "Edit Redirect Action"
+msgstr ""
+
+#: ./conditions/tags.py:118
+msgid "Edit Tag Condition"
+msgstr ""
+
+#: ./vocabularies.py:295
+msgid "Estimated QC Time"
+msgstr ""
+
+#: ./profiles/default/types/Feedback.xml
+#: ./profiles/default/types/xxxxxfeedback.xml
+#: ./profiles/meadows/types/feedback.xml
+msgid "Feedback"
+msgstr ""
+
+#. Default: "Field"
+#: ./interfaces.py:174
+msgid "Field"
+msgstr ""
+
+#: ./profiles/default/types/FrontPage.xml
+#: ./profiles/meadows/types/FrontPage.xml
+msgid "FrontPage"
+msgstr ""
+
+#: ./xxxxbehavixxxxxors/only_office_support.py:25
+msgid "Give in a project name"
+msgstr ""
+
+#: ./vocabularies.py:273
+msgid "Initial Due Date"
+msgstr ""
+
+#: ./configure.zcml:120
+msgid "Installs the D AI add-on."
+msgstr ""
+
+#: ./configure.zcml:109
+msgid "Installs the Meadowa´ActionItems."
+msgstr ""
+
+#: ./vocabularies.py:296
+msgid "Internal QC Required"
+msgstr ""
+
+#: ./interfaces.py:354
+msgid "Locations"
+msgstr ""
+
+#: ./configure.zcml:109
+msgid "Meadows"
+msgstr ""
+
+#: ./profiles/default/types/Meeting.xml
+#: ./profiles/default/types/xmeeting.xml
+#: ./profiles/meadows/types/meeting.xml
+msgid "Meeting"
+msgstr ""
+
+#: ./profiles/meadows/types/meeting_agenda.xml
+msgid "Meeting Agenda"
+msgstr ""
+
+#: ./profiles/default/types/Meeting_Agenda.xml
+#: ./profiles/meadows/types/meeting_agenda.xml
+msgid "Meeting Agenda content type to link with Docent in Word.  A Word template is on the server.  When user uses the Docent toolbar to create a new document based on selection, Word, via API, gets the Word template for the doc type, creates new instance of doc type in Word.  users works in Word, when done, uploads Word file.  in addition, there are defined items uploaded via API so they can be shown in table."
+msgstr ""
+
+#: ./profiles/default/types/Meeting.xml
+#: ./profiles/default/types/xmeeting.xml
+#: ./profiles/meadows/types/meeting.xml
+msgid "Meeting Event Type"
+msgstr ""
+
+#: ./profiles/meadows/types/meeting_minutes.xml
+msgid "Meeting Minutes"
+msgstr ""
+
+#: ./profiles/default/types/Meeting_Notes.xml
+#: ./profiles/meadows/types/meeting_notes.xml
+msgid "Meeting Notes"
+msgstr ""
+
+#: ./interfaces.py:362
+msgid "Meeting Types"
+msgstr ""
+
+#: ./profiles/default/types/Meeting_Minutes.xml
+#: ./profiles/meadows/types/meeting_minutes.xml
+msgid "Meeting minutes content type to link with Docent in Word.  A Word template is on the server.  When user uses the Docent toolbar to create a new document based on selection, Word, via API, gets the Word template for the doc type, creates new instance of doc type in Word.  users works in Word, when done, uploads Word file.  in addition, there are defined items uploaded via API so they can be shown in table."
+msgstr ""
+
+#: ./interfaces.py:345
+msgid "Member Roles"
+msgstr ""
+
+#: ./vocabularies.py:255
+msgid "N/A"
+msgstr ""
+
+#: ./profiles/default/types/Notes.xml
+#: ./profiles/meadows/types/notes.xml
+msgid "Note"
+msgstr ""
+
+#: ./interfaces.py:379
+msgid "Notifications"
+msgstr ""
+
+#: ./vocabularies.py:251
+msgid "OS"
+msgstr ""
+
+#: ./vocabularies.py:276
+msgid "Out of Scope"
+msgstr ""
+
+#: ./firstloggedin-kopi 2.py:39
+#: ./firstloggedin.py:38
+msgid "Page to redirect to"
+msgstr ""
+
+#: ./profiles/default/types/Planning_Breakdown.xml
+#: ./profiles/meadows/types/planning_breakdown.xml
+msgid "Planning Breakdown"
+msgstr ""
+
+#: ./profiles/default/types/Planning_Document.xml
+#: ./profiles/meadows/types/planning_document.xml
+msgid "Planning Document"
+msgstr ""
+
+#: ./profiles/default/types/PostIt_Note.xml
+#: ./profiles/meadows/types/postit_note.xml
+msgid "PostIt Note"
+msgstr ""
+
+#: ./vocabularies.py:270
+msgid "Priority"
+msgstr ""
+
+#: ./xxxxbehavixxxxxors/only_office_support.py:24
+msgid "Project"
+msgstr ""
+
+#: ./interfaces.py:328
+msgid "Project Information"
+msgstr ""
+
+#: ./vocabularies.py:254
+msgid "QA"
+msgstr ""
+
+#: ./firstloggedin-kopi 2.py:91
+#: ./firstloggedin.py:97
+msgid "Redirect relative url"
+msgstr ""
+
+#: ./configure.zcml:98
+msgid "Redirect to page"
+msgstr ""
+
+#: ./firstloggedin-kopi 2.py:59
+#: ./firstloggedin.py:58
+msgid "Redirecting to ${rel_url}"
+msgstr ""
+
+#: ./firstloggedin-kopi 2.py:92
+#: ./firstloggedin.py:98
+msgid "Redirects user to relative URI."
+msgstr ""
+
+#: ./vocabularies.py:301
+msgid "Rel Action Item"
+msgstr ""
+
+#: ./vocabularies.py:277
+msgid "Rel Scope Number"
+msgstr ""
+
+#: ./vocabularies.py:299
+msgid "Responsible"
+msgstr ""
+
+#: ./views/project_view.pt:11
+msgid "Sample View"
+msgstr ""
+
+#: ./interfaces.py:409
+msgid "Scope Items Table"
+msgstr ""
+
+#: ./profiles/default/types/Planning_Breakdown.xml
+#: ./profiles/meadows/types/planning_breakdown.xml
+msgid "Sections"
+msgstr ""
+
+#: ./profiles/default/types/PostIt_Note.xml
+#: ./profiles/meadows/types/postit_note.xml
+msgid "Simple reminders to yourself.  Visible only to you in your dashboard."
+msgstr ""
+
+#: ./conditions/configure.zcml:38
+msgid "TAGS"
+msgstr ""
+
+#: ./conditions/tags.py:60
+msgid "TAGS is: ${subjects}"
+msgstr ""
+
+#. Default: "Select the columns you want to display in the Action Items Table."
+#: ./interfaces.py:607
+msgid "Table Columns"
+msgstr ""
+
+#: ./portlets/add_action_item_portlet.py:40
+msgid "This portlet displays a button to add action items"
+msgstr ""
+
+#: ./vocabularies.py:269
+msgid "Title"
+msgstr ""
+
+#: ./configure.zcml:131
+msgid "Uninstalls the DocentIMS.ActionItems add-on."
+msgstr ""
+
+#: ./profiles/default/types/Meeting_Notes.xml
+#: ./profiles/meadows/types/meeting_notes.xml
+msgid "Use to take notes during meeting. These notes ultimately used to create Meeting Minutes."
+msgstr ""
+
+#: ./configure.zcml:56
+msgid "User Logged in first time"
+msgstr ""
+
+#: ./vocabularies.py:256
+msgid "VC"
+msgstr ""
+
+#. Default: "Meeting"
+#: ./interfaces.py:136
+msgid "Vmeeting_summary"
+msgstr ""
+
+#. Default: "Team Roles"
+#: ./interfaces.py:99
+msgid "Vocabulary entries"
+msgstr ""
+
+#: ./firstloggedin-kopi 2.py:40
+#: ./firstloggedin.py:39
+msgid "Where to send users. No first slash (/)"
+msgstr ""
+
+#: ./vocabularies.py:279
+msgid "Workdays Left"
+msgstr ""
+
+#: ./configure.zcml:120
+msgid "_dont_D.AI"
+msgstr ""
+
+#. Default: "This search form enables you to find users by specifying one or more search criteria."
+#: ./browser/membersearch.py:94
+msgid "description_member_search"
+msgstr ""
+
+#. Default: "Search for users and their content"
+#: ./browser/membersearch.py:93
+msgid "heading_member_search"
+msgstr ""
+
+#. Default: "Use search criteria to find team members/ Select user to display a contact form and their created content"
+#: ./browser/membersearch.py:44
+msgid "help_search_name"
+msgstr ""
+
+#. Default: "Tags are commonly used for ad-hoc organization of content."
+#: ./conditions/tags.py:36
+msgid "help_tags"
+msgstr ""
+
+#. Default: "Attendees groups"
+#: ./interfaces.py:154
+msgid "label_attendees_groups"
+msgstr ""
+
+#. Default: "City"
+#: ./interfaces.py:244
+msgid "label_company_citye"
+msgstr ""
+
+#. Default: "Full Street Address"
+#: ./interfaces.py:235
+msgid "label_company_full_street_adress"
+msgstr ""
+
+#. Default: "Company 3-letter code (All Caps)"
+#: ./interfaces.py:210
+msgid "label_company_letter_code"
+msgstr ""
+
+#. Default: "Full Company Name"
+#: ./interfaces.py:202
+msgid "label_company_name"
+msgstr ""
+
+#. Default: "Other Address - Optional"
+#: ./interfaces.py:239
+msgid "label_company_other_adress"
+msgstr ""
+
+#. Default: "Company role"
+#: ./interfaces.py:221
+msgid "label_company_role"
+msgstr ""
+
+#. Default: "Short Company Name"
+#: ./interfaces.py:206
+msgid "label_company_short_name"
+msgstr ""
+
+#. Default: "State"
+#: ./interfaces.py:249
+msgid "label_company_state"
+msgstr ""
+
+#. Default: "ZIP"
+#: ./interfaces.py:312
+msgid "label_company_zip"
+msgstr ""
+
+#. Default: "Future days/value (displayed as Green)"
+#: ./interfaces.py:489
+#: ./profiles/meadows/registry.xml
+msgid "label_green"
+msgstr ""
+
+#. Default: "Full Name"
+#: ./browser/membersearch.py:43
+msgid "label_name"
+msgstr ""
+
+#. Default: "Project Contract Number"
+#: ./interfaces.py:461
+#: ./profiles/meadows/registry.xml
+msgid "label_project_contract_number"
+msgstr ""
+
+#. Default: "Project Short Name"
+#: ./interfaces.py:430
+#: ./profiles/meadows/registry.xml
+msgid "label_project_short_name"
+msgstr ""
+
+#. Default: "Project Very Short Name"
+#: ./interfaces.py:437
+#: ./profiles/meadows/registry.xml
+msgid "label_project_very_short_name"
+msgstr ""
+
+#. Default: "Urgent days/value (displayed as Red)"
+#: ./interfaces.py:484
+#: ./profiles/meadows/registry.xml
+msgid "label_red"
+msgstr ""
+
+#. Default: "Search"
+#: ./browser/membersearch.py:102
+msgid "label_search"
+msgstr ""
+
+#. Default: "Tags"
+#: ./conditions/tags.py:35
+msgid "label_tags"
+msgstr ""
+
+#. Default: "Project Full Name"
+#: ./interfaces.py:417
+#: ./profiles/meadows/registry.xml
+msgid "label_title"
+msgstr ""
+
+#. Default: "Vocabulary Entry"
+#: ./profiles/default/registry.xml
+msgid "label_vocabulary_entry"
+msgstr ""
+
+#. Default: "Soon days/value (displayed as Yellow)"
+#: ./interfaces.py:494
+#: ./profiles/meadows/registry.xml
+msgid "label_yellow"
+msgstr ""
+
+#: ./browser/membersearch.py:54
+msgid "legend_none"
+msgstr ""
+
+#. Default: "Contact Person"
+#: ./interfaces.py:164
+msgid "meeting_contact"
+msgstr ""
+
+#. Default: "Meeting Title"
+#: ./interfaces.py:130
+msgid "meeting_title"
+msgstr ""
+
+#. Default: "Meeting Type"
+#: ./interfaces.py:124
+msgid "meeting_type"
+msgstr ""

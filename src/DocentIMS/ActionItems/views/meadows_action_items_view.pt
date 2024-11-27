@@ -63,7 +63,7 @@
                     <tr>
                       <td>
                         <b>Priority:</b>
-                        <span tal:condition="context/priority|None">${context/priority|None}</span>
+                        <span tal:condition="context/priority|None" i18n:translate="priority">${view/priority}</span>
                       </td>
                       <td>
                         <b>Modified:</b>

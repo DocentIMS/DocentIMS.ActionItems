@@ -9,6 +9,9 @@ import numpy as np
 import datetime
 import holidays
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
+    
+from zope.component import getUtility
+from zope.schema.interfaces import IVocabularyFactory
 
 class IActionItemsView(Interface):
     """ Marker Interface for IActionItemsView"""
@@ -95,6 +98,25 @@ class ActionItemsView(BrowserView):
                 return 'future_green'
 
         return 'long_grey'
+    
+
+    def priority(self):
+        # Get the saved value from the field
+        priority_value = getattr(self.context, 'priority', None)
+        if priority_value is None:
+            return None
+
+        # Fetch the vocabulary
+        factory = getUtility(IVocabularyFactory, 'DocentIMS.ActionItems.PriorityVocabulary')
+        vocabulary = factory(self.context)
+
+        # Get the term and return the title
+        try:
+            term = vocabulary.getTerm(priority_value)
+            return term.title  # Returns the human-readable title
+        except LookupError:
+            return None
+            # return f"Unknown priority ({priority_value})"
 
 
 
