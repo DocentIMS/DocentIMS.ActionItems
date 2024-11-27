@@ -23,7 +23,10 @@
 
 
               <div class="topInfo">
-                <h3>${dashboard_list/short_name|None} <a tal:condition="dashboard_list/notifications|None" 
+                <h3><a href="${url}" alt="Link to site" title="Link to ${dashboard_list/short_name|None}">
+                      ${dashboard_list/short_name|None} 
+                    </a>
+                    <a tal:condition="dashboard_list/notifications|None" 
                     href="${url}/notifications-view"
                     class="rounded-alert alert-info" 
                     title="Alerts / Notifications on ${dashboard_list/short_name|None}"
