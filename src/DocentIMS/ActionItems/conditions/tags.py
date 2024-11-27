@@ -58,7 +58,7 @@ class TagsCondition(SimpleItem):
     @property
     def summary(self):
         return _(
-            "TAGS is: ${subjects}",
+            "TAGS: ${subjects}",
             mapping={"subjects": self.subjects},
         )
 

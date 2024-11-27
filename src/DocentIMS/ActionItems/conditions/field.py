@@ -54,13 +54,14 @@ class FieldCondition(SimpleItem):
     """
 
     field = ""
+    value = ""
     element = "plone.conditions.Field"
 
     @property
     def summary(self):
         return _(
-            "Field is: ${field}",
-            mapping={"field": self.field},
+            "Field: ${field} is: ${value}",
+            mapping={"field": self.field, "value": self.value},
         )
 
 

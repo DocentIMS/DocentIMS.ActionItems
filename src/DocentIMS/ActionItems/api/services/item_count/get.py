@@ -38,6 +38,13 @@ class ItemCount(object):
         if current_user:
             user_id = current_user.getProperty("id")
             fullname = current_user.getProperty("fullname")
+            
+            #Count notificatons
+            query = {}
+            query['portal_type'] = "Notification"
+            query['message_assigned'] = user_id
+            queryresult =  api.content.find(**query)
+            notifications = len(queryresult)
         
             #Count meetings
             query = {}
@@ -78,6 +85,7 @@ class ItemCount(object):
                                 'meetings': all_meetings, 
                                 'meeting_list': meeting_list, 
                                 'ais': all_ais, 
+                                'notifications': notifications, 
                                 'urgency_list': urgency_list, 
                                 'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                                 'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),                                        
