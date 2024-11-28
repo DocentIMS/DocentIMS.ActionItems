@@ -1,9 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:metal="http://xml.zope.org/namespaces/metal"
 	xmlns:tal="http://xml.zope.org/namespaces/tal"
-	xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
-	i18n:domain="DocentIMS.ActionItems" 
-	metal:use-macro="context/main_template/macros/master">
+	xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
 	<body>
 		<metal:content-core fill-slot="content">
 			<metal:block define-macro="content">
@@ -13,20 +11,17 @@
 					<!-- mobileSidebar -->
 					<!-- main app content -->
 
-					<div class="wrapper">
-						<div class="pageHeading">
-							<h2>My Projects</h2>
+					<div class="wrapper" tal:define="current view/get_current|None">
+						<div class="pageHeading" tal:condition="current|None">
+							<h2>${view/get_current} Projects </h2>
 						</div>
-						<div class="projectButton">
+						<div class="projectButton" tal:condition="not: view/get_current|None">
 							<div class="card">
 								<div class="card-body">
 									<ul class="nav nav-tabs" id="myTab" role="tablist">
 										<tal:repeat tal:repeat="button python:view.get_buttons()">
 											<li class="nav-item" role="presentation">
-												<a style="background-color: ${python: button['project_color']}" 
-												class="button btn pat-inject" 
-												href="app-inject-view?siteurl=${python: button['url']}" 
-												data-pat-inject="source: #appWrapper; target: #appWrapper; trigger: click">
+												<a style="background-color: ${python: button['project_color']}" class="button btn pat-inject" href="app-inject-view?siteurl=${python: button['url']}" data-pat-inject="source: #appWrapper; target: #appWrapper; trigger: click">
  												 ${python: button['name']}
 												</a>
 
@@ -38,18 +33,11 @@
 							</div>
 						</div>						<!-- buttons-->
 						<div id="appWrapper" class="projectPreview">
-						<a tal:condition="not: view/get_current|None"
-							class="plone-btn plone-btn-large plone-btn-primary pat-plone-modal"
-							data-pat-plone-modal="width: 400"
-							title="Log in" href="login" 
-							icon="plone-login">Please Log in first
-						</a>
-						 <span tal:condition="view/get_current|None">Please select project…</span>
-						 ${view/get_current}
+							<a tal:condition="not: current|None" class="plone-btn plone-btn-large plone-btn-primary pat-plone-modal" data-pat-plone-modal="width: 400" title="Log in" href="login" icon="plone-login">Please Log in first
+							</a>
+							<span tal:condition="current|None">Please select project…</span>
+						 	${current}
 						</div>
-
-						
-
 
 						<style>
 

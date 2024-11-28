@@ -5,9 +5,7 @@ from Products.Five.browser import BrowserView
 from zope.interface import Interface
 import requests
 from plone import api
-# from Products.CMFCore.utils import getToolByName
-
-# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
 
 class IAppView(Interface):
@@ -25,7 +23,10 @@ class AppView(BrowserView):
 
         
     def get_buttons(self):
-        urls = ["https://mymeadows.org", "http://mymeadows.org:8084/Plone_24_10_24" ]
+        
+        urls = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.app_buttons')
+        import pdb; pdb.set_trace()  
+        #urls = ["https://mymeadows.org", "http://mymeadows.org:8084/Plone_24_10_24" ]
         buttons = []
         
         for siteurl in urls:
@@ -39,7 +40,7 @@ class AppView(BrowserView):
     def get_current(self):
         current = api.user.get_current()
         #return current.getId()
-        return current.getProperty('email')
+        return current.getProperty('fullname')
  
 
     # def get_dashboard_info(self):
