@@ -37,7 +37,8 @@ class AppView(BrowserView):
                             buttons.append({
                                         'name': body['dashboard-list']['short_name'], 
                                         'url': siteurl, 
-                                        'project_color': body['dashboard-list']['project_color']
+                                        'project_color': body['dashboard-list']['project_color'], 
+                                        'notifications': body['dashboard-list']['notifications'], 
                                         })
                 
                 except requests.exceptions.ConnectionError:

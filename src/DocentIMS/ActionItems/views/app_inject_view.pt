@@ -138,23 +138,7 @@
  
  <style>
    .singleItem { background-color: ${dashboard_list/project_color|None} } 
-    .rounded-alert {
-      border-radius: 50%; /* Makes the alert rounded */
-      padding: 5px 10px;
-      margin-left: 1rem;
-      xdisplay: inline-block; /* Keeps it compact */
-    }
-     
-    a.alert-info,
-    a.alert,
-    a.alert-danger {
-      color: #fff !important;
-    }
-
-    .alert-danger {
-      background-color: rgb(221, 35, 52);
-      border-color: orange;
-    }
+    
     
   </style>
 
