@@ -14,7 +14,7 @@
 					<div class="wrapper" tal:define="current view/get_fullname|None">
 						<div class="pageHeading" tal:condition="current|None">
 							<h2>${view/get_current}'s Projects </h2>
-						</div>  
+						</div>
 						<div class="projectButton" tal:condition="current|None">
 							<div class="card">
 								<div class="card-body" tal:define="button view/get_buttons|None">
@@ -40,6 +40,9 @@
 						</div>
 
 						<style>
+
+.nav-item a {opacity: 0.5; backgroun-color: #DDD}
+.nav-item a.active {opacity: 1}
 
 #hero,
 #above-content-wrapper,
@@ -75,6 +78,7 @@ ul li {
 	text-decoration: none;
 	color: #05386B
 }
+
 
 #main-container h1,h2,h3,h4,h5,h6 {
 	margin: 0;
@@ -666,7 +670,7 @@ body {
 
 .projectPreview .topInfo h3 {
 	font-size: 16px;
-   color: ${project_color|None};
+   color: ${project_color|None} ;
 }
 
 .projectPreview .userInfo h4 {
@@ -677,9 +681,17 @@ body {
 .offcanvas {
 	width: 90% !important
 }
-
+}
 
 						</style>
+						<script>
+						$(document).ready(function() {
+							$(".nav-item > a").on("click", function() {
+								$(".nav-item > a").removeClass("active");
+								$(this).addClass("active");
+							});
+						});
+						</script>
 
 
 					</div>					<!-- wrapper-->

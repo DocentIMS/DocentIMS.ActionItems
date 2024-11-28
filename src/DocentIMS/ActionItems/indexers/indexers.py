@@ -33,7 +33,7 @@ def assigned_idIndexer(obj):
     u_id = obj.assigned_to
     
     if not u_id:
-        return "None"
+        return "unassigned"
     
     return u_id
 
@@ -43,7 +43,7 @@ def assigned_toIndexer(obj):
     username = obj.assigned_to
     
     if not username:
-        return 'Nobody'
+        return 'Unassigned'
     
     if username:
         fullname = api.user.get(userid=username).getProperty('fullname')
