@@ -12,14 +12,14 @@
 					<!-- main app content -->
 
 					<div class="wrapper" tal:define="current view/get_fullname|None">
-						<div class="pageHeading flexing" tal:condition="current|None">
-							<h2>${view/get_current}'s Projects </h2>
+						<div class="pageHeading flexing">
+							<h2><tal:condition tal:condition="current|None">${view/get_current}'s </tal:condition>Projects </h2>
 							 <div class="rightlogo">
 							 	<img  src="++plone++DocentIMS.ActionItems/docentlogo.jpg" width="200" alt="logo" title="Logo" />
 							 </div>
 						</div>
 						<div class=".wrapper loader">
-							<p> <span class=" projectselect" tal:condition="current|None">Please select project…</span></p>
+							<p><span class=" projectselect" tal:condition="current|None">Please select project…</span> &nbsp;</p>
 						</div>
 						<div class="projectButton" tal:condition="current|None">
 							<div class="card">
@@ -39,7 +39,7 @@
 							</div>
 						</div>						<!-- buttons-->
 						<div id="appWrapper" class="projectPreview">
-							<a tal:condition="not: current|None" class="plone-btn plone-btn-large plone-btn-primary pat-plone-modal" data-pat-plone-modal="width: 400" title="Log in" href="login" icon="plone-login">Please Log in first
+							<a tal:condition="not: current|None" class="loginbutton plone-btn plone-btn-large plone-btn-primary pat-plone-modal" data-pat-plone-modal="width: 400" title="Log in" href="login" icon="plone-login">Please Log in first
 							</a>
 
 						</div>
@@ -283,6 +283,18 @@ body {
 	row-gap: 15px;
 	flex-wrap: wrap
 }
+
+.loginbutton {
+	padding: 12px 25px;
+	border-radius: 30px;
+	font-weight: 500;
+	font-size: 15px;
+	min-width: 150px;
+	border: 1px solid;
+}
+
+.loginbutton:hover { background-color: white; xborder: 2px dotted; box-shadow: 1px 1px 3px 3px #DDD}
+
 
 .projectButton .btn,
 #main-container  a.button,
