@@ -5,19 +5,19 @@
 	<body>
 		<metal:content-core fill-slot="content">
 			<metal:block define-macro="content">
-				<main class="appWrapper" tal:define="button view/get_buttons">
+				<main class="appWrapper">
 					<!-- sidebar -->
 					<!-- mobile header -->
 					<!-- mobileSidebar -->
 					<!-- main app content -->
 
-					<div class="wrapper" tal:define="current view/get_current|None">
+					<div class="wrapper" tal:define="current view/get_fullname|None">
 						<div class="pageHeading" tal:condition="current|None">
-							<h2>${view/get_current} Projects </h2>
-						</div>
-						<div class="projectButton" tal:condition="not: view/get_current|None">
+							<h2>${view/get_current}'s Projects </h2>
+						</div>  
+						<div class="projectButton" tal:condition="current|None">
 							<div class="card">
-								<div class="card-body">
+								<div class="card-body" tal:define="button view/get_buttons|None">
 									<ul class="nav nav-tabs" id="myTab" role="tablist">
 										<tal:repeat tal:repeat="button python:view.get_buttons()">
 											<li class="nav-item" role="presentation">

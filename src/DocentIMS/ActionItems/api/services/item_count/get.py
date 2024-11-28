@@ -96,7 +96,8 @@ class ItemCount(object):
             result['item_count']['dashboard-list'] =  meetings_and_ais
             return result
         
-        return None
+        result['item_count']['dashboard-list'] = None
+        return result
 
 
 class ItemCountGet(Service):

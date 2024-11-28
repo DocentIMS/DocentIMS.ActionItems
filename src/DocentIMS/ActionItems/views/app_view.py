@@ -25,19 +25,28 @@ class AppView(BrowserView):
     def get_buttons(self):
         
         urls = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.app_buttons')
-        import pdb; pdb.set_trace()  
-        #urls = ["https://mymeadows.org", "http://mymeadows.org:8084/Plone_24_10_24" ]
         buttons = []
         
-        for siteurl in urls:
-            response = requests.get(f'{siteurl}/@item_count?user={self.get_current()}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
-            if response:
-                body = response.json()
-                buttons.append({'name': body['dashboard-list']['short_name'], 'url': siteurl, 'project_color': body['dashboard-list']['project_color']})
-        
+        if urls:
+            for siteurl in urls:
+                response = requests.get(f'{siteurl}/@item_count?user={self.get_current()}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+                if response.status_code == 200:
+                    body = response.json()
+                    if body['dashboard-list'] != None:
+                        buttons.append({
+                                    'name': body['dashboard-list']['short_name'], 
+                                    'url': siteurl, 
+                                    'project_color': body['dashboard-list']['project_color']
+                                    })
+            
         return buttons
     
     def get_current(self):
+        current = api.user.get_current()
+        #return current.getId()
+        return current.getProperty('email')
+    
+    def get_fullname(self):
         current = api.user.get_current()
         #return current.getId()
         return current.getProperty('fullname')
