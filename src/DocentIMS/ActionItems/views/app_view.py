@@ -29,15 +29,23 @@ class AppView(BrowserView):
         
         if urls:
             for siteurl in urls:
-                response = requests.get(f'{siteurl}/@item_count?user={self.get_current()}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
-                if response.status_code == 200:
-                    body = response.json()
-                    if body['dashboard-list'] != None:
-                        buttons.append({
-                                    'name': body['dashboard-list']['short_name'], 
-                                    'url': siteurl, 
-                                    'project_color': body['dashboard-list']['project_color']
-                                    })
+                try:                
+                    response = requests.get(f'{siteurl}/@item_count?user={self.get_current()}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
+                    if response.status_code == 200:
+                        body = response.json()
+                        if body['dashboard-list'] != None:
+                            buttons.append({
+                                        'name': body['dashboard-list']['short_name'], 
+                                        'url': siteurl, 
+                                        'project_color': body['dashboard-list']['project_color']
+                                        })
+                
+                except requests.exceptions.ConnectionError:
+                    print("Failed to connect to the server. Please check your network or URL.")
+                except requests.exceptions.Timeout:
+                    print("The request timed out. Try again later.")
+                except requests.exceptions.RequestException as e:
+                    print(f"An error occurred: {e}")
             
         return buttons
     
@@ -50,65 +58,4 @@ class AppView(BrowserView):
         current = api.user.get_current()
         #return current.getId()
         return current.getProperty('fullname')
- 
-
-    # def get_dashboard_info(self):
-    #     # Change to own api endpoint
-    #     # TO DO, change admin
-        
-    #     #******
-    #     #******
-    #     #******
-    #     #******
-    #     #******
-    #     #******
-        
-    #     request = self.request
-    #     siteurl = self.request.siteurl
-    #     user = self.get_current()
-        
-    #     response = requests.get(f'{siteurl}/@item_count?user={user}', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
-            
-    #     if response:
-    #             body = response.json()
-    #             return body
-            
-    #     return None
-    
-
-
-    # def len_ais(self):
-    #     my_brains = self.context.portal_catalog(portal_type=['action_items'], assigned_id=self.get_current())
-        
-    #     if my_brains:        
-    #         return len(my_brains)
-    
-    # def count_ais(self):
-    #     urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
-    #     if urgencies:
-    #         urgency_list = []
-    #         for urgency in reversed(urgencies):
-    #             my_brains = self.context.portal_catalog(portal_type=['action_items'], assigned_id=self.get_current(), urgency=urgency)
-                
-    #             urgency_list.append({'name': urgency, 'count': len(my_brains)})
-    #         return urgency_list
-            
-    #     return None
-
-
-    # def len_meetings(self):
-    #     # urgencies = self.context.portal_catalog.uniqueValuesFor("meeting_types")
-    #     my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees=self.get_current()  )
-    #     return len(my_brains)
-    #     # return None
-        
-    # def count_meetings(self):
-    #     meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
-    #     if meeting_types:
-    #         meeting_list = []
-    #         for meeting_type in meeting_types:
-    #             my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees=self.get_current(), meeting_type=meeting_type)
-    #             meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
-    #         return meeting_list
-            
-    #     return None
+  
