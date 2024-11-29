@@ -34,23 +34,22 @@ class ItemCount(object):
             user = self.request.user
         
         fullname = "Unknown user"
-        current_user =  api.user.get(userid=user) 
+        current_user =  api.user.get(userid=user) or api.user.get(username=user) 
         if current_user:
-            import pdb; pdb.set_trace()
-            user_id = current_user.getProperty("id")
+            user_ids = [current_user.getUserName(), current_user.getUserId(), current_user.getProperty("email") ] 
             fullname = current_user.getProperty("fullname")
             
             #Count notificatons
             query = {}
             query['portal_type'] = "Notification"
-            query['message_assigned'] = [user_id, user]
+            query['message_assigned'] = user_ids
             queryresult =  api.content.find(**query)
             notifications = len(queryresult)
         
             #Count meetings
             query = {}
             query['portal_type'] = "meeting"
-            query['attendees'] = [user_id, user]
+            query['attendees'] = user_ids
             #query['something'] = Find my meeetings, might have to search on group
             #Total number of Meetings
             queryresult =  api.content.find(**query)
@@ -61,12 +60,12 @@ class ItemCount(object):
             meeting_list = []
             if meeting_types:
                 for meeting_type in meeting_types:
-                    my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees= user_id, meeting_type=meeting_type)
+                    my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees= user_ids, meeting_type=meeting_type)
                     meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
                 
             query = {}
             query['portal_type'] = "action_items"
-            query['assigned_id'] = [user_id, user]
+            query['assigned_id'] = user_ids
             queryresult =  api.content.find(**query)
             all_ais = len(queryresult)
             
@@ -75,7 +74,7 @@ class ItemCount(object):
             urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
             if urgencies:
                 for urgency in reversed(urgencies):
-                    my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_to = [user, user_id])
+                    my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_to = user_ids)
                     
                     # list of all action items 'sorted on urgency'
                     urgency_list.append({'name': urgency, 'count': len(my_brains)})
