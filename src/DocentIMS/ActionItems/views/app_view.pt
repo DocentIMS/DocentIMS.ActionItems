@@ -13,7 +13,7 @@
 
 					<div class="wrapper" tal:define="current view/get_fullname|None">
 						<div class="pageHeading flexing">
-							<h2><tal:condition tal:condition="current|None">${view/get_current}'s </tal:condition>Projects </h2>
+							<h2><tal:condition tal:condition="current|None">${view/get_fullname}'s </tal:condition>Projects </h2>
 							 <div class="rightlogo">
 							 	<img  src="++plone++DocentIMS.ActionItems/docentlogo.jpg" width="200" alt="logo" title="Logo" />
 							 </div>

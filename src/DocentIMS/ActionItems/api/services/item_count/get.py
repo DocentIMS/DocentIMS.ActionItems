@@ -42,14 +42,14 @@ class ItemCount(object):
             #Count notificatons
             query = {}
             query['portal_type'] = "Notification"
-            query['message_assigned'] = user_id
+            query['message_assigned'] = [user_id, user]
             queryresult =  api.content.find(**query)
             notifications = len(queryresult)
         
             #Count meetings
             query = {}
             query['portal_type'] = "meeting"
-            query['attendees'] = user_id
+            query['attendees'] = [user_id, user]
             #query['something'] = Find my meeetings, might have to search on group
             #Total number of Meetings
             queryresult =  api.content.find(**query)
@@ -65,7 +65,7 @@ class ItemCount(object):
                 
             query = {}
             query['portal_type'] = "action_items"
-            query['assigned_id'] = user_id
+            query['assigned_id'] = [user_id, user]
             queryresult =  api.content.find(**query)
             all_ais = len(queryresult)
             
@@ -74,7 +74,7 @@ class ItemCount(object):
             urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
             if urgencies:
                 for urgency in reversed(urgencies):
-                    my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_to = user_id)
+                    my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_to = [user, user_id])
                     
                     # list of all action items 'sorted on urgency'
                     urgency_list.append({'name': urgency, 'count': len(my_brains)})
@@ -88,6 +88,7 @@ class ItemCount(object):
                                 'notifications': notifications, 
                                 'urgency_list': urgency_list, 
                                 'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
+                                'mark_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
                                 'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),                                        
                                 'user': fullname }
             

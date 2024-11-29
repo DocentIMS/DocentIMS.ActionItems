@@ -97,7 +97,7 @@
                                   <div class="itemWrapper">
                                     <div class="row">
                                       <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                                        <div class="singleItem">
+                                        <div class="singleItem meeting">
                                           <h4>Meetings</h4>
                                           <h2>${dashboard_list/meetings|None}</h2>
                                           <div class="detailsBtn">
@@ -138,6 +138,7 @@
  
  <style>
    .singleItem { background-color: ${dashboard_list/project_color|None} } 
+    .singleItem.meeting { background-color: ${dashboard_list/mark_color|None} } 
     
     
   </style>
