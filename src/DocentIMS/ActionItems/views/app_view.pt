@@ -57,6 +57,7 @@
 						<style>
 
 .nav-item { position: relative; padding-right: 2rem;}
+.faded {opacity: 0.5}
 
 #main-container a.topalert {
 opacity: 1;
@@ -768,8 +769,14 @@ body {
 
 							// Handle click events on navigation links
 							$navLinks.on("click", function () {
+								//$(".projectPreview").fadeOut(100);
+								$(".projectPreview").css('opacity', '0.35');
 								$navLinks.removeClass("active"); // Remove 'active' class from all links
 								$(this).addClass("active"); // Add 'active' class to the clicked link
+								document.querySelector(".pat-inject.active").addEventListener("pat-inject-success", (e) => {
+										$(".projectPreview").fadeIn(500); 
+										$(".projectPreview").css('opacity', '1');
+								})
 
 								// Hide project selection section
 								$projectSelect.hide();
@@ -782,6 +789,7 @@ body {
 							setTimeout(function() {
 								$navLinksFirst.click();
 							}, 100); // 1000 milliseconds = 1 second
+							
 						});
 
 						</script>
