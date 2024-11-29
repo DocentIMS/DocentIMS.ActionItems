@@ -36,6 +36,7 @@ class ItemCount(object):
         fullname = "Unknown user"
         current_user =  api.user.get(userid=user) 
         if current_user:
+            import pdb; pdb.set_trace()
             user_id = current_user.getProperty("id")
             fullname = current_user.getProperty("fullname")
             
