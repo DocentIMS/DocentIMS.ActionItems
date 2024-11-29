@@ -26,9 +26,11 @@
 								<div class="card-body" tal:define="button view/get_buttons|None">
 									<ul class="nav nav-tabs" id="myTab" role="tablist">
 										<tal:repeat tal:repeat="button python:view.get_buttons()">
-											<li class="nav-item" role="presentation">
+											<li class="nav-item" role="presentation"
+													tal:define="active python: 'active' if repeat.button.index == 0 else 'click'">
 												<a style="background-color: ${python: button['project_color']}" 
-												class="button btn pat-inject" href="app-inject-view?siteurl=${python: button['url']}" data-pat-inject="source: #appWrapper; target: #appWrapper; trigger: click">
+												class="button btn pat-inject ${active}" href="app-inject-view?siteurl=${python: button['url']}" 
+												data-pat-inject="source: #appWrapper; target: #appWrapper">
  												 ${python: button['name']} ( ${python: button['notifications']} )
 												</a>
 												<!-- <a 
@@ -757,14 +759,31 @@ body {
 
 						</style>
 						<script>
-						$(document).ready(function() {
-							$(".nav-item > a").on("click", function() {
-								$(".nav-item > a").removeClass("active");
-								$(this).addClass("active");
-								$(".projectselect").hide();
-								$(".loader").html("<p>Loading…</p>").fadeOut(2500); 
+						$(document).ready(function () {
+							// Cache selectors to improve performance
+							const $navLinks = $(".nav-item > a");
+							const $navLinksFirst = $(".nav-item > a.active");
+							const $projectSelect = $(".projectselect");
+							const $loader = $(".loader");
+
+							// Handle click events on navigation links
+							$navLinks.on("click", function () {
+								$navLinks.removeClass("active"); // Remove 'active' class from all links
+								$(this).addClass("active"); // Add 'active' class to the clicked link
+
+								// Hide project selection section
+								$projectSelect.hide();
+
+								// Show loader message and fade it out after 2.5 seconds
+								$loader.html("<p>Loading…</p>").fadeOut(2500);
 							});
+
+							// Trigger click event on the first navigation link to set it as active
+							setTimeout(function() {
+								$navLinksFirst.click();
+							}, 100); // 1000 milliseconds = 1 second
 						});
+
 						</script>
 
 
