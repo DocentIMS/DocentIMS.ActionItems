@@ -1,13 +1,34 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="DocentIMS.ActionItems">
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:zcml="http://namespaces.zope.org/zcml">
 
  <!-- -*- change * to content type (?) DocentIMS.ActionItems.content.action_items.IActionItems -*- -->
 
   <!-- Event view -->
 
+
+  <include package="plone.app.contentmenu" />
+
+  <!-- VIEWS FOR PLONE SITE ROOT -->
+  <!-- <browser:pages
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".folder.FolderView"
+      permission="zope2.View"
+      >
+
+      <browser:page
+        name="card_view"
+        template="templates/listing_album.pt"
+        menu="plone_displayviews"
+        title="Card View"
+    />
+
+    
+
+ </browser:pages> -->
+ 
 
  <browser:pages
      for="plone.app.contenttypes.interfaces.ICollection"
@@ -19,9 +40,8 @@
       name="action-overview"
       template="action_over_view.pt"
     />
-    
 
- </browser:pages>
+   </browser:pages>
  
  <browser:pages
      for="plone.app.contenttypes.interfaces.ICollection"
@@ -188,6 +208,28 @@
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
    />
 
+
+  <browser:page
+        name="card_view"
+        for="plone.app.contenttypes.interfaces.IFolder"   
+        class="plone.app.contenttypes.browser.collection.FolderView"
+        template="listing_card.pt"
+        menu="plone_displayviews"
+        title="Card view"
+        permission="zope2.View"
+   />
+
+     <browser:page
+        name="card_view"
+        for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"   
+        class="plone.app.contenttypes.browser.collection.CollectionView"
+        template="listing_card.pt"
+        menu="plone_displayviews"
+        title="Card view"
+        permission="zope2.View"
+   />
+
+ 
   <browser:page
    name="folder-tabbed-view"
    for="plone.app.contenttypes.interfaces.ICollection"

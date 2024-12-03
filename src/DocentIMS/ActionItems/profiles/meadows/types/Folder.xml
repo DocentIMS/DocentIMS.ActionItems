@@ -7,5 +7,6 @@
     purge="false">
     <element value="folder-tabbed-view" />
     <element value="tabbed-documents-view" />
+    <element value="card_view" />
   </property>
 </object>
