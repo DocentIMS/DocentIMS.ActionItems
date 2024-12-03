@@ -539,8 +539,33 @@ def _create_content(portal):
                 )
 
             
-                
-                
+        if not portal.get('planning-documents', False):
+            planning_documents = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='planning_documents',
+                title='Planning Documents',
+                description="This folder holds all the documents and parsed sections of all planning documents.",
+                default_page='planning-collection',
+                nextPreviousEnabled=1
+            )
+            
+            ## add collection inside
+
+            if not feedback.get('planning-collection', False):
+                planning_collection = plone.api.content.create(
+                    type='Collection',
+                    container=planning_documents,
+                    id='planning-collection',
+                    title='Planning Documents',
+                    description="This folder holds all the documents and parsed sections of all planning documents.",
+                    layout='tabular_view',
+                    limit=2000,
+                    item_count=500,
+                    customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Planning Document']}]
+                )      
+        
                 
             
         if not portal.get('templates', False):
