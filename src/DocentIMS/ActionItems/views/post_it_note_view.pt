@@ -35,7 +35,10 @@
     </div>
 
     <style>
-      .card-big-shadow {
+
+    h1, p.lead {display: none}
+
+    .card-big-shadow {
     max-width: 620px;
     position: relative;
 }
