@@ -1,7 +1,7 @@
 <model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
   <schema>
     <field name="title" type="zope.schema.TextLine">
-      <default>Notes 2024-10-14</default>
+      <default>Notes 2025</default>
       <title>Title</title>
     </field>
     <field name="description" type="zope.schema.TextLine">
@@ -47,6 +47,16 @@
       <description/>
       <required>False</required>
       <title>file</title>
+    </field>
+    <field name="planned_action_items" type="zope.schema.TextLine">
+      <description/>
+      <required>False</required>
+      <title>Planned Action Items</title>
+    </field>
+    <field name="proposed_action_items" type="zope.schema.TextLine">
+      <description/>
+      <required>False</required>
+      <title>Proposed Action Items</title>
     </field>
     <fieldset name="meeting_notes" label="Meeting Notes" description="My notes during the meeting.">
       <field name="meeting_notes" type="plone.app.textfield.RichText">
