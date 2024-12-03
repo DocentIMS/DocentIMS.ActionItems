@@ -212,7 +212,7 @@
   <browser:page
         name="card_view"
         for="plone.app.contenttypes.interfaces.IFolder"   
-        class="plone.app.contenttypes.browser.collection.FolderView"
+        class=".listing_card.DocumentsFolderView"
         template="listing_card.pt"
         menu="plone_displayviews"
         title="Card view"
@@ -222,7 +222,7 @@
      <browser:page
         name="card_view"
         for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"   
-        class="plone.app.contenttypes.browser.collection.CollectionView"
+        class=".listing_card.DocumentsFolderView"
         template="listing_card.pt"
         menu="plone_displayviews"
         title="Card view"

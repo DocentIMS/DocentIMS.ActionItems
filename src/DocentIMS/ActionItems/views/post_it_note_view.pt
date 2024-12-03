@@ -16,7 +16,7 @@
 
 
 
-        <div class="xcol-md-4 col-sm-8 content-card"> 
+        <div class="xcol-md-4 col-sm-4 content-card"> 
         <div class="card-big-shadow">
             <div class="card card-just-text" data-background="color" data-color="${context/color|None}" data-radius="none">
                 <div class="content">
@@ -35,6 +35,9 @@
     </div>
 
     <style>
+
+    
+    
 
     h1, p.lead {display: none}
 
@@ -66,10 +69,10 @@
 }
 .card.card-just-text .content {
     padding: 50px 65px;
-    text-align: center;
+    text-align: xcenter;
 }
 .card .content {
-    padding: 20px 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
 }
 .card[data-color="blue"] .category {
     color: #7a9e9f;
