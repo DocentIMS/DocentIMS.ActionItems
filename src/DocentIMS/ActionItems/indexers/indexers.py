@@ -170,4 +170,4 @@ def urgencyIndexer(obj):
 
         return "More than {days}".format(days = green) 
 
-    return None
+    return "Unset"

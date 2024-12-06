@@ -6,6 +6,8 @@ from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
 
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
+
 
 @implementer(IExpandableElement)
 @adapter(Interface, Interface)
@@ -34,17 +36,23 @@ class ItemCount(object):
             user = self.request.user
         
         fullname = "Unknown user"
+        your_team_role = ""
         current_user =  api.user.get(userid=user) or api.user.get(username=user) 
         if current_user:
             user_ids = [current_user.getUserName(), current_user.getUserId(), current_user.getProperty("email") ] 
-            fullname = current_user.getProperty("fullname")
+            fullname = current_user.getProperty("fullname", None)
+            your_team_role = current_user.getProperty("your_team_role", None)
+            
             
             #Count notificatons
-            query = {}
-            query['portal_type'] = "Notification"
-            query['message_assigned'] = user_ids
-            queryresult =  api.content.find(**query)
-            notifications = len(queryresult)
+            notification_list = []
+            notification_types = ["error", "warning",  "info"]
+            for notification_type in notification_types:
+                    my_brains = self.context.portal_catalog(portal_type=['Notification'], 
+                                                                message_assigned = user_ids, 
+                                                                notification_type=notification_type)
+                    notification_list.append({'name': notification_type, 'count': len(my_brains)})
+        
         
             #Count meetings
             query = {}
@@ -55,13 +63,20 @@ class ItemCount(object):
             queryresult =  api.content.find(**query)
             all_meetings = len(queryresult)
             
-            meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
+            #meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
+            meeting_types =  api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
+            
             # Meeting list will show count of diffrent meeting types
             meeting_list = []
             if meeting_types:
                 for meeting_type in meeting_types:
-                    my_brains = self.context.portal_catalog(portal_type=['meeting', 'Meeting'], attendees= user_ids, meeting_type=meeting_type)
-                    meeting_list.append({'name': meeting_type, 'count': len(my_brains)})
+                    mtype= meeting_type['meeting_type']
+                    my_brains = self.context.portal_catalog(
+                        portal_type=['meeting', 'Meeting'], 
+                        attendees= user_ids, 
+                        meeting_type=mtype)
+                    meeting_list.append({'name': mtype, 'count': len(my_brains)}) 
+        
                 
             query = {}
             query['portal_type'] = "action_items"
@@ -71,21 +86,34 @@ class ItemCount(object):
             
             
             urgency_list = []
-            urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
-            if urgencies:
-                for urgency in reversed(urgencies):
+            #urgencies = self.context.portal_catalog.uniqueValuesFor("urgency")
+            
+            red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
+            yellow = api.portal.get_registry_record('soon_yellow', interface=IDocentimsSettings)
+            green = api.portal.get_registry_record('future_green', interface=IDocentimsSettings)
+        
+            urgencies = ["Urgent < {days} workdays".format(days = red),
+                         "Soon < {days} workdays".format(days = yellow),
+                         "Future < {days} workdays".format(days = green),
+                         "More than {days}".format(days = green),
+                         "Unset",
+                        ]
+
+            
+            for urgency in  urgencies:
                     my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_to = user_ids)
                     
                     # list of all action items 'sorted on urgency'
                     urgency_list.append({'name': urgency, 'count': len(my_brains)})
                 
-            
+             
             meetings_and_ais = { 
                                 'site_url': self.context.absolute_url(), 
                                 'meetings': all_meetings, 
                                 'meeting_list': meeting_list, 
                                 'ais': all_ais, 
-                                'notifications': notifications, 
+                                'your_team_role': your_team_role,
+                                'notification_list': notification_list, 
                                 'urgency_list': urgency_list, 
                                 'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                                 'mark_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
