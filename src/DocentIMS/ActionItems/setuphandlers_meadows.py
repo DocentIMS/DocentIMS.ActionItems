@@ -450,7 +450,7 @@ def _create_content(portal):
             
             ## add collection inside
 
-            if not feedback.get('planning-collection', False):
+            if not planning_documents.get('planning-collection', False):
                 planning_collection = plone.api.content.create(
                     type='Collection',
                     container=planning_documents,
