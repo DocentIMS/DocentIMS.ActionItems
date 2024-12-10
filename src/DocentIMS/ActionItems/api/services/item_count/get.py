@@ -5,6 +5,8 @@ from plone.restapi.services import Service
 from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
+from DateTime import DateTime
+import datetime
 
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
@@ -106,11 +108,28 @@ class ItemCount(object):
                     # list of all action items 'sorted on urgency'
                     urgency_list.append({'name': urgency, 'count': len(my_brains)})
                 
-             
+            
+            
+
+            # Query the catalog for items, sorted by ModificationDate in descending order
+            # There will always be a catalog entry, no need to check
+            last_item = self.context.portal_catalog(
+                        sort_on='modified',
+                        sort_order='descending',
+                        sort_limit=1,
+                )     
+            
+            last_date = last_item[0].modified
+            human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
+            
             meetings_and_ais = { 
                                 'site_url': self.context.absolute_url(), 
                                 'meetings': all_meetings, 
                                 'meeting_list': meeting_list, 
+                                'last_updated': human_readable_date,
+                                # 'human_readable_date': human_readable_date,
+                                # 'last_modified': last_modified,
+                                # 'last_updated':  datetime.datetime.strptime(str(last_modified), '%Y-%m-%dT%H:%M:%S').strftime('%A, %d %B %Y, %I:%M %p'),    
                                 'ais': all_ais, 
                                 'your_team_role': your_team_role,
                                 'notification_list': notification_list, 
