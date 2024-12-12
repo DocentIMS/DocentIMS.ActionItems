@@ -29,17 +29,29 @@
                         </a>
                       </h5>
                       <p class="card-text">${item/CroppedDescription}</p>
-                      <p tal:define="formatted_date python:item.start.strftime('%b %d, %Y from %H:%M')">
-                        🕑 <tal:date replace="formatted_date" />
-                      </p>
+                      <tal:define tal:define="formatted_date python:item.start.strftime('%b %d, %Y from %H:%M');
+                          formatted_created python:item.created.strftime('%b %d, %Y  %H:%M');
+                          formatted_modified python:item.modified.strftime('%b %d, %Y  %H:%M')">
+                        <p> 🕑                          <tal:date replace="formatted_date" />
+                        </p>
+                        <p class="small published">
+
+                          <span tal:condition="python: formatted_created != formatted_modified">Revised:</span>
+                          <span tal:condition="python: formatted_created == formatted_modified">Published:</span>
+                          <tal:date replace="formatted_date" />
+                        </p>
+                      </tal:define>
                     </div>
                   </div>
                 </tal:repeat>
                 <div metal:use-macro="here/batch_macros/macros/navigation" />
               </div>
             </fieldset>
- 
+
           </div>
+          <style>
+          .small.published {font-size: 10px}
+          </style>
         </div>
 
 

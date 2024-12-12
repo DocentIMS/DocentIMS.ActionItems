@@ -58,7 +58,7 @@
  </browser:pages>
  
 
- <browser:page
+ <!-- <browser:page
    name="app-view"
    for="*"
    class=".app_view.AppView"
@@ -74,7 +74,7 @@
    template="app_inject_view.pt"
    permission="zope2.View"
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
-   />
+   /> -->
 
 
  <browser:page
