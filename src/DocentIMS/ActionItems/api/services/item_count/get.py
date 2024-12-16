@@ -36,12 +36,16 @@ class ItemCount(object):
         # === Your custom code comes here ===
         if hasattr(self.request, "user"):
             user = self.request.user
+            
+        # import pdb; pdb.set_trace()
         
         fullname = "Unknown user"
         your_team_role = ""
+        last_login_time = None
         current_user =  api.user.get(userid=user) or api.user.get(username=user) 
         if current_user:
             user_ids = [current_user.getUserName(), current_user.getUserId(), current_user.getProperty("email") ] 
+            last_login_time = current_user.getProperty("last_login_time")
             fullname = current_user.getProperty("fullname", None)
             your_team_role = current_user.getProperty("your_team_role", None)
             
@@ -127,6 +131,7 @@ class ItemCount(object):
                                 'meetings': all_meetings, 
                                 'meeting_list': meeting_list, 
                                 'last_updated': human_readable_date,
+                                'last_login_time': last_login_time.year(),
                                 # 'human_readable_date': human_readable_date,
                                 # 'last_modified': last_modified,
                                 # 'last_updated':  datetime.datetime.strptime(str(last_modified), '%Y-%m-%dT%H:%M:%S').strftime('%A, %d %B %Y, %I:%M %p'),    

@@ -10,6 +10,7 @@ from zope.interface import Interface
 from zope.lifecycleevent import IObjectModifiedEvent
 from zope.lifecycleevent import IObjectModifiedEvent
 
+
 # from zope.lifecycleevent import IObjectAddedEvent"
 #from zope.schema.interfaces import IContextSourceBinder
 # from zope.schema.interfaces import  InvalidValue
@@ -219,4 +220,15 @@ def save_note(object, event):
                 #item[0].getObject().bodytext
                 
 
-        
+def user_created_handler(event):
+    """Handles a new user creation."""
+    #user = event.principal
+    user = event.object
+    user_id = user.getUserId()
+    name = user.getName()
+    username = user.getUserName()
+    member = api.user.get(userid=user_id) 
+    email  = member.getProperty('email')
+    
+    # Example logic: Log or perform operations with the user
+    

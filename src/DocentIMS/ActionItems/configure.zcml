@@ -55,6 +55,12 @@
       name="User Logged in first time"
       />
 
+  <!-- Subscriber for user created  -->
+  <subscriber
+    for="Products.PluggableAuthService.interfaces.events.IPrincipalCreatedEvent"
+    handler=".subscribers.user_created_handler"
+  />
+
   <!-- <subscriber
     for="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
     handler=".handlers.user_logged_in_first"
@@ -178,6 +184,8 @@
         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".subscribers.save_note"
     />
+   
+
 
     <!-- subscriber for the 'Last state' transaction -->
   <!--subscriber
