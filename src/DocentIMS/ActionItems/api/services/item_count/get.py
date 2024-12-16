@@ -131,7 +131,7 @@ class ItemCount(object):
                                 'meetings': all_meetings, 
                                 'meeting_list': meeting_list, 
                                 'last_updated': human_readable_date,
-                                'last_login_time': last_login_time.year() != 2000,
+                                'last_login_time': last_login_time.year() == 2000,
                                 # 'human_readable_date': human_readable_date,
                                 # 'last_modified': last_modified,
                                 # 'last_updated':  datetime.datetime.strptime(str(last_modified), '%Y-%m-%dT%H:%M:%S').strftime('%A, %d %B %Y, %I:%M %p'),    
