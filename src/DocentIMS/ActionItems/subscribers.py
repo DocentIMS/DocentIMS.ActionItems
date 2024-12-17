@@ -228,9 +228,9 @@ def save_note(object, event):
 def user_created_handler(event):
     """Handles a new user creation."""
     # siteurl = "http://dashboard.docentims.com"
-    siteurl = "http://10.0.0.159:8605/Plone54/plone/@users"
-    site_url = "http://10.0.0.159:8605/Plone54"
-    # plne
+    siteurl = "https://dashboard.docentims.com/@users"
+    site_url = "https://dashboard.docentims.com"
+    # plone
     user = event.object
     email  = user.getProperty('email', None)
     
