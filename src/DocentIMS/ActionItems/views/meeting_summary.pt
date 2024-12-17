@@ -102,10 +102,11 @@
             <div class="col event-contact mb-3" tal:define="
                    user_id data/contact_name|None; ">
 
-              <tal:check tal:condition="python: user_id != None">
+              <tal:check tal:condition="python: user_id != None and user">
                 <div class="d-flex" tal:define="user python:context.portal_membership.getMemberById(user_id);
                    name python:user.getProperty('fullname', None);
-                   mail python:user.getProperty('email', None) " tal:condition="python:name or mail">
+                   mail python:user.getProperty('email', None) " 
+                   tal:condition="python:name or mail">
                   <div>Contact Person: &nbsp;</div>
                   <div class="meta-icon">
                     <tal:icon replace="structure python:icons.tag('person', tag_class='icon-inline')" />
@@ -157,7 +158,7 @@
                       <tal:icon replace="structure python:icons.tag('people', tag_class='icon-inline')" />
                     </span>
                     <tal:attendees tal:repeat="item view/get_attendees">
-                      <span class="text-no-wrap">
+                      <span class="text-no-wrap" tal:condition="python:  item !=None">
                         <tal:define tal:define="
                             user_id item|None;
                             user python:context.portal_membership.getMemberById(user_id);

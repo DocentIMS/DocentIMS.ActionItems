@@ -78,7 +78,7 @@ class RedirectActionExecutor:
     def __call__(self):
         request = self.context.REQUEST
         rel_url = _(self.element.rel_url)
-        import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         url = "{}/{}".format(api.portal.get().absolute_url(), rel_url)
         request.response.redirect(url)
         return True 

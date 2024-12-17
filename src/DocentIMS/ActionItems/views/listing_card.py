@@ -31,8 +31,12 @@ class DocumentsFolderView(BrowserView):
         return getattr(self, "_b_size", 25)
     
     def get_types(self):
-        meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
-        return sorted(meeting_types)
+        # meeting_types = self.context.portal_catalog.uniqueValuesFor("meeting_type")
+        # meeting_type
+        # meeting_title
+        meetings = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
+        meeting_list = [meeting['meeting_type'] for meeting in meetings]
+        return sorted(meeting_list)
  
     
     def batch(self, mtype):
@@ -47,5 +51,8 @@ class DocumentsFolderView(BrowserView):
             b_start,
             b_start_str=b_start_str,
         )
-            
         
+    def in_right_group(self):
+        user = api.user.get_current()
+        return  'PrjTeam' not in user.getGroups()
+    

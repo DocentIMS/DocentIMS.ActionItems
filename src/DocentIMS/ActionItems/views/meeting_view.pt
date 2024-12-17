@@ -118,6 +118,7 @@
           .noborder {text-decoration: none}
           .block {display: block}
           .opacity-30, .hasfile- { opacity: 0.30}
+          #plone-contentmenu-factories {display: none}
         </style>
 
       </metal:block>

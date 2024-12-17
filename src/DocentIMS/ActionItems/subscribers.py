@@ -9,6 +9,9 @@ import transaction
 from zope.interface import Interface
 from zope.lifecycleevent import IObjectModifiedEvent
 from zope.lifecycleevent import IObjectModifiedEvent
+import requests
+import string
+import random
 
 
 # from zope.lifecycleevent import IObjectAddedEvent"
@@ -58,6 +61,8 @@ def add_meeting_types(object, event):
         parent_id = context.UID()
         meeting_date_time = context.start.date()
         location = context.location
+        object.setSubject((object.meeting_type,))  # Set tags; it takes a tuple or a list of strings
+        object.reindexObject(idxs=['Subject']) 
         
         portal_types = api.portal.get_tool('portal_types')
 
@@ -222,13 +227,30 @@ def save_note(object, event):
 
 def user_created_handler(event):
     """Handles a new user creation."""
-    #user = event.principal
+    # siteurl = "http://dashboard.docentims.com"
+    siteurl = "http://10.0.0.159:8605/Plone54/plone/@users"
+    site_url = "http://10.0.0.159:8605/Plone54"
+    # plne
     user = event.object
-    user_id = user.getUserId()
-    name = user.getName()
-    username = user.getUserName()
-    member = api.user.get(userid=user_id) 
-    email  = member.getProperty('email')
+    email  = user.getProperty('email', None)
     
-    # Example logic: Log or perform operations with the user
+    # Create a new user
     
+    if email:
+        username = user.getUserName()
+        fullname = user.getProperty('fullname')
+        password = ''.join(random.choices(string.ascii_letters, k=27))
+        added_user = requests.post(siteurl, headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, json={'email': email, 'password': password, 'fullname': fullname, 'roles': ['Member'], 'username': username}, auth=('admin', 'admin'))
+        # import pdb; pdb.set_trace()
+        url = f'{site_url}/@add_user?username={username}&email={email}&fullname={fullname}'
+        response = requests.get(url, headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, auth=('admin', 'admin'))
+        if response.status_code == 200:            
+            body = response.json()
+            # Do something
+        else:
+            #Give error, send email ??
+            abc = 1
+               
+        
+        return True
+        

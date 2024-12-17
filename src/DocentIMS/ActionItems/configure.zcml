@@ -57,7 +57,7 @@
 
   <!-- Subscriber for user created  -->
   <subscriber
-    for="Products.PluggableAuthService.interfaces.events.IPrincipalCreatedEvent"
+    for="Products.PluggableAuthService.interfaces.events.IPropertiesUpdatedEvent"
     handler=".subscribers.user_created_handler"
   />
 

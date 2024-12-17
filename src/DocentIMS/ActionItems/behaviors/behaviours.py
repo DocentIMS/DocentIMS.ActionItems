@@ -56,7 +56,7 @@ class IMeetingContact( IEventContact):
 class IMeetingAttendees(IEventAttendees):
     """MEETING Attendees Schema."""
     attendees = schema.Tuple(
-        title= "Attendees",
+        title= "Individual Attendees",
         description= "List of attendees.",
         required=False,
         missing_value=(),
