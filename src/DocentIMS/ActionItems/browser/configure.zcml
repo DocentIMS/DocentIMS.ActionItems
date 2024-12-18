@@ -237,6 +237,7 @@
         interface="zope.publisher.interfaces.browser.IBrowserPage"
         />
     </class>
+    
 
 
     <!--browser:page
@@ -246,6 +247,16 @@
         permission="cmf.ModifyPortalContent"
         layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
     /-->
+
+
+  <browser:page
+      name="personal-information"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      class=".userdatapanel.CustomUserDataPanel"
+      permission="cmf.SetOwnProperties"
+      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+     
 
 
     <browser:page

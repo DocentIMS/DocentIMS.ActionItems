@@ -32,6 +32,13 @@
             <tal:condition tal:condition="context/file|None">
               <td><b>File:</b> <a href="${context/absolute_url}/@@download/file">${context/file/filename}</a></td>
           </tal:condition>
+          <p tal:define="modified context/ModificationDate" 
+            class="pat-moment" 
+            data-pat-moment="format:relative;"
+                    tal:content="python: modified[:10]">
+                    Modified
+            </p> 
+          
     </div>
 
     <style>
