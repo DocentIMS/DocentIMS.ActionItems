@@ -29,7 +29,7 @@
               <p class="card-text h5">
                 <span>
                   <tal:date replace="structure python:view.formatted_date(context)" />
-               
+
                 </span>
                 <span style="color: #DDD; font-size: 70%" class="timezone text-muted small" tal:condition="start_tzname" i18n:ignore="True">
                   (                  <tal:tzname replace="start_tzname">timezone name</tal:tzname>
@@ -101,27 +101,32 @@
 
             <div class="col event-contact mb-3" tal:define="
                    user_id data/contact_name|None; ">
+                   ${user_id}: user id
+               
 
-              <tal:check tal:condition="python: user_id != None and user">
-                <div class="d-flex" tal:define="user python:context.portal_membership.getMemberById(user_id);
-                   name python:user.getProperty('fullname', None);
-                   mail python:user.getProperty('email', None) " 
-                   tal:condition="python:name or mail">
-                  <div>Contact Person: &nbsp;</div>
-                  <div class="meta-icon">
-                    <tal:icon replace="structure python:icons.tag('person', tag_class='icon-inline')" />
-                  </div>
-                  <div>
+              <tal:check tal:condition="python: user_id != None">
+                <div class="d-flex" tal:define="user python:context.portal_membership.getMemberById(user_id)">
+                  <tal:check tal:condition="python: user is not None">
+                    <tal:define tal:define="name python:user.getProperty('fullname');
+                   mail python:user.getProperty('email') ">
+                      <div>Contact Person: &nbsp;</div>
+                      <div class="meta-icon">
+                        <tal:icon replace="structure python:icons.tag('person', tag_class='icon-inline')" />
+                      </div>
+                      <div>
 
-                    <strong class="meta-label" i18n:translate="contact_name">Contact Name</strong>
-                    <p class="card-text" tal:condition="mail">
-                      <a class="email" tal:content="python: name if name is not None else mail" tal:attributes="
+                        <strong class="meta-label" i18n:translate="contact_name">Contact Name</strong>
+                        <p class="card-text" tal:condition="mail">
+                          <a class="email" tal:content="python: name if name is not None else mail" tal:attributes="
                          href string:mailto:${mail};
                        ">Mail</a>
-                    </p>
-                    <p class="card-text" tal:condition="not:mail" tal:content="name">Name</p>
-                  </div>
+                        </p>
+                        <p class="card-text" tal:condition="not:mail" tal:content="name">Name</p>
+                      </div>
+                    </tal:define>
+                  </tal:check>
                 </div>
+
               </tal:check>
             </div>
 
@@ -161,16 +166,19 @@
                       <span class="text-no-wrap" tal:condition="python:  item !=None">
                         <tal:define tal:define="
                             user_id item|None;
-                            user python:context.portal_membership.getMemberById(user_id);
-                            name python:user.getProperty('fullname', None);
-                            mail python:user.getProperty('email', None) " tal:condition="python:name or mail">
-                          <strong class="meta-label" i18n:translate="contact_name">Contact Name</strong>
-                          <span class="card-text" tal:condition="mail">
-                            <a class="email" tal:content="python: name if name is not None else mail" tal:attributes="
+                            user python:context.portal_membership.getMemberById(user_id);">
+                          <tal:condition tal:condition="python: user is not None">
+                            <tal:define tal:define="name python:user.getProperty('fullname', None);
+                            mail python:user.getProperty('email', None) ">
+                              <strong class="meta-label" i18n:translate="contact_name">Contact Name</strong>
+                              <span class="card-text" tal:condition="mail">
+                                <a class="email" tal:content="python: name if name is not None else mail" tal:attributes="
                          href string:mailto:${mail};
                        ">Mail</a>
-                          </span>
-                          <span tal:condition="not:mail" tal:content="name">Name</span>
+                              </span>
+                              <span tal:condition="not:mail" tal:content="name">Name</span>
+                            </tal:define>
+                          </tal:condition>
                         </tal:define>
                         <span tal:condition="not:repeat/item/end">,
                         </span>

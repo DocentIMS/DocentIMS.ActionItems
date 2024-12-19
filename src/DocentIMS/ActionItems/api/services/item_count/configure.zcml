@@ -9,7 +9,7 @@
     for="zope.interface.Interface"
     factory=".get.ItemCountGet"
     name="@item_count"
-    permission="zope2.View"
+    permission="zope.Public"
     />
 
 </configure>
