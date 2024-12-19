@@ -45,7 +45,13 @@ class ItemCount(object):
         
         # check IP
         # remove localhost (10.0.0.159) and replace with real address
-        ip_address = self.request.get('REMOTE_ADDR', '')
+        ip_address = self.request.get('HTTP_X_FORWARDED_FOR', None)
+        if ip_address:
+            # In case there are multiple IPs (proxies), take the first one
+            ip_address = ip_address.split(',')[0].strip()
+        else:
+            # Fall back to the REMOTE_ADDR
+            ip_address = self.request.get('REMOTE_ADDR', '')
         
         if current_user and ip_address in ['10.0.0.159', '103.90.162.175']:
             user_ids = [current_user.getUserName(), current_user.getUserId(), current_user.getProperty("email") ] 
