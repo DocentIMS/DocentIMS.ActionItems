@@ -101,9 +101,6 @@
 
             <div class="col event-contact mb-3" tal:define="
                    user_id data/contact_name|None; ">
-                   ${user_id}: user id
-               
-
               <tal:check tal:condition="python: user_id != None">
                 <div class="d-flex" tal:define="user python:context.portal_membership.getMemberById(user_id)">
                   <tal:check tal:condition="python: user is not None">
@@ -168,8 +165,9 @@
                             user_id item|None;
                             user python:context.portal_membership.getMemberById(user_id);">
                           <tal:condition tal:condition="python: user is not None">
-                            <tal:define tal:define="name python:user.getProperty('fullname', None);
-                            mail python:user.getProperty('email', None) ">
+                            <tal:define 
+                              tal:define="name python:user.getProperty('fullname', None);
+                                      mail python:user.getProperty('email', None) ">
                               <strong class="meta-label" i18n:translate="contact_name">Contact Name</strong>
                               <span class="card-text" tal:condition="mail">
                                 <a class="email" tal:content="python: name if name is not None else mail" tal:attributes="
