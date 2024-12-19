@@ -5,8 +5,10 @@ from plone.restapi.services import Service
 from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
-from DateTime import DateTime
+# from DateTime import DateTime
 import datetime
+
+
 
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
@@ -22,7 +24,6 @@ class ItemCount(object):
     def __call__(self, expand=False):
         user = None
         
-        
         result = {
             'item_count': {
                 '@id': '{}/@item_count'.format(
@@ -37,12 +38,11 @@ class ItemCount(object):
         if hasattr(self.request, "user"):
             user = self.request.user
             
-        # import pdb; pdb.set_trace()
-        
         fullname = "Unknown user"
         your_team_role = ""
         last_login_time = None
         current_user =  api.user.get(userid=user) or api.user.get(username=user) 
+        
         if current_user:
             user_ids = [current_user.getUserName(), current_user.getUserId(), current_user.getProperty("email") ] 
             last_login_time = current_user.getProperty("last_login_time")
@@ -54,10 +54,11 @@ class ItemCount(object):
             notification_list = []
             notification_types = ["error", "warning",  "info"]
             for notification_type in notification_types:
-                    my_brains = self.context.portal_catalog(portal_type=['Notification'], 
-                                                                message_assigned = user_ids, 
-                                                                notification_type=notification_type)
-                    notification_list.append({'name': notification_type, 'count': len(my_brains)})
+                # Bypass 'user cant see', item in not published
+                my_brains = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['Notification'], 
+                                                                 message_assigned = user_ids, 
+                                                                 notification_type=notification_type)
+                notification_list.append({'name': notification_type, 'count': len(my_brains)})
         
         
             #Count meetings
@@ -77,7 +78,7 @@ class ItemCount(object):
             if meeting_types:
                 for meeting_type in meeting_types:
                     mtype= meeting_type['meeting_type']
-                    my_brains = self.context.portal_catalog(
+                    my_brains = self.context.portal_catalog.unrestrictedSearchResults(
                         portal_type=['meeting', 'Meeting'], 
                         attendees= user_ids, 
                         meeting_type=mtype)
@@ -107,21 +108,21 @@ class ItemCount(object):
 
             
             for urgency in  urgencies:
-                    my_brains = self.context.portal_catalog(portal_type=['action_items'], urgency=urgency, assigned_to = user_ids)
+                    my_brains = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['action_items'], urgency=urgency, assigned_to = user_ids)
                     
                     # list of all action items 'sorted on urgency'
                     urgency_list.append({'name': urgency, 'count': len(my_brains)})
                 
             
             
-
             # Query the catalog for items, sorted by ModificationDate in descending order
-            # There will always be a catalog entry, no need to check
-            last_item = self.context.portal_catalog(
+            # Get last updated item
+            last_item = self.context.portal_catalog.unrestrictedSearchResults(
+                        portal_type=['action_items', 'Notification', 'meeting', 'Meeting'],
                         sort_on='modified',
                         sort_order='descending',
                         sort_limit=1,
-                )     
+                )  
             
             last_date = last_item[0].modified
             human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
