@@ -43,7 +43,11 @@ class ItemCount(object):
         last_login_time = None
         current_user =  api.user.get(userid=user) or api.user.get(username=user) 
         
-        if current_user:
+        # check IP
+        # remove localhost (10.0.0.159) and replace with real address
+        ip_address = self.request.get('REMOTE_ADDR', '')
+        
+        if current_user and ip_address in ['10.0.0.159', '103.90.162.175']:
             user_ids = [current_user.getUserName(), current_user.getUserId(), current_user.getProperty("email") ] 
             last_login_time = current_user.getProperty("last_login_time")
             fullname = current_user.getProperty("fullname", None)

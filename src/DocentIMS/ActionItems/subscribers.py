@@ -259,6 +259,7 @@ def user_created_handler(event):
                     'fullname': fullname,
                     'roles': ['Member'] 
                 },
+                #Change to user / password
                 auth=('admin', 'admin')
             )
         
