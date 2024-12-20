@@ -235,33 +235,34 @@ def user_created_handler(event):
     email  = user.getProperty('email', None)
     
     # Create a new user
-    
     if email:
         username = user.getUserName()
         fullname = user.getProperty('fullname')
         password = ''.join(random.choices(string.ascii_letters, k=27))
-        # added_user = requests.post(siteurl, headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, json={'email': email, 'password': password, 'fullname': fullname, 'roles': ['Member'], 'username': username}, auth=('admin', 'admin'))
+        # added_user = requests.get(site_url, headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, json={'email': email, 'password': 'password', 'fullname': 'fullname', 'roles': ['Member'], 'username': 'username'}, auth=('admin', 'admin'))
+        
+        
         # import pdb; pdb.set_trace()
         # url = f'{site_url}/@add_user?username={username}&email={email}&fullname={fullname}'
         
         # response = requests.post('http://10.0.0.159:8605/Plone54/@users', headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, json={'description': 'Professor of Linguistics', 'email': 'noam.chomsky@example.com', 'fullname': 'Noam Avram Chomsky', 'home_page': 'web.mit.edu/chomsky', 'location': 'Cambridge, MA', 'password': 'colorlessgreenideas', 'roles': ['Contributor'] }, auth=('admin', 'admin'))
         # import pdb; pdb.set_trace()
         # a= 1
-        added_user = requests.post(
-                site_url,
-                headers={
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                json={
-                    'email': email,
-                    'password': password,
-                    'fullname': fullname,
-                    'roles': ['Member'] 
-                },
-                #Change to user / password
-                auth=('admin', 'admin')
-            )
+        # added_user = requests.post(
+        #         site_url,
+        #         headers={
+        #             'Accept': 'application/json',
+        #             'Content-Type': 'application/json'
+        #         },
+        #         json={
+        #             'email': email,
+        #             'password': password,
+        #             'fullname': fullname,
+        #             'roles': ['Member'] 
+        #         },
+        #         #Change to user / password
+        #         auth=('admin', 'admin')
+        #     )
         
         # # response = requests.get(url, headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, auth=('admin', 'admin'))
         # if response.status_code == 200:            
