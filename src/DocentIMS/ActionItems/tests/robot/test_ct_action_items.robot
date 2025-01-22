@@ -34,18 +34,18 @@ Test Teardown  Close all browsers
 
 *** Test Cases ***************************************************************
 
-Scenario: As a site administrator I can add a Action Items
+Scenario: As a site administrator I can add a Task
   Given a logged-in site administrator
-    and an add Action Items form
-   When I type 'My Action Items' into the title field
+    and an add Task form
+   When I type 'My Task' into the title field
     and I submit the form
-   Then a Action Items with the title 'My Action Items' has been created
+   Then a Task with the title 'My Task' has been created
 
-Scenario: As a site administrator I can view a Action Items
+Scenario: As a site administrator I can view a Task
   Given a logged-in site administrator
-    and a Action Items 'My Action Items'
-   When I go to the Action Items view
-   Then I can see the Action Items title 'My Action Items'
+    and a Task 'My Task'
+   When I go to the Task view
+   Then I can see the Task title 'My Task'
 
 
 *** Keywords *****************************************************************
@@ -55,11 +55,11 @@ Scenario: As a site administrator I can view a Action Items
 a logged-in site administrator
   Enable autologin as  Site Administrator
 
-an add Action Items form
-  Go To  ${PLONE_URL}/++add++Action Items
+an add Task form
+  Go To  ${PLONE_URL}/++add++Task
 
-a Action Items 'My Action Items'
-  Create content  type=Action Items  id=my-action_items  title=My Action Items
+a Task 'My Task'
+  Create content  type=Task  id=my-action_items  title=My Task
 
 # --- WHEN -------------------------------------------------------------------
 
@@ -69,18 +69,18 @@ I type '${title}' into the title field
 I submit the form
   Click Button  Save
 
-I go to the Action Items view
+I go to the Task view
   Go To  ${PLONE_URL}/my-action_items
   Wait until page contains  Site Map
 
 
 # --- THEN -------------------------------------------------------------------
 
-a Action Items with the title '${title}' has been created
+a Task with the title '${title}' has been created
   Wait until page contains  Site Map
   Page should contain  ${title}
   Page should contain  Item created
 
-I can see the Action Items title '${title}'
+I can see the Task title '${title}'
   Wait until page contains  Site Map
   Page should contain  ${title}

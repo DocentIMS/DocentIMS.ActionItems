@@ -279,7 +279,7 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='action-items',
-                title='Action Items',
+                title='Tasks',
                 layout='action-overview',
                 default_page='action-items-collection',
                 nextPreviousEnabled=1 
@@ -294,7 +294,7 @@ def _create_content(portal):
                     type='Collection',
                     container=action_items,
                     id='action-items-collection',
-                    title='Action Items',
+                    title='Tasks',
                     layout='action-overview',
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['action_items']}],
                     limit=2000,

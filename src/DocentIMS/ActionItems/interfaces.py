@@ -176,7 +176,7 @@ class ITableRows(model.Schema):
     )
 
     row_title = schema.TextLine(
-        title=u"Column Titles in Action Items Table.",
+        title=u"Column Titles in Tasks Table.",
         required=False,
     )
     
@@ -605,7 +605,7 @@ class IDocentimsSettings(model.Schema):
     widget(table_columns=DataGridFieldFactory)
     table_columns = schema.List(
         title = _(u"Table Columns",
-            default=u"Select the columns you want to display in the Action Items Table."),
+            default=u"Select the columns you want to display in the Tasks Table."),
             value_type=DictRow(schema=ITableRows),
     )
 

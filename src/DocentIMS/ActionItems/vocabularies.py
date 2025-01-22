@@ -24,7 +24,7 @@ directlyProvides(ShowActionItemsVocabulary, IVocabularyFactory)
 
 
 def ActionItemsVocabulary(context):
-    items = api.content.find(portal_type=['action_items', 'action_item', 'Action Items'], sort_on='sortable_title')
+    items = api.content.find(portal_type=['action_items', 'action_item', 'Task'], sort_on='sortable_title')
     if items:
         terms = [ SimpleTerm(value=item.UID, token=item.UID, title=item.Title) for item in items ]
         return SimpleVocabulary(terms)

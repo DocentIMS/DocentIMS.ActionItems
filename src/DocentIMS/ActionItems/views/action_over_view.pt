@@ -11,7 +11,7 @@
             data-pat-autotoc="section:fieldset;levels:legend;">
             
             <fieldset>
-              <legend>Action Items</legend> 
+              <legend>Tasks</legend> 
               <table class="listing pat-datatables listing" data-pat-datatables="pageLength: 50">
                  <thead>
                     <tr>

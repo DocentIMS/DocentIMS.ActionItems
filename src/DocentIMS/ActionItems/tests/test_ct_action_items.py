@@ -28,17 +28,17 @@ class ActionItemsIntegrationTest(unittest.TestCase):
         self.parent = self.portal
 
     def test_ct_action_items_schema(self):
-        fti = queryUtility(IDexterityFTI, name='Action Items')
+        fti = queryUtility(IDexterityFTI, name='Task')
         schema = fti.lookupSchema()
-        schema_name = portalTypeToSchemaName('Action Items')
+        schema_name = portalTypeToSchemaName('Task')
         self.assertIn(schema_name.lstrip('plone_0_'), schema.getName())
 
     def test_ct_action_items_fti(self):
-        fti = queryUtility(IDexterityFTI, name='Action Items')
+        fti = queryUtility(IDexterityFTI, name='Task')
         self.assertTrue(fti)
 
     def test_ct_action_items_factory(self):
-        fti = queryUtility(IDexterityFTI, name='Action Items')
+        fti = queryUtility(IDexterityFTI, name='Task')
         factory = fti.factory
         obj = createObject(factory)
 
@@ -47,7 +47,7 @@ class ActionItemsIntegrationTest(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ['Contributor'])
         obj = api.content.create(
             container=self.portal,
-            type='Action Items',
+            type='Task',
             id='action_items',
         )
 
@@ -61,7 +61,7 @@ class ActionItemsIntegrationTest(unittest.TestCase):
 
     def test_ct_action_items_globally_addable(self):
         setRoles(self.portal, TEST_USER_ID, ['Contributor'])
-        fti = queryUtility(IDexterityFTI, name='Action Items')
+        fti = queryUtility(IDexterityFTI, name='Task')
         self.assertTrue(
             fti.global_allow,
             u'{0} is not globally addable!'.format(fti.id)
@@ -69,13 +69,13 @@ class ActionItemsIntegrationTest(unittest.TestCase):
 
     def test_ct_action_items_filter_content_type_false(self):
         setRoles(self.portal, TEST_USER_ID, ['Contributor'])
-        fti = queryUtility(IDexterityFTI, name='Action Items')
+        fti = queryUtility(IDexterityFTI, name='Task')
         portal_types = self.portal.portal_types
         parent_id = portal_types.constructContent(
             fti.id,
             self.portal,
             'action_items_id',
-            title='Action Items container',
+            title='Task container',
         )
         self.parent = self.portal[parent_id]
         obj = api.content.create(

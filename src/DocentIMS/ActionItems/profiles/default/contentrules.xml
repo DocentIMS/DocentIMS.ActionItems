@@ -53,7 +53,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
    </action>
   </actions>
  </rule>
- <rule name="rule-3" title="Move Action Items" cascading="False"
+ <rule name="rule-3" title="Move Task" cascading="False"
     description="Move action items to the proper folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">

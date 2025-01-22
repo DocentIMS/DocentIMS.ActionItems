@@ -113,12 +113,12 @@
 
 
         <fieldset>
-              <legend>Action Items</legend>
+              <legend>Task</legend>
               <p class="larger">These are the action items generated from the analysis of this Statement of Work.</p>
               <hr class="hr" />
               <div tal:replace="structure  context/explanation/output|None" /> 
 
-            <p><b class="label">Related Action Items:</b>
+            <p><b class="label">Related Tasks:</b>
             <ul tal:condition="view/target_relations|None"> 
                 <li tal:repeat="rela view/target_relations">
                   <a href="${rela/from_path}">${rela/from_object/title}</a> 

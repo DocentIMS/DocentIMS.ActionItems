@@ -51,12 +51,12 @@
     <field name="planned_action_items" type="zope.schema.TextLine">
       <description/>
       <required>False</required>
-      <title>Planned Action Items</title>
+      <title>Planned Task</title>
     </field>
     <field name="proposed_action_items" type="zope.schema.TextLine">
       <description/>
       <required>False</required>
-      <title>Proposed Action Items</title>
+      <title>Proposed Task</title>
     </field>
     <fieldset name="meeting_notes" label="Meeting Notes" description="My notes during the meeting.">
       <field name="meeting_notes" type="plone.app.textfield.RichText">
@@ -65,6 +65,6 @@
         <title>Meeting Notes</title>
       </field>
     </fieldset>
-    <fieldset name="meeting_action_items" label="Meeting Action Items" description="Any actions from the meeting that are action items."/>
+    <fieldset name="meeting_action_items" label="Meeting Task" description="Any actions from the meeting that are action items."/>
   </schema>
 </model>

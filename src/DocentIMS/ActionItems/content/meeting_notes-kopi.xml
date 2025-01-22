@@ -54,6 +54,6 @@
         <title>Meeting Notes</title>
       </field>
     </fieldset>
-    <fieldset name="meeting_action_items" label="Meeting Action Items" description="Any actions from the meeting that are action items."/>
+    <fieldset name="meeting_action_items" label="Meeting Task" description="Any actions from the meeting that are action items."/>
   </schema>
 </model>

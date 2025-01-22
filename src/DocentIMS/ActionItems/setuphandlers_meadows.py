@@ -508,13 +508,13 @@ def _create_content(portal):
                     type='Folder',
                     container=items,
                     id='action-item-help',
-                    title='Task Help',
+                    title='Tasks Help',
                     exclude_from_nav=True,
                     layout='tabular_view',
                 )
 
 
-            wf_name = u'Task WF'
+            wf_name = u'Tasks WF'
             if not action_folder.get(wf_name, False):
                 wf_image = plone.api.content.create(
                         type='Image',
@@ -529,14 +529,14 @@ def _create_content(portal):
             if not action_folder.get('action-item-help', False):
                 action_items = plone.api.content.create(
                     type='Document',
-                    description=u'Task Help',
+                    description=u'Tasks Help',
                     container=action_folder,
                     id='action-item-help',
-                    title='Task Help',
+                    title='Tasks Help',
 
                 )
 
-                pdf_name = u'Task Help'
+                pdf_name = u'Tasks Help'
                 # if not action_folder.get(pdf_name, False):
                 pdf_file = plone.api.content.create(
                             type='File',

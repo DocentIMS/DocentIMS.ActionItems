@@ -13,7 +13,7 @@
   <exit-transition transition_id="submit"/>
  </state>
  <state state_id="2.Submitted" title="Submitted">
-  <description>Action Items submitted to PM for assignment.</description>
+  <description>Task submitted to PM for assignment.</description>
   <exit-transition transition_id="assign"/>
  </state>
  <state state_id="3.Assigned" title="Assigned">

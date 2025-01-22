@@ -11,7 +11,7 @@
     <field name="meeting_notes_action_items" type="zope.schema.TextLine">
       <description/>
       <required>False</required>
-      <title>Meeting Notes Action Items</title>
+      <title>Meeting Notes Task</title>
     </field>
   </schema>
 </model>
