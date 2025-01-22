@@ -55,7 +55,7 @@
       name="User Logged in first time"
       />
 
-  <!-- Subscriber for user created  -->
+  <!-- Subscriber for user created // Currently this is hanging site -->
   <!-- <subscriber
     for="Products.PluggableAuthService.interfaces.events.IPropertiesUpdatedEvent"
     handler=".subscribers.user_created_handler"

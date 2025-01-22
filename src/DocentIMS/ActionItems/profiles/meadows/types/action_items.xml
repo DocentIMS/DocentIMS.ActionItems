@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object name="action_items" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Action Items</property>
- <property name="description" i18n:translate="">action items</property>
+ <property name="title" i18n:translate="">Task</property>
+ <property name="description" i18n:translate="">task</property>
  <property name="icon_expr">string:action_items</property>
  <property name="factory">action_items</property>
  <property
@@ -59,7 +59,7 @@
       &lt;field name=&quot;related_members&quot; type=&quot;zope.schema.Set&quot;&gt;
         &lt;description&gt; &lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;Identify other team members related to this action item&lt;/title&gt;
+        &lt;title&gt;Identify other team members related to this task&lt;/title&gt;
         &lt;value_type type=&quot;zope.schema.Choice&quot;&gt;
           &lt;vocabulary&gt;DocentIMS.ActionItems.TeamnamesVocabulary&lt;/vocabulary&gt;
         &lt;/value_type&gt;
@@ -111,7 +111,7 @@
           &lt;title&gt;Actions Taken&lt;/title&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
-      &lt;fieldset name=&quot;close_out&quot; label=&quot;Close Out&quot; description=&quot;Explain in detail what you did to complete this action item.&quot;&gt;
+      &lt;fieldset name=&quot;close_out&quot; label=&quot;Close Out&quot; description=&quot;Explain in detail what you did to complete this task.&quot;&gt;
         &lt;field name=&quot;is_this_item_closed&quot; type=&quot;zope.schema.Bool&quot;&gt;
           &lt;default&gt;False&lt;/default&gt;
           &lt;description&gt;have you finished&lt;/description&gt;
