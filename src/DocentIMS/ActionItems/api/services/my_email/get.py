@@ -47,7 +47,10 @@ class MyEmail(object):
             
         elif usermail == '*':
             users = api.user.get_users()
-            my_groups =  api.group.get_groups()
+            my_groups_list =  api.group.get_groups()
+            my_groups = []
+            for gruppe in my_groups_list:
+                my_groups.append(gruppe.id)
         
         # companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
         
