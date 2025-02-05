@@ -40,7 +40,7 @@ class MyEmail(object):
         # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
         # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
         my_groups = current.getGroups() or None
-        import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         
         if usermail and usermail is not None and usermail != '*':
             users = [api.user.get(username=usermail)] 
