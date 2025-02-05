@@ -169,9 +169,9 @@ class ActionItemsAddForm(DefaultAddForm):
             self.fields['full_explanation'].field.default = exp_text
             
         for group in self.groups:
-            if group.__name__ == 'categorization':
-                    #group.mode = 'omitted'
-                    group.label = None
+            # if group.__name__ == 'categorization':
+            #         #group.mode = 'omitted'
+            #         group.label = None
                     
             if group.__name__ == 'connections':
                 if from_uid:
@@ -189,10 +189,15 @@ class ActionItemsAddForm(DefaultAddForm):
         
 
         for group in self.groups:
-            if group.__name__ in ['close_out', 'intermediate_actioins', 'categorization']:
+            # if group.__name__ in ['close_out', 'intermediate_actioins', 'categorization']:
+            if group.__name__ in ['close_out', 'intermediate_actioins']:
                 group.label = None
                 
+            if group.__name__ in ['categorization']:
+                group.widgets['IRelatedItems.relatedItems'].mode = interfaces.HIDDEN_MODE
+                group.widgets['ICategorization.language'].mode = interfaces.HIDDEN_MODE
                 
+            
             # if group.__name__ == 'connections':
             #     from_uid =  self.request.get('related_from')
             #     if not from_uid:
@@ -237,6 +242,7 @@ class ActionItemsEditForm(DefaultEditForm):
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
             self.widgets["placeholder"].disabled = "disabled"
+            # self.widgets['related_items'].mode = interfaces.HIDDEN_MODE
             
              
             # for group in self.groups:
@@ -281,15 +287,19 @@ class ActionItemsEditForm(DefaultEditForm):
        
         if self.portal_type == 'action_items' or self.portal_type == 'sow_analysis':
             for group in self.groups:
-                if group.__name__ == 'settings':
+                if group.__name__ == 'settings' :
                     #group.mode = 'omitted'
                     group.label = None
                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
                 
-                if group.__name__ == 'categorization':
+                if group.__name__ == 'categorization' and self.portal_type == 'sow_analysis':
                     #group.mode = 'omitted'
                     group.label = None
+                    
+                if group.__name__ in ['categorization']:
+                    group.widgets['IRelatedItems.relatedItems'].mode = interfaces.HIDDEN_MODE
+                    group.widgets['ICategorization.language'].mode = interfaces.HIDDEN_MODE
 
                     
 
