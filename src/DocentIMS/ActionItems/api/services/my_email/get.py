@@ -39,18 +39,19 @@ class MyEmail(object):
         # Only users with special permissions can get info about other users
         # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
         # if usermail and usermail is not None and 'User Api' in api.user.get_roles(user.id):
+        my_groups = current.getGroups() or None
         if usermail and usermail is not None and usermail != '*':
             users = [api.user.get(username=usermail)] 
         elif usermail == '*':
             users = api.user.get_users()
-             
+            my_groups =  api.group.get_groups()
         
         # companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
         
         members = []
         result = []
         
-        my_groups = current.getGroups() or None
+        
             # Get all, something like this:
             # my_groups = api.group.get_groups()
             # need to serilize below
