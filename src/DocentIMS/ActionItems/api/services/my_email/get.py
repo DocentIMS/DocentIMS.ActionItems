@@ -100,7 +100,7 @@ class MyEmail(object):
             })
         
         
-        result.append({'members': members})
+        result.append({'groups': members})
         
         return result
         
