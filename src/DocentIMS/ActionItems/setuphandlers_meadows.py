@@ -248,6 +248,7 @@ def pre_install(context):
  
     #create content 
     _create_content(portal)
+    _create_more_content(portal)
 
 
 def post_import(context):
@@ -465,14 +466,23 @@ def _create_content(portal):
                 )      
         
                 
-        # if not portal.get('site-collections', False):
-        #     items = plone.api.content.create(
-        #         type='Folder',
-        #         container=portal,
-        #         id='site-collections',
-        #         title='Site Collections',
-        #         exclude_from_nav=False,
-        #     )
+        if not portal.get('site-collections', False):
+            items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='site-collections',
+                title='Site Collections',
+                exclude_from_nav=False,
+        )
+            
+        if not portal.get('calendar', False):
+            items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='calendar',
+                title='Calendar',
+                exclude_from_nav=False,
+        )
             
         #     collection-of-collections = plone.api.content.create(
         #             type='Collection',
@@ -739,5 +749,296 @@ def load_word_file(name):
         )
 
 
+def _create_more_content(portal):        
+    sitecollections = [
+            {
+            "@id": "site-collections/tasks-green", 
+            "@type": "Collection", 
+            "description": "Action items due more than 15 days from now",
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "action_items"
+                ]
+                }, 
+                {
+                "i": "duedate", 
+                "o": "plone.app.querystring.operation.date.afterRelativeDate", 
+                "v": "29"
+                }, 
+                {
+                "i": "assigned_id", 
+                "o": "plone.app.querystring.operation.string.currentUser", 
+                "v": ""
+                }, 
+                {
+                "i": "closed", 
+                "o": "plone.app.querystring.operation.string.is", 
+                "v": "No"
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Tasks - Green", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "site-collections/tasks-red", 
+            "@type": "Collection", 
+            "description": "Critical Tasks",  
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "action_items"
+                ]
+                }, 
+                {
+                "i": "assigned_id", 
+                "o": "plone.app.querystring.operation.string.currentUser", 
+                "v": ""
+                }, 
+                {
+                "i": "closed", 
+                "o": "plone.app.querystring.operation.string.is", 
+                "v": "No"
+                }, 
+                {
+                "i": "priority", 
+                "o": "plone.app.querystring.operation.int.is", 
+                "v": "1"
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Tasks - Red", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "site-collections/notifications-information", 
+            "@type": "Collection", 
+            "description": "All notifications classed as \"information\"",
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "Notification"
+                ]
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Notifications - Information", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "site-collections/notifications-important", 
+            "@type": "Collection", 
+            "description": "",
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "Notification"
+                ]
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Notifications - Important", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "site-collections/notifications-critical", 
+            "@type": "Collection", 
+            "description": "",
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "Notification"
+                ]
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Notifications - Critical", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "site-collections/tasks-yellow", 
+            "@type": "Collection", 
+            "description": "",
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "action_items"
+                ]
+                }, 
+                {
+                "i": "assigned_id", 
+                "o": "plone.app.querystring.operation.string.currentUser", 
+                "v": ""
+                }, 
+                {
+                "i": "duedate", 
+                "o": "plone.app.querystring.operation.date.afterRelativeDate", 
+                "v": "6"
+                }, 
+                {
+                "i": "duedate", 
+                "o": "plone.app.querystring.operation.date.beforeRelativeDate", 
+                "v": "16"
+                }, 
+                {
+                "i": "closed", 
+                "o": "plone.app.querystring.operation.string.is", 
+                "v": "No"
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Tasks - Yellow", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "action-items/action-items-collection", 
+            "@type": "Collection", 
+            "description": "",
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "action_items"
+                ]
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Action Items", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "postit_notes/postit-collection", 
+            "@type": "Collection", 
+            "description": "", 
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "postit_notes", 
+                    "postit_note", 
+                    "PostIt Notes"
+                ]
+                }, 
+                {
+                "i": "Creator", 
+                "o": "plone.app.querystring.operation.string.currentUser", 
+                "v": ""
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Post It Notes", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "feedback/feedback-collection", 
+            "@type": "Collection", 
+            "description": "These are comments submitted by users of this website and Word Docent toolbar. The project manager should review all feedback items and respond if requested by the person submitting the Feedback", 
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "feedback"
+                ]
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Feedback", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "images/collection-of-all-site-images", 
+            "@type": "Collection", 
+            "description": "", 
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "Image"
+                ]
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Collection of All Site Images", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "site-collections/collection-of-collections", 
+            "@type": "Collection", 
+            "description": "This collects all the collections on the site.   This helps me keep track of the collections i have and where they are.  helps avoid duplication.", 
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "Collection"
+                ]
+                }, 
+                {
+                "i": "getId", 
+                "o": "plone.app.querystring.operation.string.isNot", 
+                "v": "collection-of-collections"
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Collection of Collections", 
+            "type_title": "Collection"
+            }, 
+            {
+            "@id": "calendar/calendar", 
+            "@type": "Collection", 
+            "description": "", 
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "meeting"
+                ]
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Calendar", 
+            "type_title": "Collection"
+            }
+        ] 
+ 
+        
+    for collection in sitecollections:  
+            my_id = collection['@id']
+            my_folder = my_id.split('/')[0] 
+            print(my_folder)
+            if not portal.get(my_folder, False):
+                folder = portal.get(my_folder)  
+                # if folder:  
+                id = my_id.split('/')[1]            
+                kollection  = plone.api.content.create(
+                        type='Collection',
+                        container=folder,
+                        id=id,
+                        title=collection['title'],
+                        description = collection['description'],
+                        query =  collection['query']
+                    )
+                         
+
+        
+ 
 
 
