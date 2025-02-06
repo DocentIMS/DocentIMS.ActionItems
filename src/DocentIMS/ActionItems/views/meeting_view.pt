@@ -38,87 +38,109 @@
 
           </div>
 
-        </tal:def>
-        <div class="spacer m-5" />
-        <div>
-          <!-- first tab -->
-          <!-- <hr class="hr border-3 border border-dark" /> -->
-          <dir class="hr border-3 border border-dark" />
-          <div class="xpat-autotoc xautotabs flex flex-wrap d-inline-flex xp-2 m--1" data-pat-autotoc="section:fieldset;levels:legend;">
 
-            <!-- Show all Pages as separate tabs -->
-            <!-- <fieldset style="background-color:#FCFCFC;" class="m-1 p-3 border w-auto" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()"> -->
-            <div style="background-color:#FCFCFC;" class="m-1 p-3 border w-25 hasfile-${item/file|None}" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()">
-              <legend>
+          <div class="spacer m-5" />
+          <div>
+            <!-- first tab -->
+            <!-- <hr class="hr border-3 border border-dark" /> -->
+            <dir class="hr border-3 border border-dark" />
+            <div class="xpat-autotoc xautotabs flex flex-wrap d-inline-flex xp-2 m--1" data-pat-autotoc="section:fieldset;levels:legend;">
 
-                ${ item/Type|None}  
-                <!-- <span class="opacity-30">${python: item.Title().split()[0]} </span> -->
+              <!-- Show all Pages as separate tabs -->
+              <!-- <fieldset style="background-color:#FCFCFC;" class="m-1 p-3 border w-auto" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()"> -->
+              <div style="background-color:#FCFCFC;" 
+                tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()"
+                class="m-1 p-3 border w-25 hasfile-${item/file|None} type-${item/Type|None}" 
+                >
+                <legend>
 
-              </legend>
+                <tal:check tal:define="typen item/Type|None">
+                  <tal:condition tal:condition="python: typen != 'File'">
+                  ${typen}
+                  </tal:condition>  
+                  <tal:condition tal:condition="python: typen == 'File'">
+                    ${item/Title}
+                  </tal:condition>  
+                </tal:check>
+                                                  <!-- <span class="opacity-30">${python: item.Title().split()[0]} </span> -->
 
-              <!-- <div class="xcard"> -->
-              <!-- <p class="lead"><a href="${item/getURL}" target="_blank">${item/Title}</a></p>  -->
-              <!-- <p class="lead">${item/Description}</p>  -->
-              <!-- </div> -->
+                </legend>
 
-              <div class="card-body" tal:content="structure item/text/output|None"></div>
-              <div:condition class="flex" tal:condition="item/file|None">
-                <!-- <tal:condition tal:condition="python: item.portal_type in ['meeting_note', 'meeting_notes', 'Meeting Note', 'Meeting Notes' ]"> -->
+                <!-- <div class="xcard"> -->
+                <!-- <p class="lead"><a href="${item/getURL}" target="_blank">${item/Title}</a></p>  -->
+                <!-- <p class="lead">${item/Description}</p>  -->
+                <!-- </div> -->
+
+                <div class="card-body" tal:content="structure item/text/output|None"></div>
+                <div:condition class="flex" tal:condition="item/file|None"
+                  tal:define="typen item/Type|None"
+                  >
+                  <!-- <tal:condition tal:condition="python: item.portal_type in ['meeting_note', 'meeting_notes', 'Meeting Note', 'Meeting Notes' ]"> -->
 
                   <!-- <a tal:condition="not: item/file|None" href="${item/getURL}" class="block w-25 xp-1" target="_blank">            -->
                   <!-- <a href="${item/getURL}" class="block w-25 xp-1" target="_blank"> -->
-                    <!-- <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" /> -->
+                  <!-- <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" /> -->
                   <!-- </a> -->
-                <!-- </tal:condition> -->
-                <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
-                  <p style="text-align: center"><img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" /></p>
-                  <p style="text-align: center">Download </p>
-                </a> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
-                <a href="${item/getURL}//onlyoffice-view-file" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
-                  <p style="text-align: center"><img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" /></p>
-                  <p style="text-align: center">Edit</p>
-                </a>
-                <!-- <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a> -->
-                <!-- &nbsp; [ ${item/getSize|None} ] -->
+                  <!-- </tal:condition> -->
+                  <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
+                    <p style="text-align: center">
+                      <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" 
+                       tal:condition="python: typen != 'File'"/>
+            
+                    </p>
+                    <p style="text-align: center">Download </p>
+                  </a> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+                  <a href="${item/getURL}//onlyoffice-view-file" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
+                    <p style="text-align: center">
+                      <img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" 
+                      tal:condition="python: typen != 'File'"/>
+                    </p>
+                    <p style="text-align: center">Edit</p>
+                  </a>
+                  <!-- <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a> -->
+                  <!-- &nbsp; [ ${item/getSize|None} ] -->
 
 
 
 
-              </div:condition>
+                </div:condition>
 
-              <!-- <p tal:condition="item/file|None" style="text-align:right">
+                <!-- <p tal:condition="item/file|None" style="text-align:right">
          
                 <a class="btn button standalone btn-sm btn-secondary" alt="Open in Only Office" title="Open in Only Office" href="${item/getURL}/onlyoffice-view-file">OnlyOffice</a>
               </p> -->
-              <!-- <p><hr class="hr" /></p> -->
-              <!-- <p condition tal:condition="not: item/file|None">
+                <!-- <p><hr class="hr" /></p> -->
+                <!-- <p condition tal:condition="not: item/file|None">
                 <a href="${item/getURL}" target="_blank">✎</a>
 
               </p> -->
-              <!-- <p condition tal:condition="not: item/file|None">
+                <!-- <p condition tal:condition="not: item/file|None">
                 <a href="${item/getURL}" class="btn button standalone btn-sm btn-secondary" target="_blank">
                   <b>Open</b> / Add </a>
 
                   <b>✎</b>
               </p> -->
-              <!-- <hr class="hr" /> -->
+                <!-- <hr class="hr" /> -->
 
-              <!-- <tal:itemview replace="structure context" /> -->
+                <!-- <tal:itemview replace="structure context" /> -->
 
-              <!-- </fieldset> -->
+                <!-- </fieldset> -->
+              </div>
+              <hr class="hr" />
+              
             </div>
-            <hr class="hr" />
-            <div>
-               Need a loop
-              <h3>Show files here</h3>
-              <p>File 1 2 3</p>
-              <p>as list</p>
-              skip 3 files
-             </div>
-
+            <p></p>
           </div>
-        </div>
-        <style>
+          <div class="hr border-3 border border-dark" />
+          <div class="container p-20">
+            <p>
+              <a href="${data/url}/folder_contents" class="button btn standalone uplaod btn-success plone-btn-large pat-plone-modal"
+                data-pat-plone-modal="modalSizeClass: modal-xl;">
+                Manage files</a>
+
+            </p>
+          </div>
+          <style>
           .pat-autotoc.autotabs .autotoc-nav {margin-bottom: 0 !important}
           .flex {display: flex}
           .flex-wrap {flex-wrap: wrap}
@@ -126,7 +148,11 @@
           .block {display: block}
           .opacity-30, .hasfile- { opacity: 0.30}
           #plone-contentmenu-factories {display: none}
-        </style>
+          .p-20 {padding: 20px 0}
+          .w-25.type-File {xwidth: auto}
+          .w-25.type-File legend {font-size:110% !important}
+          </style>
+        </tal:def>
 
       </metal:block>
     </metal:content-core>
