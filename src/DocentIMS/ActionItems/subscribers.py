@@ -75,7 +75,7 @@ def add_meeting_types(object, event):
                             container=context,
                             parent_id=parent_id,
                             title=f"Agenda {meeting_date_time}",
-                            id=f"agenda-{parent_id}",
+                            id=f"agenda",
         )
             
         if 'Meeting Agenda' in content_types:
@@ -84,7 +84,7 @@ def add_meeting_types(object, event):
                             container=context,
                             parent_id=parent_id,
                             title=f"Agenda {meeting_date_time}",
-                            id=f"agenda-{parent_id}",
+                            id=f"agenda",
         )
             
         if 'meeting_notes' in content_types:
@@ -96,7 +96,7 @@ def add_meeting_types(object, event):
                             title=f"Notes {meeting_date_time}",
                             meeting_location=location,
                             description="Notes taken during the meeting",
-                            id=f"note-{parent_id}",
+                            id=f"notes",
             )
             
         if 'Meeting Notes' in content_types:
@@ -108,7 +108,7 @@ def add_meeting_types(object, event):
                             title=f"Notes {meeting_date_time}",
                             meeting_location=location,
                             description="Notes taken during the meeting",
-                            id=f"notes-{parent_id}",
+                            id=f"notes",
             )
         
         if 'meeting_minutes' in content_types:
@@ -117,7 +117,7 @@ def add_meeting_types(object, event):
                             container=context,
                             parent_id=parent_id,
                             title=f"Minutes {meeting_date_time}",
-                            id=f"minute-{parent_id}",                  
+                            id=f"minutes",                  
             )
         
         
@@ -129,7 +129,7 @@ def add_meeting_types(object, event):
                             container=context,
                             parent_id=parent_id,
                             title=f"Minutes {today}",
-                            id=f"minute-{parent_id}",                  
+                            id=f"minutes",                  
             )
         
        
@@ -239,30 +239,23 @@ def user_created_handler(event):
         username = user.getUserName()
         fullname = user.getProperty('fullname')
         password = ''.join(random.choices(string.ascii_letters, k=27))
-        # added_user = requests.get(site_url, headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, json={'email': email, 'password': 'password', 'fullname': 'fullname', 'roles': ['Member'], 'username': 'username'}, auth=('admin', 'admin'))
-        
-        
-        # import pdb; pdb.set_trace()
-        # url = f'{site_url}/@add_user?username={username}&email={email}&fullname={fullname}'
-        
-        # response = requests.post('http://10.0.0.159:8605/Plone54/@users', headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, json={'description': 'Professor of Linguistics', 'email': 'noam.chomsky@example.com', 'fullname': 'Noam Avram Chomsky', 'home_page': 'web.mit.edu/chomsky', 'location': 'Cambridge, MA', 'password': 'colorlessgreenideas', 'roles': ['Contributor'] }, auth=('admin', 'admin'))
-        # import pdb; pdb.set_trace()
-        # a= 1
-        # added_user = requests.post(
-        #         site_url,
-        #         headers={
-        #             'Accept': 'application/json',
-        #             'Content-Type': 'application/json'
-        #         },
-        #         json={
-        #             'email': email,
-        #             'password': password,
-        #             'fullname': fullname,
-        #             'roles': ['Member'] 
-        #         },
-        #         #Change to user / password
-        #         auth=('admin', 'admin')
-        #     )
+      
+        added_user = requests.post(
+                site_url,
+                headers={
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                json={
+                    'email': email,
+                    'username': username,
+                    'password': password,
+                    'fullname': fullname,
+                    'roles': ['Member'] 
+                },
+                #Change to user / password
+                auth=('admin', 'admin')
+            )
         
         # # response = requests.get(url, headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, auth=('admin', 'admin'))
         # if response.status_code == 200:            
@@ -270,8 +263,11 @@ def user_created_handler(event):
         #     # Do something
         # else:
         #     #Give error, send email ??
-        #     abc = 1
-               
+        # print('hello')
+        
+        # abc = 1               
         
         return True
+    
+    return False
         
