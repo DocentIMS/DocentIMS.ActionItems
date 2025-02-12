@@ -485,6 +485,21 @@ def _create_content(portal):
                 exclude_from_nav=False,
         )
             
+        if not portal.get('word-makro', False):
+            items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                description="This has the macros from Abdallah",
+                id='word-makro',
+                title='Word Macro',
+                exclude_from_nav=True,
+        )
+            
+            
+            
+            
+
+            
         #     collection-of-collections = plone.api.content.create(
         #             type='Collection',
         #             container=feedback,
