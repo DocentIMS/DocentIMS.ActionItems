@@ -34,8 +34,8 @@
 
 
             <tal:define tal:define="formatted_date python:context.start.strftime('%b %d, %Y from %H:%M');
-                          formatted_created python:context.created.strftime('%b %d, %Y  %H:%M');
-                          formatted_modified python:context.modified.strftime('%b %d, %Y  %H:%M')">
+                          formatted_created python:context.Created.strftime('%b %d, %Y  %H:%M');
+                          formatted_modified python:context.Modified.strftime('%b %d, %Y  %H:%M')">
                         <p> 🕑                          <tal:date replace="formatted_date" />
                         </p>
                         <p class="small published">
