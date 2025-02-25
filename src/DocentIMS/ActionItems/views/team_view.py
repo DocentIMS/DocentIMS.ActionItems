@@ -24,21 +24,35 @@ class TeamView(BrowserView):
     
     def get_group_members(self):
         # import pdb; pdb.set_trace()
-        grouppe = "PrjTeam"
-        groupmembers = api.group.get(groupname=grouppe) 
+        gruppe = "PrjTeam"
+        group = api.group.get(groupname=gruppe) 
         userlist = []
         
-        for groupmember in groupmembers:
-            userlist.append({
-                            'id': groupmember.getId(), 
-                            'fullname': groupmember.getProperty('fullname'), 
-                            'email': groupmember.getProperty('email'),
-                            'role': groupmember.getProperty('your_team_role'),
-                            'company': groupmember.getProperty('company')
-                        })
+        for user_id in group.getMemberIds():  # Get list of user IDs in the group
+            user = api.user.get(username=user_id)  # Get user object
+
+            if user:  # Ensure user exists
+                userlist.append({
+                    'id': user.getId(), 
+                    'fullname': user.getProperty('fullname', ''),  # Use default values to avoid NoneType errors
+                    'email': user.getProperty('email', ''),
+                    'role': user.getProperty('your_team_role', ''),
+                    'company': user.getProperty('company', '')
+                })
+
+        return userlist
+        
+        # for groupmember in groupmembers:
+        #     userlist.append({
+        #                     'id': groupmember.getId(), 
+        #                     'fullname': groupmember.getProperty('fullname'), 
+        #                     'email': groupmember.getProperty('email'),
+        #                     'role': groupmember.getProperty('your_team_role'),
+        #                     'company': groupmember.getProperty('company')
+        #                 })
                         
                 
-        return userlist
+        # return userlist
         # return [{'name': user.getProperty('fullname') or user.getId(), 'role': user.getProperty('your_team_role'), 'company': user.getProperty('company'), } for user in users]
 
 
