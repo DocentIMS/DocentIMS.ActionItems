@@ -183,6 +183,18 @@
                         </span>
                       </tal:attendees>
                     </p>
+                    <tal:define tal:define="formatted_date python:item.start.strftime('%b %d, %Y from %H:%M');
+                          formatted_created python:item.created.strftime('%b %d, %Y  %H:%M');
+                          formatted_modified python:item.modified.strftime('%b %d, %Y  %H:%M')">
+                        <p> 🕑                          <tal:date replace="formatted_date" />
+                        </p>
+                        <p class="small published">
+
+                          <span tal:condition="python: formatted_created != formatted_modified">Revised:</span>
+                          <span tal:condition="python: formatted_created == formatted_modified">Published:</span>
+                          <tal:date replace="formatted_date" />
+                        </p>
+                    </tal:define>
 
                   </div>
 
