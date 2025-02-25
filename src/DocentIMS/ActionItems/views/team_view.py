@@ -24,10 +24,21 @@ class TeamView(BrowserView):
     
     def get_group_members(self):
         group_id = "PrjTeam"
-        users = api.group.get(groupname=group_id) 
-        # userlist = []
+        groupmembers = api.group.get(groupname=group_id) 
+        userlist = []
         
-        return [{'name': user.getProperty('fullname') or user.getId(), 'role': user.getProperty('your_team_role'), 'company': user.getProperty('company'), } for user in users]
+        for groupmember in groupmembers:
+            userlist.append({
+                            'id': groupmember.getId(), 
+                            'fullname': groupmember.getProperty('fullname'), 
+                            'email': groupmember.getProperty('email'),
+                            'role': groupmember.getProperty('your_team_role'),
+                            'company': groupmember.getProperty('company')
+                        })
+                        
+                
+        return userlist
+        # return [{'name': user.getProperty('fullname') or user.getId(), 'role': user.getProperty('your_team_role'), 'company': user.getProperty('company'), } for user in users]
 
 
 
