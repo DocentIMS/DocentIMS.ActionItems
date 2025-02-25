@@ -12,7 +12,7 @@
         <tr>
           <th>Name</th>
           <th>Role</th>
-          <tg>Company</th>
+          <th>Company</th>
         </tr>
         <tr tal:repeat="user view/get_group_members|None">
              <td>${python: user['name']}</td>
