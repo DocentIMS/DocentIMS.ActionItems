@@ -58,6 +58,11 @@
       <required>False</required>
       <title>Proposed Task</title>
     </field>
+    <field name="actuals" type="zope.schema.TextLine" form:mode="z3c.form.interfaces.IForm:hidden">
+      <description/>
+      <required>False</required>
+      <title>Actuals</title>
+    </field>
     <fieldset name="meeting_notes" label="Meeting Notes" description="My notes during the meeting.">
       <field name="meeting_notes" type="plone.app.textfield.RichText">
         <description>Include all information to create minutes.</description>
