@@ -359,7 +359,7 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'meeting_types',
-        label=_(u'Meeting Types'),
+        label=_(u'Meeting Tag'),
         fields=[
             'meeting_types'
         ] 
