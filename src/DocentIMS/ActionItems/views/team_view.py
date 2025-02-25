@@ -24,7 +24,7 @@ class TeamView(BrowserView):
     
     def get_group_members(self):
         group_id = "PrjTeam"
-        users = api.group.get(group=group_id).getMembers()
+        users = api.group.get(groupname=group_id).getMembers()
         # userlist = []
         
         return [{'name': user.getProperty('fullname') or user.getId(), 'role': user.getProperty('your_team_role'), 'company': user.getProperty('company'), } for user in users]
