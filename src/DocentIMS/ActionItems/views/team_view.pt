@@ -15,9 +15,9 @@
           <th>Company</th>
         </tr>
         <tr tal:repeat="user view/get_group_members|None">
-             <td>${python: user['name']}</td>
-             <td>${python: user['role']}</td>
-             <td>${python: user['company']}</td>
+             <td>${user/name|None}</td>
+             <td>${user/role|None}</td>
+             <td>${user/company|None}</td>
         </tr>
       </table>
 
