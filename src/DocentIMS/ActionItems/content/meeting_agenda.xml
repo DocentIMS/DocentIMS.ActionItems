@@ -8,5 +8,10 @@
       <required>False</required>
       <title>Word File</title>
     </field>
+    <field name="planned_action_items" type="zope.schema.TextLine">
+      <description/>
+      <required>False</required>
+      <title>Planned Action Items</title>
+    </field>
   </schema>
 </model>
