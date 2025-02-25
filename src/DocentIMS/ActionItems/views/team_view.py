@@ -25,7 +25,7 @@ class TeamView(BrowserView):
     def get_group_members(self):
         import pdb; pdb.set_trace()
         group = "PrjTeam"
-        groupmembers = api.group.get(groupname=group.id) 
+        groupmembers = api.group.get(groupname=group) 
         userlist = []
         
         for groupmember in groupmembers:
