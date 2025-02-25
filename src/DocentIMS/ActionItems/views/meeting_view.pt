@@ -33,18 +33,15 @@
             <tal:eventsummary replace="structure context/@@meeting_summary" />
 
 
-            <tal:define tal:define="formatted_date python:context.start.strftime('%b %d, %Y from %H:%M');
+            <div tal:define="formatted_date python:context.start.strftime('%b %d, %Y from %H:%M');
                           formatted_created python:context.created().strftime('%b %d, %Y  %H:%M');
                           formatted_modified python:context.modified().strftime('%b %d, %Y  %H:%M')">
-                        <p> 🕑                          <tal:date replace="formatted_date" />
-                        </p>
                         <p class="small published">
-
                           <span tal:condition="python: formatted_created != formatted_modified">Revised:</span>
                           <span tal:condition="python: formatted_created == formatted_modified">Published:</span>
                           <tal:date replace="formatted_date" />
                         </p>
-            </tal:define>
+            </div>
 
 
             <div id="parent-fieldname-text" tal:condition="data/text">
