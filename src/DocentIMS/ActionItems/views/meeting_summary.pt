@@ -31,11 +31,12 @@
                   <tal:date replace="structure python:view.formatted_date(context)" />
 
                 </span>
-                <span style="color: #DDD; font-size: 70%" class="timezone text-muted small" tal:condition="start_tzname" i18n:ignore="True">
+                <!-- <span style="color: #DDD; font-size: 70%" class="timezone text-muted small" 
+                    tal:condition="start_tzname" i18n:ignore="True">
                   (                  <tal:tzname replace="start_tzname">timezone name</tal:tzname>
                   / UTC<tal:tzoffset replace="start_utcoffset" />
 )
-                </span>
+                </span> -->
               </p>
             </div>
           </div>
