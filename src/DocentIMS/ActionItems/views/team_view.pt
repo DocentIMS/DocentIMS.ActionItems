@@ -15,7 +15,7 @@
           <th>Company</th>
         </tr>
         <tr tal:repeat="user view/get_group_members|None">
-             <td>${user/name|None}</td>
+             <td>${user/fullname|None}</td>
              <td>${user/role|None}</td>
              <td>${user/company|None}</td>
         </tr>
