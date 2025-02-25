@@ -41,7 +41,7 @@
                           <span tal:condition="python: formatted_created == formatted_modified">Published:</span>
                           <tal:date replace="formatted_date" /><br/>
                         </p>
-                        <p> &nbsp</p>
+                        <p> &nbsp;</p>
             </div>
 
 
