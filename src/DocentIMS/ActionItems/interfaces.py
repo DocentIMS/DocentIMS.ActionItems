@@ -121,7 +121,7 @@ class IVocabulari4(model.Schema):
 
 class IMeetingRows(model.Schema):
     meeting_type = schema.TextLine(
-        title=_(u'meeting_type', 'Meeting Type'),
+        title=_(u'meeting_type', 'Meeting Tag'),
         # description=u"Meeting Type",
         required=False,
     )
@@ -359,7 +359,7 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'meeting_types',
-        label=_(u'Meeting Tag'),
+        label=_(u'Meeting Types'),
         fields=[
             'meeting_types'
         ] 

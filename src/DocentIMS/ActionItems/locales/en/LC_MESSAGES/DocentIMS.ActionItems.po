@@ -263,7 +263,7 @@ msgid "Meeting Notes"
 msgstr ""
 
 #: ../interfaces.py:362
-msgid "Meeting Tag"
+msgid "Meeting Type"
 msgstr ""
 
 #: ../profiles/default/types/Meeting_Minutes.xml
