@@ -40,9 +40,11 @@
                           <span tal:condition="python: formatted_created != formatted_modified">Revised:</span>
                           <span tal:condition="python: formatted_created == formatted_modified">Published:</span>
                           <tal:date replace="formatted_date" /><br/>
-                        </p>
+                        </p>                         
                         <p> &nbsp;</p>
             </div>
+                          
+          
 
 
             <div id="parent-fieldname-text" tal:condition="data/text">
