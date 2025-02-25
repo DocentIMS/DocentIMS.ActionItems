@@ -28,17 +28,19 @@ class TeamView(BrowserView):
         group = api.group.get(groupname=gruppe) 
         userlist = []
         
-        for user_id in group.getMemberIds():  # Get list of user IDs in the group
-            user = api.user.get(username=user_id)  # Get user object
+        if group:
+        
+            for user_id in group.getMemberIds():  # Get list of user IDs in the group
+                user = api.user.get(username=user_id)  # Get user object
 
-            if user:  # Ensure user exists
-                userlist.append({
-                    'id': user.getId(), 
-                    'fullname': user.getProperty('fullname', ''),  # Use default values to avoid NoneType errors
-                    'email': user.getProperty('email', ''),
-                    'role': user.getProperty('your_team_role', ''),
-                    'company': user.getProperty('company', '')
-                })
+                if user:  # Ensure user exists
+                    userlist.append({
+                        'id': user.getId(), 
+                        'fullname': user.getProperty('fullname', ''),  # Use default values to avoid NoneType errors
+                        'email': user.getProperty('email', ''),
+                        'role': user.getProperty('your_team_role', ''),
+                        'company': user.getProperty('company', '')
+                    })
 
         return userlist
         
