@@ -121,7 +121,7 @@ class IVocabulari4(model.Schema):
 
 class IMeetingRows(model.Schema):
     meeting_type = schema.TextLine(
-        title=_(u'meeting_type', 'Meeting Tag'),
+        title=_(u'meeting_type', 'Meeting Type'),
         # description=u"Meeting Type",
         required=False,
     )
@@ -133,7 +133,7 @@ class IMeetingRows(model.Schema):
     )
      
     meeting_summary = schema.Text(
-        title=_(u'Vmeeting_summary', 'Meeting'),
+        title=_(u'Vmeeting_summary', 'Meeting Tag'),
         # description=u"Default Summary",
         required=False,
     )
