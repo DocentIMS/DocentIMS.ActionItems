@@ -29,7 +29,7 @@
   <exit-transition transition_id="close"/>
  </state>
  <state state_id="6.Closed" title="Closed">
-  <description>PM has accepted Action Item as complete and closed the AI</description>
+  <description>PM has accepted Action Item as complete and closed the Task</description>
   <exit-transition transition_id="archive"/>
  </state>
  <state state_id="7.Archived" title="">
@@ -54,7 +54,7 @@
   </guard>
  </transition>
  <transition transition_id="close" title="Close" new_state="6.Closed" trigger="USER" before_script="" after_script="">
-  <description>when AI is complete the PM closes</description>
+  <description>when Task is complete the PM closes</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
   <guard>
    <guard-role>PrjMgr</guard-role>
@@ -68,7 +68,7 @@
   </guard>
  </transition>
  <transition transition_id="retract" title="Retract" new_state="" trigger="USER" before_script="" after_script="">
-  <description>Return AI to Creator</description>
+  <description>Return Task to Creator</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
   <guard>
    <guard-group>PrjTeam</guard-group>
@@ -105,7 +105,7 @@
   </guard>
  </transition>
  <transition transition_id="submit" title="Submit for Review" new_state="2.Submitted" trigger="USER" before_script="" after_script="">
-  <description>Submits Action Item to the Owner initially identified by AI creator.  This sends to the proposed owner who may accept or reject.</description>
+  <description>Submits Action Item to the Owner initially identified by Task creator.  This sends to the proposed owner who may accept or reject.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" icon="">Submit for Acceptance</action>
   <guard>
    <guard-group>PrjTeam</guard-group>

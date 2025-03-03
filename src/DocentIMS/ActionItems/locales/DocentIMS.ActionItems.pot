@@ -68,7 +68,7 @@ msgid "A relative url to redirect to."
 msgstr ""
 
 #: ../vocabularies.py:268
-msgid "AI Number"
+msgid "Task Number"
 msgstr ""
 
 #: ../interfaces.py:401

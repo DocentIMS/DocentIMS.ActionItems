@@ -135,7 +135,7 @@
                 </div>
             </fieldset>
             <fieldset>
-              <legend>AI Help</legend>
+              <legend>Task Help</legend>
                 <h3>${context/help-files/action-item-help/action-item-help/Title|None}</h3>
                 <p>${context/help-files/action-item-help/action-item-help/Description|None}</p> 
                 <div tal:replace="structure context/help-files/action-item-help/action-item-help/text/output|None"/>

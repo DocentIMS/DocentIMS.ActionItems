@@ -247,8 +247,9 @@ def pre_install(context):
    
  
     #create content 
-    _create_content(portal)
     _create_more_content(portal)
+    _create_content(portal)
+
 
 
 def post_import(context):
