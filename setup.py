@@ -71,7 +71,9 @@ setup(
         'pandas',
         'openpyxl',
         'onlyoffice.plone',
-        'plone.app.widgets'
+        'plone.app.widgets',
+        'collective.fullcalendar',
+        'plone.app.discussion'
     ],
     extras_require={
         'test': [

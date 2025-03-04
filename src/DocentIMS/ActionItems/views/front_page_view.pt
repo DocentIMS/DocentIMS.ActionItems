@@ -1,156 +1,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-  <metal:content-core fill-slot="content">
-  <metal:block define-macro="content">
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
+  <body>
+    <metal:content-core fill-slot="content">
+      <metal:block define-macro="content">
 
-  <div tal:define="portal_state context/@@plone_portal_state" 
-    tal:condition="view/count_items" class="notification-viewlet portalMessage statusmessage statusmessage-info alert alert-info">
-    <a title="see noticitions" href="${portal_state/portal_url}/notifications-view">${view/get_user} has <b>${view/count_items}</b> new notification(s). <b>Click to see</b></a>
-</div>
- 
-
-    <!--p>${view/last_login|None}</p-->
-    <h1 class="documentFirstHeading">${view/project_title|None}</h1>
-    <h3>${view/project_short_name|None}</h3>
-    <div tal:condition="view/project_description|None" tal:replace="structure  view/project_description/output|None"/> 
-    
-
-  <tal:anon tal:condition="view/is_anon">
-
-    
-    <div class="slider-container">
-      <div class="slider">
-        <div class="slides">
-          <div id="slides__1" class="slide">
-          <img src="https://www.shutterstock.com/image-photo/there-dummy-documents-that-created-260nw-2165046243.jpg" alt="dummy image" />
-            <!-- span class="slide__text">1</span-->
-            <a class="slide__prev" href="#slides__4" title="Next"></a>
-            <a class="slide__next" href="#slides__2" title="Next"></a>
-          </div>
-          <div id="slides__2" class="slide">
-            <span class="slide__text">2</span>
-            <a class="slide__prev" href="#slides__1" title="Prev"></a>
-            <a class="slide__next" href="#slides__3" title="Next"></a>
-          </div>
-          <div id="slides__3" class="slide">
-            <span class="slide__text">3</span>
-            <a class="slide__prev" href="#slides__2" title="Prev"></a>
-            <a class="slide__next" href="#slides__4" title="Next"></a>
-          </div>
-          <div id="slides__4" class="slide">
-            <span class="slide__text">4</span>
-            <a class="slide__prev" href="#slides__3" title="Prev"></a>
-            <a class="slide__next" href="#slides__1" title="Prev"></a>
-          </div>
+        <div tal:define="portal_state context/@@plone_portal_state" tal:condition="view/count_items" class="notification-viewlet portalMessage statusmessage statusmessage-info alert alert-info">
+          <a title="see noticitions" href="${portal_state/portal_url}/notifications-view">${view/get_user} has <b>${view/count_items}</b> new notification(s). <b>Click to see</b>
+          </a>
         </div>
-      </div>
-    </div>
 
-      
 
-        <style>
-          .slider-container {
-              background: linear-gradient(149deg, rgb(247, 0, 255) 0%, rgb(255, 145, 0) 100%);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              height: 100%;
-          }
+        <!--p>${view/last_login|None}</p-->
+        <h1 class="documentFirstHeading">${view/project_title|None}</h1>
+        <h3>${view/project_short_name|None}</h3>
+        <div tal:condition="view/project_description|None" tal:replace="structure  view/project_description/output|None"/>
 
-          .slider {
-              width: 100%;
-              max-width: 600px;
-              height: 400px;
-              margin: 20px;
-              text-align: center;
-              border-radius: 20px;
-              overflow: hidden;
-              position: relative;
-          }
-          .slides {
-              display: flex;
-              overflow-x: scroll;
-              position: relative;
-              scroll-behavior: smooth;
-              scroll-snap-type: x mandatory;
-          }
-          .slide:nth-of-type(even) {
-              background-color: rgb(250, 246, 212);
-          }
 
-          .slide {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              flex-shrink: 0;
-              width: 100%;
-              height: 400px;
-              margin-right: 0px;
-              box-sizing: border-box;
-              background: white;
-              transform-origin: center center;
-              transform: scale(1);
-              scroll-snap-align: center;
-          }
+        <tal:anon tal:condition="view/is_anon">
+           <a href="/login" class="btn button standalone m-20-0 align-right justify-content-end">Log in</a>
 
-          .slide__text {
-              font-size: 40px;
-              font-weight: bold;
-              font-family: sans-serif;
-          }
+          <!-- Load Slick Carousel -->
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+          <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
 
-          .slide a {
-              background: none;
-              border: none;
-          }
+          <!-- Initialize Slick -->
+          <script>
+              $(document).ready(function(){
+                $('.carousel').slick({
+                  autoplay: true,
+                  autoplaySpeed: 3000,
+                  dots: true,
+                  arrows: false
+                });
+              });
+          </script>
 
-          a.slide__prev,
-          .slider::before {
-              transform: rotate(135deg);
-              -webkit-transform: rotate(135deg);
-              left: 5%;
-          }
+          <div class="pat-carousel carousel" data-pat-carousel='{"timeout": 3, "auto": true, "loop": true}'>
+            <tal:repeat tal:repeat="image view/get_images|None">
+            <img class="image" src="${image/getURL}" alt="image/Title"/> 
+            </tal:repeat>
+          </div>
+          <p></p>
 
-          a.slide__next,
-          .slider::after {
-              transform: rotate(-45deg);
-              -webkit-transform: rotate(-45deg);
-              right: 5%;
-          }
 
-          .slider::before,
-          .slider::after,
-          .slide__prev,
-          .slide__next {
-              position: absolute;
-              top: 48%;
-              width: 35px;
-              height: 35px;
-              border: solid black;
-              border-width: 0 4px 4px 0;
-              padding: 3px;
-              box-sizing: border-box;
-          }
 
-          .slider::before,
-          .slider::after {
-            content: '';
-            z-index: 1;
-            background: none;
-            pointer-events: none;
-          }
-      
-        </style>
+        </tal:anon>
 
-    </tal:anon>
+        <!-- Section -->
+        <section tal:condition="view/get_items|None">
+          <header class="major">
+            <h2>Amenities</h2>
+          </header>
+        </section>
 
-     <div tal:define="text view/field_to_return|None" tal:condition="text|None" tal:replace="structure text|None" /> 
-  </metal:block>
-  </metal:content-core>
-</body>
+        <section>
+          <div class="posts">
+
+            <tal:repeat tal:repeat="item view/get_items|None">
+              <article tal:define="obj item/getObject">
+                <a class="image" href="${item/getURL}">
+                  <img alt="" src="${item/getURL}/@@images/image">
+                  </a>
+                  <h3>${item/Title}</h3>
+                  <!-- <div tal:content="structure obj/text/output|None"></div> -->
+                  <p>${item/Description}</p>
+                  <ul class="actions">
+                    <li>
+                      <a class="button" href="${item/getURL}">More</a>
+                    </li>
+                  </ul>
+                </article>
+              </tal:repeat>
+            </div>
+          </section> 
+
+        <div tal:define="text view/field_to_return|None" tal:condition="text|None" tal:replace="structure text|None" />
+      </metal:block>
+    </metal:content-core>
+  </body>
 </html>

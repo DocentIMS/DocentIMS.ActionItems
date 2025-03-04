@@ -3356,7 +3356,7 @@
     </field>
     <value/>
   </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.absolutePrefix" interface="plone.app.theming.interfaces.IThemeSettings" field="absolutePrefix">
+  <!-- <record name="plone.app.theming.interfaces.IThemeSettings.absolutePrefix" interface="plone.app.theming.interfaces.IThemeSettings" field="absolutePrefix">
     <field type="plone.registry.field.TextLine">
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="convert_relative_url">Convert relative URLs in the theme file to absolute paths using this prefix.</description>
       <required>False</required>
@@ -3454,7 +3454,7 @@
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Auth cookie length</title>
     </field>
     <value>0</value>
-  </record>
+  </record> -->
   <record name="plone.authenticated_users_only" interface="plone.i18n.interfaces.ILanguageSchema" field="authenticated_users_only">
     <field type="plone.registry.field.Bool">
       <default>False</default>

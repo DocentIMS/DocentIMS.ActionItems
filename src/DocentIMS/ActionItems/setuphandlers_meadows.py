@@ -183,8 +183,8 @@ def post_install(context):
     action_folder = portal.get('action-items', False)
     behaviour = constrains.ISelectableConstrainTypes(action_folder)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['action_items'])
-    behaviour.setLocallyAllowedTypes(['action_items'])
+    behaviour.setImmediatelyAddableTypes(['action_items', 'Collection'])
+    behaviour.setLocallyAllowedTypes(['action_items', 'Collection'])
 
     # scope_analysis = portal.get('scope-analysis', False)
     # behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
@@ -247,8 +247,9 @@ def pre_install(context):
    
  
     #create content 
-    _create_more_content(portal)
+    
     _create_content(portal)
+    _create_more_content(portal)
 
 
 
@@ -265,7 +266,7 @@ def post_import(context):
     
 
     #Import excel content    
-    _import_content(portal)
+    # _import_content(portal)
     
 
 def _create_content(portal):
@@ -733,12 +734,9 @@ def _create_content(portal):
                 exclude_from_nav=True,
             )
 
- 
-
 def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
-
 
 def load_image():
     filename = os.path.join(os.path.dirname(__file__), 'img', 'blank.png')
@@ -755,8 +753,7 @@ def load_file():
             data=pdf_file.read(),
             filename='ai-help.pdf'
         )
-        
-        
+     
 def load_word_file(name):
     filename = os.path.join(os.path.dirname(__file__), 'word', name)
     with open(filename, 'rb') as word_file:
@@ -764,7 +761,6 @@ def load_word_file(name):
             data=word_file.read(),
             filename=name
         )
-
 
 def _create_more_content(portal):        
     sitecollections = [
@@ -1036,23 +1032,33 @@ def _create_more_content(portal):
             }
         ] 
  
-        
+    
     for collection in sitecollections:  
-            my_id = collection['@id']
-            my_folder = my_id.split('/')[0] 
-            print(my_folder)
-            if not portal.get(my_folder, False):
-                folder = portal.get(my_folder)  
-                # if folder:  
-                id = my_id.split('/')[1]            
-                kollection  = plone.api.content.create(
-                        type='Collection',
-                        container=folder,
-                        id=id,
-                        title=collection['title'],
-                        description = collection['description'],
-                        query =  collection['query']
-                    )
+        import pdb; pdb.set_trace() 
+        my_id = collection['@id']
+        my_folder = my_id.split('/')[0] 
+        print(my_folder)
+        if portal.get(my_folder, False):
+            folder = portal.get(my_folder) 
+        else:
+            folder = plone.api.content.create(
+                    type='Folder',
+                    container=portal,
+                    id=my_folder,
+                    title=my_folder 
+                )
+                
+        # if folder:  
+        id = my_id.split('/')[1] 
+        if not folder.get(id, False):           
+            kollection  = plone.api.content.create(
+                    type='Collection',
+                    container=folder,
+                    id=id,
+                    title=collection['title'],
+                    description = collection['description'],
+                    query =  collection['query']
+                )
                          
 
         
