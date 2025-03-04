@@ -13,7 +13,7 @@
     <dependency>profile-collective.collectionfilter.portlets:default</dependency>
     <dependency>profile-collective.impersonate:default</dependency>
     <dependency>profile-collective.embeddedpage:default</dependency>
-    <dependency>profile-collective.fullcalendar:default</dependency>
+    <!-- <dependency>profile-collective.fullcalendar:default</dependency> -->
     <dependency>profile-collective.impersonate:default</dependency>
     <dependency>profile-collective.searchandreplace:default</dependency>
     <dependency>profile-collective.z3cform.colorpicker:default</dependency>
