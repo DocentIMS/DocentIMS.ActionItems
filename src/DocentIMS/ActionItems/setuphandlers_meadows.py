@@ -1034,7 +1034,6 @@ def _create_more_content(portal):
  
     
     for collection in sitecollections:  
-        import pdb; pdb.set_trace() 
         my_id = collection['@id']
         my_folder = my_id.split('/')[0] 
         print(my_folder)
