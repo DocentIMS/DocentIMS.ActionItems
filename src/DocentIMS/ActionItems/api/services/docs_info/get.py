@@ -85,14 +85,14 @@ class DocsInfo(object):
         portal = api.portal.get()
     
         companies = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies')
-        downloads_folder = portal.get('downloads', False)
-        team_member_folder =  downloads_folder.get('team_member', False)
+        documents_folder = portal.get('documents', False)
+        save_locations =  documents_folder.get('save-locations', False)
         
         portal_timezone = api.portal.get_registry_record('plone.portal_timezone')
         user_timezone = user.getProperty('timezone') or portal_timezone
             
-        if  team_member_folder:
-            down_load_date = team_member_folder.modified().asdatetime().astimezone(timezone(portal_timezone)).isoformat()
+        if  save_locations:
+            down_load_date = save_locations.modified().asdatetime().astimezone(timezone(portal_timezone)).isoformat()
         
         if user is not None:    
             
