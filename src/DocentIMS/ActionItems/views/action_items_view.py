@@ -24,7 +24,7 @@ class ActionItemsView(BrowserView):
     
     def get_memberid(self):
         return  api.user.get_current().getMemberId()
-
+    
     def get_usernote(self):
         context = self.context
         current =  api.user.get_current()
@@ -139,8 +139,6 @@ class ActionItemsView(BrowserView):
 
     # # Example: Get holiday dates for the year 2025
     # year_2025_holidays = us_holidays[2025]
-
-
 
 
     def source_relations(self):

@@ -72,7 +72,7 @@ msgid "Task Number"
 msgstr ""
 
 #: ../interfaces.py:401
-msgid "Action Item Table"
+msgid "Tasks Table"
 msgstr ""
 
 #: ../portlets/add_action_item_portlet.py:39

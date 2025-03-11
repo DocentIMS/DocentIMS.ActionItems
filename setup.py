@@ -73,7 +73,8 @@ setup(
         'onlyoffice.plone',
         'plone.app.widgets',
         'collective.fullcalendar',
-        'plone.app.discussion'
+        'plone.app.discussion',
+        'poppler-utils'
     ],
     extras_require={
         'test': [

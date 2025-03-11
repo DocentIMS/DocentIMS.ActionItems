@@ -398,7 +398,7 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'table',
-        label=_(u'Action Item Table'),
+        label=_(u'Tasks Table'),
         fields=[
             'table_columns',
             ],
