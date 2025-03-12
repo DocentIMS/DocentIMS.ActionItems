@@ -28,8 +28,9 @@
 
           <!-- Initialize Slick -->
           <script>
-              $(document).ready(function(){
-                $('.carousel').slick({
+            var $jq = jQuery.noConflict();
+              $jq(document).ready(function(){
+                $jq('.carousel').slick({
                   autoplay: true,
                   autoplaySpeed: 3000,
                   dots: true,
