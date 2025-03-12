@@ -166,6 +166,7 @@
           .p-20 {padding: 20px 0}
           .w-25.type-File {xwidth: auto}
           .w-25.type-File legend {font-size:110% !important}
+          #section-category {display: none}
           </style>
         </tal:def>
 
