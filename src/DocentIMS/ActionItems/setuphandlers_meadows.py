@@ -797,6 +797,43 @@ def _create_more_content(portal):
             "type_title": "Collection"
             }, 
             {
+            "@id": "site-collections/tasks-yellow", 
+            "@type": "Collection", 
+            "description": "",
+            "query": [
+                {
+                "i": "portal_type", 
+                "o": "plone.app.querystring.operation.selection.any", 
+                "v": [
+                    "action_items"
+                ]
+                }, 
+                {
+                "i": "assigned_id", 
+                "o": "plone.app.querystring.operation.string.currentUser", 
+                "v": ""
+                }, 
+                {
+                "i": "duedate", 
+                "o": "plone.app.querystring.operation.date.afterRelativeDate", 
+                "v": "6"
+                }, 
+                {
+                "i": "duedate", 
+                "o": "plone.app.querystring.operation.date.beforeRelativeDate", 
+                "v": "16"
+                }, 
+                {
+                "i": "closed", 
+                "o": "plone.app.querystring.operation.string.is", 
+                "v": "No"
+                }
+            ], 
+            "review_state": "published", 
+            "title": "Tasks - Yellow", 
+            "type_title": "Collection"
+            }, 
+            {
             "@id": "site-collections/tasks-red", 
             "@type": "Collection", 
             "description": "Critical Tasks",  
@@ -879,43 +916,7 @@ def _create_more_content(portal):
             "title": "Notifications - Critical", 
             "type_title": "Collection"
             }, 
-            {
-            "@id": "site-collections/tasks-yellow", 
-            "@type": "Collection", 
-            "description": "",
-            "query": [
-                {
-                "i": "portal_type", 
-                "o": "plone.app.querystring.operation.selection.any", 
-                "v": [
-                    "action_items"
-                ]
-                }, 
-                {
-                "i": "assigned_id", 
-                "o": "plone.app.querystring.operation.string.currentUser", 
-                "v": ""
-                }, 
-                {
-                "i": "duedate", 
-                "o": "plone.app.querystring.operation.date.afterRelativeDate", 
-                "v": "6"
-                }, 
-                {
-                "i": "duedate", 
-                "o": "plone.app.querystring.operation.date.beforeRelativeDate", 
-                "v": "16"
-                }, 
-                {
-                "i": "closed", 
-                "o": "plone.app.querystring.operation.string.is", 
-                "v": "No"
-                }
-            ], 
-            "review_state": "published", 
-            "title": "Tasks - Yellow", 
-            "type_title": "Collection"
-            }, 
+            
             {
             "@id": "action-items/action-items-collection", 
             "@type": "Collection", 
