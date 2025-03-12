@@ -93,6 +93,8 @@ class DocsInfo(object):
             
         if  save_locations:
             down_load_date = save_locations.modified().asdatetime().astimezone(timezone(portal_timezone)).isoformat()
+        else:
+            down_load_date = ""
         
         if user is not None:    
             
