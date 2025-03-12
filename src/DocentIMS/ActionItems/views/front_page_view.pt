@@ -19,7 +19,7 @@
 
 
         <tal:anon tal:condition="view/is_anon">
-           <a href="/login" class="btn button standalone m-20-0 align-right justify-content-end">Log in</a>
+           <!-- <a href="/login" class="btn button standalone m-20-0 align-right justify-content-end">Log in</a> -->
 
           <!-- Load Slick Carousel -->
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
