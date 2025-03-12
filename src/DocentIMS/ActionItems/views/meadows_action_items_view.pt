@@ -78,9 +78,13 @@
                             ${context/revised_due_date|None}
                           </time>
                         </tal:condition>
-
                       </td>
                     </tr>
+                    <tal:condition tal:condition="context/source|None">
+                      <tr tal:condition="python: context.source != 'Plone'">
+                        <td><a href="resolveuid/${context/source|None}">Open Source Meeting</a></td>
+                      </tr>
+                    </tal:condition>
                   </tbody>
                 </table>
 
