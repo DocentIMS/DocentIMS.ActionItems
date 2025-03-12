@@ -53,16 +53,16 @@ class ItemCount(object):
             # Fall back to the REMOTE_ADDR
             ip_address = self.request.get('REMOTE_ADDR', '')
         
-        if current_user and ip_address in ['10.0.0.159', '103.90.162.175']:
+        if current_user and ip_address in ['10.0.0.159', '103.90.162.175', '45.61.61.241']:
             user_ids = [current_user.getUserName(), current_user.getUserId(), current_user.getProperty("email") ] 
             last_login_time = current_user.getProperty("last_login_time")
             fullname = current_user.getProperty("fullname", None)
-            your_team_role = current_user.getProperty("your_team_role", None)
-            
+            your_team_role = current_user.getProperty("your_team_role", None)            
             
             #Count notificatons
             notification_list = []
-            notification_types = ["error", "warning",  "info"]
+            notification_types =  api.portal.get_registry_record('medialog.notifications.notification_types')
+
             for notification_type in notification_types:
                 # Bypass 'user cant see', item in not published
                 my_brains = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['Notification'], 

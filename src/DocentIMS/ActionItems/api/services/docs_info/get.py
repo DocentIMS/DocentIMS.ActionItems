@@ -105,11 +105,13 @@ class DocsInfo(object):
                 if isinstance(item.get('meeting_attendees'), set):
                     item['meeting_attendees'] = list(item['meeting_attendees'])
                     
+            # message_types = ["error", "warning", "info"]                    
             
             result = {
                 'docs_info': {
                     'meeting_locations': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names'),
                     'meeting_types':  m_types, 
+                    'notification_types':  api.portal.get_registry_record('medialog.notifications.notification_types'),
                     'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
                     'green' : api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.future_green'),
                     'yellow' : api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.soon_yellow'),
