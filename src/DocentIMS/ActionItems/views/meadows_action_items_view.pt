@@ -82,7 +82,8 @@
                       </td>
                     </tr>
                     <tr tal:condition="context/source|None">
-                      <td>From: </td><td><a href="resolveuid/${context/source|None}">Open ${context/source|None}</a></td>
+                      <td><b>From: </b>
+                      <a href="resolveuid/${context/source|None}">Open Source Meeting</a></td>
                     </tr>
                   </tbody>
                 </table>
