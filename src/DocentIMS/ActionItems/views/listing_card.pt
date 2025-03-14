@@ -12,7 +12,7 @@
           <div class="pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
 
             <!-- Show all folders as separate tabs -->
-            <fieldset tal:constion="view/get_types|None" tal:repeat="folderitem view/get_types|None" tal:define="ex_show view/in_right_group|None">
+            <fieldset tal:condition="view/get_types|None" tal:repeat="folderitem view/get_types|None" tal:define="ex_show view/in_right_group|None">
             <tal:condition tal:condition="python: folderitem!='Executive Session' or ex_show == False">
 
               <legend>${folderitem}</legend>
