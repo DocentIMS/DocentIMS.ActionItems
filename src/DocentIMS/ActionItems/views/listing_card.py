@@ -36,7 +36,7 @@ class DocumentsFolderView(BrowserView):
         # meeting_title
         meetings = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
         meeting_list = [meeting['meeting_type'] for meeting in meetings]
-        if meeting_list:
+        if meeting_list != None:
             return sorted(meeting_list)
         return None
     
