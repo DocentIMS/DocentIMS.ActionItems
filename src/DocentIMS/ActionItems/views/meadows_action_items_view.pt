@@ -139,8 +139,11 @@
 
             <fieldset>
               <legend>Related Items</legend>
-              <p class="larger">
-              These Tasks were created while working on the open Action Item.
+              <p class="larger" tal:condition="view/target_relations|None">
+              These Tasks were created while working on the open Task.
+              </p>
+              <p class="larger" tal:condition="not: view/target_relations|None">
+              None
               </p>
 
               <hr class="hr"/>
