@@ -164,7 +164,6 @@
           .opacity-30, .hasfile- { opacity: 0.30}
           #plone-contentmenu-factories {display: none}
           .p-20 {padding: 20px 0}
-          .w-25 { min-width: 250px }
           .w-25.type-File {xwidth: auto}
           .w-25.type-File legend {font-size:110% !important;}
           #section-category {display: none}
