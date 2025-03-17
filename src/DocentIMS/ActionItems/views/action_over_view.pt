@@ -255,7 +255,7 @@
 
                 #portal-column-content,
                 #portal-column-two {
-                  width: 100%;
+                  width: 100% !important;
                 }
 
                 #portal-column-two {
