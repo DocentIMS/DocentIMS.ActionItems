@@ -251,6 +251,7 @@
                 #main-container {
                   display: flex;
                   flex-direction: column-reverse;
+                  width: 100% ;
                 }
 
                 #portal-column-content,
