@@ -4,10 +4,9 @@
   xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
 
   <body>
-    <metal:content-core fill-slot="main" tal:define="fields view/get_fields|None">
+    <metal:content-core fill-slot="content-core" tal:define="fields view/get_fields|None">
       <button class="margin-0" id="toggle-filters">Toggle Filters</button>
       <hr/>
-      <div id="portal-column-two"></div>
       <div class="pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
 
         <fieldset>
@@ -214,7 +213,8 @@
 
           jQuery(document).ready(function() {
             jQuery("button#toggle-filters").click(function() {
-              jQuery("#portal-column-two").toggleClass("overlay");              
+              jQuery("#portal-column-two").toggleClass("overlay");
+              
             });
           });
           </script>
@@ -242,6 +242,22 @@
                 
                 @media only screen and (min-width: 999px) {
                   button#toggle-filters { display: none}
+                }
+
+                #main-container {
+                  display: flex;
+                  flex-direction: column-reverse;
+                }
+
+                #portal-column-content,
+                #portal-column-two {
+                  width: 100%;
+                }
+
+                #portal-column-two {
+                  display: flex;
+                  gap: 2rem;
+
                 }
 
                 #portal-column-two.overlay {
