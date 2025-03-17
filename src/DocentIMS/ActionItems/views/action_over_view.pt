@@ -269,10 +269,10 @@
                   background: white !important;
                   padding-right: 2rem;
                   max-width: 100%;
-                  position: absolute;
-                  top: 320px;
-                  bottom: 0;
-                  z-index: 20;
+                  xposition: absolute;
+                  xtop: 320px;
+                  xbottom: 0;
+                  xz-index: 20;
                 }
       
           </style>
