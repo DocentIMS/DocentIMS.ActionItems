@@ -241,7 +241,7 @@
 
                 
                 @media only screen and (min-width: 999px) {
-                  button#toggle-filters { display: none}
+                  xbutton#toggle-filters { display: none}
                 }
 
                 #main-container {
