@@ -126,6 +126,10 @@ ${context/aq_parent/start/date}</p>
           </p>
         </tal:condition>
 
+        <style>
+          .w-25 { min-width: 250px }
+        </style>
+
 
 
       </metal:block>
