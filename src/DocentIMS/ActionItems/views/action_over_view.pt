@@ -213,6 +213,7 @@
                 Plotly.newPlot('urgency-bar', data, layout);
 
           jQuery(document).ready(function() {
+            jQuery("button#toggle-filters").hide();
             jQuery("button#toggle-filters").click(function() {
               jQuery("#portal-column-two").toggleClass("overlay");
               
