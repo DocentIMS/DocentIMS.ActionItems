@@ -216,6 +216,7 @@
           jQuery(document).ready(function() {
             jQuery("#portal-column-two").hide();
             jQuery("button#toggle-filters").click(function() {
+              jQuery("#portal-column-two").slideToggle();
               jQuery("#portal-column-two").toggleClass("overlay");
               
             });
