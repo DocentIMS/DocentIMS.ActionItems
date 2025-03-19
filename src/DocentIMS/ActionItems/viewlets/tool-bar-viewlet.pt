@@ -1,3 +1,234 @@
-<div class="days_to_conf">
-    ${view/message}
+<div id="toolbar" class="flex" tal:define="portal_url view/portal_url|None">
+    <div id="site_logo">
+        <img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />
+
+        <p>
+            <label>Docent<br/>
+IMS</label>
+        </p>
+    </div>
+
+    <div id="project_name" class="flex project_color">
+        <div>
+            <div class="image_color">
+
+            </div>
+            <p>Project<br/>
+Color</p>
+        </div>
+        <!-- <label for="project">Select a Project:</label> -->
+        <div id="project_select">
+            <div>
+                <select id="project" name="project">
+                    <option value="select">Select Project </option>
+                    <option value="${view/project_name}">${view/project_name}</option>
+                    <option value="Project 2">Project 2</option>
+                </select>
+            </div>
+            <label class="toolbar_label">Project Name</label>
+        </div>
+    </div>
+
+    <div id="your_tasks">
+        <div id="task_group" class="flex">
+            <div id="traffic_lights">
+                <p class="stoplight red">
+                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Red">
+                        ${view/tasks_red} 
+                    </a>
+                </p>
+                <p class="stoplight yellow">
+                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Yellow">
+                        ${view/tasks_yellow} 
+                    </a>
+                </p>
+                <p class="stoplight green">
+                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Green">
+                        ${view/tasks_green} 
+                    </a>
+                </p>
+            </div>
+            <div id="create_task">
+                <a href="${portal_url}/action-items/++add++action_items" 
+                    class="xtooltip"  
+                    title="Add task">
+                     <!-- <p class="tooltip">This is a tooltip</p> -->
+                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/AIs.jpg" />
+                    <p>Create<br/>
+                    Task</p>
+                </a>
+            </div>
+        </div>
+        <div class="label">
+            <label class="toolbar_label">Your Tasks</label>
+        </div>
+    </div>
+
+    <div id="your_notifications">
+        <div id="notifications_group" class="flex">
+            <div id="traffic_lights">
+                <p class="messagetype red">${view/notifications_red}</p>
+                <p class="messagetype yellow">${view/notifications_yellow}</p>
+                <p class="messagetype green">${view/notifications_green}</p>
+            </div>
+            <div id="create_task">
+                <a href="${portal_url}/notifications/++add++Notification" title="Add task">
+                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
+                    <p>Create<br/>
+Notif.</p>
+                </a>
+            </div>
+        </div>
+        <div class="label">
+            <label class="toolbar_label">Notifications</label>
+        </div>
+    </div>
+
+
+    <div id="document_manager" class="flex">
+        <!-- <label for="project">Select a Project:</label> -->
+        <div id="document_type_select">
+            <select id="project" name="project">
+                <option value="Project 1">Select Doc Type</option>
+                <option value="Project 1">Select 1</option>
+                <option value="Project 2">Select 2</option>
+            </select>
+            <p>
+                <a href="#" onclick="alert('You need to do this in Word!'); return false;">
+                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/create_document_gray.png"/>
+                    Create Document</a>
+            </p>
+            <p>
+                <a href="#" onclick="alert('You need to do this in Word!'); return false;">
+                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/open_document_gray.png"/>
+Open Document</a>
+            </p>
+
+            <label class="toolbar_label">Document Manager</label>
+        </div>
+    </div>
+
+
+    <div id="meeting_manager">
+        <div class="flex">
+            <!-- <label for="project">Select a Project:</label> -->
+            <div id="meeting_select">
+                <select id="project" name="project">
+                    <option value="Meeting type 1">[Meeting Type 1]</option>
+                    <option value="Meeting type 2">[Meeting Type 2]</option>
+                </select>
+
+                <p>
+                    <a href="#" onclick="alert('You need to do this in Word!'); return false;">
+                        <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/create_document_gray.png"/>
+                    Create Document</a>
+                </p>
+                <p>
+                    <a href="#" onclick="alert('You need to do this in Word!'); return false;">
+                        <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/open_document_gray.png"/>
+Open Document</a>
+                </p>
+            </div>
+            <div id="meeting_create">
+                <p>
+                    <a href="${portal_url}/meeting/++add++meeting">
+                        <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/Team.jpg" />
+                    </a>
+                </p>
+                <!-- <label for="create_meeting">Create Meeting</label> -->
+                <select id="create_meeting" name="create_meeting">
+                    <option value="select">Select</option>
+                    <option value="create_meeting">Create</option>
+                    <option value="your_meetings">Open</option>
+
+                </select>
+
+                <script>
+                    document.getElementById('create_meeting').addEventListener('change', function() {
+                        if (this.value === 'create_meeting') {
+                            window.location.href = '/meeting/++add++meeting'; // Redirect to your desired URL
+                        }
+                        if (this.value === 'your_meetings') {
+                            window.location.href = '/meeting/meeting-collection'; // Redirect to your desired URL or open in overlay
+                        }
+                    });
+                </script>
+
+            </div>
+
+        </div>
+        <label class="toolbar_label">Meeting Manager</label>
+    </div>
+
+    <div id="project_team">
+        <a href="/path/to/team" class="to_overlay">
+            <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//user_list.png" />
+            <p>View team</p>
+        </a>
+        <label class="toolbar_label">Project Team</label>
+    </div>
+
+    <div id="notes_feedback">
+        <div c class="flex">
+            <a href="${portal_url}/postit_notes/++add++postit_note">
+                <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
+                <p>Post It<br/>
+Note</p>
+            </a>
+            <a href="${portal_url}/feedback/++add++feedback">
+                <img src="++plone++DocentIMS.ActionItems/icons//add_with_pencil.png" />
+                <p>Send<br/>
+Feedback</p>
+            </a>
+        </div>
+        <label class="toolbar_label">Create New</label>
+    </div>
+
+    <!-- <div id="docent_mode">
+        <img src="++plone++DocentIMS.ActionItems/icons//group_icon.png" />
+        <label>Team Mode</label>
+    </div> -->
+
+    <div id="help_div">
+        <!-- <a href="#">
+            <img src="++plone++DocentIMS.ActionItems/icons//refresh.jpg" />
+            Refresh
+        </a> -->
+        <p>
+            <a href="${portal_url}/help-files">
+                <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
+                <br/>
+Help 
+            </a>
+        </p>
+
+        <label class="toolbar_label">Help</label>
+    </div>
+
 </div>
+
+<style>
+ .flex {display: flex;  flex-wrap: wrap; justify-content: flex-start; }
+ #toolbar .flex {  justify-content:  space-between;}
+ #toolbar img {width: 2rem; }
+ #document_manager img, #meeting_select img  {width: 1.3rem; }
+ #toolbar {background: whitesmoke; font-size: 0.9rem; margin-bottom: 2rem;  }
+ #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 2.6rem ; flex-grow: 1; position: relative}
+ .toolbar_label {text-align:center; font-weight: bold;  position: absolute; bottom: 5px; left: 0; right: 0; xbackground: black; xcolor: white}
+ #toolbar {text-align:center}
+ #toolbar .messagetype, #toolbar .stoplight {font-size: 90%; margin: 4px 0 9px; padding: 2px 7px; border-radius: 50%; background-color: gray}
+ #toolbar .red { background: red;  color: white}
+ #toolbar .yellow { background: yellow}
+ #toolbar .green { background: green; color: white}
+ #toolbar select { border-color: black; border-width: 2px; padding: 3px; margin-bottom: 9px; border-radius: 4px;}
+ #toolbar a { color: black; text-decoration: none}
+ #toolbar p { padding: 0; margin: 0}
+ #toolbar #help_div {border-right: 0 none}
+ #document_type_select {text-align: center}
+ .image_color {background: ${view/color}; width: 3rem; height: 3rem; margin-bottom: 4px}
+#toolbar #site_logo img { width: 3rem; height: 3rem; margin-bottom: 4px}
+#meeting_create img { margin-bottom: 10px;}
+
+</style>
+
+ 
