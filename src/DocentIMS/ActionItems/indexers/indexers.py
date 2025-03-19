@@ -170,3 +170,31 @@ def urgencyIndexer(obj):
         return "More than {days}".format(days = green) 
 
     return "Unset"
+
+
+
+@indexer(IDexterityContainer)  # ADJUST THIS!
+def stoplightIndexer(obj):
+    """Calculate and return the value for the indexer"""
+    due_date = obj.duedate or None
+    if due_date != None:
+        today = datetime.date.today()
+        usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
+        workdays = np.busday_count(today, due_date, holidays = usholiday)
+
+        red = api.portal.get_registry_record('urgent_red', interface=IDocentimsSettings)
+        yellow = api.portal.get_registry_record('soon_yellow', interface=IDocentimsSettings)
+        green = api.portal.get_registry_record('future_green', interface=IDocentimsSettings)
+        
+        if workdays <=   red:
+            return "Red"
+
+        if workdays <=   yellow:
+            return "Yellow" 
+
+        if workdays <=   green:
+            return "Green"
+
+        return "Gray"
+
+    return "Unset"

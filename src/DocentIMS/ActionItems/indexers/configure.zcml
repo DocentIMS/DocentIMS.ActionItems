@@ -66,4 +66,7 @@
   <adapter factory=".indexers.assigned_toIndexer"
       name="assigned_to" />
 
+  <adapter factory=".indexers.stoplightIndexer"
+      name="stoplight" />
+
 </configure>

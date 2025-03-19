@@ -376,12 +376,12 @@ class IDocentimsSettings(model.Schema):
 
     model.fieldset(
         'notifications',
-        label=_(u'Notifications'),
+        label=_(u'Due Dates'),
         description=u"Docent IMS color codes certain due dates to aid users in identifying how close an item is to a due date. We use three colors, and you can choose the number of days from the due date each color represents.",
         fields=[
             'future_green',
             'soon_yellow',
-             'urgent_red',
+            'urgent_red',
             ],
         )
  

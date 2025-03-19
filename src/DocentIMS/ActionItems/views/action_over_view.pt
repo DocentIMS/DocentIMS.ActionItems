@@ -214,11 +214,10 @@
                 Plotly.newPlot('urgency-bar', data, layout);
 
           jQuery(document).ready(function() {
-            jQuery("#portal-column-two").hide();
+            jQuery("#xportal-column-two").hide();
             jQuery("button#toggle-filters").click(function() {
               jQuery("#portal-column-two").slideToggle();
-              jQuery("#portal-column-two").toggleClass("overlay");
-              
+              jQuery("#portal-column-two").toggleClass("overlay");              
             });
           });
           </script>
@@ -255,25 +254,33 @@
                 }
 
                 #portal-column-content,
+                body.col-two.col-content #portal-column-two 
                 #portal-column-two {
                   width: 100% !important;
+                  max-width: 100vw !important;
                 }
 
                 #portal-column-two {
                   display: flex;
-                  gap: 2rem;
-
+                  gap: 0.9rem;
+                  display: none;
+                  max-width: 100vw !important;
+                  width: 100vw !important;
+                  margin-bottom: 1rem;
+                  flex-wrap: wrap;
+                  background: whitesmoke !important;
+                  padding: 1rem 1rem 0; 
                 }
 
                 #portal-column-two.overlay {
-                  background: white !important;
-                  padding-right: 2rem;
-                  max-width: 100%;
-                  xposition: absolute;
-                  xtop: 320px;
-                  xbottom: 0;
-                  xz-index: 20;
+                  display: flex !important;
+                  max-width: 100vw !important;
+                  width: 100vw !important;
+                  margin-bottom: 1rem;
+                  height: auto;
                 }
+
+                 
       
           </style>
 
