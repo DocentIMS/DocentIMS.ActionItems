@@ -215,7 +215,8 @@ Help
  #toolbar {background: whitesmoke; font-size: 0.9rem; margin-bottom: 2rem;  }
  #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 2.6rem ; flex-grow: 1; position: relative}
  .toolbar_label {text-align:center; font-weight: bold !important;  position: absolute; bottom: 5px; left: 0; right: 0; xbackground: black; xcolor: white}
- #toolbar {text-align:center; font-size: 80%; text-transform:lowercase }
+ #toolbar {text-align:center; font-size: 80%; text-transform:none !important }
+  #toolbar * {text-transform: none !important }
  #toolbar .messagetype, #toolbar .stoplight {font-size: 90%; margin: 4px 0 9px; padding: 2px 7px; border-radius: 50%; background-color: gray}
  #toolbar .red { background: red;  color: white}
  #toolbar .yellow { background: yellow}
