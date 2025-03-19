@@ -146,10 +146,10 @@ Open Document</a>
                 <script>
                     document.getElementById('create_meeting').addEventListener('change', function() {
                         if (this.value === 'create_meeting') {
-                            window.location.href = '/meeting/++add++meeting'; // Redirect to your desired URL
+                            window.location.href = '${portal_url}/meeting/++add++meeting'; // Redirect to your desired URL
                         }
                         if (this.value === 'your_meetings') {
-                            window.location.href = '/meeting/meeting-collection'; // Redirect to your desired URL or open in overlay
+                            window.location.href = '${portal_url}/meeting/meeting-collection'; // Redirect to your desired URL or open in overlay
                         }
                     });
                 </script>
