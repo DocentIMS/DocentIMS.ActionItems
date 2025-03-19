@@ -6,6 +6,16 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
+  <browser:viewlet
+     name="tool-bar-viewlet"
+     for="plone.app.contenttypes.interfaces.IDocument"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     layer="DocentIMS.ActionItems.interfaces.IDocentIMSActionItemsLayer"
+     class=".tool_bar_viewlet.ToolBarViewlet"
+     template="tool-bar-viewlet.pt"
+     permission="zope2.View"
+     />
+
   <!--browser:viewlet
      name="meeting-content-viewlet"
      for="DocentIMS.ActionItems.behaviors.IMeetingLocation"
