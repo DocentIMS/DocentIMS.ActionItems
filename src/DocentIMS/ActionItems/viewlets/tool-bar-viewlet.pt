@@ -178,17 +178,18 @@
                 </p>
             </div>
             <div id="meeting_create">
-                <p class="align-left">
+                <p class="xalign-left">
                     <a href="${portal_url}/meeting/++add++meeting">
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/Team.jpg" />
+                        <!-- <br/>
+                        Create<br/>Meeting -->
                     </a>
                 </p>
                 <!-- <label for="create_meeting">Create Meeting</label> -->
                 <select id="create_meeting" name="create_meeting">
-                    <option value="select">Select</option>
-                    <option value="create_meeting">Create</option>
-                    <option value="your_meetings">Open</option>
-
+                    <option value="select">Create <br/>Meeting</option>
+                    <option value="create_meeting">Create Meeting</option>
+                    <option value="your_meetings">Open Meeting</option>
                 </select>
 
                 <script>
@@ -293,8 +294,9 @@
  #document_type_select {text-align: center}
  .image_color {background: ${view/color}; width: 3rem; height: 3rem; margin-bottom: 4px}
  #toolbar #site_logo img { width: 3rem; height: 3rem; margin-bottom: 4px}
- #meeting_create img { margin-bottom: 10px;}
+ #xmeeting_create img { margin-bottom: 10px;}
  p.align-left { text-align: left}
+ #create_meeting {border: 0 none !important; background: none}
 
 </style>
 
