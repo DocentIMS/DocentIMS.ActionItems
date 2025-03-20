@@ -1,20 +1,42 @@
+<!-- <div id="show-toobar"><button>Show Toolbar</button><hr/></div>
 <div id="toolbar" class="flex" tal:define="portal_url view/portal_url|None">
     <div id="site_logo">
-        <img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />
-
-        <p>
-            <label>Docent<br/>
-IMS</label>
-        </p>
+        <a class="pat-tooltip" id="hide-toolbar" title="Hide Toolbar">
+            <img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />
+            <p>
+                <label>Docent<br/>
+                IMS</label>
+            </p>
+       </a>
     </div>
+    <script>
+    jQuery(document).ready(function() {
+        // Check stored state
+        if (localStorage.getItem("toolbarHidden") === "true") {
+            jQuery("#toolbar").hide();
+            jQuery("#show-toobar").show();
+            
+        } else {
+            jQuery("#show-toobar").hide();
+        }
 
+        jQuery("#hide-toolbar, #show-toobar").click(function() {
+            jQuery("#toolbar, #show-toobar").slideToggle();
+            
+            // Update state in localStorage
+            const isHidden = jQuery("#toolbar").is(":hidden");
+            localStorage.setItem("toolbarHidden", isHidden);
+        });
+    });
+    </script>
+    
     <div id="project_name" class="flex project_color">
         <div>
             <div class="image_color">
 
             </div>
             <p>Project<br/>
-Color</p>
+                Color</p>
         </div>
         <!-- <label for="project">Select a Project:</label> -->
         <div id="project_select">
@@ -71,7 +93,7 @@ Color</p>
     <div id="your_notifications">
         <div id="notifications_group" class="flex">
             <div id="traffic_lights">
-                <a href="${portal_url}/notifications-view">
+                <a href="${portal_url}/notifications-view" class="pat-tooltip" title="Warnings, infos and errors">
                     <p class="messagetype red">${view/notifications_red|None}</p>
                     <p class="messagetype yellow">${view/notifications_yellow|None}</p>
                     <p class="messagetype info">${view/notifications_green|None}</p>
@@ -133,7 +155,7 @@ Color</p>
                 <p class="align-left">
                     <a href="#" onclick="alert('You need to do this in Word!'); return false;">
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/open_document_gray.png"/>
-Open Document</a>
+                        Open Document</a>
                 </p>
             </div>
             <div id="meeting_create">
@@ -168,7 +190,7 @@ Open Document</a>
     </div>
 
     <div id="project_team">
-        <a href="/path/to/team" class="to_overlay">
+        <a href="${portal_url}/team-view" class="to_overlay">
             <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//user_list.png" />
             <p>View team</p>
         </a>
@@ -184,7 +206,8 @@ Open Document</a>
             </a>
             <a href="${portal_url}/feedback/++add++feedback">
                 <img src="++plone++DocentIMS.ActionItems/icons//add_with_pencil.png" />
-                <p>Send<br/>    
+                <p>Send<br/>
+    
                 Feedback</p>
             </a>
         </div>
@@ -204,8 +227,7 @@ Open Document</a>
         <p>
             <a href="${portal_url}/help-files">
                 <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
-                <br/>
-Help 
+                <br/>Help 
             </a>
         </p>
 
@@ -241,4 +263,4 @@ p.align-left { text-align: left}
 
 </style>
 
- 
+  -->
