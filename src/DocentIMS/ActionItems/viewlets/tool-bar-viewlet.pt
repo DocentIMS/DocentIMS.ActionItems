@@ -1,4 +1,5 @@
-<div id="show-toobar"><button>Show Toolbar</button><hr/></div>
+<div class="container" 
+    id="show-toobar"><button><img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />Show Toolbar</button><hr/></div>
      <script>
     $(document).ready(function () {
         $('[data-bs-toggle="tooltip"]').each(function () {
@@ -14,7 +15,7 @@
     <div id="site_logo">
         <a href="#"
                 id="hide-toolbar" 
-                data-bs-toggle="tooltip" 
+                xdata-bs-toggle="tooltip" 
                 data-tooltip-content="<b>Hide</b> toolbar">
             <img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />
             <p>
@@ -61,7 +62,7 @@
                     <option value="Project 2">Project 2</option>
                 </select>
             </div>
-            <label class="toolbar_label">Project Name</label>
+            <label class="toolbar_label"><a href="${portal_url}">Project Name</a></label>
         </div>
         <script>
                     document.getElementById('project').addEventListener('change', function() {
@@ -100,7 +101,7 @@
             </div>
         </div>
         <div class="label">
-            <label class="toolbar_label">Your Tasks</label>
+            <label class="toolbar_label"><a href="${portal_url}/action-items/">Your Tasks</a></label>
         </div>
     </div>
 
@@ -127,7 +128,7 @@
             </div>
         </div>
         <div class="label">
-            <label class="toolbar_label">Notifications</label>
+            <label class="toolbar_label"><a href="${portal_url}/notifications-view">Notifications</a></label>
         </div>
     </div>
 
@@ -152,7 +153,7 @@
                 </a>
             </p>
 
-            <label class="toolbar_label">Document Manager</label>
+            <label class="toolbar_label"><a href="${portal_url}/documents">Document Manager</a></label>
         </div>
     </div>
 
@@ -206,7 +207,7 @@
             </div>
 
         </div>
-        <label class="toolbar_label">Meeting Manager</label>
+        <label class="toolbar_label"><a href="${portal_url}/meeting">Meeting Manager</a></label>
     </div>
 
     <div id="project_team">
@@ -214,7 +215,7 @@
             <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//user_list.png" />
             <p>View team</p>
         </a>
-        <label class="toolbar_label">Project Team</label>
+        <label class="toolbar_label"><a href="${portal_url}/team-view">Project Team</a></label>
     </div>
 
     <div id="notes_feedback">
@@ -231,7 +232,10 @@
                 Feedback</p>
             </a>
         </div>
-        <label class="toolbar_label">Create New</label>
+        <label class="toolbar_label" 
+                data-bs-toggle="tooltip" 
+                data-tooltip-content="<b>Click</b> on icons">
+                Create New</label>
     </div>
 
     <!-- <div id="docent_mode">
@@ -251,7 +255,7 @@
             </a>
         </p>
 
-        <label class="toolbar_label">Help</label>
+        <label class="toolbar_label"><a href="${portal_url}/help-files">Help</a></label>
     </div>
 
 </div>
@@ -264,6 +268,7 @@
  #toolbar {background: whitesmoke; font-size: 10pt; margin-bottom: 2rem;  }
  #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 1.5rem ; flex-grow: 1; position: relative}
  .toolbar_label {text-align:center; font-weight: bold !important;  position: absolute; bottom: 0px; left: 0; right: 0; xbackground: black; color: #555555 !important}
+ .toolbar_label a { font-weight: bold !important;  }
  #toolbar {text-align:center; font-size: 10pt; text-transform:none !important }
  #toolbar * {text-transform: none !important; font-size: 10pt; font-family: Helvetica !important; font-weight: normal; color: black !important }
  #toolbar .messagetype, #toolbar .stoplight {
@@ -297,6 +302,8 @@
  #xmeeting_create img { margin-bottom: 10px;}
  p.align-left { text-align: left}
  #create_meeting {border: 0 none !important; background: none}
+ #show-toobar button { border: 0 none; padding-left: 0; background: whitesmoke}
+ #show-toobar img{ margin: 0 5px 0 0 ; padding: 0}
 
 </style>
 
