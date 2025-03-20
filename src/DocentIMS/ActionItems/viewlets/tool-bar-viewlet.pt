@@ -284,11 +284,9 @@
     border-radius: 4px;
      
 }
-#toolbar input {height: auto }
+#toolbar input, #toolbar select {height: auto }
 
-#toolbar select option {
-    padding: 2rem; margin: 2rem;
-}
+ 
  #toolbar a { color: black; text-decoration: none; text-transform: none !important; border-bottom: 0 dotted whitesmoke !important}
  #toolbar p { padding: 0; margin: 0; line-height: 120%}
  #toolbar #help_div {border-right: 0 none}
