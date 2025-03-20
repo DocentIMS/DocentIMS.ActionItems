@@ -1,7 +1,21 @@
 <div id="show-toobar"><button>Show Toolbar</button><hr/></div>
+     <script>
+    $(document).ready(function () {
+        $('[data-bs-toggle="tooltip"]').each(function () {
+            var tooltipContent = $(this).attr('data-tooltip-content'); // Get content from custom attribute
+            $(this).tooltip({
+                html: true,
+                title: tooltipContent // Set tooltip content dynamically
+            });
+        });
+    });
+    </script>
 <div id="toolbar" class="flex" tal:define="portal_url view/portal_url|None">
     <div id="site_logo">
-        <a class="pat-tooltip" id="hide-toolbar" title="Hide Toolbar">
+        <a href="#"
+                id="hide-toolbar" 
+                data-bs-toggle="tooltip" 
+                data-tooltip-content="<b>Hide</b> toolbar">
             <img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />
             <p>
                 <label>Docent<br/>
@@ -93,17 +107,22 @@
     <div id="your_notifications">
         <div id="notifications_group" class="flex">
             <div id="traffic_lights">
-                <a href="${portal_url}/notifications-view" class="pat-tooltip" title="Warnings, infos and errors">
+                <a href="${portal_url}/notifications-view" 
+                    class="pat-tooltip"  
+                    title="Open notification">
                     <p class="messagetype red">${view/notifications_red|None}</p>
                     <p class="messagetype yellow">${view/notifications_yellow|None}</p>
                     <p class="messagetype info">${view/notifications_green|None}</p>
                 </a>
             </div>
+            
             <div id="create_task">
                 <a href="${portal_url}/notifications/++add++Notification" title="Add task">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
-                    <p>Create<br/>
-                    Notif.</p>
+                    <p> 
+                        Create<br/>
+                        Notif.
+                    </p>
                 </a>
             </div>
         </div>
@@ -241,7 +260,7 @@
  #toolbar .flex {  justify-content:  space-between;}
  #toolbar img {width: 2rem; }
  #document_manager img, #meeting_select img  {width: 1.3rem; }
- #toolbar {background: whitesmoke; font-size: 10pt; margin-bottom: 2rem;  }
+ #toolbar {background: whitesmoke; font-size: 10pt; margin-bottom: 1.7rem;  }
  #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 2.6rem ; flex-grow: 1; position: relative}
  .toolbar_label {text-align:center; font-weight: bold !important;  position: absolute; bottom: 5px; left: 0; right: 0; xbackground: black; xcolor: white}
  #toolbar {text-align:center; font-size: 10pt; text-transform:none !important }
