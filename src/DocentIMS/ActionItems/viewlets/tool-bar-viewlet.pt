@@ -1,4 +1,4 @@
-<!-- <div id="show-toobar"><button>Show Toolbar</button><hr/></div>
+<div id="show-toobar"><button>Show Toolbar</button><hr/></div>
 <div id="toolbar" class="flex" tal:define="portal_url view/portal_url|None">
     <div id="site_logo">
         <a class="pat-tooltip" id="hide-toolbar" title="Hide Toolbar">
@@ -263,4 +263,4 @@ p.align-left { text-align: left}
 
 </style>
 
-  -->
+ 
