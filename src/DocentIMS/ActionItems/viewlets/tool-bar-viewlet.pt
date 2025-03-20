@@ -10,7 +10,7 @@
         });
     });
     </script>
-<div id="toolbar" class="flex" tal:define="portal_url view/portal_url|None">
+<div id="toolbar" class="container flex" tal:define="portal_url view/portal_url|None">
     <div id="site_logo">
         <a href="#"
                 id="hide-toolbar" 
@@ -260,8 +260,8 @@
  #toolbar .flex {  justify-content:  space-between;}
  #toolbar img {width: 2rem; }
  #document_manager img, #meeting_select img  {width: 1.3rem; }
- #toolbar {background: whitesmoke; font-size: 10pt; margin-bottom: 1.7rem;  }
- #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 2.6rem ; flex-grow: 1; position: relative}
+ #toolbar {background: whitesmoke; font-size: 10pt; margin-bottom: 2rem; padding-bottom: }
+ #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 2.2rem ; flex-grow: 1; position: relative}
  .toolbar_label {text-align:center; font-weight: bold !important;  position: absolute; bottom: 5px; left: 0; right: 0; xbackground: black; xcolor: white}
  #toolbar {text-align:center; font-size: 10pt; text-transform:none !important }
   #toolbar * {text-transform: none !important; font-size: 10pt; font-family: Helvetica !important; font-weight: normal; color: black !important }
@@ -278,7 +278,17 @@
  #toolbar .yellow { background: yellow}
  #toolbar .green { background: green; color: white}
  #toolbar .info { background: #40E0D0}
- #toolbar select { border-color: black; border-width: 2px; padding: 0 3px; margin-bottom: 9px; border-radius: 4px;}
+ #toolbar select { 
+    border-color: black; border-width: 1px; 
+    padding: 0 3px; margin-bottom: 9px; 
+    border-radius: 4px;
+     
+}
+#toolbar input {height: auto }
+
+#toolbar select option {
+    padding: 2rem; margin: 2rem;
+}
  #toolbar a { color: black; text-decoration: none; text-transform: none !important; border-bottom: 0 dotted whitesmoke !important}
  #toolbar p { padding: 0; margin: 0; line-height: 120%}
  #toolbar #help_div {border-right: 0 none}
