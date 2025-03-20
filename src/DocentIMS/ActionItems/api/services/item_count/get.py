@@ -118,7 +118,7 @@ class ItemCount(object):
 
             
             for urgency in  urgencies:
-                    my_brains = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['action_items'], urgency=urgency, assigned_to = user_ids)
+                    my_brains = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['action_items'], urgency=urgency, assigned_id = user_ids)
                     
                     # list of all action items 'sorted on urgency'
                     urgency_list.append({'name': urgency, 'count': len(my_brains)})

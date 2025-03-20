@@ -14,20 +14,18 @@ class ToolBarViewlet(ViewletBase):
     
     def tasks_red(self):
         user_ids = self.current_user_id()
-        items = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['action_items'], urgency="Red", assigned_to = user_ids)
-        ## TO DO: limit to 9
+        items =  api.content.find( stoplight="Red", assigned_id = user_ids, limit=9, )
         return len(items)
     
     def tasks_green(self):
         user_ids = self.current_user_id()
-        items = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['action_items'], urgency="Green", assigned_to = user_ids)
-        ## TO DO: limit to 9
+        items =  api.content.find( stoplight="Green", assigned_id = user_ids, limit=9,
+        )
         return len(items)
     
     def tasks_yellow(self):
         user_ids = self.current_user_id()
-        items = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['action_items'], urgency="Yellow", assigned_to = user_ids)
-        ## TO DO: limit to 9
+        items =  api.content.find( stoplight="Yellow", assigned_id = user_ids, limit=9,)
         return len(items)
 
     def notifications_red(self):

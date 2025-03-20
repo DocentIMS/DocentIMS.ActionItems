@@ -31,6 +31,7 @@ class FrontPageView(BrowserView):
         return self.index()
     
     # def set_returning(self):
+    # Was used for showing different content to different users.
     #     alsoProvides(self.request, IDisableCSRFProtection)
     #     current = api.user.get_current()
     #     #last_login =   current.getProperty('last_login_time')
@@ -94,6 +95,10 @@ class FrontPageView(BrowserView):
     
     @property
     def project_title(self):
+        return api.portal.get_registry_record('project_title', interface=IDocentimsSettings)
+    
+    def Title(self):
+        """Override the title dynamically."""
         return api.portal.get_registry_record('project_title', interface=IDocentimsSettings)
             
     @property

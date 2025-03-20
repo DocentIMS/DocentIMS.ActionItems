@@ -50,9 +50,9 @@ Color</p>
             </div>
             <div id="create_task">
                 <a href="${portal_url}/action-items/++add++action_items" 
-                    class="xtooltip"  
-                    title="Add task">
-                     <!-- <p class="tooltip">This is a tooltip</p> -->
+                    class="pat-tooltip"  
+                    title="This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. "
+                    >                   
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/AIs.jpg" />
                     <p>Create<br/>
                     Task</p>
