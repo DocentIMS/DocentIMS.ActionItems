@@ -302,7 +302,7 @@
  #xmeeting_create img { margin-bottom: 10px;}
  p.align-left { text-align: left}
  #create_meeting {border: 0 none !important; background: none}
- #show-toobar button { border: 0 none; padding: 0 10px 0 0 ; padding-inline: 0; background: whitesmoke; line-height: 120%;}
+ #show-toobar button { border: 0 none; padding: 0 10px 0 0 ; padding-inline: 0; background: white; line-height: 120%;}
  #show-toobar img{ margin: 0 5px 0 0 ; padding: 0}
 
 </style>
