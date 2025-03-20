@@ -267,7 +267,7 @@
  #toolbar * {text-transform: none !important; font-size: 10pt; font-family: Helvetica !important; font-weight: normal; color: black !important }
  #toolbar .messagetype, #toolbar .stoplight {
         font-size: 90%; 
-        margin: 4px 0 9px;
+        margin: 4px 0 7px;
         width: 17pt;
         height: 17pt; 
         padding: 4px  ; 
