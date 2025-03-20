@@ -27,6 +27,13 @@ Color</p>
             </div>
             <label class="toolbar_label">Project Name</label>
         </div>
+        <script>
+                    document.getElementById('project').addEventListener('change', function() {
+                        if (this.value === '${view/project_name}') {
+                            window.location.href = '${portal_url}'; // Redirect to home page of this project
+                        }                        
+                    });
+        </script>
     </div>
 
     <div id="your_tasks">
@@ -49,10 +56,7 @@ Color</p>
                 </p>
             </div>
             <div id="create_task">
-                <a href="${portal_url}/action-items/++add++action_items" 
-                    class="pat-tooltip"  
-                    title="This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. "
-                    >                   
+                <a href="${portal_url}/action-items/++add++action_items" class="pat-tooltip" title="This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. ">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/AIs.jpg" />
                     <p>Create<br/>
                     Task</p>
@@ -67,15 +71,17 @@ Color</p>
     <div id="your_notifications">
         <div id="notifications_group" class="flex">
             <div id="traffic_lights">
-                <p class="messagetype red">${view/notifications_red}</p>
-                <p class="messagetype yellow">${view/notifications_yellow}</p>
-                <p class="messagetype green">${view/notifications_green}</p>
+                <a href="${portal_url}/notifications-view">
+                    <p class="messagetype red">${view/notifications_red|None}</p>
+                    <p class="messagetype yellow">${view/notifications_yellow|None}</p>
+                    <p class="messagetype info">${view/notifications_green|None}</p>
+                </a>
             </div>
             <div id="create_task">
                 <a href="${portal_url}/notifications/++add++Notification" title="Add task">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
                     <p>Create<br/>
-Notif.</p>
+                    Notif.</p>
                 </a>
             </div>
         </div>
@@ -93,15 +99,16 @@ Notif.</p>
                 <option value="Project 1">Select 1</option>
                 <option value="Project 2">Select 2</option>
             </select>
-            <p>
+            <p class="align-left">
                 <a href="#" onclick="alert('You need to do this in Word!'); return false;">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/create_document_gray.png"/>
                     Create Document</a>
             </p>
-            <p>
+            <p class="align-left">
                 <a href="#" onclick="alert('You need to do this in Word!'); return false;">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/open_document_gray.png"/>
-Open Document</a>
+                    Open Document
+                </a>
             </p>
 
             <label class="toolbar_label">Document Manager</label>
@@ -123,14 +130,14 @@ Open Document</a>
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/create_document_gray.png"/>
                     Create Document</a>
                 </p>
-                <p>
+                <p class="align-left">
                     <a href="#" onclick="alert('You need to do this in Word!'); return false;">
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/open_document_gray.png"/>
 Open Document</a>
                 </p>
             </div>
             <div id="meeting_create">
-                <p>
+                <p class="align-left">
                     <a href="${portal_url}/meeting/++add++meeting">
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/Team.jpg" />
                     </a>
@@ -169,16 +176,16 @@ Open Document</a>
     </div>
 
     <div id="notes_feedback">
-        <div c class="flex">
+        <div class="flex">
             <a href="${portal_url}/postit_notes/++add++postit_note">
                 <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
                 <p>Post It<br/>
-Note</p>
+                    Note</p>
             </a>
             <a href="${portal_url}/feedback/++add++feedback">
                 <img src="++plone++DocentIMS.ActionItems/icons//add_with_pencil.png" />
-                <p>Send<br/>
-Feedback</p>
+                <p>Send<br/>    
+                Feedback</p>
             </a>
         </div>
         <label class="toolbar_label">Create New</label>
@@ -221,14 +228,16 @@ Help
  #toolbar .red { background: red;  color: white}
  #toolbar .yellow { background: yellow}
  #toolbar .green { background: green; color: white}
+ #toolbar .info { background: #40E0D0}
  #toolbar select { border-color: black; border-width: 2px; padding: 0 3px; margin-bottom: 9px; border-radius: 4px;}
  #toolbar a { color: black; text-decoration: none; text-transform: none !important; border-bottom: 0 dotted whitesmoke !important}
- #toolbar p { padding: 0; margin: 0}
+ #toolbar p { padding: 0; margin: 0; line-height: 120%}
  #toolbar #help_div {border-right: 0 none}
  #document_type_select {text-align: center}
  .image_color {background: ${view/color}; width: 3rem; height: 3rem; margin-bottom: 4px}
 #toolbar #site_logo img { width: 3rem; height: 3rem; margin-bottom: 4px}
 #meeting_create img { margin-bottom: 10px;}
+p.align-left { text-align: left}
 
 </style>
 

@@ -29,13 +29,20 @@ class ToolBarViewlet(ViewletBase):
         return len(items)
 
     def notifications_red(self):
-        return 0
+        user_ids = self.current_user_id()
+        items =  api.content.find( notification_type="error", notification_assigned = user_ids, limit=9,) 
+        return len(items)
+ 
     
     def notifications_green(self):
-        return 4
+        user_ids = self.current_user_id()
+        items =  api.content.find( notification_type="info", notification_assigned = user_ids, limit=9,) 
+        return len(items)
     
     def notifications_yellow(self):
-        return 3
+        user_ids = self.current_user_id()
+        items =  api.content.find( notification_type="warning", notification_assigned = user_ids, limit=9,) 
+        return len(items)
     
     def color(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1')
