@@ -9,7 +9,7 @@
   <browser:viewlet
      name="tool-bar-viewlet"
      for="*"
-     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContent"
      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
      class=".tool_bar_viewlet.ToolBarViewlet"
      template="tool-bar-viewlet.pt"
