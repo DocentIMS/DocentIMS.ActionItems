@@ -265,7 +265,7 @@
  #toolbar .flex {  justify-content:  space-between;}
  #toolbar img {width: 2rem; }
  #document_manager img, #meeting_select img  {width: 1.3rem; }
- #toolbar {background: whitesmoke; font-size: 10pt; margin-bottom: 2rem;  }
+ #toolbar {background: whitesmoke; font-size: 10pt; xmargin-bottom: 2rem;  }
  #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 1.5rem ; flex-grow: 1; position: relative}
  .toolbar_label {text-align:center; font-weight: bold !important;  position: absolute; bottom: 0px; left: 0; right: 0; xbackground: black; color: #555555 !important}
  .toolbar_label a { font-weight: bold !important;  }

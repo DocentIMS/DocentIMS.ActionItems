@@ -9,11 +9,6 @@
         <tal:def tal:define="
                    data nocall:view/data;
                  ">
-
-          <!-- <p>Type: ${context/meeting_type} </p> -->
-
-
-
           <div class="event clearfix"
                itemscope itemtype="https://schema.org/Event">
 
@@ -29,128 +24,89 @@
               <li class="description" itemprop="description" tal:content="data/description">description</li>
             </ul>
 
-
             <tal:eventsummary replace="structure context/@@meeting_summary" />
-
-
             <div tal:define="formatted_date python:context.start.strftime('%b %d, %Y from %H:%M');
                           formatted_created python:context.created().strftime('%b %d, %Y  %H:%M');
                           formatted_modified python:context.modified().strftime('%b %d, %Y  %H:%M')">
-                        <p class="small published">
-                          <span tal:condition="python: formatted_created != formatted_modified">Revised:</span>
-                          <span tal:condition="python: formatted_created == formatted_modified">Published:</span>
-                          <tal:date replace="formatted_date" /><br/>
-                        </p>                         
-                        <p> &nbsp;</p>
+              <p class="small published">
+                <span tal:condition="python: formatted_created != formatted_modified">Revised:</span>
+                <span tal:condition="python: formatted_created == formatted_modified">Published:</span>
+                <tal:date replace="formatted_date" />
+                <br/>
+              </p>
+              <p> &nbsp;</p>
             </div>
-                          
-          
-
-
             <div id="parent-fieldname-text" tal:condition="data/text">
               <tal:text content="structure data/text" />
             </div>
-
           </div>
-
-
           <div class="spacer m-5" />
-          <div>
-            <!-- first tab -->
-            <!-- <hr class="hr border-3 border border-dark" /> -->
+          <div tal:define="items python:context.restrictedTraverse('@@contentlisting')()">
             <dir class="hr border-3 border border-dark" />
             <div class="xpat-autotoc xautotabs flex flex-wrap d-inline-flex xp-2 m--1" data-pat-autotoc="section:fieldset;levels:legend;">
 
-              <!-- Show all Pages as separate tabs -->
-              <!-- <fieldset style="background-color:#FCFCFC;" class="m-1 p-3 border w-auto" tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()"> -->
-              <div style="background-color:#FCFCFC;" 
-                tal:repeat="item python:context.restrictedTraverse('@@contentlisting')()"
-                class="m-1 p-3 border w-25 hasfile-${item/file|None} type-${item/Type|None}" 
-                >
-                <legend>
-
-                <tal:check tal:define="typen item/Type|None">
-                  <tal:condition tal:condition="python: typen != 'File'">
+              <tal:repeat tal:repeat="item items">
+                <div style="background-color:#FCFCFC;" tal:define="typen item/Type|None" class="m-1 p-3 border w-25 hasfile-${python: item.file != None} type-${python: item.Type()}" tal:condition="python: typen != 'File'">
+                  <legend>
                   ${typen}
-                  </tal:condition>  
-                  <tal:condition tal:condition="python: typen == 'File'">
-                    ${item/Title}
-                  </tal:condition>  
-                </tal:check>
-                                                  <!-- <span class="opacity-30">${python: item.Title().split()[0]} </span> -->
+                  </legend>
+                  <div class="card-body" tal:content="structure item/text/output|None"></div>
+                  <div:condition tal:condition="item/file|None">
+                    <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
+                      <p style="text-align: center">
+                        <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" tal:condition="python: typen != 'File'"/>
+                      </p>
+                      <p style="text-align: center">Download </p>
+                    </a> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+                    <a href="${item/getURL}//onlyoffice-view-file" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
+                      <p style="text-align: center">
+                        <img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" tal:condition="python: typen != 'File'"/>
+                      </p>
+                      <p style="text-align: center">Edit</p>
+                    </a>
+                  </div:condition>
+                </div>
+              </tal:repeat>
+            </div>
 
-                </legend>
+          <hr class="hr border-3" />
+          <h5 tal:condition="python: len(items) != 0">Other Files</h5>
 
-                <!-- <div class="xcard"> -->
-                <!-- <p class="lead"><a href="${item/getURL}" target="_blank">${item/Title}</a></p>  -->
-                <!-- <p class="lead">${item/Description}</p>  -->
-                <!-- </div> -->
+            <div class="xpat-autotoc xautotabs flex flex-wrap d-inline-flex xp-2 m--1" data-pat-autotoc="section:fieldset;levels:legend;">
 
-                <div class="card-body" tal:content="structure item/text/output|None"></div>
-                <div:condition class="flex" tal:condition="item/file|None"
-                  tal:define="typen item/Type|None"
-                  >
-                  <!-- <tal:condition tal:condition="python: item.portal_type in ['meeting_note', 'meeting_notes', 'Meeting Note', 'Meeting Notes' ]"> -->
+              <tal:repeat tal:repeat="item items">
+                <div style="background-color:#FCFCFC;" tal:define="typen item/Type|None" class="m-1 p-3 border w-25 hasfile-${python: item.file != None} type-${python: item.Type()}" tal:condition="python: typen == 'File'">
+                  <legend>
+                   ${item/Title}
+                  </legend>
+                  <div class="card-body" tal:content="structure item/text/output|None"></div>
+                  <div:condition tal:condition="item/file|None">
+                    <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
+                      <p style="text-align: center">
+                        <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" tal:condition="python: typen != 'File'"/>
+                      </p>
+                      <p style="text-align: center">Download </p>
+                    </a> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+                    <a href="${item/getURL}//onlyoffice-view-file" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
+                      <p style="text-align: center">
+                        <img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" tal:condition="python: typen != 'File'"/>
+                      </p>
+                      <p style="text-align: center">Edit</p>
+                    </a>
+                  </div:condition>
+                </div>
+              </tal:repeat>
 
-                  <!-- <a tal:condition="not: item/file|None" href="${item/getURL}" class="block w-25 xp-1" target="_blank">            -->
-                  <!-- <a href="${item/getURL}" class="block w-25 xp-1" target="_blank"> -->
-                  <!-- <img src="++plone++DocentIMS.ActionItems/note_icon.png" width="64" alt="icon" title="icon" /> -->
-                  <!-- </a> -->
-                  <!-- </tal:condition> -->
-                  <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
-                    <p style="text-align: center">
-                      <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" 
-                       tal:condition="python: typen != 'File'"/>
-            
-                    </p>
-                    <p style="text-align: center">Download </p>
-                  </a> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
-                  <a href="${item/getURL}//onlyoffice-view-file" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
-                    <p style="text-align: center">
-                      <img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" 
-                      tal:condition="python: typen != 'File'"/>
-                    </p>
-                    <p style="text-align: center">Edit</p>
-                  </a>
-                  <!-- <a class="w-75 block px-2" href="${item/getURL}/@@download/file">${item/file/filename|None}</a> -->
-                  <!-- &nbsp; [ ${item/getSize|None} ] -->
-
-
-
-
-                </div:condition>
-
-                <!-- <p tal:condition="item/file|None" style="text-align:right">
-         
-                <a class="btn button standalone btn-sm btn-secondary" alt="Open in Only Office" title="Open in Only Office" href="${item/getURL}/onlyoffice-view-file">OnlyOffice</a>
-              </p> -->
-                <!-- <p><hr class="hr" /></p> -->
-                <!-- <p condition tal:condition="not: item/file|None">
-                <a href="${item/getURL}" target="_blank">✎</a>
-
-              </p> -->
-                <!-- <p condition tal:condition="not: item/file|None">
-                <a href="${item/getURL}" class="btn button standalone btn-sm btn-secondary" target="_blank">
-                  <b>Open</b> / Add </a>
-
-                  <b>✎</b>
-              </p> -->
-                <!-- <hr class="hr" /> -->
-
-                <!-- <tal:itemview replace="structure context" /> -->
-
-                <!-- </fieldset> -->
-              </div>
               <hr class="hr" />
-              
+
             </div>
             <p></p>
+
           </div>
           <div class="hr border-3 border border-dark" />
           <div class="container p-20">
             <p>
-              <a href="${data/url}/folder_contents" class="button btn standalone uplaod btn-success plone-btn-large pat-plone-modal"
-                data-pat-plone-modal="modalSizeClass: modal-xl;">
+              <a href="${data/url}/folder_contents" class="button btn standalone uplaod btn-success plone-btn-large pat-plone-modal" data-pat-plone-modal="modalSizeClass: modal-xl;">
                 Manage files</a>
 
             </p>
@@ -161,12 +117,12 @@
           .flex-wrap {flex-wrap: wrap}
           .noborder {text-decoration: none}
           .block {display: block}
-          .opacity-30, .hasfile- { opacity: 0.30}
+          .opacity-30, .hasfile-False { opacity: 0.30}
           #plone-contentmenu-factories {display: none}
           .p-20 {padding: 20px 0}
           .w-25.type-File {xwidth: auto}
           .w-25.type-File legend {font-size:110% !important;}
-          #section-category {display: none}
+          #section-category {display: none} 
           </style>
         </tal:def>
 
