@@ -1,6 +1,6 @@
 var $jq = jQuery.noConflict();
 var $ = jQuery.noConflict();
-const $ = jQuery;
+
 $jq(document).ready(function () {
 
   // Scope analysis, hide show fields. 

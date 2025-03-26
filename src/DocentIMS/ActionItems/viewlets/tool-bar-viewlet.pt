@@ -1,24 +1,3 @@
-<div class="container" id="show-toobar">
-    <button>
-        <img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />
-Show Toolbar</button>
-    <hr/>
-</div>
-<script>
- 
-
-    $(document).ready(function () {
-        $('.htmltooltip').each(function () {
-            var tooltipContent = $(this).attr('data-tooltip-content'); // Get content from custom attribute
-            $(this).tooltip({
-                html: true,
-                title: tooltipContent // Set tooltip content dynamically
-            });
-        });
-    });
-
- 
-</script>
 <div id="toolbar" class="container flex" tal:define="portal_url view/portal_url|None">
     <div id="site_logo">
         <a href="#" id="hide-toolbar" xdata-bs-toggle="tooltip" data-tooltip-content="<b>Hide</b> toolbar">
@@ -29,26 +8,6 @@ Show Toolbar</button>
             </p>
         </a>
     </div>
-    <script>
-    jQuery(document).ready(function() {
-        // Check stored state
-        if (localStorage.getItem("toolbarHidden") === "true") {
-            jQuery("#toolbar").hide();
-            jQuery("#show-toobar").show();
-            
-        } else {
-            jQuery("#show-toobar").hide();
-        }
-
-        jQuery("#hide-toolbar, #show-toobar").click(function() {
-            jQuery("#toolbar, #show-toobar").slideToggle();
-            
-            // Update state in localStorage
-            const isHidden = jQuery("#toolbar").is(":hidden");
-            localStorage.setItem("toolbarHidden", isHidden);
-        });
-    });
-    </script>
 
     <div id="project_name" class="flex project_color">
         <div>
@@ -68,7 +27,7 @@ Show Toolbar</button>
                 </select>
             </div>
             <label class="toolbar_label">
-                <a href="${portal_url}">Project Name</a>
+                <a href="${portal_url}">Project Selected</a>
             </label>
         </div>
         <script>
@@ -200,7 +159,7 @@ Show Toolbar</button>
                 <!-- <label for="create_meeting">Create Meeting</label> -->
                 <select id="create_meeting" name="create_meeting">
                     <option value="select">Create <br/>
-Meeting</option>
+                Meeting</option>
                     <option value="create_meeting">Create Meeting</option>
                     <option value="your_meetings">Open Meeting</option>
                 </select>
@@ -277,6 +236,14 @@ Help
 
 </div>
 
+<div class="container hidden" id="show-toobar">
+    <button>
+        <img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />
+    Show Toolbar</button>
+    <hr/>
+</div>
+
+
 <style>
  .flex {display: flex;  flex-wrap: wrap; justify-content: flex-start; }
  #toolbar .flex {  justify-content:  space-between;}
@@ -346,5 +313,49 @@ body #portal-column-two { background: white !important; border: 1px solid; borde
 }
 
 </style>
+
+<script>
+ 
+
+    $(document).ready(function () {
+        $('.htmltooltip').each(function () {
+            var tooltipContent = $(this).attr('data-tooltip-content'); // Get content from custom attribute
+            $(this).tooltip({
+                html: true,
+                title: tooltipContent // Set tooltip content dynamically
+            });
+        });
+    });
+
+ 
+</script>
+
+    <script>
+    jQuery(document).ready(function() {
+        // Check stored state
+        if (localStorage.getItem("toolbarHidden") === "true") {
+            jQuery("#toolbar").hide();
+            jQuery("#show-toobar").removeClass('hidden');
+            jQuery("#show-toobar").show();
+            
+        } else {
+
+            jQuery("#show-toobar").hide();
+        }
+
+        jQuery("#hide-toolbar, #show-toobar").click(function() {
+            jQuery("#toolbar, #show-toobar").slideToggle();
+            jQuery("#show-toobar").removeClass('hidden');
+            
+            // Update state in localStorage
+            const isHidden = jQuery("#toolbar").is(":hidden");
+            localStorage.setItem("toolbarHidden", isHidden);
+        });
+    });
+    </script>
+
+
+            <!-- localStorage.setItem("toolbarHidden", isHidden ? "true" : "false"); -->
+
 
  
