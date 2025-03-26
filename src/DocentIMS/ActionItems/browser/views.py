@@ -215,6 +215,11 @@ class ActionItemsAddForm(DefaultAddForm):
                 group.label = None
                 group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                 group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+                
+    def updateActions(self):
+        super().updateActions()
+        if 'save' in self.actions:
+            self.actions['save'].title = "Create"
 
 class ActionItemsAddFormView(DefaultAddView):
     form = ActionItemsAddForm
