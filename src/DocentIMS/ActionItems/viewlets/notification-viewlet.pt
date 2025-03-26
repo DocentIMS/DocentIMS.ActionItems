@@ -1,5 +1,15 @@
-<div tal:define="portal_state context/@@plone_portal_state" 
-    tal:condition="view/count_items" class="notification-viewlet portalMessage statusmessage statusmessage-info alert alert-info">
-    <a title="see noticitions" href="${portal_state/portal_url}/notifications-view">${view/get_user} has <b>${view/count_items}</b> notifications. <b>Click to see</b></a>
+<div tal:define="portal_state context/@@plone_portal_state" tal:condition="view/count_items" class="notification-viewlet portalMessage statusmessage statusmessage-info alert alert-info">
+    <a title="see noticitions" href="${portal_state/portal_url}/notifications-view">${view/get_user} has <b>${view/count_items}</b> notifications. <b>Click to see</b>
+    </a>
 </div>
- 
+<button class="margin-0" id="toggle-filters">Toggle Filters</button>
+<hr/>
+<script>
+jQuery(document).ready(function() {
+            jQuery("#xportal-column-two").hide();
+            jQuery("button#toggle-filters").click(function() {
+              jQuery("#portal-column-two").slideToggle();
+              jQuery("#portal-column-two").toggleClass("overlay");              
+            });
+          });
+</script>
