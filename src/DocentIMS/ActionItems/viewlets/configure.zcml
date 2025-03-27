@@ -7,6 +7,16 @@
  <!-- -*- extra stuff goes here -*- -->
 
   <browser:viewlet
+     name="filter-viewlet"
+     for="plone.app.contenttypes.interfaces.IDocument"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     layer="DocentIMS.ActionItems.interfaces.IDocentIMSActionItemsLayer"
+     class=".filter_viewlet.FilterViewlet"
+     template="filter-viewlet.pt"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
      name="tool-bar-viewlet"
      for="*"
      manager="plone.app.layout.viewlets.interfaces.IAboveContent"
