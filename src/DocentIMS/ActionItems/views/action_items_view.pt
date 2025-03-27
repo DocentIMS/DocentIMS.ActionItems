@@ -269,9 +269,6 @@
        margin:  1px;
       }
 
-
-
-
     .calendarsheet {
         max-width: 120px;
         min-width: 90px;

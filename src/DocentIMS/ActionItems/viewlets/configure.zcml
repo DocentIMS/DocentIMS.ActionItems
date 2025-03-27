@@ -8,9 +8,9 @@
 
   <browser:viewlet
      name="filter-viewlet"
-     for="plone.app.contenttypes.interfaces.IDocument"
+     for="plone.app.contenttypes.interfaces.ICollection"
      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-     layer="DocentIMS.ActionItems.interfaces.IDocentIMSActionItemsLayer"
+     layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
      class=".filter_viewlet.FilterViewlet"
      template="filter-viewlet.pt"
      permission="zope2.View"

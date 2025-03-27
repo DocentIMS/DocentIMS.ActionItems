@@ -7,8 +7,8 @@
 
 
     <metal:content-core fill-slot="content-core" tal:define="fields view/get_fields|None">
-      <button class="margin-0" id="toggle-filters">Toggle Filters</button>
-      <hr/>
+      <!-- <button class="margin-0" id="toggle-filters">Toggle Filters</button>
+      <hr/> -->
       <div class="pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
 
         <fieldset>
@@ -213,13 +213,6 @@
                 };
                 Plotly.newPlot('urgency-bar', data, layout);
 
-          jQuery(document).ready(function() {
-            jQuery("#xportal-column-two").hide();
-            jQuery("button#toggle-filters").click(function() {
-              jQuery("#portal-column-two").slideToggle();
-              jQuery("#portal-column-two").toggleClass("overlay");              
-            });
-          });
           </script>
 
 
@@ -260,25 +253,6 @@
                   max-width: 100vw !important;
                 }
 
-                #portal-column-two {
-                  display: flex;
-                  gap: 0.9rem;
-                  display: none;
-                  max-width: 100vw !important;
-                  width: 100vw !important;
-                  margin-bottom: 1rem;
-                  flex-wrap: wrap;
-                  background: whitesmoke !important;
-                  padding: 1rem 1rem 0; 
-                }
-
-                #portal-column-two.overlay {
-                  display: flex !important;
-                  max-width: 100vw !important;
-                  width: 100vw !important;
-                  margin-bottom: 1rem;
-                  height: auto;
-                }
 
                  
       
