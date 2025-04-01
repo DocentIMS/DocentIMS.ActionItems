@@ -193,22 +193,31 @@
         </label>
     </div>
 
-    <div id="notes_feedback">
-        <div class="flex">
+    <div id="notes">
+        <div class="no-flex">
             <a href="${portal_url}/postit_notes/++add++postit_note">
                 <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
                 <p>Post It<br/>
                     Note</p>
             </a>
+        </div>
+        <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
+            <a href="${portal_url}/postit_notes/++add++postit_note">Create New</a>
+        </label>
+    </div>
+
+    <div id="feedback">
+        <div class="no-flex">
             <a href="${portal_url}/feedback/++add++feedback">
-                <img src="++plone++DocentIMS.ActionItems/icons//add_with_pencil.png" />
+                <img src="++plone++DocentIMS.ActionItems/icons/add_with_pencil.png" />
                 <p>Send<br/>
     
                 Feedback</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-                Create New</label>
+            <a href="${portal_url}/feedback/++add++feedback">Send New</a>
+        </label>
     </div>
 
     <!-- <div id="docent_mode">
@@ -217,17 +226,22 @@
     </div> -->
 
     <div id="help_div">
-        <!-- <a href="#">
-            <img src="++plone++DocentIMS.ActionItems/icons//refresh.jpg" />
+        <div class="flex center">
+            <div>
+                <a href="#">
+                    <img src="++plone++DocentIMS.ActionItems/icons/refresh.jpg" />
+                    <br/>
             Refresh
-        </a> -->
-        <p>
-            <a href="${portal_url}/help-files">
-                <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
-                <br/>
-Help 
-            </a>
-        </p>
+                </a>
+            </div>
+            <div>
+                <a href="${portal_url}/help-files">
+                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
+                    <br/>
+            Help 
+                </a>
+            </div>
+        </div>
 
         <label class="toolbar_label">
             <a href="${portal_url}/help-files">Help</a>
@@ -330,7 +344,7 @@ body #portal-column-two { background: white !important; border: 1px solid; borde
  
 </script>
 
-    <script>
+<script>
     jQuery(document).ready(function() {
         // Check stored state
         if (localStorage.getItem("toolbarHidden") === "true") {
@@ -352,10 +366,10 @@ body #portal-column-two { background: white !important; border: 1px solid; borde
             localStorage.setItem("toolbarHidden", isHidden);
         });
     });
-    </script>
+</script>
 
 
-            <!-- localStorage.setItem("toolbarHidden", isHidden ? "true" : "false"); -->
+<!-- localStorage.setItem("toolbarHidden", isHidden ? "true" : "false"); -->
 
 
  
