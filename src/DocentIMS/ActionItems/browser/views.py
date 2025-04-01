@@ -23,11 +23,9 @@ from z3c.form import button
 from plone.z3cform.fieldsets.utils import move
 from datetime import datetime, timedelta
 
-
-	
 from z3c.form.browser.textlines import TextLinesFieldWidget
 
-
+                                    
 #from plone.app.textfield import RichText
 #from zope.interface import Interface
 
@@ -70,7 +68,11 @@ class PostItNoteAddForm(DefaultAddForm):
         # if self.portal_type in ['postit_note', 'PostIt Note']:
         #     self.fields['IBasic.title'].field.value = f"Post It Note {today}"
             
-            
+    
+    def render(self):
+        site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
+        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+                  
                 
             
 class PostItNoteAddFormView(DefaultAddView):
@@ -179,15 +181,11 @@ class ActionItemsAddForm(DefaultAddForm):
                     if camefrom.Type() == 'Scope Breakdown':
                         group.fields['related_sow_section'].field.default = from_uid
 
-            
-            
-
+        
+    
     def update(self): 
         super(ActionItemsAddForm, self).update()
-        
-        
-        
-
+       
         for group in self.groups:
             # if group.__name__ in ['close_out', 'intermediate_actioins', 'categorization']:
             if group.__name__ in ['close_out', 'intermediate_actioins']:
@@ -220,6 +218,12 @@ class ActionItemsAddForm(DefaultAddForm):
         super().updateActions()
         if 'save' in self.actions:
             self.actions['save'].title = "Create"
+
+    def render(self):
+        site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
+        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+            
+
 
 class ActionItemsAddFormView(DefaultAddView):
     form = ActionItemsAddForm
@@ -335,6 +339,11 @@ class ActionItemsEditForm(DefaultEditForm):
                             group.widgets['private_notes'].value = notes_item.bodytext 
                         else:
                             self.private_notes = None
+                        
+    def render(self):
+        site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
+        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+            
 
 
 class ActionItemsEditFormView(DefaultEditView):
@@ -358,9 +367,6 @@ class MeetingEditForm(DefaultEditForm):
     def updateWidgets(self):
         super(MeetingEditForm, self).updateWidgets()
         
-  
-        
-        
         if self.portal_type in ["meeting", "Meeting"]:
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE
@@ -368,7 +374,6 @@ class MeetingEditForm(DefaultEditForm):
             self.widgets['IBasic.title'].mode = interfaces.HIDDEN_MODE
             self.widgets['meeting_type'].mode = interfaces.HIDDEN_MODE
             move(self, "attendees_group", before="IMeetingAttendees.attendees")
-            
             
             #self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
         
@@ -395,7 +400,10 @@ class MeetingEditForm(DefaultEditForm):
         if self.portal_type in  ["meeting_notes", "Meeting Notes"]:         
             self.default_fieldset_label = "Meeting Details"
             
-        
+    def render(self):
+        site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
+        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+            
         
          
 
@@ -504,6 +512,11 @@ class SowAnalysisAddForm(DefaultAddForm):
                 group.label = None
                 group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                 group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
+                
+    def render(self):
+        site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
+        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+            
 
 class SowAnalysisAddFormView(DefaultAddView):
     form = SowAnalysisAddForm
@@ -568,17 +581,17 @@ class MeetingAddForm(DefaultAddForm):
                     group.label = None
                     
                 
-        
+    def render(self):
+        site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
+        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+            
         
 
 
 class MeetingAddFormView(DefaultAddView):
     form = MeetingAddForm
 
-
-
-
-
+ 
 
 class MeetingCustomAddForm(DefaultAddForm):
     # today = datetime.today().strftime('%Y-%m-%d')
@@ -656,7 +669,11 @@ class MeetingCustomAddForm(DefaultAddForm):
                 group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE  
             if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                 group.label = None
-                    
+        
+    def render(self):
+        site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
+        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+                        
  
 class MeetingCustomAddFormView(DefaultAddView):
     form = MeetingCustomAddForm
