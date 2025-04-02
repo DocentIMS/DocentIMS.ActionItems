@@ -125,6 +125,7 @@
                 <a href="${portal_url}/documents">Document Manager</a>
             </label>
         </div>
+        
     </div>
 
 
@@ -133,17 +134,18 @@
             <!-- <label for="project">Select a Project:</label> -->
             <div id="meeting_select">
                 <select id="project" name="project">
+                    <option value="Select Meeting">Create Document</option>
                     <option value="Meeting type 1">[Meeting Type 1]</option>
                     <option value="Meeting type 2">[Meeting Type 2]</option>
                 </select>
 
                 <p>
-                    <a href="#" onclick="alert('You need to do this in Word!'); return false;">
+                 <a class="greyed" href="#" onclick="alert('You need to do this in Word!'); return false;">
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/create_document_gray.png"/>
                     Create Document</a>
                 </p>
                 <p class="align-left">
-                    <a href="#" onclick="alert('You need to do this in Word!'); return false;">
+                    <a class="greyed" href="#" onclick="alert('You need to do this in Word!'); return false;">
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/open_document_gray.png"/>
                         Open Document</a>
                 </p>
@@ -165,11 +167,20 @@
                 </select>
 
                 <script>
+                    $(document).ready(function() {
+                        $('#meeting_select').on('change', function() {
+                            $('#meeting_select a').toggleClass('greyed'); 
+                        });
+                    });
+                </script>
+                <script>
+
                     document.getElementById('create_meeting').addEventListener('change', function() {
-                        if (this.value === 'create_meeting') {
+                        if (this.value === 'create_meeting') {                            
                             window.location.href = '${portal_url}/meeting/++add++meeting'; // Redirect to your desired URL
                         }
                         if (this.value === 'your_meetings') {
+                            $('#meeting_select a').toggleClass('greyed');
                             window.location.href = '${portal_url}/meeting/meeting-collection'; // Redirect to your desired URL or open in overlay
                         }
                     });
@@ -202,7 +213,7 @@
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/postit_notes/++add++postit_note">Create New</a>
+            <a href="${portal_url}/postit_notes/++add++postit_note">Create Note</a>
         </label>
     </div>
 
@@ -216,7 +227,7 @@
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/feedback/++add++feedback">Send New</a>
+            <a href="${portal_url}/feedback/++add++feedback">Send Feedback</a>
         </label>
     </div>
 
@@ -226,22 +237,22 @@
     </div> -->
 
     <div id="help_div">
-        <div class="flex center">
-            <div>
+        <!-- <div class="flex center"> -->
+            <!-- <div>
                 <a href="#">
                     <img src="++plone++DocentIMS.ActionItems/icons/refresh.jpg" />
                     <br/>
             Refresh
                 </a>
-            </div>
-            <div>
+            </div> -->
+            <!-- <div> -->
                 <a href="${portal_url}/help-files">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
                     <br/>
             Help 
                 </a>
-            </div>
-        </div>
+            <!-- </div> -->
+        <!-- </div> -->
 
         <label class="toolbar_label">
             <a href="${portal_url}/help-files">Help</a>
@@ -259,8 +270,11 @@
 
 
 <style>
+ .greyed { opacity: 0.25} 
+  a { opacity: 1}
  .flex {display: flex;  flex-wrap: wrap; justify-content: flex-start; }
- #toolbar .flex {  justify-content:  space-between;}
+  #toolbar {  padding: 0}
+ #toolbar .flex {  justify-content:  space-between; margin: 0}
  #toolbar img {width: 2rem; }
  #document_manager img, #meeting_select img  {width: 1.3rem; }
  #toolbar {background: whitesmoke; font-size: 10pt; xmargin-bottom: 2rem;  }
@@ -272,6 +286,8 @@
  #toolbar .messagetype, #toolbar .stoplight {
         font-size: 90%; 
         margin: 4px 0 7px;
+        padding-left: 0;
+        padding-right: 0;
         width: 17pt;
         height: 17pt; 
         padding: 4px  ; 
@@ -283,7 +299,8 @@
  #toolbar .green { background: green; color: white}
  #toolbar .info { background: #40E0D0}
  #toolbar select { 
-    border-color: black; border-width: 1px; 
+    border-color: black; 
+    border-width: 1px; 
     padding: 0 3px; margin-bottom: 9px; 
     border-radius: 4px;
      
@@ -297,7 +314,9 @@
  #toolbar #site_logo img { width: 3rem; height: 3rem; margin-bottom: 4px}
  #xmeeting_create img { margin-bottom: 10px;}
  p.align-left { text-align: left}
- #create_meeting {border: 0 none !important; background: none}
+ #xcreate_meeting {border: 0 none !important; background: none}
+ #create_meeting { background-image: none}
+ 
  #show-toobar button { border: 0 none; padding: 0 10px 0 0 ; padding-inline: 0; background: white; line-height: 120%;}
  #show-toobar img{ margin: 0 5px 0 0 ; padding: 0}
 

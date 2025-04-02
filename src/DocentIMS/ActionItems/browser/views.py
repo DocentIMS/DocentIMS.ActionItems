@@ -136,8 +136,6 @@ class ActionItemsAddForm(DefaultAddForm):
         self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
         self.widgets["placeholder"].disabled = "disabled"
 
-
-
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
         from_uid =  self.request.get('related_from')
@@ -180,7 +178,6 @@ class ActionItemsAddForm(DefaultAddForm):
                     camefrom = api.content.get(UID=from_uid)
                     if camefrom.Type() == 'Scope Breakdown':
                         group.fields['related_sow_section'].field.default = from_uid
-
         
     
     def update(self): 
@@ -218,6 +215,26 @@ class ActionItemsAddForm(DefaultAddForm):
         super().updateActions()
         if 'save' in self.actions:
             self.actions['save'].title = "Create"
+            
+    def createAndAdd(self, data):
+        """ Override to set the workflow state conditionally """
+        obj = super().createAndAdd(data)
+        
+        #import pdb; pdb.set_trace()
+        
+        data['portal_state'] = 'Published'
+
+        # Ensure obj is created and somefield exists
+        # if obj and data.get('somefield') == 'xxxx':
+        #     try:
+        #         api.content.transition(obj, transition='publish')
+        #     except Exception as e:
+        #         self.context.plone_utils.addPortalMessage(
+        #             f"Error publishing item: {e}", type="error"
+        #         )
+
+        #return obj
+            
 
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
