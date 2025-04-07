@@ -1,6 +1,6 @@
 from plone.app.event.dx.behaviors import IEventLocation
 from plone.autoform import directives
-
+from plone.supermodel import model
 from plone.app.event.dx.behaviors import IEventLocation, IEventAttendees, IEventContact
 from plone.app.z3cform.widget import AjaxSelectFieldWidget
 from plone.app.z3cform.widget import AjaxSelectWidget
@@ -38,6 +38,14 @@ class IMeetingContact( IEventContact):
     #     required=False,
     #     vocabulary= 'DocentIMS.ActionItems.FullnamesVocabulary'
     # )
+    
+    model.fieldset(
+        'attendees',
+        fields=[
+            'contact_name',
+        ] 
+    )
+    
     contact_name = schema.Choice(
         title="Contact Person", 
         required=False,
@@ -56,6 +64,13 @@ class IMeetingContact( IEventContact):
 # @adapter(IMeetingAttendeesMarker)
 class IMeetingAttendees(IEventAttendees):
     """MEETING Attendees Schema."""
+    
+    model.fieldset(
+        'attendees',
+        fields=[
+            'attendees',
+        ] 
+    )
     attendees = schema.Tuple(
         title= "Individual Attendees",
         description= "List of attendees.",

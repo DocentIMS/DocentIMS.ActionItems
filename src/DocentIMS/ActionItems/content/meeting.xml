@@ -14,6 +14,7 @@
       <required>False</required>
     </field>
 
+    <fieldset name="attendees" label="Attendees">
     <field name="attendees_group" type="zope.schema.Set">
       <form:widget type="plone.app.z3cform.widget.AjaxSelectFieldWidget" />
       <description/>
@@ -28,6 +29,7 @@
       <title>Will Property Manager Attend?</title>
       <form:widget type="z3c.form.browser.radio.RadioFieldWidget"/>
     </field>
+  </fieldset>
 
-  </schema>
+</schema>
 </model>

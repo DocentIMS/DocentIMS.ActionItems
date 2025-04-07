@@ -141,6 +141,7 @@ class ActionItemsAddForm(DefaultAddForm):
         self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
         self.widgets["placeholder"].disabled = "disabled"
 
+
     def updateFields(self):
         super(ActionItemsAddForm, self).updateFields()
         from_uid =  self.request.get('related_from')
@@ -316,8 +317,8 @@ class ActionItemsEditForm(DefaultEditForm):
     def update(self):
         super(ActionItemsEditForm, self).update()
        
-        if self.portal_type == 'action_items' or self.portal_type == 'sow_analysis':
-            for group in self.groups:
+        for group in self.groups:
+            if self.portal_type == 'action_items' or self.portal_type == 'sow_analysis':
                 if group.__name__ == 'settings' :
                     #group.mode = 'omitted'
                     group.label = None
@@ -332,8 +333,6 @@ class ActionItemsEditForm(DefaultEditForm):
                     group.widgets['IRelatedItems.relatedItems'].mode = interfaces.HIDDEN_MODE
                     group.widgets['ICategorization.language'].mode = interfaces.HIDDEN_MODE
 
-                    
-
                 if group.__name__ == 'all_dates':
                     #
                     #Not working
@@ -343,24 +342,23 @@ class ActionItemsEditForm(DefaultEditForm):
                 if group.__name__ == 'date':
                     if self.portal_type == 'sow_analysis':
                         group.label = None
-
-                if self.portal_type in  ['sow_analysis', 'meeting', "Meeting"]:
+                            
+            if self.portal_type in  ['sow_analysis', 'meeting', "Meeting"]:
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                         #group.mode = 'omitted'
                         group.label = None
                     
-                
-                if group.__name__ == 'private_notes':
-                        #if self.portal_type == 'action_items':
-                        context = self.context
-                        user =  api.user.get_current().getMemberId()
-                        item = api.content.find(context=context, id=user, portal_type='personal_notes' )
+            if group.__name__ == 'private_notes':
+                    #if self.portal_type == 'action_items':
+                    context = self.context
+                    user =  api.user.get_current().getMemberId()
+                    item = api.content.find(context=context, id=user, portal_type='personal_notes' )
                         
-                        if item:
-                            notes_item = item[0].getObject()
-                            group.widgets['private_notes'].value = notes_item.bodytext 
-                        else:
-                            self.private_notes = None
+                    if item:
+                        notes_item = item[0].getObject()
+                        group.widgets['private_notes'].value = notes_item.bodytext 
+                    else:
+                        self.private_notes = None
                         
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
@@ -405,7 +403,6 @@ class MeetingEditForm(DefaultEditForm):
     def update(self):
         super(MeetingEditForm, self).update()
         
-        
         if self.portal_type in  ["meeting_notes", "Meeting Notes", "Meeting", "meeting", "Notes", "notes", "feedback", "Feedback", "PostIt Note", "postit_note"]:
         
             for group in self.groups:
@@ -434,77 +431,6 @@ class MeetingEditFormView(DefaultEditView):
     form = MeetingEditForm
 
  
-
-
-
-
-# class CompanyInformationAddForm(DefaultAddForm):
-#     portal_type = "project_companies"
-#     default_fieldset_label = 'Company'
-
-#     def __init__(self, context, request):
-#         super(CompanyInformationAddForm, self).__init__(context, request)
-
-#     def updateWidgets(self):
-#         super(CompanyInformationAddForm, self).updateWidgets()
-#         self.widgets['IDublinCore.title'].label = 'Short Company Name'
-#         self.widgets['IDublinCore.description'].label = 'Full Company Name'
-#         self.widgets['IDublinCore.description'].template = Z3ViewPageTemplateFile("description_template.pt")
-
-
-
-#     def updateFields(self):
-#         super(CompanyInformationAddForm, self).updateFields()
-
-#     def update(self):
-#         super(CompanyInformationAddForm, self).update()
-#         #self.fields['IDublinCore.title'].widgetFactory = TextWidget
-
-
-#         for group in self.groups:
-#             if group.__name__ == 'settings':
-#                 #group.mode = 'omitted'
-#                 group.label = None
-#                 group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
-#                 group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
-
-# class CompanyInformationAddFormView(DefaultAddView):
-#     form = CompanyInformationAddForm
-
-# class CompanyInformationEditForm(DefaultEditForm):
-#     portal_type = "project_companies"
-#     default_fieldset_label = 'Company'
-
-#     def __init__(self, context, request):
-#         super(CompanyInformationEditForm, self).__init__(context, request)
-
-#     def updateWidgets(self):
-#         super(CompanyInformationEditForm, self).updateWidgets()
-#         self.widgets['IDublinCore.title'].label = 'Short Company Name'
-#         self.widgets['IDublinCore.description'].label = 'Full Company Name'
-
-#     def updateFields(self):
-#         super(CompanyInformationEditForm, self).updateFields()
-
-
-#     def update(self):
-#         super(CompanyInformationEditForm, self).update()
-
-#         if self.portal_type == 'project_companies':
-#             for group in self.groups:
-#                 if group.__name__ == 'settings':
-#                     #group.mode = 'omitted'
-#                     group.label = None
-#                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
-#                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
-
-
-# class CompanyInformationEditFormView(DefaultEditView):
-#     portal_type = "project_companies"
-#     default_fieldset_label = 'Company'
-#     form = CompanyInformationEditForm
-
-
 
 
 
@@ -559,13 +485,10 @@ class MeetingAddForm(DefaultAddForm):
     def __init__(self, context, request):
         super(MeetingAddForm, self).__init__(context, request)
         
-        
-    # def default_title():
-    #     today = datetime.today().strftime('%Y-%m-%d')
-    #     return f"Notes {today}"
-
     def updateWidgets(self):
         super(MeetingAddForm, self).updateWidgets()
+        
+        self.groups['attendees'].label="Attendees"
         if self.portal_type in  ['meeting', "Meeting"]:
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE 
@@ -584,26 +507,30 @@ class MeetingAddForm(DefaultAddForm):
  
 
     def updateFields(self):
-        super(MeetingAddForm, self).updateFields()
+        super(MeetingAddForm, self).updateFields() 
         
         
     def update(self):
         super(MeetingAddForm, self).update()
+        import pdb; pdb.set_trace()
+        if group.__name__  == 'attendees':
+            group.label = 'Attendees'    
         
-        # 
         if self.portal_type in  ["meeting_notes", "Meeting Notes", "meeting", "Meeting", "Notes", "notes", "Feedback", "feedback"]:
             if self.portal_type in  ["meeting_notes",]:
                     default_fieldset_label = 'Details'
                     
             for group in self.groups:
-                #
-        
+                
+                if group.__name__ == 'attendees':
+                    group.label = "Attendees"
+                
                 if group.__name__ == 'settings':
                     group.label = None
                     #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
             
-                if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                if group.__name__ in  ['settings','dates','categorization','ownership']:
                     #group.mode = 'omitted'
                     group.label = None
                     
@@ -643,30 +570,25 @@ class MeetingCustomAddForm(DefaultAddForm):
         if meeeting_value in  [(), None, '']:
             for widgetname in self.widgets:
                 if widgetname != 'meeting_type':
-                    self.widgets[widgetname].mode = interfaces.HIDDEN_MODE
-                    
+                    self.widgets[widgetname].mode = interfaces.HIDDEN_MODE                    
 
         else:
-            # messages = IStatusMessage(self.request)
-            # messages.show()
-            # messages.addStatusMessage(u"Please check meeting date/time", type="info") 
-            
             meeting_definitions = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
             meeting_rows = [meeting for meeting in meeting_definitions if meeting['meeting_type'] == meeeting_value[0]]
             
             if meeting_rows and meeting_rows != None:
                 self.widgets['IBasic.description'].value = meeting_rows[0]['meeting_summary']
                 self.widgets['IBasic.title'].value =  meeting_rows[0]['meeting_title']
-                self.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
+                # self.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
                 # self.widgets['IEventBasic.start'].default = self.fields['IEventBasic.start'].field.default + timedelta(days=1)
                 # self.widgets['IEventBasic.end'].default = self.fields['IEventBasic.start'].field.default + timedelta(days=1, hours=2)
                 
                 self.widgets['meeting_type'].mode = interfaces.HIDDEN_MODE
                 meeting_groups =  meeting_rows[0]['meeting_attendees'] # Some group
                     
-                if meeting_groups and meeting_groups != {}:
+                # if meeting_groups and meeting_groups != {}:
                     
-                    self.widgets['attendees_group'].value =  ";".join(meeting_groups)
+                #     self.widgets['attendees_group'].value =  ";".join(meeting_groups)
                     
                     ## Old code to add one and one member
                     # ids = []
@@ -682,8 +604,10 @@ class MeetingCustomAddForm(DefaultAddForm):
                     #     import pdb; pdb.set_trace()
                     #     self.widgets['IMeetingAttendees.attendees'].value  = ";".join(set(ids))
                         
-    
-
+        # for group in self.groups:
+        #     group.label = None
+        #     #group.mode = 'omitted'
+            
     def updateFields(self):
         super(MeetingCustomAddForm, self).updateFields()
         move(self, "attendees_group", before="IMeetingAttendees.attendees")
@@ -696,10 +620,25 @@ class MeetingCustomAddForm(DefaultAddForm):
         
         for group in self.groups:
             if group.__name__ == 'settings':
-                group.label = None
-                group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE  
-            if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
-                group.label = None
+                    group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE  
+            if group.__name__ in  ['settings', 'dates', 'categorization','ownership', 'attendees']:
+                    group.label = None
+                
+        meeeting_value = self.widgets['meeting_type'].value
+        
+        if meeeting_value not in  [(), None, '']:
+            meeting_definitions = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types')
+            meeting_rows = [meeting for meeting in meeting_definitions if meeting['meeting_type'] == meeeting_value[0]]
+            for group in self.groups:
+                if group.__name__  == 'attendees':
+                    if meeting_rows and meeting_rows != None:
+                        group.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
+                        meeting_groups =  meeting_rows[0]['meeting_attendees'] # Some group
+                        if meeting_groups and meeting_groups != {}:
+                            group.widgets['attendees_group'].value =  ";".join(meeting_groups)
+                    
+                    group.label = 'Attendees'    
+                
         
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
