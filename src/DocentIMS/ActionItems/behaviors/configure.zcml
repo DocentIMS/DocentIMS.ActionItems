@@ -5,8 +5,16 @@
   xmlns:zcml="http://namespaces.zope.org/zcml"
   i18n_domain="plone">
 
-    <include package="plone.behavior" file="meta.zcml"/>
+  <include package="plone.behavior" file="meta.zcml"/>
 
+  <plone:behavior
+      name="docent.autopublish"
+      title="Auto Publish Behavior"
+      description="Auto Publish Behavior."
+      provides=".auto_publish_behavior.IAutoPublishBehavior"
+      for="*"
+      />
+   
    <!-- override event   behaviors-->
   <plone:behavior
       name="docent.eventlocation"

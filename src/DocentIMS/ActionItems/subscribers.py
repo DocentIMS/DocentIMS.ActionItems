@@ -27,7 +27,36 @@ from datetime import datetime
 
 from zExceptions import Redirect
 from zope.component import getMultiAdapter
+
+from zope.component import adapter
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
+# from zope.interface import alsoProvides
+
+from DocentIMS.ActionItems.behaviors.auto_publish_behavior import IAutoPublishBehavior
+from plone import api
+
         
+
+
+@adapter(IAutoPublishBehavior, IObjectAddedEvent)
+def auto_publish_on_add(obj, event):
+    # Ensure we don't do this during copy/paste or move
+    if not event.object == obj:
+        return
+    
+    #import pdb; pdb.set_trace()
+    transition = obj.transition_state
+    obj.transition_state = ''
+
+    # Only do this if the object is not already published
+    if not api.content.get_state(obj) == transition:
+        try:
+            api.content.transition(obj=obj, transition=transition)
+        except Exception as e:
+            # Log error if needed
+            pass
+        # finally:
+        #     pass
 
 
 def check_defaultpage(object, event):

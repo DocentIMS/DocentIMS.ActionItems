@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from DocentIMS.ActionItems.behaviors.auto_publish_beahvior import IAutoPublishBeahviorMarker
+from DocentIMS.ActionItems.behaviors.auto_publish_behavior import IAutoPublishBeahviorMarker
 from DocentIMS.ActionItems.testing import DOCENTIMS_ACTIONITEMS_INTEGRATION_TESTING  # noqa
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID

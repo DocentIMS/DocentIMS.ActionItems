@@ -74,4 +74,11 @@
       name="DocentIMS.ActionItems.MeetingTypesVocabulary" />      
 
 
+  <utility
+  	  component=".vocabularies.TransitionVocabulary"
+      name="DocentIMS.ActionItems.TransitionVocabulary" />     
+
+      
+
+
 </configure>

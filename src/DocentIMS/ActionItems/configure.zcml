@@ -66,8 +66,8 @@
     handler=".handlers.user_logged_in_first"
     />
  -->
-
-
+ 
+ 
 
  <!-- First logged in action definition -->
 
@@ -140,6 +140,16 @@
       factory=".setuphandlers.HiddenProfiles"
       name="DocentIMS.ActionItems-hiddenprofiles"
       />
+
+
+
+
+<!-- AUTO PUBLISH subscriber -->
+<subscriber
+    for="DocentIMS.ActionItems.behaviors.auto_publish_behavior.IAutoPublishBehavior
+        zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".subscribers.auto_publish_on_add" />
+
 
 
 <!-- Add meeting subtypes after creation -->

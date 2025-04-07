@@ -216,24 +216,24 @@ class ActionItemsAddForm(DefaultAddForm):
         if 'save' in self.actions:
             self.actions['save'].title = "Create"
             
-    def createAndAdd(self, data):
-        """ Override to set the workflow state conditionally """
-        obj = super().createAndAdd(data)
+    # def createAndAdd(self, data):
+    #     """ Override to set the workflow state conditionally """
+    #     obj = super().createAndAdd(data)
         
-        #import pdb; pdb.set_trace()
+    #     #import pdb; pdb.set_trace()
         
-        data['portal_state'] = 'Published'
+    #     data['portal_state'] = 'Published'
 
-        # Ensure obj is created and somefield exists
-        # if obj and data.get('somefield') == 'xxxx':
-        #     try:
-        #         api.content.transition(obj, transition='publish')
-        #     except Exception as e:
-        #         self.context.plone_utils.addPortalMessage(
-        #             f"Error publishing item: {e}", type="error"
-        #         )
+    #     # Ensure obj is created and somefield exists
+    #     # if obj and data.get('somefield') == 'xxxx':
+    #     #     try:
+    #     #         api.content.transition(obj, transition='publish')
+    #     #     except Exception as e:
+    #     #         self.context.plone_utils.addPortalMessage(
+    #     #             f"Error publishing item: {e}", type="error"
+    #     #         )
 
-        #return obj
+    #     #return obj
             
 
     def render(self):

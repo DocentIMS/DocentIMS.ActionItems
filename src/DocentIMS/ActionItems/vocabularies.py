@@ -1,6 +1,8 @@
 from zope.interface import directlyProvides
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from zope.schema.interfaces import IVocabularyFactory
+from Products.CMFCore.utils import getToolByName
+from AccessControl import getSecurityManager
 from plone import api
 
 
@@ -344,3 +346,86 @@ directlyProvides(CompanyRolesVocabulary, IVocabularyFactory)
 #Assigned to / 
 #SimpleTerm(value='id', token='id', title=_(u'id')),
             
+            
+            
+ 
+def TransitionVocabulary(context):
+    wf_tool = getToolByName(context, 'portal_workflow')
+    workflow_chain = wf_tool.getChainFor(context)
+
+    if not workflow_chain:
+        return SimpleVocabulary([])
+
+    workflow = wf_tool[workflow_chain[0]]
+    initial_state_id = workflow.initial_state
+    initial_state = workflow.states.get(initial_state_id)
+
+    if not initial_state:
+        return SimpleVocabulary([])
+
+    transition_ids = initial_state.transitions
+    current_user = getSecurityManager().getUser()
+    terms = []
+
+    for tid in transition_ids:
+        transition = workflow.transitions.get(tid)
+        if not transition:
+            continue
+
+        # Check permission if defined
+        # if transition.permission:
+        #     if not current_user.has_permission(transition.permission, context):
+        #         continue
+
+        # Check condition (if any)
+        # condition = transition.getGuardCondition()
+        # if condition and not condition(context, workflow, transition):
+        #     continue
+
+        terms.append(SimpleTerm(value=transition.id, title=transition.actbox_name or transition.id))
+
+    return SimpleVocabulary(terms)
+
+directlyProvides(TransitionVocabulary, IVocabularyFactory)
+
+
+
+
+ 
+ 
+# def TransitionVocabulary(context):
+#     wf_tool = getToolByName(context, 'portal_workflow')
+#     workflow_chain = wf_tool.getChainFor(context)
+
+#     if not workflow_chain:
+#         return SimpleVocabulary([])
+
+#     workflow = wf_tool[workflow_chain[0]]
+#     initial_state_id = workflow.initial_state
+#     initial_state = workflow.states.get(initial_state_id)
+
+#     if not initial_state:
+#         return SimpleVocabulary([])
+
+    
+#     # Simulate an object in the initial state
+#     # We temporarily override the object's review_state with the initial state
+#     # so Plone thinks the object is in that state and gives us transitions accordingly
+#     simulated = context
+#     original_state = getattr(simulated, 'review_state', None)
+#     setattr(simulated, 'review_state', initial_state_id)
+
+#     # Get transitions available *from* this state, honoring guards
+#     transitions = workflow.getTransitionsFor(simulated)
+
+#     # Restore original state (optional, just in case)
+#     if original_state:
+#         setattr(simulated, 'review_state', original_state)
+    
+#     terms = [
+#         SimpleTerm(value=t['id'], title=t.get(t['name'], t['id']))
+#         for t in transitions
+#     ]
+#     return SimpleVocabulary(terms)
+
+# directlyProvides(TransitionVocabulary, IVocabularyFactory)

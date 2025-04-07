@@ -7,6 +7,7 @@ from plone.app.z3cform.widget import AjaxSelectWidget
 from zope import schema
 from zope.interface import provider
 from plone.autoform.interfaces import IFormFieldProvider
+
 # from Products.CMFPlone.utils import safe_hasattr
 # from zope.component import adapter
 # from zope.interface import Interface
