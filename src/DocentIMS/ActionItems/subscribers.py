@@ -46,8 +46,7 @@ def auto_publish_on_add(obj, event):
     
     #import pdb; pdb.set_trace()
     transition = obj.transition_state
-    obj.transition_state = ''
-
+    
     # Only do this if the object is not already published
     if not api.content.get_state(obj) == transition:
         try:

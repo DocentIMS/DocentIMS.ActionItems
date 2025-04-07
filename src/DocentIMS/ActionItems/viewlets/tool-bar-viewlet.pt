@@ -77,11 +77,24 @@
         <div id="notifications_group" class="flex">
             <div id="traffic_lights">
                 <a href="${portal_url}/notifications-view" class="htmltooltip" data-tooltip-content="<b>Open </b>notification">
-                    <p class="messagetype red">${view/notifications_red|None}</p>
-                    <p class="messagetype yellow">${view/notifications_yellow|None}</p>
-                    <p class="messagetype info">${view/notifications_green|None}</p>
+                    <p class="messagetype red">
+                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=error">
+                            ${view/notifications_red|None}
+                        </a>
+                    </p>
+                    <p class="messagetype yellow">
+                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=warning">
+                            ${view/notifications_yellow|None}
+                        </a>
+                    </p>
+                    <p class="messagetype info">
+                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=info">
+                            ${view/notifications_green|None}
+                        </a>
+                    </p>
                 </a>
             </div>
+
 
             <div id="create_task">
                 <a href="${portal_url}/notifications/++add++Notification" title="Add task">
@@ -125,7 +138,7 @@
                 <a href="${portal_url}/documents">Document Manager</a>
             </label>
         </div>
-        
+
     </div>
 
 
@@ -140,7 +153,7 @@
                 </select>
 
                 <p>
-                 <a class="greyed" href="#" onclick="alert('You need to do this in Word!'); return false;">
+                    <a class="greyed" href="#" onclick="alert('You need to do this in Word!'); return false;">
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/create_document_gray.png"/>
                     Create Document</a>
                 </p>
@@ -218,45 +231,23 @@
     </div>
 
     <div id="feedback">
-        <div class="no-flex">
+        <div class="flex">
             <a href="${portal_url}/feedback/++add++feedback">
                 <img src="++plone++DocentIMS.ActionItems/icons/add_with_pencil.png" />
                 <p>Send<br/>
     
                 Feedback</p>
             </a>
+            <a href="${portal_url}/help-files">
+                <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
+                <br/>
+                Help 
+            </a>
         </div>
-        <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/feedback/++add++feedback">Send Feedback</a>
-        </label>
-    </div>
-
-    <!-- <div id="docent_mode">
-        <img src="++plone++DocentIMS.ActionItems/icons//group_icon.png" />
-        <label>Team Mode</label>
-    </div> -->
-
-    <div id="help_div">
-        <!-- <div class="flex center"> -->
-            <!-- <div>
-                <a href="#">
-                    <img src="++plone++DocentIMS.ActionItems/icons/refresh.jpg" />
-                    <br/>
-            Refresh
-                </a>
-            </div> -->
-            <!-- <div> -->
-                <a href="${portal_url}/help-files">
-                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
-                    <br/>
-            Help 
-                </a>
-            <!-- </div> -->
-        <!-- </div> -->
-
         <label class="toolbar_label">
-            <a href="${portal_url}/help-files">Help</a>
+            <a href="${portal_url}/feedback/++add++feedback">Feedback</a> &            <a href="${portal_url}/help-files">Help</a>
         </label>
+
     </div>
 
 </div>
@@ -277,20 +268,20 @@
  #toolbar .flex {  justify-content:  space-between; margin: 0}
  #toolbar img {width: 2rem; }
  #document_manager img, #meeting_select img  {width: 1.3rem; }
- #toolbar {background: whitesmoke; font-size: 10pt; xmargin-bottom: 2rem;  }
+ #toolbar {background: #E2E2E2; font-size: 10pt; xmargin-bottom: 2rem;  }
  #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 1.5rem ; flex-grow: 1; position: relative}
- .toolbar_label {text-align:center; font-weight: bold !important;  position: absolute; bottom: 0px; left: 0; right: 0; xbackground: black; color: #555555 !important}
- .toolbar_label a { font-weight: bold !important;  }
+ .toolbar_label {text-align:center; font-weight: 600 !important;  position: absolute; bottom: 2px; left: 0; right: 0; xbackground: black; color: #555555 !important}
+ .toolbar_label a { font-weight: 600 !important;  }
  #toolbar {text-align:center; font-size: 10pt; text-transform:none !important }
  #toolbar * {text-transform: none !important; font-size: 10pt; font-family: Helvetica !important; font-weight: normal; color: black !important }
  #toolbar .messagetype, #toolbar .stoplight {
         font-size: 90%; 
-        margin: 4px 0 7px;
+        margin: 4px 0 6px;
         padding-left: 0;
         padding-right: 0;
-        width: 17pt;
-        height: 17pt; 
-        padding: 4px  ; 
+        width: 15pt;
+        height: 15pt; 
+        padding: 3px  ; 
         border-radius: 50%; 
         background-color: gray
  }
@@ -306,7 +297,7 @@
      
 }
 #toolbar input, #toolbar select {height: auto } 
- #toolbar a { color: black; text-decoration: none; text-transform: none !important; border-bottom: 0 dotted whitesmoke !important}
+ #toolbar a { color: black; text-decoration: none; text-transform: none !important; border-bottom: 0 dotted #E2E2E2 !important}
  #toolbar p { padding: 0; margin: 0; line-height: 120%}
  #toolbar #help_div {border-right: 0 none}
  #document_type_select {text-align: center}

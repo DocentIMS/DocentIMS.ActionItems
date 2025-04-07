@@ -27,7 +27,7 @@ class IAutoPublishBehavior(model.Schema):
     form.mode(IAddForm, transition_state='input')
     transition_state = schema.Choice(
         title=u"State",
-        required=False,
+        required=True,
         vocabulary="DocentIMS.ActionItems.TransitionVocabulary"
     )
 

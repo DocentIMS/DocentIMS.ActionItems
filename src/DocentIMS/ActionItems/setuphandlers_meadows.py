@@ -865,25 +865,61 @@ def _create_more_content(portal):
             "title": "Tasks - Red", 
             "type_title": "Collection"
             }, 
+            # {
+            # "@id": "site-collections/notifications-information", 
+            # "@type": "Collection", 
+            # "description": "All notifications classed as \"information\"",
+            # "query": [
+            #     {
+            #     "i": "portal_type", 
+            #     "o": "plone.app.querystring.operation.selection.any", 
+            #     "v": [
+            #         "Notification"
+            #     ]
+            #     }
+            # ], 
+            # "review_state": "published", 
+            # "title": "Notifications - Information", 
+            # "type_title": "Collection"
+            # }, 
+            # {
+            # "@id": "site-collections/notifications-important", 
+            # "@type": "Collection", 
+            # "description": "",
+            # "query": [
+            #     {
+            #     "i": "portal_type", 
+            #     "o": "plone.app.querystring.operation.selection.any", 
+            #     "v": [
+            #         "Notification"
+            #     ]
+            #     }
+            # ], 
+            # "review_state": "published", 
+            # "title": "Notifications - Important", 
+            # "type_title": "Collection"
+            # }, 
+            # {
+            # "@id": "site-collections/notifications-critical", 
+            # "@type": "Collection", 
+            # "description": "",
+            # "query": [
+            #     {
+            #     "i": "portal_type", 
+            #     "o": "plone.app.querystring.operation.selection.any", 
+            #     "v": [
+            #         "Notification"
+            #     ]
+            #     }
+            # ], 
+            # "review_state": "published", 
+            # "title": "Notifications - Critical", 
+            # "type_title": "Collection"
+            # }, 
+            
+            
             {
-            "@id": "site-collections/notifications-information", 
-            "@type": "Collection", 
-            "description": "All notifications classed as \"information\"",
-            "query": [
-                {
-                "i": "portal_type", 
-                "o": "plone.app.querystring.operation.selection.any", 
-                "v": [
-                    "Notification"
-                ]
-                }
-            ], 
-            "review_state": "published", 
-            "title": "Notifications - Information", 
-            "type_title": "Collection"
-            }, 
-            {
-            "@id": "site-collections/notifications-important", 
+            "@id": "notifications/notifications-collection", 
             "@type": "Collection", 
             "description": "",
             "query": [
@@ -896,24 +932,7 @@ def _create_more_content(portal):
                 }
             ], 
             "review_state": "published", 
-            "title": "Notifications - Important", 
-            "type_title": "Collection"
-            }, 
-            {
-            "@id": "site-collections/notifications-critical", 
-            "@type": "Collection", 
-            "description": "",
-            "query": [
-                {
-                "i": "portal_type", 
-                "o": "plone.app.querystring.operation.selection.any", 
-                "v": [
-                    "Notification"
-                ]
-                }
-            ], 
-            "review_state": "published", 
-            "title": "Notifications - Critical", 
+            "title": "Notifications", 
             "type_title": "Collection"
             }, 
             

@@ -73,7 +73,12 @@ class PostItNoteAddForm(DefaultAddForm):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
         return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
                   
-                
+    
+    def updateActions(self):
+        super().updateActions()
+        if 'save' in self.actions:
+            self.actions['save'].title = "Create"
+                     
             
 class PostItNoteAddFormView(DefaultAddView):
     form = PostItNoteAddForm
@@ -533,7 +538,12 @@ class SowAnalysisAddForm(DefaultAddForm):
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
         return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
-            
+    
+    def updateActions(self):
+        super().updateActions()
+        if 'save' in self.actions:
+            self.actions['save'].title = "Create"
+                
 
 class SowAnalysisAddFormView(DefaultAddView):
     form = SowAnalysisAddForm
@@ -602,7 +612,11 @@ class MeetingAddForm(DefaultAddForm):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
         return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
             
-        
+    def updateActions(self):
+        super().updateActions()
+        if 'save' in self.actions:
+            self.actions['save'].title = "Create"
+               
 
 
 class MeetingAddFormView(DefaultAddView):
@@ -690,6 +704,12 @@ class MeetingCustomAddForm(DefaultAddForm):
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
         return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+    
+    def updateActions(self):
+        super().updateActions()
+        if 'save' in self.actions:
+            self.actions['save'].title = "Create"
+            
                         
  
 class MeetingCustomAddFormView(DefaultAddView):

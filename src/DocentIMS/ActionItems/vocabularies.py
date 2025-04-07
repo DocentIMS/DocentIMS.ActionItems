@@ -366,6 +366,9 @@ def TransitionVocabulary(context):
     transition_ids = initial_state.transitions
     current_user = getSecurityManager().getUser()
     terms = []
+    terms.append(SimpleTerm(value=None, title='Choose'))
+        
+    
 
     for tid in transition_ids:
         transition = workflow.transitions.get(tid)

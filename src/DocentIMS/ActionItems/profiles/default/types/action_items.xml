@@ -30,6 +30,7 @@
   
   <element value="plone.locking"/>
   <element value="plone.basic"/>
+  <element value="docent.autopublish"/>
  </property>
  <property name="schema"></property>
  <property
