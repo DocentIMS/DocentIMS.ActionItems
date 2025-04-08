@@ -195,7 +195,7 @@ def post_install(context):
     # notes = portal.get('notes', False)
     # behaviour = constrains.ISelectableConstrainTypes(notes)
     # behaviour.setConstrainTypesMode(constrains.ENABLED)
-    # behaviour.setImmediatelyAddableTypes(['otes',])
+    # behaviour.setImmediatelyAddableTypes(['Notes',])
     # behaviour.setLocallyAllowedTypes(['Notes'])
     
     feedback = portal.get('feedback', False)

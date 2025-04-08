@@ -221,12 +221,12 @@
         <div class="no-flex">
             <a href="${portal_url}/postit_notes/++add++postit_note">
                 <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
-                <p>Post It<br/>
+                <p>Create <br/>
                     Note</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/postit_notes/++add++postit_note">Create Note</a>
+            <a href="${portal_url}/postit_notes">My Notes</a>
         </label>
     </div>
 
@@ -245,7 +245,8 @@
             </a>
         </div>
         <label class="toolbar_label">
-            <a href="${portal_url}/feedback/++add++feedback">Feedback</a> &            <a href="${portal_url}/help-files">Help</a>
+            <!-- <a href="${portal_url}/feedback/++add++feedback">Feedback</a>  -->
+             <a href="${portal_url}/help-files">Help</a>
         </label>
 
     </div>
@@ -270,14 +271,14 @@
  #document_manager img, #meeting_select img  {width: 1.3rem; }
  #toolbar {background: #E2E2E2; font-size: 10pt; xmargin-bottom: 2rem;  }
  #toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 1.5rem ; flex-grow: 1; position: relative}
- .toolbar_label {text-align:center; font-weight: 600 !important;  position: absolute; bottom: 2px; left: 0; right: 0; xbackground: black; color: #555555 !important}
+ .toolbar_label {text-align:center; font-weight: 600 !important;  position: absolute; bottom: -5px; left: 0; right: 0; xbackground: black; color: #555555 !important}
  .toolbar_label a { font-weight: 600 !important;  }
  #toolbar {text-align:center; font-size: 10pt; text-transform:none !important }
  #toolbar * {text-transform: none !important; font-size: 10pt; font-family: Helvetica !important; font-weight: normal; color: black !important }
  #toolbar .messagetype, #toolbar .stoplight {
         font-size: 90%; 
-        margin: 4px 0 6px;
-        padding-left: 0;
+        margin: 4px 0 8px;
+        padding-left: 1px;
         padding-right: 0;
         width: 15pt;
         height: 15pt; 
@@ -285,9 +286,10 @@
         border-radius: 50%; 
         background-color: gray
  }
+ 
  #toolbar .red { background: red;  color: white}
  #toolbar .yellow { background: yellow}
- #toolbar .green { background: green; color: white}
+ #toolbar .green { background: green; color: white} 
  #toolbar .info { background: #40E0D0}
  #toolbar select { 
     border-color: black; 

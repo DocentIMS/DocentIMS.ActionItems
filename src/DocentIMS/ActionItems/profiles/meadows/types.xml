@@ -3,7 +3,7 @@
   <property name="title">Controls the available contenttypes in your portal</property>
   <object name="action_items" meta_type="Dexterity FTI"/>
   <object name="personal_notes" meta_type="Dexterity FTI"/>
-  <!-- <object name="sow_analysis" meta_type="Dexterity FTI"/> -->
+  <object name="sow_analysis" meta_type="Dexterity FTI"/>
   <object name="FrontPage" meta_type="Dexterity FTI"/>
   <!-- <object name="Notes" meta_type="Dexterity FTI"/> -->
   <object name="feedback" meta_type="Dexterity FTI"/>
@@ -18,5 +18,5 @@
   <object name="planning_breakdown" meta_type="Dexterity FTI"/>
   <object name="postit_note" meta_type="Dexterity FTI"/>
   <object name="meeting_notes" meta_type="Dexterity FTI"/>
-    <object name="Notification" meta_type="Dexterity FTI"/>
+  <object name="Notification" meta_type="Dexterity FTI"/>
 </object>

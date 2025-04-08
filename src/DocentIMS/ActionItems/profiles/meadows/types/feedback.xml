@@ -32,7 +32,7 @@
   <element value="plone.publication"/>
   <element value="plone.categorization"/>
   <element value="plone.locking"/>
-  <element value="plone.versioning"/>
+  <!-- <element value="plone.versioning"/> -->
  </property>
  <property name="schema"></property>
  <property name="model_source"></property>

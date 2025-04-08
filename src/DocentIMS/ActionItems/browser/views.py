@@ -71,7 +71,7 @@ class PostItNoteAddForm(DefaultAddForm):
     
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
-        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+        return f"<div class='imagediv'><img src='{api.portal.get().absolute_url()}/++plone++DocentIMS.ActionItems/docentlogo.jpg'/></div><h2 class='sit_tit'>{site_title}</h2>{super().render()}"
                   
     
     def updateActions(self):
@@ -131,7 +131,7 @@ class ActionItemsAddForm(DefaultAddForm):
     
 
     def __init__(self, context, request):
-        super(ActionItemsAddForm, self).__init__(context, request)
+        super(ActionItemsAddForm, self).__init__(context, request) 
 
     def updateWidgets(self):
         super(ActionItemsAddForm, self).updateWidgets()
@@ -195,6 +195,7 @@ class ActionItemsAddForm(DefaultAddForm):
                 group.label = None
                 
             if group.__name__ in ['categorization']:
+                group.label = None
                 group.widgets['IRelatedItems.relatedItems'].mode = interfaces.HIDDEN_MODE
                 group.widgets['ICategorization.language'].mode = interfaces.HIDDEN_MODE
                 
@@ -244,7 +245,7 @@ class ActionItemsAddForm(DefaultAddForm):
 
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
-        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+        return f"<div class='imagediv'><img src='{api.portal.get().absolute_url()}/++plone++DocentIMS.ActionItems/docentlogo.jpg'/></div><h2 class='sit_tit'>{site_title}</h2>{super().render()}"
             
 
 
@@ -362,7 +363,7 @@ class ActionItemsEditForm(DefaultEditForm):
                         
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
-        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+        return f"<div class='imagediv'><img src='{api.portal.get().absolute_url()}/++plone++DocentIMS.ActionItems/docentlogo.jpg'/></div><h2 class='sit_tit'>{site_title}</h2>{super().render()}"
             
 
 
@@ -421,7 +422,7 @@ class MeetingEditForm(DefaultEditForm):
             
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
-        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+        return f"<div class='imagediv'><img src='{api.portal.get().absolute_url()}/++plone++DocentIMS.ActionItems/docentlogo.jpg'/></div><h2 class='sit_tit'>{site_title}</h2>{super().render()}"
             
         
          
@@ -463,7 +464,7 @@ class SowAnalysisAddForm(DefaultAddForm):
                 
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
-        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+        return f"<div class='imagediv'><img src='{api.portal.get().absolute_url()}/++plone++DocentIMS.ActionItems/docentlogo.jpg'/></div><h2 class='sit_tit'>{site_title}</h2>{super().render()}"
     
     def updateActions(self):
         super().updateActions()
@@ -488,8 +489,8 @@ class MeetingAddForm(DefaultAddForm):
     def updateWidgets(self):
         super(MeetingAddForm, self).updateWidgets()
         
-        self.groups['attendees'].label="Attendees"
-        if self.portal_type in  ['meeting', "Meeting"]:
+        if self.portal_type in  ["meeting", "Meeting"]:
+            self.groups['attendees'].label="Attendees"        
             self.widgets['IEventBasic.whole_day'].mode = interfaces.HIDDEN_MODE
             self.widgets['IEventBasic.open_end'].mode = interfaces.HIDDEN_MODE 
             # self.fields['IBasic.title'].mode = interfaces.HIDDEN_MODE
@@ -511,10 +512,7 @@ class MeetingAddForm(DefaultAddForm):
         
         
     def update(self):
-        super(MeetingAddForm, self).update()
-        import pdb; pdb.set_trace()
-        if group.__name__  == 'attendees':
-            group.label = 'Attendees'    
+        super(MeetingAddForm, self).update()  
         
         if self.portal_type in  ["meeting_notes", "Meeting Notes", "meeting", "Meeting", "Notes", "notes", "Feedback", "feedback"]:
             if self.portal_type in  ["meeting_notes",]:
@@ -537,7 +535,7 @@ class MeetingAddForm(DefaultAddForm):
                 
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
-        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+        return f"<div class='imagediv'><img src='{api.portal.get().absolute_url()}/++plone++DocentIMS.ActionItems/docentlogo.jpg'/></div><h2 class='sit_tit'>{site_title}</h2>{super().render()}"
             
     def updateActions(self):
         super().updateActions()
@@ -642,7 +640,7 @@ class MeetingCustomAddForm(DefaultAddForm):
         
     def render(self):
         site_title = api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')
-        return f"<h2 class='sit_tit'>{site_title}</h2>{super().render()}"
+        return f"<div class='imagediv'><img src='{api.portal.get().absolute_url()}/++plone++DocentIMS.ActionItems/docentlogo.jpg'/></div><h2 class='sit_tit'>{site_title}</h2>{super().render()}"
     
     def updateActions(self):
         super().updateActions()

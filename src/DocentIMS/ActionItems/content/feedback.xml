@@ -15,16 +15,6 @@
       <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
       <title>Feedback Text</title>
     </field>
-    <field name="feedback_attachment" type="plone.namedfile.field.NamedBlobFile">
-      <description/>
-      <required>False</required>
-      <title>Feedback Attachment</title>
-    </field>
-    <field name="feedback_log" type="plone.namedfile.field.NamedBlobFile">
-      <description/>
-      <required>False</required>
-      <title>Feedback Log</title>
-    </field>
     <field name="reply" type="zope.schema.Bool">
       <description>Would you like to hear back from us?</description>
       <required>False</required>
@@ -36,5 +26,15 @@
       <required>False</required>
       <title>Docent Tool Type</title>
     </field>
+    <field name="feedback_attachment" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <required>False</required>
+      <title>Feedback Attachment</title>
+    </field>
+    <field name="feedback_log" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <required>False</required>
+      <title>Feedback Log</title>
+    </field>   
   </schema>
 </model>

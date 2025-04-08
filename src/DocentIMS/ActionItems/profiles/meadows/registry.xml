@@ -164,6 +164,14 @@
     </field>
     <value>Password</value>
   </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.dashboard" 
+          interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="dashboard">  
+    <field type="plone.registry.field.TextLine">
+      <title>Dashboard</title>
+    </field>
+    <value></value>
+  </record>
+
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.urgent_red" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="urgent_red">
     <field type="plone.registry.field.Int">
       <description> </description>

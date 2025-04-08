@@ -60,7 +60,7 @@
       &lt;field name=&quot;related_members&quot; type=&quot;zope.schema.Set&quot;&gt;
         &lt;description&gt; &lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;Identify other team members related to this task&lt;/title&gt;
+        &lt;title&gt;Other people (also involved)&lt;/title&gt;
         &lt;value_type type=&quot;zope.schema.Choice&quot;&gt;
           &lt;vocabulary&gt;DocentIMS.ActionItems.TeamnamesVocabulary&lt;/vocabulary&gt;
         &lt;/value_type&gt;

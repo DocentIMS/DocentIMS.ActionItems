@@ -1,31 +1,30 @@
-<model
-    xmlns="http://namespaces.plone.org/supermodel/schema"
-    xmlns:security="http://namespaces.plone.org/supermodel/security"
-    xmlns:form="http://namespaces.plone.org/supermodel/form"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="DocentIMS.ActionItems">
-<schema>
+<model xmlns="http://namespaces.plone.org/supermodel/schema"
+  xmlns:security="http://namespaces.plone.org/supermodel/security"
+  xmlns:form="http://namespaces.plone.org/supermodel/form"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems">
+  <schema>
     <!-- <field name="my_note" type="plone.app.textfield.RichText">
       <description>What do i want to remember?</description>
       <title>My Note</title>
     </field> -->
+
+    <field name="color" type="zope.schema.Choice">
+      <title>Color</title>
+      <required>False</required>
+      <values>
+        <element>blue</element>
+        <element>green</element>
+        <element>yellow</element>
+        <element>brown</element>
+        <element>purple</element>
+        <element>orange</element>
+      </values>
+      <default>yellow</default>
+    </field>
     <field name="file" type="plone.namedfile.field.NamedBlobFile">
       <description/>
       <required>False</required>
       <title>Attachment</title>
-    </field>
-    <field name="color" type="zope.schema.Choice">
-        <title>Color</title>
-        <required>False</required>
-        <values>
-          <element>blue</element>
-          <element>green</element>
-          <element>yellow</element>
-          <element>brown</element>
-          <element>purple</element>
-          <element>orange</element>
-        </values>
-        <default>yellow</default>
     </field>
   </schema>
 </model>

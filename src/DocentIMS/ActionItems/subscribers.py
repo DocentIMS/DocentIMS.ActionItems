@@ -12,6 +12,10 @@ from zope.lifecycleevent import IObjectModifiedEvent
 import requests
 import string
 import random
+import json
+import base64
+
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
 
 # from zope.lifecycleevent import IObjectAddedEvent"
@@ -255,47 +259,35 @@ def save_note(object, event):
 
 def user_created_handler(event):
     """Handles a new user creation."""
-    # siteurl = "http://dashboard.docentims.com"
-    # siteurl = "https://dashboard.docentims.com/@users"
-    site_url = "http://10.0.0.159:8605/Plone54/@add_user"
-    # plone
+    site_url = "https://dashboard.docentims.com/++api++/@users"
     user = event.object
     email  = user.getProperty('email', None)
+    # passw = user.getProperty('password', None)
+    basik =  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
     
     # Create a new user
     if email:
         username = user.getUserName()
         fullname = user.getProperty('fullname')
-        password = ''.join(random.choices(string.ascii_letters, k=27))
-      
-        added_user = requests.post(
-                site_url,
-                headers={
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                json={
-                    'email': email,
-                    'username': username,
-                    'password': password,
-                    'fullname': fullname,
-                    'roles': ['Member'] 
-                },
-                #Change to user / password
-                auth=('admin', 'admin')
-            )
+        if fullname:
+            password = ''.join(random.choices(string.ascii_letters, k=27))            
         
-        # # response = requests.get(url, headers={'Accept': 'application/json', 'Content-Type': 'application/json'}, auth=('admin', 'admin'))
-        # if response.status_code == 200:            
-        #     body = response.json()
-        #     # Do something
-        # else:
-        #     #Give error, send email ??
-        # print('hello')
+            added_user = requests.post(
+                    site_url,
+                    headers={
+                        'Content-Type': 'application/json',
+                        'Authorization': f'Basic {basik}'
+                    },
+                    data = json.dumps({
+                        'email': email,
+                        'password': password,
+                        'fullname': fullname,
+                        'roles': ['Member'] 
+                    })
+                )
+             
         
-        # abc = 1               
-        
-        return True
+    #     return True
     
-    return False
+    # return False
         

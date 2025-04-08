@@ -336,7 +336,8 @@ class IDocentimsSettings(model.Schema):
             'color1',
             'color2',
             'planning_project',
-            'template_password'
+            'template_password',
+            'dashboard'
             ],
         )
 
@@ -655,6 +656,11 @@ class IDocentimsSettings(model.Schema):
     
     template_password = schema.TextLine(
         title=u"Template Password",
+        required=True,
+    )
+    
+    dashboard = schema.TextLine(
+        title=u"Dashboard Basic",
         required=True,
     )
 
