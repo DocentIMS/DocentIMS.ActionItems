@@ -262,11 +262,10 @@ def user_created_handler(event):
     site_url = "https://dashboard.docentims.com/++api++/@users"
     user = event.object
     email  = user.getProperty('email', None)
-    # passw = user.getProperty('password', None)
-    basik =  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
     
-    # Create a new user
+    # Create a new user on dashboard site
     if email:
+        basik =  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
         username = user.getUserName()
         fullname = user.getProperty('fullname')
         if fullname:

@@ -2,12 +2,17 @@
 
 from plone.app.layout.viewlets import ViewletBase
 from plone import api
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
+import requests
 
 
 class ToolBarViewlet(ViewletBase):
 
     def update(self):
         self.message = self.get_message()
+        
+    # def basik(self):
+    #     return  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
 
     def get_message(self):
         return u'My message'
@@ -56,6 +61,35 @@ class ToolBarViewlet(ViewletBase):
     def current_user_id(self):
         current_user =  api.user.get_current()
         return current_user.getId()
+    
+    def get_sites(self):
+        usermail = self.current_user_id()
+        basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
+        siteurl = f'https://dashboard.docentims.com/@dashboard_sites/?email={usermail}'
+        buttons = []
+        try:                
+            response  = requests.get(
+                siteurl,
+                headers={
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                auth=('admin', 'admin')                      
+            )
+
+            if response.status_code == 200:
+                #body = response.json()                    
+                return response.json()
+
+                
+        except requests.exceptions.ConnectionError:
+            print("Failed to connect to the server. Please check your network or URL.")
+        except requests.exceptions.Timeout:
+            print("The request timed out. Try again later.")
+        except requests.exceptions.RequestException as e:
+            print(f"An error occurred: {e}")
+            
+        return None
     
     # def red_count(self): 
     #     user_ids = self.current_user.getId()
