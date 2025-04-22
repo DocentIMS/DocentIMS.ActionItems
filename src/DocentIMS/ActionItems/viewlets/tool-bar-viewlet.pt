@@ -19,18 +19,18 @@
         </div>
         <!-- <label for="project">Select a Project:</label> -->
         <div id="project_select">
-            <div tal:define="sites view/get_sites|None">
+            <!-- <div tal:define="sites view/get_sites|None">
                 <select id="project" name="project">
                     <option value="select">Select Project </option>
-                    <!-- <tal:condition tal:condition="view/get_sites">
+                    <tal:condition tal:condition="view/get_sites">
                         <tal:define tal:define="buttons python: sites['buttons']">
                             <option tal:repeat="site  buttons" value="${python: site['url']}">
                                 ${python: site['name']}
                             </option>
                         </tal:define>
-                    </tal:condition> -->
+                    </tal:condition>
                 </select>
-            </div>
+            </div> -->
             <label class="toolbar_label">
                 <a href="${portal_url}">Project Selected</a>
             </label>
