@@ -260,6 +260,7 @@ def save_note(object, event):
 def user_created_handler(event):
     """Handles a new user creation."""
     site_url = "https://dashboard.docentims.com/++api++/@users"
+    import pdb; pdb.set_trace()
     user = event.object
     email  = user.getProperty('email', None)
     
