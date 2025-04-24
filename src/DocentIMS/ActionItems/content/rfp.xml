@@ -1,9 +1,22 @@
-<model
-    xmlns="http://namespaces.plone.org/supermodel/schema"
-    xmlns:security="http://namespaces.plone.org/supermodel/security"
-    xmlns:form="http://namespaces.plone.org/supermodel/form"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="DocentIMS.ActionItems">
-  <schema>
-  </schema>
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
+xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" 
+xmlns:form="http://namespaces.plone.org/supermodel/form" 
+xmlns:security="http://namespaces.plone.org/supermodel/security" 
+xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" 
+xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" 
+xmlns:users="http://namespaces.plone.org/supermodel/users" 
+i18n:domain="DocentIMS.ActionItems"
+xmlns="http://namespaces.plone.org/supermodel/schema">
+<schema>
+<field name="table" type="zope.schema.TextLine">
+<description/>
+<required>False</required>
+<title>table</title>
+</field>
+<field name="file" type="plone.namedfile.field.NamedBlobFile">
+<description/>
+<required>False</required>
+<title>file</title>
+</field>
+</schema>
 </model>

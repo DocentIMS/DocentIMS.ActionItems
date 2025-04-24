@@ -1,9 +1,127 @@
-<model
-    xmlns="http://namespaces.plone.org/supermodel/schema"
-    xmlns:security="http://namespaces.plone.org/supermodel/security"
-    xmlns:form="http://namespaces.plone.org/supermodel/form"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="DocentIMS.ActionItems">
-  <schema>
-  </schema>
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
+xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" 
+xmlns:form="http://namespaces.plone.org/supermodel/form" 
+xmlns:security="http://namespaces.plone.org/supermodel/security" 
+xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" 
+xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" 
+xmlns:users="http://namespaces.plone.org/supermodel/users" 
+i18n:domain="DocentIMS.ActionItems"
+xmlns="http://namespaces.plone.org/supermodel/schema">
+<schema>
+<field name="section_number" type="zope.schema.TextLine">
+<required>False</required>
+<title>Breakdown Number</title>
+</field>
+<field name="bodytext" type="plone.app.textfield.RichText">
+<description> </description>
+<required>False</required>
+<title>Full Scope Section Text</title>
+<validate_invariants>False</validate_invariants>
+</field>
+<field name="assigned_to" type="zope.schema.Choice">
+<description> .</description>
+<required>False</required>
+<title>Responsibility</title>
+<vocabulary>plone.app.vocabularies.Users</vocabulary>
+</field>
+<fieldset name="date" label="Dates" description="Due Dates">
+<field name="initial_due_date" type="zope.schema.Date">
+<description>Initial estimate of the due date.</description>
+<required>False</required>
+<title>Initial Due Date</title>
+</field>
+<field name="revised_due_date" type="zope.schema.Date">
+<description>If the initial due date has been changed.</description>
+<required>False</required>
+<title>Revised Due Date</title>
+</field>
+</fieldset>
+<fieldset name="notes" label="Notes" description=" ">
+<field name="notes" type="plone.app.textfield.RichText">
+<description>Add any notes regarding this Scope Item</description>
+<required>False</required>
+<title> " </title>
+</field>
+</fieldset>
+<fieldset name="actions_items" label="Actions Items" description="These are the action items generated from the analysis of this Statement of Work.">
+<field name="explanation" type="plone.app.textfield.RichText">
+<description>What is this for</description>
+<required>False</required>
+<title>Explanation</title>
+</field>
+</fieldset>
+<fieldset name="qc_requirements" label="QC Requirements" description="Is QC required for this section?">
+<field name="internal_qc_required_" type="zope.schema.Bool">
+<default>False</default>
+<description>Will the output of the action item require review by internal QC?</description>
+<required>False</required>
+<title>Internal QC Required?</title>
+<form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
+</field>
+<field name="estimated_qc_time" type="zope.schema.Choice">
+<description>If QC is required, please provide estimate of how long.  Contact the QC department if needed to get good estimate.</description>
+<required>False</required>
+<title>Estimated QC Time</title>
+<values>
+<element>1 hour</element>
+<element>3 hours</element>
+<element>5 hours</element>
+</values>
+</field>
+<field name="notes_to_qc" type="plone.app.textfield.RichText">
+<description>Enter anything that might help the QC process</description>
+<required>False</required>
+<title>Notes to QC</title>
+</field>
+<field name="finishing_date_for_qc" type="zope.schema.Date">
+<description/>
+<required>False</required>
+<title>Finishing Date for QC</title>
+</field>
+<field name="date_wc_finished" type="zope.schema.Date">
+<description/>
+<required>False</required>
+<title>Date WC Finished</title>
+</field>
+<field name="date_item_finished" type="zope.schema.Date">
+<description/>
+<required>False</required>
+<title>Date Item Finished</title>
+</field>
+</fieldset>
+<fieldset name="deliverables" label="Deliverables">
+<field name="responsible_parties" type="zope.schema.Choice">
+<description/>
+<required>False</required>
+<title>Responsible Parties</title>
+<vocabulary>plone.app.vocabularies.Users</vocabulary>
+</field>
+<field name="quality_procedure" type="zope.schema.Choice">
+<description/>
+<required>False</required>
+<title>Quality Procedure</title>
+<vocabulary>DocentIMS.ActionItems.QPVocabulary</vocabulary>
+</field>
+<field name="deliverable_text" type="plone.app.textfield.RichText">
+<description/>
+<required>False</required>
+<title>Deliverable Text</title>
+</field>
+</fieldset>
+<fieldset name="analysis_notes" label="Close out" description="Person analyzing this Scope section add any notes regarding your analysis.">
+<field name="is_the_analyis_complete" type="zope.schema.Bool">
+<default>False</default>
+<description/>
+<required>False</required>
+<title>Is the analyis complete</title>
+<form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
+</field>
+<field name="analysis_notes" type="plone.app.textfield.RichText">
+<description/>
+<required>False</required>
+<title>Analysis Notes</title>
+</field>
+</fieldset>
+<fieldset name="close_out" label="Close Out" description="Actions taken to close this analysis"/>
+</schema>
 </model>
