@@ -26,8 +26,7 @@
  <property name="behaviors">
   <element value="plone.versioning"/>
   <element value="plone.allowdiscussion"/>
-  <element value="plone.relateditems"/>
-  
+  <element value="plone.relateditems"/>  
   <element value="plone.locking"/>
   <element value="plone.basic"/>
   <element value="docent.autopublish"/>
