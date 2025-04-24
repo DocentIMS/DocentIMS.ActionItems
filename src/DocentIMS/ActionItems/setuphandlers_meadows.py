@@ -234,7 +234,7 @@ def pre_install(context):
     #plone.api.group.create(groupname="can_add_project_scope", title="Can Add Scope")
     #plone.api.group.create(groupname="can_command_statements", title="Can Command Statements")
      
-    plone.api.group.create(groupname="can_modify_templates", title="Can Modify Templates", description="Controls who can modify the templates used in Word to create Docent documents.")
+    plone.api.group.create(groupname="can_modify_templates", title="Can Add Templates", description="Controls who can modify the templates used in Word to create Docent documents.")
     plone.api.group.create(groupname="can_add_planning_document", title="Can Add Planning Document", description="Planning documents are those reviewed when the Project is still in Planning phase.  These documents are to help prepare to study the project.")
     plone.api.group.create(groupname="can_add_meeting_agenda", title="Can Add Meeting Agenda", description="People allowed to add agenda.  This is separate from users who can add meetings.  I expect the board to be able to add minutes, but only President allowed to add meeting.")
     plone.api.group.create(groupname="can_add_meeting_minutes", title="Can Add Meeting Minutes", description="People allowed to add Minutes.  This is separate from users who can add meetings.  I expect the board to be able to add minutes, but only President allowed to add meeting.")
