@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.AddRfpBreakdown"
+        title="DocentIMS.ActionItems: Add RfpBreakdown"
+    />
+
+
+    <permission
         id="DocentIMS.ActionItems.AddRfp"
         title="DocentIMS.ActionItems: Add Rfp"
     />

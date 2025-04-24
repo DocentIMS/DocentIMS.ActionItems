@@ -16,4 +16,5 @@
   <object name="PostIt Note" meta_type="Dexterity FTI"/>
   <object name="Meeting Notes" meta_type="Dexterity FTI"/>
   <object name="rfp" meta_type="Dexterity FTI"/>
+  <object name="rfp_breakdown" meta_type="Dexterity FTI"/>
 </object>
