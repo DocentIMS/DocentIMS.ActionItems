@@ -1,5 +1,7 @@
-<button class="margin-0 hidden" id="toggle-filters">Toggle Filters</button>
-<hr/>
+<button class="margin-0 hidden" id="toggle-filters"><img width="35" height="35" 
+    src="/++plone++DocentIMS.ActionItems/icons/filter_image.png"/>
+</button>
+<!-- <hr/> -->
 <script>
 jQuery(document).ready(function() {
   if ($("#portal-column-two").length) {

@@ -64,30 +64,32 @@ class ToolBarViewlet(ViewletBase):
     
     def get_sites(self):
         usermail = self.current_user_id()
-        basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
-        siteurl = f'https://dashboard.docentims.com/@dashboard_sites/?email={usermail}'
-        buttons = []
-        try:                
-            response  = requests.get(
-                siteurl,
-                headers={
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                auth=('admin', 'admin')                      
-            )
+        if usermail:
+            basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
+            if basik:
+                siteurl = f'https://dashboard.docentims.com/@dashboard_sites/?email={usermail}'
+                buttons = []
+                try:                
+                    response  = requests.get(
+                        siteurl,
+                        headers={
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        auth=('admin', 'admin')                      
+                    )
 
-            if response.status_code == 200:
-                #body = response.json()                    
-                return response.json()
+                    if response.status_code == 200:
+                        #body = response.json()                    
+                        return response.json()
 
-                
-        except requests.exceptions.ConnectionError:
-            print("Failed to connect to the server. Please check your network or URL.")
-        except requests.exceptions.Timeout:
-            print("The request timed out. Try again later.")
-        except requests.exceptions.RequestException as e:
-            print(f"An error occurred: {e}")
+                        
+                except requests.exceptions.ConnectionError:
+                    print("Failed to connect to the server. Please check your network or URL.")
+                except requests.exceptions.Timeout:
+                    print("The request timed out. Try again later.")
+                except requests.exceptions.RequestException as e:
+                    print(f"An error occurred: {e}")
             
         return None
     

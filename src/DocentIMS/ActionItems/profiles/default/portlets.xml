@@ -48,6 +48,18 @@
 
 
   <!-- Assign another collection filter portlet -->
+
+  <assignment category="context"
+              key="/action-items/action-items-collection"
+              manager="plone.rightcolumn"
+              name="collectionfiltertwo"
+              type="collective.collectionfilter.portlets.CollectionFilter">
+      <property name="header">Stoplight</property>
+      <property name="group_by">stoplight</property>
+      <property name="show_count">True</property>
+
+  </assignment>
+
   <assignment category="context"
               key="/action-items/action-items-collection"
               manager="plone.rightcolumn"
@@ -56,6 +68,18 @@
       <property name="header">Responsible</property>
       <property name="group_by">Subject</property>
       <property name="show_count">True</property>
+  </assignment>
+
+
+    <assignment category="context"
+              key="/notifications/notifications-collection" 
+              manager="plone.rightcolumn"
+              name="collectionfilterrthree"
+              type="collective.collectionfilter.portlets.CollectionFilter">
+      <property name="header">Message Type</property>
+      <property name="group_by">notification_type</property>
+      <property name="show_count">True</property>
+      <property name="filter_type">inputtype_checkboxes_dropdowns</property>
   </assignment>
 
  

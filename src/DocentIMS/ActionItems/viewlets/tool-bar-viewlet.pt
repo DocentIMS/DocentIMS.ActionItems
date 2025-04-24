@@ -81,7 +81,6 @@
     <div id="your_notifications">
         <div id="notifications_group" class="flex">
             <div id="traffic_lights">
-                <a href="${portal_url}/notifications-view" class="htmltooltip" data-tooltip-content="<b>Open </b>notification">
                     <p class="messagetype red">
                         <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=error">
                             ${view/notifications_red|None}
@@ -97,7 +96,7 @@
                             ${view/notifications_green|None}
                         </a>
                     </p>
-                </a>
+                
             </div>
 
 
@@ -113,7 +112,7 @@
         </div>
         <div class="label">
             <label class="toolbar_label">
-                <a href="${portal_url}/notifications">Notifications</a>
+                <a href="${portal_url}/notifications/notifications-collection">Notifications</a>
             </label>
         </div>
     </div>
@@ -237,6 +236,16 @@
 
     <div id="feedback">
         <div class="flex">
+
+        <div>
+            <a href="#">
+                <img src="++plone++DocentIMS.ActionItems/icons/refresh.jpg" />
+                     <br/>
+             Refresh
+         </a> 
+         
+        </div>
+
             <a href="${portal_url}/feedback/++add++feedback">
                 <img src="++plone++DocentIMS.ActionItems/icons/add_with_pencil.png" />
                 <p>Send<br/>
@@ -255,6 +264,8 @@
         </label>
 
     </div>
+
+  
 
 </div>
 
