@@ -84,7 +84,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
   </conditions>
   <actions>
    <action type="plone.actions.Move">
-    <property name="target_folder">/meeting</property>
+    <property name="target_folder">/meetings</property>
    </action>
   </actions>
  </rule>

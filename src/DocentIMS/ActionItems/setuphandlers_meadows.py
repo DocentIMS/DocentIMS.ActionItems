@@ -204,7 +204,7 @@ def post_install(context):
     behaviour.setImmediatelyAddableTypes(['feedback'])
     behaviour.setLocallyAllowedTypes(['feedback'])
 
-    meeting = portal.get('meeting', False)
+    meeting = portal.get('meetings', False)
     behaviour = constrains.ISelectableConstrainTypes(meeting)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
     behaviour.setImmediatelyAddableTypes(['meeting'])
@@ -289,9 +289,22 @@ def _create_content(portal):
         folder.title= 'Team'
         folder.reindexObject(idxs=['Title'])
             
+        if portal.get('notifications', False):
+            try:
+                folder = portal['notifications']
+                folder.setDefaultPage('notifications-collection')
+            finally:
+                pass
+            
+            if folder.get('notifications-collection', False):
+                try:
+                    collection = folder['notifications']
+                    collection.setDefaultPage('full_view')
+                finally:
+                    pass
             
             
-
+            
         if not portal.get('action-items', False):
             action_items = plone.api.content.create(
                 type='Folder',
@@ -322,11 +335,11 @@ def _create_content(portal):
                 
         
                 
-        if not portal.get('meeting', False):
+        if not portal.get('meetings', False):
             meeting = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                id='meeting',
+                id='meetings',
                 title='Meetings',
                 default_page='meeting-collection',
                 nextPreviousEnabled=0
@@ -764,107 +777,107 @@ def load_word_file(name):
 
 def _create_more_content(portal):        
     sitecollections = [
-            {
-            "@id": "site-collections/tasks-green", 
-            "@type": "Collection", 
-            "description": "Action items due more than 15 days from now",
-            "query": [
-                {
-                "i": "portal_type", 
-                "o": "plone.app.querystring.operation.selection.any", 
-                "v": [
-                    "action_items"
-                ]
-                }, 
-                {
-                "i": "duedate", 
-                "o": "plone.app.querystring.operation.date.afterRelativeDate", 
-                "v": "29"
-                }, 
-                {
-                "i": "assigned_id", 
-                "o": "plone.app.querystring.operation.string.currentUser", 
-                "v": ""
-                }, 
-                {
-                "i": "closed", 
-                "o": "plone.app.querystring.operation.string.is", 
-                "v": "No"
-                }
-            ], 
-            "review_state": "published", 
-            "title": "Tasks - Green", 
-            "type_title": "Collection"
-            }, 
-            {
-            "@id": "site-collections/tasks-yellow", 
-            "@type": "Collection", 
-            "description": "",
-            "query": [
-                {
-                "i": "portal_type", 
-                "o": "plone.app.querystring.operation.selection.any", 
-                "v": [
-                    "action_items"
-                ]
-                }, 
-                {
-                "i": "assigned_id", 
-                "o": "plone.app.querystring.operation.string.currentUser", 
-                "v": ""
-                }, 
-                {
-                "i": "duedate", 
-                "o": "plone.app.querystring.operation.date.afterRelativeDate", 
-                "v": "6"
-                }, 
-                {
-                "i": "duedate", 
-                "o": "plone.app.querystring.operation.date.beforeRelativeDate", 
-                "v": "16"
-                }, 
-                {
-                "i": "closed", 
-                "o": "plone.app.querystring.operation.string.is", 
-                "v": "No"
-                }
-            ], 
-            "review_state": "published", 
-            "title": "Tasks - Yellow", 
-            "type_title": "Collection"
-            }, 
-            {
-            "@id": "site-collections/tasks-red", 
-            "@type": "Collection", 
-            "description": "Critical Tasks",  
-            "query": [
-                {
-                "i": "portal_type", 
-                "o": "plone.app.querystring.operation.selection.any", 
-                "v": [
-                    "action_items"
-                ]
-                }, 
-                {
-                "i": "assigned_id", 
-                "o": "plone.app.querystring.operation.string.currentUser", 
-                "v": ""
-                }, 
-                {
-                "i": "closed", 
-                "o": "plone.app.querystring.operation.string.is", 
-                "v": "No"
-                }, 
-                {
-                "i": "priority", 
-                "o": "plone.app.querystring.operation.int.is", 
-                "v": "1"
-                }
-            ], 
-            "review_state": "published", 
-            "title": "Tasks - Red", 
-            "type_title": "Collection"
-            }, 
+            # {
+            # "@id": "site-collections/tasks-green", 
+            # "@type": "Collection", 
+            # "description": "Action items due more than 15 days from now",
+            # "query": [
+            #     {
+            #     "i": "portal_type", 
+            #     "o": "plone.app.querystring.operation.selection.any", 
+            #     "v": [
+            #         "action_items"
+            #     ]
+            #     }, 
+            #     {
+            #     "i": "duedate", 
+            #     "o": "plone.app.querystring.operation.date.afterRelativeDate", 
+            #     "v": "29"
+            #     }, 
+            #     {
+            #     "i": "assigned_id", 
+            #     "o": "plone.app.querystring.operation.string.currentUser", 
+            #     "v": ""
+            #     }, 
+            #     {
+            #     "i": "closed", 
+            #     "o": "plone.app.querystring.operation.string.is", 
+            #     "v": "No"
+            #     }
+            # ], 
+            # "review_state": "published", 
+            # "title": "Tasks - Green", 
+            # "type_title": "Collection"
+            # }, 
+            # {
+            # "@id": "site-collections/tasks-yellow", 
+            # "@type": "Collection", 
+            # "description": "",
+            # "query": [
+            #     {
+            #     "i": "portal_type", 
+            #     "o": "plone.app.querystring.operation.selection.any", 
+            #     "v": [
+            #         "action_items"
+            #     ]
+            #     }, 
+            #     {
+            #     "i": "assigned_id", 
+            #     "o": "plone.app.querystring.operation.string.currentUser", 
+            #     "v": ""
+            #     }, 
+            #     {
+            #     "i": "duedate", 
+            #     "o": "plone.app.querystring.operation.date.afterRelativeDate", 
+            #     "v": "6"
+            #     }, 
+            #     {
+            #     "i": "duedate", 
+            #     "o": "plone.app.querystring.operation.date.beforeRelativeDate", 
+            #     "v": "16"
+            #     }, 
+            #     {
+            #     "i": "closed", 
+            #     "o": "plone.app.querystring.operation.string.is", 
+            #     "v": "No"
+            #     }
+            # ], 
+            # "review_state": "published", 
+            # "title": "Tasks - Yellow", 
+            # "type_title": "Collection"
+            # }, 
+            # {
+            # "@id": "site-collections/tasks-red", 
+            # "@type": "Collection", 
+            # "description": "Critical Tasks",  
+            # "query": [
+            #     {
+            #     "i": "portal_type", 
+            #     "o": "plone.app.querystring.operation.selection.any", 
+            #     "v": [
+            #         "action_items"
+            #     ]
+            #     }, 
+            #     {
+            #     "i": "assigned_id", 
+            #     "o": "plone.app.querystring.operation.string.currentUser", 
+            #     "v": ""
+            #     }, 
+            #     {
+            #     "i": "closed", 
+            #     "o": "plone.app.querystring.operation.string.is", 
+            #     "v": "No"
+            #     }, 
+            #     {
+            #     "i": "priority", 
+            #     "o": "plone.app.querystring.operation.int.is", 
+            #     "v": "1"
+            #     }
+            # ], 
+            # "review_state": "published", 
+            # "title": "Tasks - Red", 
+            # "type_title": "Collection"
+            # }, 
             # {
             # "@id": "site-collections/notifications-information", 
             # "@type": "Collection", 
@@ -1031,7 +1044,8 @@ def _create_more_content(portal):
             ], 
             "review_state": "published", 
             "title": "Collection of Collections", 
-            "type_title": "Collection"
+            "type_title": "Collection",
+            "layout" : "tabular_view"
             }, 
             {
             "@id": "calendar/calendar", 
@@ -1076,7 +1090,8 @@ def _create_more_content(portal):
                     id=id,
                     title=collection['title'],
                     description = collection['description'],
-                    query =  collection['query']
+                    query =  collection['query'],
+                    layout = "tabular_view"
                 )
                          
 

@@ -71,7 +71,7 @@
   </assignment>
 
 
-    <assignment category="context"
+  <assignment category="context"
               key="/notifications/notifications-collection" 
               manager="plone.rightcolumn"
               name="collectionfilterrthree"
