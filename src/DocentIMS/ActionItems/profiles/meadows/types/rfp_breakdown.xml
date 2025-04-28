@@ -7,7 +7,7 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">rfp_breakdown</property>
+      name="title">RFP Breakdown</property>
   <property
       i18n:translate=""
       name="description">Individual analysis of RFP</property>
