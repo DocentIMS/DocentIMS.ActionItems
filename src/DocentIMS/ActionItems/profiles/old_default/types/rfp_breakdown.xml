@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    name="FrontPage"
+    name="rfp_breakdown"
     meta_type="Dexterity FTI"
     i18n:domain="DocentIMS.ActionItems">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">FrontPage</property>
+      name="title">rfp_breakdown</property>
   <property
       i18n:translate=""
-      name="description">A content types that shows different rich text field to different users based on logged in or not</property>
+      name="description">Individual analysis of RFP</property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">FrontPage</property>
-  <property name="icon_expr">string:contenttype/FrontPage</property>
+  <property name="factory">rfp_breakdown</property>
+  <property name="icon_expr"></property>
   <property name="link_target"></property>
 
   <!-- Hierarchy control -->
   <property name="global_allow">True</property>
   <!-- Schema, class and security -->
-  <property name="add_permission">cmf.AddPortalContent</property>
+  <property name="add_permission">DocentIMS.ActionItems.AddRfpBreakdown</property>
   <property name="klass">plone.dexterity.content.Item</property>
-  <property name="model_file">DocentIMS.ActionItems.content:front_page.xml</property>
+  <property name="model_file">DocentIMS.ActionItems.content:rfp_breakdown.xml</property>
   <property name="model_source"></property>
   <property name="schema"></property>
 
@@ -49,12 +49,12 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++FrontPage</property>
-  <property name="default_view">front-page-view</property>
+  <property name="add_view_expr">string:${folder_url}/++add++rfp_breakdown</property>
+  <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>
   <property name="view_methods">
-    <element value="front-page-view"/>
+    <element value="view"/>
   </property>
 
   <!-- Method aliases -->

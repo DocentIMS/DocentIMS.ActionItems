@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object name="docent_meeting_minutes" meta_type="Dexterity FTI"
    i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Meeting Minutes</property>
+ <property name="title" i18n:translate="">Docent Meeting Minutes</property>
  <property name="description"
     i18n:translate="">Meeting minutes content type to link with Docent in Word.  A Word template is on the server.  When user uses the Docent toolbar to create a new document based on selection, Word, via API, gets the Word template for the doc type, creates new instance of doc type in Word.  users works in Word, when done, uploads Word file.  in addition, there are defined items uploaded via API so they can be shown in table.</property>
  <property name="icon_expr">string:docent_meeting_minutes</property>

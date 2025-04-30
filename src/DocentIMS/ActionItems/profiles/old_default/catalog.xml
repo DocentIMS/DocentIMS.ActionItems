@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+
+
+ <index name="priority" meta_type="FieldIndex">
+  <indexed_attr value="priority"/>
+ </index>
+ <index name="prioritystring" meta_type="FieldIndex">
+  <indexed_attr value="prioritystring"/>
+ </index>
+ <index name="revised_due_date" meta_type="DateIndex">
+  <indexed_attr value="revised_due_date"/>
+ </index>
+ <index name="initial_due_date" meta_type="DateIndex">
+  <indexed_attr value="initial_due_date"/>
+ </index>
+
+ <index name="duedate" meta_type="DateIndex">
+  <indexed_attr value="duedate"/>
+ </index>
+
+ <index name="daysleft" meta_type="FieldIndex">
+  <indexed_attr value="daysleft"/>
+ </index>
+
+ <index name="urgency" meta_type="FieldIndex">
+  <indexed_attr value="urgency"/>
+ </index>
+
+ <index name="assigned_to" meta_type="FieldIndex">
+  <indexed_attr value="assigned_to"/>
+ </index>
+
+  <index name="assigned_id" meta_type="FieldIndex">
+    <indexed_attr value="assigned_to"/>
+  </index>
+
+ <index name="is_this_item_closed" meta_type="BooleanIndex">
+  <indexed_attr value="is_this_item_closed"/>
+ </index>
+ <index name="actionno" meta_type="FieldIndex">
+   <indexed_attr value="actionno"/>
+ </index>
+ <index name="closed" meta_type="FieldIndex">
+   <indexed_attr value="closed"/>
+ </index>
+
+ <index name="reply" meta_type="BooleanIndex">
+  <indexed_attr value="reply"/>
+ </index>
+
+ <index name="Review by Date" meta_type="DateIndex">
+  <indexed_attr value="review_by_date"/>
+ </index>
+
+
+     
+
+ <!-- <index name="out_of_the_scope" meta_type="FieldIndex"> -->
+   <!-- <indexed_attr value="is_this_action_out_of_the_scope_of_work_"/> -->
+ <!-- </index> -->
+ 
+ <index name="is_this_action_out_of_the_scope_of_work_" meta_type="FieldIndex">
+   <indexed_attr value="is_this_action_out_of_the_scope_of_work_"/>
+ </index>
+
+ <column value="priority"/>
+ <column value="prioritystring"/>
+ <column value="revised_due_date"/>
+ <column value="initial_due_date"/>
+ <column value="review_by_date"/>
+ <column value="duedate"/>
+ <column value="daysleft"/>
+ <column value="assigned_to"/>
+ <column value="assigned_id"/>
+ <column value="is_this_item_closed"/>
+ <column value="closed"/>
+ <column value="actionno"/>
+ <column value="urgency"/>
+
+ <!-- <column value="out_of_the_scope"/> -->
+ <column value="is_this_action_out_of_the_scope_of_work_"/> 
+
+  <column value="reply"/>
+
+
+
+</object>

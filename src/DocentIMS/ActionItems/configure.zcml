@@ -104,28 +104,44 @@
       />
 
 
-  <genericsetup:registerProfile
+  <!-- <genericsetup:registerProfile
       name="meadows"
       title="Meadows"
-      directory="profiles/meadows"
+      directory="profiles/default"
+      description="Installs the Meadowa´ActionItems."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      pre_handler=".setuphandlers_meadows.pre_install"
+      post_handler=".setuphandlers_meadows.post_install"
+      /> -->
+  
+  <genericsetup:registerProfile
+      name="default"
+      title="Docentims Meadows"
+      directory="profiles/default"
       description="Installs the Meadowa´ActionItems."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       pre_handler=".setuphandlers_meadows.pre_install"
       post_handler=".setuphandlers_meadows.post_install"
       />
 
-  
+    <genericsetup:registerProfile
+      name="portlets"
+      title="Portlets for action items"
+      directory="profiles/portlets"
+      description="Sets up portlets for Action Items"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+
   <genericsetup:registerProfile
-      name="default"
+      name="old_default"
       title="_dont_D.AI"
-      directory="profiles/default"
+      directory="profiles/old_default"
       description="Installs the D AI add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      pre_handler=".setuphandlers.pre_install"
-      post_handler=".setuphandlers.post_install"
+      pre_handler=".old_setuphandlers.pre_install"
+      post_handler=".old_setuphandlers.post_install"
       />
-
-
 
   <genericsetup:registerProfile
       name="uninstall"
@@ -133,11 +149,11 @@
       directory="profiles/uninstall"
       description="Uninstalls the DocentIMS.ActionItems add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.uninstall"
+      post_handler=".setuphandlers_meadows.uninstall"
       />
 
   <utility
-      factory=".setuphandlers.HiddenProfiles"
+      factory=".setuphandlers_meadows.HiddenProfiles"
       name="DocentIMS.ActionItems-hiddenprofiles"
       />
 

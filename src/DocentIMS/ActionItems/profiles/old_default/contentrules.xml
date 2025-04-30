@@ -2,7 +2,7 @@
 <contentrules>
  <rule name="rule-1" title="Mail to Assigned to on created" cascading="False"
     description="Anytime a new content is created, email the assigned to (if there is one)"
-    enabled="False" event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    enabled="True" event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">
   <conditions>
    <condition type="plone.conditions.PortalType">
@@ -28,7 +28,7 @@
     description="when user first logs in, gets an email with : 1) link to go to enter their personal information;  2) link to download Word installer
 
 Would prefer to have it redirect to the personal info page automatically, but that won&#x27;t work.  if we get it to work, this Rule will be replaced."
-    enabled="False"
+    enabled="True"
     event="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
     stop-after="False">
   <conditions/>
@@ -54,7 +54,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
   </actions>
  </rule>
  <rule name="rule-3" title="Move Task" cascading="False"
-    description="Move action items to the proper folder" enabled="False"
+    description="Move action items to the proper folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">
   <conditions>
@@ -70,9 +70,25 @@ Would prefer to have it redirect to the personal info page automatically, but th
    </action>
   </actions>
  </rule>
- 
+ <rule name="rule-4" title="Move Scope Items" cascading="False"
+    description="Move all Scope Items to Scope folder" enabled="True"
+    event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    stop-after="False">
+  <conditions>
+   <condition type="plone.conditions.PortalType">
+    <property name="check_types">
+     <element>sow_analysis</element>
+    </property>
+   </condition>
+  </conditions>
+  <actions>
+   <action type="plone.actions.Move">
+    <property name="target_folder">/scope-analysis</property>
+   </action>
+  </actions>
+ </rule>
  <rule name="rule-5" title="Move to Meeting Folder" cascading="False"
-    description="move all Meetings to the Meeting folder" enabled="False"
+    description="move all Meetings to the Meeting folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">
   <conditions>
@@ -84,12 +100,12 @@ Would prefer to have it redirect to the personal info page automatically, but th
   </conditions>
   <actions>
    <action type="plone.actions.Move">
-    <property name="target_folder">/meetings</property>
+    <property name="target_folder">/meeting</property>
    </action>
   </actions>
  </rule>
  <rule name="rule-6" title="Move Documents" cascading="False"
-    description="move all documents to the Documents folder" enabled="False"
+    description="move all documents to the Documents folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">
   <conditions>
@@ -106,7 +122,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
    </action>
   </actions>
  </rule>
- <!-- <rule name="rule-7" title="Move Notes" cascading="False"
+ <rule name="rule-7" title="Move Notes" cascading="False"
     description="Move Notes to the Notes Folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">
@@ -127,9 +143,9 @@ Would prefer to have it redirect to the personal info page automatically, but th
     <property name="target_folder">/notes</property>
    </action>
   </actions>
- </rule> -->
+ </rule>
  <rule name="rule-8" title="Move Feedback" cascading="False"
-    description="Move feedback items to the Feedback Folder" enabled="False"
+    description="Move feedback items to the Feedback Folder" enabled="True"
     event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">
   <conditions>
@@ -145,11 +161,12 @@ Would prefer to have it redirect to the personal info page automatically, but th
    </action>
   </actions>
  </rule>
- <assignment name="rule-1" bubbles="True" enabled="False" location=""/>
- <assignment name="rule-2" bubbles="True" enabled="False" location=""/>
- <assignment name="rule-3" bubbles="True" enabled="False" location=""/>
- <assignment name="rule-5" bubbles="True" enabled="False" location=""/>
- <assignment name="rule-6" bubbles="True" enabled="False" location=""/>
- <!-- <assignment name="rule-7" bubbles="True" enabled="True" location=""/> -->
- <assignment name="rule-8" bubbles="True" enabled="False" location=""/>
+ <assignment name="rule-1" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-2" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-3" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-4" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-5" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-6" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-7" bubbles="True" enabled="True" location=""/>
+ <assignment name="rule-8" bubbles="True" enabled="True" location=""/>
 </contentrules>

@@ -2,10 +2,7 @@
 <metadata>
   <version>1020</version>
   <dependencies>
-
-    <dependency>profile-plone.app.discussion:default</dependency>
     <dependency>profile-plone.app.dexterity:default</dependency>
-    <dependency>profile-plone.app.discussion:default</dependency>
     <dependency>profile-medialog.controlpanel:default</dependency>
     <dependency>profile-collective.z3cform.datagridfield:default</dependency>
     <!-- <dependency>profile-collective.collectionfilter.portlets:default</dependency> --> 
@@ -21,6 +18,5 @@
     <dependency>profile-collective.searchandreplace:default</dependency>
     <dependency>profile-collective.z3cform.colorpicker:default</dependency>
     <dependency>profile-Products.PloneKeywordManager:default</dependency>
-    <dependency>profile-onlyoffice.plone:default</dependency>
-  </dependencies>
+   </dependencies>
 </metadata>

@@ -43,8 +43,12 @@ class HiddenProfiles(object):
 
     def getNonInstallableProfiles(self):
         """Hide uninstall profile from site-creation and quickinstaller."""
+        "Hide also profiles installed from medialog.meadows"
         return [
             "DocentIMS.ActionItems:uninstall",
+            "DocentIMS.ActionItems:default",
+            "DocentIMS.ActionItems:portlets",
+            "DocentIMS.ActionItems:old_default"
         ]
 
     def getNonInstallableProducts(self):
@@ -58,10 +62,12 @@ def post_install(context):
 
     
     portal = plone.api.portal.get()
-    
-    plone.api.user.create(email='wglover@docentims.com', username='wglover@docentims.com', password=None, roles=('Member', 'Manager',), properties={'fullname': "Wayne Glover", 'first_name': 'Wayne', 'last_name': 'Glover'})
-    plone.api.user.create(email='espen@medialog.no', username='espen@medialog.no', password=None, roles=('Member', 'Manager',), properties={'fullname': "Espen Moe-Nilssen", 'first_name': 'Espen', 'last_name': 'MN'})
-    plone.api.group.add_user(groupname='PrjTeam', username='wglover@docentims.com')
+    try:
+        plone.api.user.create(email='wglover@docentims.com', username='wglover@docentims.com', password=None, roles=('Member', 'Manager',), properties={'fullname': "Wayne Glover", 'first_name': 'Wayne', 'last_name': 'Glover'})
+        plone.api.user.create(email='espen@medialog.no', username='espen@medialog.no', password=None, roles=('Member', 'Manager',), properties={'fullname': "Espen Moe-Nilssen", 'first_name': 'Espen', 'last_name': 'MN'})
+        plone.api.group.add_user(groupname='PrjTeam', username='wglover@docentims.com')
+    except ValueError: 
+        pass
     
     #Assign roles
     plone.api.group.grant_roles(groupname='PrjMgr', roles=['Board President', 'Edit Controlpanel'])

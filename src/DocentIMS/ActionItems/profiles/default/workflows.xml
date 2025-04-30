@@ -2,37 +2,98 @@
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
  <property
     name="title">Contains workflow definitions for your portal</property>
- <object name="docentIMS_actionitem_workflow" meta_type="Workflow"/>
- <object name="docentIMS_collection_workflow" meta_type="Workflow"/>
- <object name="docentIMS_feedback_workflow" meta_type="Workflow"/>
- <object name="docentIMS_meeting_agenda_workflow" meta_type="Workflow"/>
- <object name="docentIMS_meeting_minutes_workflow" meta_type="Workflow"/>
- <object name="docentIMS_note_workflow" meta_type="Workflow"/>
- <object name="docentIMS_pmp_creation_workflow" meta_type="Workflow"/>
- <object name="docentIMS_scope_creation_workflow" meta_type="Workflow"/>
- <object name="docentIMS_scope_item_workflow" meta_type="Workflow"/>
- <object name="docentMtgAgenda_WF" meta_type="Workflow"/>
- <object name="meadows_meeting_agenda_workflow" meta_type="Workflow"/>
- <object name="meadows_meeting_minutes_workflow" meta_type="Workflow"/>
+ <object name="action_item_workflow" meta_type="Workflow"/>
+ <object name="comment_one_state_workflow" meta_type="Workflow"/>
+ <object name="comment_review_workflow" meta_type="Workflow"/>
+ <object name="folder_workflow" meta_type="Workflow"/>
+ <object name="intranet_folder_workflow" meta_type="Workflow"/>
+ <object name="intranet_workflow" meta_type="Workflow"/>
+ <object name="meeting_workflow" meta_type="Workflow"/>
+ <object name="one_state_workflow" meta_type="Workflow"/>
+ <object name="planning_breakdown_workflow" meta_type="Workflow"/>
+ <object name="plone_workflow" meta_type="Workflow"/>
+ <object name="postit_note_workflow" meta_type="Workflow"/>
+ <object name="simple_publication_workflow" meta_type="Workflow"/>
+ <object name="single_state_workflow" meta_type="Workflow"/>
  <bindings>
+  <default>
+   <bound-workflow workflow_id="simple_publication_workflow"/>
+  </default>
+  <type type_id="ATBooleanCriterion"/>
+  <type type_id="ATCurrentAuthorCriterion"/>
+  <type type_id="ATDateCriteria"/>
+  <type type_id="ATDateRangeCriterion"/>
+  <type type_id="ATListCriterion"/>
+  <type type_id="ATPathCriterion"/>
+  <type type_id="ATPortalTypeCriterion"/>
+  <type type_id="ATReferenceCriterion"/>
+  <type type_id="ATRelativePathCriterion"/>
+  <type type_id="ATSelectionCriterion"/>
+  <type type_id="ATSimpleIntCriterion"/>
+  <type type_id="ATSimpleStringCriterion"/>
+  <type type_id="ATSortCriterion"/>
+  <type type_id="Collection">
+   <bound-workflow workflow_id="single_state_workflow"/>
+  </type>
+  <type type_id="Discussion Item">
+   <bound-workflow workflow_id="comment_one_state_workflow"/>
+  </type>
   <type type_id="Feedback">
    <bound-workflow workflow_id="docentIMS_feedback_workflow"/>
   </type>
   <type type_id="File">
-   <bound-workflow workflow_id="docentIMS_meeting_minutes_workflow"/>
+   <bound-workflow workflow_id="one_state_workflow"/>
   </type>
-  <type type_id="Notes">
-   <bound-workflow workflow_id="docentIMS_note_workflow"/>
-  </type>
-  <type type_id="Plone Site"/>
-  <type type_id="action_items">
-   <bound-workflow workflow_id="docentIMS_actionitem_workflow"/>
+  <type type_id="Meeting">
+   <bound-workflow workflow_id="meadows_meeting_workflow"/>
   </type>
   <type type_id="Meeting Agenda">
    <bound-workflow workflow_id="docentIMS_meeting_agenda_workflow"/>
   </type>
   <type type_id="Meeting Minutes">
    <bound-workflow workflow_id="docentMtgAgenda_WF"/>
+  </type>
+  <type type_id="Notes">
+   <bound-workflow workflow_id="docentIMS_note_workflow"/>
+  </type>
+  <type type_id="Plone Site">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="action_items">
+   <bound-workflow workflow_id="action_item_workflow"/>
+  </type>
+  <type type_id="feedback">
+   <bound-workflow workflow_id="postit_note_workflow"/>
+  </type>
+  <type type_id="meeting">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="meeting_agenda">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="meeting_folder">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="meeting_minute">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="meeting_minutes">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="meeting_note">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="meeting_notes">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="planning_breakdown">
+   <bound-workflow workflow_id="planning_breakdown_workflow"/>
+  </type>
+  <type type_id="planning_document">
+   <bound-workflow workflow_id="planning_breakdown_workflow"/>
+  </type>
+  <type type_id="postit_note">
+   <bound-workflow workflow_id="postit_note_workflow"/>
   </type>
   <type type_id="scope">
    <bound-workflow workflow_id="docentIMS_scope_workflow"/>

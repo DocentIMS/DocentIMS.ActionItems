@@ -2,7 +2,7 @@
 <object name="action_items" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Task</property>
- <property name="description" i18n:translate="">task</property>
+ <property name="description" i18n:translate="">action items</property>
  <property name="icon_expr">string:action_items</property>
  <property name="factory">action_items</property>
  <property
@@ -15,10 +15,10 @@
   <element value="personal_notes"/>
  </property>
  <property name="allow_discussion">True</property>
- <property name="default_view">meadows-action-items-view</property>
+ <property name="default_view">action-items-view</property>
  <property name="view_methods">
   <element value="view"/>
-  <element value="meadows-action-items-view"/>
+  <element value="action-items-view"/>
  </property>
  <property name="default_view_fallback">False</property>
  <property name="add_permission">cmf.AddPortalContent</property>
@@ -26,10 +26,10 @@
  <property name="behaviors">
   <element value="plone.versioning"/>
   <element value="plone.allowdiscussion"/>
-  <element value="plone.categorization"/>
-  <element value="plone.relateditems"/>
+  <element value="plone.relateditems"/>  
   <element value="plone.locking"/>
   <element value="plone.basic"/>
+  <element value="docent.autopublish"/>
  </property>
  <property name="schema"></property>
  <property
@@ -49,22 +49,22 @@
       &lt;/field&gt;
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
+        &lt;required&gt;True&lt;/required&gt;
         &lt;title&gt;Assigned to&lt;/title&gt;
-        &lt;required&gt;False&lt;/required&gt;
-        &lt;vocabulary&gt;DocentIMS.ActionItems.TeamnamesVocabulary&lt;/vocabulary&gt;
+        &lt;vocabulary&gt;plone.app.vocabularies.Users&lt;/vocabulary&gt;
       &lt;/field&gt;
       &lt;field name=&quot;prioritystring&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;PriorityString&lt;/title&gt;
       &lt;/field&gt;
       &lt;field name=&quot;related_members&quot; type=&quot;zope.schema.Set&quot;&gt;
-        &lt;description&gt; &lt;/description&gt;
+       &lt;form:widget type=&quot;plone.app.z3cform.widget.AjaxSelectFieldWidget&quot;/&gt;
         &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;Other people (also involved)&lt;/title&gt;
+        &lt;title&gt;Identify other team members related to this action item&lt;/title&gt;
+        &lt;description&gt; &lt;/description&gt;
         &lt;value_type type=&quot;zope.schema.Choice&quot;&gt;
-          &lt;vocabulary&gt;DocentIMS.ActionItems.TeamnamesVocabulary&lt;/vocabulary&gt;
+          &lt;vocabulary&gt;plone.app.vocabularies.Users&lt;/vocabulary&gt;
         &lt;/value_type&gt;
-        &lt;form:widget type=&quot;plone.app.z3cform.widgets.select.AjaxSelectFieldWidget&quot;/&gt;
       &lt;/field&gt;
       &lt;field name=&quot;related_item&quot; type=&quot;z3c.relationfield.schema.RelationChoice&quot;&gt;
         &lt;description/&gt;
@@ -75,12 +75,6 @@
         &lt;description/&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;placeholder&lt;/title&gt;
-      &lt;/field&gt;
-      &lt;field name=&quot;source&quot; type=&quot;zope.schema.Text&quot; form:mode=&quot;z3c.form.interfaces.IForm:hidden&quot;&gt;
-        &lt;description/&gt;
-        &lt;default&gt;Plone&lt;/default&gt;
-        &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;source&lt;/title&gt;
       &lt;/field&gt;
       &lt;fieldset name=&quot;all_dates&quot; label=&quot;Dates&quot; description=&quot;Due Dates. The Initial Due Date Stays Unchanged. The Revised Due Date May be Changed&quot;&gt;
         &lt;field name=&quot;initial_due_date&quot; type=&quot;zope.schema.Date&quot;&gt;
@@ -102,7 +96,27 @@
       &lt;fieldset name=&quot;notes&quot; label=&quot;PM Notes&quot; description=&quot; &quot;&gt;
         &lt;field name=&quot;notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
           &lt;required&gt;False&lt;/required&gt;
-          &lt;title&gt;Project Manager&#x27;s Notes to Person Assigned This Action Item&lt;/title&gt;
+          &lt;title&gt; &quot;Project Manager's Notes to Person Assigned This Action Item&lt;/title&gt;
+        &lt;/field&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset name=&quot;connections&quot; label=&quot;Connections&quot; description=&quot;With minor exceptions, all action items are driven by Scope requirements.&quot;&gt;
+        &lt;field name=&quot;is_this_action_out_of_the_scope_of_work_&quot; type=&quot;zope.schema.Bool&quot;&gt;
+          &lt;default&gt;False&lt;/default&gt;
+          &lt;description&gt;If this Action Item is Not directly driven by the Scope, check the box and explain in the box that opens..&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Is This Action Out of the Scope of Work?&lt;/title&gt;
+          &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;explanation_for_out_of_scope_ai&quot; type=&quot;zope.schema.Text&quot;&gt;
+          &lt;description&gt;Explain why this Action Item is needed if it isn&#x27;t driven by Scope&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Explanation for Out of Scope AI&lt;/title&gt;
+        &lt;/field&gt;
+        &lt;field name=&quot;related_sow_section&quot; type=&quot;zope.schema.Choice&quot;&gt;
+          &lt;description&gt;Which section in the Scope drives this action item?&lt;/description&gt;
+          &lt;required&gt;False&lt;/required&gt;
+          &lt;title&gt;Related Scope Section&lt;/title&gt;
+          &lt;vocabulary&gt;DocentIMS.ActionItems.ShowActionItemsVocabulary&lt;/vocabulary&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
       &lt;fieldset name=&quot;intermediate_actioins&quot; label=&quot;Intermediate Actions&quot; description=&quot;Describe all the actions taken including intermediate work if it is a lengthy or complicated issue.&quot;&gt;
@@ -112,7 +126,7 @@
           &lt;title&gt;Actions Taken&lt;/title&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
-      &lt;fieldset name=&quot;close_out&quot; label=&quot;Close Out&quot; description=&quot;Explain in detail what you did to complete this task.&quot;&gt;
+      &lt;fieldset name=&quot;close_out&quot; label=&quot;Close Out&quot; description=&quot;Explain in detail what you did to complete this action item.&quot;&gt;
         &lt;field name=&quot;is_this_item_closed&quot; type=&quot;zope.schema.Bool&quot;&gt;
           &lt;default&gt;False&lt;/default&gt;
           &lt;description&gt;have you finished&lt;/description&gt;

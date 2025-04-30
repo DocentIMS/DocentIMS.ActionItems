@@ -5,16 +5,20 @@
   <object name="personal_notes" meta_type="Dexterity FTI"/>
   <object name="sow_analysis" meta_type="Dexterity FTI"/>
   <object name="FrontPage" meta_type="Dexterity FTI"/>
-  <object name="Notes" meta_type="Dexterity FTI"/>
-  <object name="Feedback" meta_type="Dexterity FTI"/>
-  <object name="Meeting" meta_type="Dexterity FTI"/>
-  <object name="Meeting Minutes" meta_type="Dexterity FTI"/>
-  <object name="Meeting Agenda" meta_type="Dexterity FTI"/>
+  <!-- <object name="Notes" meta_type="Dexterity FTI"/> -->
+  <object name="feedback" meta_type="Dexterity FTI"/>
+  <object name="meeting" meta_type="Dexterity FTI"/>
+  <object name="meeting_minutes" meta_type="Dexterity FTI"/>
+  <object name="meeting_agenda" meta_type="Dexterity FTI"/>
   <object name="Folder" meta_type="Dexterity FTI"/>
-  <object name="Planning Document" meta_type="Dexterity FTI"/>
-  <object name="Planning Breakdown" meta_type="Dexterity FTI"/>
-  <object name="PostIt Note" meta_type="Dexterity FTI"/>
-  <object name="Meeting Notes" meta_type="Dexterity FTI"/>
+  <object name="Event" meta_type="Dexterity FTI"/>
+  <object name="News Item" meta_type="Dexterity FTI"/>
+  <object name="Link" meta_type="Dexterity FTI"/>
+  <object name="planning_document" meta_type="Dexterity FTI"/>
+  <object name="planning_breakdown" meta_type="Dexterity FTI"/>
+  <object name="postit_note" meta_type="Dexterity FTI"/>
+  <object name="meeting_notes" meta_type="Dexterity FTI"/>
+  <object name="Notification" meta_type="Dexterity FTI"/>
   <object name="rfp" meta_type="Dexterity FTI"/>
   <object name="rfp_breakdown" meta_type="Dexterity FTI"/>
 </object>

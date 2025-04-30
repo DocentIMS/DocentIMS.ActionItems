@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object name="portal_types" meta_type="Plone Types Tool">
+  <property name="title">Controls the available contenttypes in your portal</property>
+  <object name="action_items" meta_type="Dexterity FTI"/>
+  <object name="personal_notes" meta_type="Dexterity FTI"/>
+  <object name="sow_analysis" meta_type="Dexterity FTI"/>
+  <object name="FrontPage" meta_type="Dexterity FTI"/>
+  <object name="Notes" meta_type="Dexterity FTI"/>
+  <object name="Feedback" meta_type="Dexterity FTI"/>
+  <object name="Meeting" meta_type="Dexterity FTI"/>
+  <object name="Meeting Minutes" meta_type="Dexterity FTI"/>
+  <object name="Meeting Agenda" meta_type="Dexterity FTI"/>
+  <object name="Folder" meta_type="Dexterity FTI"/>
+  <object name="Planning Document" meta_type="Dexterity FTI"/>
+  <object name="Planning Breakdown" meta_type="Dexterity FTI"/>
+  <object name="PostIt Note" meta_type="Dexterity FTI"/>
+  <object name="Meeting Notes" meta_type="Dexterity FTI"/>
+  <object name="rfp" meta_type="Dexterity FTI"/>
+  <object name="rfp_breakdown" meta_type="Dexterity FTI"/>
+</object>

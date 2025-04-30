@@ -7,7 +7,7 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">rfp</property>
+      name="title">RFP</property>
   <property
       i18n:translate=""
       name="description">Request for Proposal</property>
