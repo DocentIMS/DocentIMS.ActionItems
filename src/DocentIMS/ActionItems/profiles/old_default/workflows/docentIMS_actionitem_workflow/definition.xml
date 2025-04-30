@@ -34,7 +34,7 @@
  </state>
  <state state_id="7.Archived" title="">
  </state>
- <transition transition_id="accept" title="Accept" new_state="4.Accepted" trigger="USER" before_script="" after_script="">
+ <transition transition_id="accept" title="Accept" new_state="Accepted" trigger="USER" before_script="" after_script="">
   <description>User accepts responsibility for the Action Item</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=accept" category="workflow" icon="">Accept</action>
   <guard>
@@ -46,21 +46,21 @@
    <guard-role>PrjMgr</guard-role>
   </guard>
  </transition>
- <transition transition_id="assign" title="assign" new_state="3.Assigned" trigger="USER" before_script="" after_script="">
+ <transition transition_id="assign" title="assign" new_state="Assigned" trigger="USER" before_script="" after_script="">
   <description>designate person to complete action item</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=assign" category="workflow" icon="">Assign</action>
   <guard>
    <guard-group>PrjMgr</guard-group>
   </guard>
  </transition>
- <transition transition_id="close" title="Close" new_state="6.Closed" trigger="USER" before_script="" after_script="">
+ <transition transition_id="close" title="Close" new_state="Closed" trigger="USER" before_script="" after_script="">
   <description>when Task is complete the PM closes</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
   <guard>
    <guard-role>PrjMgr</guard-role>
   </guard>
  </transition>
- <transition transition_id="complete" title="Complete" new_state="5.Completed" trigger="USER" before_script="" after_script="">
+ <transition transition_id="complete" title="Complete" new_state="Completed" trigger="USER" before_script="" after_script="">
   <description>Work on the Action Item is complete and PM moves it to Completed</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=complete" category="workflow" icon="">Complete</action>
   <guard>
@@ -104,7 +104,7 @@
   <guard>
   </guard>
  </transition>
- <transition transition_id="submit" title="Submit for Review" new_state="2.Submitted" trigger="USER" before_script="" after_script="">
+ <transition transition_id="submit" title="Submit for Review" new_state="Submitted" trigger="USER" before_script="" after_script="">
   <description>Submits Action Item to the Owner initially identified by Task creator.  This sends to the proposed owner who may accept or reject.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" icon="">Submit for Acceptance</action>
   <guard>

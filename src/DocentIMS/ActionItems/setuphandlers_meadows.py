@@ -63,9 +63,9 @@ def post_install(context):
     
     portal = plone.api.portal.get()
     try:
-        plone.api.user.create(email='wglover@docentims.com', username='wglover@docentims.com', password=None, roles=('Member', 'Manager',), properties={'fullname': "Wayne Glover", 'first_name': 'Wayne', 'last_name': 'Glover'})
-        plone.api.user.create(email='espen@medialog.no', username='espen@medialog.no', password=None, roles=('Member', 'Manager',), properties={'fullname': "Espen Moe-Nilssen", 'first_name': 'Espen', 'last_name': 'MN'})
-        plone.api.group.add_user(groupname='PrjTeam', username='wglover@docentims.com')
+        plone.api.user.create(email='dummyuser@docentims.com', username='dummyuser@docentims.com', password=None, roles=('Member', 'Manager',), properties={'fullname': "Dummy User", 'first_name': 'Dummy', 'last_name': 'User'})
+        # plone.api.user.create(email='espen@medialog.no', username='espen@medialog.no', password=None, roles=('Member', 'Manager',), properties={'fullname': "Espen Moe-Nilssen", 'first_name': 'Espen', 'last_name': 'MN'})
+        plone.api.group.add_user(groupname='PrjTeam', username='dummyuser@docentims.com')
     except ValueError: 
         pass
     
@@ -131,18 +131,15 @@ def post_install(context):
       [ {'meeting_type': 'Board-Only Meeting', 
          'meeting_title': 'Board Members Only Meeting', 
          'meeting_summary': 'This meeting is only for board members and is used to work on specific work.', 
-         'meeting_attendees': {'PrjTeam'}, 
-         'meeting_contact': 'wglover@docentims.com'},
+         'meeting_attendees': {'PrjTeam'} },
         {'meeting_type': 'Community Meeting', 
          'meeting_title': 'Meadows Community Meeting', 
          'meeting_summary': 'Monthly board meeting with all residents invited.', 
-         'meeting_attendees': {'PrjTeam'}, 
-         'meeting_contact': 'wglover@docentims.com'},
+         'meeting_attendees': {'PrjTeam'}, },
         {'meeting_type': 'Executive Session', 
          'meeting_title': 'Board Executive Session', 
          'meeting_summary': 'Board-only discussions', 
-         'meeting_attendees': {'PrjTeam'}, 
-         'meeting_contact': 'wglover@docentims.com'},
+         'meeting_attendees': {'PrjTeam'}, },
       ])
     
  
@@ -337,10 +334,25 @@ def _create_content(portal):
                     item_count=500,
                 )
                 
+            if not action_items.get('stoplight-collection', False):
+                stoplight_collection = plone.api.content.create(
+                    type='Collection',
+                    container=action_items,
+                    id='stoplight-collection',
+                    title='Stoplight collection',
+                    layout='action-overview',
+                    query = [{
+                            "i": "review_state",
+                            "o": "plone.app.querystring.operation.selection.any",
+                            "v": [
+                                "Published"
+                            ]
+                    }],                    
+                    limit=2000,
+                    item_count=500,
+                )
                 
-                
-        
-                
+       
         if not portal.get('meetings', False):
             meeting = plone.api.content.create(
                 type='Folder',

@@ -1,25 +1,16 @@
 <?xml version="1.0"?>
-<portlets
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="plone">
- 
+<portlets xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="plone">
+
   <!-- Remove default portlets here  -->
-  <assignment name="navigation" category="context" key="/"
-    manager="plone.leftcolumn" type="portlets.Classic" visible="False"  remove="True" />
+  <assignment name="navigation" category="context" key="/" manager="plone.leftcolumn" type="portlets.Classic" visible="False" remove="True" />
 
-  <assignment name="news" category="context" key="/"
-    manager="plone.rightcolumn" type="portlets.News" visible="False"  remove="True" />
+  <assignment name="news" category="context" key="/" manager="plone.rightcolumn" type="portlets.News" visible="False" remove="True" />
 
-  <assignment name="events" category="context" key="/"
-    manager="plone.rightcolumn" type="portlets.Events" visible="False"  remove="True" />
-  
+  <assignment name="events" category="context" key="/" manager="plone.rightcolumn" type="portlets.Events" visible="False" remove="True" />
+
   <!-- Extra portlets here  -->
 
-  <portlet
-    addview="DocentIMS.ActionItems.portlets.AddActionItemPortlet"
-    title="Add Action Item portlet"
-    description="A portlet which can render weather of the given place."
-    i18n:attributes="title title_add_action_item_portlet;
+  <portlet addview="DocentIMS.ActionItems.portlets.AddActionItemPortlet" title="Add Action Item portlet" description="A portlet which can render weather of the given place." i18n:attributes="title title_add_action_item_portlet;
                      description description_add_action_item_portlet">
 
     <!-- This will enable the portlet for right column,
@@ -34,100 +25,67 @@
 
   </portlet>
 
- 
+
   <!-- Assign a collection filter portlet -->
-  <assignment category="context"
-              key="/action-items/action-items-collection"
-              manager="plone.rightcolumn"
-              name="collectionfilterone"
-              type="collective.collectionfilter.portlets.CollectionFilter">
-      <property name="header">Tags</property>
-      <property name="group_by">Subject</property>
-      <property name="show_count">True</property>
+  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterone" type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">Tags</property>
+    <property name="group_by">Subject</property>
+    <property name="show_count">True</property>
   </assignment>
 
 
   <!-- Assign another collection filter portlet -->
- <!-- Assign another collection filter portlet -->
+  <!-- Assign another collection filter portlet -->
 
-  <assignment category="context"
-              key="/action-items/action-items-collection"
-              manager="plone.rightcolumn"
-              name="collectionfiltertwo"
-              type="collective.collectionfilter.portlets.CollectionFilter">
-      <property name="header">Stoplight</property>
-      <property name="group_by">stoplight</property>
-      <property name="show_count">True</property>
-      <property name="input_type">checkboxes_dropdowns</property>
+  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfiltertwo" type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">Stoplight</property>
+    <property name="group_by">stoplight</property>
+    <property name="show_count">True</property>
+    <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
 
-  <assignment category="context"
-              key="/action-items/action-items-collection"
-              manager="plone.rightcolumn"
-              name="collectionfilterone"
-              type="collective.collectionfilter.portlets.CollectionFilter">
-      <property name="header">Responsible</property>
-      <property name="group_by">assigned_to</property>
-      <property name="group_by">Subject</property>
-      <property name="show_count">True</property>
-      <property name="input_type">checkboxes_dropdowns</property>
-  </assignment>
-
-  <assignment category="context"
-              key="/action-items/action-items-collection"
-              manager="plone.rightcolumn"
-              name="collectionfilterrreset"
-              type="collective.collectionfilter.portlets.CollectionResetFilter">  
-      <property name="header">Clear</property> 
-      <property name="css_class"></property>
-  </assignment>
- 
-
-
-  <assignment category="context"
-              key="/notifications/notifications-collection" 
-              manager="plone.rightcolumn"
-              name="collectionfilterrthree"
-              type="collective.collectionfilter.portlets.CollectionFilter">
-      <property name="header">Message Type</property>
-      <property name="group_by">notification_type</property>
-      <property name="show_count">True</property>
-      <property name="input_type">checkboxes_dropdowns</property>
+  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterone" type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">Responsible</property>
+    <property name="group_by">assigned_to</property>
+    <property name="group_by">Subject</property>
+    <property name="show_count">True</property>
+    <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
 
 
-  <assignment category="context"
-              key="/notifications/notifications-collection" 
-              manager="plone.rightcolumn"
-              name="collectionfilterrreset"
-              type="collective.collectionfilter.portlets.CollectionResetFilter">  
-      <property name="header">Clear</property> 
-      <property name="css_class"></property>
+  <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="collectionfilterrthree" type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">Message Type</property>
+    <property name="group_by">notification_type</property>
+    <property name="show_count">True</property>
+    <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
- 
- 
-   <!-- Assign a collection filter portlet -->
-  <!-- <assignment category="context"
-          key="/action-items/action-items-collection"
-          manager="plone.rightcolumn"
-          name="collectionfilterp"
-          type="collective.collectionfilter.portlets.CollectionFilter">
+
+
+  <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="collectionfilterrreset" type="collective.collectionfilter.portlets.CollectionResetFilter">
+    <property name="header">Clear</property>
+    <property name="css_class"></property>
+  </assignment>
+
+  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterrreset" type="collective.collectionfilter.portlets.CollectionResetFilter">
+    <property name="header">Clear</property>
+    <property name="css_class"></property>
+  </assignment>
+
+
+  <!-- Assign a collection filter portlet -->
+  <!-- <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterp" type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Priority</property>
     <property name="group_by">prioritystring</property>
     <property name="show_count">True</property>
  </assignment> -->
- 
 
-  
-   <!-- Assign a collection filter portlet -->
-  <!-- <assignment category="context"
-          key="/action-items/action-items-collection"
-          manager="plone.rightcolumn"
-          name="collectionfilterthree"
-          type="collective.collectionfilter.portlets.CollectionFilter">
+
+
+  <!-- Assign a collection filter portlet -->
+  <!-- <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterthree" type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Urgency</property>
     <property name="group_by">urgency</property>
     <property name="show_count">True</property>
  </assignment> -->
-  
+
 </portlets>

@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="action_item_workflow" title="Action Item workflow" description="The workflow for action items." state_variable="review_state" initial_state="1. Private" manager_bypass="True">
+<dc-workflow workflow_id="action_item_workflow" title="Action Item workflow" description="The workflow for action items." state_variable="review_state" initial_state="Private" manager_bypass="True">
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="1. Private" title="Private">
+ <state state_id="Private" title="Private">
   <description>Only visible to the person who created content and the admin.</description>
   <exit-transition transition_id="publish"/>
  </state>
- <state state_id="2. Published" title="Published">
+ <state state_id="Published" title="Published">
   <description>Visible to all board members and ready to be worked.</description>
   <exit-transition transition_id="review"/>
  </state>
- <state state_id="3. Review" title="Review">
+ <state state_id="Review" title="Review">
   <description>Waiting for board president to review and close.</description>
   <exit-transition transition_id="close"/>
  </state>
- <state state_id="4. Closed" title="Closed">
+ <state state_id="Closed" title="Closed">
   <description>The board president has closed the action item.  
 If there is a reason, the board president can return to the Review state.</description>
   <exit-transition transition_id="return"/>
  </state>
- <transition transition_id="close" title="Close" new_state="3. Closed" trigger="USER" before_script="" after_script="">
+ <transition transition_id="close" title="Close" new_state="Closed" trigger="USER" before_script="" after_script="">
   <description>when AI is complete the PM closes</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=close" category="workflow" icon="">Close</action>
   <guard>
    <guard-group>board_president</guard-group>
   </guard>
  </transition>
- <transition transition_id="publish" title="Publish" new_state="2. Published" trigger="USER" before_script="" after_script="">
+ <transition transition_id="publish" title="Publish" new_state="Published" trigger="USER" before_script="" after_script="">
   <description>Make the action item active (visible to all) and notify the assigned person via email.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=publish" category="workflow" icon="">Publish</action>
   <guard>
   </guard>
  </transition>
- <transition transition_id="return" title="Return" new_state="2. Published" trigger="USER" before_script="" after_script="">
+ <transition transition_id="return" title="Return" new_state="Published" trigger="USER" before_script="" after_script="">
   <description>Return an action item from Closed state to Published state in case changes need to be made</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=return" category="workflow" icon="">Return</action>
   <guard>
    <guard-group>board_president</guard-group>
   </guard>
  </transition>
- <transition transition_id="review" title="Review" new_state="4. Closed" trigger="USER" before_script="" after_script="">
+ <transition transition_id="review" title="Review" new_state="Closed" trigger="USER" before_script="" after_script="">
   <description>Send the Action Item to board president for review.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=review" category="workflow" icon="">Review</action>
   <guard>

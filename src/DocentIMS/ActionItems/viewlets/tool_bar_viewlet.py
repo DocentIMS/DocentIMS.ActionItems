@@ -7,9 +7,12 @@ import requests
 
 
 class ToolBarViewlet(ViewletBase):
+    
+    # def __init__(self, args):
+    #     self._sites_cache = None
 
     def update(self):
-        self.message = self.get_message()
+        self.get_sites = self.get_sites()
         
     # def basik(self):
     #     return  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
@@ -19,18 +22,18 @@ class ToolBarViewlet(ViewletBase):
     
     def tasks_red(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Red", assigned_id = user_ids, limit=9, )
+        items =  api.content.find( stoplight="Red", review_state="published", assigned_id = user_ids, limit=9, )
         return len(items)
     
     def tasks_green(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Green", assigned_id = user_ids, limit=9,
+        items =  api.content.find( stoplight="Green", review_state="published",  assigned_id = user_ids, limit=9,
         )
         return len(items)
     
     def tasks_yellow(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Yellow", assigned_id = user_ids, limit=9,)
+        items =  api.content.find( stoplight="Yellow", review_state="published",  assigned_id = user_ids, limit=9,)
         return len(items)
 
     def notifications_red(self):
@@ -61,9 +64,13 @@ class ToolBarViewlet(ViewletBase):
     def current_user_id(self):
         current_user =  api.user.get_current()
         return current_user.getId()
-    
+
     def get_sites(self):
-        usermail = self.current_user_id()
+        # if hasattr(self, '_sites_cache'):
+        #     return self._sites_cache
+        
+        user = api.user.get_current()
+        usermail = user.getProperty('email')
         if usermail:
             basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
             if basik:
@@ -76,6 +83,7 @@ class ToolBarViewlet(ViewletBase):
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
                         },
+                        timeout=2,
                         auth=('admin', 'admin')                      
                     )
 

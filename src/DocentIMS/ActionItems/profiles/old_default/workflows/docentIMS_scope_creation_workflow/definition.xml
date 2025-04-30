@@ -37,21 +37,21 @@ Client can't see the content, in this stage.</description>
 
 This is intended to be the same as delete; however, it retains a record of the document having been created and can be returned from Archived.</description>
  </state>
- <transition transition_id="archive" title="Archive" new_state="6.Archived" trigger="USER" before_script="" after_script="">
+ <transition transition_id="archive" title="Archive" new_state="Archived" trigger="USER" before_script="" after_script="">
   <description>Move SOW to Archive State.  This is equivalent to deleting - the item will no longer be visible; however, it may be see by the PM and may be recovered.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=archive" category="workflow" icon="">Archive</action>
   <guard>
    <guard-role>PrjMgr</guard-role>
   </guard>
  </transition>
- <transition transition_id="client_approves" title="Client Approves" new_state="4.Client Approved" trigger="USER" before_script="" after_script="">
+ <transition transition_id="client_approves" title="Client Approves" new_state="Client Approved" trigger="USER" before_script="" after_script="">
   <description>The client accepts the content.  
   this sends it to "client approved' .  the reason for this state is this give PrjMgr option of when to publish the content.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=client_approves" category="workflow" icon="">Client Approves</action>
   <guard>
   </guard>
  </transition>
- <transition transition_id="client_review" title="Client Review" new_state="3.Client Review" trigger="USER" before_script="" after_script="">
+ <transition transition_id="client_review" title="Client Review" new_state="Client Review" trigger="USER" before_script="" after_script="">
   <description>After internal review, the PrjMgr sends the content to the Client for their review.
 
 </description>
@@ -59,7 +59,7 @@ This is intended to be the same as delete; however, it retains a record of the d
   <guard>
   </guard>
  </transition>
- <transition transition_id="internal_review" title="Internal Review" new_state="2.Internal Review" trigger="USER" before_script="" after_script="">
+ <transition transition_id="internal_review" title="Internal Review" new_state="Internal Review" trigger="USER" before_script="" after_script="">
   <description>This state is for the team to review the content.  
   the Client can't see the content in this state.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=internal_review" category="workflow" icon="">Internal Review</action>
@@ -67,7 +67,7 @@ This is intended to be the same as delete; however, it retains a record of the d
    <guard-role>PrjMgr</guard-role>
   </guard>
  </transition>
- <transition transition_id="publish" title="Publish" new_state="5.Published" trigger="USER" before_script="" after_script="">
+ <transition transition_id="publish" title="Publish" new_state="Published" trigger="USER" before_script="" after_script="">
   <description>When the client has approved the content, the PrjMgr publishes the content to allow every (with priveleges) to view the content.
 
 This state/transition is added in case the PrjMgr wants to wait before making content available to everyone.</description>

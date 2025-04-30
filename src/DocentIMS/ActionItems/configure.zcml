@@ -118,7 +118,7 @@
       name="default"
       title="Docentims Meadows"
       directory="profiles/default"
-      description="Installs the Meadowa´ActionItems."
+      description="Installs the Meadow's ActionItems."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       pre_handler=".setuphandlers_meadows.pre_install"
       post_handler=".setuphandlers_meadows.post_install"

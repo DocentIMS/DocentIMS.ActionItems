@@ -19,7 +19,7 @@
         </div>
         <!-- <label for="project">Select a Project:</label> -->
         <div id="project_select">
-            <!-- <div tal:define="sites view/get_sites|None">
+            <div tal:define="sites view/get_sites|None">
                 <select id="project" name="project">
                     <option value="select">Select Project </option>
                     <tal:condition tal:condition="view/get_sites">
@@ -30,7 +30,7 @@
                         </tal:define>
                     </tal:condition>
                 </select>
-            </div> -->
+            </div>
             <label class="toolbar_label">
                 <a href="${portal_url}">Project Selected</a>
             </label>

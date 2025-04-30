@@ -50,7 +50,7 @@ class AssignedMail(BaseSubstitution):
         #return assigned users email
         return api.user.get(userid=self.context.assigned_to).getProperty('email')
       
-      return 'wglover@docentims.com'
+      return 'dummyuser@docentims.com'
 
 
 @adapter(Interface)
@@ -69,7 +69,7 @@ class Attendees(BaseSubstitution):
         
         #return self.context.attendees 
       
-      return 'wglover@docentims.com'
+      return 'dummyuser@docentims.com'
 
 
 
