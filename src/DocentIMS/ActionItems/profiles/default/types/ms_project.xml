@@ -7,7 +7,7 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">ms_project</property>
+      name="title">MS Project</property>
   <property
       i18n:translate=""
       name="description"></property>

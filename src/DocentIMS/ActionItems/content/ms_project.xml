@@ -5,5 +5,16 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="DocentIMS.ActionItems">
   <schema>
+
+  <field name="file" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <required>False</required>
+      <title>file</title>
+    </field>
+    <field name="date" type="zope.schema.TextLine">
+      <description/>
+      <required>False</required>
+      <title>Date</title>
+    </field>
   </schema>
 </model>
