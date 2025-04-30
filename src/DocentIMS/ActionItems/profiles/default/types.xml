@@ -21,4 +21,5 @@
   <object name="Notification" meta_type="Dexterity FTI"/>
   <object name="rfp" meta_type="Dexterity FTI"/>
   <object name="rfp_breakdown" meta_type="Dexterity FTI"/>
+  <object name="ms_project" meta_type="Dexterity FTI"/>
 </object>
