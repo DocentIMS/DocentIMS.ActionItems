@@ -62,8 +62,8 @@ class ToolBarViewlet(ViewletBase):
         return  api.portal.get().absolute_url()   
     
     def current_user_id(self):
-        user = api.user.get_current()
-        usermail = user.getProperty('email')
+        current_user =  api.user.get_current()
+        return current_user.getId()
 
     def get_sites(self):
         # if hasattr(self, '_sites_cache'):
