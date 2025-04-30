@@ -192,11 +192,11 @@ def post_install(context):
     behaviour.setImmediatelyAddableTypes(['action_items', 'Collection'])
     behaviour.setLocallyAllowedTypes(['action_items', 'Collection'])
 
-    # scope_analysis = portal.get('scope-analysis', False)
-    # behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
-    # behaviour.setConstrainTypesMode(constrains.ENABLED)
-    # behaviour.setImmediatelyAddableTypes(['sow_analysis'])
-    # behaviour.setLocallyAllowedTypes(['sow_analysis'])
+    scope_analysis = portal.get('scope-analysis', False)
+    behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
+    behaviour.setConstrainTypesMode(constrains.ENABLED)
+    behaviour.setImmediatelyAddableTypes(['sow_analysis'])
+    behaviour.setLocallyAllowedTypes(['sow_analysis'])
     
     # notes = portal.get('notes', False)
     # behaviour = constrains.ISelectableConstrainTypes(notes)
@@ -355,7 +355,51 @@ def _create_content(portal):
                     item_count=500,
                 )
                 
-       
+        if not portal.get('scope-analysis', False):
+            scopeanalysis = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='scope-analysis',
+                title='Scope Breakdown',
+                default_page='sow-collection',
+                nextPreviousEnabled=1
+
+            )
+            
+            # Description=u'This folder holds the parsed files from the DocentIMS Word program.  These were used to create new instances of Scope Analysis',
+            ## add collection inside here
+
+            scopeoverview = plone.api.content.create(
+                type='Collection',
+                container=scopeanalysis,
+                id='sow-collection',
+                title='Scope Breakdown',
+                layout='sow-overview',
+                query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}],
+                limit=2000,
+                item_count=500,
+            )
+            
+        
+        
+        if not portal.get('rfp-analysis', False):
+            meeting = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='rfp-analysis',
+                title='RFP Analysis',
+                nextPreviousEnabled=0
+            )
+            
+        if not portal.get('ms-project', False):
+            meeting = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='ms-project',
+                title='MS Project',
+                nextPreviousEnabled=0
+            )
+            
         if not portal.get('meetings', False):
             meeting = plone.api.content.create(
                 type='Folder',
@@ -694,18 +738,61 @@ def _create_content(portal):
                 layout='tabular_view',
             )
             
+            document_folder = plone.api.content.create(
+                type='Folder',
+                container=templates_folder,
+                id='document_folder',
+                title='Document Templates',
+                exclude_from_nav=True,
+                layout='tabular_view',
+            )
+            
+            if not portal.get('meeting-doc-templates', False):
+                meeting_folder = plone.api.content.create(
+                    type='Folder',
+                    container=templates_folder,
+                    id='meeting-doc-templates',
+                    title='Meeting Doc Templates',
+                    exclude_from_nav=True,
+                    layout='tabular_view',
+                )
+                
+            if not portal.get('manager-templates', False):
+                manager_folder = plone.api.content.create(
+                    type='Folder',
+                    container=templates_folder,
+                    id='manager-templates',
+                    title='Manager Templates',
+                    exclude_from_nav=True,
+                    layout='tabular_view',
+                )
+            
+            
+            
+            # wordfiles = [
+            #     {'filetitle': 'main-template.docx.dot', 'filename': 'main-template.docx.dot'},
+            #     {'filetitle': 'Meeting Agenda.docm', 'filename': 'Meeting_Agenda.docm'},
+            #     {'filetitle': 'Meeting Minutes.docx', 'filename': 'Meeting_Minutes.docx'},
+            #     {'filetitle': 'Meeting Notes.docm', 'filename': 'Meeting_Notes.docm'},
+            # ]
+            
             wordfiles = [
-                {'filetitle': 'main-template.docx.dot', 'filename': 'main-template.docx.dot'},
-                {'filetitle': 'Meeting Agenda.docm', 'filename': 'Meeting_Agenda.docm'},
-                {'filetitle': 'Meeting Minutes.docx', 'filename': 'Meeting_Minutes.docx'},
-                {'filetitle': 'Meeting Notes.docm', 'filename': 'Meeting_Notes.docm'},
+                {'filename': 'Letter_To_Property_Manager.dotx', 'filetitle': 'Letter To Property Manager', 'folder': document_folder},	
+                {'filename': 'Meeting_Notes.docm', 'filetitle': 'Meeting Notes.docm', 'folder': meeting_folder},
+                {'filename': 'MS_Project.dotx', 'filetitle': 'MS Project', 'folder': manager_folder},	
+                {'filename': 'Meeting_Notes.dotm', 'filetitle': 'Meeting Notes', 'folder': meeting_folder},
+                {'filename': 'Meeting_Agenda.docm', 'filetitle': 'Meeting Agenda', 'folder': meeting_folder},	
+                {'filename': 'Reimbursement_Request.dotm', 'filetitle': 'Reimbursement Request', 'folder': document_folder},
+                {'filename': 'Meeting_Agenda.dotm', 'filetitle': 'Meeting Agenda', 'folder': meeting_folder},	
+                {'filename': 'Scope.dotx', 'filetitle': 'Scope', 'folder': manager_folder},	
+                {'filename': 'main-template.docx.dot', 'filetitle': 'main-template' , 'folder': templates_folder},
+                {'filename': 'Meeting_Minutes.dotx', 'filetitle': 'Meeting Minutes' , 'folder': meeting_folder },
             ]
             
-            for wordfile in wordfiles:
-            
+            for wordfile in wordfiles:            
                 file = plone.api.content.create(
                     type='File',
-                    container=templates_folder,
+                    container=wordfile['folder'],
                     title=wordfile['filetitle'],
                 )
                 file.file = load_word_file(wordfile['filename'])

@@ -24,11 +24,11 @@
         <vocabulary>plone.app.vocabularies.Groups</vocabulary>
       </value_type>
     </field>
-    <field name="will_property_manager_attend" type="zope.schema.Bool">
+    <!-- <field name="will_property_manager_attend" type="zope.schema.Bool">
       <description/>
-      <title>Will Property Manager Attend?</title>
+      <title>Dummy UserManager Attend?</title>
       <form:widget type="z3c.form.browser.radio.RadioFieldWidget"/>
-    </field>
+    </field> -->
   </fieldset>
 
 </schema>

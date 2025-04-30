@@ -52,6 +52,12 @@
     <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
 
+  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterstate" type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">State</property>
+    <property name="group_by">review_state</property>
+    <property name="show_count">True</property>
+    <property name="input_type">checkboxes_dropdowns</property>
+  </assignment>
 
   <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="collectionfilterrthree" type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Message Type</property>
