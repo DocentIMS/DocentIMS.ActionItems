@@ -22,18 +22,18 @@ class ToolBarViewlet(ViewletBase):
     
     def tasks_red(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Red", review_state="Published", assigned_id = user_ids, limit=9, )
+        items =  api.content.find( stoplight="Red",  assigned_id = user_ids, limit=9, )
         return len(items)
     
     def tasks_green(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Green", review_state="Published",  assigned_id = user_ids, limit=9,
+        items =  api.content.find( stoplight="Green",    assigned_id = user_ids, limit=9,
         )
         return len(items)
     
     def tasks_yellow(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Yellow", review_state="Published",  assigned_id = user_ids, limit=9,)
+        items =  api.content.find( stoplight="Yellow",   assigned_id = user_ids, limit=9,)
         return len(items)
 
     def notifications_red(self):
