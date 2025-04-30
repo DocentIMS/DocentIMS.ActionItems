@@ -22,18 +22,18 @@ class ToolBarViewlet(ViewletBase):
     
     def tasks_red(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Red",  assigned_id = user_ids, limit=9, )
+        items =  api.content.find( stoplight="Red", assigned_id = user_ids, limit=9, )
         return len(items)
     
     def tasks_green(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Green",    assigned_id = user_ids, limit=9,
+        items =  api.content.find( stoplight="Green", assigned_id = user_ids, limit=9,
         )
         return len(items)
     
     def tasks_yellow(self):
         user_ids = self.current_user_id()
-        items =  api.content.find( stoplight="Yellow",   assigned_id = user_ids, limit=9,)
+        items =  api.content.find( stoplight="Yellow", assigned_id = user_ids, limit=9,)
         return len(items)
 
     def notifications_red(self):
@@ -62,8 +62,8 @@ class ToolBarViewlet(ViewletBase):
         return  api.portal.get().absolute_url()   
     
     def current_user_id(self):
-        current_user =  api.user.get_current()
-        return current_user.getId()
+        user = api.user.get_current()
+        usermail = user.getProperty('email')
 
     def get_sites(self):
         # if hasattr(self, '_sites_cache'):
