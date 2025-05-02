@@ -4,71 +4,87 @@ from plone.app.layout.viewlets import ViewletBase
 from plone import api
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 import requests
+from plone.memoize.view import memoize
+from plone.memoize import ram
+import time
 
+# def sites_cache_key(method, self):
+#     usermail = self.current_user_id()
+#     if not usermail:
+#         return None  # Don't cache if no user
+
+#     # Cache key changes every 10 minutes (600 seconds)
+#     time_bucket = int(time.time() / 600)
+#     return (usermail, time_bucket)
 
 class ToolBarViewlet(ViewletBase):
     
-    # def __init__(self, args):
-    #     self._sites_cache = None
+    def sites_cache_key(method, self):
+        usermail = self.current_user_id
+        if not usermail:
+            return None  # Don't cache if no user
 
-    def update(self):
-        self.get_sites = self.get_sites()
-        
-    # def basik(self):
-    #     return  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
-
-    def get_message(self):
-        return u'My message'
+        # Cache key changes every 100 minutes (6000 seconds)
+        time_bucket = int(time.time() / 6000)
+        return (usermail, time_bucket)
     
+    def basik(self):
+         return  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
+
     def tasks_red(self):
-        user_ids = self.current_user_id()
+        user_ids = self.current_user_id
         items =  api.content.find( stoplight="Red", assigned_id = user_ids, limit=9, )
         return len(items)
     
     def tasks_green(self):
-        user_ids = self.current_user_id()
+        user_ids = self.current_user_id
         items =  api.content.find( stoplight="Green", assigned_id = user_ids, limit=9,
         )
         return len(items)
     
     def tasks_yellow(self):
-        user_ids = self.current_user_id()
+        user_ids = self.current_user_id
         items =  api.content.find( stoplight="Yellow", assigned_id = user_ids, limit=9,)
         return len(items)
 
     def notifications_red(self):
-        user_ids = self.current_user_id()
+        user_ids = self.current_user_id
         items =  api.content.find( notification_type="error", notification_assigned = user_ids, limit=9,) 
         return len(items)
  
-    
     def notifications_green(self):
-        user_ids = self.current_user_id()
+        user_ids = self.current_user_id
         items =  api.content.find( notification_type="info", notification_assigned = user_ids, limit=9,) 
         return len(items)
     
     def notifications_yellow(self):
-        user_ids = self.current_user_id()
+        user_ids = self.current_user_id
         items =  api.content.find( notification_type="warning", notification_assigned = user_ids, limit=9,) 
         return len(items)
     
+    @property
+    @memoize
     def color(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1')
- 
+    
+    @property
+    @memoize
     def project_name(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')     
     
+    @property
+    @memoize
     def portal_url(self):
         return  api.portal.get().absolute_url()   
     
+    @property
+    @memoize
     def current_user_id(self):
         current_user =  api.user.get_current()
         return current_user.getId()
 
+    @ram.cache(sites_cache_key)
     def get_sites(self):
-        # if hasattr(self, '_sites_cache'):
-        #     return self._sites_cache
-        
         user = api.user.get_current()
         usermail = user.getProperty('email')
         if usermail:
@@ -82,9 +98,9 @@ class ToolBarViewlet(ViewletBase):
                         headers={
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
+                            'Authorization': f'Basic {basik}',
                         },
-                        timeout=2,
-                        auth=('admin', 'admin')                      
+                        timeout=2,                    
                     )
 
                     if response.status_code == 200:
