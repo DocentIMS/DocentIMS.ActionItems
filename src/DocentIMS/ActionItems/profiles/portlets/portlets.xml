@@ -27,13 +27,13 @@
 
 
   <!-- Assign a collection filter portlet -->
-  <assignment category="context" key="/action-items/action-items-collection" 
+  <!-- <assignment category="context" key="/action-items/action-items-collection" 
     manager="plone.rightcolumn" name="collectionfiltertags" 
       type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Tags</property>
     <property name="group_by">Subject</property>
     <property name="show_count">True</property>
-  </assignment>
+  </assignment> -->
 
 
   <!-- Assign another collection filter portlet -->
@@ -77,12 +77,24 @@
   </assignment>
 
 
+
+    <assignment category="context" key="/notifications/notifications-collection" 
+        manager="plone.rightcolumn" name="collectionfilter_read" 
+        type="plone.portlet.static.Static">
+    <property name="header">Show</property>
+   <property name="text">&lt;p&gt;&lt;a href=&quot;?show_all=1&quot;&gt;All, read and unread&lt;/a&gt;&lt;/b&gt;&lt;a href=&quot;?all=1&quot;&gt;Show Unread&lt;/a&gt;&lt;/p&gt;</property>
+  </assignment>
+
+
   <assignment category="context" key="/notifications/notifications-collection" 
-  manager="plone.rightcolumn" name="collectionfilterrreset" 
+  manager="plone.rightcolumn" name="collectionfilterclear" 
   type="collective.collectionfilter.portlets.CollectionResetFilter">
     <property name="header">Clear</property>
     <property name="css_class"></property>
   </assignment>
+ 
+
+ 
 
   <!-- <assignment category="context" key="/action-items/action-items-collection" 
     manager="plone.rightcolumn" name="collectionfilterrreset" 
