@@ -778,10 +778,10 @@ def _create_content(portal):
             
             wordfiles = [
                 {'filename': 'Letter_To_Property_Manager.dotx', 'filetitle': 'Letter To Property Manager', 'folder': document_folder},	
-                {'filename': 'Meeting_Notes.docm', 'filetitle': 'Meeting Notes.docm', 'folder': meeting_folder},
+                {'filename': 'Meeting_Notes.dotm', 'filetitle': 'Meeting Notes.dotm', 'folder': meeting_folder},
                 {'filename': 'MS_Project.dotx', 'filetitle': 'MS Project', 'folder': manager_folder},	
                 {'filename': 'Meeting_Notes.dotm', 'filetitle': 'Meeting Notes', 'folder': meeting_folder},
-                {'filename': 'Meeting_Agenda.docm', 'filetitle': 'Meeting Agenda', 'folder': meeting_folder},	
+                {'filename': 'Meeting_Agenda.dotm', 'filetitle': 'Meeting Agenda', 'folder': meeting_folder},	
                 {'filename': 'Reimbursement_Request.dotm', 'filetitle': 'Reimbursement Request', 'folder': document_folder},
                 {'filename': 'Meeting_Agenda.dotm', 'filetitle': 'Meeting Agenda', 'folder': meeting_folder},	
                 {'filename': 'Scope.dotx', 'filetitle': 'Scope', 'folder': manager_folder},	
