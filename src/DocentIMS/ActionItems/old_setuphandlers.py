@@ -79,14 +79,14 @@ def post_install(context):
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
-                                         [{'row_field': 'actionno', 'row_title': 'ID'}, 
+                                         [{'row_field': 'actionno', 'row_title': 'id'}, 
                                           {'row_field': 'title', 'row_title': 'Title'},
                                           {'row_field': 'assigned_to', 'row_title': 'Responsible person'},
                                           {'row_field': 'duedate', 'row_title': 'Due date'}
                                          ])
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns',
-                                        [  {'row_field': 'section_number', 'row_title': 'ID'}, 
+                                        [  {'row_field': 'section_number', 'row_title': 'id'}, 
                                            {'row_field': 'title', 'row_title': 'Title'}, 
                                            {'row_field': 'duedate', 'row_title': 'Due date'}, 
                                            {'row_field': 'estimated_qc_time', 'row_title': 'Estimated QC'} 

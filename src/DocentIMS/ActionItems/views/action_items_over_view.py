@@ -35,7 +35,7 @@ class ActionItemsOverView(BrowserView):
         return batch
 
     def get_fields(self):
-        return api.portal.get_registry_record('table_columns', interface=IDocentimsSettings)
+        return [api.portal.get_registry_record('table_columns', interface=IDocentimsSettings)]
     
     @property
     def portal_url(self):

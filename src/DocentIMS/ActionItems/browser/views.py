@@ -182,7 +182,7 @@ class ActionItemsAddForm(DefaultAddForm):
             if group.__name__ == 'connections':
                 if from_uid:
                     camefrom = api.content.get(UID=from_uid)
-                    if camefrom.Type() == 'Scope Breakdown':
+                    if camefrom.Type() in ['Scope Breakdown', 'RFP Breakdown']:
                         group.fields['related_sow_section'].field.default = from_uid
         
     
@@ -268,7 +268,7 @@ class ActionItemsEditForm(DefaultEditForm):
         
         #Hide input field 'change note'
         #if 'IVersionable.changeNote' in self.widgets
-        if self.portal_type in  ['action_items', 'sow_analysis', 'project_companies', 'Document']:
+        if self.portal_type in  ['action_items', 'RFP Breakdown', 'rfp_breakdown' 'sow_analysis', 'project_companies', 'Document']:
             self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE     
         
         if self.portal_type == 'action_items':
@@ -282,7 +282,7 @@ class ActionItemsEditForm(DefaultEditForm):
             #     if group.__name__ == 'all_dates':
             #         self.groups['all_dates'].widgets['initial_due_date'].disabled='disabled'
             
-        if self.portal_type == 'sow_analysis':
+        if self.portal_type in  ['sow_analysis', 'RFP Breakdown', 'rfp_breakdown']:
             # add confition to only show edit field for admins etc.
             user = api.user.get_current()
             #groups = api.group.get_groups(user=user) 
@@ -319,16 +319,18 @@ class ActionItemsEditForm(DefaultEditForm):
         super(ActionItemsEditForm, self).update()
        
         for group in self.groups:
-            if self.portal_type == 'action_items' or self.portal_type == 'sow_analysis':
+            if self.portal_type in  ['RFP Breakdown', 'rfp_breakdown', 'action_items', 'sow_analysis']:
                 if group.__name__ == 'settings' :
                     #group.mode = 'omitted'
                     group.label = None
                     group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
                 
-                if group.__name__ == 'categorization' and self.portal_type == 'sow_analysis':
+                if group.__name__ == 'categorization' and self.portal_type in ['RFP Breakdown', 'rfp_breakdown', 'sow_analysis']:
                     #group.mode = 'omitted'
                     group.label = None
+                    
+                
                     
                 if group.__name__ in ['categorization']:
                     group.widgets['IRelatedItems.relatedItems'].mode = interfaces.HIDDEN_MODE
@@ -341,10 +343,10 @@ class ActionItemsEditForm(DefaultEditForm):
                     group.description = '{}<br/><p>Initial Due Date</p><input disabled class="form-control" value="{}"/>'.format(group.description , group.widgets['initial_due_date'].value)
                     group.widgets['initial_due_date'].mode = interfaces.HIDDEN_MODE
                 if group.__name__ == 'date':
-                    if self.portal_type == 'sow_analysis':
+                    if self.portal_type in ['RFP Breakdown', 'rfp_breakdown', 'sow_analysis']:
                         group.label = None
                             
-            if self.portal_type in  ['sow_analysis', 'meeting', "Meeting"]:
+            if self.portal_type in  ['RFP Breakdown', 'rfp_breakdown','sow_analysis', 'meeting', "Meeting"]:
                     if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
                         #group.mode = 'omitted'
                         group.label = None

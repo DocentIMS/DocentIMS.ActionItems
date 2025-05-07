@@ -33,18 +33,20 @@ class ToolBarViewlet(ViewletBase):
 
     def tasks_red(self):
         user_ids = self.current_user_id
-        items =  api.content.find( stoplight="Red", assigned_id = user_ids, limit=9, )
+        stoplight_state = self.stoplight_state
+        items =  api.content.find( stoplight="Red", assigned_id = user_ids, review_state=stoplight_state, limit=9)
         return len(items)
     
     def tasks_green(self):
         user_ids = self.current_user_id
-        items =  api.content.find( stoplight="Green", assigned_id = user_ids, limit=9,
-        )
+        stoplight_state = self.stoplight_state
+        items =  api.content.find(stoplight="Green", assigned_id = user_ids, review_state=stoplight_state, limit=9)
         return len(items)
     
     def tasks_yellow(self):
         user_ids = self.current_user_id
-        items =  api.content.find( stoplight="Yellow", assigned_id = user_ids, limit=9,)
+        stoplight_state = self.stoplight_state
+        items =  api.content.find( stoplight="Yellow", assigned_id = user_ids, review_state=stoplight_state, limit=9)
         return len(items)
 
     def notifications_red(self):
@@ -66,6 +68,11 @@ class ToolBarViewlet(ViewletBase):
     @memoize
     def color(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1')
+    
+    @property
+    @memoize
+    def stoplight_state(self):
+        return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.stoplight_state')
     
     @property
     @memoize

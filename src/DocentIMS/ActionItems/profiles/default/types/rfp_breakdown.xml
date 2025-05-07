@@ -52,9 +52,9 @@
   <property name="add_view_expr">string:${folder_url}/++add++rfp_breakdown</property>
   <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>
-  <property name="immediate_view">view</property>
+  <property name="immediate_view">rfp-breakdown-view</property>
   <property name="view_methods">
-    <element value="view"/>
+    <element value="rfp-breakdown-view"/>
   </property>
 
   <!-- Method aliases -->

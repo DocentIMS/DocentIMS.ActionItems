@@ -1,5 +1,14 @@
 <registry>
 
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.stoplight_state" 
+    interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="stoplight_state">
+    <field type="plone.registry.field.TextLine">
+      <default>Published</default>
+      <title>Stoplight state</title>
+    </field>
+    <value>Published</value>
+  </record>
+
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.app_buttons" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="app_buttons">
     <field type="plone.registry.field.List">
       <value_type type="plone.registry.field.TextLine"/>

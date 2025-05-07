@@ -135,6 +135,17 @@
     /> -->
 
 
+    <!-- Register AddForm for RFP Breakdown Item to override 'standard' tab-->
+    <!-- 'name' is the important part, it needs to be same as content type -->
+    <adapter
+        factory=".views.SowAnalysisAddFormView"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        for="*
+             DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer
+             plone.dexterity.interfaces.IDexterityFTI"
+             name="rfp_breakdown_analysis"
+        />
+
 
 
     <!-- Register AddForm for SowAnalysis Item to override 'standard' tab-->

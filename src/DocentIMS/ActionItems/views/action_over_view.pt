@@ -6,7 +6,7 @@
   <body>
 
 
-    <metal:content-core fill-slot="content-core" tal:define="fields view/get_fields|None">
+     <metal:content-core fill-slot="content-core" tal:define="fields python:view.get_fields()[0]">
       <!-- <button class="margin-0" id="toggle-filters">Toggle Filters</button>
       <hr/> -->
       <div class="pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
@@ -16,38 +16,43 @@
           <table class="listing pat-datatables listing" data-pat-datatables="pageLength: 50">
             <thead>
               <tr>
-                <tal:repeat tal:repeat="field fields">
+                <tal:repeat tal:repeat="field fields"> 
                   <th tal:condition="field/row_title|None">${field/row_title|None}</th>
                 </tal:repeat>
               </tr>
             </thead>
-            <tbody>
+            <tbody tal:define="fields view/get_fields|None">
               <tr tal:repeat="item python: view.batch()">
                 <tal:obj tal:define="obj item/getObject">
-                  <tal:repeat tal:repeat="field view/get_fields|None">
-                    <td tal:condition="python: field['row_field']">
-                      <tal:define tal:define="val python:getattr(obj, field['row_field'], '')">
-                        <a href="${item/getURL}" tal:condition="python: field['row_field']=='title'">
-                              ${val}
-                        </a>
-
-                        <tal:check tal:condition="python: isinstance(val,bool)">
-                          <span tal:condition="python: val==False"> &nbsp; No </span>
-                          <span tal:condition="python: val==True"> ✓ Yes </span>
-                        </tal:check>
-                        <span tal:condition="python: not isinstance(val,bool) and 
-                                  field['row_field'] not in ['actionno' ,'title', 'related_item','daysleft', 'urgency',  'Creator', 'creator', 'assigned_to', 'initial_due_date', 'duedate', 'modified', 'related_sow_section']">
-                                  ${val}
-                        </span>
+                
+                  <tal:repeat tal:repeat="field python:fields[0]">                    
+                    <td>
+                      <tal:define tal:define="val python:getattr(obj, field['row_field'], '0')">
 
                         <span tal:condition="python: field['row_field']=='actionno'">
-                          <tal:condition tal:condition="python: obj.id !='action_items'" tal:define="ano python: obj.id.replace('action_items', '').replace('-', '')">
+                          <tal:condition tal:condition="python: obj.id !='action_items'" 
+                            tal:define="ano python: obj.id.replace('action_items', '').replace('-', '')">
                                   ${python: "{0:0=3d}".format(int(ano))}
                           </tal:condition>
                           <tal:condition tal:condition="python: obj.id =='action_items'">
                                  000
                           </tal:condition>
                         </span>
+
+                        <a href="${item/getURL}" tal:condition="python: field['row_field']=='title'">
+                              ${val}
+                        </a>
+
+                     <tal:check tal:condition="python: isinstance(val,bool)">
+                          <span tal:condition="python: val==False"> &nbsp; No </span>
+                          <span tal:condition="python: val==True"> ✓ Yes </span>
+                      </tal:check>
+                        <span tal:condition="python: not isinstance(val,bool) and 
+                                  field['row_field'] not in ['actionno' ,'title', 'related_item','daysleft', 'urgency',  'Creator', 'creator', 'assigned_to', 'initial_due_date', 'duedate', 'modified', 'related_sow_section']">
+                                  ${val}
+                        </span>
+
+                      
                         <span tal:condition="python: field['row_field']=='daysleft'">${item/daysleft|None}</span>
                         <span tal:condition="python: field['row_field']=='urgency'">${item/urgency|None}</span>
 
@@ -87,6 +92,7 @@
                           </span>
 
                         </tal:define>
+                        &nbsp;
                       </td>
                     </tal:repeat>
 
@@ -169,7 +175,6 @@
                 };
                 Plotly.newPlot('div-bar', data, layout);
           </script>
-
           <script>
               var data = [
                   {
@@ -223,7 +228,6 @@
 
               h2.pa3 { margin-top: 3rem, padding-top: 3rem;}
               .priority-1 span { color: red; padding: 1px 5px}
-              .priority-2 span { color: orange; padding: 1px 5px}
               .priority-3 span  {color:  green; padding: 1px 5px}
               .graph {border: 1px solid silver; max-width: 600px; padding: 15px; margin-bottom: 2rem}
               .flex-wrap { flex-wrap: wrap; display: flex; xjustify-content: space-between; background: white}
