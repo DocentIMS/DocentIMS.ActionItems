@@ -337,29 +337,29 @@ def _create_content(portal):
                     item_count=500,
                 )
                 
-            if not action_items.get('stoplight-collection', False):
-                stoplight_collection = plone.api.content.create(
-                    type='Collection',
-                    container=action_items,
-                    id='stoplight-collection',
-                    title='Stoplight collection',
-                    layout='action-overview',
-                    query = [{
-                            "i": "review_state",
-                            "o": "plone.app.querystring.operation.selection.any",
-                            "v": [
-                                "Published"
-                            ]},
-                            {
-                            "i": "assigned_id", 
-                            "o": "plone.app.querystring.operation.string.currentUser", 
-                            "v": ""
-                            }, 
-                            {'i': 'portal_type', 
-                             'o': 'plone.app.querystring.operation.selection.any', 
-                             'v': ['action_items']
-                            }
-                ])
+            # if not action_items.get('stoplight-collection', False):
+            #     stoplight_collection = plone.api.content.create(
+            #         type='Collection',
+            #         container=action_items,
+            #         id='stoplight-collection',
+            #         title='Stoplight collection',
+            #         layout='action-overview',
+            #         query = [{
+            #                 "i": "review_state",
+            #                 "o": "plone.app.querystring.operation.selection.any",
+            #                 "v": [
+            #                     "Published"
+            #                 ]},
+            #                 {
+            #                 "i": "assigned_id", 
+            #                 "o": "plone.app.querystring.operation.string.currentUser", 
+            #                 "v": ""
+            #                 }, 
+            #                 {'i': 'portal_type', 
+            #                  'o': 'plone.app.querystring.operation.selection.any', 
+            #                  'v': ['action_items']
+            #                 }
+            #     ])
                 
         if not portal.get('scope-analysis', False):
             scopeanalysis = plone.api.content.create(
