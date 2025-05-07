@@ -1,9 +1,12 @@
-.template-post-it-note-view h1,
-.template-post-it-note-view p.lead {
+.section-postit_notes.template-full_view .item h1,
+.section-postit_notes.template-full_view p.lead,
+.template-post-it-note-view.template-full_view h1,
+.template-post-it-note-view.template-full_view p.lead {
   display: none
 }
 
-.template-post-it-note-view #content-core {
+.section-postit_notes.template-full_view #content-core,
+.template-post-it-note-view.template-full_view #content-core {
   display: grid;
   grid-template-columns: 1fr;
   /* default to 1 column */
@@ -12,7 +15,8 @@
 }
 
 @media (min-width: 768px) {
-  .template-post-it-note-view #content-core {
+  .section-postit_notes.template-full_view #content-core,
+  .template-post-it-note-view.template-full_view #content-core {
     grid-template-columns: 1fr 1fr;
     /* two columns on large screens */
   }

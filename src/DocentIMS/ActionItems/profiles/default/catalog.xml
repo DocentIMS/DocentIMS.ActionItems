@@ -5,6 +5,11 @@
     <indexed_attr value="source"/>
   </index>
 
+  <index name="color" meta_type="FieldIndex">
+    <indexed_attr value="color"/>
+  </index>
+  
+
   <index name="meeting_type" meta_type="FieldIndex">
     <indexed_attr value="meeting_type"/>
   </index>
@@ -85,6 +90,7 @@
   </index>
 
   <column value="source"/>
+  <column value="color"/>
   <column value="priority"/>
   <column value="prioritystring"/>
   <column value="revised_due_date"/>
