@@ -349,11 +349,17 @@ def _create_content(portal):
                             "o": "plone.app.querystring.operation.selection.any",
                             "v": [
                                 "Published"
-                            ]
-                    }],                    
-                    limit=2000,
-                    item_count=500,
-                )
+                            ]},
+                            {
+                            "i": "assigned_id", 
+                            "o": "plone.app.querystring.operation.string.currentUser", 
+                            "v": ""
+                            }, 
+                            {'i': 'portal_type', 
+                             'o': 'plone.app.querystring.operation.selection.any', 
+                             'v': ['action_items']
+                            }
+                ])
                 
         if not portal.get('scope-analysis', False):
             scopeanalysis = plone.api.content.create(
@@ -542,7 +548,7 @@ def _create_content(portal):
                     limit=2000,
                     item_count=500,
                     customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
-                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['Planning Document']}]
+                    query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['planning_document']}]
                 )      
         
                 

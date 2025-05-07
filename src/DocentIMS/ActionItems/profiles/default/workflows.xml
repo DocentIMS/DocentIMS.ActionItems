@@ -39,7 +39,7 @@
    <bound-workflow workflow_id="comment_one_state_workflow"/>
   </type>
   <type type_id="Feedback">
-   <bound-workflow workflow_id="docentIMS_feedback_workflow"/>
+   <bound-workflow workflow_id="postit_note_workflow"/>
   </type>
   <type type_id="File">
    <bound-workflow workflow_id="one_state_workflow"/>

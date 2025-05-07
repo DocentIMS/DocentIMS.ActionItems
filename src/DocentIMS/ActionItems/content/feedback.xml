@@ -30,11 +30,6 @@
       <description/>
       <required>False</required>
       <title>Feedback Attachment</title>
-    </field>
-    <field name="feedback_log" type="plone.namedfile.field.NamedBlobFile">
-      <description/>
-      <required>False</required>
-      <title>Feedback Log</title>
     </field>   
   </schema>
 </model>
