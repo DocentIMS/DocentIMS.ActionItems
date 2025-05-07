@@ -8,6 +8,14 @@
   <!-- '-*- extra stuff goes here -*-' -->
 
   <plone:portlet
+    name="DocentIMS.ActionItems.portlets.Readunread"
+    interface=".readunread.IReadunreadPortlet"
+    assignment=".readunread.Assignment"
+    renderer=".readunread.Renderer"
+    addview=".readunread.AddForm"
+    editview=".readunread.EditForm" />
+    
+  <plone:portlet
     name="DocentIMS.ActionItems.portlets.AddActionItemPortlet"
     interface=".add_action_item_portlet.IAddActionItemPortletPortlet"
     assignment=".add_action_item_portlet.Assignment"

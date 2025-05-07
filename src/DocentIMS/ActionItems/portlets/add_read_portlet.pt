@@ -1,0 +1,6 @@
+<label for="notification-filter">Filter notifications:</label>
+<select id="notification-filter">
+  <option value="?show_all=1">All, read and unread</option>
+  <option value="?all=1">Show Unread</option>
+</select>
+
