@@ -16,7 +16,7 @@
 
 
 
-        <div class="xcol-md-4 col-sm-4 content-card"> 
+        <div class="col-md-4 col-sm-4 content-card"> 
         <div class="card-big-shadow">
             <div class="card card-just-text" data-background="color" data-color="${context/color|None}" data-radius="none">
                 <div class="content">
