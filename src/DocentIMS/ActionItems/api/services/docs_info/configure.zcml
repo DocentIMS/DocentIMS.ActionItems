@@ -4,13 +4,13 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     >
 
-  <adapter factory=".get.DocsInfo" name="docs_info"/>
+  <adapter factory=".get.DocsInfo" name="project_info"/>
 
   <plone:service
     method="GET"
     for="Products.CMFCore.interfaces.ISiteRoot"
     factory=".get.GetDocsInfo"
-    name="@docs_info"
+    name="@project_info"
     permission="zope2.View"
     />
 

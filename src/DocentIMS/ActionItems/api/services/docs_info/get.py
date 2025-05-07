@@ -112,6 +112,7 @@ class DocsInfo(object):
             result = {
                 'docs_info': {
                     'meeting_locations': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names'),
+                    'stoplight_state' : api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.stoplight_state'),
                     'meeting_types':  m_types, 
                     'notification_types':  api.portal.get_registry_record('medialog.notifications.notification_types'),
                     'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
@@ -133,8 +134,7 @@ class DocsInfo(object):
                     'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),
                     # 'time_now_isoformat':  datetime.now().isoformat(),
                     'template_password': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.template_password')
-                    # 'wf_states_list' : get_content_types_and_workflows(),    
-                                 
+                    # 'wf_states_list' : get_content_types_and_workflows(),                                     
                 },
             }
             
