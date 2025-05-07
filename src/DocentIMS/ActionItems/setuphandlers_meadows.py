@@ -768,25 +768,14 @@ def _create_content(portal):
                 )
             
             
-            
-            # wordfiles = [
-            #     {'filetitle': 'main-template.docx.dot', 'filename': 'main-template.docx.dot'},
-            #     {'filetitle': 'Meeting Agenda.docm', 'filename': 'Meeting_Agenda.docm'},
-            #     {'filetitle': 'Meeting Minutes.docx', 'filename': 'Meeting_Minutes.docx'},
-            #     {'filetitle': 'Meeting Notes.docm', 'filename': 'Meeting_Notes.docm'},
-            # ]
-            
             wordfiles = [
-                {'filename': 'Letter_To_Property_Manager.dotx', 'filetitle': 'Letter To Property Manager', 'folder': document_folder},	
-                {'filename': 'Meeting_Notes.dotm', 'filetitle': 'Meeting Notes.dotm', 'folder': meeting_folder},
-                {'filename': 'MS_Project.dotx', 'filetitle': 'MS Project', 'folder': manager_folder},	
-                {'filename': 'Meeting_Notes.dotm', 'filetitle': 'Meeting Notes', 'folder': meeting_folder},
-                {'filename': 'Meeting_Agenda.dotm', 'filetitle': 'Meeting Agenda', 'folder': meeting_folder},	
-                {'filename': 'Reimbursement_Request.dotm', 'filetitle': 'Reimbursement Request', 'folder': document_folder},
-                {'filename': 'Meeting_Agenda.dotm', 'filetitle': 'Meeting Agenda', 'folder': meeting_folder},	
-                {'filename': 'Scope.dotx', 'filetitle': 'Scope', 'folder': manager_folder},	
-                {'filename': 'main-template.docx.dot', 'filetitle': 'main-template' , 'folder': templates_folder},
-                {'filename': 'Meeting_Minutes.dotx', 'filetitle': 'Meeting Minutes' , 'folder': meeting_folder },
+                {'filename': 'Meeting_Notes.dotm',      'filetitle': 'Meeting Notes.dotm', 'folder': meeting_folder},
+                {'filename': 'Meeting_Minutes.dotx',    'filetitle': 'Meeting Minutes.dotx' , 'folder': meeting_folder },
+                {'filename': 'MS_Project.dotx',         'filetitle': 'MS Project.dotx', 'folder': manager_folder},	
+                {'filename': 'Meeting_Agenda.dotm',     'filetitle': 'Meeting Agenda.dotm', 'folder': meeting_folder},	
+                {'filename': 'Reimbursement_Request.dotm','filetitle': 'Reimbursement Reques.dotm', 'folder': document_folder},
+                {'filename': 'Scope.dotx', 'filetitle': 'Scope.dotx', 'folder': manager_folder},	
+                {'filename': 'Main_Template.dotx',      'filetitle': 'Main Template.dotx' , 'folder': templates_folder},
             ]
             
             for wordfile in wordfiles:            
