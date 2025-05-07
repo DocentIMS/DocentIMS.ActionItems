@@ -3634,6 +3634,13 @@
     </field>
     <value/>
   </record>
+  <record name="plone.bundles/actionitems.csscompilation" interface="plone.base.interfaces.resources.IBundleRegistry" field="csscompilation">
+  <field type="plone.registry.field.ASCIILine">
+    <required>False</required>
+    <title>URL of the last css compilation</title>
+  </field>
+  <value>++plone++DocentIMS.ActionItems/css/action_items.css</value>
+</record>
   <record name="plone.bundles/actionitems.jscompilation" interface="plone.base.interfaces.resources.IBundleRegistry" field="jscompilation">
     <field type="plone.registry.field.ASCIILine">
       <required>False</required>
