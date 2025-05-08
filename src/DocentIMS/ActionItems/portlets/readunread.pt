@@ -1,11 +1,28 @@
-<div class="weather">
-    <h3>Weather Report</h3>
-    <span tal:content="view/weather_report"></span>
-    <br>
-    Pressure: 
-    <span tal:content="view/get_pressure"></span>
-    <br>
-    Humidity: 
-    <span tal:content="view/get_humidity"></span>
-    <br>
+<div class="portletWrapper" id="portletwrapper-show" >
+
+    <aside class="card portlet filterResponsible collectionFilter pat-collectionfilter" 
+        data-pat-collectionfilter="{&quot;collectionUUID&quot;: &quot;f587exb&quot;, 
+        &quot;reloadURL&quot;: &quot;@@render-portlet&quot;, 
+        &quot;ajaxLoad&quot;: false, 
+        &quot;contentSelector&quot;: 
+        &quot;#content-core&quot;}">
+
+        need UUID of collectionfilter
+        <header class="card-header portletHeader">Show</header>
+        <div class="card-body portletContent filterContent">
+            <select id="notification-filter" class="form-select" name="706c6f6e652e7269676874636f66974656d732d636f6c6c656374696f6e0a636f6cc656374696f6e66696c746572726573706f6e7369626c65">
+                <option class="filterItem filter-unread" value="choose" data-url="?collectionfilter=1">  
+              Choose
+                </option>
+                <option class="filterItem filter-unread" value="read" data-url="?collectionfilter=1&show_all=1">  
+              All, read and unread
+                </option>
+                <option class="filterItem filter-all" value="all" data-url="?collectionfilter=1">  
+              Unread
+                </option>
+
+            </select>
+        </div>
+
+    </aside>
 </div>

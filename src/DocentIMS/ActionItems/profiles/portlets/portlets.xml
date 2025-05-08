@@ -24,8 +24,23 @@
     <!--<for interface="plone.app.portlets.interfaces.IDashboard" />-->
 
   </portlet>
+    <portlet addview="DocentIMS.ActionItems.portlets.AddReadunread" 
+    title="Add ARead Unread portlet"
+     description="A portlet ." 
+     i18n:attributes="title title_add_read_unread_portlet;
+                     description description_add_read_unread">
+    <for interface="plone.app.portlets.interfaces.IColumn" />
+   </portlet>
 
    <!-- ADD FILTER to notifications collection -->
+  <assignment category="context" key="/notifications/notifications-collection" 
+    manager="plone.rightcolumn" name="collectionfilterread_unread" 
+    type="DocentIMS.ActionItems.portlets.Readunread">
+    <property name="header">Show</property>
+    <property "place_str">Show</property>
+  </assignment>
+
+   <!-- ADD FILTER to npostit collection -->
   <assignment category="context" key="/postit_notes/postit-collection" 
     manager="plone.rightcolumn" name="collectionfiltercolor" 
     type="collective.collectionfilter.portlets.CollectionFilter">
