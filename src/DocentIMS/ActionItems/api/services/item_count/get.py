@@ -66,7 +66,7 @@ class ItemCount(object):
             for notification_type in notification_types:
                 # Bypass 'user cant see', item in not published
                 my_brains = self.context.portal_catalog.unrestrictedSearchResults(portal_type=['Notification'], 
-                                                                 message_to = user_ids, 
+                                                                 message_assigned = user_ids, 
                                                                  notification_type=notification_type)
                 notification_list.append({'name': notification_type, 'count': len(my_brains)})
         
