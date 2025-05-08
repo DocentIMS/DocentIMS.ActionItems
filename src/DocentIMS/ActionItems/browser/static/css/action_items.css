@@ -256,10 +256,11 @@ body #portal-column-two { background: white !important; border: 1px solid; borde
 .pat-collectionfilter,
 .collectionFilter .card-body, 
 .collectionFilter,
+.pat-collectionfilter, 
 .card-header.portletHeader {
   background: none !important;
   padding: 0 7px;
   font-weight: bold;
-  border: 0 none;
+  border: 0 none !important;
   margin: 0;
   }
