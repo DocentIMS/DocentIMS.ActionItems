@@ -1,29 +1,22 @@
-<div class="portletWrapper" id="portletwrapper-9c506c6f6e6531342f6e6f74696669636174696f6e732f6e6f74696669636174696f6e732d636f6c6c656374696f6e0a74797065" 
-data-portlethash="906c6f6e652e7269676874636f6c756d6e0a636f6e746578740a2f506c6f6e6531342f6e6f74696669636174696f6e732f6e6f74696669636174696f6e732d636f6c6c656374696f6e0a74797065">
-
-    <aside class="card portlet filterResponsible collectionFilter pat-collectionfilter" 
-        data-pat-collectionfilter="{&quot;collectionUUID&quot;: &quot;&quot;, 
+<aside class="card portlet filterResponsible collectionFilter pat-collectionfilter" data-pat-collectionfilter="{&quot;collectionUUID&quot;: &quot;&quot;, 
         &quot;reloadURL&quot;: &quot;@@render-portlet&quot;, 
         &quot;ajaxLoad&quot;: false, 
         &quot;contentSelector&quot;: 
         &quot;#content-core&quot;}">
-
- 
-        <header class="card-header portletHeader">Show</header>
-        <div class="card-body portletContent filterContent">
-            <select id="notification-filter" class="form-select" name="906c6f6e652e7269676874636f66974656d732d636f6c6c656374696f6e0a636f6cc656374696f6e66696c746572726573706f6e7369626c65">
-                <option class="filterItem filter-unread" value="choose" data-url="?collectionfilter=1">  
+    <header class="card-header portletHeader">Show</header>
+    <div class="card-body portletContent filterContent">
+        <select id="notification-filter" class="form-select" name="906c6f6e652e7269676874636f66974656d732d636f6c6c656374696f6e0a636f6cc656374696f6e66696c746572726573706f6e7369626c65">
+            <option class="filterItem filter-unread" value="choose" data-url="?collectionfilter=1">  
               Choose
-                </option>
-                <option class="filterItem filter-unread" value="read" data-url="?collectionfilter=1&show_all=1">  
+            </option>
+            <option class="filterItem filter-unread" value="read" data-url="?collectionfilter=1&show_all=1">  
               All, read and unread
-                </option>
-                <option class="filterItem filter-all" value="all" data-url="?collectionfilter=1">  
+            </option>
+            <option class="filterItem filter-all" value="all" data-url="?collectionfilter=1">  
               Unread
-                </option>
+            </option>
 
-            </select>
-        </div>
+        </select>
+    </div>
 
-    </aside>
-</div>
+</aside>
