@@ -8,7 +8,7 @@ data-portlethash="906c6f6e652e7269676874636f6c756d6e0a636f6e746578740a2f506c6f6e
         &quot;contentSelector&quot;: 
         &quot;#content-core&quot;}">
 
-        need UUID of collectionfilter
+ 
         <header class="card-header portletHeader">Show</header>
         <div class="card-body portletContent filterContent">
             <select id="notification-filter" class="form-select" name="906c6f6e652e7269676874636f66974656d732d636f6c6c656374696f6e0a636f6cc656374696f6e66696c746572726573706f6e7369626c65">
