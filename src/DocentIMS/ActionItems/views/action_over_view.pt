@@ -6,7 +6,7 @@
   <body>
 
 
-     <metal:content-core fill-slot="content-core" tal:define="fields python:view.get_fields()[0]">
+    <metal:content-core fill-slot="content-core" tal:define="fields python:view.get_fields()[0]">
       <!-- <button class="margin-0" id="toggle-filters">Toggle Filters</button>
       <hr/> -->
       <div class="pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
@@ -16,7 +16,7 @@
           <table class="listing pat-datatables listing" data-pat-datatables="pageLength: 50">
             <thead>
               <tr>
-                <tal:repeat tal:repeat="field fields"> 
+                <tal:repeat tal:repeat="field fields">
                   <th tal:condition="field/row_title|None">${field/row_title|None}</th>
                 </tal:repeat>
               </tr>
@@ -24,137 +24,140 @@
             <tbody tal:define="fields view/get_fields|None">
               <tr tal:repeat="item python: view.batch()">
                 <tal:obj tal:define="obj item/getObject">
-                
-                  <tal:repeat tal:repeat="field python:fields[0]">                    
-                    <td>
-                      <tal:define tal:define="val python:getattr(obj, field['row_field'], '0')">
 
-                        <span tal:condition="python: field['row_field']=='actionno'">
-                          <tal:condition tal:condition="python: obj.id !='action_items'" 
-                            tal:define="ano python: obj.id.replace('action_items', '').replace('-', '')">
-                                  ${python: "{0:0=3d}".format(int(ano))}
+                  <tal:repeat tal:repeat="field python:fields[0]">
+                    <td>
+                      <tal:define tal:define="val python:getattr(obj, field['row_field'], '–')">
+
+                        <tal:condition tal:condition="python: field['row_field']=='actionno'">
+                          <tal:condition tal:condition="python: obj.id !='action_items'" tal:define="ano python: obj.id.replace('action_items', '').replace('-', '')">
+                                  <span>${python: "{0:0=3d}".format(int(ano))}</span>
                           </tal:condition>
                           <tal:condition tal:condition="python: obj.id =='action_items'">
-                                 000
+                                 <span>000</span>
                           </tal:condition>
-                        </span>
+                        </tal:condition>
 
                         <a href="${item/getURL}" tal:condition="python: field['row_field']=='title'">
                               ${val}
                         </a>
 
-                     <tal:check tal:condition="python: isinstance(val,bool)">
+                        <tal:check tal:condition="python: isinstance(val,bool)">
                           <span tal:condition="python: val==False"> &nbsp; No </span>
                           <span tal:condition="python: val==True"> ✓ Yes </span>
-                      </tal:check>
+                        </tal:check>
                         <span tal:condition="python: not isinstance(val,bool) and 
                                   field['row_field'] not in ['actionno' ,'title', 'related_item','daysleft', 'urgency',  'Creator', 'creator', 'assigned_to', 'initial_due_date', 'duedate', 'modified', 'related_sow_section']">
                                   ${val}
                         </span>
 
-                      
+
                         <span tal:condition="python: field['row_field']=='daysleft'">${item/daysleft|None}</span>
                         <span tal:condition="python: field['row_field']=='urgency'">${item/urgency|None}</span>
 
-                        <span tal:condition="python: field['row_field']=='related_item'">
-                          <span tal:condition="val/to_object|None">✓ Yes 
-                          </span>
+                        <tal:condition tal:condition="python: field['row_field']=='related_item'">
+                          <span tal:condition="val/to_object|None">✓ Yes  </span>
+                        </tal:condition>
 
 
-                          <span tal:condition="python: field['row_field']=='assigned_to'" tal:define="
+                        <tal:condition tal:condition="python: field['row_field']=='assigned_to'" tal:define="
                                   author python:view.pas_member.info(val);
                                   name python:author['fullname'] or author['username'];
-                                ">${name} 
-                          </span>
-                          <span tal:condition="python: field['row_field']=='Creator'" tal:define="
+                                ">
+                          <span>${name}</span>
+                        </tal:condition>
+                        <tal:condition tal:condition="python: field['row_field']=='Creator'" tal:define="
                                   author python:view.pas_member.info(val);
                                   name python:author['fullname'] or author['username'];
-                                ">${name}
-                          </span>
+                                ">
+                          <span>${name}</span>
+                        </tal:condition>
 
-                          <span tal:condition="python: field['row_field'] in  ['initial_due_date', 'duedate']">
-                            <time class="pat-display-time" tal:condition="val" datetime="${python:val.isoformat()}" data-pat-display-time="output-format: Do MMMM YYYY">
+                        <tal:condition tal:condition="python: field['row_field'] in  ['initial_due_date', 'duedate']">
+                          <time class="pat-display-time" tal:condition="val" datetime="${python:val.isoformat()}" data-pat-display-time="output-format: Do MMMM YYYY">
                                       ${val|None}
-                            </time>
-
+                          </time>
+                          <span tal:condition="not: val">
+                                –
                           </span>
 
-                          <span tal:condition="python: field['row_field']=='related_sow_section'">
-                            <a tal:condition="val" tal:attributes="href string:${portal_url}/@@redirect-to-uuid/${val}">${python: view.uid_title(val)}</a>
-                          </span>
+                        </tal:condition>
 
-                          <span tal:condition="python: field['row_field'] in  ['modified']">
+                        <span tal:condition="python: field['row_field']=='related_sow_section'">
+                          <a tal:condition="val" tal:attributes="href string:${portal_url}/@@redirect-to-uuid/${val}">${python: view.uid_title(val)}</a>
+                        </span>
 
-                            <time class="pat-display-time" tal:condition="val" datetime="${python:val().ISO()}" data-pat-display-time="output-format: Do MMMM YYYY">
+                        <span tal:condition="python: field['row_field'] in  ['modified']">
+                          <time class="pat-display-time" tal:condition="val" datetime="${python:val().ISO()}" data-pat-display-time="output-format: Do MMMM YYYY">
                                       ${val}
-                            </time>
+                          </time>
 
-                          </span>
+                        </span>
 
-                        </tal:define>
+                      </tal:define>
                         &nbsp;
-                      </td>
-                    </tal:repeat>
+                    </td>
+                  </tal:repeat>
 
-                  </tal:obj>
-                </tr>
-              </tbody>
-            </table>
-          </fieldset>
-          <fieldset>
-            <legend>Priority</legend>
-            <h4 class="pa3">Priority</h4>
-            <p>Priority is assigned by the Project Manager and indicates the relative importance of the Action Item.</p>
-
-
-            <div class="flex flex-wrap">
-              <div id="div-bar">                <!-- Plotly chart will be drawn inside this DIV --></div>
-              <div id="div-pie">                <!-- Plotly chart will be drawn inside this DIV --></div>
-            </div>
-
-          </fieldset>
-          <fieldset>
-            <legend>Urgency</legend>
-            <h4 class="pa3">Urgency</h4>
-            <p>Urgency is the measure of number of days until the action item is due.  The number of days until due for the three categories are assigned by the Project Manager</p>
-
-            <div>
-              <div id="urgency-bar">                <!-- Plotly chart will be drawn inside this DIV --></div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Workflow</legend>
-            <div>
-              <h4 class="pa3">Workflow</h4>
-              <p>Workflow shows a flowchart of the states the Action Item flows through.</p>
-              <p>&nbsp;</p>
-              <img src='${view/portal_url}/help-files/action-item-help/action-item-wf' alt="help image workflow" width="400">
+                </tal:obj>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
+        <fieldset>
+          <legend>Priority</legend>
+          <h4 class="pa3">Priority</h4>
+          <p>Priority is assigned by the Project Manager and indicates the relative importance of the Action Item.</p>
 
 
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Task Help</legend>
-              <h3>${context/help-files/action-item-help/action-item-help/Title|None}</h3>
-              <p>${context/help-files/action-item-help/action-item-help/Description|None}</p>
-              <div tal:replace="structure context/help-files/action-item-help/action-item-help/text/output|None"/>
-              <p>
-                <a href='${view/portal_url}/help-files/action-item-help/ai-help.pdf/@@display-file' class="button standalone btn btn-outline-secondary" target="_blank">Open Help PDF</a>
-              </p>
-            </fieldset>
+          <div class="flex flex-wrap">
+            <div id="div-bar">              <!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id="div-pie">              <!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
+
+        </fieldset>
+        <fieldset>
+          <legend>Urgency</legend>
+          <h4 class="pa3">Urgency</h4>
+          <p>Urgency is the measure of number of days until the action item is due.  The number of days until due for the three categories are assigned by the Project Manager</p>
+
           <div>
-            <hr/>
+            <div id="urgency-bar">              <!-- Plotly chart will be drawn inside this DIV --></div>
           </div>
-          <div>
-            <a href="${view/portal_url}/action-items/++add++action_items" target="_blank" class="button standalone btn btn-outline-primary">
-              <span class="black">Δ+</span> Create New Action Item
-            </a>
-          </div>
+        </fieldset>
 
-          <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
-          <script tal:define="graphdata python: view.get_graphdata()">
+        <fieldset>
+          <legend>Workflow</legend>
+          <div>
+            <h4 class="pa3">Workflow</h4>
+            <p>Workflow shows a flowchart of the states the Action Item flows through.</p>
+            <p>&nbsp;</p>
+            <img src='${view/portal_url}/help-files/action-item-help/action-item-wf' alt="help image workflow" width="400">
+
+
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Task Help</legend>
+            <h3>${context/help-files/action-item-help/action-item-help/Title|None}</h3>
+            <p>${context/help-files/action-item-help/action-item-help/Description|None}</p>
+            <div tal:replace="structure context/help-files/action-item-help/action-item-help/text/output|None"/>
+            <p>
+              <a href='${view/portal_url}/help-files/action-item-help/ai-help.pdf/@@display-file' class="button standalone btn btn-outline-secondary" target="_blank">Open Help PDF</a>
+            </p>
+          </fieldset>
+        </div>
+        <div>
+          <hr/>
+        </div>
+        <div>
+          <a href="${view/portal_url}/action-items/++add++action_items" target="_blank" class="button standalone btn btn-outline-primary">
+            <span class="black">Δ+</span> Create New Action Item
+          </a>
+        </div>
+
+        <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
+        <script tal:define="graphdata python: view.get_graphdata()">
               var data = [
                   {
                     x: ${python: graphdata[0]},
@@ -174,8 +177,8 @@
                   },
                 };
                 Plotly.newPlot('div-bar', data, layout);
-          </script>
-          <script>
+        </script>
+        <script>
               var data = [
                   {
                     labels: ['Priority 1', 'Priority 2', 'Priority 3' ],
@@ -196,9 +199,9 @@
    
 
    
-          </script>
+        </script>
 
-          <script tal:define="graphdata python: view.get_urgencydata()">
+        <script tal:define="graphdata python: view.get_urgencydata()">
               var data = [
                   {
                     x: ${python: graphdata[0]},
@@ -218,13 +221,10 @@
                 };
                 Plotly.newPlot('urgency-bar', data, layout);
 
-          </script>
+        </script>
 
 
-
-
-
-          <style>
+        <style>
 
               h2.pa3 { margin-top: 3rem, padding-top: 3rem;}
               .priority-1 span { color: red; padding: 1px 5px}
@@ -256,13 +256,10 @@
                   width: 100% !important;
                   max-width: 100vw !important;
                 }
-
-
-                 
       
-          </style>
+        </style>
 
-        </metal:content-core>
-      </body>
-    </html>
+      </metal:content-core>
+    </body>
+  </html>
 
