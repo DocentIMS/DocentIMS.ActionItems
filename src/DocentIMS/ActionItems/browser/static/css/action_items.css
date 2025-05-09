@@ -264,3 +264,37 @@ body #portal-column-two { background: white !important; border: 1px solid; borde
   border: 0 none !important;
   margin: 0;
   }
+
+  div.outer-wrapper.flex-shrink-0 {
+    background: #FAFAF9;
+  }
+
+.frontend fieldset { background: white}
+
+.frontend fieldset.autotoc-section  {
+ padding: 1rem; 
+}
+
+.frontend .pat-autotoc.autotabs .autotoc-nav {
+  margin-bottom: 0;
+}
+
+.frontend .autotoc-level-1.active {
+  background: white;
+  color: black !important;
+}
+
+#toggle-filters,
+#toggle-filters img {
+  background: white;
+  border-radius: 5px;
+ 
+}
+#toggle-filters {
+  padding: 3px 5px 0;
+}
+
+ #portal-breadcrumbs 
+   {
+    background: none !important;
+  }

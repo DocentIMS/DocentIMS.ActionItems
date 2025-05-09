@@ -1,4 +1,4 @@
-<button class="margin-0 hidden" id="toggle-filters"><img width="35" height="35" 
+<button class="margin-0 hidden" id="toggle-filters"><img width="40" height="40" 
     src="/++plone++DocentIMS.ActionItems/icons/filter_image.png"/>
 </button>
 <!-- <hr/> -->

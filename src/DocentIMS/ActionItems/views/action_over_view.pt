@@ -231,9 +231,7 @@
               .priority-3 span  {color:  green; padding: 1px 5px}
               .graph {border: 1px solid silver; max-width: 600px; padding: 15px; margin-bottom: 2rem}
               .flex-wrap { flex-wrap: wrap; display: flex; xjustify-content: space-between; background: white}
-              div.outer-wrapper.flex-shrink-0 {
-                	background: whitesmoke;
-                }
+              
 
                 h2.pa3 {
                 	margin-top:  2rem;
