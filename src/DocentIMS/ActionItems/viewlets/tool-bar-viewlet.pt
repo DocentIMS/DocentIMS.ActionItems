@@ -270,16 +270,12 @@
 </div>
 
 <div class="container hidden" id="show-toobar">
-    <button>
-        <img src="++plone++DocentIMS.ActionItems/icons/D.jpg" />
-    Show Toolbar</button>
+    <button class="btn button btn-standalone">
+        <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" width="20" height="20"/>Show Toolbar</button>
     <hr/>
 </div>
 
- 
 <script>
- 
-
     $(document).ready(function () {
         $('.htmltooltip').each(function () {
             var tooltipContent = $(this).attr('data-tooltip-content'); // Get content from custom attribute
@@ -302,7 +298,6 @@
             jQuery("#show-toobar").show();
             
         } else {
-
             jQuery("#show-toobar").hide();
         }
 
@@ -311,14 +306,11 @@
             jQuery("#show-toobar").removeClass('hidden');
             
             // Update state in localStorage
-            const isHidden = jQuery("#toolbar").is(":hidden");
-            localStorage.setItem("toolbarHidden", isHidden);
+            const isHidden = (localStorage.getItem("toolbarHidden") === "true");
+            localStorage.setItem("toolbarHidden", !isHidden);
         });
     });
 </script>
-
-
-<!-- localStorage.setItem("toolbarHidden", isHidden ? "true" : "false"); -->
-
-
  
+
+  

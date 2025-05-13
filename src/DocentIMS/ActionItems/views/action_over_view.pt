@@ -13,7 +13,7 @@
 
         <fieldset>
           <legend>Tasks</legend>
-          <table class="listing pat-datatables listing" data-pat-datatables="pageLength: 50">
+          <table class="listing xpat-datatables listing" data-pat-datatables="pageLength: 50">
             <thead>
               <tr>
                 <tal:repeat tal:repeat="field fields">
@@ -194,9 +194,7 @@
                   width: 500
                 };
 
-                Plotly.newPlot('div-pie', data, layout);
-
-   
+                Plotly.newPlot('div-pie', data, layout);   
 
    
         </script>
