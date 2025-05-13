@@ -51,7 +51,7 @@
 
   <assignment category="context" key="/postit_notes/postit-collection" 
     manager="plone.rightcolumn" name="collectionfiltersort" 
-    type="collective.collectionfilter.portlets.CollectionSort">
+    type="collective.collectionfilter.portlets.CollectionSortOn">
     <property name="header">Sort</property>
     <property name="input_type">checkboxes_dropdowns</property>´
     <property name="sort_on">created</property>
