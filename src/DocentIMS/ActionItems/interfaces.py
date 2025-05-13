@@ -337,7 +337,8 @@ class IDocentimsSettings(model.Schema):
             'color2',
             'planning_project',
             'template_password',
-            'dashboard'
+            'dashboard',
+            'dashboard_url'
             ],
         )
 
@@ -658,6 +659,13 @@ class IDocentimsSettings(model.Schema):
         title=u"Template Password",
         required=True,
     )
+    
+    dashboard_url = schema.URI(
+        title=u"Url of dashboard",
+        required=True,
+        default="https://dashboard.docentims.com"
+    )    
+    
     
     dashboard = schema.TextLine(
         title=u"Dashboard Basic",

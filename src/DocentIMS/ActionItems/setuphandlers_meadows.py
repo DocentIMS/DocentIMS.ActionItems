@@ -855,12 +855,12 @@ def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
 
-def load_image():
-    filename = os.path.join(os.path.dirname(__file__), 'img', 'blank.png')
+def load_image(imagename='blank.png'):
+    filename = os.path.join(os.path.dirname(__file__), 'img', imagename)
     with open(filename, 'rb') as image_file:
         return NamedBlobImage(
             data=image_file.read(),
-            filename='dummy.png'
+            filename=imagename
         )
 
 def load_file():
