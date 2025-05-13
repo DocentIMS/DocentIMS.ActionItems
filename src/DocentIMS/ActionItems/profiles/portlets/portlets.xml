@@ -37,10 +37,10 @@
     manager="plone.rightcolumn" name="collectionfilterread_unread" 
     type="DocentIMS.ActionItems.portlets.Readunread">
     <property name="header">Show</property>
-    <property "place_str">Show</property>
+    <!-- <property "place_str">Show</property> -->
   </assignment>
 
-   <!-- ADD FILTER to npostit collection -->
+   <!-- ADD FILTER to postit collection -->
   <assignment category="context" key="/postit_notes/postit-collection" 
     manager="plone.rightcolumn" name="collectionfiltercolor" 
     type="collective.collectionfilter.portlets.CollectionFilter">
@@ -103,12 +103,12 @@
 
 
 
-    <assignment category="context" key="/notifications/notifications-collection" 
+    <!-- <assignment category="context" key="/notifications/notifications-collection" 
         manager="plone.rightcolumn" name="collectionfilter_read" 
         type="plone.portlet.static.Static">
     <property name="header">Show</property>
    <property name="text">&lt;p&gt;&lt;a href=&quot;?show_all=1&quot;&gt;All, read and unread&lt;/a&gt;&lt;/b&gt;&lt;a href=&quot;?all=1&quot;&gt;Show Unread&lt;/a&gt;&lt;/p&gt;</property>
-  </assignment>
+  </assignment> -->
 
 
   <assignment category="context" key="/notifications/notifications-collection" 
