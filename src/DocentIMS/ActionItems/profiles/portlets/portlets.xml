@@ -54,7 +54,7 @@
     type="collective.collectionfilter.portlets.CollectionSortOn">
     <property name="header">Sort</property>
     <property name="input_type">checkboxes_dropdowns</property>´
-    <property name="sort_on">created</property>
+    <property name="sort_on">Creation Date</property>
   </assignment>
 
 
