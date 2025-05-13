@@ -37,7 +37,6 @@
     manager="plone.rightcolumn" name="collectionfilterread_unread" 
     type="DocentIMS.ActionItems.portlets.Readunread">
     <property name="header">Show</property>
-    <!-- <property "place_str">Show</property> -->
   </assignment>
 
    <!-- ADD FILTER to postit collection -->
@@ -48,6 +47,14 @@
     <property name="group_by">color</property>
     <property name="show_count">True</property>
     <property name="input_type">checkboxes_dropdowns</property>
+  </assignment>
+
+  <assignment category="context" key="/postit_notes/postit-collection" 
+    manager="plone.rightcolumn" name="collectionfiltersort" 
+    type="collective.collectionfilter.portlets.CollectionSort">
+    <property name="header">Sort</property>
+    <property name="input_type">checkboxes_dropdowns</property>´
+    <property name="sort_on">created</property>
   </assignment>
 
 
