@@ -113,6 +113,7 @@ class DocsInfo(object):
                 'docs_info': {
                     'meeting_locations': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names'),
                     'stoplight_state' : api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.stoplight_state'),
+                    'dashboard_url' : api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.dashboard_url'),
                     'meeting_types':  m_types, 
                     'notification_types':  api.portal.get_registry_record('medialog.notifications.notification_types'),
                     'planning_project': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project'),

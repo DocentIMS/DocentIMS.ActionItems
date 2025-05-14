@@ -5,15 +5,18 @@
       i18n:domain="DocentIMS.ActionItems"
       metal:use-macro="context/main_template/macros/master">
 <body>
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
-    <p>Table: ${context/table|None}</p>
-    <hr class="hr" />
+  <metal:content-core fill-slot="content">
+  <metal:block define-macro="content-core"> 
+    
+    
+     <div tal:content="structure context/table">
+        Table here
+     </div>
+
     <tal:condition tal:condition="context/file|None">
-        <b>File:</b> <a href="${context/absolute_url}/@@download/file">${context/file/filename}</a>
+         <b>File:</b> <a href="${context/absolute_url}/@@download/file">${context/file/filename}</a>
     </tal:condition>
-
-
+    
   </metal:block>
   </metal:content-core>
 </body>

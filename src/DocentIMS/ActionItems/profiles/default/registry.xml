@@ -173,7 +173,16 @@
     </field>
     <value>Password</value>
   </record>
-  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.dashboard" 
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.dashboard_url" 
+          interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="dashboard_url">  
+    <field type="plone.registry.field.URI">
+      <title>Dashboard URL</title>
+      <default>https://dashboard.docentims.com</default>
+    </field>
+    <value></value>
+  </record>
+
+    <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.dashboard" 
           interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="dashboard">  
     <field type="plone.registry.field.TextLine">
       <title>Dashboard</title>

@@ -195,8 +195,8 @@ def post_install(context):
     scope_analysis = portal.get('scope-analysis', False)
     behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
-    behaviour.setImmediatelyAddableTypes(['sow_analysis'])
-    behaviour.setLocallyAllowedTypes(['sow_analysis'])
+    behaviour.setImmediatelyAddableTypes(['sow_analysis', 'scope'])
+    behaviour.setLocallyAllowedTypes(['sow_analysis', 'scope'])
     
     # notes = portal.get('notes', False)
     # behaviour = constrains.ISelectableConstrainTypes(notes)

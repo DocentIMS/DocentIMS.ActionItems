@@ -1,10 +1,10 @@
 <model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
   <schema>
-    <field name="contact_person" type="zope.schema.Choice">
+    <!-- <field name="contact_person" type="zope.schema.Choice">
       <default>wayne-glover</default>
       <title>Contact Person</title>
       <vocabulary>plone.app.vocabularies.Users</vocabulary>
-    </field>
+    </field> -->
     <field name="feedback_submitted_by" type="zope.schema.Choice">
       <default>wayne-glover</default>
       <description>Who submitted this feedback.</description>
@@ -21,11 +21,11 @@
       <title>Do You Want a Reply?</title>
       <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
     </field>
-    <field name="docent_tool_type" type="zope.schema.TextLine">
+    <!-- <field name="docent_tool_type" type="zope.schema.TextLine">
       <description/>
       <required>False</required>
       <title>Docent Tool Type</title>
-    </field>
+    </field> -->
     <field name="feedback_attachment" type="plone.namedfile.field.NamedBlobFile">
       <description/>
       <required>False</required>

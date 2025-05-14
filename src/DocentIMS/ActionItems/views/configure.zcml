@@ -185,8 +185,6 @@
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
    />
 
-
-
   <browser:page
    name="agenda-view"
    for="plone.dexterity.interfaces.IDexterityItem"
@@ -338,6 +336,14 @@
       for="*"
       class=".company_view.CompanyView"
       template="company_view.pt"
+      permission="zope2.View"
+      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+
+    <browser:page
+      name="parse-view"
+      for="*"
+      template="rfp_scope-view.pt"
       permission="zope2.View"
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
       />

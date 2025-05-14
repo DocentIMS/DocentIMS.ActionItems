@@ -270,7 +270,7 @@ def AiFieldsVocabulary(context):
             SimpleTerm(value='actionno', token='actionno', title=_(u'AI Number')),
             SimpleTerm(value='title', token='title', title=_(u'Title')),
             SimpleTerm(value='priority', token='priority', title=_(u'Priority')),
-            SimpleTerm(value='portal_state', token='portal_state', title=_(u'State')),
+            SimpleTerm(value='review_state', token='review_state', title=_(u'State')),
             SimpleTerm(value='assigned_to', token='assigned_to', title=_(u' Responsible')),
             SimpleTerm(value='Creator', token='Creator', title=_(u'Creator')),
             SimpleTerm(value='initial_due_date', token='initial_due_date', title=_(u'Initial Due Date')),

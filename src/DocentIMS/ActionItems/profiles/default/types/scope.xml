@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    name="Planning Document"
+    name="scope"
     meta_type="Dexterity FTI"
     i18n:domain="DocentIMS.ActionItems">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Planning Document</property>
+      name="title">Scope</property>
   <property
       i18n:translate=""
-      name="description">Any document reviewed for relation to the project.</property>
+      name="description">Scope of Work</property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Planning Document</property>
+  <property name="factory">scope</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
   <!-- Hierarchy control -->
   <property name="global_allow">True</property>
   <!-- Schema, class and security -->
-  <property name="add_permission">DocentIMS.ActionItems.AddPlanningDocument</property>
+  <property name="add_permission">DocentIMS.ActionItems.AddRfp</property>
   <property name="klass">plone.dexterity.content.Item</property>
-  <property name="model_file">DocentIMS.ActionItems.content:planning_document.xml</property>
+  <property name="model_file">DocentIMS.ActionItems.content:scope.xml</property>
   <property name="model_source"></property>
   <property name="schema"></property>
 
@@ -49,7 +49,7 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++planning_document</property>
+  <property name="add_view_expr">string:${folder_url}/++add++rfp</property>
   <property name="default_view">parse-view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">parse-view</property>

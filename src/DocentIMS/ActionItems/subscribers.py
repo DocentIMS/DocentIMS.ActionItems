@@ -259,7 +259,8 @@ def save_note(object, event):
 
 def user_created_handler(event):
     """Handles a new user creation."""
-    site_url = "https://dashboard.docentims.com/++api++/@users"
+    dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'
+    site_url = dashboard_url + "/++api++/@users"
     user = event.object
     email  = user.getProperty('email', None)
     

@@ -35,7 +35,7 @@ from z3c.form.browser.textlines import TextLinesFieldWidget
 
 class PostItNoteAddForm(DefaultAddForm):
     portal_type = "postit_note"
-    default_fieldset_label = 'Home'
+    default_fieldset_label = ''
     
 
     def __init__(self, context, request):

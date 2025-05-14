@@ -10,10 +10,10 @@
       <!-- <button class="margin-0" id="toggle-filters">Toggle Filters</button>
       <hr/> -->
       <div class="pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
-
+ 
         <fieldset>
           <legend>Tasks</legend>
-          <table class="listing xpat-datatables listing" data-pat-datatables="pageLength: 50">
+          <table class="listing pat-datatables listing" data-pat-datatables="pageLength: 50">
             <thead>
               <tr>
                 <tal:repeat tal:repeat="field fields">
@@ -27,8 +27,9 @@
 
                   <tal:repeat tal:repeat="field python:fields[0]">
                     <td>
-                      <tal:define tal:define="val python:getattr(obj, field['row_field'], '–')">
-
+                  
+                      <tal:define tal:define="val python:getattr(obj, field['row_field'], '')">
+ 
                         <tal:condition tal:condition="python: field['row_field']=='actionno'">
                           <tal:condition tal:condition="python: obj.id !='action_items'" tal:define="ano python: obj.id.replace('action_items', '').replace('-', '')">
                                   <span>${python: "{0:0=3d}".format(int(ano))}</span>
@@ -78,9 +79,13 @@
                                       ${val|None}
                           </time>
                           <span tal:condition="not: val">
-                                –
+                              
                           </span>
 
+                        </tal:condition>
+                        
+                        <tal:condition tal:condition="python: field['row_field'] in  ['review_state']">
+                          ${item/review_state}
                         </tal:condition>
 
                         <span tal:condition="python: field['row_field']=='related_sow_section'">
@@ -89,7 +94,7 @@
 
                         <span tal:condition="python: field['row_field'] in  ['modified']">
                           <time class="pat-display-time" tal:condition="val" datetime="${python:val().ISO()}" data-pat-display-time="output-format: Do MMMM YYYY">
-                                      ${val}
+                              ${val}
                           </time>
 
                         </span>
