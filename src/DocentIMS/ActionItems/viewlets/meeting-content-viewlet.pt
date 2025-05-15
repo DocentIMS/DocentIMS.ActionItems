@@ -1,24 +1,24 @@
 <div class="folder_contents">
 
-    <h5>Files for this meeting</h5>
-   
-    <ul tal:define="
+  <h5>Files for this meeting</h5>
+
+  <ul tal:define="
     Batch python:modules['Products.CMFPlone'].Batch;
     b_size python:int(request.get('b_size', 20));
     b_start python:int(request.get('b_start', 0));
     results python:context.restrictedTraverse('@@contentlisting')(batch=True, b_size=b_size, b_start=b_start);
     batch python:Batch(results, b_size, b_start);">
-  <li tal:repeat="item results">
-    <a href="${item/getURL}" target="_self">${item/Title}</a>
-  </li>
-      
-  <div metal:use-macro="context/batch_macros/macros/navigation" />
-</ul>
-        
-    <div>
+    <li tal:repeat="item results">
+      <a href="${item/getURL}" target="_self">${item/Title}</a>
+    </li>
+
+    <div metal:use-macro="context/batch_macros/macros/navigation" />
+  </ul>
+
+  <div>
     <a class="btn btn-sm btn-outline-secondary" title="Go to upload form" href="${context/absolute_url}/folder_contents">
-            <span class="arrow"></span>
-            <span class="label">Go to upload form</span>
-        </a>
-    </div>
+      <span class="arrow"></span>
+      <span class="label">Go to upload form</span>
+    </a>
+  </div>
 </div>

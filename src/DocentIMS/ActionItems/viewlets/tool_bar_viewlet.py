@@ -7,6 +7,8 @@ import requests
 from plone.memoize.view import memoize
 from plone.memoize import ram
 import time
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 
 # def sites_cache_key(method, self):
 #     usermail = self.current_user_id()
@@ -63,6 +65,26 @@ class ToolBarViewlet(ViewletBase):
         user_ids = self.current_user_id
         items =  api.content.find( notification_type="warning", notification_assigned = user_ids, limit=9,) 
         return len(items)
+
+    @memoize
+    def get_the_tooltips(self):
+        registry = getUtility(IRegistry)
+        
+        # TO Do: Why does this not return all
+        #settings = registry.forInterface(IDocentimsSettings, check=False)        
+        # works
+        #api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonAbout')
+        
+        prefix = 'DocentIMS.ActionItems.interfaces.IDocentimsSettings.'
+        
+        tooltip_values = {
+                key.replace(prefix, ''): registry.records[key].value
+                for key in registry.records.keys()
+                if key.startswith(prefix + 'tooltip')
+        }
+                
+        return tooltip_values
+    
     
     @property
     @memoize

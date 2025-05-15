@@ -1,0 +1,593 @@
+<registry>
+                                                                                                           
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdCheckBoxPlanning" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdCheckBoxPlanning">
+    <field type="plone.registry.field.Text">
+      <title>Planning Projects Only</title>
+    </field>
+    <value>Check this to see planning projects only.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdToggleButtonMgrMode" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdToggleButtonMgrMode">
+    <field type="plone.registry.field.Text">
+      <title>Button Mode</title>
+    </field>
+    <value>Docent has two Ribbons: Team Mode and Project Manager Mode; Team Mode: Displayed to all project members; Project Manager Mode Displayed only to the project manager</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCreateTask" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCreateTask">
+    <field type="plone.registry.field.Text">
+      <title>Create Task</title>
+    </field>
+    <value>Create a task for anyone on the team.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonNotificationsRed" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonNotificationsRed">
+    <field type="plone.registry.field.Text">
+      <title>Critical Notifications</title>
+    </field>
+    <value>Show Critical Notifications.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonNotificationsYellow" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonNotificationsYellow">
+    <field type="plone.registry.field.Text">
+      <title>Important Notifications</title>
+    </field>
+    <value>Show Important Notificationse.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonNotificationsGreen" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonNotificationsGreen">
+    <field type="plone.registry.field.Text">
+      <title>Informational Notification</title>
+    </field>
+    <value>Show  Informational Notifications.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCreateNotification" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCreateNotification">
+    <field type="plone.registry.field.Text">
+      <title>Create Notification</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdMenuButtonRFP" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdMenuButtonRFP">
+    <field type="plone.registry.field.Text">
+      <title>Select an RFP</title>
+    </field>
+ 
+    <value>Select an RFP</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonRFPUpload1" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonRFPUpload1">
+    <field type="plone.registry.field.Text">
+      <title>Upload this new RFP</title>
+    </field>
+    <value>Use this document as a replacement to the existing RFP</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonRFPBrowse" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonRFPBrowse">
+    <field type="plone.registry.field.Text">
+      <title>Browse to RFP</title>
+    </field>
+    <value>Select an RFP Document to upload.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonRFPUploadMe" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonRFPUploadMe">
+    <field type="plone.registry.field.Text">
+      <title>Upload this RFP</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonRFPParse" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonRFPParse">
+    <field type="plone.registry.field.Text"> imageMso="ReviewDisplayForReview"
+      <title>Parse RFP Documents</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonRFPCancel" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonRFPCancel">
+    <field type="plone.registry.field.Text"> imageMso="ConflictsReject"
+      <title>Cancel</title>
+    </field>
+    <value>Close the document without saving.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonPlanningOpen" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonPlanningOpen">
+    <field type="plone.registry.field.Text">
+      <title>Planning Documents</title>
+    </field>
+    <value>If the open document is a Planning Document, press to begin analysis.&#xD;&#xA;&#xD;&#xA;Planning documents are documents that may have bearing on the project and are used in the initial investigation into a project.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdMenuButtonPlanning" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdMenuButtonPlanning">
+    <field type="plone.registry.field.Text">
+      <title>Browse to a Planning Document</title>
+    </field>
+    <value>Navigate to select the planning document."</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonPlanningOpen0" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonPlanningOpen0">
+    <field type="plone.registry.field.Text">
+      <title>Upload Planning Document</title>
+    </field>
+    <value>If the open document is a Planning Document, press to begin analysis.&#xD;&#xA;&#xD;&#xA;Planning documents are documents that may have bearing on the project and are used in the initial investigation into a project.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonPlanningBrowse" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonPlanningBrowse">
+    <field type="plone.registry.field.Text">
+      <title>Browse to a Planning Document</title>
+    </field>
+    <value>Navigate to select the planning document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonPlanningUpload" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonPlanningUpload">
+    <field type="plone.registry.field.Text">
+      <title>Upload Planning Documents</title>
+    </field>
+    <value>Upload planning documents with comments and notes attached</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonPlanningCancel" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonPlanningCancel">
+    <field type="plone.registry.field.Text"> imageMso="ConflictsReject"
+      <title>Cancel</title>
+    </field>
+    <value>Close the document without saving.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeCreate" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeCreate">
+    <field type="plone.registry.field.Text">
+      <title>Create Scope</title>
+    </field>
+    <value>Create a Scope document</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdMenuButtonScope" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdMenuButtonScope">
+    <field type="plone.registry.field.Text">
+      <title>Select a Scope</title>
+    </field>
+    <value>Select a Scope"</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeCreate0" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeCreate0">
+    <field type="plone.registry.field.Text">
+      <title>Create Scope</title>
+    </field>
+    <value>Create a Scope document</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeUpload" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeUpload">
+    <field type="plone.registry.field.Text">
+      <title>Upload Scope</title>
+    </field>
+    <value>Upload this Scope document</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeBrowse" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeBrowse">
+    <field type="plone.registry.field.Text">
+      <title>Browse to Scope</title>
+    </field>
+    <value>Select a Scope Document to upload.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonOpenScope" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonOpenScope">
+    <field type="plone.registry.field.Text">
+      <title>Open Scope</title>
+    </field>
+    <value>Open the Request for Proposal for analysis.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeAddTop" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeAddTop">
+    <field type="plone.registry.field.Text">  
+      <title>Add Top-Level Scope Task</title>
+    </field>
+    <value>Insert a new top-level Scope Task to the tasks table and the document.</value>
+
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeAddSame" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeAddSame">
+    <field type="plone.registry.field.Text">  
+      <title>Add Same-Level Scope Task</title>
+    </field>
+    <value>Based on cursor position, insert a new Scope Task at same level.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeAddSub" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeAddSub">
+    <field type="plone.registry.field.Text">  
+      <title>Add Sub-Level Scope Task</title>
+    </field>
+    <value>Based on cursor position, insert a new Scope Sub-Task.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeRevesion" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeRevesion">
+    <field type="plone.registry.field.Text">  
+      <title>Update Revision Level</title>
+    </field>
+    <value>Increases the revision level in revision table, footer and file name.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeUnlock" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeUnlock">
+    <field type="plone.registry.field.Text">  
+      <title>Unlock Document</title>
+    </field>
+    <value>Unlock this document to allow editing.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonParseScope" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonParseScope">
+    <field type="plone.registry.field.Text">  
+      <title>Parse Scope Documents</title>
+    </field>
+    <value>After the project Scope is written, it is deconstructed by the Project Manager to create small Scope segments.&#xD;&#xA;&#xD;&#xA;These segments are further analyzed and Tasks are created to ensure compliance.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonScopeCancel" 
+  interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonScopeCancel">
+    <field type="plone.registry.field.Text">
+      <title>Cancel</title>
+    </field>
+    <value>Close the document without saving."</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonPMP" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonPMP">
+    <field type="plone.registry.field.Text">
+      <title>The Project Management Plan</title>
+    </field>
+    <value>Create a Project Management Plan (PMP) for this project.  &#xD;&#xA;&#xD;&#xA;Some data will be imported from for the existing Scope.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCommandStatements" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCommandStatements">
+    <field type="plone.registry.field.Text"> imageMso="CacheListData"
+      <title>Collect Command Statements</title>
+    </field>
+    <value>Command Statements are words in the project documents (e.g. Scope) that require a specific project action, task etc. For example: “All street center lines must be painted yellow.”  Here, 'must' is the command word.&#xD;&#xA;&#xD;&#xA;This function searches the open document for command words as defined in the configuration screen.  &#xD;&#xA;</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdMenuButtonCommandStatements" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdMenuButtonCommandStatements">
+    <field type="plone.registry.field.Text">
+      <title>Select a Document</title>
+    </field>
+    <value>Select a Document</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCommandStatements0" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCommandStatements0">
+    <field type="plone.registry.field.Text"> imageMso="CacheListData"
+      <title>Collect Command Statements from this document</title>
+    </field>
+    <value>Command Statements are words in the project documents (e.g. Scope) that require a specific action, task etc. For example: all lines must be painted red.  Here, 'must' is the command word.&#xD;&#xA;&#xD;&#xA;This function will review the entire document for command words (Shall, Will, Must are predefined and user may enter any other Command Words) and highlights those found (if option selected).  Finally, an Excel sheet is created with all the Command Words with links back to their location in the document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCommandStatementsBrowse" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCommandStatementsBrowse">
+    <field type="plone.registry.field.Text">
+      <title>Collect Command Statements from a document</title>
+    </field>
+    <value>Command Statements are words in the project documents (e.g. Scope) that define a specific action, task etc. to comply with the contract.  For example: &quot;All lines must be painted red.&quot;  Here, 'must' is the command word.&#xD;&#xA;&#xD;&#xA;This function will review the entire document for command words as defined in the associated setup.  </value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMSP" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMSP">
+    <field type="plone.registry.field.Text">
+      <title>Microsoft Project</title>
+    </field>
+    <value>Provides a read-only view of the MS project schedule associated with this project.&#xD;&#xA;&#xD;&#xA;This is updated based on fixed schedule.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMSPCancel" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMSPCancel">
+    <field type="plone.registry.field.Text">  
+      <title>Cancel</title>
+    </field>
+    <value>Close the document without saving.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMSPUpdate" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMSPUpdate">
+    <field type="plone.registry.field.Text">
+      <title>Update</title>
+    </field>
+    <value>checks for more recent data.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdDDTemplate" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdDDTemplate">
+    <field type="plone.registry.field.Text">
+      <title>Select Template</title>
+    </field>
+    <value>All Word documents for this project are controlled by templates.&#xD;&#xA;&#xD;&#xA;These templates may only be modified by the project manager (or designee).&#xD;&#xA;&#xD;&#xA;The templates are saved on the project website and are used by all team members when creating Word documents.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonTemplateOpen" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonTemplateOpen">
+    <field type="plone.registry.field.Text">  
+      <title>Edit Template</title>
+    </field>
+    <value>Open the selected template to modify it.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonTemplateModify" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonTemplateModify">
+    <field type="plone.registry.field.Text">  
+      <title>Save Template</title>
+    </field>
+    <value>Upload modified template.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonTemplateCancel" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonTemplateCancel">
+    <field type="plone.registry.field.Text">  
+      <title>Cancel</title>
+    </field>
+    <value>Close the template without saving.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdToggleButtonTemplateHide" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdToggleButtonTemplateHide">
+    <field type="plone.registry.field.Text">  
+      <title>Show/Hide Hints</title>
+    </field>
+    <value>Shows guidance for the document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdDDDocument" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdDDDocument">
+    <field type="plone.registry.field.Text">
+      <title>Select Document Type</title>
+    </field>
+    <value>Projects use &quot;Document Types&quot; to define all project documents.  </value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentCreate" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentCreate">
+    <field type="plone.registry.field.Text">
+      <title>Create Project Document</title>
+    </field>
+    <value>After creating the new document, the file will be named and saved as defined in the project setup.&#xD;&#xA;&#xD;&#xA;User does not control this saving action.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentOpen" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentOpen">
+    <field type="plone.registry.field.Text">  
+      <title>Open Project Document</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentSave" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentSave">
+    <field type="plone.registry.field.Text">  
+      <title>Save Document</title>
+    </field>
+    <value>Save Document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentSaveDefault" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentSaveDefault">
+    <field type="plone.registry.field.Text">  
+      <title>Save Document</title>
+    </field>
+    <value>Save Document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentSaveDefault0" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentSaveDefault0">
+    <field type="plone.registry.field.Text">  
+      <title>Save Document</title>
+    </field>
+    <value>Save Document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentSaveAs1" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentSaveAs1">
+    <field type="plone.registry.field.Text">
+      <title>rScreentip</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentSaveAs2" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentSaveAs2">
+    <field type="plone.registry.field.Text">
+      <title>rScreentip</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentSaveAs3" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentSaveAs3">
+    <field type="plone.registry.field.Text">
+      <title>rScreentip</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentCancel" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentCancel">
+    <field type="plone.registry.field.Text">
+      <title>Cancel</title>
+    </field>
+    <value>Close the document without saving.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocumentState" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocumentState">
+    <field type="plone.registry.field.Text">
+      <title>Current State</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdToggleButtonDocumentHide" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdToggleButtonDocumentHide">
+    <field type="plone.registry.field.Text">  
+      <title>Show/Hide Hints</title>
+    </field>
+    <value>Shows guidance for the document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdDDMeetingDoc" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdDDMeetingDoc">
+    <field type="plone.registry.field.Text">
+      <title>Select Document Type</title>
+    </field>
+    <value>Meetings must be in the &quot;Published&quot; state to have meeting documents attached to them.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocCreate" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocCreate">
+    <field type="plone.registry.field.Text">  
+      <title>Create new meeting document from template</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocOpen" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocOpen">
+    <field type="plone.registry.field.Text">
+      <title>Open an existing meeting document for editing</title>
+    </field>
+    <value>rSupertip" (The state name) </value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocSave" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocSave">
+    <field type="plone.registry.field.Text">  
+      <title>Save Document</title>
+    </field>
+    <value>Save Document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocSaveDefault" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocSaveDefault">
+    <field type="plone.registry.field.Text">  
+      <title>Save Document</title>
+    </field>
+    <value>Save Document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocSaveDefault0" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocSaveDefault0">
+    <field type="plone.registry.field.Text">  
+      <title>Save Document</title>
+    </field>
+    <value>Save Document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocSaveAs1" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocSaveAs1">
+    <field type="plone.registry.field.Text">
+      <title>rScreentip</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocSaveAs2" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocSaveAs2">
+    <field type="plone.registry.field.Text">
+      <title>rScreentip</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocSaveAs3" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocSaveAs3">
+    <field type="plone.registry.field.Text">
+      <title>rScreentip</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocCancel" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocCancel">
+    <field type="plone.registry.field.Text">  
+      <title>Cancel</title>
+    </field>
+    <value>Close without saving.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonMeetingDocState" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonMeetingDocState">
+    <field type="plone.registry.field.Text">
+      <title>Current State</title>
+    </field>
+    <value>rSupertip</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdToggleButtonMeetingDocHide" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdToggleButtonMeetingDocHide">
+    <field type="plone.registry.field.Text"> 
+      <title>Show/Hide Hints</title>
+    </field>
+    <value>Shows hiddent guidance notes for the document.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCreateMeeting" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCreateMeeting">
+    <field type="plone.registry.field.Text">
+      <title>Create Meeting</title>
+    </field>
+    <value>Create a new Meeting.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdMenuButtonOpenMeeting" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdMenuButtonOpenMeeting">
+    <field type="plone.registry.field.Text">
+      <title>Create or Open Meeting</title>
+    </field>
+    <value>Create new Meeting or open existing Meeting."</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCreateMeeting0" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCreateMeeting0">
+    <field type="plone.registry.field.Text">
+      <title>Create Meeting</title>
+    </field>
+    <value>Create a new meeting.&#xD;&#xA;&#xD;&#xA;There are different types of meeting.&#xD;&#xA;&#xD;&#xA;When a meeting is created, online a defined save location is created.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonOpenMeeting" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonOpenMeeting">
+    <field type="plone.registry.field.Text">  
+      <title>Open Meeting</title>
+    </field>
+    <value>Open an existing Meeting.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonTeamMembers" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonTeamMembers">
+    <field type="plone.registry.field.Text">  
+      <title>Team Members</title>
+    </field>
+    <value>Team members details.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCreatePostItNote" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCreatePostItNote">
+    <field type="plone.registry.field.Text">
+      <title>Create a Post It Note</title>
+    </field>
+    <value>Write  a quick, but important, reminder to yourself.&#xD;&#xA;&#xD;&#xA;You'll  reminders if the Note s old.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonRefresh" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonRefresh">
+    <field type="plone.registry.field.Text">
+      <title>Refresh</title>
+    </field>
+    <value>Updates toolbar content.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonFeedback" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonFeedback">
+    <field type="plone.registry.field.Text">
+      <title>Send Feedback</title>
+    </field>
+    <value>A project must be selected to send feedback.", "Help us improve Docent."</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonHelp" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonHelp">
+    <field type="plone.registry.field.Text">
+      <title>Online Help</title>
+    </field>
+    <value> full project help at this link.</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonHelp0" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonHelp0">
+    <field type="plone.registry.field.Text">
+      <title>Online Help</title>
+    </field>
+    <value> full project help at this link.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonConfig" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonConfig">
+    <field type="plone.registry.field.Text">
+      <title>Project Configuration</title>
+    </field>
+    <value>Provide login credentials for all your projects.&#xD;&#xA;&#xD;&#xA;You will need the URL and your username/password</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonSaveLoc" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonSaveLoc">
+    <field type="plone.registry.field.Text">
+      <title>Document Configuration</title>
+    </field>
+    <value>Configure saving locations for all document types</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonFeedback2" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonFeedback2">
+    <field type="plone.registry.field.Text">  
+      <title>Send Feedback</title>
+    </field>
+    <value>"A project must be selected to send feedback.", "Help us improve Docent."</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocInfo" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocInfo">
+    <field type="plone.registry.field.Text">  
+      <title>Document Info</title>
+    </field>
+    <value>Document Revision Number, Date and Author.&#xD;&#xA;&#xD;&#xA;Document must have been created in Docent for document info to work.</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonAbout" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonAbout">
+    <field type="plone.registry.field.Text">  
+      <title>About</title>
+    </field>
+    <value>About DocentIMS</value>
+  </record>
+
+  </registry>

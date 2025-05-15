@@ -1,7 +1,7 @@
 <button class="margin-0 hidden" id="toggle-filters"><img width="40" height="40" 
     src="/++plone++DocentIMS.ActionItems/icons/filter_image.png"/>
 </button>
-<!-- <hr/> -->
+ 
 <script>
 jQuery(document).ready(function() {
   if ($("#portal-column-two").length) {
@@ -28,5 +28,4 @@ jQuery(document).ready(function() {
   #portal-column-two.overlay .portletWrapper { 
                   background: none !important; padding: 0; margin: 1rem 0 0
   }
-
 </style>

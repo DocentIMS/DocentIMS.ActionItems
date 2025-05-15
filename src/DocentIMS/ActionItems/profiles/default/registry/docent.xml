@@ -1,0 +1,212 @@
+<registry>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.stoplight_state" 
+    interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="stoplight_state">
+    <field type="plone.registry.field.TextLine">
+      <default>Published</default>
+      <title>Stoplight state</title>
+    </field>
+    <value>Published</value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.app_buttons" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="app_buttons">
+    <field type="plone.registry.field.List">
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+          <element>https://mymeadows.org</element>
+          <element>http://mymeadows.org:8084/Plone_24_10_24</element>
+          <element>http://mymeadows.org:8084/Plone</element>
+          <element>http://ubuntu.local:8605/Plone40</element>
+          <element>http://ubuntu.local:8605/Plone47</element>
+    </value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="color1">
+    <field type="plone.registry.field.TextLine">
+      <default>#ff0000</default>
+      <title>Project Color</title>
+    </field>
+    <value>#64041f</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="color2">
+    <field type="plone.registry.field.TextLine">
+      <default>#ff0000</default>
+      <title>Markings Color</title>
+    </field>
+    <value>#123456</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="companies">
+    
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.future_green" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="future_green">
+    <field type="plone.registry.field.Int">
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_green">Future days/value (displayed as Green)</title>
+    </field>
+    <value>28</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="location_names">
+    
+  
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types" 
+    interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="meeting_types">
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.planning_project" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="planning_project">
+    <field type="plone.registry.field.Bool">
+      <default>0</default>
+      <required>False</required>
+      <title>Is Planning Project?</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_companies" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_companies">
+    <field type="plone.registry.field.Text"/>
+    <value/>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_contract_number">
+    <field type="plone.registry.field.TextLine">
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_project_contract_number">Project Contract Number</title>
+    </field>
+    <value>123-08</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_description">
+    <value>&lt;p&gt;This is description&lt;/p&gt;&#13;
+&lt;div id="highlighter--hover-tools" style="display: none;"&gt;&#13;
+&lt;div id="highlighter--hover-tools--container"&gt;&#13;
+&lt;div title="Copy" class="highlighter--icon highlighter--icon-copy"&gt;&lt;/div&gt;&#13;
+&lt;div title="Change Color" class="highlighter--icon highlighter--icon-change-color"&gt;&lt;/div&gt;&#13;
+&lt;div title="Delete" class="highlighter--icon highlighter--icon-delete"&gt;&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;div id="highlighter--hover-tools" style="display: none;"&gt;&#13;
+&lt;div id="highlighter--hover-tools--container"&gt;&#13;
+&lt;div title="Copy" class="highlighter--icon highlighter--icon-copy"&gt;&lt;/div&gt;&#13;
+&lt;div title="Change Color" class="highlighter--icon highlighter--icon-change-color"&gt;&lt;/div&gt;&#13;
+&lt;div title="Delete" class="highlighter--icon highlighter--icon-delete"&gt;&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;div id="highlighter--hover-tools" style="display: none;"&gt;&#13;
+&lt;div id="highlighter--hover-tools--container"&gt;&#13;
+&lt;div title="Copy" class="highlighter--icon highlighter--icon-copy"&gt;&lt;/div&gt;&#13;
+&lt;div title="Change Color" class="highlighter--icon highlighter--icon-change-color"&gt;&lt;/div&gt;&#13;
+&lt;div title="Delete" class="highlighter--icon highlighter--icon-delete"&gt;&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;div id="highlighter--hover-tools" style="display: none;"&gt;&#13;
+&lt;div id="highlighter--hover-tools--container"&gt;&#13;
+&lt;div title="Copy" class="highlighter--icon highlighter--icon-copy"&gt;&lt;/div&gt;&#13;
+&lt;div title="Change Color" class="highlighter--icon highlighter--icon-change-color"&gt;&lt;/div&gt;&#13;
+&lt;div title="Delete" class="highlighter--icon highlighter--icon-delete"&gt;&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;div id="highlighter--hover-tools" style="display: none;"&gt;&#13;
+&lt;div id="highlighter--hover-tools--container"&gt;&#13;
+&lt;div title="Copy" class="highlighter--icon highlighter--icon-copy"&gt;&lt;/div&gt;&#13;
+&lt;div title="Change Color" class="highlighter--icon highlighter--icon-change-color"&gt;&lt;/div&gt;&#13;
+&lt;div title="Delete" class="highlighter--icon highlighter--icon-delete"&gt;&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;div id="highlighter--hover-tools" style="display: none;"&gt;&#13;
+&lt;div id="highlighter--hover-tools--container"&gt;&#13;
+&lt;div title="Copy" class="highlighter--icon highlighter--icon-copy"&gt;&lt;/div&gt;&#13;
+&lt;div title="Change Color" class="highlighter--icon highlighter--icon-change-color"&gt;&lt;/div&gt;&#13;
+&lt;div title="Delete" class="highlighter--icon highlighter--icon-delete"&gt;&lt;/div&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;/div&gt;</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_document_naming_convention">
+    <field type="plone.registry.field.List">
+      <default/>
+      <missing_value/>
+      <required>False</required>
+      <title>Project Document Naming Convention</title>
+      <value_type type="plone.registry.field.Choice">
+        <values>
+          <element>PrjName</element>
+          <element>ContractNumber</element>
+          <element>DocState</element>
+          <element>Doctype</element>
+          <element>DocDate</element>
+          <element>DocTime</element>
+        </values>
+      </value_type>
+    </field>
+    <value>
+      <element>PrjName</element>
+      <element>Doctype</element>
+      <element>DocState</element>
+      <element>ContractNumber</element>
+      <element>DocDate</element>
+      <element>DocTime</element>
+    </value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_short_name">
+    <field type="plone.registry.field.TextLine">
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_project_short_name">Project Short Name</title>
+    </field>
+    <value>Meadows Board</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_title" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_title">
+    <field type="plone.registry.field.TextLine">
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_title">Project Full Name</title>
+    </field>
+    <value>The Meadows Board</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="scope_table_columns">
+     
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.soon_yellow" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="soon_yellow">
+    <field type="plone.registry.field.Int">
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_yellow">Soon days/value (displayed as Yellow)</title>
+    </field>
+    <value>14</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="table_columns">
+     
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.template_password" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="template_password">
+    <field type="plone.registry.field.TextLine">
+      <title>Template Password</title>
+    </field>
+    <value>Password</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.dashboard_url" 
+          interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="dashboard_url">  
+    <field type="plone.registry.field.URI">
+      <title>Dashboard URL</title>
+      <default>https://dashboard.docentims.com</default>
+    </field>
+    <value></value>
+  </record>
+
+    <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.dashboard" 
+          interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="dashboard">  
+    <field type="plone.registry.field.TextLine">
+      <title>Dashboard</title>
+    </field>
+    <value></value>
+  </record>
+
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.urgent_red" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="urgent_red">
+    <field type="plone.registry.field.Int">
+      <description> </description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_red">Urgent days/value (displayed as Red)</title>
+    </field>
+    <value>7</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.very_short_name" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="very_short_name">
+    <field type="plone.registry.field.TextLine">
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_project_very_short_name">Project Very Short Name</title>
+    </field>
+    <value>Meadows</value>
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="vokabularies">
+     
+  </record>
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies3" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="vokabularies3">
+     
+  </record>
+     
+</registry>

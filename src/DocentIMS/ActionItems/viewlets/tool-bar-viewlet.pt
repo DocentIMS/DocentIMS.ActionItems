@@ -1,4 +1,5 @@
-<div id="toolbar" class="container flex" tal:define="portal_url view/portal_url|None">
+<div id="toolbar" class="container flex" 
+        tal:define="portal_url view/portal_url|None; tooltips view/get_the_tooltips">
     <div id="site_logo">
         <a href="#" id="hide-toolbar" xdata-bs-toggle="tooltip" data-tooltip-content="<b>Hide</b> toolbar">
             <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" />
@@ -9,6 +10,7 @@
         </a>
     </div>
 
+   
     <div id="project_name" class="flex project_color">
         <div>
             <div class="image_color">
@@ -64,7 +66,7 @@
                 </p>
             </div>
             <div id="create_task">
-                <a href="${portal_url}/action-items/++add++action_items" class="pat-tooltip" title="This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. This is the tooltip stuff. ">
+                <a href="${portal_url}/action-items/++add++action_items" class="pat-tooltip" title="${tooltips/tooltipIdButtonCreateTask}">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/AIs.jpg" />
                     <p>Create<br/>
                     Task</p>
@@ -81,18 +83,21 @@
     <div id="your_notifications">
         <div id="notifications_group" class="flex">
             <div id="traffic_lights">
-                    <p class="messagetype red">
-                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=error">
+                    <p class="messagetype red"> 
+                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=error"
+                        class="pat-tooltip" title="${tooltips/tooltipIdButtonNotificationsRed}">
                             ${view/notifications_red|None}
                         </a>
                     </p>
                     <p class="messagetype yellow">
-                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=warning">
+                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=warning"
+                        class="pat-tooltip" title="${tooltips/tooltipIdButtonNotificationsYellow}">
                             ${view/notifications_yellow|None}
                         </a>
                     </p>
                     <p class="messagetype info">
-                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=info">
+                        <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=info"
+                        class="pat-tooltip" title="${tooltips/tooltipIdButtonNotificationsGreen}">
                             ${view/notifications_green|None}
                         </a>
                     </p>
@@ -101,7 +106,8 @@
 
 
             <div id="create_task">
-                <a href="${portal_url}/notifications/++add++Notification" title="Add task">
+                <a href="${portal_url}/notifications/++add++Notification" title="Add task"
+                    class="pat-tooltip" title="${tooltips/tooltipIdButtonCreateNotification}">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
                     <p> 
                         Create<br/>
@@ -263,9 +269,7 @@
             <a href="${portal_url}/help-files">Help</a>
         </label>
 
-    </div>
-
-  
+    </div>  
 
 </div>
 
@@ -284,9 +288,7 @@
                 title: tooltipContent // Set tooltip content dynamically
             });
         });
-    });
-
- 
+    }); 
 </script>
 
 <script>
