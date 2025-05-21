@@ -44,7 +44,10 @@
             <a href="#">
                 <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/PrjMgr.jpg" />
                 <img class="toolbar_manager" src="++plone++DocentIMS.ActionItems/icons/usermode.png" />
-                <p><span class="toolbar_user hidden">Manager</span ><span class="toolbar_manager">Project</span><br/>
+                <p>
+                    <span class="toolbar_user hidden">Manager</span >
+                    <span class="toolbar_manager">Project</span>
+                    <br/>
                     Mode</p>
             </a>
         </div>
@@ -306,10 +309,16 @@
 
     <div id="notes" class="toolbar_user">
         <div class="no-flex">
-            <a href="${portal_url}/postit_notes/++add++postit_note">
+            <!-- <a class="toolbar_manager hidden" href="${portal_url}/postit_notes/++add++postit_note">
                 <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
                 <p>Create <br/>
                     Note</p>
+            </a> -->
+
+            <a class="toolbar_user" href="${portal_url}/postit_notes">
+                <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
+                <p>My<br/>
+                    Notes</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
@@ -321,7 +330,7 @@
         <div class="flex">
 
             <div>
-                <a href="#">
+                <a href="${portal_url}?refresh=1">
                     <img src="++plone++DocentIMS.ActionItems/icons/refresh.jpg" />
                     <br/>
              Refresh
@@ -392,5 +401,13 @@ Show Toolbar</button>
     });
 </script>
   -->
+
+<script>
+  document.getElementById('project').addEventListener('change', function () {
+     if (this.value === '${view/project_name}') {
+       window.location.href = $portal_url; // Redirect to home page of this project
+     }
+   });
+</script>
 
   

@@ -2,6 +2,7 @@ var $jq = jQuery.noConflict();
 var $ = jQuery.noConflict();
 
 $jq(document).ready(function () {
+  $portal_url = $('body').attr("data-portal-url");
 
   // Scope analysis, hide show fields. 
   // Shows and hides fields depending on checkbox
@@ -113,21 +114,21 @@ $jq(document).ready(function () {
 
   document.getElementById('create_meeting').addEventListener('change', function () {
     if (this.value === 'create_meeting') {
-      window.location.href = '${portal_url}/meetings/++add++meeting'; // Redirect to your desired URL
+      window.location.href = $portal_url +'/meetings/++add++meeting'; // Redirect to your desired URL
     }
     if (this.value === 'your_meetings') {
       $('#meeting_select a').toggleClass('greyed');
-      window.location.href = '${portal_url}/meetings/meeting-collection'; // Redirect to your desired URL or open in overlay
+      window.location.href = $portal_url + '/meetings/meeting-collection'; // Redirect to your desired URL or open in overlay
     }
   });
 
 
   // got to project on click
-  document.getElementById('project').addEventListener('change', function () {
-    if (this.value === '${view/project_name}') {
-      window.location.href = '${portal_url}'; // Redirect to home page of this project
-    }
-  });
+  // document.getElementById('project').addEventListener('change', function () {
+  //   if (this.value === '${view/project_name}') {
+  //     window.location.href = $portal_url; // Redirect to home page of this project
+  //   }
+  // });
 
   //Show correct toolbar
   if (localStorage.getItem("isManager") === "true") {

@@ -1,17 +1,167 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
-    <p><b>Section Number:</b> ${context/section_number|None}</p>
-    <div tal:replace="structure  context/body_text/output|None" />
-    <p><b>Comment:</b> ${context/comment|None}</p>
-    <p><b>Commenter:</b> ${context/commenter|None}</p>
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="DocentIMS.ActionItems"
+  metal:use-macro="context/main_template/macros/master">
+  <body>
+    <metal:content-core fill-slot="content-core">
+      <metal:block define-macro="content-core">
+
+        <!-- <h1 class="priority-${context/priority|None}">${context/Title}</h1> -->
+        <!-- <p class="lead"> ${context/Description|None}</p> -->
+
+        <p><b>Section no</b>: ${context/section_number|None}</p>
+
+        <div class="white-background">
+          <!-- first tab -->
+
+          <div class="pat-autotoc autotabs"
+            data-pat-autotoc="section:fieldset;levels:legend;">
+            <fieldset>
+              <legend>ⓘ Full Details</legend>
+              <p class="larger">Planning Section Details</p>
+              <div tal:replace="structure  context/bodytext/output|None" />
+              <hr class="hr" />
+              <div class="alert alert-warning">
+                <p tal:condition="context/assigned_to|None">
+                  <b>Responsibility:</b>
+                  <span tal:define="owner view/get_owner|None" >
+                    ${owner/last_name|None}, ${owner/first_name|None} <tal:condition tal:condition="owner/company|None">–  ${owner/company|None}</tal:condition>
+                  </span>
+                </p>
+
+                <!-- <div class="${view/get_css_urgency|None} colorborder calendarsheet">
+                  <p class="theading">
+                    Workdays left:
+                  </p>
+                  <p class="days">
+                    ${view/workdays_left}
+                  </p>
+                </div> -->
+
+
+                <table>
+                  <tbody>
+                    <tr>
+                      <td tal:define="creator view/get_creator|None">
+                        <b>Created By:</b>  ${creator/last_name|None}, ${creator/first_name|None}
+                      </td>
+                          <td><b>Created:</b>  <time class="pat-display-time"
+                            datetime="${python:context.created().ISO()}"
+                            data-pat-display-time="output-format: Do MMMM YYYY">
+                            ${context/created}
+                          </time>
+                        </td>
+                      
+                          <td>
+                            <b>Modified:</b>  <time class="pat-display-time"
+                            datetime="${python:context.modified().ISO()}"
+                            data-pat-display-time="output-format: Do MMMM YYYY">
+                            ${context/modified}
+                          </time>
+                        </td>
+                        
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <p></p>
+            </fieldset>
+
+
+        <!-- <fieldset>
+              <legend>↹ Notes</legend>
+              <p class="larger">Notes from the Project Manager to person doing the analysis</p>
+              <hr class="hr" />
+              <div tal:replace="structure  context/notes/output|None" /> 
+        </fieldset> -->
+ 
+
+<!-- 
+        <fieldset>
+              <legend>Task</legend>
+              <p class="larger">These are the action items generated from the analysis of this Statement of Work.</p>
+              <hr class="hr" />
+              <div tal:replace="structure  context/explanation/output|None" /> 
+
+            <p><b class="label">Related Tasks:</b>
+            <ul tal:condition="view/target_relations|None"> 
+                <li tal:repeat="rela view/target_relations">
+                  <a href="${rela/from_path}">${rela/from_object/title}</a> 
+                    <span tal:condition="rela/from_object/revised_due_date|None">- ${rela/from_object/revised_due_date}</span>
+                    <span tal:condition="not: rela/from_object/revised_due_date|None">- ${rela/from_object/initial_due_date}</span>
+                </li> 
+            </ul>
+        </fieldset> -->
+
+        <!-- <fieldset>
+              <legend>QC Requirements</legend>
+              <p class="larger">Are there internal QC requirements for this Planning Section?</p>
+              <hr class="hr" />
+              <p><b>Internal QC_required</b>: <span tal:condition="context/internal_qc_required_">Yes</span> <span tal:condition="not: context/internal_qc_required_">No</span></p>
+              <p><b>Estimated QC Time</b>: ${context/estimated_qc_time}</p>
+              <p tal:condition="context/internal_qc_required_"><b>Notes to QC:</b></p>
+              <div tal:replace="structure  context/notes_to_qc/output|None" /> 
+
+        </fieldset> -->
+<!-- 
+        <fieldset>
+              <legend>Deliverables</legend>
+              <p><b>Responsible Parties</b>: <span>${context/responsible_parties}</span></p>
+              <p><b>Quality Procedure</b>: ${context/quality_procedure}</p> 
+              <p tal:condition="context/deliverable_text|None"><b>Deliberable Text:</b></p>
+              <div tal:replace="structure  context/deliverable_text/output|None" /> 
+
+        </fieldset> -->
+        
+
+
+        <!-- <fieldset>
+          <legend>Close Out</legend>
+          <p class="larger">Person analyzing this Planning section add any notes regarding your analysis.</p>
+          <hr class="hr" />
+          <p><b>Internal QC_required</b>: <span tal:condition="context/internal_qc_required_">Yes</span> <span tal:condition="not: context/internal_qc_required_">No</span></p>
+          <p tal:condition="context/internal_qc_required_"><b>Analysis Notes:</b></p>
+          
+           <div tal:replace="structure  context/analysis_notes/output|None" /> 
+        </fieldset> -->
+
+         
+
+
+      </div> 
+      <hr class="hr" />
+    </div>
+
+    <!--div tal:condition="context/related_item|None" tal:define="related context/related_item|None" >
+    <p>Related item (parent): <a href="${related/to_path}">${related/to_object/Title}</a></p>
+  </div-->
+
+
+  <p> 
+    <!-- <a tal:condition="view/get_duedate" class="button standalone btn btn-outline-primary" href="${context/absolute_url}/@@ics_action_view">
+      <span tal:condition="view/get_duedate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"  class="plone-icon icon-inline bi bi-calendar" viewBox="0 0 19 19">
+        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+      </svg>
+      </span>
+      <span tal:condition="view/get_duedate">Export ICal</span><a> -->
+    <!--a href="${view/portal_url}/action-items/++add++action_items?related_from=${context/UID}"
+      target="_blank" class="button standalone btn btn-outline-primary">
+      <span class="black">Δ+</span>  Create Related Action Item</a-->
+
+    <a href="${context/absolute_url}/edit"
+       class="button standalone btn btn-success">
+      <span>✎</span>  Edit Planning </a>
+    </p>
+
+    <style> 
+      #viewlet-below-content-title {display: none} 
+    </style>
+
   </metal:block>
-  </metal:content-core>
+</metal:content-core>
 </body>
 </html>

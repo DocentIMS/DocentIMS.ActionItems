@@ -15,6 +15,7 @@
 }
 
 @media (min-width: 768px) {
+
   .section-postit_notes.template-full_view #content-core,
   .template-post-it-note-view.template-full_view #content-core {
     grid-template-columns: 1fr 1fr;
@@ -197,82 +198,229 @@ a:focus {
 }
 
 
-.greyed { opacity: 0.25} 
-a { opacity: 1}
-.flex {display: flex;  flex-wrap: wrap; justify-content: flex-start; }
-#toolbar {  padding: 0}
-#toolbar .flex {  justify-content:  space-between; margin: 0}
-#toolbar img {width: 2rem; }
-#document_manager img, #meeting_select img  {width: 1.3rem; }
-#toolbar {background: #E2E2E2; font-size: 10pt; xmargin-bottom: 2rem;  }
-#toolbar > div {border-right: 1px solid silver; padding: 0.4rem 1rem 1.5rem ; flex-grow: 1; position: relative}
-.toolbar_label {text-align:center; font-weight: 600 !important;  position: absolute; bottom: -5px; left: 0; right: 0; xbackground: black; color: #555555 !important}
-.toolbar_label a { font-weight: 600 !important;  }
-#toolbar {text-align:center; font-size: 10pt; text-transform:none !important }
-#toolbar * {text-transform: none !important; font-size: 10pt; font-family: Helvetica !important; font-weight: normal; color: black !important }
-#toolbar .messagetype, #toolbar .stoplight {
-      font-size: 90%; 
-      margin: 4px 0 8px;
-      padding-left: 1px;
-      padding-right: 0;
-      width: 15pt;
-      height: 15pt; 
-      padding: 3px  ; 
-      border-radius: 50%; 
-      background-color: gray
+.greyed {
+  opacity: 0.25
 }
 
-#toolbar .red { background: red;  color: white}
-#toolbar .yellow { background: yellow}
-#toolbar .green { background: green; color: white} 
-#toolbar .info { background: #40E0D0}
-#toolbar select { 
-  border-color: black; 
-  border-width: 1px; 
-  padding: 0 3px; margin-bottom: 9px; 
+a {
+  opacity: 1
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#toolbar {
+  padding: 0
+}
+
+#toolbar .flex {
+  justify-content: space-between;
+  margin: 0
+}
+
+#toolbar img {
+  width: 2rem;
+}
+
+#document_manager img,
+#meeting_select img {
+  width: 1.3rem;
+}
+
+#toolbar {
+  background: #E2E2E2;
+  font-size: 10pt;
+  xmargin-bottom: 2rem;
+}
+
+#toolbar>div {
+  border-right: 1px solid silver;
+  padding: 0.4rem 1rem 1.5rem;
+  flex-grow: 1;
+  position: relative
+}
+
+.toolbar_label {
+  text-align: center;
+  font-weight: 600 !important;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  xbackground: black;
+  color: #555555 !important
+}
+
+.toolbar_label a {
+  font-weight: 600 !important;
+}
+
+#toolbar {
+  text-align: center;
+  font-size: 10pt;
+  text-transform: none !important
+}
+
+#toolbar * {
+  text-transform: none !important;
+  font-size: 10pt;
+  font-family: Helvetica !important;
+  font-weight: normal;
+  color: black !important
+}
+
+#toolbar .messagetype,
+#toolbar .stoplight {
+  font-size: 90%;
+  margin: 4px 0 8px;
+  padding-left: 1px;
+  padding-right: 0;
+  width: 15pt;
+  height: 15pt;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: gray
+}
+
+#toolbar .red {
+  background: red;
+  color: white
+}
+
+#toolbar .yellow {
+  background: yellow
+}
+
+#toolbar .green {
+  background: green;
+  color: white
+}
+
+#toolbar .info {
+  background: #40E0D0
+}
+
+#toolbar select {
+  border-color: black;
+  border-width: 1px;
+  padding: 0 3px;
+  margin-bottom: 9px;
   border-radius: 4px;
-   
+
 }
-#toolbar input, #toolbar select {height: auto } 
-#toolbar a { color: black; text-decoration: none; text-transform: none !important; border-bottom: 0 dotted #E2E2E2 !important}
-#toolbar p { padding: 0; margin: 0; line-height: 120%}
-#toolbar #help_div {border-right: 0 none}
-#document_type_select {text-align: center}
-.image_color {background: ${view/color}; width: 3rem; height: 3rem; margin-bottom: 4px}
-#toolbar #site_logo img { width: 3rem; height: 3rem; margin-bottom: 4px}
-#xmeeting_create img { margin-bottom: 10px;}
-p.align-left { text-align: left}
-#xcreate_meeting {border: 0 none !important; background: none}
-#create_meeting { background-image: none}
 
-#show-toobar button { border: 0 none; padding: 0 10px 0 0 ; padding-inline: 0; background: white; line-height: 120%;}
-#show-toobar img{ margin: 0 5px 0 0 ; padding: 0}
+#toolbar input,
+#toolbar select {
+  height: auto
+}
+
+#toolbar a {
+  color: black;
+  text-decoration: none;
+  text-transform: none !important;
+  border-bottom: 0 dotted #E2E2E2 !important
+}
+
+#toolbar p {
+  padding: 0;
+  margin: 0;
+  line-height: 120%
+}
+
+#toolbar #help_div {
+  border-right: 0 none
+}
+
+#document_type_select {
+  text-align: center
+}
+
+.image_color {
+  background: $ {
+    view/color
+  }
+
+  ;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 4px
+}
+
+#toolbar #site_logo img {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 4px
+}
+
+#xmeeting_create img {
+  margin-bottom: 10px;
+}
+
+p.align-left {
+  text-align: left
+}
+
+#xcreate_meeting {
+  border: 0 none !important;
+  background: none
+}
+
+#create_meeting {
+  background-image: none
+}
+
+#show-toobar button {
+  border: 0 none;
+  padding: 0 10px 0 0;
+  padding-inline: 0;
+  background: white;
+  line-height: 120%;
+}
+
+#show-toobar img {
+  margin: 0 5px 0 0;
+  padding: 0
+}
 
 
-body #portal-column-two { background: white !important; border: 1px solid; border-radius: 5px; background: white !important; padding-bottom: 2rem}
-.portletWrapper {background: white !important}
+body #portal-column-two {
+  background: white !important;
+  border: 1px solid;
+  border-radius: 5px;
+  background: white !important;
+  padding-bottom: 2rem
+}
+
+.portletWrapper {
+  background: white !important
+}
 
 .pat-collectionfilter .card-body,
 .pat-collectionfilter,
-.collectionFilter .card-body, 
+.collectionFilter .card-body,
 .collectionFilter,
-.pat-collectionfilter, 
+.pat-collectionfilter,
 .card-header.portletHeader {
   background: none !important;
   padding: 0 7px;
   font-weight: bold;
   border: 0 none !important;
   margin: 0;
-  }
+}
 
-  div.outer-wrapper.flex-shrink-0 {
-    background: #FAFAF9;
-  }
+div.outer-wrapper.flex-shrink-0 {
+  background: #FAFAF9;
+}
 
-.frontend fieldset { background: white}
+.frontend fieldset {
+  background: white
+}
 
-.frontend fieldset.autotoc-section  {
- padding: 1rem; 
+.frontend fieldset.autotoc-section {
+  padding: 1rem;
 }
 
 .frontend .pat-autotoc.autotabs .autotoc-nav {
@@ -288,13 +436,169 @@ body #portal-column-two { background: white !important; border: 1px solid; borde
 #toggle-filters img {
   background: white;
   border-radius: 5px;
- 
+
 }
+
 #toggle-filters {
   padding: 3px 5px 0;
 }
 
- #portal-breadcrumbs 
-   {
-    background: none !important;
+#portal-breadcrumbs {
+  background: none !important;
+}
+
+
+
+h1.priority-1 {
+  color: #F24C3D
+}
+
+h1.priority-3 {
+  color: #22A699
+}
+
+h1.priority-2 {
+  color: #F2BE22
+}
+
+h1.priority-x3 {
+  color: #F29727
+}
+
+h1.priority-xx1 {
+  color: #F24C3D
+}
+
+h1.priority-x1 {
+  color: red
+}
+
+.black {
+  color: black
+}
+
+.autotoc-nav {
+  xbackground: whitesmoke
+}
+
+.autotoc-nav .active {
+  xbackground: white
+}
+
+.white-background {
+  xbackground: white
+}
+
+body {
+  xbackground: whitesmoke
+}
+
+.xpat-autotoc.autotabs {
+  background: white
+}
+
+fieldset {
+  background: white;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+td {
+  padding: 3px 12px;
+  margin: 1px;
+}
+
+.calendarsheet {
+  max-width: 120px;
+  min-width: 90px;
+  float: right;
+
+  display: block;
+}
+
+.calendarsheet.left {
+  float: left;
+  opacity: 0.6
+}
+
+.redborder.calendarsheet time {
+  background: red;
+}
+
+.calendarsheet time,
+.calendarsheet p,
+.calendarsheet date {
+  display: block;
+  text-align: center;
+}
+
+.colorborder {
+  border: 5px solid;
+}
+
+.redborder {
+  border: 5px solid red;
+}
+
+.urgent_red {
+  border-color: red
+}
+
+.soon_yellow {
+  border-color: orange
+}
+
+.future_green {
+  border-color: green
+}
+
+.long_grey {
+  border-color: #123456
+}
+
+.redborder p.theading,
+.urgent_red p.theading {
+  background: red
+}
+
+.soon_yellow p.theading {
+  background: orange
+}
+
+.future_green p.theading {
+  background: green
+}
+
+.long_grey p.theading {
+  background: #123456
+}
+
+.calendarsheet time,
+.calendarsheet p.theading {
+  color: white !important;
+  margin: 0
+}
+
+.calendarsheet .days,
+.calendarsheet date {
+  background: white;
+  color: black;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -3px;
+  margin: 0;
+
+}
+
+.larger {
+  font-size: 120%
+}
+
+
+@media (min-width:100px) {
+  div.soon_yellow.colorborder.calendarsheet {
+    position: relative;
+    top: -2.5rem;
+    ;
   }
+}
