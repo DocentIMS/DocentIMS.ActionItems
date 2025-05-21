@@ -197,7 +197,6 @@ a:focus {
   color: #e95e37;
 }
 
-
 .greyed {
   opacity: 0.25
 }
@@ -336,17 +335,6 @@ a {
 
 #document_type_select {
   text-align: center
-}
-
-.image_color {
-  background: $ {
-    view/color
-  }
-
-  ;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 4px
 }
 
 #toolbar #site_logo img {

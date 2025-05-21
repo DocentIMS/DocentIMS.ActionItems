@@ -11,9 +11,7 @@
 
     <div id="project_name" class="flex project_color">
         <div>
-            <div class="image_color">
-
-            </div>
+            <div class="image_color">  </div>
             <p>Project<br/>
                 Color</p>
         </div>
@@ -43,15 +41,17 @@
         <div class="no-flex">
             <a href="#">
                 <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/PrjMgr.jpg" />
-                <img class="toolbar_manager" src="++plone++DocentIMS.ActionItems/icons/usermode.png" />
+                <img class="toolbar_manager" src="++plone++DocentIMS.ActionItems/icons/team_mode.png" />
                 <p>
                     <span class="toolbar_user hidden">Manager</span >
-                    <span class="toolbar_manager">Project</span>
+                    <span class="toolbar_manager">Team</span>
                     <br/>
                     Mode</p>
             </a>
         </div>
-        <label class="toolbar_label" data-bs-toggle="tooltip" title="${tooltips/tooltipIdDocentMode|None}" data-tooltip-content="${tooltips/tooltipIdDocentMode|None}">
+        <label class="toolbar_label" data-bs-toggle="tooltip" 
+            title="${tooltips/tooltipIdDocentMode|None}" 
+            data-tooltip-content="${tooltips/tooltipIdDocentMode|None}">
             <a href="#">Docent Mode</a>
         </label>
     </div>
@@ -92,7 +92,7 @@
 
     <div id="your_notifications">
         <div id="notifications_group" class="flex">
-            <div id="traffic_lights">
+            <div id="traffic_lights" class="toolbar_user">
                 <p class="messagetype red">
                     <a href="${portal_url}/notifications/notifications-collection/?collectionfilter=1&notification_type=error" class="pat-tooltip" title="${tooltips/tooltipIdButtonNotificationsRed|None}">
                             ${view/notifications_red|None}
@@ -112,13 +112,16 @@
             </div>
 
 
-            <div id="create_task">
-                <a href="${portal_url}/notifications/++add++Notification" title="Add task" class="pat-tooltip" title="${tooltips/tooltipIdButtonCreateNotification|None}">
+            <div id="create_notif">
+                <a class="toolbar_manager hidden" href="${portal_url}/notifications/++add++Notification" title="Add Notif" class="pat-tooltip" title="${tooltips/tooltipIdButtonCreateNotification|None}">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
                     <p> 
                         Create<br/>
                         Notif.
                     </p>
+                </a>
+                <a class="toolbar_user" href="${portal_url}/notifications" title="Notif">
+                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
                 </a>
             </div>
         </div>
@@ -162,51 +165,62 @@
 
     <div id="rfp" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="#">
+            <a href="${portal_url}/rfp-analysis">
                 <!-- <img src="++plone++DocentIMS.ActionItems/icons/rfp_upload.png" /> -->
                 <img src="++plone++DocentIMS.ActionItems/icons/upload.png" />
-                <p>Upload<br/>
-                    This RFP</p>
+                <p>RFP</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" title="${tooltips/tooltipIdRFP|None}" data-tooltip-content="${tooltips/tooltipIdRFP|None}">
-            <a href="${portal_url}/postit_notes">RFP Manager</a>
+            <a href="${portal_url}/rfp-analysis">RFP Manager</a>
         </label>
     </div>
 
 
     <div id="planing_documents" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="#">
+            <a href="${portal_url}/planning-documents">
                 <img src="++plone++DocentIMS.ActionItems/icons/PlanningDocs.jpg" />
                 <p>Planning<br/>
                    Documents</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" title="${tooltips/tooltipIdRFP|None}" data-tooltip-content="${tooltips/tooltipIdRFP|None}">
-            <a href="${portal_url}/postit_notes">Planning Documents</a>
+            <a href="${portal_url}/planning-documents">Planning Documents</a>
         </label>
     </div>
 
-
     <div id="scope_manager" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="${portal_url}/scope-analysis/++add++scope">
+            <a href="${portal_url}/scope-analysis">
                 <img src="++plone++DocentIMS.ActionItems/icons/scope.png" />
-                <p>PrjMgmt <br/>
-                    Plan</p>
+                <p>Scope<br/>
+                   Document</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/scope-analysis">PrjMgmt Plan</a>
+            <a href="${portal_url}/scope-analysis">Scope Manager</a>
+        </label>
+    </div>
+
+    <div id="pmp_manager" class="toolbar_manager hidden">
+        <div class="no-flex">
+            <a href="${portal_url}/pmp">
+                <img src="++plone++DocentIMS.ActionItems/icons/pmp.jpg" />
+                <p>PMP <br/>
+                    Document</p>
+            </a>
+        </div>
+        <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
+            <a href="${portal_url}/pmp">PMP</a>
         </label>
     </div>
 
     <div id="command_statement" class="toolbar_manager hidden">
         <div class="no-flex">
             <a href="${portal_url}/">
-                <img src="++plone++DocentIMS.ActionItems/icons/command_statement.png" />
-                <p>Command_ <br/>
+                <img src="++plone++DocentIMS.ActionItems/icons/command_statements.png" />
+                <p>Command<br/>
                     Statement</p>
             </a>
         </div>
@@ -218,16 +232,30 @@
 
     <div id="ms_project" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="${portal_url}/scope-analysis/++add++scope">
+            <a href="${portal_url}/ms-project<">
                 <img src="++plone++DocentIMS.ActionItems/icons/MSP.jpg" />
                 <p>MS <br/>
                     Project</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/scope-analysis">MS Project</a>
+            <a href="${portal_url}/ms-project">MS Project</a>
         </label>
     </div>
+
+    <!-- <div id="templates_manager" class="toolbar_manager hidden">
+        <div class="no-flex">
+            <a href="${portal_url}/templates"> -->
+    <!-- <img src="++plone++DocentIMS.ActionItems/icons/MSP.jpg" /> -->
+    <!-- <p>Templates<br/>
+                    Manager</p>
+            </a>
+        </div>
+        <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
+            <a href="${portal_url}/ms-project">Templates Manager</a>
+        </label>
+    </div> -->
+
 
 
 
@@ -411,3 +439,12 @@ Show Toolbar</button>
 </script>
 
   
+<style>
+.image_color {
+  background: ${view/color|None};
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 4px
+}
+
+</style>

@@ -599,13 +599,25 @@ def _create_content(portal):
         #             customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
         #             query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['feedback']}]
         #         )
+     
+        
+        if not portal.get('pmp', False):
+            items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='pmp',
+                title='PMP',
+                exclude_from_nav=False,
+            )  
                 
-       
-            
-            
-            
-                
-
+        if not portal.get('command-statements', False):
+            items = plone.api.content.create(
+                type='Folder',
+                container=portal,
+                id='command-statements',
+                title='Command Statements',
+                exclude_from_nav=False,
+            )
         
         if not portal.get('help-files', False):
             items = plone.api.content.create(
@@ -780,7 +792,7 @@ def _create_content(portal):
                 {'filename': 'Meeting_Minutes.dotx',    'filetitle': 'Meeting Minutes.dotx' , 'folder': meeting_folder },
                 {'filename': 'MS_Project.dotx',         'filetitle': 'MS Project.dotx', 'folder': manager_folder},	
                 {'filename': 'Meeting_Agenda.dotm',     'filetitle': 'Meeting Agenda.dotm', 'folder': meeting_folder},	
-                {'filename': 'Reimbursement_Request.dotm','filetitle': 'Reimbursement Reques.dotm', 'folder': document_folder},
+                {'filename': 'Reimbursement_Request.dotm','filetitle': 'Reimbursement Request.dotm', 'folder': document_folder},
                 {'filename': 'Scope.dotx', 'filetitle': 'Scope.dotx', 'folder': manager_folder},	
                 {'filename': 'Main_Template.dotx',      'filetitle': 'Main Template.dotx' , 'folder': templates_folder},
             ]
