@@ -1,9 +1,27 @@
-<model
-    xmlns="http://namespaces.plone.org/supermodel/schema"
-    xmlns:security="http://namespaces.plone.org/supermodel/security"
-    xmlns:form="http://namespaces.plone.org/supermodel/form"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="DocentIMS.ActionItems">
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
+xmlns:form="http://namespaces.plone.org/supermodel/form" 
+xmlns:security="http://namespaces.plone.org/supermodel/security" 
+xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" 
+xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" 
+xmlns:users="http://namespaces.plone.org/supermodel/users" 
+xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" 
+xmlns="http://namespaces.plone.org/supermodel/schema">
   <schema>
+    <field name="document_type" type="zope.schema.TextLine">
+      <description>The type of document (e.g. letter, memo, reimbursement)</description>
+      <title>Document Type</title>
+    </field>
+    <field name="file" type="plone.namedfile.field.NamedBlobFile">
+      <accept/>
+      <description>The document file.</description>
+      <title>file</title>
+    </field>
+    <field name="table" type="plone.schema.jsonfield.JSONField">
+      <description/>
+      <required>False</required>
+      <title>Table</title>
+    </field>
   </schema>
 </model>
+
+ 

@@ -7,7 +7,7 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">docent_misc_document</property>
+      name="title">Docent Misc Document</property>
   <property
       i18n:translate=""
       name="description">This content type will be used for all 'non special' Docent documents.    This will hold all the docs created by templates, but are not "special"  (for example,  Docs like Scope, PMP etc. are special content types.)</property>
