@@ -147,26 +147,26 @@ def post_install(context):
     
  
 
-    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
-    #                                     [{'full_company_name': 'Parametrix, Inc.',
-    #                                       'short_company_name': 'Parametrix' ,
-    #                                       'company_letter_kode': 'PMX',
-    #                                       'company_role': None,
-    #                                       'company_full_street_address': '719 2nd Avenue',
-    #                                       'company_other_address': 'Suite 200',
-    #                                       'company_city': 'Seattl',
-    #                                       'company_state': 'WA',
-    #                                       'company_zip': '98104'}, 
-    #                                      {'full_company_name': 'Docent IMS LLC',
-    #                                       'short_company_name': 'Docent' ,
-    #                                       'company_letter_kode': 'DOC',
-    #                                       'company_role': None,
-    #                                       'company_full_street_address': '141 Reservoir Ave',
-    #                                       'company_other_address': '',
-    #                                       'company_city': 'Revere',
-    #                                       'company_state': 'MA',
-    #                                       'company_zip': '02151'},
-    #                                     ])
+    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
+                                        [{'full_company_name': 'Parametrix, Inc.',
+                                          'short_company_name': 'Parametrix' ,
+                                          'company_letter_kode': 'PMX',
+                                          'company_role': None,
+                                          'company_full_street_address': '719 2nd Avenue',
+                                          'company_other_address': 'Suite 200',
+                                          'company_city': 'Seattle',
+                                          'company_state': 'WA',
+                                          'company_zip': '98104'}, 
+                                         {'full_company_name': 'Docent IMS LLC',
+                                          'short_company_name': 'Docent' ,
+                                          'company_letter_kode': 'DOC',
+                                          'company_role': None,
+                                          'company_full_street_address': '141 Reservoir Ave',
+                                          'company_other_address': '',
+                                          'company_city': 'Revere',
+                                          'company_state': 'MA',
+                                          'company_zip': '02151'},
+                                        ])
     
     
     
@@ -366,7 +366,7 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='scope-analysis',
-                title='Scope Breakdown',
+                title='Scope Analysis',
                 default_page='sow-collection',
                 nextPreviousEnabled=1
 

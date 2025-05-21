@@ -58,19 +58,19 @@
 
     <div id="your_tasks" class="toolbar_user">
         <div id="task_group" class="flex">
-            <div id="traffic_lights">
+            <div id="traffic_lights" tal:define="stoplight_state view/stoplight_state">
                 <p class="stoplight red">
-                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Red">
+                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Red&review_state=${stoplight_state}">
                         ${view/tasks_red} 
                     </a>
                 </p>
                 <p class="stoplight yellow">
-                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Yellow">
+                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Yellow&review_state=${stoplight_state}">
                         ${view/tasks_yellow} 
                     </a>
                 </p>
                 <p class="stoplight green">
-                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Green">
+                    <a href="${portal_url}/action-items/action-items-collection/?collectionfilter=1&stoplight=Green&review_state=${stoplight_state}">
                         ${view/tasks_green} 
                     </a>
                 </p>
@@ -440,6 +440,8 @@ Show Toolbar</button>
 
   
 <style>
+.hidden {display: none !important}
+
 .image_color {
   background: ${view/color|None};
   width: 3rem;

@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="DocentIMS.ActionItems.AddDocentMiscDocument"
+        title="DocentIMS.ActionItems: Add DocentMiscDocument"
+    />
+
+
+    <permission
         id="DocentIMS.ActionItems.AddMsProject"
         title="DocentIMS.ActionItems: Add MsProject"
     />
