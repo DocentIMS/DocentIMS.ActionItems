@@ -42,7 +42,7 @@
     <div id="toolbar_mode" class="">
         <div class="no-flex">
             <a href="#">
-                <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/mode.png" />
+                <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/PrjMgr.jpg" />
                 <img class="toolbar_manager" src="++plone++DocentIMS.ActionItems/icons/usermode.png" />
                 <p><span class="toolbar_user hidden">Manager</span ><span class="toolbar_manager">Project</span><br/>
                     Mode</p>
@@ -160,7 +160,8 @@
     <div id="rfp" class="toolbar_manager hidden">
         <div class="no-flex">
             <a href="#">
-                <img src="++plone++DocentIMS.ActionItems/icons/rfp_upload.png" />
+                <!-- <img src="++plone++DocentIMS.ActionItems/icons/rfp_upload.png" /> -->
+                <img src="++plone++DocentIMS.ActionItems/icons/upload.png" />
                 <p>Upload<br/>
                     This RFP</p>
             </a>
@@ -174,7 +175,7 @@
     <div id="planing_documents" class="toolbar_manager hidden">
         <div class="no-flex">
             <a href="#">
-                <img src="++plone++DocentIMS.ActionItems/icons/planning_documents.png" />
+                <img src="++plone++DocentIMS.ActionItems/icons/PlanningDocs.jpg" />
                 <p>Planning<br/>
                    Documents</p>
             </a>
@@ -215,7 +216,7 @@
     <div id="ms_project" class="toolbar_manager hidden">
         <div class="no-flex">
             <a href="${portal_url}/scope-analysis/++add++scope">
-                <img src="++plone++DocentIMS.ActionItems/icons/ms_project.png" />
+                <img src="++plone++DocentIMS.ActionItems/icons/MSP.jpg" />
                 <p>MS <br/>
                     Project</p>
             </a>

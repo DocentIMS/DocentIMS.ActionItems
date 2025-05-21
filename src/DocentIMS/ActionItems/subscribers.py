@@ -220,7 +220,19 @@ def last_state(object, event):
         object.formertransitiontwo =  object.formertransition or None
         object.formertransition = event.transition.__name__
     
-    
+
+
+
+def close_task(object, event):
+    """Go to Closed State based on"""
+    if object.portal_type == 'action_items':
+        # context = object
+        if object.is_this_item_closed:
+            #Go to closed state
+            #import pdb; pdb.set_trace()
+            api.portal.show_message(message='Should go to Closed State, but Workflow does not allow that',type='warning')
+            
+
 
 def save_note(object, event):
     """Make notes content items"""

@@ -88,7 +88,6 @@
       class=".firstloggedin.RedirectEditFormView"
       permission="plone.app.contentrules.ManageContentRules"
       /> 
-
       
 
   <plone:ruleAction
@@ -211,6 +210,16 @@
     handler=".subscribers.save_note"
     />
    
+<!-- to do find registration for right thing-->
+  <subscriber
+    for="Products.CMFCore.interfaces.IFolderish        
+        zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".subscribers.close_task"
+    />
+   
+
+
+
 
 
     <!-- subscriber for the 'Last state' transaction -->

@@ -14,9 +14,15 @@
    #formfield-form-widgets-IBasic-title .invalid-feedback, 
    #contentview-user_data-personal-preferences {display: none !important}
    #formfield-form-widgets-IBasic-title .form-control.is-invalid {border-color: #CCC !important}
+   .brown {background-color:  rgba(135,97,2,255)}
+   .aqua {background: rgba(71,163,182,255)}
 </style>
 
 <div tal:condition="view/planningcolor|None" class="alert planning"><b>-- This is a planning project --</b></div>
 
- 
- 
+ <!-- Docent logo colors  new logo   may 5, 2025
+Brown:  rgba(135,97,2,255)
+	Hex #876102
+Aqua:   rgba(71,163,182,255)
+	Hex #47a3b6
+ -->

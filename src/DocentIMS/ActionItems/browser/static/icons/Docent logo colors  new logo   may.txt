@@ -1,0 +1,7 @@
+Docent logo colors  new logo   may 5, 2025
+
+Brown:  rgba(135,97,2,255)
+	Hex #876102
+
+Aqua:   rgba(71,163,182,255)
+	Hex #47a3b6
