@@ -74,4 +74,68 @@ $jq(document).ready(function () {
       })
     }
   });
+
+  // Override stanard tooltip behavior
+  $('.htmltooltip').each(function () {
+    var tooltipContent = $(this).attr('data-tooltip-content'); // Get content from custom attribute
+    $(this).tooltip({
+      html: true,
+      title: tooltipContent // Set tooltip content dynamically
+    });
+  });
+
+
+  // Check stored state
+  // to do, maybe move this to cookie
+  if (localStorage.getItem("toolbarHidden") === "true") {
+    jQuery("#toolbar").hide();
+    jQuery("#show-toobar").removeClass('hidden');
+    jQuery("#show-toobar").show();
+
+  } else {
+    jQuery("#show-toobar").hide();
+  }
+
+  jQuery("#hide-toolbar, #show-toobar").click(function () {
+    jQuery("#toolbar, #show-toobar").slideToggle();
+    jQuery("#show-toobar").removeClass('hidden');
+
+    // Update state in localStorage
+    const isHidden = (localStorage.getItem("toolbarHidden") === "true");
+    localStorage.setItem("toolbarHidden", !isHidden);
+  });
+
+  // toolbar meeting javascript
+
+  $('#meeting_select').on('change', function () {
+    $('#meeting_select a').toggleClass('greyed');
+  });
+
+  document.getElementById('create_meeting').addEventListener('change', function () {
+    if (this.value === 'create_meeting') {
+      window.location.href = '${portal_url}/meetings/++add++meeting'; // Redirect to your desired URL
+    }
+    if (this.value === 'your_meetings') {
+      $('#meeting_select a').toggleClass('greyed');
+      window.location.href = '${portal_url}/meetings/meeting-collection'; // Redirect to your desired URL or open in overlay
+    }
+  });
+
+
+  // got to project on click
+  document.getElementById('project').addEventListener('change', function () {
+    if (this.value === '${view/project_name}') {
+      window.location.href = '${portal_url}'; // Redirect to home page of this project
+    }
+  });
+
+
+  // Toggle toolbar mode
+  $('#toolbar_mode a').on('click', function () {
+    $('.toolbar_user, .toolbar_manager').toggleClass('hidden');
+    $('#toolbar').toggleClass('manager_mode');
+  });
+
+
+
 });

@@ -39,7 +39,7 @@
     <field type="plone.registry.field.Text">
       <title>Informational Notification</title>
     </field>
-    <value>Show  Informational Notifications.</value>
+    <value>Show Informational Notifications.</value>
   </record>
 
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonCreateNotification" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonCreateNotification">
@@ -573,7 +573,7 @@
     <field type="plone.registry.field.Text">  
       <title>Send Feedback</title>
     </field>
-    <value>"A project must be selected to send feedback.", "Help us improve Docent."</value>
+    <value>A project must be selected to send feedback.", "Help us improve Docent.</value>
   </record>
 
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonDocInfo" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonDocInfo">
