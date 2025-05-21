@@ -88,17 +88,17 @@ $jq(document).ready(function () {
   // Check stored state
   // to do, maybe move this to cookie
   if (localStorage.getItem("toolbarHidden") === "true") {
-    jQuery("#toolbar").hide();
-    jQuery("#show-toobar").removeClass('hidden');
-    jQuery("#show-toobar").show();
+   $("#toolbar").hide();
+   $("#show-toobar").removeClass('hidden');
+   $("#show-toobar").show();
 
   } else {
-    jQuery("#show-toobar").hide();
+   $("#show-toobar").hide();
   }
 
-  jQuery("#hide-toolbar, #show-toobar").click(function () {
-    jQuery("#toolbar, #show-toobar").slideToggle();
-    jQuery("#show-toobar").removeClass('hidden');
+ $("#hide-toolbar, #show-toobar").click(function () {
+   $("#toolbar, #show-toobar").slideToggle();
+   $("#show-toobar").removeClass('hidden');
 
     // Update state in localStorage
     const isHidden = (localStorage.getItem("toolbarHidden") === "true");
@@ -129,11 +129,19 @@ $jq(document).ready(function () {
     }
   });
 
+  //Show correct toolbar
+  if (localStorage.getItem("isManager") === "true") {
+    $('.toolbar_user, .toolbar_manager').toggleClass('hidden');
+    $('#toolbar').toggleClass('manager_mode');
+ 
+   }
 
   // Toggle toolbar mode
   $('#toolbar_mode a').on('click', function () {
     $('.toolbar_user, .toolbar_manager').toggleClass('hidden');
     $('#toolbar').toggleClass('manager_mode');
+    const isManager = (localStorage.getItem("isManager") === "true");
+    localStorage.setItem("isManager", !isManager);
   });
 
 

@@ -42,9 +42,9 @@
     <div id="toolbar_mode" class="">
         <div class="no-flex">
             <a href="#">
-                <img class="toolbar_user" src="++plone++DocentIMS.ActionItems/icons/mode.png" />
+                <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/mode.png" />
                 <img class="toolbar_manager" src="++plone++DocentIMS.ActionItems/icons/usermode.png" />
-                <p>PrjMgr<br/>
+                <p><span class="toolbar_user hidden">Manager</span ><span class="toolbar_manager">Project</span><br/>
                     Mode</p>
             </a>
         </div>
