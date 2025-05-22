@@ -398,7 +398,7 @@ def _create_content(portal):
             )
             
         if not portal.get('ms-project', False):
-            meeting = plone.api.content.create(
+            msproject_folder = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='ms-project',
@@ -790,11 +790,12 @@ def _create_content(portal):
             wordfiles = [
                 {'filename': 'Meeting_Notes.dotm',      'filetitle': 'Meeting Notes.dotm', 'folder': meeting_folder},
                 {'filename': 'Meeting_Minutes.dotx',    'filetitle': 'Meeting Minutes.dotx' , 'folder': meeting_folder },
-                {'filename': 'MS_Project.dotx',         'filetitle': 'MS Project.dotx', 'folder': manager_folder},	
+                {'filename': 'MS_Project.dotx',         'filetitle': 'MS Project.dotx', 'folder': manager_folder},
+                {'filename': 'MS_Project.xlsx',      'filetitle': 'MS Project.xlsx' , 'folder': msproject_folder},	
                 {'filename': 'Meeting_Agenda.dotm',     'filetitle': 'Meeting Agenda.dotm', 'folder': meeting_folder},	
                 {'filename': 'Reimbursement_Request.dotm','filetitle': 'Reimbursement Request.dotm', 'folder': document_folder},
                 {'filename': 'Scope.dotx', 'filetitle': 'Scope.dotx', 'folder': manager_folder},	
-                {'filename': 'Main_Template.dotx',      'filetitle': 'Main Template.dotx' , 'folder': templates_folder},
+                {'filename': 'Main_Template.dotx',      'filetitle': 'Main Template.dotx' , 'folder': templates_folder}
             ]
             
             for wordfile in wordfiles:            
