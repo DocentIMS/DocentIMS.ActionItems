@@ -15,6 +15,7 @@ import random
 import json
 import base64
 from plone.api import content
+from plone.api.exc import InvalidParameterError
 
 
 
@@ -233,10 +234,13 @@ def close_task(object, event):
         if api.content.get_state(object) != 'Closed':
             #Go to Closed state
             if object.is_this_item_closed: 
-                api.content.transition(obj=object, transition='close')
-                api.portal.show_message(message='Moved to Closed State', type='info')
+                try:
+                    api.content.transition(obj=object, transition='close')
+                    api.portal.show_message(message='Moved to Closed State', type='info')
+                except InvalidParameterError: 
+                    api.portal.show_message(message='Could not move to Closed state. Workflow does not allow',type='error')
             else:                
-                api.portal.show_message(message='This Task was Closed',type='warning')
+                api.portal.show_message(message='This Task was already Closed',type='warning')
             
 
 
