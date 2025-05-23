@@ -430,12 +430,21 @@ def _create_content(portal):
                                 
                 
         if not portal.get('documents', False):
-            images_folder = plone.api.content.create(
+            documents_folder = plone.api.content.create(
                 type='Folder',
                 container=portal,
                 id='documents',
                 title='Documents',
-            )  
+            )
+        if not portal.get('save-locations', False):
+            save_locations_folder = plone.api.content.create(
+                type='Folder',
+                container=documents_folder,
+                id='save-locations',
+                title='Save Locations',
+                exclude_from_nav=True,
+                layout='tabular_view',
+            )
             
         # if not portal.get('documents', False):
         #     images_folder = plone.api.content.create(
@@ -746,7 +755,6 @@ def _create_content(portal):
                 
                 
                 
-            
         if not portal.get('templates', False):
             templates_folder = plone.api.content.create(
                 type='Folder',
