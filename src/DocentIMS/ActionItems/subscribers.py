@@ -14,6 +14,9 @@ import string
 import random
 import json
 import base64
+from plone.api import content
+
+
 
 from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
@@ -227,10 +230,13 @@ def close_task(object, event):
     """Go to Closed State based on"""
     if object.portal_type == 'action_items':
         # context = object
-        if object.is_this_item_closed:
-            #Go to closed state
-            #import pdb; pdb.set_trace()
-            api.portal.show_message(message='Should go to Closed State, but Workflow does not allow that',type='warning')
+        if api.content.get_state(object) != 'Closed':
+            #Go to Closed state
+            if object.is_this_item_closed: 
+                api.content.transition(obj=object, transition='close')
+                api.portal.show_message(message='Moved to Closed State', type='info')
+            else:                
+                api.portal.show_message(message='This Task was Closed',type='warning')
             
 
 

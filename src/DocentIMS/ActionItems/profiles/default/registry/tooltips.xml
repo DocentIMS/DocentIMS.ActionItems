@@ -1,6 +1,7 @@
 <registry>
                                                                                                            
-  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdCheckBoxPlanning" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdCheckBoxPlanning">
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdCheckBoxPlanning" 
+    interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdCheckBoxPlanning">
     <field type="plone.registry.field.Text">
       <title>Planning Projects Only</title>
     </field>
