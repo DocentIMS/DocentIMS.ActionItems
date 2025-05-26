@@ -281,33 +281,35 @@ def save_note(object, event):
 
 def user_created_handler(event):
     """Handles a new user creation."""
-    dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'
-    site_url = dashboard_url + "/++api++/@users"
-    user = event.object
-    email  = user.getProperty('email', None)
-    
-    # Create a new user on dashboard site
-    if email:
-        basik =  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
-        username = user.getUserName()
-        fullname = user.getProperty('fullname')
-        if fullname:
-            password = ''.join(random.choices(string.ascii_letters, k=27))            
+    try:
+        dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'
+        site_url = dashboard_url + "/++api++/@users"
+        user = event.object
+        email  = user.getProperty('email', None)
         
-            added_user = requests.post(
-                    site_url,
-                    headers={
-                        'Content-Type': 'application/json',
-                        'Authorization': f'Basic {basik}'
-                    },
-                    data = json.dumps({
-                        'email': email,
-                        'password': password,
-                        'fullname': fullname,
-                        'roles': ['Member'] 
-                    })
-                )
-             
+        # Create a new user on dashboard site
+        if email:
+            basik =  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
+            username = user.getUserName()
+            fullname = user.getProperty('fullname')
+            if fullname:
+                password = ''.join(random.choices(string.ascii_letters, k=27))            
+            
+                added_user = requests.post(
+                        site_url,
+                        headers={
+                            'Content-Type': 'application/json',
+                            'Authorization': f'Basic {basik}'
+                        },
+                        data = json.dumps({
+                            'email': email,
+                            'password': password,
+                            'fullname': fullname,
+                            'roles': ['Member'] 
+                        })
+                    )
+    except KeyError:
+        pass   
         
     #     return True
     

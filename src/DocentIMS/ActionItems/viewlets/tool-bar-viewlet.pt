@@ -52,7 +52,7 @@
         <label class="toolbar_label" data-bs-toggle="tooltip" 
             title="${tooltips/tooltipIdDocentMode|None}" 
             data-tooltip-content="${tooltips/tooltipIdDocentMode|None}">
-            <a href="#">Docent Mode</a>
+            <a href="#">Docent <br/>Mode</a>
         </label>
     </div>
 
