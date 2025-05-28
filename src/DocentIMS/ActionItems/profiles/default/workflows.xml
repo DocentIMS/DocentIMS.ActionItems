@@ -44,6 +44,7 @@
   <type type_id="File">
    <bound-workflow workflow_id="one_state_workflow"/>
   </type>
+  <type type_id="Image"/>
   <type type_id="Meeting">
    <bound-workflow workflow_id="meadows_meeting_workflow"/>
   </type>

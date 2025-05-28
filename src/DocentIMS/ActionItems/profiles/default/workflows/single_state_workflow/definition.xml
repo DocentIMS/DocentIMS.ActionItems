@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="single_state_workflow" title="Single State Workflow"
-description="Unique WF created for collections so there is no workflow and collections will always be in &quot;Private&quot;.    For my uses, there is no reason why a collection would be other than private - only visible to site users." state_variable="review_state" initial_state="Private" manager_bypass="False">
+<dc-workflow workflow_id="single_state_workflow" title="Single State Workflow" description="Unique WF created for collections so there is no workflow and collections will always be in &quot;Private&quot;.    For my uses, there is no reason why a collection would be other than private - only visible to site users." state_variable="review_state" initial_state="Private" manager_bypass="False">
  <instance-creation-conditions>
    <guard>
     <guard-group>SiteAdmin</guard-group>
