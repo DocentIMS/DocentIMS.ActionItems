@@ -146,5 +146,12 @@ $jq(document).ready(function () {
   });
 
 
+  // Hide and show buttons for comments
+  $('#form-widgets-comment-text').on('click', function () {
+    $('.pat-discussion .formControls').show();
+  });
+
+
+
 
 });

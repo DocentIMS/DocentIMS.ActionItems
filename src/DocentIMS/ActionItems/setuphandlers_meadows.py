@@ -366,7 +366,7 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='scope-analysis',
-                title='Scope Analysis',
+                title='Scope Manager',
                 default_page='sow-collection',
                 nextPreviousEnabled=1
 
@@ -393,7 +393,7 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='rfp-analysis',
-                title='RFP Analysis',
+                title='RFP Manager',
                 nextPreviousEnabled=0
             )
             

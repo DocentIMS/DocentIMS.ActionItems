@@ -8,10 +8,10 @@
             </p>
         </a>
     </div>
-
+ 
     <div id="project_name" class="flex project_color">
         <div>
-            <div class="image_color">  </div>
+            <div class="image_color"></div>
             <p>Project<br/>
                 Color</p>
         </div>
@@ -49,10 +49,9 @@
                     Mode</p>
             </a>
         </div>
-        <label class="toolbar_label" data-bs-toggle="tooltip" 
-            title="${tooltips/tooltipIdDocentMode|None}" 
-            data-tooltip-content="${tooltips/tooltipIdDocentMode|None}">
-            <a href="#">Docent <br/>Mode</a>
+        <label class="toolbar_label" data-bs-toggle="tooltip" title="${tooltips/tooltipIdDocentMode|None}" data-tooltip-content="${tooltips/tooltipIdDocentMode|None}">
+            <a href="#">Docent <br/>
+Mode</a>
         </label>
     </div>
 
@@ -218,14 +217,14 @@
 
     <div id="command_statement" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="${portal_url}/">
+            <a href="${portal_url}/command-statements">
                 <img src="++plone++DocentIMS.ActionItems/icons/command_statements.png" />
                 <p>Command<br/>
                     Statement</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/scope-analysis">Command Statement</a>
+            <a href="${portal_url}/command-statements">Command Statement</a>
         </label>
     </div>
 
@@ -343,11 +342,17 @@
                     Note</p>
             </a> -->
 
-            <a class="toolbar_user" href="${portal_url}/postit_notes">
+            <a class="" href="${portal_url}/postit_notes/++add++postit_note">
+                <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
+                <p>Create <br/>
+                    Note</p>
+            </a>
+
+            <!-- <a class="toolbar_user" href="${portal_url}/postit_notes">
                 <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
                 <p>My<br/>
                     Notes</p>
-            </a>
+            </a> -->
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
             <a href="${portal_url}/postit_notes">My Notes</a>
@@ -438,7 +443,7 @@ Show Toolbar</button>
    });
 </script>
 
-  
+
 <style>
 .hidden {display: none !important}
 
