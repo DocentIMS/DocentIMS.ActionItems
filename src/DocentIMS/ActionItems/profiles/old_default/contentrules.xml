@@ -83,7 +83,7 @@ Would prefer to have it redirect to the personal info page automatically, but th
   </conditions>
   <actions>
    <action type="plone.actions.Move">
-    <property name="target_folder">/scope-analysis</property>
+    <property name="target_folder">/scope-manager</property>
    </action>
   </actions>
  </rule>

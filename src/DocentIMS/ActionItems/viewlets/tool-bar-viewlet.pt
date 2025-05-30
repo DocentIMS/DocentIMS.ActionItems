@@ -110,7 +110,6 @@ Mode</a>
 
             </div>
 
-
             <div id="create_notif">
                 <a class="toolbar_manager hidden" href="${portal_url}/notifications/++add++Notification" title="Add Notif" class="pat-tooltip" title="${tooltips/tooltipIdButtonCreateNotification|None}">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
@@ -119,7 +118,7 @@ Mode</a>
                         Notif.
                     </p>
                 </a>
-                <a class="toolbar_user" href="${portal_url}/notifications" title="Notif">
+                <a class="toolbar_user" href="${portal_url}/notifications/notifications-collection" title="Notif">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
                 </a>
             </div>
@@ -164,14 +163,14 @@ Mode</a>
 
     <div id="rfp" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="${portal_url}/rfp-analysis">
+            <a href="${portal_url}/rfp-manager">
                 <!-- <img src="++plone++DocentIMS.ActionItems/icons/rfp_upload.png" /> -->
                 <img src="++plone++DocentIMS.ActionItems/icons/upload.png" />
                 <p>RFP</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" title="${tooltips/tooltipIdRFP|None}" data-tooltip-content="${tooltips/tooltipIdRFP|None}">
-            <a href="${portal_url}/rfp-analysis">RFP Manager</a>
+            <a href="${portal_url}/rfp-manager">RFP Manager</a>
         </label>
     </div>
 
@@ -191,14 +190,14 @@ Mode</a>
 
     <div id="scope_manager" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="${portal_url}/scope-analysis">
+            <a href="${portal_url}/scope-manager">
                 <img src="++plone++DocentIMS.ActionItems/icons/scope.png" />
                 <p>Scope<br/>
                    Document</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/scope-analysis">Scope Manager</a>
+            <a href="${portal_url}/scope-manager">Scope Manager</a>
         </label>
     </div>
 
@@ -231,7 +230,7 @@ Mode</a>
 
     <div id="ms_project" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="${portal_url}/ms-project<">
+            <a href="${portal_url}/ms-project">
                 <img src="++plone++DocentIMS.ActionItems/icons/MSP.jpg" />
                 <p>MS <br/>
                     Project</p>

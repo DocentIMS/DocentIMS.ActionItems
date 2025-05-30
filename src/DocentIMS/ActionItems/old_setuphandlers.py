@@ -179,7 +179,7 @@ def post_install(context):
     behaviour.setImmediatelyAddableTypes(['action_items'])
     behaviour.setLocallyAllowedTypes(['action_items'])
 
-    scope_analysis = portal.get('scope-analysis', False)
+    scope_analysis = portal.get('scope-manager', False)
     behaviour = constrains.ISelectableConstrainTypes(scope_analysis)
     behaviour.setConstrainTypesMode(constrains.ENABLED)
     behaviour.setImmediatelyAddableTypes(['sow_analysis'])
@@ -304,11 +304,11 @@ def _create_content(portal):
                 
                 
                 
-        if not portal.get('scope-analysis', False):
+        if not portal.get('scope-manager', False):
             scopeanalysis = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                id='scope-analysis',
+                id='scope-manager',
                 title='Scope Breakdown',
                 default_page='sow-collection',
                 nextPreviousEnabled=1

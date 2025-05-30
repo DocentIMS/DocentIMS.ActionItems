@@ -70,7 +70,7 @@ def post_install(context):
         pass
     
     #Assign roles
-    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Board President', 'Edit Controlpanel'])
+    plone.api.group.grant_roles(groupname='PrjMgr', roles=['Project Manager', 'Edit Controlpanel'])
     plone.api.group.grant_roles(groupname='PrjTeam', roles=['Member', 'Reader'])
     
     #plone.api.group.grant_roles(groupname='can_parse', roles=['Project Manager'])
@@ -112,7 +112,7 @@ def post_install(context):
     
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies',
-                                        [{'vocabulary_entry': 'President'},
+                                        [{'vocabulary_entry': 'Project Manager'},
                                          {'vocabulary_entry': 'Secretary'},
                                          {'vocabulary_entry': 'Treasurer'}, 
                                          {'vocabulary_entry': 'At Large'}, 
@@ -223,8 +223,8 @@ def pre_install(context):
     
     #create groups, wayne might need these for workflow
     #plone.api.group.create(groupname="PrjCust", title="Project Customer", description="The customer for the project")
-    plone.api.group.create(groupname="PrjMgr", title="Board President", description="Board President")
-    plone.api.group.create(groupname="PrjTeam", title="Meadows Board", description="All Members of the Meadows Board")
+    plone.api.group.create(groupname="PrjMgr", title="Project Manager", description="Project Manager")
+    plone.api.group.create(groupname="PrjTeam", title="Team", description="All Members of the Team")
     #plone.api.group.create(groupname="PrjQcMgr", title="Project QC Manager", description="Person in charge of manage QC for the project")
     
     #plone.api.group.create(groupname="can_parse", title="Can parse in Word", description="Can parse in Word")
@@ -388,11 +388,11 @@ def _create_content(portal):
             
         
         
-        if not portal.get('rfp-analysis', False):
+        if not portal.get('rfp-manager', False):
             meeting = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                id='rfp-analysis',
+                id='rfp-manager',
                 title='RFP Manager',
                 nextPreviousEnabled=0
             )
@@ -459,7 +459,7 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='postit_notes',
-                title='PostIt Notes',
+                title='My Notes',
                 default_page='postit-collection',
                 exclude_from_nav=True,
             )  
@@ -840,7 +840,7 @@ def _create_content(portal):
                     type='Folder',
                     container=downloads,
                     id='board_president',
-                    title='Board President',
+                    title='Project Manager',
                     exclude_from_nav=True,
                     layout='tabular_view',
                 )

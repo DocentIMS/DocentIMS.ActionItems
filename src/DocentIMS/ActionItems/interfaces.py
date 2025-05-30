@@ -20,13 +20,17 @@ from plone.api.portal import show_message
 from plone.namedfile import field
 from plone.app.contentrules.handlers  import execute_user_rules
 from plone.app.z3cform.widget import AjaxSelectFieldWidget
+from plone import api
 
 
 
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
 
-
+ 
+    
+def not_required_in_debug_mode():
+    return not api.env.debug_mode()
 
 
 class RichTextFieldRegistry(PersistentField, RichText):
@@ -415,10 +419,10 @@ class IDocentimsSettings(model.Schema):
         )
 
     project_title = schema.TextLine(
-        required = True,
+        required = not_required_in_debug_mode(),
         title=_(u"label_title", default=u"Project Full Name"),
         description=_(u"",
-                      default=u"")
+                      default=u""), 
         )
 
     #project_full_name = schema.TextLine(
@@ -432,12 +436,14 @@ class IDocentimsSettings(model.Schema):
         title=_(u"label_project_short_name",
         default=u"Project Short Name"),
         description=_(u"",
-                      default=u"")
+                      default=u""),
+         required=not_required_in_debug_mode(),
         )
     
     very_short_name = schema.TextLine(
         title=_(u"label_project_very_short_name",
         default=u"Project Very Short Name"),
+         required=not_required_in_debug_mode(),
         description=_(u"",
                       default=u"")
         )
@@ -462,7 +468,7 @@ class IDocentimsSettings(model.Schema):
         required = False,
         title=_(u"label_project_contract_number", default=u"Project Contract Number"),
         description=_(u"",
-                      default=u"")
+                      default=u""),
         )
  
     
@@ -485,16 +491,19 @@ class IDocentimsSettings(model.Schema):
     urgent_red = schema.Int(
         title=_(u"label_red", default=u"Urgent days/value (displayed as Red)"),
         description=" ",
+         required=not_required_in_debug_mode(),
         )
     
     future_green = schema.Int(
         title=_(u"label_green", default=u"Future days/value (displayed as Green)"),
         description="",
+         required=not_required_in_debug_mode(),
         )
 
     soon_yellow = schema.Int(
         title=_(u"label_yellow", default=u"Soon days/value (displayed as Yellow)"),
         description="",
+         required=not_required_in_debug_mode(),
         )
 
     # full_company_name = schema.TextLine(
@@ -558,7 +567,7 @@ class IDocentimsSettings(model.Schema):
         title = _(u" ",
             default=u""),
         value_type=DictRow(schema=IVocabulari),
-        required=True,
+        required=not_required_in_debug_mode(),
     )
     
     widget(vokabularies3=DataGridFieldFactory)
@@ -566,7 +575,7 @@ class IDocentimsSettings(model.Schema):
         title = _(u" ",
             default=u""),
         value_type=DictRow(schema=IVocabulari3),
-        required=True,
+        required=not_required_in_debug_mode(),
     )
     
     widget(location_names=DataGridFieldFactory)
@@ -574,7 +583,7 @@ class IDocentimsSettings(model.Schema):
         title = _(u" ",
             default=u""),
         value_type=DictRow(schema=IVocabulari4),
-        required=True,
+        required=not_required_in_debug_mode(),
     )
     
     
@@ -583,7 +592,7 @@ class IDocentimsSettings(model.Schema):
         title = _(u" ",
             default=u""),
         value_type=DictRow(schema=IMeetingRows),
-        required=True,
+        required=not_required_in_debug_mode(),
     )
     
     
@@ -600,7 +609,8 @@ class IDocentimsSettings(model.Schema):
     companies = schema.List(
         title = _(u"Companies",
             default=u"Companies"),
-        value_type=DictRow(schema=ICompany),
+        value_type=DictRow(schema=ICompany), 
+         required=not_required_in_debug_mode(),
         
     )
 
@@ -636,7 +646,7 @@ class IDocentimsSettings(model.Schema):
         title=u"Project Color",
         description=u"",
         # max_length=10,
-        required=True,
+        required=not_required_in_debug_mode(),
         default="#ff0000"
     )
     
@@ -645,7 +655,7 @@ class IDocentimsSettings(model.Schema):
         title=u"Markings Color",
         description=u"",
         # max_length=10,
-        required=True,
+        required=not_required_in_debug_mode(),
         default="#ff0000"
     )
     
@@ -657,19 +667,19 @@ class IDocentimsSettings(model.Schema):
     
     template_password = schema.TextLine(
         title=u"Template Password",
-        required=True,
+        required=not_required_in_debug_mode(),
     )
     
     dashboard_url = schema.URI(
         title=u"Url of dashboard",
-        required=True,
+        required=not_required_in_debug_mode(),
         default="https://dashboard.docentims.com"
     )    
     
     
     dashboard = schema.TextLine(
         title=u"Dashboard Basic",
-        required=True,
+        required=not_required_in_debug_mode(),
     )
 
 alsoProvides(IDocentimsSettings, IMedialogControlpanelSettingsProvider)

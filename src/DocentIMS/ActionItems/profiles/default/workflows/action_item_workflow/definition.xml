@@ -4,8 +4,8 @@
  <permission>Modify portal content</permission>
  <permission>View</permission>
  <state state_id="Closed" title="Closed">
-  <description>The board president has closed the Task.  
-If there is a reason, the board president can return to the Review state.</description>
+  <description>The Project Manager has closed the Task.  
+If there is a reason, the Project Manager can return to the Review state.</description>
   <exit-transition transition_id="return"/>
  </state>
  <state state_id="Private" title="Private">
@@ -19,7 +19,7 @@ If there is a reason, the board president can return to the Review state.</descr
   <exit-transition transition_id="review"/>
  </state>
  <state state_id="Review" title="Review">
-  <description>Waiting for board president to review and close.</description>
+  <description>Waiting for Project Manager to review and close.</description>
   <exit-transition transition_id="close"/>
   <exit-transition transition_id="publish"/>
  </state>
@@ -44,7 +44,7 @@ If there is a reason, the board president can return to the Review state.</descr
   </guard>
  </transition>
  <transition transition_id="review" title="Review" new_state="Closed" trigger="USER" before_script="" after_script="">
-  <description>Send the Task to board president for review.</description>
+  <description>Send the Task to Project Manager for review.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=review" category="workflow" icon="">Review</action>
   <guard>
   </guard>
