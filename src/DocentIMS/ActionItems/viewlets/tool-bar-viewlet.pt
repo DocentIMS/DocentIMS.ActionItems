@@ -1,11 +1,11 @@
-<div id="toolbar" class="container flex" tal:define="portal_url view/portal_url|None; tooltips view/get_the_tooltips">
+<div id="toolbar" class="fullcontainer flex" tal:define="portal_url view/portal_url|None; tooltips view/get_the_tooltips">
     <div id="site_logo">
         <a href="#" id="hide-toolbar" xdata-bs-toggle="tooltip" data-tooltip-content="<b>Hide</b> toolbar">
             <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" />
-            <p>
-                <label>Docent<br/>
+            
+                <label class="toolbar_label">Docent<br/>
                 IMS</label>
-            </p>
+             
         </a>
     </div>
  
