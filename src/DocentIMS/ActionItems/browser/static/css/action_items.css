@@ -1,5 +1,6 @@
 .mention, mentions {background: #D2B48C }
 
+#toolbar select {background: none !important}
 .pat-discussion span.required,
 .pat-discussion .formControls { display: none}
 

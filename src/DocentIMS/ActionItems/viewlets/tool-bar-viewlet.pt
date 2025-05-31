@@ -444,6 +444,7 @@ Show Toolbar</button>
 
 
 <style>
+#header {border-color: ${view/color|None};}
 .hidden {display: none !important}
 
 .image_color {
