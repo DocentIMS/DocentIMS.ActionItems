@@ -23,6 +23,6 @@
     <dependency>profile-Products.PloneKeywordManager:default</dependency>
     <dependency>profile-onlyoffice.plone:default</dependency>
     <dependency>profile-plone.app.discussion:default</dependency>
-    <dependency>profile-collective.sidebar:default</dependency>
+    <!-- <dependency>profile-collective.sidebar:default</dependency> -->
   </dependencies>
 </metadata>

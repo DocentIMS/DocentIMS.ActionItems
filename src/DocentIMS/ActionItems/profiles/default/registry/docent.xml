@@ -9,19 +9,6 @@
     <value>Published</value>
   </record>
 
-  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.app_buttons" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="app_buttons">
-    <field type="plone.registry.field.List">
-      <value_type type="plone.registry.field.TextLine"/>
-    </field>
-    <value>
-          <element>https://mymeadows.org</element>
-          <element>http://mymeadows.org:8084/Plone_24_10_24</element>
-          <element>http://mymeadows.org:8084/Plone</element>
-          <element>http://ubuntu.local:8605/Plone40</element>
-          <element>http://ubuntu.local:8605/Plone47</element>
-    </value>
-  </record>
-
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="color1">
     <field type="plone.registry.field.TextLine">
       <default>#ff0000</default>
@@ -146,13 +133,13 @@
     <field type="plone.registry.field.TextLine">
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_project_short_name">Project Short Name</title>
     </field>
-    <value>Team</value>
+    <value>Team Project</value>
   </record>
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_title" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_title">
     <field type="plone.registry.field.TextLine">
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_title">Project Full Name</title>
     </field>
-    <value>The Team</value>
+    <value>New Docent Site</value>
   </record>
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.scope_table_columns" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="scope_table_columns">
      

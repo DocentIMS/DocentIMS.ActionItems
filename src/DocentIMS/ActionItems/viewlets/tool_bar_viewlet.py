@@ -30,6 +30,10 @@ class ToolBarViewlet(ViewletBase):
         time_bucket = int(time.time() / 6000)
         return (usermail, time_bucket)
     
+    def is_project_manager(self):
+        current_user =  api.user.get_current()
+        return "PrjMgr" in current_user.getGroups()
+        
     def basik(self):
          return  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
 
@@ -87,17 +91,14 @@ class ToolBarViewlet(ViewletBase):
     
     
     @property
-    @memoize
     def color(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1')
     
     @property
-    @memoize
     def stoplight_state(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.stoplight_state')
     
     @property
-    @memoize
     def project_name(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')     
     

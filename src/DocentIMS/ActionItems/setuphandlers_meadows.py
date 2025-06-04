@@ -88,9 +88,9 @@ def post_install(context):
     #TODO: Maybe make a check 
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names', 
-                                         [{'location_name': 'Zoom'}, 
-                                          {'location_name': 'Clubhouse'},
-                                          {'location_name': 'Clubhouse and Zoom'}
+                                         [{'location_name': 'MS Teams'}, 
+                                          {'location_name': 'Client Office'},
+                                          {'location_name': 'Client Office and MS Teams'}
                                          ])
     
     
@@ -122,24 +122,23 @@ def post_install(context):
                                         [   {'vocabulary_entry': 'Prime'},
                                             {'vocabulary_entry': 'Architect'},
                                             {'vocabulary_entry': 'Geotechnical'},
-                                            {'vocabulary_entry': 'Outreach'},
-                                            {'vocabulary_entry': 'Property Manager'},                                            
+                                            {'vocabulary_entry': 'Outreach'},                                              
                                         ])  
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
-      [ {'meeting_type': 'Board-Only Meeting', 
-         'meeting_title': 'Board Members Only Meeting', 
-         'meeting_summary': 'This meeting is only for board members and is used to work on specific work.', 
+      [ {'meeting_type': 'Project Team Meeting', 
+         'meeting_title': 'Project Team Meeting', 
+         'meeting_summary': 'Project Meeting', 
          'meeting_attendees': {'PrjTeam'},
          'meeting_contact': 'dummyuser@docentims.com'},
         {'meeting_type': 'Community Meeting', 
-         'meeting_title': 'Meadows Community Meeting', 
-         'meeting_summary': 'Monthly board meeting with all residents invited.', 
+         'meeting_title': 'Community Outreach Meeting', 
+         'meeting_summary': 'Community Outreach Meeting', 
          'meeting_attendees': {'PrjTeam'},
          'meeting_contact': 'dummyuser@docentims.com'},
-        {'meeting_type': 'Executive Session', 
-         'meeting_title': 'Board Executive Session', 
-         'meeting_summary': 'Board-only discussions', 
+        {'meeting_type': 'Executive Team Meeting', 
+         'meeting_title': 'Executive Team Meeting', 
+         'meeting_summary': 'Executive Meeting', 
          'meeting_attendees': {'PrjTeam'}, 
           'meeting_contact': 'dummyuser@docentims.com'},
       ])
@@ -147,16 +146,7 @@ def post_install(context):
  
 
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
-                                        [{'full_company_name': 'Parametrix, Inc.',
-                                          'short_company_name': 'Parametrix' ,
-                                          'company_letter_kode': 'PMX',
-                                          'company_role': None,
-                                          'company_full_street_address': '719 2nd Avenue',
-                                          'company_other_address': 'Suite 200',
-                                          'company_city': 'Seattle',
-                                          'company_state': 'WA',
-                                          'company_zip': '98104'}, 
-                                         {'full_company_name': 'Docent IMS LLC',
+                                        [{'full_company_name': 'Docent IMS LLC',
                                           'short_company_name': 'Docent' ,
                                           'company_letter_kode': 'DOC',
                                           'company_role': None,

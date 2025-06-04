@@ -37,7 +37,7 @@
     </div>
 
 
-    <div id="toolbar_mode" class="">
+    <div tal:condition="view/is_project_manager"  id="toolbar_mode" class="">
         <div class="no-flex">
             <a href="#">
                 <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/PrjMgr.jpg" />
@@ -52,6 +52,24 @@
         <label class="toolbar_label" data-bs-toggle="tooltip" title="${tooltips/tooltipIdDocentMode|None}" data-tooltip-content="${tooltips/tooltipIdDocentMode|None}">
             <a href="#">Docent <br/>
 Mode</a>
+        </label>
+    </div>
+
+    <div tal:condition="not: view/is_project_manager"  id="toolbar_mode" class="">
+        <div class="no-flex">
+            
+                <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/PrjMgr.jpg" />
+                <img class="toolbar_manager" src="++plone++DocentIMS.ActionItems/icons/team_mode.png" />
+                <p>
+                    <span class="toolbar_user hidden">Manager</span >
+                    <span class="toolbar_manager">Team</span>
+                    <br/>
+                    Mode</p>
+            
+        </div>
+        <label class="toolbar_label">
+            Docent <br/>
+Mode
         </label>
     </div>
 
@@ -444,11 +462,11 @@ Show Toolbar</button>
 
 
 <style>
-#header {border-color: ${view/color|None};}
+#header {border-color: #${view/color|None} !important;}
 .hidden {display: none !important}
 
 .image_color {
-  background: ${view/color|None};
+  background: #${view/color|None};
   width: 3rem;
   height: 3rem;
   margin-bottom: 4px

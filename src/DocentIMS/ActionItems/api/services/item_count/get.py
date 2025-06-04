@@ -22,6 +22,7 @@ class ItemCount(object):
         self.request = request
 
     def __call__(self, expand=False):
+        import pdb; pdb.set_trace()
         user = None
         
         result = {
