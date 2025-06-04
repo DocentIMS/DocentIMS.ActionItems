@@ -462,7 +462,8 @@ Show Toolbar</button>
 
 
 <style>
-#header {border-color: #${view/color|None} !important;}
+#header {border-color: ${view/color|None} !important;}
+
 .hidden {display: none !important}
 
 .image_color {
