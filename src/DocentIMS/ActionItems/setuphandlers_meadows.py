@@ -59,7 +59,6 @@ class HiddenProfiles(object):
 def post_install(context):
     """Post install script"""
     # Do something at the end of the installation of this package.
-
     
     portal = plone.api.portal.get()
     try:

@@ -1,8 +1,16 @@
-.mention, mentions {background: #D2B48C }
+.mention,
+mentions {
+  background: #D2B48C
+}
 
-#toolbar select {background: none !important}
+#toolbar select {
+  background: none !important
+}
+
 .pat-discussion span.required,
-.pat-discussion .formControls { display: none}
+.pat-discussion .formControls {
+  display: none
+}
 
 .section-postit_notes.template-full_view .item h1,
 .section-postit_notes.template-full_view p.lead,
@@ -218,7 +226,9 @@ a {
 }
 
 #toolbar {
-  padding: 0
+  padding: 0;
+  max-width: 1680px;
+  margin: auto;
 }
 
 #toolbar .flex {
