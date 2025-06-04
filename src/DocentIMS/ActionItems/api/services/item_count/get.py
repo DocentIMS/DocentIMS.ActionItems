@@ -7,6 +7,7 @@ from zope.interface import Interface
 from zope.interface import implementer
 # from DateTime import DateTime
 import datetime
+import DateTime
 
 
 
@@ -22,7 +23,6 @@ class ItemCount(object):
         self.request = request
 
     def __call__(self, expand=False):
-        import pdb; pdb.set_trace()
         user = None
         
         result = {
@@ -129,15 +129,24 @@ class ItemCount(object):
             # Query the catalog for items, sorted by ModificationDate in descending order
             # Get last updated item
             last_item = self.context.portal_catalog.unrestrictedSearchResults(
-                        portal_type=['action_items', 'Notification', 'meeting', 'Meeting'],
+                        portal_type=['action_items', 'Task', 'task', 'Notification', 'meeting', 'Meeting'],
                         sort_on='modified',
                         sort_order='descending',
                         sort_limit=1,
                 )  
             
-            last_date = last_item[0].modified
+            # last_date = last_item[0].modified
+            # human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
+            
+            last_date = last_item[0].modified if last_item else DateTime('2000-01-01T00:00:00')
             human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
             
+            # if last_item:
+            #     last_date = last_item[0].modified
+            #     human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
+            # else:
+            #     human_readable_date = "No recent items found"
+                
             meetings_and_ais = { 
                                 'site_url': self.context.absolute_url(), 
                                 'meetings': all_meetings, 
