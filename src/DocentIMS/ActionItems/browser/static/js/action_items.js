@@ -1,157 +1,190 @@
-var $jq = jQuery.noConflict();
-var $ = jQuery.noConflict();
+document.addEventListener("DOMContentLoaded", function () {
+  const portalUrl = document.body.getAttribute("data-portal-url");
 
-$jq(document).ready(function () {
-  $portal_url = $('body').attr("data-portal-url");
-
-  // Scope analysis, hide show fields. 
-  // Shows and hides fields depending on checkbox
-
-  if ($jq('#form-widgets-internal_qc_required_-0').is(':checked')) {
-    // $('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc').show();
-  } else {
-    $jq('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc, #formfield-form-widgets-finishing_date_for_qc, #formfield-form-widgets-date_wc_finished, #formfield-form-widgets-date_item_finished').hide();
+  // Helper functions
+  function isChecked(selector) {
+    const el = document.querySelector(selector);
+    return el && el.checked;
   }
 
-  $jq('#form-widgets-internal_qc_required_-0').change(function () {
-    $jq('#formfield-form-widgets-estimated_qc_time, #formfield-form-widgets-notes_to_qc, #formfield-form-widgets-finishing_date_for_qc, #formfield-form-widgets-date_wc_finished, #formfield-form-widgets-date_item_finished').toggle();
-  });
-
-
-  if ($jq('#form-widgets-is_the_analyis_complete-0').is(':checked')) {
-    //$('#formfield-form-widgets-analysis_notes').show();
-  } else {
-    $jq('#formfield-form-widgets-analysis_notes').hide();
+  function toggleDisplay(selectors, show) {
+    selectors.forEach(selector => {
+      const el = document.querySelector(selector);
+      if (el) el.style.display = show ? "" : "none";
+    });
   }
 
-  $jq('#form-widgets-is_the_analyis_complete-0').change(function () {
-    $jq('#formfield-form-widgets-analysis_notes').toggle();
-  });
+  // Initial setup for internal QC checkbox
+  const qcCheckbox = document.querySelector('#form-widgets-internal_qc_required_-0');
+  const qcFields = [
+    '#formfield-form-widgets-estimated_qc_time',
+    '#formfield-form-widgets-notes_to_qc',
+    '#formfield-form-widgets-finishing_date_for_qc',
+    '#formfield-form-widgets-date_wc_finished',
+    '#formfield-form-widgets-date_item_finished'
+  ];
 
-  // end
-
-  if ($jq('#form-widgets-is_this_action_out_of_the_scope_of_work_-0').not(':checked')) {
-    $jq('#formfield-form-widgets-explanation_for_out_of_scope_ai').hide();
-
-  } else {
-    $jq('#formfield-form-widgets-related_sow_section, #sow_section_text').hide();
+  if (!isChecked('#form-widgets-internal_qc_required_-0')) {
+    toggleDisplay(qcFields, false);
   }
-  $jq('#formfield-form-widgets-is_this_action_out_of_the_scope_of_work_ input').change(function () {
-    if ($jq('#form-widgets-is_this_action_out_of_the_scope_of_work_-0').is(':checked')) {
-      $jq('#formfield-form-widgets-explanation_for_out_of_scope_ai').show();
-      $jq('#formfield-form-widgets-related_sow_section, #section_text').hide();
-    }
-    else {
-      $jq('#formfield-form-widgets-explanation_for_out_of_scope_ai').hide();
-      $jq('#formfield-form-widgets-related_sow_section, #sow_section_text').show();
-    }
-  });
-  if ($jq('#form-widgets-is_this_item_closed-0 input').not(':checked')) {
-    $jq('#formfield-form-widgets-actions_to_close_out').hide();
+
+  if (qcCheckbox) {
+    qcCheckbox.addEventListener("change", () => {
+      qcFields.forEach(selector => {
+        const el = document.querySelector(selector);
+        if (el) el.style.display = el.style.display === "none" ? "" : "none";
+      });
+    });
   }
-  $jq('#form-widgets-is_this_item_closed-0').change(function () {
-    if ($jq('#form-widgets-is_this_item_closed-0').is(':checked')) {
-      $jq('#formfield-form-widgets-actions_to_close_out').show();
+
+  // Analysis complete field
+  const analysisField = '#formfield-form-widgets-analysis_notes';
+  if (!isChecked('#form-widgets-is_the_analyis_complete-0')) {
+    toggleDisplay([analysisField], false);
+  }
+
+  const analysisCheckbox = document.querySelector('#form-widgets-is_the_analyis_complete-0');
+  if (analysisCheckbox) {
+    analysisCheckbox.addEventListener("change", () => {
+      const el = document.querySelector(analysisField);
+      if (el) el.style.display = el.style.display === "none" ? "" : "none";
+    });
+  }
+
+  // Out of scope logic
+  const outOfScopeInput = document.querySelector('#form-widgets-is_this_action_out_of_the_scope_of_work_-0');
+  if (outOfScopeInput) {
+    if (!outOfScopeInput.checked) {
+      toggleDisplay(['#formfield-form-widgets-explanation_for_out_of_scope_ai'], false);
+    } else {
+      toggleDisplay(['#formfield-form-widgets-related_sow_section', '#sow_section_text'], false);
     }
-    else {
-      $jq('#formfield-form-widgets-actions_to_close_out').hide();
+
+    const scopeWrapper = document.querySelector('#formfield-form-widgets-is_this_action_out_of_the_scope_of_work_');
+    if (scopeWrapper) {
+      scopeWrapper.addEventListener("change", () => {
+        const checked = outOfScopeInput.checked;
+        toggleDisplay(['#formfield-form-widgets-explanation_for_out_of_scope_ai'], checked);
+        toggleDisplay(['#formfield-form-widgets-related_sow_section', '#sow_section_text'], !checked);
+      });
+    }
+  }
+
+  // Item closed logic
+  const itemClosedCheckbox = document.querySelector('#form-widgets-is_this_item_closed-0');
+  if (itemClosedCheckbox && !itemClosedCheckbox.checked) {
+    toggleDisplay(['#formfield-form-widgets-actions_to_close_out'], false);
+  }
+
+  if (itemClosedCheckbox) {
+    itemClosedCheckbox.addEventListener("change", () => {
+      toggleDisplay(['#formfield-form-widgets-actions_to_close_out'], itemClosedCheckbox.checked);
+    });
+  }
+
+  // AJAX for related SOW section
+  const sowDropdown = document.querySelector('#form-widgets-related_sow_section');
+  if (sowDropdown) {
+    sowDropdown.addEventListener("change", function () {
+      const uid = this.value;
+      if (uid && uid !== '--NOVALUE--') {
+        fetch(`${portalUrl}/@search?fullobjects=1&UID=${uid}`, {
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(result => {
+          const prev = document.getElementById('sow_text_add');
+          if (prev) prev.remove();
+
+          const container = document.getElementById("formfield-form-widgets-related_sow_section");
+          if (container && result.items[0]) {
+            const div = document.createElement("div");
+            div.id = "sow_text_add";
+            div.innerHTML = `<hr/>${result.items[0].bodytext.data}`;
+            container.appendChild(div);
+          }
+        });
+      }
+    });
+  }
+
+  // HTML tooltips
+  document.querySelectorAll('.htmltooltip').forEach(el => {
+    const content = el.getAttribute('data-tooltip-content');
+    el.setAttribute('title', content);
+    // Tooltips depend on UI library; for vanilla JS you'd need a tooltip system or rely on title
+  });
+
+  // Toolbar logic
+  const toolbar = document.getElementById("toolbar");
+  const showToolbarBtn = document.getElementById("show-toobar");
+
+  if (localStorage.getItem("toolbarHidden") === "true") {
+    if (toolbar) toolbar.style.display = "none";
+    if (showToolbarBtn) {
+      showToolbarBtn.classList.remove("hidden");
+      showToolbarBtn.style.display = "";
+    }
+  } else if (showToolbarBtn) {
+    showToolbarBtn.style.display = "none";
+  }
+
+  const hideToolbarBtn = document.getElementById("hide-toolbar");
+  [hideToolbarBtn, showToolbarBtn].forEach(btn => {
+    if (btn) {
+      btn.addEventListener("click", () => {
+        if (toolbar) toolbar.classList.toggle("hidden");
+        if (showToolbarBtn) showToolbarBtn.classList.remove("hidden");
+        const hidden = localStorage.getItem("toolbarHidden") === "true";
+        localStorage.setItem("toolbarHidden", !hidden);
+      });
     }
   });
 
-  $jq('#form-widgets-related_sow_section').on("change", function () {
-    if ($jq(this).val() != '--NOVALUE--') {
-      $jqsearchval = $jq('body').attr("data-portal-url") + '/@search?fullobjects=1&UID=' + $jq(this).val();
+  // Meeting select highlight
+  const meetingSelect = document.getElementById("meeting_select");
+  if (meetingSelect) {
+    meetingSelect.addEventListener("change", () => {
+      document.querySelectorAll('#meeting_select a').forEach(a => a.classList.toggle("greyed"));
+    });
+  }
 
-      $jq.ajax({
-        url: $jqsearchval,
-        contentType: "application/json",
-        dataType: 'json',
-        headers: { 'Accept': 'application/json' },
-        success: function (result) {
-          //console.log(result.items[0]);
-          $jq('#sow_text_add').remove();
-          $jq("#formfield-form-widgets-related_sow_section").append('<div id="sow_text_add"><hr/>' + result.items[0].bodytext.data + '</div>');
-        }
-      })
-    }
-  });
+  // Create meeting select
+  const createMeeting = document.getElementById("create_meeting");
+  if (createMeeting) {
+    createMeeting.addEventListener("change", function () {
+      if (this.value === "create_meeting") {
+        window.location.href = portalUrl + "/meetings/++add++meeting";
+      } else if (this.value === "your_meetings") {
+        document.querySelectorAll('#meeting_select a').forEach(a => a.classList.toggle("greyed"));
+        window.location.href = portalUrl + "/meetings/meeting-collection";
+      }
+    });
+  }
 
-  // Override stanard tooltip behavior
-  $('.htmltooltip').each(function () {
-    var tooltipContent = $(this).attr('data-tooltip-content'); // Get content from custom attribute
-    $(this).tooltip({
-      html: true,
-      title: tooltipContent // Set tooltip content dynamically
+  // Show manager toolbar if applicable
+  if (localStorage.getItem("isManager") === "true") {
+    document.querySelectorAll('.toolbar_user, .toolbar_manager').forEach(el => el.classList.toggle("hidden"));
+    if (toolbar) toolbar.classList.toggle("manager_mode");
+  }
+
+  // Toggle toolbar mode
+  document.querySelectorAll('#toolbar_mode a').forEach(a => {
+    a.addEventListener("click", () => {
+      document.querySelectorAll('.toolbar_user, .toolbar_manager').forEach(el => el.classList.toggle("hidden"));
+      if (toolbar) toolbar.classList.toggle("manager_mode");
+      const manager = localStorage.getItem("isManager") === "true";
+      localStorage.setItem("isManager", !manager);
     });
   });
 
-
-  // Check stored state
-  // to do, maybe move this to cookie
-  if (localStorage.getItem("toolbarHidden") === "true") {
-   $("#toolbar").hide();
-   $("#show-toobar").removeClass('hidden');
-   $("#show-toobar").show();
-
-  } else {
-   $("#show-toobar").hide();
+  // Show comment form controls
+  const commentText = document.getElementById("form-widgets-comment-text");
+  if (commentText) {
+    commentText.addEventListener("click", () => {
+      document.querySelectorAll(".pat-discussion .formControls").forEach(fc => {
+        fc.style.display = "";
+      });
+    });
   }
-
- $("#hide-toolbar, #show-toobar").click(function () {
-   $("#toolbar, #show-toobar").slideToggle();
-   $("#show-toobar").removeClass('hidden');
-
-    // Update state in localStorage
-    const isHidden = (localStorage.getItem("toolbarHidden") === "true");
-    localStorage.setItem("toolbarHidden", !isHidden);
-  });
-
-  // toolbar meeting javascript
-
-  $('#meeting_select').on('change', function () {
-    $('#meeting_select a').toggleClass('greyed');
-  });
-
-  document.getElementById('create_meeting').addEventListener('change', function () {
-    if (this.value === 'create_meeting') {
-      window.location.href = $portal_url +'/meetings/++add++meeting'; // Redirect to your desired URL
-    }
-    if (this.value === 'your_meetings') {
-      $('#meeting_select a').toggleClass('greyed');
-      window.location.href = $portal_url + '/meetings/meeting-collection'; // Redirect to your desired URL or open in overlay
-    }
-  });
-
-
-  // got to project on click
-  // document.getElementById('project').addEventListener('change', function () {
-  //   if (this.value === '${view/project_name}') {
-  //     window.location.href = $portal_url; // Redirect to home page of this project
-  //   }
-  // });
-
-  //Show correct toolbar
-  if (localStorage.getItem("isManager") === "true") {
-    $('.toolbar_user, .toolbar_manager').toggleClass('hidden');
-    $('#toolbar').toggleClass('manager_mode');
- 
-   }
-
-  // Toggle toolbar mode
-  $('#toolbar_mode a').on('click', function () {
-    $('.toolbar_user, .toolbar_manager').toggleClass('hidden');
-    $('#toolbar').toggleClass('manager_mode');
-    const isManager = (localStorage.getItem("isManager") === "true");
-    localStorage.setItem("isManager", !isManager);
-  });
-
-
-  // Hide and show buttons for comments
-  $('#form-widgets-comment-text').on('click', function () {
-    $('.pat-discussion .formControls').show();
-  });
-
-
-
-
 });
