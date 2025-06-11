@@ -443,11 +443,11 @@ def _create_content(portal):
         #         title='Documents',
         #     )
             
-        if not portal.get('postit_notes', False):
+        if not portal.get('notes', False):
             postit_notes = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                id='postit_notes',
+                id='notes',
                 title='My Notes',
                 default_page='postit-collection',
                 exclude_from_nav=True,
@@ -1081,7 +1081,7 @@ def _create_more_content(portal):
             "type_title": "Collection"
             }, 
             {
-            "@id": "postit_notes/postit-collection", 
+            "@id": "notes/postit-collection", 
             "@type": "Collection", 
             "description": "", 
             "query": [
