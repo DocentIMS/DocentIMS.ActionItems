@@ -1,4 +1,4 @@
-<div id="toolbar" class="fullcontainer flex" tal:define="portal_url view/portal_url|None; tooltips view/get_the_tooltips">
+<div id="toolbar" class="flex" tal:define="portal_url view/portal_url|None; tooltips view/get_the_tooltips">
     <div id="site_logo">
         <a href="#" id="hide-toolbar" xdata-bs-toggle="tooltip" data-tooltip-content="<b>Hide</b> toolbar">
             <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" />
@@ -462,8 +462,14 @@ Show Toolbar</button>
 
 
 <style>
-#header {border-color: ${view/color|None} !important;}
 
+h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
+
+#content-core h2 strong, #content-core .h2 strong,
+#header {border-color: ${view/color|None} !important;}
+#header {border-bottom: 5px solid #{view/color}; font-size: 24pt}
+
+#header a { color: black;}
 .hidden {display: none !important}
 
 .image_color {

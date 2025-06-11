@@ -19,7 +19,7 @@
   <browser:viewlet
      name="tool-bar-viewlet"
      for="*"
-     manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+     manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
      class=".tool_bar_viewlet.ToolBarViewlet"
      template="tool-bar-viewlet.pt"
