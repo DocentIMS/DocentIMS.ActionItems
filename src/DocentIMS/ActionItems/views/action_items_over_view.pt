@@ -74,23 +74,7 @@
                 </a>
               </div>
             </div>
-            <style>
-              .pri-box.flex {display: flex}
-               .priority-1 span { color: red; padding: 1px 5px}
-              .priority-2 span { color: orange; padding: 1px 5px}
-              .priority-3 span  {color:  green; padding: 1px 5px}
-              span.previousdue-True { color: silver;}
-              #traffic-light {background:#444; border-radius: 3px; display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 17px; height: 35px;  }
-              #traffic-light > span {border-radius: 50%; width: 6px ; height: 6px  ; padding: 0; display: block; opacity: 0.33}
-              #tl-1 {background: #FF0000}
-              #tl-2 {background: #FFFF00}
-              #tl-3 {background: #00FF00}
-              #traffic-light .active-True {opacity: 1 !important; width: 10px; height: 10px}
-              .late14-True {color: red}
-              span.late14-True {color #FF0000  !important}
-              .soon14-True {color: orange}
-              span.later-True {color: green}
-            </style>
+       
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
 

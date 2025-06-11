@@ -241,10 +241,6 @@
                 }
 
                 
-                @media only screen and (min-width: 999px) {
-                  xbutton#toggle-filters { display: none}
-                }
-
                 #main-container {
                   display: flex;
                   flex-direction: column-reverse;
