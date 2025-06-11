@@ -523,6 +523,7 @@ a {
 #toolbar {
   background: #E2E2E2;
   font-size: 10pt;
+  width: 100%;
   xmargin-bottom: 2rem;
 }
 
