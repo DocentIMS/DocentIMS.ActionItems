@@ -10,6 +10,9 @@ import time
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
 
+from urllib.parse import urlparse
+
+
 # def sites_cache_key(method, self):
 #     usermail = self.current_user_id()
 #     if not usermail:
@@ -154,5 +157,20 @@ class ToolBarViewlet(ViewletBase):
     
     def index(self):
         return super(ToolBarViewlet, self).render()
+    
+    def webmail_url(self):
+        site_url = self.portal_url
+        parsed_url = urlparse(site_url)
+        hostname = parsed_url.hostname  # "test.myurl.com"
+
+        # Get the domain part (strip subdomains)
+        domain_parts = hostname.split('.')
+        if len(domain_parts) >= 2:
+            domain = '.'.join(domain_parts[-2:])  # e.g., "myurl.com"
+        else:
+            domain = hostname  # fallback
+
+        return domain
+
     
 

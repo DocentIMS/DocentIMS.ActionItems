@@ -2,13 +2,13 @@
     <div id="site_logo">
         <a href="#" id="hide-toolbar" xdata-bs-toggle="tooltip" data-tooltip-content="<b>Hide</b> toolbar">
             <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" />
-            
-                <label class="toolbar_label">Docent<br/>
+
+            <label class="toolbar_label">Docent<br/>
                 IMS</label>
-             
+
         </a>
     </div>
- 
+
     <div id="project_name" class="flex project_color">
         <div>
             <div class="image_color"></div>
@@ -37,7 +37,7 @@
     </div>
 
 
-    <div tal:condition="view/is_project_manager"  id="toolbar_mode" class="">
+    <div tal:condition="view/is_project_manager" id="toolbar_mode" class="">
         <div class="no-flex">
             <a href="#">
                 <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/PrjMgr.jpg" />
@@ -55,17 +55,17 @@ Mode</a>
         </label>
     </div>
 
-    <div tal:condition="not: view/is_project_manager"  id="toolbar_mode" class="">
+    <div tal:condition="not: view/is_project_manager" id="toolbar_mode" class="">
         <div class="no-flex">
-            
-                <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/PrjMgr.jpg" />
-                <img class="toolbar_manager" src="++plone++DocentIMS.ActionItems/icons/team_mode.png" />
-                <p>
-                    <span class="toolbar_user hidden">Manager</span >
-                    <span class="toolbar_manager">Team</span>
-                    <br/>
+
+            <img class="toolbar_user hidden" src="++plone++DocentIMS.ActionItems/icons/PrjMgr.jpg" />
+            <img class="toolbar_manager" src="++plone++DocentIMS.ActionItems/icons/team_mode.png" />
+            <p>
+                <span class="toolbar_user hidden">Manager</span >
+                <span class="toolbar_manager">Team</span>
+                <br/>
                     Mode</p>
-            
+
         </div>
         <label class="toolbar_label">
             Docent <br/>
@@ -407,15 +407,29 @@ Mode
 
     </div>
 
-</div>
+   
 
-<div class="container hidden" id="show-toobar">
-    <button class="btn button btn-standalone">
-        <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" width="20" height="20"/>
+        <div id="webmail" class="toolbar_user">
+            <div class="no-flex">
+                <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
+                    <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
+                    <p>Webmail</p>
+                </a>
+            </div>
+            <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Opens</b> webmail in a new tab">
+            <a href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">Webmail</a>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="container hidden" id="show-toobar">
+        <button class="btn button btn-standalone">
+            <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" width="20" height="20"/>
 Show Toolbar</button>
-    <hr/>
-</div>
-<!-- 
+        <hr/>
+    </div>
+    <!-- 
 <script>
     $(document).ready(function () {
         $('.htmltooltip').each(function () {
@@ -452,16 +466,16 @@ Show Toolbar</button>
 </script>
   -->
 
-<script>
+    <script>
   document.getElementById('project').addEventListener('change', function () {
      if (this.value === '${view/project_name}') {
        window.location.href = $portal_url; // Redirect to home page of this project
      }
    });
-</script>
+    </script>
 
 
-<style>
+    <style>
 
 
 
@@ -472,4 +486,4 @@ Show Toolbar</button>
   margin-bottom: 4px
 }
 
-</style>
+    </style>
