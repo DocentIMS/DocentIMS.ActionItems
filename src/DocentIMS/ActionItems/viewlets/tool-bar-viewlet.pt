@@ -409,7 +409,7 @@ Mode
 
 
 
-    <div id="webmail" class="toolbar_user">
+    <div id="webmail" class="">
         <div class="no-flex">
             <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
                 <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
