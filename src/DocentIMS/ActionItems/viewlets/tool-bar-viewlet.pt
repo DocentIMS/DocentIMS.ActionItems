@@ -468,7 +468,7 @@ Show Toolbar</button>
 
 <script>
   document.getElementById('project').addEventListener('change', function () {
-     if (this.value === '${view/project_name}') {
+     if (this.value !== '${view/project_name}') {
        window.location.href = $portal_url; // Redirect to home page of this project
      }
    });

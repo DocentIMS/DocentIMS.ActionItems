@@ -118,7 +118,7 @@ class ToolBarViewlet(ViewletBase):
 
     @ram.cache(sites_cache_key)
     def get_sites(self):
-        import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         user = api.user.get_current()
         usermail = user.getProperty('email')
         if usermail:
