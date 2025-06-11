@@ -54,7 +54,8 @@ class ItemCount(object):
             # Fall back to the REMOTE_ADDR
             ip_address = self.request.get('REMOTE_ADDR', '')
         
-        if current_user and ip_address in ['10.0.0.159', '103.90.162.175', '45.61.61.241']:
+        #if current_user and ip_address in ['10.0.0.159', '103.90.162.175', '45.61.61.241']:
+        if current_user:
             user_ids = [current_user.getUserName(), current_user.getUserId(), current_user.getProperty("email") ] 
             last_login_time = current_user.getProperty("last_login_time")
             fullname = current_user.getProperty("fullname", None)

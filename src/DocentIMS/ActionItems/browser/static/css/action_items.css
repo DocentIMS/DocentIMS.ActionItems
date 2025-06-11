@@ -3,7 +3,7 @@ mentions {
   background: #D2B48C
 }
 
-h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
+#mainnavigation-wrapper {display: none !important}
 
 #content-core h2 strong, #content-core .h2 strong,
 #header {border-color: ${view/color|None} !important;}
@@ -691,6 +691,7 @@ body #portal-column-two {
   margin: 0;
 }
 
+.margin-auto {margin: auto;}
  
 body {
   background: #FAFAF9 !important;

@@ -10,4 +10,10 @@
   <viewlet name="plone.colophon"/>
   <viewlet name="plone.site_actions"/>
  </hidden-->
+  <hidden manager="plone.mainnavigation" skinname="Plone Default">
+  <viewlet name="plone.global_sections"/>
+ </hidden>
+  <hidden manager="plone.mainnavigation" skinname="">
+  <viewlet name="plone.global_sections"/>
+ </hidden>
 </object>
