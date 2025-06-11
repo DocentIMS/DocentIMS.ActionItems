@@ -537,7 +537,7 @@ a {
   text-align: center;
   font-weight: 600 !important;
   position: absolute;
-  bottom: 5px;
+  bottom: -3px;
   left: 0;
   right: 0;
   xbackground: black;
