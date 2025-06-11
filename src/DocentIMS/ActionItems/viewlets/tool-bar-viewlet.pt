@@ -474,6 +474,29 @@ document.getElementById('project').addEventListener('change', function () {
 });
 </script>
 
+<script>
+    jQuery(document).ready(function() {
+        // Check stored state
+        if (localStorage.getItem("toolbarHidden") === "true") {
+            jQuery("#toolbar").hide();
+            jQuery("#show-toobar").removeClass('hidden');
+            jQuery("#show-toobar").show();
+            
+        } else {
+            jQuery("#show-toobar").hide();
+        }
+
+        jQuery("#hide-toolbar, #show-toobar").click(function() {
+            jQuery("#toolbar, #show-toobar").slideToggle();
+            jQuery("#show-toobar").removeClass('hidden');
+            
+            // Update state in localStorage
+            const isHidden = (localStorage.getItem("toolbarHidden") === "true");
+            localStorage.setItem("toolbarHidden", !isHidden);
+        });
+    });
+</script>
+
 
 <style>
 h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
