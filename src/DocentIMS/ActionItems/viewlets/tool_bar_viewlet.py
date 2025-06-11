@@ -132,8 +132,8 @@ class ToolBarViewlet(ViewletBase):
                         headers={
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
-                            'Authorization': f'Basic {basik}',
                         },
+                        auth=('admin', 'admin'),
                         timeout=2,                    
                     )
 
