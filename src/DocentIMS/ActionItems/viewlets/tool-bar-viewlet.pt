@@ -467,11 +467,11 @@ Show Toolbar</button>
   -->
 
 <script>
-  document.getElementById('project').addEventListener('change', function () {
-     if (this.value !== '${view/project_name}') {
-       window.location.href = $portal_url; // Redirect to home page of this project
-     }
-   });
+document.getElementById('project').addEventListener('change', function () {
+  if (this.value !== '${view/project_name}') {
+    window.location.href = this.value; // Redirect to the selected project's home page
+  }
+});
 </script>
 
 
