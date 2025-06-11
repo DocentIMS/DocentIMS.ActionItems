@@ -129,17 +129,17 @@ document.addEventListener("DOMContentLoaded", function () {
     showToolbarBtn.style.display = "none";
   }
 
-  const hideToolbarBtn = document.getElementById("hide-toolbar");
-  [hideToolbarBtn, showToolbarBtn].forEach(btn => {
-    if (btn) {
-      btn.addEventListener("click", () => {
-        if (toolbar) toolbar.classList.toggle("hidden");
-        if (showToolbarBtn) showToolbarBtn.classList.remove("hidden");
-        const hidden = localStorage.getItem("toolbarHidden") === "true";
-        localStorage.setItem("toolbarHidden", !hidden);
-      });
-    }
-  });
+  // const hideToolbarBtn = document.getElementById("hide-toolbar");
+  // [hideToolbarBtn, showToolbarBtn].forEach(btn => {
+  //   if (btn) {
+  //     btn.addEventListener("click", () => {
+  //       if (toolbar) toolbar.classList.toggle("hidden");
+  //       if (showToolbarBtn) showToolbarBtn.classList.remove("hidden");
+  //       const hidden = localStorage.getItem("toolbarHidden") === "true";
+  //       localStorage.setItem("toolbarHidden", !hidden);
+  //     });
+  //   }
+  // });
 
   // Meeting select highlight
   const meetingSelect = document.getElementById("meeting_select");
