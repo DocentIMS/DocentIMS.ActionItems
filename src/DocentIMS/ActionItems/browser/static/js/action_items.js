@@ -188,3 +188,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+
+jQuery(document).ready(function() {
+  if ($("#portal-column-two").length) {
+        $("#toggle-filters").removeClass("hidden"); 
+    }
+  jQuery("#portal-column-two").hide();
+  jQuery("button#toggle-filters").click(function() {
+    jQuery("#portal-column-two").slideToggle();
+    jQuery("#portal-column-two").toggleClass("overlay");              
+  });
+}); 

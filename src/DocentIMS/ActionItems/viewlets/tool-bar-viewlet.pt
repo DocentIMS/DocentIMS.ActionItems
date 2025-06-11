@@ -463,17 +463,10 @@ Show Toolbar</button>
 
 <style>
 
-h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
 
-#content-core h2 strong, #content-core .h2 strong,
-#header {border-color: ${view/color|None} !important;}
-#header {border-bottom: 5px solid #{view/color}; font-size: 24pt}
-
-#header a { color: black;}
-.hidden {display: none !important}
 
 .image_color {
-  background: #${view/color|None};
+  background: ${view/color|None};
   width: 3rem;
   height: 3rem;
   margin-bottom: 4px

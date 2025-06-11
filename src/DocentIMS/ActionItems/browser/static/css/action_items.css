@@ -3,116 +3,264 @@ mentions {
   background: #D2B48C
 }
 
+h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
 
-#viewlet-below-content-title {display: none} 
-        #viewlet-below-content legend {font-size: 14px; display: none}
-        #viewlet-below-content  fieldset > p {display: none}
-        #commenting {padding: 10px}
+#content-core h2 strong, #content-core .h2 strong,
+#header {border-color: ${view/color|None} !important;}
+#header {border-bottom: 5px solid #{view/color}; font-size: 24pt}
 
+#header a { color: black;}
+.hidden {display: none !important}
 
-          h1.priority-1 {color: #F24C3D}
-          h1.priority-3 {color: #22A699}
-          h1.priority-2 {color: #F2BE22}
-          h1.priority-x3 {color: #F29727}
-          h1.priority-xx1 {color: #F24C3D}
-          h1.priority-x1 {color: red}
-          .black {color: black}
-          .autotoc-nav {xbackground: whitesmoke}
-          .autotoc-nav .active  {xbackground: white}
-          .white-background {xbackground: white}
-          body {xbackground: whitesmoke}
-          .xpat-autotoc.autotabs {background: white}
-          fieldset {background: white; padding-left: 2rem; padding-right: 2rem;}
-          td {
-          padding: 3px 12px;
-          xbackground: rgba(254,255,255,0.5913176);
-          margin:  1px;
-          }
+#viewlet-below-content-title {
+  display: none
+}
 
-        .calendarsheet {
-            max-width: 120px;
-            min-width: 90px;
-            float: right;
+#viewlet-below-content legend {
+  font-size: 14px;
+  display: none
+}
 
-            display: block;
-        }
+#viewlet-below-content fieldset>p {
+  display: none
+}
 
-        .calendarsheet.left {
-            float: left;
-            opacity: 0.6
-        }
-
-        .redborder.calendarsheet time {
-          background: red;
-        }
-        .calendarsheet time,
-        .calendarsheet p,
-        .calendarsheet date {
-            display: block;
-            text-align: center;
-        }
-
-        .colorborder {
-            border: 5px solid;
-        }
-
-        .redborder {
-            border: 5px solid red;
-        }
-
-        .urgent_red {border-color: red}
-        .soon_yellow {border-color: orange}
-        .future_green {border-color: green}
-        .long_grey {border-color: #123456}
-
-        .redborder p.theading,
-        .urgent_red p.theading {background: red}
-        .soon_yellow p.theading {background: orange}
-        .future_green p.theading {background: green}
-        .long_grey p.theading {background: #123456}
-
-        .calendarsheet time,
-        .calendarsheet p.theading {
-            color: white !important;
-            margin: 0
-        }
-
-        .calendarsheet .days,
-        .calendarsheet date {
-            background: white;
-            color: black;
-            font-size: 3rem;
-            font-weight: 500;
-            letter-spacing: -3px;
-            margin: 0;
-
-        }
-
-        .larger { font-size: 120%}
+#commenting {
+  padding: 10px
+}
 
 
-        @media (min-width:100px){
-          div.soon_yellow.colorborder.calendarsheet {
-            position: relative;
-            top:  -2.5rem;;
-          }
-        }
+h1.priority-1 {
+  color: #F24C3D
+}
 
-.pri-box.flex {display: flex}
-.priority-1 span { color: red; padding: 1px 5px}
-.priority-2 span { color: orange; padding: 1px 5px}
-.priority-3 span  {color:  green; padding: 1px 5px}
-span.previousdue-True { color: silver;}
-#traffic-light {background:#444; border-radius: 3px; display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 17px; height: 35px;  }
-#traffic-light > span {border-radius: 50%; width: 6px ; height: 6px  ; padding: 0; display: block; opacity: 0.33}
-#tl-1 {background: #FF0000}
-#tl-2 {background: #FFFF00}
-#tl-3 {background: #00FF00}
-#traffic-light .active-True {opacity: 1 !important; width: 10px; height: 10px}
-.late14-True {color: red}
-span.late14-True {color #FF0000  !important}
-.soon14-True {color: orange}
-span.later-True {color: green}
+h1.priority-3 {
+  color: #22A699
+}
+
+h1.priority-2 {
+  color: #F2BE22
+}
+
+h1.priority-x3 {
+  color: #F29727
+}
+
+h1.priority-xx1 {
+  color: #F24C3D
+}
+
+h1.priority-x1 {
+  color: red
+}
+
+.black {
+  color: black
+}
+
+.autotoc-nav {
+  xbackground: whitesmoke
+}
+
+.autotoc-nav .active {
+  xbackground: white
+}
+
+.white-background {
+  xbackground: white
+}
+
+body {
+  xbackground: whitesmoke
+}
+
+.xpat-autotoc.autotabs {
+  background: white
+}
+
+fieldset {
+  background: white;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+td {
+  padding: 3px 12px;
+  xbackground: rgba(254, 255, 255, 0.5913176);
+  margin: 1px;
+}
+
+.calendarsheet {
+  max-width: 120px;
+  min-width: 90px;
+  float: right;
+
+  display: block;
+}
+
+.calendarsheet.left {
+  float: left;
+  opacity: 0.6
+}
+
+.redborder.calendarsheet time {
+  background: red;
+}
+
+.calendarsheet time,
+.calendarsheet p,
+.calendarsheet date {
+  display: block;
+  text-align: center;
+}
+
+.colorborder {
+  border: 5px solid;
+}
+
+.redborder {
+  border: 5px solid red;
+}
+
+.urgent_red {
+  border-color: red
+}
+
+.soon_yellow {
+  border-color: orange
+}
+
+.future_green {
+  border-color: green
+}
+
+.long_grey {
+  border-color: #123456
+}
+
+.redborder p.theading,
+.urgent_red p.theading {
+  background: red
+}
+
+.soon_yellow p.theading {
+  background: orange
+}
+
+.future_green p.theading {
+  background: green
+}
+
+.long_grey p.theading {
+  background: #123456
+}
+
+.calendarsheet time,
+.calendarsheet p.theading {
+  color: white !important;
+  margin: 0
+}
+
+.calendarsheet .days,
+.calendarsheet date {
+  background: white;
+  color: black;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -3px;
+  margin: 0;
+
+}
+
+.larger {
+  font-size: 120%
+}
+
+
+@media (min-width:100px) {
+  div.soon_yellow.colorborder.calendarsheet {
+    position: relative;
+    top: -2.5rem;
+    ;
+  }
+}
+
+.pri-box.flex {
+  display: flex
+}
+
+.priority-1 span {
+  color: red;
+  padding: 1px 5px
+}
+
+.priority-2 span {
+  color: orange;
+  padding: 1px 5px
+}
+
+.priority-3 span {
+  color: green;
+  padding: 1px 5px
+}
+
+span.previousdue-True {
+  color: silver;
+}
+
+#traffic-light {
+  background: #444;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 17px;
+  height: 35px;
+}
+
+#traffic-light>span {
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  display: block;
+  opacity: 0.33
+}
+
+#tl-1 {
+  background: #FF0000
+}
+
+#tl-2 {
+  background: #FFFF00
+}
+
+#tl-3 {
+  background: #00FF00
+}
+
+#traffic-light .active-True {
+  opacity: 1 !important;
+  width: 10px;
+  height: 10px
+}
+
+.late14-True {
+  color: red
+}
+
+span.late14-True {
+  color #FF0000 !important
+}
+
+.soon14-True {
+  color: orange
+}
+
+span.later-True {
+  color: green
+}
 
 #toolbar select {
   background: none !important
@@ -142,15 +290,17 @@ span.later-True {color: green}
 
 #portal-column-two.overlay {
   display: flex !important;
-  max-width:  calc(100% + 1rem) !important;
+  max-width: calc(100% + 1rem) !important;
   width: calc(100% + 1rem) !important;
   margin: 1rem 0 1rem 1rem;
   height: auto;
   background: whitesmoke !important;
 }
 
-#portal-column-two.overlay .portletWrapper { 
-  background: none !important; padding: 0; margin: 1rem 0 0
+#portal-column-two.overlay .portletWrapper {
+  background: none !important;
+  padding: 0;
+  margin: 1rem 0 0
 }
 
 @media (min-width: 768px) {
@@ -387,7 +537,7 @@ a {
   text-align: center;
   font-weight: 600 !important;
   position: absolute;
-  bottom: -5px;
+  bottom: 5px;
   left: 0;
   right: 0;
   xbackground: black;
@@ -541,8 +691,10 @@ body #portal-column-two {
   margin: 0;
 }
 
-div.outer-wrapper.flex-shrink-0 {
-  background: #FAFAF9;
+ 
+body {
+  background: #FAFAF9 !important;
+ 
 }
 
 .frontend fieldset {
@@ -731,4 +883,18 @@ td {
     top: -2.5rem;
     ;
   }
+}
+
+
+#portal-column-two.overlay {
+  display: flex !important;
+  max-width:  calc(100% + 1rem) !important;
+  width: calc(100% + 1rem) !important;
+  margin: 1rem 0 1rem 1rem;
+  height: auto;
+  background: whitesmoke !important;
+}
+
+#portal-column-two.overlay .portletWrapper { 
+  background: none !important; padding: 0; margin: 1rem 0 0
 }
