@@ -1,12 +1,11 @@
 .mention,
-mentions {
+.mentions {
   background: #D2B48C
 }
 
 #mainnavigation-wrapper {display: none !important}
 
 #content-core h2 strong, #content-core .h2 strong,
-#header {border-color: ${view/color|None} !important;}
 #header {border-bottom: 5px solid #{view/color}; font-size: 24pt}
 
 #header a { color: black;}
@@ -79,7 +78,7 @@ body {
 }
 
 fieldset {
-  background: white;
+  xbackground: white;
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -782,7 +781,6 @@ body {
 }
 
 fieldset {
-  background: white;
   padding-left: 2rem;
   padding-right: 2rem;
 }

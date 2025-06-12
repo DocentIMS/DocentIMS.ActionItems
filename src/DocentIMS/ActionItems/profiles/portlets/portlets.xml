@@ -46,14 +46,14 @@
   </assignment>
 
   <!-- ADD FILTER to postit collection -->
-  <assignment category="context" key="/postit_notes/postit-collection" manager="plone.rightcolumn" name="collectionfiltercolor" type="collective.collectionfilter.portlets.CollectionFilter">
+  <assignment category="context" key="/notes/postit-collection" manager="plone.rightcolumn" name="collectionfiltercolor" type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Color</property>
     <property name="group_by">color</property>
     <property name="show_count">True</property>
     <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
 
-  <assignment category="context" key="/postit_notes/postit-collection" manager="plone.rightcolumn" name="collectionfiltersort" type="collective.collectionfilter.portlets.CollectionSortOn">
+  <assignment category="context" key="/notes/postit-collection" manager="plone.rightcolumn" name="collectionfiltersort" type="collective.collectionfilter.portlets.CollectionSortOn">
     <property name="header">Sort</property>
     <property name="input_type">checkboxes_dropdowns</property>´
     <property name="sort_on">
@@ -62,7 +62,7 @@
   </assignment>
 
 
-  <assignment category="context" key="/postit_notes/postit-collection" manager="plone.rightcolumn" 
+  <assignment category="context" key="/notes/postit-collection" manager="plone.rightcolumn" 
     name="collectionfiltersearch" type="collective.collectionfilter.portlets.CollectionSearch">
     <property name="header">Search</property>
   </assignment>
