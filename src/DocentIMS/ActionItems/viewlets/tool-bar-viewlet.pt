@@ -13,7 +13,7 @@
 
         <!-- <label for="project">Select a Project:</label> -->
         <div id="project_select">
-            <div tal:define="sites view/get_sites|None">
+            <div tal:define="sites view/sites|None">
                 <select id="project" name="project">
                     <option value="select">Select Project </option>
                     <tal:condition tal:condition="view/get_sites">
@@ -376,7 +376,7 @@ Mode
         </label>
     </div>
 
-    <div id="feedback">
+    <div id="feedback" tal:define="dashboard_url view/dashboard_url">
         <div class="flex">
 
             <div>
@@ -394,7 +394,7 @@ Mode
     
                 Feedback</p>
             </a>
-            <a href="${portal_url}/help-files">
+            <a href="${dashboard_url}/docent-help/document-configuration-in-word">
                 <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
                 <br/>
                 Help 
@@ -402,7 +402,7 @@ Mode
         </div>
         <label class="toolbar_label">
             <!-- <a href="${portal_url}/feedback/++add++feedback">Feedback</a>  -->
-            <a href="${portal_url}/help-files">Help</a>
+            <a href="${dashboard_url}/docent-help/document-configuration-in-word">Help</a>
         </label>
 
     </div>
@@ -474,29 +474,7 @@ document.getElementById('project').addEventListener('change', function () {
 });
 </script>
 
-<script>
-    jQuery(document).ready(function() {
-        // Check stored state
-        if (localStorage.getItem("toolbarHidden") === "true") {
-            jQuery("#toolbar").hide();
-            jQuery("#show-toobar").removeClass('hidden');
-            jQuery("#show-toobar").show();
-            
-        } else {
-            jQuery("#show-toobar").hide();
-        }
-
-        jQuery("#hide-toolbar, #show-toobar").click(function() {
-            jQuery("#toolbar, #show-toobar").slideToggle();
-            jQuery("#show-toobar").removeClass('hidden');
-            
-            // Update state in localStorage
-            const isHidden = (localStorage.getItem("toolbarHidden") === "true");
-            localStorage.setItem("toolbarHidden", !isHidden);
-        });
-    });
-</script>
-
+<script src="++plone++DocentIMS.ActionItems/js/action_items_jq.js" />
 
 <style>
 h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}

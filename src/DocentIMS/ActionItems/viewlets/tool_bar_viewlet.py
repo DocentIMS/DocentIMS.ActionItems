@@ -14,7 +14,7 @@ from urllib.parse import urlparse
 
 
 # def sites_cache_key(method, self):
-#     usermail = self.current_user_id()
+#     usermail = self.get_current_user_id()()
 #     if not usermail:
 #         return None  # Don't cache if no user
 
@@ -24,8 +24,45 @@ from urllib.parse import urlparse
 
 class ToolBarViewlet(ViewletBase):
     
+    def update(self):
+        self.portal_url = self.get_portal_url()
+        self.current_user_id = self.get_current_user_id()
+        self.stoplight_state  = self.get_stoplight_state() 
+        self.dashboard_url = self.get_dashboard_url()
+        self.is_project_manager = self.get_is_project_manager()
+        self.basik = self.get_basik()
+        self.tasks_red = self.get_tasks_red()
+        self.tasks_green = self.get_tasks_green()
+        self.tasks_yellow = self.get_tasks_yellow()
+        self.notifications_red = self.get_notifications_red()
+        self.notifications_green = self.get_notifications_green()
+        self.notifications_yellow = self.get_notifications_yellow()
+        self.the_tooltips = self.get_the_tooltips()
+        self.color = self.get_color()
+        self.project_name = self.get_project_name()        
+        self.get_sites = self.get_get_sites()
+        self.webmail_url = self.get_webmail_url()
+        
+    @memoize
+    def get_current_user_id(self):
+        current_user =  api.user.get_current()
+        return current_user.getId()    
+       
+    def get_color(self):
+        return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1')
+    
+    def get_stoplight_state(self):
+        return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.stoplight_state')
+    
+    def get_project_name(self):
+        return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')  
+    
+    def get_dashboard_url(self):
+        return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.dashboard_url')  
+    
+        
     def sites_cache_key(method, self):
-        usermail = self.current_user_id
+        usermail = self.get_current_user_id()
         if not usermail:
             return None  # Don't cache if no user
 
@@ -33,43 +70,43 @@ class ToolBarViewlet(ViewletBase):
         time_bucket = int(time.time() / 6000)
         return (usermail, time_bucket)
     
-    def is_project_manager(self):
+    def get_is_project_manager(self):
         current_user =  api.user.get_current()
         return "PrjMgr" in current_user.getGroups()
         
-    def basik(self):
+    def get_basik(self):
          return  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
 
-    def tasks_red(self):
-        user_ids = self.current_user_id
+    def get_tasks_red(self):
+        user_ids = self.get_current_user_id()
         stoplight_state = self.stoplight_state  
         items =  api.content.find(stoplight="Red", assigned_id = user_ids, review_state=stoplight_state, limit=9)
         return len(items)
     
-    def tasks_green(self):
-        user_ids = self.current_user_id
+    def get_tasks_green(self):
+        user_ids = self.get_current_user_id()
         stoplight_state = self.stoplight_state
         items =  api.content.find(stoplight="Green", assigned_id = user_ids, review_state=stoplight_state, limit=9)
         return len(items)
     
-    def tasks_yellow(self):
-        user_ids = self.current_user_id
+    def get_tasks_yellow(self):
+        user_ids = self.get_current_user_id()
         stoplight_state = self.stoplight_state
         items =  api.content.find(stoplight="Yellow", assigned_id = user_ids, review_state=stoplight_state, limit=9)
         return len(items)
 
-    def notifications_red(self):
-        user_ids = self.current_user_id
+    def get_notifications_red(self):
+        user_ids = self.get_current_user_id()
         items =  api.content.find( notification_type="error", notification_assigned = user_ids, limit=9,) 
         return len(items)
  
-    def notifications_green(self):
-        user_ids = self.current_user_id
+    def get_notifications_green(self):
+        user_ids = self.get_current_user_id()
         items =  api.content.find( notification_type="info", notification_assigned = user_ids, limit=9,) 
         return len(items)
     
-    def notifications_yellow(self):
-        user_ids = self.current_user_id
+    def get_notifications_yellow(self):
+        user_ids = self.get_current_user_id()
         items =  api.content.find( notification_type="warning", notification_assigned = user_ids, limit=9,) 
         return len(items)
 
@@ -91,33 +128,13 @@ class ToolBarViewlet(ViewletBase):
         }
                 
         return tooltip_values
-    
-    
-    @property
-    def color(self):
-        return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1')
-    
-    @property
-    def stoplight_state(self):
-        return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.stoplight_state')
-    
-    @property
-    def project_name(self):
-        return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name')     
-    
-    @property
+ 
     @memoize
-    def portal_url(self):
+    def get_portal_url(self):
         return  api.portal.get().absolute_url()   
     
-    @property
-    @memoize
-    def current_user_id(self):
-        current_user =  api.user.get_current()
-        return current_user.getId()
-
     @ram.cache(sites_cache_key)
-    def get_sites(self):
+    def get_get_sites(self):
         # import pdb; pdb.set_trace()
         user = api.user.get_current()
         usermail = user.getProperty('email')
@@ -151,15 +168,8 @@ class ToolBarViewlet(ViewletBase):
             
         return None
     
-    # def red_count(self): 
-    #     user_ids = self.current_user.getId()
-    #     return self.context.portal_catalog.unrestrictedSearchResults(portal_type=['action_items'], urgency="Red", assigned_to = user_ids)
-                     
     
-    def index(self):
-        return super(ToolBarViewlet, self).render()
-    
-    def webmail_url(self):
+    def get_webmail_url(self):
         site_url = self.portal_url
         parsed_url = urlparse(site_url)
         hostname = parsed_url.hostname  # "test.myurl.com"
@@ -174,4 +184,5 @@ class ToolBarViewlet(ViewletBase):
         return domain
 
     
-
+    def index(self):
+        return super(ToolBarViewlet, self).render()

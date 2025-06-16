@@ -673,7 +673,7 @@ class IDocentimsSettings(model.Schema):
     dashboard_url = schema.URI(
         title=u"Url of dashboard",
         required=not_required_in_debug_mode(),
-        default="https://dashboard.docentims.com"
+        default="https://dashboard.docentims.com" 
     )    
     
     
