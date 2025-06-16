@@ -1,6 +1,6 @@
 body, html body  {color: #222}
 
-thead { font-weight: bold; margin-bottom: 3px; color: black}
+thead, th { font-weight: bold; margin-bottom: 3px; color: black}
 
 .mention,
 .mentions {
