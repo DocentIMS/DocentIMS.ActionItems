@@ -40,7 +40,7 @@ class ToolBarViewlet(ViewletBase):
         self.the_tooltips = self.get_the_tooltips()
         self.color = self.get_color()
         self.project_name = self.get_project_name()        
-        self.get_sites = self.get_get_sites()
+        self.sites = self.get_sites()
         self.webmail_url = self.get_webmail_url()
         
     @memoize
@@ -129,12 +129,11 @@ class ToolBarViewlet(ViewletBase):
                 
         return tooltip_values
  
-    @memoize
     def get_portal_url(self):
         return  api.portal.get().absolute_url()   
     
     @ram.cache(sites_cache_key)
-    def get_get_sites(self):
+    def get_sites(self):
         # import pdb; pdb.set_trace()
         user = api.user.get_current()
         usermail = user.getProperty('email')
