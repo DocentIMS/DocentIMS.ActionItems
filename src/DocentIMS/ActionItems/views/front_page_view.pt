@@ -8,7 +8,7 @@
       <metal:block define-macro="content-core">
 
         <div tal:define="portal_state context/@@plone_portal_state" tal:condition="view/count_items" class="notification-viewlet portalMessage statusmessage statusmessage-info alert alert-info">
-          <a title="see noticitions" href="${portal_state/portal_url}/notifications-view">${view/get_user} has <b>${view/count_items}</b> new notification(s). <b>Click to see</b>
+          <a title="see noticitions" href="${portal_state/portal_url}/notifications/notifications-collection">${view/get_user} has <b>${view/count_items}</b> new notification(s). <b>Click to see</b>
           </a>
         </div>
 

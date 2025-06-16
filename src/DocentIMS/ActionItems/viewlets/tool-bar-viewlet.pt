@@ -429,8 +429,8 @@ Mode
 Show Toolbar</button>
     <hr/>
 </div>
-<!-- 
-<script>
+ 
+<!-- <script>
     $(document).ready(function () {
         $('.htmltooltip').each(function () {
             var tooltipContent = $(this).attr('data-tooltip-content'); // Get content from custom attribute
@@ -440,32 +440,8 @@ Show Toolbar</button>
             });
         });
     }); 
-</script>
-
-<script>
-    jQuery(document).ready(function() {
-        // Check stored state
-        if (localStorage.getItem("toolbarHidden") === "true") {
-            jQuery("#toolbar").hide();
-            jQuery("#show-toobar").removeClass('hidden');
-            jQuery("#show-toobar").show();
-            
-        } else {
-            jQuery("#show-toobar").hide();
-        }
-
-        jQuery("#hide-toolbar, #show-toobar").click(function() {
-            jQuery("#toolbar, #show-toobar").slideToggle();
-            jQuery("#show-toobar").removeClass('hidden');
-            
-            // Update state in localStorage
-            const isHidden = (localStorage.getItem("toolbarHidden") === "true");
-            localStorage.setItem("toolbarHidden", !isHidden);
-        });
-    });
-</script>
-  -->
-
+</script> -->
+ 
 <script>
 document.getElementById('project').addEventListener('change', function () {
   if (this.value !== '${view/project_name}') {
@@ -478,7 +454,6 @@ document.getElementById('project').addEventListener('change', function () {
 
 <style>
 h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
-
 
 .image_color {
   background: ${view/color|None};

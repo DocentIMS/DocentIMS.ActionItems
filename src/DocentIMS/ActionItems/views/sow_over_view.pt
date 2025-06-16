@@ -28,7 +28,7 @@
                         
                           <tal:define tal:define="val python:getattr(obj, field['row_field'], '')">
                             <a href="${item/getURL}"  tal:condition="python: field['row_field']=='title'">
-                              ${val}
+                              <b>${val}</b>
                             </a>
                               <tal:check tal:condition="python: isinstance(val,bool)">
                                 <span tal:condition="python: val==False"> &nbsp; No </span>

@@ -28,7 +28,7 @@
                       ${dashboard_list/short_name|None} 
                     </a>
                     <a tal:condition="dashboard_list/notifications|None" 
-                    href="${url}/notifications-view"
+                    href="${url}/notifications/notifications-collection"
                     class="rounded-alert alert-danger xstatusmessage-info alert" 
                     title="Alerts / Notifications on ${dashboard_list/short_name|None}"
                     alt="Alerts / Notifications"

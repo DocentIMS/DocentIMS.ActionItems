@@ -35,15 +35,31 @@
   </assignment>
 
 
-  <assignment category="context" key="/notifications/notifications-collection" 
-  manager="plone.rightcolumn" name="notificationsort" type="collective.collectionfilter.portlets.CollectionSortOn">
+  <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="notificationsort" type="collective.collectionfilter.portlets.CollectionSortOn">
     <property name="header">Sort</property>
-    <property name="input_type">checkboxes_dropdowns</property>´
+    <property name="input_type">checkboxes_dropdowns</property>
     <!-- <property name="sort_on" type="list"> -->
     <property name="sort_on">
-     <element>created</element>
+      <element>created</element>
     </property>
   </assignment>
+
+  <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="collectionfilternotification" type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">Message Type</property>
+    <property name="group_by">notification_type</property>
+    <property name="show_count">True</property>
+    <property name="input_type">checkboxes_dropdowns</property>
+  </assignment>
+
+  <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="notiffiltersearch" type="collective.collectionfilter.portlets.CollectionSearch">
+    <property name="header">Search</property>
+  </assignment>
+
+  <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="collectionfilterclear" type="collective.collectionfilter.portlets.CollectionResetFilter">
+    <property name="header">Clear</property>
+    <property name="css_class"></property>
+  </assignment>
+
 
   <!-- ADD FILTER to postit collection -->
   <assignment category="context" key="/notes/postit-collection" manager="plone.rightcolumn" name="collectionfiltercolor" type="collective.collectionfilter.portlets.CollectionFilter">
@@ -61,10 +77,13 @@
     </property>
   </assignment>
 
-
-  <assignment category="context" key="/notes/postit-collection" manager="plone.rightcolumn" 
-    name="collectionfiltersearch" type="collective.collectionfilter.portlets.CollectionSearch">
+  <assignment category="context" key="/notes/postit-collection" manager="plone.rightcolumn" name="collectionfiltersearch" type="collective.collectionfilter.portlets.CollectionSearch">
     <property name="header">Search</property>
+  </assignment>
+
+  <assignment category="context" key="/notes/postit-collection" manager="plone.rightcolumn" name="collectionfilterclear" type="collective.collectionfilter.portlets.CollectionResetFilter">
+    <property name="header">Clear</property>
+    <property name="css_class"></property>
   </assignment>
 
 
@@ -81,8 +100,15 @@
   <!-- Assign another collection filter portlet -->
 
   <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterstoplight" type="collective.collectionfilter.portlets.CollectionFilter">
-    <property name="header">Stoplight</property>
+    <property name="header">Priority</property>
     <property name="group_by">stoplight</property>
+    <property name="show_count">True</property>
+    <property name="input_type">checkboxes_dropdowns</property>
+  </assignment>
+
+  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterurgency" type="collective.collectionfilter.portlets.CollectionFilter">
+    <property name="header">Urgency</property>
+    <property name="group_by">urgency</property>
     <property name="show_count">True</property>
     <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
@@ -102,24 +128,19 @@
     <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
 
-  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" 
-    name="actionfiltersearch" type="collective.collectionfilter.portlets.CollectionSearch">
+  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="actionfiltersearch" type="collective.collectionfilter.portlets.CollectionSearch">
     <property name="header">Search</property>
   </assignment>
 
-  <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" 
-  name="collectionfilternotification" type="collective.collectionfilter.portlets.CollectionFilter">
-    <property name="header">Message Type</property>
-    <property name="group_by">notification_type</property>
-    <property name="show_count">True</property>
-    <property name="input_type">checkboxes_dropdowns</property>
+  <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterclear" type="collective.collectionfilter.portlets.CollectionResetFilter">
+    <property name="header">Clear</property>
+    <property name="css_class"></property>
   </assignment>
 
 
-    <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" 
-    name="notiffiltersearch" type="collective.collectionfilter.portlets.CollectionSearch">
-    <property name="header">Search</property>
-  </assignment>
+
+
+
 
 
 
@@ -130,10 +151,10 @@
   </assignment> -->
 
 
-  <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="collectionfilterclear" type="collective.collectionfilter.portlets.CollectionResetFilter">
+  <!-- <assignment category="context" key="/notifications/notifications-collection" manager="plone.rightcolumn" name="collectionfilterclear" type="collective.collectionfilter.portlets.CollectionResetFilter">
     <property name="header">Clear</property>
     <property name="css_class"></property>
-  </assignment>
+  </assignment> -->
 
 
 

@@ -40,7 +40,7 @@
                         </tal:condition>
 
                         <a href="${item/getURL}" tal:condition="python: field['row_field']=='title'">
-                              ${val}
+                              <b>${val}</b>
                         </a>
 
                         <tal:check tal:condition="python: isinstance(val,bool)">
