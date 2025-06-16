@@ -116,18 +116,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Toolbar logic
-  const toolbar = document.getElementById("toolbar");
-  const showToolbarBtn = document.getElementById("show-toobar");
+  // const toolbar = document.getElementById("toolbar");
+  // const showToolbarBtn = document.getElementById("show-toobar");
 
-  if (localStorage.getItem("toolbarHidden") === "true") {
-    if (toolbar) toolbar.style.display = "none";
-    if (showToolbarBtn) {
-      showToolbarBtn.classList.remove("hidden");
-      showToolbarBtn.style.display = "";
-    }
-  } else if (showToolbarBtn) {
-    showToolbarBtn.style.display = "none";
-  }
+  // if (localStorage.getItem("toolbarHidden") === "true") {
+  //   if (toolbar) toolbar.style.display = "none";
+  //   if (showToolbarBtn) {
+  //     showToolbarBtn.classList.remove("hidden");
+  //     showToolbarBtn.style.display = "";
+  //   }
+  // } else if (showToolbarBtn) {
+  //   showToolbarBtn.style.display = "none";
+  // }
 
   // const hideToolbarBtn = document.getElementById("hide-toolbar");
   // [hideToolbarBtn, showToolbarBtn].forEach(btn => {
@@ -190,13 +190,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-jQuery(document).ready(function() {
-  if ($("#portal-column-two").length) {
-        $("#toggle-filters").removeClass("hidden"); 
-    }
-  jQuery("#portal-column-two").hide();
-  jQuery("button#toggle-filters").click(function() {
-    jQuery("#portal-column-two").slideToggle();
-    jQuery("#portal-column-two").toggleClass("overlay");              
-  });
-}); 
+// jQuery(document).ready(function() {
+//   if ($("#portal-column-two").length) {
+//         $("#toggle-filters").removeClass("hidden"); 
+//     }
+//   jQuery("#portal-column-two").hide();
+//   jQuery("button#toggle-filters").click(function() {
+//     jQuery("#portal-column-two").slideToggle();
+//     jQuery("#portal-column-two").toggleClass("overlay");              
+//   });
+// }); 
