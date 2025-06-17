@@ -334,105 +334,7 @@
 
 
 
-  <!-- <record name="plone.app.theming.interfaces.IThemeSettings.absolutePrefix" interface="plone.app.theming.interfaces.IThemeSettings" field="absolutePrefix">
-    <field type="plone.registry.field.TextLine">
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="convert_relative_url">Convert relative URLs in the theme file to absolute paths using this prefix.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="absolute_url_prefix">Absolute URL prefix</title>
-    </field>
-    <value>/++theme++dutchman-theme</value>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.currentTheme" interface="plone.app.theming.interfaces.IThemeSettings" field="currentTheme">
-    <field type="plone.registry.field.TextLine">
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="current_theme_description">The name of the current theme, i.e. the one applied most recently.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="current_theme">Current theme</title>
-    </field>
-    <value>dutchman-theme</value>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.custom_css" interface="plone.app.theming.interfaces.IThemeSettings" field="custom_css">
-    <field type="plone.registry.field.SourceText">
-      <default></default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_custom_css">Define your own custom CSS in the field below. This is a good place for quick customizations of things like colors and the toolbar. Definitions here will override previously defined CSS of Plone. Please use this only for small customizations, as it is hard to keep track of changes here. For bigger changes you most likely want to customize a full theme and make your changes there.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_custom_css">Custom CSS</title>
-    </field>
-    <value></value>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.custom_css_timestamp" interface="plone.app.theming.interfaces.IThemeSettings" field="custom_css_timestamp">
-    <field type="plone.registry.field.Datetime">
-      <default>2024-10-25 08:03:20.626505</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Time stamp when the custom CSS was changed. Used to generate custom.css with timestamp in URL.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Custom CSS Timestamp</title>
-    </field>
-    <value>2024-10-24 11:17:39.744111</value>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.doctype" interface="plone.app.theming.interfaces.IThemeSettings" field="doctype">
-    <field type="plone.registry.field.ASCIILine">
-      <default></default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="doctype_description">You can specify a Doctype string which will be set on the for example "&lt;!DOCTYPE html&gt;". If left blank the default XHTML 1.0 transitional Doctype or that set in the Diazo theme is used.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="doctype">Doctype</title>
-    </field>
-    <value>&lt;!DOCTYPE html&gt;</value>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.enabled" interface="plone.app.theming.interfaces.IThemeSettings" field="enabled">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="enable_theme_globally">Use this option to enable or disable the theme globally. Note that the options will also affect whether the theme is used when this option is enabled.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="enabled">Enabled</title>
-    </field>
-    <value>True</value>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.hostnameBlacklist" interface="plone.app.theming.interfaces.IThemeSettings" field="hostnameBlacklist">
-    <field type="plone.registry.field.List">
-      <default>
-        <element>127.0.0.1</element>
-      </default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="hostname_blacklist_description">If there are hostnames that you do not want to be themed, you can list them here. This is useful during theme development, so that you can compare the themed and unthemed sites. In some cases, you may also want to provided an unthemed host alias for content administrators to be able to use 'plain' Plone.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="hostname_blacklist">Unthemed host names</title>
-      <value_type type="plone.registry.field.TextLine"/>
-    </field>
-    <value>
-      <element>127.0.0.1</element>
-    </value>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.parameterExpressions" interface="plone.app.theming.interfaces.IThemeSettings" field="parameterExpressions">
-    <field type="plone.registry.field.Dict">
-      <default/>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="parameter_expressions_description">You can define parameters here, which will be passed to the compiled theme. In your rules file, you can refer to a parameter by $name. Parameters are defined using TALES expressions, which should evaluate to a string, a number, a boolean or None. Available variables are `context`, `request`, `portal`, `portal_state`,  and `context_state`.</description>
-      <key_type type="plone.registry.field.ASCIILine"/>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="parameter_expressions">Parameter expressions</title>
-      <value_type type="plone.registry.field.ASCIILine"/>
-    </field>
-    <value/>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.readNetwork" interface="plone.app.theming.interfaces.IThemeSettings" field="readNetwork">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="network_urls_allowed">If enabled, network (http, https) urls are allowed in the rules file and this config.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="readNetwork">Read network</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.app.theming.interfaces.IThemeSettings.rules" interface="plone.app.theming.interfaces.IThemeSettings" field="rules">
-    <field type="plone.registry.field.TextLine">
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="rules_file_path">File path to the rules file</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="rules_file">Rules file</title>
-    </field>
-    <value>/++theme++dutchman-theme/rules.xml</value>
-  </record>
-  <record name="plone.auth_cookie_length" interface="plone.base.interfaces.controlpanel.ILoginSchema" field="auth_cookie_length">
-    <field type="plone.registry.field.Int">
-      <default>0</default>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Auth cookie length</title>
-    </field>
-    <value>0</value>
-  </record> -->
+
   <record name="plone.authenticated_users_only" interface="plone.i18n.interfaces.ILanguageSchema" field="authenticated_users_only">
     <field type="plone.registry.field.Bool">
       <default>False</default>
@@ -2656,89 +2558,8 @@
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Enable resizing the editor window.</title>
     </field>
     <value>True</value>
-  </record>
-  <record name="plone.resources.development">
-    <field type="plone.registry.field.Bool">
-      <required>False</required>
-      <title>Frontend development mode</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.robots_txt" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="robots_txt">
-    <field type="plone.registry.field.SourceText">
-      <default>Sitemap: {portal_url}/sitemap.xml.gz
-
-# Define access-restrictions for robots/spiders
-# http://www.robotstxt.org/wc/norobots.html
-
-
-
-# By default we allow robots to access all areas of our site
-# already accessible to anonymous users
-
-User-agent: *
-Disallow:
-
-
-
-# Add Googlebot-specific syntax extension to exclude forms
-# that are repeated for each piece of content in the site
-# the wildcard is only supported by Googlebot
-# http://www.google.com/support/webmasters/bin/answer.py?answer=40367&amp;ctx=sibling
-
-User-Agent: Googlebot
-Disallow: /*?
-Disallow: /*atct_album_view$
-Disallow: /*folder_factories$
-Disallow: /*folder_summary_view$
-Disallow: /*login_form$
-Disallow: /*mail_password_form$
-Disallow: /@@search
-Disallow: /*search_rss$
-Disallow: /*sendto_form$
-Disallow: /*summary_view$
-Disallow: /*thumbnail_view$
-Disallow: /*view$
-</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_robots_txt">robots.txt is read by search engines to determine how to index your site. For details see &lt;a href='http://www.robotstxt.org'&gt;http://www.robotstxt.org&lt;/a&gt;. Use '{portal_url}' for the site URL.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">robots.txt</title>
-    </field>
-    <value>Sitemap: {portal_url}/sitemap.xml.gz
-
-# Define access-restrictions for robots/spiders
-# http://www.robotstxt.org/wc/norobots.html
-
-
-
-# By default we allow robots to access all areas of our site
-# already accessible to anonymous users
-
-User-agent: *
-Disallow:
-
-
-
-# Add Googlebot-specific syntax extension to exclude forms
-# that are repeated for each piece of content in the site
-# the wildcard is only supported by Googlebot
-# http://www.google.com/support/webmasters/bin/answer.py?answer=40367&amp;ctx=sibling
-
-User-Agent: Googlebot
-Disallow: /*?
-Disallow: /*atct_album_view$
-Disallow: /*folder_factories$
-Disallow: /*folder_summary_view$
-Disallow: /*login_form$
-Disallow: /*mail_password_form$
-Disallow: /@@search
-Disallow: /*search_rss$
-Disallow: /*sendto_form$
-Disallow: /*summary_view$
-Disallow: /*thumbnail_view$
-Disallow: /*view$
-</value>
-  </record>
+  </record> 
+  
   <record name="plone.roles_allowed_to_add_keywords" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="roles_allowed_to_add_keywords">
     <field type="plone.registry.field.List">
       <default>
@@ -2777,14 +2598,7 @@ Disallow: /*view$
     </field>
     <value>mini</value>
   </record>
-  <record name="plone.search_results_description_length" interface="plone.base.interfaces.controlpanel.ISearchSchema" field="search_results_description_length">
-    <field type="plone.registry.field.Int">
-      <default>160</default>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Crop the item description in search result listings after a number of characters.</title>
-    </field>
-    <value>160</value>
-  </record>
+  
   <record name="plone.search_show_images" interface="plone.base.interfaces.controlpanel.ISearchSchema" field="search_show_images">
     <field type="plone.registry.field.Bool">
       <default>True</default>
@@ -2801,42 +2615,8 @@ Disallow: /*view$
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_set_language_cookie_always">Set the language cookie always</title>
     </field>
     <value>False</value>
-  </record>
-  <record name="plone.share_social_data" interface="plone.base.interfaces.controlpanel.ISocialMediaSchema" field="share_social_data">
-    <field type="plone.registry.field.Bool">
-      <default>True</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Include meta tags on pages to give hints to social media on how to better render your pages when shared</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Share social data</title>
-    </field>
-    <value>True</value>
-  </record>
-  <record name="plone.show_excluded_items" interface="plone.base.interfaces.controlpanel.INavigationSchema" field="show_excluded_items">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">If an item has been excluded from navigation should it be shown in navigation when viewing content contained within it or within a subfolder.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Show items normally excluded from navigation if viewing their children.</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.site_favicon" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="site_favicon">
-    <field type="plone.registry.field.Bytes">
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">This shows a custom favicon on your site.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site Favicon</title>
-    </field>
-    <value/>
-  </record>
-  <record name="plone.site_favicon_mimetype" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="site_favicon_mimetype">
-    <field type="plone.registry.field.TextLine">
-      <default>image/vnd.microsoft.icon</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">MIME type of the favicon (automatically set when a new favicon is uploaded)</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">MIME type of the site favicon</title>
-    </field>
-    <value>image/vnd.microsoft.icon</value>
-  </record>
+  </record> 
+
   <record name="plone.site_logo" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="site_logo">
     <field type="plone.registry.field.Bytes">
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">This shows a custom logo on your site.</description>
@@ -2845,38 +2625,16 @@ Disallow: /*view$
     </field>
     <value/>
   </record>
+
   <record name="plone.site_title" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="site_title">
     <field type="plone.registry.field.TextLine">
       <default>Plone site</default>
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">This shows up in the title bar of browsers and in syndication feeds.</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site title</title>
     </field>
-    <value>Meadows (24 10)</value>
+    <value>Team Site</value>
   </record>
-  <record name="plone.sitemap_depth" interface="plone.base.interfaces.controlpanel.INavigationSchema" field="sitemap_depth">
-    <field type="plone.registry.field.Int">
-      <default>3</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Number of folder levels to show in the site map.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Sitemap depth</title>
-    </field>
-    <value>3</value>
-  </record>
-  <record name="plone.smtp_host" interface="plone.base.interfaces.controlpanel.IMailSchema" field="smtp_host">
-    <field type="plone.registry.field.TextLine">
-      <default>localhost</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_smtp_server">The address of your local SMTP (outgoing e-mail) server. Usually 'localhost', unless you use an external server to send e-mail.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_smtp_server">SMTP server</title>
-    </field>
-    <value>localhost</value>
-  </record>
-  <record name="plone.smtp_pass" interface="plone.base.interfaces.controlpanel.IMailSchema" field="smtp_pass">
-    <field type="plone.registry.field.Password">
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_smtp_pass">The password for the ESMTP user account.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_smtp_pass">ESMTP password</title>
-    </field>
-    <value/>
-  </record>
+  
   <record name="plone.smtp_port" interface="plone.base.interfaces.controlpanel.IMailSchema" field="smtp_port">
     <field type="plone.registry.field.Int">
       <default>25</default>
@@ -2884,59 +2642,8 @@ Disallow: /*view$
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_smtp_port">SMTP port</title>
     </field>
     <value>25</value>
-  </record>
-  <record name="plone.smtp_userid" interface="plone.base.interfaces.controlpanel.IMailSchema" field="smtp_userid">
-    <field type="plone.registry.field.TextLine">
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_smtp_userid">Username for authentication to your e-mail server. Not required unless you are using ESMTP.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_smtp_userid">ESMTP username</title>
-    </field>
-    <value/>
-  </record>
-  <record name="plone.sort_on" interface="plone.base.interfaces.controlpanel.ISearchSchema" field="sort_on">
-    <field type="plone.registry.field.Choice">
-      <default>relevance</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Sort the default search on this index</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_sort_on">Sort on</title>
-      <values>
-        <element>relevance</element>
-        <element>Date</element>
-        <element>sortable_title</element>
-      </values>
-    </field>
-    <value>relevance</value>
-  </record>
-  <record name="plone.sort_tabs_on" interface="plone.base.interfaces.controlpanel.INavigationSchema" field="sort_tabs_on">
-    <field type="plone.registry.field.Choice">
-      <default>getObjPositionInParent</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Index used to sort the tabs</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Sort tabs on</title>
-      <values>
-        <element>getObjPositionInParent</element>
-        <element>sortable_title</element>
-        <element>getId</element>
-      </values>
-    </field>
-    <value>getObjPositionInParent</value>
-  </record>
-  <record name="plone.sort_tabs_reversed" interface="plone.base.interfaces.controlpanel.INavigationSchema" field="sort_tabs_reversed">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Sort tabs in descending.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Reversed sort order for tabs.</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.subjects_of_navigation_root" interface="plone.base.interfaces.controlpanel.IEditingSchema" field="subjects_of_navigation_root">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Limit tags aka keywords vocabulary used for Tags field and in searches to the terms used inside the subtree of the current navigation root. This can be used together with Plone's multilingual extension plone.app.multilingual to only offer keywords of the current selected language. Other addons may utilize this feature for its specific purposes.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Limit tags/keywords to the current navigation root</title>
-    </field>
-    <value>False</value>
-  </record>
+  </record> 
+
   <record name="plone.table_styles" interface="plone.base.interfaces.controlpanel.ITinyMCESchema" field="table_styles">
     <field type="plone.registry.field.List">
       <default>
@@ -3015,6 +2722,7 @@ Disallow: /*view$
     </field>
     <value>enabled</value>
   </record>
+
   <record name="plone.toolbar" interface="plone.base.interfaces.controlpanel.ITinyMCESchema" field="toolbar">
     <field type="plone.registry.field.Text">
       <default>ltr rtl | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | inserttable | unlink plonelink ploneimage</default>
@@ -3022,111 +2730,8 @@ Disallow: /*view$
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_tinymce_toolbar">Toolbar</title>
     </field>
     <value>ltr rtl | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | inserttable | unlink plonelink ploneimage</value>
-  </record>
-  <record name="plone.toolbar_logo" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="toolbar_logo">
-    <field type="plone.registry.field.TextLine">
-      <default>/++plone++static/plone-toolbarlogo.svg</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">This must be a URL relative to the site root. By default it is /++plone++static/plone-toolbarlogo.svg</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Relative URL for the toolbar logo</title>
-    </field>
-    <value>/++plone++static/plone-toolbarlogo.svg</value>
-  </record>
-  <record name="plone.toolbar_position" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="toolbar_position">
-    <field type="plone.registry.field.Choice">
-      <default>side</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">It can be on the side (vertical mode) or on the top (horizontal mode)</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Toolbar position</title>
-      <values>
-        <element>side</element>
-        <element>top</element>
-      </values>
-    </field>
-    <value>side</value>
-  </record>
-  <record name="plone.twitter_username" interface="plone.base.interfaces.controlpanel.ISocialMediaSchema" field="twitter_username">
-    <field type="plone.registry.field.ASCIILine">
-      <default></default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">To identify things like Twitter Cards. Do not include the "@" prefix character.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Twitter username</title>
-    </field>
-    <value></value>
-  </record>
-  <record name="plone.types_not_searched" interface="plone.base.interfaces.controlpanel.ISearchSchema" field="types_not_searched">
-    <field type="plone.registry.field.Tuple">
-      <default>
-        <element>Discussion Item</element>
-        <element>Plone Site</element>
-        <element>TempFolder</element>
-      </default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Select the content types that should be excluded from search results. Note that if new content types are installed, they will be enabled by default unless explicitly turned off here or by the relevant installer.</description>
-      <missing_value/>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Select content types which should be excluded from search results</title>
-      <value_type type="plone.registry.field.Choice">
-        <vocabulary>plone.app.vocabularies.PortalTypes</vocabulary>
-      </value_type>
-    </field>
-    <value>
-      <element>Discussion Item</element>
-      <element>Plone Site</element>
-      <element>TempFolder</element>
-    </value>
-  </record>
-  <record name="plone.types_use_view_action_in_listings" interface="plone.base.interfaces.controlpanel.ITypesSchema" field="types_use_view_action_in_listings">
-    <field type="plone.registry.field.List">
-      <default>
-        <element>Image</element>
-        <element>File</element>
-      </default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_types_use_view_action_in_listings">When clicking items in listing views, these types will use the 'view' action instead of using their default view.</description>
-      <missing_value/>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Types which use the view action in listing views.</title>
-      <value_type type="plone.registry.field.TextLine"/>
-    </field>
-    <value>
-      <element>Image</element>
-      <element>File</element>
-    </value>
-  </record>
-  <record name="plone.use_cctld_negotiation" interface="plone.i18n.interfaces.ILanguageSchema" field="use_cctld_negotiation">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_top_level_domain">e.g.: www.plone.de</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_top_level_domain">Use top-level domain</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.use_combined_language_codes" interface="plone.i18n.interfaces.ILanguageSchema" field="use_combined_language_codes">
-    <field type="plone.registry.field.Bool">
-      <default>True</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_allow_combined_language_codes">Examples: pt-br (Brazilian Portuguese), en-us (American English) etc.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_allow_combined_language_codes">Show country-specific language variants</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.use_content_negotiation" interface="plone.i18n.interfaces.ILanguageSchema" field="use_content_negotiation">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_language_of_the_content">Use the language of the content item.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_language_of_the_content">Use the language of the content item</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.use_cookie_negotiation" interface="plone.i18n.interfaces.ILanguageSchema" field="use_cookie_negotiation">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_cookie_manual_override">Required for the language selector viewlet to be rendered.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_cookie_manual_override">Use cookie for manual override</title>
-    </field>
-    <value>False</value>
-  </record>
+  </record> 
+
   <record name="plone.use_email_as_login" interface="plone.base.interfaces.controlpanel.ISecuritySchema" field="use_email_as_login">
     <field type="plone.registry.field.Bool">
       <default>False</default>
@@ -3135,34 +2740,8 @@ Disallow: /*view$
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Use email address as login name</title>
     </field>
     <value>True</value>
-  </record>
-  <record name="plone.use_path_negotiation" interface="plone.i18n.interfaces.ILanguageSchema" field="use_path_negotiation">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_language_codes_in_URL">Use language codes in URL path for manual override.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_language_codes_in_URL">Use language codes in URL path for manual override</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.use_request_negotiation" interface="plone.i18n.interfaces.ILanguageSchema" field="use_request_negotiation">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_browser_language_request_negotiation">Use browser language request negotiation.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_browser_language_request_negotiation">Use browser language request negotiation</title>
-    </field>
-    <value>False</value>
-  </record>
-  <record name="plone.use_subdomain_negotiation" interface="plone.i18n.interfaces.ILanguageSchema" field="use_subdomain_negotiation">
-    <field type="plone.registry.field.Bool">
-      <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_use_subdomain">e.g.: de.plone.org</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_use_subdomain">Use subdomain</title>
-    </field>
-    <value>False</value>
-  </record>
+  </record> 
+
   <record name="plone.use_uuid_as_userid" interface="plone.base.interfaces.controlpanel.ISecuritySchema" field="use_uuid_as_userid">
     <field type="plone.registry.field.Bool">
       <default>False</default>
@@ -3172,219 +2751,6 @@ Disallow: /*view$
     </field>
     <value>False</value>
   </record>
-  <record name="plone.valid_tags" interface="plone.base.interfaces.controlpanel.IFilterSchema" field="valid_tags">
-    <field type="plone.registry.field.List">
-      <default>
-        <element>a</element>
-        <element>abbr</element>
-        <element>acronym</element>
-        <element>address</element>
-        <element>article</element>
-        <element>aside</element>
-        <element>audio</element>
-        <element>b</element>
-        <element>bdo</element>
-        <element>big</element>
-        <element>blockquote</element>
-        <element>body</element>
-        <element>br</element>
-        <element>canvas</element>
-        <element>caption</element>
-        <element>cite</element>
-        <element>code</element>
-        <element>col</element>
-        <element>colgroup</element>
-        <element>command</element>
-        <element>datalist</element>
-        <element>dd</element>
-        <element>del</element>
-        <element>details</element>
-        <element>dfn</element>
-        <element>dialog</element>
-        <element>div</element>
-        <element>dl</element>
-        <element>dt</element>
-        <element>em</element>
-        <element>figure</element>
-        <element>figcaption</element>
-        <element>footer</element>
-        <element>h1</element>
-        <element>h2</element>
-        <element>h3</element>
-        <element>h4</element>
-        <element>h5</element>
-        <element>h6</element>
-        <element>head</element>
-        <element>header</element>
-        <element>hgroup</element>
-        <element>hr</element>
-        <element>html</element>
-        <element>i</element>
-        <element>iframe</element>
-        <element>img</element>
-        <element>ins</element>
-        <element>kbd</element>
-        <element>keygen</element>
-        <element>li</element>
-        <element>map</element>
-        <element>mark</element>
-        <element>meter</element>
-        <element>nav</element>
-        <element>ol</element>
-        <element>output</element>
-        <element>p</element>
-        <element>pre</element>
-        <element>picture</element>
-        <element>progress</element>
-        <element>q</element>
-        <element>rp</element>
-        <element>rt</element>
-        <element>ruby</element>
-        <element>samp</element>
-        <element>section</element>
-        <element>small</element>
-        <element>source</element>
-        <element>span</element>
-        <element>strong</element>
-        <element>sub</element>
-        <element>sup</element>
-        <element>table</element>
-        <element>tbody</element>
-        <element>td</element>
-        <element>tfoot</element>
-        <element>th</element>
-        <element>thead</element>
-        <element>time</element>
-        <element>title</element>
-        <element>tr</element>
-        <element>tt</element>
-        <element>u</element>
-        <element>ul</element>
-        <element>var</element>
-        <element>video</element>
-      </default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">A list of valid tags which will be not filtered out.</description>
-      <missing_value/>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Valid tags</title>
-      <value_type type="plone.registry.field.TextLine"/>
-    </field>
-    <value>
-      <element>a</element>
-      <element>abbr</element>
-      <element>acronym</element>
-      <element>address</element>
-      <element>article</element>
-      <element>aside</element>
-      <element>audio</element>
-      <element>b</element>
-      <element>bdo</element>
-      <element>big</element>
-      <element>blockquote</element>
-      <element>body</element>
-      <element>br</element>
-      <element>canvas</element>
-      <element>caption</element>
-      <element>cite</element>
-      <element>code</element>
-      <element>col</element>
-      <element>colgroup</element>
-      <element>command</element>
-      <element>datalist</element>
-      <element>dd</element>
-      <element>del</element>
-      <element>details</element>
-      <element>dfn</element>
-      <element>dialog</element>
-      <element>div</element>
-      <element>dl</element>
-      <element>dt</element>
-      <element>em</element>
-      <element>figure</element>
-      <element>figcaption</element>
-      <element>footer</element>
-      <element>h1</element>
-      <element>h2</element>
-      <element>h3</element>
-      <element>h4</element>
-      <element>h5</element>
-      <element>h6</element>
-      <element>head</element>
-      <element>header</element>
-      <element>hgroup</element>
-      <element>hr</element>
-      <element>html</element>
-      <element>i</element>
-      <element>iframe</element>
-      <element>img</element>
-      <element>ins</element>
-      <element>kbd</element>
-      <element>keygen</element>
-      <element>li</element>
-      <element>map</element>
-      <element>mark</element>
-      <element>meter</element>
-      <element>nav</element>
-      <element>ol</element>
-      <element>output</element>
-      <element>p</element>
-      <element>pre</element>
-      <element>picture</element>
-      <element>progress</element>
-      <element>q</element>
-      <element>rp</element>
-      <element>rt</element>
-      <element>ruby</element>
-      <element>samp</element>
-      <element>section</element>
-      <element>small</element>
-      <element>source</element>
-      <element>span</element>
-      <element>strong</element>
-      <element>sub</element>
-      <element>sup</element>
-      <element>table</element>
-      <element>tbody</element>
-      <element>td</element>
-      <element>tfoot</element>
-      <element>th</element>
-      <element>thead</element>
-      <element>time</element>
-      <element>title</element>
-      <element>tr</element>
-      <element>tt</element>
-      <element>u</element>
-      <element>ul</element>
-      <element>var</element>
-      <element>video</element>
-    </value>
-  </record>
-  <record name="plone.verify_login_name" interface="plone.base.interfaces.controlpanel.ILoginSchema" field="verify_login_name">
-    <field type="plone.registry.field.Bool">
-      <default>True</default>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Verify login name</title>
-    </field>
-    <value>True</value>
-  </record>
-  <record name="plone.webstats_js" interface="plone.base.interfaces.controlpanel.ISiteSchema" field="webstats_js">
-    <field type="plone.registry.field.SourceText">
-      <default></default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">For enabling web statistics support from external providers (e.g. Google Analytics). Paste the provided code snippet here. It will be rendered as entered near the end of the page.</description>
-      <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">JavaScript for web statistics support</title>
-    </field>
-    <value></value>
-  </record>
-  <record name="plone.workflow_states_to_show" interface="plone.base.interfaces.controlpanel.INavigationSchema" field="workflow_states_to_show">
-    <field type="plone.registry.field.Tuple">
-      <default/>
-      <missing_value/>
-      <required>False</required>
-      <value_type type="plone.registry.field.Choice">
-        <vocabulary>plone.app.vocabularies.WorkflowStates</vocabulary>
-      </value_type>
-    </field>
-    <value/>
-  </record>
+   
+  
 </registry>
