@@ -286,6 +286,8 @@ span.later-True {
   display: none
 }
 
+.section-notes.template-full_view #content-core,
+.template-note-view.template-full_view #content-core,
 .section-postit_notes.template-full_view #content-core,
 .template-post-it-note-view.template-full_view #content-core {
   display: grid;
@@ -312,7 +314,8 @@ span.later-True {
 }
 
 @media (min-width: 768px) {
-
+  .section-notes.template-full_view #content-core,
+  .template-note-view.template-full_view #content-core,
   .section-postit_notes.template-full_view #content-core,
   .template-post-it-note-view.template-full_view #content-core {
     grid-template-columns: 1fr 1fr;
