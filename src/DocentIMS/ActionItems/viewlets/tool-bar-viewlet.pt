@@ -130,7 +130,7 @@ Mode
 
             <div id="create_notif">
                 <a class="toolbar_manager hidden" href="${portal_url}/notifications/++add++Notification" title="Add Notif" class="pat-tooltip" title="${tooltips/tooltipIdButtonCreateNotification|None}">
-                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />
+                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" />  
                     <p> 
                         Create<br/>
                         Notif.
@@ -147,8 +147,6 @@ Mode
             </label>
         </div>
     </div>
-
-
 
 
 
