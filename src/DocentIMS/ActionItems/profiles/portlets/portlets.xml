@@ -116,7 +116,6 @@
   <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterresponsible" type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Responsible</property>
     <property name="group_by">assigned_to</property>
-    <property name="group_by">Subject</property>
     <property name="show_count">True</property>
     <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
