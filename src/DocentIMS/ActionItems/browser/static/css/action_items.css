@@ -274,10 +274,15 @@ span.later-True {
   display: none
 }
 
+.section-notes.template-full_view .item h1,
+.section-notes.template-full_view p.lead,
+.template-note-view.template-full_view h1,
+.template-note-view.template-full_view p.lead,
 .section-postit_notes.template-full_view .item h1,
 .section-postit_notes.template-full_view p.lead,
 .template-post-it-note-view.template-full_view h1,
-.template-post-it-note-view.template-full_view p.lead {
+.template-post-it-note-view.template-full_view p.lead,
+.section-notes #content-core header {
   display: none
 }
 
