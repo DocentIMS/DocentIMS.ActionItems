@@ -181,7 +181,7 @@ class ItemCount(object):
                                 'mark_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
                                 'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
                                 # 'project_description': project_description.raw,    
-                                'project_description': text_taken_from_somewhere,
+                                'project_description': text_taken_from_somewhere.raw,
                                 'portlet_title': title_taken_from_somewhere,                                     
                                 'user': fullname }
             
