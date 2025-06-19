@@ -30,6 +30,7 @@
   <element value="plone.relateditems"/>
   <element value="plone.locking"/>
   <element value="plone.basic"/>
+  <element value="medialog.notifications.mentioning_behavior"/>   
  </property>
  <property name="schema"></property>
  <property

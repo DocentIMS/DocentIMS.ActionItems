@@ -238,9 +238,10 @@ def close_task(object, event):
                     api.content.transition(obj=object, transition='close')
                     api.portal.show_message(message='Moved to Closed State', type='info')
                 except InvalidParameterError: 
-                    api.portal.show_message(message='Could not move to Closed state. Workflow does not allow',type='error')
-            else:                
-                api.portal.show_message(message='This Task was already Closed',type='warning')
+                    api.portal.show_message(message='Could not move to Closed state. Workflow does not allow or was already Closed',type='error')
+            else: 
+                pass               
+                # api.portal.show_message(message='This Task was already Closed',type='warning')
             
 
 

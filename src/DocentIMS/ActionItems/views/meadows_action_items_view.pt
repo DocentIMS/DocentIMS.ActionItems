@@ -149,16 +149,16 @@
               <hr class="hr"/>
               <div tal:repeat="relation view/target_relations|None">
                 <p>↓                  <a href="${relation/from_path|None}">${relation/from_object/Title|None}</a>
-                  <span tal:condition="relation/from_object/revised_due_date|None">- ${relation/from_object/revised_due_date}</span>
-                  <span tal:condition="not: relation/from_object/revised_due_date|None">- ${relation/from_object/initial_due_date}</span>
+                  <span tal:condition="relation/from_object/revised_due_date|None">- ${relation/from_object/revised_due_date|None}</span>
+                  <span tal:condition="not: relation/from_object/revised_due_date|None">- ${relation/from_object/initial_due_date|None}</span>
 
                 </p>
               </div>
 
               <div tal:repeat="relation view/source_relations|None">
                 <p>↑:                  <a href="${relation/to_path|None}">${relation/to_object/Title|None}</a>
-                  <span tal:condition="relation/to_object/revised_due_date|None">- ${relation/to_object/revised_due_date}</span>
-                  <span tal:condition="not: relation/to_object/revised_due_date|None">- ${relation/to_object/initial_due_date}</span>
+                  <span tal:condition="relation/to_object/revised_due_date|None">- ${relation/to_object/revised_due_date|None}</span>
+                  <span tal:condition="not: relation/to_object/revised_due_date|None">- ${relation/to_object/initial_due_date|None}</span>
                 </p>
               </div>
 
