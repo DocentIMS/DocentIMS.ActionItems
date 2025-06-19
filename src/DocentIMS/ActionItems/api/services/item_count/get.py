@@ -163,7 +163,8 @@ class ItemCount(object):
                                 'urgency_list': urgency_list, 
                                 'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                                 'mark_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
-                                'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),                                        
+                                'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
+                                'project_description':  api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description'),                                      
                                 'user': fullname }
             
             # current_user.getProperty("fullname"

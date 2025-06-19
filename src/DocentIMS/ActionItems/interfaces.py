@@ -205,10 +205,12 @@ class ICompany(model.Schema):
         required = False,
         title=_(u"label_company_name", default=u"Full Company Name")
         )
+    
     short_company_name= schema.TextLine(
         required = False,
         title=_(u"label_company_short_name", default=u"Short Company Name")
         )
+    
     company_letter_kode = schema.TextLine(
         required = False,
         title=_(u"label_company_letter_code", default=u"Company 3-letter code (All Caps)"),
