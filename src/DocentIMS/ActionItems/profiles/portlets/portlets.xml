@@ -86,8 +86,6 @@
     <property name="css_class"></property>
   </assignment>
 
-
-
   <!-- Assign a collection filter portlet -->
   <!-- <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfiltertags" type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Tags</property>
@@ -95,13 +93,12 @@
     <property name="show_count">True</property>
   </assignment> -->
 
-
   <!-- Assign another collection filter portlet -->
   <!-- Assign another collection filter portlet -->
 
   <assignment category="context" key="/action-items/action-items-collection" manager="plone.rightcolumn" name="collectionfilterstoplight" type="collective.collectionfilter.portlets.CollectionFilter">
     <property name="header">Priority</property>
-    <property name="group_by">stoplight</property>
+    <property name="group_by">prioritystring</property>
     <property name="show_count">True</property>
     <property name="input_type">checkboxes_dropdowns</property>
   </assignment>
