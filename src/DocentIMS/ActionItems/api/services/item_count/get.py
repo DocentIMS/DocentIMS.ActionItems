@@ -147,6 +147,10 @@ class ItemCount(object):
             #     human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
             # else:
             #     human_readable_date = "No recent items found"
+            
+            project_description= api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description')
+               
+            
                 
             meetings_and_ais = { 
                                 'site_url': self.context.absolute_url(), 
@@ -164,7 +168,7 @@ class ItemCount(object):
                                 'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                                 'mark_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
                                 'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
-                                'project_description':  api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description'),                                      
+                                'project_description': project_description.raw,                                      
                                 'user': fullname }
             
             # current_user.getProperty("fullname"
