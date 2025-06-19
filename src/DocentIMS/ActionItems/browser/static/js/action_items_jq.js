@@ -30,7 +30,7 @@ $(document).ready(function () {
   const $commentText = $("#form-widgets-comment-text");
   if ($commentText.length) {
     $commentText.on("click", function () {
-      $(".pat-discussion .formControls").css("display", "");
+      $(".pat-discussion .formControls").css("display", "block");
     });
   }
 }); 
