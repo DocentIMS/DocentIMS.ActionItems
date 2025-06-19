@@ -157,8 +157,8 @@ class ItemCount(object):
                 sort_order='descending'
             )[:1]
             
-            obj = my_brain[0].getObject()
-            text_taken_from_somewhere = obj.text 
+            import pdb; pdb.set_trace()
+            text_taken_from_somewhere = my_brain[0].getObject().text 
             
             #get title
             title_taken_from_somewhere = my_brain[0].Title
