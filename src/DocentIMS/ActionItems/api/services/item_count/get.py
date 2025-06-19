@@ -149,7 +149,18 @@ class ItemCount(object):
             #     human_readable_date = "No recent items found"
             
             project_description= api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description')
-               
+            
+            #find content typeA
+            my_brain = results = self.context.portal_catalog.unrestrictedSearchResults(
+                portal_type=['PM Message', 'pm_message'],
+                sort_on='created',  # or 'modified' or another appropriate DateTime field
+                sort_order='descending'
+            )[:1]
+            
+            text_taken_from_somewhere = my_brain.body_text
+            
+            #get title
+            title_taken_from_somewhere = my_brain.Title()
             
                 
             meetings_and_ais = { 
@@ -168,7 +179,9 @@ class ItemCount(object):
                                 'project_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1'),
                                 'mark_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
                                 'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
-                                'project_description': project_description.raw,                                      
+                                # 'project_description': project_description.raw,    
+                                'project_description': text_taken_from_somewhere,
+                                'portlet_title': title_taken_from_somewhere,                                     
                                 'user': fullname }
             
             # current_user.getProperty("fullname"
