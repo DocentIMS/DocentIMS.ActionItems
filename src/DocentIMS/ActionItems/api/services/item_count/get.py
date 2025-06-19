@@ -151,18 +151,17 @@ class ItemCount(object):
             project_description= api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description')
             
             #find content typeA
-            import pdb; pdb.set_trace()
-            my_brain = results = self.context.portal_catalog.unrestrictedSearchResults(
+            my_brain = self.context.portal_catalog.unrestrictedSearchResults(
                 portal_type=['PM Message', 'pm_message'],
                 sort_on='created',  # or 'modified' or another appropriate DateTime field
                 sort_order='descending'
             )[:1]
             
-            obj = my_brain.getObject()
+            obj = my_brain[0].getObject()
             text_taken_from_somewhere = obj.body 
             
             #get title
-            title_taken_from_somewhere = my_brain.Title()
+            title_taken_from_somewhere = my_brain[0].Title
             
                 
             meetings_and_ais = { 
