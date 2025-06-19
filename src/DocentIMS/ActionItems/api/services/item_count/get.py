@@ -158,7 +158,8 @@ class ItemCount(object):
                 sort_order='descending'
             )[:1]
             
-            text_taken_from_somewhere = my_brain.body()
+            obj = my_brain.getObject()
+            text_taken_from_somewhere = obj.body 
             
             #get title
             title_taken_from_somewhere = my_brain.Title()
