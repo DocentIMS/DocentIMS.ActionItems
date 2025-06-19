@@ -1,16 +1,9 @@
 <?xml version="1.0"?>
-<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    name="Meeting"
-    meta_type="Dexterity FTI"
-    i18n:domain="DocentIMS.ActionItems">
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n" name="Meeting" meta_type="Dexterity FTI" i18n:domain="DocentIMS.ActionItems">
 
   <!-- Basic properties -->
-  <property
-      i18n:translate=""
-      name="title">Meeting</property>
-  <property
-      i18n:translate=""
-      name="description">Meeting Event Type</property>
+  <property i18n:translate="" name="title">Meeting</property>
+  <property i18n:translate="" name="description">Meeting Event Type</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Meeting</property>
@@ -26,7 +19,7 @@
   <property name="model_source"></property>
   <property name="schema"></property>
 
-   <property name="allowed_content_types">
+  <property name="allowed_content_types">
     <element value="File"/>
     <element value="Image"/>
     <!-- <element value="Meeting Minutes"/> -->
@@ -59,6 +52,7 @@
     <!--<element value="plone.relateditems"/>-->
     <element value="plone.richtext"/>
     <element value="plone.tableofcontents"/>
+    <element value="medialog.notifications.mentioning_behavior"/>
     <!--<element value="plone.versioning" />-->
     <!--<element value="plone.translatable" />-->
   </property>
@@ -72,48 +66,20 @@
     <element value="view"/>
     <element value="event_view"/>
     <element value="meeting-view"/>
-    
+
   </property>
 
   <!-- Method aliases -->
-  <alias
-      from="(Default)"
-      to="(dynamic view)"
-  />
-  <alias
-      from="edit"
-      to="@@edit"
-  />
-  <alias
-      from="sharing"
-      to="@@sharing"
-  />
-  <alias
-      from="view"
-      to="(selected layout)"
-  />
+  <alias from="(Default)" to="(dynamic view)" />
+  <alias from="edit" to="@@edit" />
+  <alias from="sharing" to="@@sharing" />
+  <alias from="view" to="(selected layout)" />
 
   <!-- Actions -->
-  <action
-      action_id="view"
-      category="object"
-      condition_expr=""
-      i18n:attributes="title"
-      i18n:domain="plone"
-      title="View"
-      url_expr="string:${object_url}"
-      visible="True">
+  <action action_id="view" category="object" condition_expr="" i18n:attributes="title" i18n:domain="plone" title="View" url_expr="string:${object_url}" visible="True">
     <permission value="View"/>
   </action>
-  <action
-      action_id="edit"
-      category="object"
-      condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user|python:True"
-      i18n:attributes="title"
-      i18n:domain="plone"
-      title="Edit"
-      url_expr="string:${object_url}/edit"
-      visible="True">
+  <action action_id="edit" category="object" condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user|python:True" i18n:attributes="title" i18n:domain="plone" title="Edit" url_expr="string:${object_url}/edit" visible="True">
     <permission value="Modify portal content"/>
   </action>
 
