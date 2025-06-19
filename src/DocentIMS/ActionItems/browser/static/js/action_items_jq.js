@@ -26,4 +26,11 @@ $(document).ready(function () {
     $("#portal-column-two").slideToggle();
     $("#portal-column-two").toggleClass("overlay");
   });
+
+  const $commentText = $("#form-widgets-comment-text");
+  if ($commentText.length) {
+    $commentText.on("click", function () {
+      $(".pat-discussion .formControls").css("display", "");
+    });
+  }
 }); 

@@ -190,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
 // jQuery(document).ready(function() {
 //   if ($("#portal-column-two").length) {
 //         $("#toggle-filters").removeClass("hidden"); 
