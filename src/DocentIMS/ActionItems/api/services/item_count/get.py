@@ -158,7 +158,7 @@ class ItemCount(object):
             )[:1]
             
             obj = my_brain[0].getObject()
-            text_taken_from_somewhere = obj.body 
+            text_taken_from_somewhere = obj.text 
             
             #get title
             title_taken_from_somewhere = my_brain[0].Title
