@@ -332,13 +332,16 @@ def CompanyRolesVocabulary(context):
         # Extract unique entries from items and convert to lowercase for case-insensitive comparison
         
         # Create SimpleTerm objects from the unique entries
-        terms = [
-            SimpleTerm(value=item['vocabulary_entry'], token=item['vocabulary_entry'].lower(), title=item['vocabulary_entry'])
-            for item in sorted(items, key=lambda x: x.get('vocabulary_entry', '').lower())
-            if item.get('vocabulary_entry')  # Exclude items with None or empty 'short_company_name'
-        ]
+        try:
+            terms = [
+                SimpleTerm(value=item['vocabulary_entry'], token=item['vocabulary_entry'].lower(), title=item['vocabulary_entry'])
+                for item in sorted(items, key=lambda x: x.get('vocabulary_entry', '').lower())
+                if item.get('vocabulary_entry')  # Exclude items with None or empty 'short_company_name'
+            ]
 
-        return SimpleVocabulary(terms)
+            return SimpleVocabulary(terms)
+        except AttributeError: 
+            return SimpleVocabulary([])
 
     return SimpleVocabulary([])
 
