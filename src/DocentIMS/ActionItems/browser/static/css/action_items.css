@@ -1,5 +1,7 @@
 body, html body  {color: #222}
 
+.managePortlets-row  {display: none !important}
+
 body.template-manage-portlets #portal-column-two {display: block !important}
 
 thead, .dataTable th { font-weight: bold; margin-bottom: 3px; color: black}
