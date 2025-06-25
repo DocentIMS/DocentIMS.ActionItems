@@ -17,9 +17,12 @@
                     <option value="select">Select Project </option>
                     <tal:condition tal:condition="view/get_sites">
                         <tal:define tal:define="buttons python: sites['buttons']">
-                            <option tal:repeat="site  buttons" value="${python: site['url']}">
+                          <tal:repeat tal:repeat="site  buttons" >                          
+                            <option tal:define="val python: site['url']" value="${val}" 
+                                tal:condition="python: view.portal_url != val">
                                 ${python: site['name']}
                             </option>
+                            </tal:repeat>
                         </tal:define>
                     </tal:condition>
                 </select>
