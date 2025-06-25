@@ -3,7 +3,7 @@
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
   <body>
- 
+
     <metal:content-core fill-slot="content-core">
       <metal:block define-macro="content-core">
 
@@ -17,19 +17,20 @@
         <!-- <h1 class="documentFirstHeading">${view/project_title|None}</h1> -->
         <h3>${view/project_short_name|None}</h3>
         <div tal:condition="view/project_description|None" tal:replace="structure  view/project_description/output|None"/>
-          
+
         <div tal:define="text view/field_to_return|None" tal:condition="text|None" tal:replace="structure text|None" />
 
         <tal:anon tal:condition="view/is_anon">
-           <!-- <a href="/login" class="btn button standalone m-20-0 align-right justify-content-end">Log in</a> -->
+          <tal:images tal:condition="view/get_images">
+            <!-- <a href="/login" class="btn button standalone m-20-0 align-right justify-content-end">Log in</a> -->
 
-          <!-- Load Slick Carousel -->
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
-          <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+            <!-- Load Slick Carousel -->
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+            <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
 
-          <!-- Initialize Slick -->
-          <script>
+            <!-- Initialize Slick -->
+            <script>
             var $ = jQuery.noConflict();
               $(document).ready(function(){
                 $('.carousel').slick({
@@ -39,17 +40,17 @@
                   arrows: false
                 });
               });
-          </script>
+            </script>
 
-          <div class="pat-carousel carousel" data-pat-carousel='{"timeout": 3, "auto": true, "loop": true}'>
-            <tal:repeat tal:repeat="image view/get_images|None">
-            <img class="image" src="${image/getURL}" alt="image/Title"/> 
-            </tal:repeat>
-          </div>
-          <p></p>
+            <div class="pat-carousel carousel" data-pat-carousel='{"timeout": 3, "auto": true, "loop": true}'>
+              <tal:repeat tal:repeat="image view/get_images|None">
+                <img class="image" src="${image/getURL}" alt="image/Title"/>
+              </tal:repeat>
+            </div>
+            <p></p>
 
 
-
+          </tal:images>
         </tal:anon>
 
         <!-- Section -->
@@ -78,9 +79,9 @@
                 </article>
               </tal:repeat>
             </div>
-          </section> 
+          </section>
 
-      </metal:block>
-    </metal:content-core>
-  </body>
-</html>
+        </metal:block>
+      </metal:content-core>
+    </body>
+  </html>
