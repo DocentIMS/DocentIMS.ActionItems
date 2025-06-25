@@ -159,7 +159,8 @@ class ItemCount(object):
                 for brain in brains:
                     portlet_content.append({
                             'title': brain.Title,
-                            'description': brain.Description
+                            'description': brain.Description,
+                            'url': brain.getURL(), 
                     })
                 
                 #text_taken_from_somewhere = my_brain[0].getObject().text.raw
