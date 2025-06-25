@@ -27,6 +27,8 @@ class ToolBarViewlet(ViewletBase):
     def update(self):
         self.portal_url = self.get_portal_url()
         self.current_user_id = self.get_current_user_id()
+        self.last_name = self.get_last_name()
+        self.full_name = self.get_full_name()
         self.stoplight_state  = self.get_stoplight_state() 
         self.dashboard_url = self.get_dashboard_url()
         self.is_project_manager = self.get_is_project_manager()
@@ -47,6 +49,14 @@ class ToolBarViewlet(ViewletBase):
     def get_current_user_id(self):
         current_user =  api.user.get_current()
         return current_user.getId()    
+    
+    @memoize
+    def get_last_name(self):
+        return api.user.get_current().getProperty('last_name')
+    
+    @memoize
+    def get_full_name(self):
+        return api.user.get_current().getProperty('fullname')
        
     def get_color(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1')

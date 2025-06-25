@@ -238,14 +238,10 @@ def pre_install(context):
     
     
     
-    
-   
- 
     #create content 
     
     _create_content(portal)
     _create_more_content(portal)
-
 
 
 def post_import(context):
@@ -264,16 +260,16 @@ def post_import(context):
     # _import_content(portal)
     
 
-def _create_content(portal):
-        
+def _create_content(portal):        
         #folderpath = os.path.dirname(__file__)
         #fullpath = "{folderpath}/ai_import.xlsx".format(folderpath=folderpath)
-        
-        #delete news folder
-        if portal.get('news', False):
-            folder = portal.get('news', False)
-            plone.api.content.delete(obj=folder)
-
+                
+        # delete news folder
+        # if portal.get('news', False):
+        #     folder = portal.get('news', False)
+        #     plone.api.content.delete(obj=folder)
+            
+        #delete  event folder
         if portal.get('events', False):
             folder = portal.get('events', False)
             plone.api.content.delete(obj=folder)

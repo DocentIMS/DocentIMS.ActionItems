@@ -152,7 +152,7 @@ class ItemCount(object):
             
             #find content typeA
             my_brain = self.context.portal_catalog.unrestrictedSearchResults(
-                portal_type=['PM Message', 'pm_message'],
+                portal_type=['News Item'],
                 sort_on='created',  # or 'modified' or another appropriate DateTime field
                 sort_order='descending'
             )[:1]
@@ -161,7 +161,8 @@ class ItemCount(object):
             title_taken_from_somewhere = None
             
             if my_brain:
-                text_taken_from_somewhere = my_brain[0].getObject().text.raw
+                #text_taken_from_somewhere = my_brain[0].getObject().text.raw
+                text_taken_from_somewhere = my_brain[0].Description
                 
                 #get title
                 title_taken_from_somewhere = my_brain[0].Title

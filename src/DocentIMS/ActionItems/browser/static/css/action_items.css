@@ -1,5 +1,9 @@
 body, html body  {color: #222}
 
+.profile-setup a {font-weight: bolder;}
+
+.profile-setup a:hover {text-decoration: underline}
+
 .managePortlets-row  {display: none !important}
 
 body.template-manage-portlets #portal-column-two {display: block !important}
