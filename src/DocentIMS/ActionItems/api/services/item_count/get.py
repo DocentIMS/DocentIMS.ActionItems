@@ -151,13 +151,7 @@ class ItemCount(object):
             project_description= api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description')
             
             #find content News
-            import pdb; pdb.set_trace()
-            
-            my_brain = self.context.portal_catalog.unrestrictedSearchResults(
-                portal_type=['News Item'],
-                sort_on='created',  # or 'modified' or another appropriate DateTime field
-                sort_order='descending'
-            )[:1]
+            my_brain = self.context.portal_catalog.unrestrictedSearchResults(  portal_type=['News Item'],  sort_on='created',  sort_order='descending' )[:1]
             
             text_taken_from_somewhere = None
             title_taken_from_somewhere = None
