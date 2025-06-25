@@ -151,17 +151,22 @@ class ItemCount(object):
             project_description= api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description')
             
             #find content News
-            my_brain = self.context.portal_catalog.unrestrictedSearchResults(  portal_type=['News Item'],  sort_on='created',  sort_order='descending' )[:1]
+            brains = self.context.portal_catalog.unrestrictedSearchResults(  portal_type=['News Item'],  sort_on='created',  sort_order='descending' )[:3]
             
-            text_taken_from_somewhere = None
-            title_taken_from_somewhere = None
+            portlet_content = []
             
-            if my_brain:
-                #text_taken_from_somewhere = my_brain[0].getObject().text.raw
-                text_taken_from_somewhere = my_brain[0].Description
+            if brains:
+                for brain in brains:
+                    portlet_content.append({
+                            'title': brain.Title,
+                            'description': brain.Description
+                    })
                 
-                #get title
-                title_taken_from_somewhere = my_brain[0].Title
+                #text_taken_from_somewhere = my_brain[0].getObject().text.raw
+                # text_taken_from_somewhere = my_brain[0].Description
+                
+                # #get title
+                # title_taken_from_somewhere = my_brain[0].Title
             
                 
             meetings_and_ais = { 
@@ -181,8 +186,7 @@ class ItemCount(object):
                                 'mark_color': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color2'),
                                 'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
                                 # 'project_description': project_description.raw,    
-                                'project_description': text_taken_from_somewhere,
-                                'portlet_title': title_taken_from_somewhere,                                     
+                                ' portlet_content': portlet_content,                                     
                                 'user': fullname }
             
             # current_user.getProperty("fullname"
