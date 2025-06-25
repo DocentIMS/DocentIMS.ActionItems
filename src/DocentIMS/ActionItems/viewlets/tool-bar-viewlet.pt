@@ -10,7 +10,6 @@
     </div>
 
     <div id="project_name" class="xflex project_color">
-
         <!-- <label for="project">Select a Project:</label> -->
         <div id="project_select">
             <div tal:define="sites view/get_sites|None" tal:condition="sites">

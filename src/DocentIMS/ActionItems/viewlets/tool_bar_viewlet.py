@@ -134,13 +134,14 @@ class ToolBarViewlet(ViewletBase):
     
     @ram.cache(sites_cache_key)
     def get_sites(self):
-        # import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
         user = api.user.get_current()
         usermail = user.getProperty('email')
         if usermail:
             basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
+            dashboard_url = self.get_dashboard_url()
             if basik:
-                siteurl = f'https://dashboard.docentims.com/@dashboard_sites/?email={usermail}'
+                siteurl = f'{dashboard_url}/@dashboard_sites/?email={usermail}'
                 buttons = []
                 try:                
                     response  = requests.get(
