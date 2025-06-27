@@ -139,7 +139,7 @@ class ItemCount(object):
             # last_date = last_item[0].modified
             # human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
             
-            last_date = last_item[0].modified if last_item else DateTime('2000-01-01T00:00:00')
+            last_date = last_item[0].modified if last_item else DateTime.DateTime('2000-01-01T00:00:00')
             human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
             
             # if last_item:
@@ -147,7 +147,7 @@ class ItemCount(object):
             #     human_readable_date = last_date.strftime('%A, %d %B %Y, %I:%M %p')
             # else:
             #     human_readable_date = "No recent items found"
-            
+
             project_description= api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description')
             
             #find content News
