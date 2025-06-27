@@ -1,5 +1,4 @@
-<div class="container padding-20-0 fullcontainer"
-    tal:condition="not: view/last_name|None">
+<div class="container padding-20-0 fullcontainer" tal:condition="not: view/last_name|None">
     <div class="container red profile-setup card padding-20 margin-20 fullcontainer">
 
         <p class="red padding-20-0 margin-20-0">
@@ -29,8 +28,7 @@
                     <tal:condition tal:condition="view/get_sites">
                         <tal:define tal:define="buttons python: sites['buttons']">
                             <tal:repeat tal:repeat="site buttons">
-                                <option tal:define="val python: site['url']" value="${val}"
-                                 tal:condition="python: view.portal_url != val">
+                                <option tal:define="val python: site['url']" value="${val}" tal:condition="python: view.portal_url != val">
                                 ${python: site['name']}
                                 </option>
                             </tal:repeat>
@@ -387,6 +385,18 @@ Mode
         </label>
     </div>
 
+    <div id="webmail" class="">
+        <div class="no-flex">
+            <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
+                <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
+                <p>Webmail</p>
+            </a>
+        </div>
+        <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Opens</b> webmail in a new tab">
+            <a href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">Webmail</a>
+        </label>
+    </div>
+
     <div id="feedback" tal:define="dashboard_url view/dashboard_url">
         <div class="flex">
 
@@ -418,19 +428,6 @@ Mode
 
     </div>
 
-
-
-    <div id="webmail" class="">
-        <div class="no-flex">
-            <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
-                <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
-                <p>Webmail</p>
-            </a>
-        </div>
-        <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Opens</b> webmail in a new tab">
-            <a href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">Webmail</a>
-        </label>
-    </div>
 
 </div>
 
