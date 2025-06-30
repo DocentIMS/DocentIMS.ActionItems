@@ -1,18 +1,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="DocentIMS.ActionItems"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
+  <body>
+    <metal:content-core fill-slot="content-core">
+      <metal:block define-macro="content-core">
 
-      <h2 i18n:translate="">Sample View</h2>
-      <!--<div tal:replace="view/my_custom_view_method" />-->
-      <!--<div tal:replace="context/my_custom_field" />-->
+        <h1 tal:content="context/Title">Folder title</h1>
 
-  </metal:block>
-  </metal:content-core>
-</body>
-</html>
+        <tal:items tal:repeat="item view/results">
+
+
+
+
+          <div class="card alert alert-info">
+            <h4>${item/Title|None}</h4>
+            <!-- <p><b>Feedback text:</b></p> -->
+            <!-- <div tal:content="structure item/feedback_text/output|None"></div> -->
+            <table class="table table-primary table-bordered">
+              <tr>
+                <td>
+                  <b>Contact person:</b> ${item/contact_person|None} </td>
+                <td>
+                  <b>Submitted by: </b>${item/feedback_submitted_by|None}</td>
+                <tr>
+                  <tal:condition tal:condition="item/feedback_attachment|None">
+                    <td>
+                      <b>Attachment:</b>
+                      <a href="${item/absolute_url}/@@download/feedback_attachment">Download Feedback Attachment</a> &nbsp;&nbsp;&nbsp;</td>
+                  </tal:condition>
+
+                  <tal:condition tal:condition="item/feedback_log|None">
+                    <td>
+                      <b>Log:</b>
+                      <a href="${item/absolute_url}/@@download/feedback_log">Download log</a>
+                    </td>
+                  </tal:condition>
+                </tr>
+
+                <tr>
+                  <td>
+                    <b>Reply requested?</b> ${item/reply|None}</td>
+                  <td>
+                    <b>Tool:</b> ${item/docent_tool_type|None}</td>
+                </tr>
+              </table>
+
+            </div>
+
+          </tal:items>
+
+        </metal:block>
+      </metal:content-core>
+    </body>
+  </html>

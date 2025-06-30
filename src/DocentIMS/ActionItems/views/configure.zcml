@@ -246,7 +246,14 @@
    />
 
 
-
+  <browser:page
+   name="feedback-collection-view"
+   for="plone.app.contenttypes.interfaces.ICollection"
+   class=".feedback_collection_view.FeedbackCollectionView"
+   template="feedback_collection_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
 
   <browser:page
    name="sow-overview"
