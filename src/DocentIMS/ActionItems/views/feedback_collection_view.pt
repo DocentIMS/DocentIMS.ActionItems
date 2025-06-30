@@ -4,14 +4,11 @@
   xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
   <body>
     <metal:content-core fill-slot="content-core">
-      <metal:block define-macro="content-core">
+      <metal:block define-macro="content-core" tal:define="batch view/batch;" >
 
         <h1 tal:content="context/Title">Folder title</h1>
 
-        <tal:items tal:repeat="item view/results">
-
-
-
+        <tal:items tal:repeat="item batch">
 
           <div class="card alert alert-info">
             <h4>${item/Title|None}</h4>
@@ -49,6 +46,10 @@
             </div>
 
           </tal:items>
+
+          <div>
+            <tal:batchnavigation define="batchnavigation nocall:context/@@batchnavigation" replace="structure python:batchnavigation(batch)" />
+          </div>
 
         </metal:block>
       </metal:content-core>

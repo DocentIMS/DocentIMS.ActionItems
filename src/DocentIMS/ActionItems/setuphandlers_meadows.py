@@ -512,9 +512,9 @@ def _create_content(portal):
                     id='feedback-collection',
                     title='Feedback',
                     description=u"""These are comments submitted by users of this website and Word Docent toolbar. The project manager should review all feedback items and respond if requested by the person submitting the Feedback""",
-                    layout='tabular_view',
+                    layout='feedback-collection-view',
                     limit=2000,
-                    item_count=500,
+                    item_count=30,
                     customViewFields = ['Title', 'Creator', 'CreationDate', 'review_state'],
                     query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['feedback']}]
                 )
