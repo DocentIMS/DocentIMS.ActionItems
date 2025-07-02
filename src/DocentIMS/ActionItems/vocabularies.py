@@ -189,7 +189,6 @@ directlyProvides(TeamIdsVocabulary, IVocabularyFactory)
 
 def ProjectRolesVocabulary(context):
     items = api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
-    
     #   import pdb; pdb.set_trace()
 
     if items:
@@ -198,8 +197,10 @@ def ProjectRolesVocabulary(context):
         # Create SimpleTerm objects from the unique entries
         terms = [
             SimpleTerm(value=item['vocabulary_entry'], token=item['vocabulary_entry'].lower(), title=item['vocabulary_entry'])
-            for item in sorted(items, key=lambda x: x.get('vocabulary_entry', '').lower())
-            if item.get('vocabulary_entry')  # Exclude items with None or empty 'short_company_name'
+            for item in sorted(
+                (i for i in items if i.get('vocabulary_entry')),  # filters out None or empty values
+                key=lambda x: (x.get('vocabulary_entry') or '').lower()
+            )
         ]
 
         return SimpleVocabulary(terms)
