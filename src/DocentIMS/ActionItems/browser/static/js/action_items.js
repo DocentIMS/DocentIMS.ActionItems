@@ -164,8 +164,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Show manager toolbar if applicable
   if (localStorage.getItem("isManager") === "true") {
-    document.querySelectorAll('.toolbar_user, .toolbar_manager').forEach(el => el.classList.toggle("hidden"));
-    if (toolbar) toolbar.classList.toggle("manager_mode");
+    document.querySelectorAll('.toolbar_user, .toolbar_manager').forEach(el => {
+      if (el) el.classList.toggle("hidden");
+    });
+
+    const toolbar = document.querySelector('.toolbar'); // Define toolbar safely
+    if (toolbar) {
+      toolbar.classList.toggle("manager_mode");
+    }
   }
 
   // Toggle toolbar mode
