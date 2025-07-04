@@ -37,7 +37,7 @@
                 </select>
             </div>
             <div>
-                <div class="image_color margin-auto"></div>
+                <div class="image_color margin-auto"> </div>
                 <p>Project Color</p>
             </div>
             <label class="toolbar_label">
@@ -409,12 +409,33 @@ Mode
 
             </div>
 
-            <a href="${portal_url}/feedback/++add++feedback">
+
+
+
+             <div>
+              
+                    <a href="${portal_url}/feedback/++add++feedback">
+                        <img src="++plone++DocentIMS.ActionItems/icons/add_with_pencil.png" />
+                        <!-- <br/>
+                        Create<br/>Feedback -->
+                    </a>
+                
+                <!-- <label for="create_meeting">Create Feedback</label> -->
+                <select id="create_feedback" name="create_feedback">
+                    <option value="select">Feedback</option>
+                    <option value="create_feedback">Create</option>
+                    <option value="all_feedback">Show All</option>
+                </select>
+            </div>
+
+                
+
+            <!-- <a href="${portal_url}/feedback/++add++feedback">
                 <img src="++plone++DocentIMS.ActionItems/icons/add_with_pencil.png" />
                 <p>Send<br/>
     
                 Feedback</p>
-            </a>
+            </a> -->
             <a href="${dashboard_url}/docent-help/">
                 <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
                 <br/>

@@ -91,19 +91,19 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(`${portalUrl}/@search?fullobjects=1&UID=${uid}`, {
           headers: { 'Accept': 'application/json' }
         })
-        .then(response => response.json())
-        .then(result => {
-          const prev = document.getElementById('sow_text_add');
-          if (prev) prev.remove();
+          .then(response => response.json())
+          .then(result => {
+            const prev = document.getElementById('sow_text_add');
+            if (prev) prev.remove();
 
-          const container = document.getElementById("formfield-form-widgets-related_sow_section");
-          if (container && result.items[0]) {
-            const div = document.createElement("div");
-            div.id = "sow_text_add";
-            div.innerHTML = `<hr/>${result.items[0].bodytext.data}`;
-            container.appendChild(div);
-          }
-        });
+            const container = document.getElementById("formfield-form-widgets-related_sow_section");
+            if (container && result.items[0]) {
+              const div = document.createElement("div");
+              div.id = "sow_text_add";
+              div.innerHTML = `<hr/>${result.items[0].bodytext.data}`;
+              container.appendChild(div);
+            }
+          });
       }
     });
   }
@@ -161,6 +161,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+
+  const createFeedback = document.getElementById("create_feedback");
+  if (createFeedback) {
+    createFeedback.addEventListener("change", function () {
+      if (this.value === "create_feedback") {
+        window.location.href = portalUrl + "/feedback/++add++feedback";
+      } else if (this.value === "all_feedback") {
+        document.querySelectorAll('#feedback_select a').forEach(a => a.classList.toggle("greyed"));
+        window.location.href = portalUrl + "/feedback/feedback-collection";
+      }
+    });
+  }
+
 
   // Show manager toolbar if applicable
   if (localStorage.getItem("isManager") === "true") {
