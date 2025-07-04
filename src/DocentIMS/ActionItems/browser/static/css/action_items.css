@@ -1,5 +1,7 @@
 body, html body  {color: #222}
 
+
+
 .profile-setup a {font-weight: bolder;}
 
 .profile-setup a:hover {text-decoration: underline}
@@ -648,6 +650,8 @@ a {
 #document_type_select {
   text-align: center
 }
+
+#portal-logo-wrapper {max-width: 1320px; }
 
 #toolbar #site_logo img {
   width: 3rem;
