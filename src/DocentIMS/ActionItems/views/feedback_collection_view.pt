@@ -5,8 +5,8 @@
   <body>
     <metal:content-core fill-slot="content-core">
       <metal:block define-macro="content-core" tal:define="batch view/batch;" >
-
-        <h1 tal:content="context/Title">Folder title</h1>
+<!-- 
+        <h1 tal:content="context/Title">Folder title</h1> -->
 
         <tal:items tal:repeat="item batch">
 
