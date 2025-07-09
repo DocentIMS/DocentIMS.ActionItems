@@ -118,7 +118,7 @@ $(function(){
 
               .padding-10 {padding: 5px 10px}
 
-              .image22" { height: 20px !important; width: auto;}
+              img.image22 { height: 20px !important; width: auto;}
 	
         </style>
 
