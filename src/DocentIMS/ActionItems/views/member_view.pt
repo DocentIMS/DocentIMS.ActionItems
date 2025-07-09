@@ -72,7 +72,7 @@
                 const webmailurl = "https://webmail.${webmail_url}";
                 const mailUrl = webmailurl + "?_task=mail&_action=compose&to=" + recipients.join(",");
    
-                window.location.href = mailUrl;
+                window.open(mailUrl, '_blank');
               }
         </script>
 
