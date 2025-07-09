@@ -614,94 +614,94 @@ def _create_content(portal):
                 exclude_from_nav=False,
             )
         
-        if not portal.get('help-files', False):
-            items = plone.api.content.create(
-                type='Folder',
-                container=portal,
-                id='help-files',
-                title='Help',
-                exclude_from_nav=False,
-            )
+        # if not portal.get('help-files', False):
+        #     items = plone.api.content.create(
+        #         type='Folder',
+        #         container=portal,
+        #         id='help-files',
+        #         title='Help',
+        #         exclude_from_nav=False,
+        #     )
 
-            if not items.get('action-item-help', False):
-                action_folder = plone.api.content.create(
-                    type='Folder',
-                    container=items,
-                    id='action-item-help',
-                    title='Tasks Help',
-                    exclude_from_nav=True,
-                    layout='tabular_view',
-                )
+        #     if not items.get('action-item-help', False):
+        #         action_folder = plone.api.content.create(
+        #             type='Folder',
+        #             container=items,
+        #             id='action-item-help',
+        #             title='Tasks Help',
+        #             exclude_from_nav=True,
+        #             layout='tabular_view',
+        #         )
 
 
-            wf_name = u'Tasks WF'
-            if not action_folder.get(wf_name, False):
-                wf_image = plone.api.content.create(
-                        type='Image',
-                        container=action_folder,
-                        id='action-item-wf',
-                        title=wf_name,
+        #     wf_name = u'Tasks WF'
+        #     if not action_folder.get(wf_name, False):
+        #         wf_image = plone.api.content.create(
+        #                 type='Image',
+        #                 container=action_folder,
+        #                 id='action-item-wf',
+        #                 title=wf_name,
                         
-                    )
-                wf_image.image = load_image()
+        #             )
+        #         wf_image.image = load_image()
 
             
-            if not action_folder.get('action-item-help', False):
-                action_items = plone.api.content.create(
-                    type='Document',
-                    description=u'Tasks Help',
-                    container=action_folder,
-                    id='action-item-help',
-                    title='Tasks Help',
+        #     if not action_folder.get('action-item-help', False):
+        #         action_items = plone.api.content.create(
+        #             type='Document',
+        #             description=u'Tasks Help',
+        #             container=action_folder,
+        #             id='action-item-help',
+        #             title='Tasks Help',
 
-                )
+        #         )
 
-                pdf_name = u'Tasks Help'
-                # if not action_folder.get(pdf_name, False):
-                pdf_file = plone.api.content.create(
-                            type='File',
-                            container=action_folder,
-                            id='ai-help.pdf',
-                            title=pdf_name,
+        #         pdf_name = u'Tasks Help'
+        #         # if not action_folder.get(pdf_name, False):
+        #         pdf_file = plone.api.content.create(
+        #                     type='File',
+        #                     container=action_folder,
+        #                     id='ai-help.pdf',
+        #                     title=pdf_name,
                             
-                        )
-                pdf_file.file = load_file()
+        #                 )
+        #         pdf_file.file = load_file()
 
 
-            if not items.get('word-help', False):
-                word_folder = plone.api.content.create(
-                    type='Folder',
-                    container=items,
-                    id='word-help',
-                    title='Word Help',
-                    exclude_from_nav=True,
-                    layout='tabular_view',
-                )
+        #     if not items.get('word-help', False):
+        #         word_folder = plone.api.content.create(
+        #             type='Folder',
+        #             container=items,
+        #             id='word-help',
+        #             title='Word Help',
+        #             exclude_from_nav=True,
+        #             layout='tabular_view',
+        #         )
 
 
-                wf_name = u'Word WF'
-                if not word_folder.get(wf_name, False):
-                    wf_image = plone.api.content.create(
-                            type='Image',
-                            container=word_folder,
-                            id='word-wf',
-                            title=wf_name,
+        #         wf_name = u'Word WF'
+        #         if not word_folder.get(wf_name, False):
+        #             wf_image = plone.api.content.create(
+        #                     type='Image',
+        #                     container=word_folder,
+        #                     id='word-wf',
+        #                     title=wf_name,
                             
-                        )
-                    wf_image.image = load_image()
+        #                 )
+        #             wf_image.image = load_image()
 
                 
 
 
-                if not word_folder.get('word-help', False):
-                    word = plone.api.content.create(
-                        type='Document',
-                        description=u'Word Help',
-                        container=word_folder,
-                        id='word-help',
-                        title='Word Help',
+        #         if not word_folder.get('word-help', False):
+        #             word = plone.api.content.create(
+        #                 type='Document',
+        #                 description=u'Word Help',
+        #                 container=word_folder,
+        #                 id='word-help',
+        #                 title='Word Help',
 
-                    )
+        #             )
 
             # if not items.get('scope-help', False):
             #     scope_folder = plone.api.content.create(
