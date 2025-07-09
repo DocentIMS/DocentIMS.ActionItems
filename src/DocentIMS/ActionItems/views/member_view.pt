@@ -41,7 +41,7 @@
         </table>
 
 
-        <button onclick="composeNotify()"><img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" class="image22" />
+        <button class="padding-10" onclick="composeNotify()"><img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" class="image22" />
                        Notify</button>
 
 
