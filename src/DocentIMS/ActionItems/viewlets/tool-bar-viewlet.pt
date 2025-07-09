@@ -353,12 +353,12 @@ Mode
     </div>
 
     <div id="project_team" class="toolbar_user">
-        <a href="${portal_url}/team-view" class="to_overlay">
+        <a href="${portal_url}/member-view" class="to_overlay">
             <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//user_list.png" />
             <p>View team</p>
         </a>
         <label class="toolbar_label">
-            <a href="${portal_url}/team-view">Project Team</a>
+            <a href="${portal_url}/member-view">Project Team</a>
         </label>
     </div>
 
