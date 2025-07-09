@@ -292,7 +292,7 @@ Mode
             <!-- <label for="project">Select a Project:</label> -->
             <div id="meeting_select">
                 <select id="project" name="project">
-                    <option value="Select Meeting">Select Doc Type</option>
+                    <option value="Select Meeting">Select Meeting Doc</option>
                     <option value="Meeting type 1">[Meeting Type 1]</option>
                     <option value="Meeting type 2">[Meeting Type 2]</option>
                 </select>
