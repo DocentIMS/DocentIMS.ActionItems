@@ -259,14 +259,14 @@ Mode
 
     <div id="ms_project" class="toolbar_manager hidden">
         <div class="no-flex">
-            <a href="${portal_url}/ms-project">
+            <a target="_blank" href="${portal_url}/ms-project">
                 <img src="++plone++DocentIMS.ActionItems/icons/MSP.jpg" />
                 <p>MS <br/>
                     Project</p>
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/ms-project">MS Project</a>
+            <a  target="_blank"  href="${portal_url}/ms-project">MS Project</a>
         </label>
     </div>
 

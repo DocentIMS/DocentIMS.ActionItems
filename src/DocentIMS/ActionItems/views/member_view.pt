@@ -4,11 +4,9 @@
   xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
   <body>
     <metal:content-core fill-slot="content">
-      <metal:block define-macro="content-core">
+      <metal:block define-macro="content-core" tal:define="webmail_url view/get_webmail_url">
         <h1>Members</h1>
-
         <p class="discreet">Click on headers to sort</p>
-
         <table class="sortable pat-tablesorter listing xtable-bordered ">
           <thead class="">
             <tr>
@@ -24,7 +22,9 @@
           <tbody>
             <tal:repeat tal:repeat="medlem view/group_users">
               <tr>
-                <td><input type="checkbox" name="${medilem/email|None}" value="1"></td>
+                <td>
+                  <input type="checkbox" name="${medlem/email|None}" />
+                </td>
                 <td>${medlem/fullname|None}</td>
                 <td>${medlem/email|None}</td>
                 <!-- <td>${medlem/fullname}</td> -->
@@ -40,17 +40,41 @@
 
         </table>
 
+
+
         <button class="padding-10">
-
-
-           <a href="http://ubuntu.local:8605/Plone17/notifications/++add++Notification" title="Add Notif">
-          <img src="http://ubuntu.local:8605/Plone17/++plone++DocentIMS.ActionItems/icons//Notifs.jpg" width="26">
+          <a href="/notifications/++add++Notification" title="Add Notif">
+            <img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" width="26" />
                        Notify
                     
-                </a>
-                        </button>
-               
+          </a>
+        </button>
 
+
+        <button class="padding-10" onclick="composeEmail()">
+          <img src="++plone++DocentIMS.ActionItems/icons/email.png" width="26" />
+ Send Email</button>
+
+
+
+        <script>
+              function composeEmail() {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                const recipients = Array.from(checkboxes)
+                                        .map(cb => cb.name)
+                                        .filter(email => email); // avoid empty/null names
+
+                if (recipients.length === 0) {
+                  alert("Please select at least one recipient.");
+                  return;
+                }
+
+                const webmailurl = "https://webmail.${webmail_url}";
+                const mailUrl = webmailurl + "?_task=mail&_action=compose&to=" + recipients.join(",");
+   
+                window.location.href = mailUrl;
+              }
+        </script>
 
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/js/jquery.tablesorter.min.js"></script>
@@ -66,20 +90,22 @@ $(function(){
        $('table').filterTable();
         </script>
 
+
         <style>
-.tablesorter-header.tablesorter-headerAsc {
-    background:whitesmoke;
-              <!-- border: 1px solid silver; -->
-}
+              .tablesorter-header.tablesorter-headerAsc {
+                  background:whitesmoke;
+                                                                  
+              }
 
-.tablesorter-header.tablesorter-headerDesc {
-    background:#EEE;
-}
+              .tablesorter-header.tablesorter-headerDesc {
+                  background:#EEE;
+              }
 
-.padding-10 {padding: 5px 10px}
-
+              .padding-10 {padding: 5px 10px}
 	
         </style>
+
+ 
 
 
       </metal:block>
