@@ -43,6 +43,8 @@ class MemberView(BrowserView):
     # def all_users(self):
     #     return api.user.get_users()
     
+    def portal_url(self):
+        return api.portal.get().absolute_url()  
     
     def get_webmail_url(self):
         portal_url =  api.portal.get().absolute_url()   

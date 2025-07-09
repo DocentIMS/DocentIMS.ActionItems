@@ -4,7 +4,7 @@
   xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
   <body>
     <metal:content-core fill-slot="content">
-      <metal:block define-macro="content-core" tal:define="webmail_url view/get_webmail_url">
+      <metal:block define-macro="content-core" tal:define="webmail_url view/get_webmail_url; portal_url view/portal_url">
         <h1>Members</h1>
         <p class="discreet">Click on headers to sort</p>
         <table class="sortable pat-tablesorter listing xtable-bordered ">
@@ -23,7 +23,7 @@
             <tal:repeat tal:repeat="medlem view/group_users">
               <tr>
                 <td>
-                  <input type="checkbox" name="${medlem/email|None}" />
+                  <input type="checkbox" name="${medlem/email|None}" email="${medlem/email|None}" />
                 </td>
                 <td>${medlem/fullname|None}</td>
                 <td>${medlem/email|None}</td>
@@ -41,22 +41,37 @@
         </table>
 
 
-
-        <button class="padding-10">
-          <a href="/notifications/++add++Notification" title="Add Notif">
-            <img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" width="26" />
-                       Notify
-                    
-          </a>
-        </button>
+        <button onclick="composeNotify()"><img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" width="26" />
+                       Notify</button>
 
 
         <button class="padding-10" onclick="composeEmail()">
           <img src="++plone++DocentIMS.ActionItems/icons/email.png" width="26" />
  Send Email</button>
+ 
+
+ 
+        <script>
+              function composeNotify() {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                const recipients = Array.from(checkboxes)
+                                        .map(cb => cb.name)
+                                        .filter(email => email); // avoid empty/null names
+
+                if (recipients.length === 0) {
+                  alert("Please select at least one recipient.");
+                  return;
+                }
+
+                const siteurl = "${portal_url}/notifications/++add++Notification";
+                const noteUrl = siteurl + "?notify_to=" + recipients.join(",");
+   
+                window.open(noteUrl);
+              }
+        </script>
 
 
-
+ 
         <script>
               function composeEmail() {
                 const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
