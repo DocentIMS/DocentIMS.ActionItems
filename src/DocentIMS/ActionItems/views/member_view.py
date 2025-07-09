@@ -49,7 +49,7 @@ class MemberView(BrowserView):
             userlist.append(
                 { 'id': member.getProperty('id'), 
                 'email': member.getProperty('email'),
-                # 'fullname': member.getProperty('"fullname'),
+                'fullname': member.getProperty('fullname'),
                 'last_name': member.getProperty('last_name'),
                 'first_name': member.getProperty('first_name'),
                 'your_team_role': member.getProperty('your_team_role'),

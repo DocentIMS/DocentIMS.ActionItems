@@ -15,8 +15,8 @@
 
         <!--p>${view/last_login|None}</p-->
         <!-- <h1 class="documentFirstHeading">${view/project_title|None}</h1> -->
-        <h3>${view/project_short_name|None}</h3>
-        <div tal:condition="view/project_description|None" tal:replace="structure  view/project_description/output|None"/>
+        <!-- <h3>${view/project_short_name|None}</h3> -->
+        <!-- <div tal:condition="view/project_description|None" tal:replace="structure  view/project_description/output|None"/> -->
 
         <div tal:define="text view/field_to_return|None" tal:condition="text|None" tal:replace="structure text|None" />
 
@@ -80,6 +80,9 @@
               </tal:repeat>
             </div>
           </section>
+          <style> 
+            header h1 {display: none;}
+          </style>
 
         </metal:block>
       </metal:content-core>

@@ -16,7 +16,7 @@
       </object>
 
       <object name="login" meta_type="CMF Action" i18n:domain="plone">
-         <property name="title" i18n:translate="">Log in</property>
+         <property name="title">Please Log in</property>
          <property name="description" i18n:translate=""></property>
          <property name="url_expr">python:f&quot;{plone_portal_state.navigation_root_url()}/login&quot;</property>
          <property name="link_target"></property>

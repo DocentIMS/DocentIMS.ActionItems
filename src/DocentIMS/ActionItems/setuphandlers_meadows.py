@@ -388,7 +388,8 @@ def _create_content(portal):
                 container=portal,
                 id='ms-project',
                 title='MS Project',
-                nextPreviousEnabled=0
+                nextPreviousEnabled=0,
+                default_page="ms-project.pdf"
             )
             
         if not portal.get('meetings', False):

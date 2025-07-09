@@ -1,6 +1,27 @@
 body, html body  {color: #222}
 
+#portal-anontools {margin:auto; width: 100%; display: block}
+#portal-anontools ul {margin: auto !important; max-width: 1380px; width: 100%; text-align: right;display: block;}
+#portal-anontools li a {
+    text-decoration: none;
+    color: #05386B;
+    transition: 0.4s;
+    font-family: "Roboto", sans-serif; 
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 15px;
+    min-width: 150px;
+    border: 1px solid;
+    background: #F24C3D; 
+    color: white;
+}
 
+#portal-anontools li a:hover {
+text-decoration: underline;
+color: white !important;
+}
+ 
 
 .profile-setup a {font-weight: bolder;}
 

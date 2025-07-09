@@ -11,6 +11,12 @@ from z3c.form import field
 from zope.component import getMultiAdapter
 from zope.interface import implementer
 
+from urllib.parse import parse_qs
+
+
+
+
+
 import json
 import six.moves.urllib.error
 import six.moves.urllib.parse
@@ -75,5 +81,12 @@ class Renderer(base.Renderer):
         """Show the portlet only if there are one or more elements and
         not an anonymous user."""
         return not self.anonymous
+    
+    
+    def get_option(self):
+        request = self.request
+        show_all = request.form.get('show_all')  # Will be '1' or None
+        selected_filter = 'read' if show_all == '0' else 'all'
+        return selected_filter
 
    

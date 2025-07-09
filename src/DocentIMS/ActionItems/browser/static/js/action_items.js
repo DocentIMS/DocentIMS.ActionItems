@@ -180,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (localStorage.getItem("isManager") === "true") {
     document.querySelectorAll('.toolbar_user, .toolbar_manager').forEach(el => {
       if (el) el.classList.toggle("hidden");
+
     });
 
     const toolbar = document.querySelector('.toolbar'); // Define toolbar safely
@@ -192,11 +193,20 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('#toolbar_mode a').forEach(a => {
     a.addEventListener("click", () => {
       document.querySelectorAll('.toolbar_user, .toolbar_manager').forEach(el => el.classList.toggle("hidden"));
+
+      const current = localStorage.getItem("isManager");
+      console.log("Before toggle, isManager:", current);
+
+      const manager = current === "true";
+      const newValue = (!manager).toString();
+
+      localStorage.setItem("isManager", newValue);
+      console.log("After toggle, isManager:", localStorage.getItem("isManager"));
+
       if (toolbar) toolbar.classList.toggle("manager_mode");
-      const manager = localStorage.getItem("isManager") === "true";
-      localStorage.setItem("isManager", !manager);
     });
   });
+
 
   // Show comment form controls
   const commentText = document.getElementById("form-widgets-comment-text");
