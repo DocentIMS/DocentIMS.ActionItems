@@ -76,14 +76,24 @@
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
    /> -->
 
- <browser:page
+
+  <browser:page
+      name="team-view"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".member_view.MemberView"
+      template="member_view.pt"
+      permission="zope2.View"
+      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+      />
+      
+ <!-- <browser:page
    name="team-view"
    for="*"
    class=".team_view.TeamView"
    template="team_view.pt"
    permission="zope2.View"
    layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
-   />
+   /> -->
 
  <browser:page
    name="action-items-overview"
@@ -311,14 +321,14 @@
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
       />
 
-    <browser:page
+    <!-- <browser:page
       name="member-view"
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".member_view.MemberView"
       template="member_view.pt"
       permission="cmf.ManagePortal"
       layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
-      />
+      /> -->
 
     <browser:page
       name="reindex-workdays"
