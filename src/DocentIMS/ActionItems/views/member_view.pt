@@ -41,12 +41,12 @@
         </table>
 
 
-        <button onclick="composeNotify()"><img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" width="26" />
+        <button onclick="composeNotify()"><img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" height="22" />
                        Notify</button>
 
 
         <button class="padding-10" onclick="composeEmail()">
-          <img src="++plone++DocentIMS.ActionItems/icons/email.png" width="26" />
+          <img src="++plone++DocentIMS.ActionItems/icons/email.png" height="22" />
  Send Email</button>
  
 
