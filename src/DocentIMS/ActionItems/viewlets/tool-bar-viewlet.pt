@@ -7,6 +7,10 @@
             </a>
         </p>
     </div>
+    <style>
+    #content-header {max-width: 1300px; margin: auto}
+    </style>
+
 </div>
 <div id="toolbar" tal:condition="view/last_name|None" class="flex" tal:define="portal_url view/portal_url|None; tooltips view/get_the_tooltips">
     <div id="site_logo">
