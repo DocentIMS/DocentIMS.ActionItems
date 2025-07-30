@@ -1,5 +1,7 @@
 body, html body  {color: #222}
 
+.userrole-anonymous  #content-header {max-width: 1300px; margin: auto}
+
 #portal-anontools {margin:auto; width: 100%; display: block}
 #portal-anontools ul {margin: auto !important; max-width: 1380px; width: 100%; text-align: right;display: block;}
 #portal-anontools li a {
