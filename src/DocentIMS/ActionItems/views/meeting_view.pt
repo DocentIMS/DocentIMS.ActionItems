@@ -58,7 +58,7 @@
                       </p>
                       <p style="text-align: center">Download </p>
                     </a> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
-                    <a href="${item/getURL}//onlyoffice-view-file" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
+                    <a href="${item/getURL}/onlyoffice-edit" class="block w-25 xp-1" alt="Open in OnlyOffice" title="Open in OnlyOffice">
                       <p style="text-align: center">
                         <img src="++plone++DocentIMS.ActionItems/onlyoffice_icon.png" width="64" alt="onlyoffice_icon" title="Open in OnlyOffice" tal:condition="python: typen != 'File'"/>
                       </p>

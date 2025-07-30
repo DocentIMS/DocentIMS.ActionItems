@@ -122,7 +122,8 @@ ${context/aq_parent/start/date}</p>
 
 
           <p style="text-align:left">
-            <a class="btn button standalone btn-sm btn-secondary" alt="Open in Only Office" title="Open in Only Office" href="${context/absolute_url}/onlyoffice-view-file">Open in OnlyOffice</a>
+            <a class="btn button standalone btn-sm btn-secondary" 
+              alt="Open in Only Office" title="Open in Only Office" href="${context/absolute_url}/onlyoffice-view-file">Open in OnlyOffice</a>
           </p>
         </tal:condition>
 
