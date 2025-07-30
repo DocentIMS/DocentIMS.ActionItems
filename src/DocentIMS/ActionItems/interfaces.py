@@ -11,16 +11,24 @@ from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
 from plone.app.textfield import RichText
 from plone.app.z3cform.widgets.richtext import RichTextFieldWidget
-from plone.registry.field import PersistentField
-from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
-from plone.app.z3cform.widget import SelectFieldWidget, SelectWidget
 from collective.z3cform.colorpicker.colorpicker  import ColorpickerFieldWidget
-from zope.schema.interfaces import  InvalidValue
-from plone.api.portal import show_message
-from plone.namedfile import field
-from plone.app.contentrules.handlers  import execute_user_rules
-from plone.app.z3cform.widget import AjaxSelectFieldWidget
+from medialog.controlpanel.interfaces import IMedialogControlpanelSettingsProvider
 from plone import api
+from plone.api.portal import show_message
+from plone.app.contentrules.handlers  import execute_user_rules
+from plone.app.discussion.interfaces import IComment
+from plone.app.textfield import RichText
+from plone.app.z3cform.widget import AjaxSelectFieldWidget
+from plone.app.z3cform.widget import SelectFieldWidget, SelectWidget
+from plone.autoform.interfaces import IFormFieldProvider
+from plone.dexterity.interfaces import IDexterityContent
+from plone.namedfile import field
+from plone.registry.field import PersistentField
+from plone.supermodel import model
+from zope.component import adapter
+from zope.interface import implementer
+from zope.interface import Interface
+from zope.schema.interfaces import  InvalidValue
 
 
 
@@ -28,6 +36,20 @@ from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
 
  
+# ADD RICH TEXT TO COMMENTS
+
+# @implementer(IDexterityContent)
+# class ICustomCommentFields(model.Schema):
+#     """Schema to override the comment field with RichText."""
+
+#     text = RichText(
+#         title=u"Comment",
+#         required=True,
+#     )
+
+# # Declare this is a form field provider
+# alsoProvides(ICustomCommentFields, IFormFieldProvider)
+
     
 def not_required_in_debug_mode():
     return not api.env.debug_mode()
