@@ -294,8 +294,8 @@ def user_created_handler(event):
             username = user.getUserName()
             fullname = user.getProperty('fullname')
             if fullname:
-                password = ''.join(random.choices(string.ascii_letters, k=27))            
-            
+                password = ''.join(random.choices(string.ascii_letters, k=27))     
+                
                 added_user = requests.post(
                         site_url,
                         headers={
@@ -309,7 +309,14 @@ def user_created_handler(event):
                             'roles': ['Member'] 
                         })
                     )
+                
+                if added_user.status_code == 200 or added_user.status_code == 201:
+                    api.portal.show_message(message='User was added to Dashboard site',type='info')                   
+                else:
+                    api.portal.show_message(message='User was not added to Dashboard Site. Check password in control panel', type='error')
+                    
     except KeyError:
+        api.portal.show_message(message='User was not added to Dashboard Site. Check password in control panel',type='warning')
         pass   
         
     #     return True

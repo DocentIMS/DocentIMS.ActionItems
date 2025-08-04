@@ -30,6 +30,14 @@
  </browser:pages> -->
  
 
+ <browser:page
+    for="*"
+    name="permission-overview"
+    class=".permissions_overview.PermissionsOverview"
+    template="permissions_overview.pt"
+    permission="cmf.ManagePortal"
+/>
+
  <browser:pages
      for="plone.app.contenttypes.interfaces.ICollection"
      class=".action_items_over_view.ActionItemsCollectionView"
