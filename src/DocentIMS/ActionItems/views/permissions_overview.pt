@@ -26,7 +26,8 @@
           <br />
 
 
-          <input id="users" name="users:list" class="pat-select2 margin-10-0" value="${python:request.users[0] if request.users else None}"
+          <input id="users" name="users:list" class="pat-select2 margin-10-0" 
+              tal:attributes="value python:request.users[0] if request.users else None"
                 required type="hidden" data-pat-select2='{
                   "placeholder": "Search for users",
                   "width": "40em",
