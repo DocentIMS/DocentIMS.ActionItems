@@ -9,6 +9,7 @@
 
         <style>
         table { border-collapse: collapse; width: 100%; }
+        tr:nth-child(even) {background: white} 
         th, td { border: 1px solid #ddd; padding: 6px; text-align: center; }
         th:first-child, td:first-child { text-align: left; }
         th { background-color: #f2f2f2; }
@@ -24,19 +25,23 @@
           <label>User IDs:</label>
           <br />
 
-          <input id="users" name="users:list" class="pat-select2 margin-10-0" required type="hidden" data-pat-select2='{
+
+          <input id="users" name="users:list" class="pat-select2 margin-10-0" value="${python: request.users[0]}"
+                required type="hidden" data-pat-select2='{
                   "placeholder": "Search for users",
                   "width": "40em",
                   "separator": ",",
                   "vocabularyUrl": "${view/portal_url}/@@getVocabulary?name=plone.app.vocabularies.Users"}' />
 
-            <br />
-          <label>Path to audit (e.g. /news):</label>
+          <br />
+          <label>Path to audit (e.g. Documents):</label>
           <br />
 
           <select id="folder" name="folder" class="pat-select2" data-pat-select2="width:20em;">
-              <option value=""></option>
-              <option tal:repeat="folder view/get_folders" value="${folder/uid}">${folder/text}</option>
+            <option value=""></option>
+            <option tal:repeat="folder view/get_folders" tal:attributes="selected python: folder['uid'] == request.get('folder')" value="${folder/uid}">
+                ${folder/text}
+            </option>
           </select>
 
           <br />
@@ -54,8 +59,9 @@
                 <th>View</th>
                 <th>Modify</th>
                 <th>Delete</th>
-                <th>Workflow<br/>Actions</th>
-        
+                <th>Workflow<br/>
+Actions</th>
+
               </tr>
             </thead>
             <tbody>
@@ -63,53 +69,53 @@
                 <tr>
                   <td>
                      ${row/title}<br/>
-                    <a href="${row/url|None}">${row/url|None}</a>
-                  </td>
-                  <tal:define tal:define="users view/get_users">
-                    <td>
-                      <tal:block tal:repeat="user users">
-                        <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['View'] else 'no'" >
-                          ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['View'] else '✘'" />
-                        </p>
-
-                      </tal:block>
-                    </td>
-                    <td>
-                      <tal:block tal:repeat="user users">
-                        <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['Modify'] else 'no'">
-                          ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['Modify'] else '✘'"  />
-                        </p>
-                      </tal:block>
-                    </td>
-                    <td>
-                      <tal:block tal:repeat="user users">
-                         <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['Delete'] else 'no'" >
-                          ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['Delete'] else '✘'" />
-                        </p>
-                      </tal:block>
+                  <a href="${row/url|None}">${row/url|None}</a>
+                </td>
+                <tal:define tal:define="users view/get_users">
                   <td>
                     <tal:block tal:repeat="user users">
-                      <p tal:define="perms row/users; user python:user">
-                        <tal:cond tal:condition="perms">
-                          ${python: perms[user]['name']}<br/> 
-                          <span tal:repeat="action python: perms[user]['workflow_actions']" class="action">
-                          
-                        <b>[${action/title}]</b>
-                          </span>
-                          </tal:cond>
-                        </p>                      
+                      <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['View'] else 'no'">
+                          ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['View'] else '✘'" />
+                      </p>
+
                     </tal:block>
                   </td>
-                  </tal:define>
-                </tr>
-              </tal:loop>
-            </tbody>
-          </table>
+                  <td>
+                    <tal:block tal:repeat="user users">
+                      <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['Modify'] else 'no'">
+                          ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['Modify'] else '✘'" />
+                      </p>
+                    </tal:block>
+                  </td>
+                  <td>
+                    <tal:block tal:repeat="user users">
+                      <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['Delete'] else 'no'">
+                          ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['Delete'] else '✘'" />
+                      </p>
+                    </tal:block>
+                    <td>
+                      <tal:block tal:repeat="user users">
+                        <p tal:define="perms row/users; user python:user">
+                          <tal:cond tal:condition="perms">
+                          ${python: perms[user]['name']}<br/>
+                          <span tal:repeat="action python: perms[user]['workflow_actions']" class="action">
+
+                            <b>[${action/title}]</b>
+                          </span>
+                        </tal:cond>
+                      </p>
+                    </tal:block>
+                  </td>
+                </tal:define>
+              </tr>
+            </tal:loop>
+          </tbody>
+        </table>
 
 
-        </tal:block>
+      </tal:block>
 
-      </metal:block>
-    </metal:content-core>
-  </body>
+    </metal:block>
+  </metal:content-core>
+</body>
 </html>

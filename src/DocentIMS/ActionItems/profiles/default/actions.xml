@@ -15,6 +15,19 @@
          <property name="visible">True</property>
       </object>
 
+      <object name="permissions_overview" meta_type="CMF Action" i18n:domain="plone">
+         <property name="title" i18n:translate="">Permissions Overview</property>
+         <property name="description" i18n:translate=""></property>
+         <property name="url_expr">string:$object_url/@@permission-overview</property>
+         <property name="link_target"></property>
+         <property name="icon_expr">string:plone-controlpanel</property>
+         <property name="available_expr"></property>
+         <property name="permissions">
+             <element value="Modify portal conten"/>
+         </property>
+         <property name="visible">True</property>
+      </object>      
+
       <object name="login" meta_type="CMF Action" i18n:domain="plone">
          <property name="title">Please Log in</property>
          <property name="description" i18n:translate=""></property>
