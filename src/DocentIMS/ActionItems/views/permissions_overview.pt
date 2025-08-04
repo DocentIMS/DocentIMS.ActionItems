@@ -25,14 +25,24 @@
           <label>User IDs:</label>
           <br />
 
-
-          <input id="users" name="users:list" class="pat-select2 margin-10-0" 
-              tal:attributes="value python:request.users[0] if request.users else None"
-                required type="hidden" data-pat-select2='{
+          <input id="users" name="users" class="pat-select2 margin-10-0" 
+              value="${view/request/users|None}"
+                  type="hidden" data-pat-select2='{
                   "placeholder": "Search for users",
                   "width": "40em",
                   "separator": ",",
                   "vocabularyUrl": "${view/portal_url}/@@getVocabulary?name=plone.app.vocabularies.Users"}' />
+
+
+
+          <!-- <input id="users" name="users" class="pat-select2 margin-10-0" 
+              tal:define="users request/users|None"
+              value="${users}"
+                  type="hidden" data-pat-select2='{
+                  "placeholder": "Search for users",
+                  "width": "40em",
+                  "separator": ",",
+                  "vocabularyUrl": "${view/portal_url}/@@getVocabulary?name=plone.app.vocabularies.Users"}' /> -->
 
           <br />
           <label>Path to audit (e.g. Documents):</label>
