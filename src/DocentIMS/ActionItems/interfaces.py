@@ -17,7 +17,6 @@ from plone import api
 from plone.api.portal import show_message
 from plone.app.contentrules.handlers  import execute_user_rules
 from plone.app.discussion.interfaces import IComment
-from plone.app.textfield import RichText
 from plone.app.z3cform.widget import AjaxSelectFieldWidget
 from plone.app.z3cform.widget import SelectFieldWidget, SelectWidget
 from plone.autoform.interfaces import IFormFieldProvider

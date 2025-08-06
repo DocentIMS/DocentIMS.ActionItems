@@ -81,12 +81,12 @@ class PermissionsOverview(BrowserView):
         request = self.request
         uid = request.get('folder', None)
         if not uid:
-            brains = api.content.find(context=self.context)        
+            brains = api.content.find(context=self.context, sort_on='getObjPositionInParent', sort_order='descending')       
         else:
             folder = api.content.get(UID=uid)    
             if not folder:
                 return None
-            brains = api.content.find(context=folder)
+            brains = api.content.find(context=folder, sort_on='getObjPositionInParent', sort_order='descending')
             
         user_ids = self.get_users()
         results = []
