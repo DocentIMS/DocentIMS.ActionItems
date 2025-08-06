@@ -25,9 +25,7 @@
           <label>User IDs:</label>
           <br />
 
-          <input id="users" name="users" class="pat-select2 margin-10-0" 
-              value="${view/request/users|None}"
-                  type="hidden" data-pat-select2='{
+          <input id="users" name="users" class="pat-select2 margin-10-0" value="${view/request/users|None}" type="hidden" data-pat-select2='{
                   "placeholder": "Search for users",
                   "width": "40em",
                   "separator": ",",
@@ -35,10 +33,7 @@
 
 
 
-          <!-- <input id="users" name="users" class="pat-select2 margin-10-0" 
-              tal:define="users request/users|None"
-              value="${users}"
-                  type="hidden" data-pat-select2='{
+          <!-- <input id="users" name="users" class="pat-select2 margin-10-0" tal:define="users request/users|None" value="${users}" type="hidden" data-pat-select2='{
                   "placeholder": "Search for users",
                   "width": "40em",
                   "separator": ",",
@@ -60,9 +55,9 @@
         </form>
         <p></p>
 
-        <tal:block tal:define="results view/get_results|None">
+        <tal:block tal:condition="view/get_results|None">
 
-          <table>
+          <table tal:define="results view/get_results|None">
             <thead>
               <tr>
                 <th>Content Item</th>
@@ -72,7 +67,7 @@
                 <th>Delete</th>
                 <th>Workflow<br/>
 Actions</th>
-
+                <th>Other Permissions</th>
               </tr>
             </thead>
             <tbody>
@@ -117,6 +112,26 @@ Actions</th>
                       </p>
                     </tal:block>
                   </td>
+                  <td>
+                    <tal:block tal:repeat="user users">
+                      <div tal:define="perms row/users; user python:user">
+                        <p>
+                          <a href="#user-${repeat/user/index}" class="plone-btn plone-btn-large plone-btn-primary pat-plone-modal">${python: perms[user]['name']}</a>
+                        </p>
+                        <div id="user-${repeat/user/index}" style="display: none">
+                        <h6>${python: perms[user]['name']}</h6>
+                        <ul>
+                          <tal:repeat tal:repeat="other_permissions python: sorted(perms[user]['permissions'])">
+                            <li tal:condition="python: other_permissions in ['Delete objects', 'Copy or Move', 'Change permissions', 'Add Folders', 'Define permissions']">
+                            ${other_permissions}
+                            </li>
+                          </tal:repeat>
+                        </ul>
+                        </div>
+                      </div>
+                    </tal:block>
+                  </td>
+
                 </tal:define>
               </tr>
             </tal:loop>

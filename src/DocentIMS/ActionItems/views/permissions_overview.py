@@ -44,6 +44,7 @@ class PermissionsOverview(BrowserView):
                 'View':  api.user.has_permission('View', user=user, obj=obj),
                 'Modify': api.user.has_permission('Modify portal content', user=user, obj=obj),
                 'Delete': api.user.has_permission('Delete objects', user=user, obj=obj),
+                'permissions' : api.user.get_permissions(user=user, obj=obj),
                 'workflow_actions': self.get_available_workflow_actions(obj, user),
             }
             return result
@@ -81,7 +82,7 @@ class PermissionsOverview(BrowserView):
         request = self.request
         uid = request.get('folder', None)
         if not uid:
-            brains = api.content.find(context=self.context, sort_on='getObjPositionInParent', sort_order='descending')       
+            brains = api.content.find(context=self.context)       
         else:
             folder = api.content.get(UID=uid)    
             if not folder:
