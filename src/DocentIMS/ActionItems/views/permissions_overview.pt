@@ -10,12 +10,16 @@
         <style>
         table { border-collapse: collapse; width: 100%; }
         tr:nth-child(even) {background: white} 
-        th, td { border: 1px solid #ddd; padding: 6px; text-align: center; }
+        th, td { border: 1px solid #ddd; padding: 4px 6px; text-align: center; }
         th:first-child, td:first-child { text-align: left; }
         th { background-color: #f2f2f2; }
         .yes { color: green; xfont-weight: bold; }
         .no { color: red; }
         .margin-10-0 {margin: 10px 0;}
+        .indent-3 { padding-left: 1em}
+        .indent-4 { padding-left: 2em}
+        .indent-5 { padding-left: 3em}
+        .indent-6 { padding-left: 4em}
         </style>
 
 
@@ -40,7 +44,7 @@
                   "vocabularyUrl": "${view/portal_url}/@@getVocabulary?name=plone.app.vocabularies.Users"}' /> -->
 
           <br />
-          <label>Path to audit (e.g. Documents):</label>
+          <label>Folder to audit (e.g. Documents or Meetings):</label>
           <br />
 
           <select id="folder" name="folder" class="pat-select2" data-pat-select2="width:20em;">
@@ -52,96 +56,98 @@
 
           <br />
           <input type="submit" class="btn btn-primary margin-10-0" value="Run Audit"/>
+          <a href="${view/portal_url}" class="btn btn-secondary margin-10-0">Exit</a>
         </form>
         <p></p>
 
-        <tal:block tal:condition="view/get_results|None">
+        <tal:block tal:condition="view/get_users|None">
 
-          <table tal:define="results view/get_results|None">
-            <thead>
-              <tr>
-                <th>Content Item</th>
-                <!-- <th>Path</th>                 -->
-                <th>View</th>
-                <th>Modify</th>
-                <th>Delete</th>
-                <th>Workflow<br/>
-Actions</th>
-                <th>Other Permissions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tal:loop tal:repeat="row results">
+          <tal:block tal:condition="view/get_results|None">
+
+            <table tal:define="results view/get_results|None">
+              <thead>
                 <tr>
-                  <td>
-                     ${row/title}<br/>
-                  <a href="${row/url|None}">${row/url|None}</a>
-                </td>
-                <tal:define tal:define="users view/get_users">
-                  <td>
-                    <tal:block tal:repeat="user users">
-                      <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['View'] else 'no'">
+                  <th>Content Item</th>
+                  <!-- <th>Path</th>                 -->
+                  <th>View</th>
+                  <th>Modify</th>
+                  <th>Delete</th>
+                  <th>Workflow<br/>
+Actions</th>
+                  <th>Other Permissions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tal:loop tal:repeat="row results">
+                  <tr>
+                    <td class="indent-${row/indent}">   
+                      <img tal:condition="row/ikon|None" alt="icon" src="${view/portal_url}/${row/ikon|None}" />
+                      <a href="${row/url|None}"><span class="type-${row/portal_type}">${row/title}</span></a>
+                    </td>
+                    <tal:define tal:define="users view/get_users">
+                      <td>
+                        <tal:block tal:repeat="user users">
+                          <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['View'] else 'no'">
                           ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['View'] else '✘'" />
-                      </p>
+                          </p>
 
-                    </tal:block>
-                  </td>
-                  <td>
-                    <tal:block tal:repeat="user users">
-                      <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['Modify'] else 'no'">
+                        </tal:block>
+                      </td>
+                      <td>
+                        <tal:block tal:repeat="user users">
+                          <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['Modify'] else 'no'">
                           ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['Modify'] else '✘'" />
-                      </p>
-                    </tal:block>
-                  </td>
-                  <td>
-                    <tal:block tal:repeat="user users">
-                      <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['Delete'] else 'no'">
+                          </p>
+                        </tal:block>
+                      </td>
+                      <td>
+                        <tal:block tal:repeat="user users">
+                          <p tal:define="perms row/users; user python:user" tal:attributes="class python:'yes' if perms and perms[user]['Delete'] else 'no'">
                           ${python: perms[user]['name']} <span tal:content="python:'✔' if perms and perms[user]['Delete'] else '✘'" />
-                      </p>
-                    </tal:block>
-                    <td>
-                      <tal:block tal:repeat="user users">
-                        <p tal:define="perms row/users; user python:user">
-                          <tal:cond tal:condition="perms">
+                          </p>
+                        </tal:block>
+                        <td>
+                          <tal:block tal:repeat="user users">
+                            <p tal:define="perms row/users; user python:user">
+                              <tal:cond tal:condition="perms">
                           ${python: perms[user]['name']}<br/>
-                          <span tal:repeat="action python: perms[user]['workflow_actions']" class="action">
+                              <span tal:repeat="action python: perms[user]['workflow_actions']" class="action">
 
-                            <b>[${action/title}]</b>
-                          </span>
-                        </tal:cond>
-                      </p>
-                    </tal:block>
-                  </td>
-                  <td>
-                    <tal:block tal:repeat="user users">
-                      <div tal:define="perms row/users; user python:user">
-                        <p>
-                          <a href="#user-${repeat/user/index}" class="plone-btn plone-btn-large plone-btn-primary pat-plone-modal">${python: perms[user]['name']}</a>
-                        </p>
-                        <div id="user-${repeat/user/index}" style="display: none">
-                          <h6>${python: perms[user]['name']}</h6>
-                          <ul tal:define="other_permissions python:perms[user]['permissions']">
-                              <li tal:condition="python: other_permissions[0]">Add Folders</li>
-                              <li tal:condition="python: other_permissions[1]">Copy or Move</li>
-                              <li tal:condition="python: other_permissions[2]">Change Permissionse</li>
-                              <li tal:condition="python: other_permissions[3]">Define Permissions</li>
-                            
-                        </ul>
-                      </div>
-                    </div>
-                  </tal:block>
-                </td>
+                                <b>[${action/title}]</b>
+                              </span>
+                            </tal:cond>
+                          </p>
+                        </tal:block>
+                      </td>
+                      <td>
+                        <tal:block tal:repeat="user users">
+                          <div tal:define="perms row/users; user python:user">
+                            <p>
+                              <a href="#user-${repeat/user/index}" class="plone-btn plone-btn-large plone-btn-primary pat-plone-modal">${python: perms[user]['name']}</a>
+                            </p>
+                            <div id="user-${repeat/user/index}" style="display: none">
+                              <h6>${python: perms[user]['name']}</h6>
+                              <ul tal:define="other_permissions python:perms[user]['permissions']">
+                                <li tal:condition="python: other_permissions[0]">Add Folders</li>
+                                <li tal:condition="python: other_permissions[1]">Copy or Move</li>
+                                <li tal:condition="python: other_permissions[2]">Change Permissionse</li>
+                                <li tal:condition="python: other_permissions[3]">Define Permissions</li>
 
-              </tal:define>
-            </tr>
-          </tal:loop>
-        </tbody>
-      </table>
+                              </ul>
+                            </div>
+                          </div>
+                        </tal:block>
+                      </td>
 
+                    </tal:define>
+                  </tr>
+                </tal:loop>
+              </tbody>
+            </table>
+          </tal:block>
+          </tal:block>
+        </metal:block>
 
-    </tal:block>
-
-  </metal:block>
-</metal:content-core>
-</body>
+    </metal:content-core>
+  </body>
 </html>

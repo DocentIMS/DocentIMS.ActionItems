@@ -8,6 +8,9 @@ from zope.interface import Interface
 from AccessControl import SpecialUsers
 from Products.CMFCore.utils import getToolByName
 from plone import api
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
+from plone.api.exc import InvalidParameterError
+
  
 from AccessControl.SecurityManagement import getSecurityManager, setSecurityManager
 
@@ -37,8 +40,6 @@ class PermissionsOverview(BrowserView):
         # user = user.__of__(plone.api.portal.get().acl_users)  # Wrap in acquisition
         old_sm = getSecurityManager()
         setSecurityManager(user)
-        
-        
         
         
         try:
@@ -73,7 +74,6 @@ class PermissionsOverview(BrowserView):
         else:
             # Use current user
             return [t['id'] for t in wf_tool.getTransitionsFor(obj)]
-        
 
     def get_users(self):
         raw = self.request.get('users', [])
@@ -85,8 +85,16 @@ class PermissionsOverview(BrowserView):
             raw = ''
         return [u.strip() for u in raw.split(',') if u.strip()]
 
+    def get_icon_for_portal_type(self, portal_type):  
+        # TO Do: Probably better to look up all contenttypes and their icons instead of doing this again and again.
+        content_name = "plone.icon.contenttype/" + portal_type.lower()
+        try:      
+            return api.portal.get_registry_record(content_name)
+        except (KeyError, InvalidParameterError):
+            return '++plone++bootstrap-icons/file-earmark-text.svg'
             
-    def get_results(self):
+    def get_results(self):        
+        # Get the plone_layout view
         request = self.request
         uid = request.get('folder', None)
         if not uid:
@@ -102,7 +110,9 @@ class PermissionsOverview(BrowserView):
         
         for brain in brains:
             obj = brain.getObject()
-            row = {'title': obj.Title(), 'path': obj.getPhysicalPath(), 'url': obj.absolute_url(), 'users': {}}
+            ikon = self.get_icon_for_portal_type(brain.portal_type)
+            path =  obj.getPhysicalPath()
+            row = {'title': obj.Title(), 'ikon': ikon, 'portal_type': obj.portal_type, 'path':  path, 'indent': len(path), 'url': obj.absolute_url(), 'users': {}}            
             for user_id in user_ids:
                 user_id = user_id
                 if user_id:
@@ -118,7 +128,7 @@ class PermissionsOverview(BrowserView):
     def get_folders(self):
         catalog = api.portal.get_tool('portal_catalog')
 
-        results = catalog(sort_on='sortable_title', portal_type=['Plone Site', 'Folder'])
+        results = catalog(sort_on='sortable_title', portal_type=['Folder'])
 
         items = []
         for brain in results[:100]:  # limit for performance
