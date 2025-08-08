@@ -119,29 +119,29 @@ Actions</th>
                           <a href="#user-${repeat/user/index}" class="plone-btn plone-btn-large plone-btn-primary pat-plone-modal">${python: perms[user]['name']}</a>
                         </p>
                         <div id="user-${repeat/user/index}" style="display: none">
-                        <h6>${python: perms[user]['name']}</h6>
-                        <ul>
-                          <tal:repeat tal:repeat="other_permissions python: sorted(perms[user]['permissions'])">
-                            <li tal:condition="python: other_permissions in ['Delete objects', 'Copy or Move', 'Change permissions', 'Add Folders', 'Define permissions']">
-                            ${other_permissions}
-                            </li>
-                          </tal:repeat>
+                          <h6>${python: perms[user]['name']}</h6>
+                          <ul tal:define="other_permissions python:perms[user]['permissions']">
+                              <li tal:condition="python: other_permissions[0]">Add Folders</li>
+                              <li tal:condition="python: other_permissions[1]">Copy or Move</li>
+                              <li tal:condition="python: other_permissions[2]">Change Permissionse</li>
+                              <li tal:condition="python: other_permissions[3]">Define Permissions</li>
+                            
                         </ul>
-                        </div>
                       </div>
-                    </tal:block>
-                  </td>
+                    </div>
+                  </tal:block>
+                </td>
 
-                </tal:define>
-              </tr>
-            </tal:loop>
-          </tbody>
-        </table>
+              </tal:define>
+            </tr>
+          </tal:loop>
+        </tbody>
+      </table>
 
 
-      </tal:block>
+    </tal:block>
 
-    </metal:block>
-  </metal:content-core>
+  </metal:block>
+</metal:content-core>
 </body>
 </html>

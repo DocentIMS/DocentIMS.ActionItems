@@ -1,310 +1,345 @@
-body, html body  {color: #222}
+body, html body {
+	color: #222
+}
 
-.userrole-anonymous  #content-header {max-width: 1300px; margin: auto}
+.userrole-anonymous  #content-header {
+	max-width: 1300px;
+	margin: auto
+}
 
-#portal-anontools {margin:auto; width: 100%; display: block}
-#portal-anontools ul {margin: auto !important; max-width: 1380px; width: 100%; text-align: right;display: block;}
+#portal-anontools {
+	margin: auto;
+	width: 100%;
+	display: block
+}
+
+#portal-anontools ul {
+	margin: auto !important;
+	max-width: 1380px;
+	width: 100%;
+	text-align: right;
+	display: block;
+}
+
 #portal-anontools li a {
-    text-decoration: none;
-    color: #05386B;
-    transition: 0.4s;
-    font-family: "Roboto", sans-serif; 
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: 500;
-    font-size: 15px;
-    min-width: 150px;
-    border: 1px solid;
-    background: #F24C3D; 
-    color: white;
+	text-decoration: none;
+	color: #05386B;
+	transition: 0.4s;
+	font-family: "Roboto", sans-serif;
+	padding: 12px 25px;
+	border-radius: 30px;
+	font-weight: 500;
+	font-size: 15px;
+	min-width: 150px;
+	border: 1px solid;
+	background: #F24C3D;
+	color: white;
 }
 
 #portal-anontools li a:hover {
-text-decoration: underline;
-color: white !important;
+	text-decoration: underline;
+	color: white !important;
 }
- 
 
-.profile-setup a {font-weight: bolder;}
+.profile-setup a {
+	font-weight: bolder;
+}
 
-.profile-setup a:hover {text-decoration: underline}
+.profile-setup a:hover {
+	text-decoration: underline
+}
 
-.managePortlets-row  {display: none !important}
+.managePortlets-row {
+	display: none !important
+}
 
-body.template-manage-portlets #portal-column-two {display: block !important}
+body.template-manage-portlets #portal-column-two {
+	display: block !important
+}
 
-thead, .dataTable th { font-weight: bold; margin-bottom: 3px; color: black}
+thead, .dataTable th {
+	font-weight: bold;
+	margin-bottom: 3px;
+	color: black
+}
 
 .mention,
 .mentions {
-  background: #D2B48C
+	background: #D2B48C
 }
 
-#mainnavigation-wrapper {display: none !important}
+#mainnavigation-wrapper {
+	display: none !important
+}
 
 #content-core h2 strong, #content-core .h2 strong,
-#header {border-bottom: 5px solid #{view/color}; font-size: 24pt}
+#header {
+	border-bottom: 5px solid #{view/color
+}
 
-#header a { color: black;}
-.hidden {display: none !important}
+; font-size: 24pt}
+
+#header a {
+	color: black;
+}
+
+.hidden {
+	display: none !important
+}
 
 #viewlet-below-content-title {
-  display: none
+	display: none
 }
 
 #viewlet-below-content legend {
-  font-size: 14px;
-  display: none
+	font-size: 14px;
+	display: none
 }
 
 #viewlet-below-content fieldset>p {
-  display: none
+	display: none
 }
 
 #commenting {
-  padding: 10px
+	padding: 10px
 }
 
+.mentions-dropdown div {
+	padding: 4px 8px;
+	cursor: pointer;
+}
+
+.mentions-dropdown div:hover {
+	background-color: #007acc;
+	color: white;
+}
 
 h1.priority-1 {
-  color: #F24C3D
+	color: #F24C3D
 }
 
 h1.priority-3 {
-  color: #22A699
+	color: #22A699
 }
 
 h1.priority-2 {
-  color: #F2BE22
+	color: #F2BE22
 }
 
 h1.priority-x3 {
-  color: #F29727
+	color: #F29727
 }
 
 h1.priority-xx1 {
-  color: #F24C3D
+	color: #F24C3D
 }
 
 h1.priority-x1 {
-  color: red
+	color: red
 }
 
 .black {
-  color: black
+	color: black
 }
 
 .autotoc-nav {
-  xbackground: whitesmoke
+	xbackground: whitesmoke
 }
 
 .autotoc-nav .active {
-  xbackground: white
+	xbackground: white
 }
 
 .white-background {
-  xbackground: white
+	xbackground: white
 }
 
 body {
-  xbackground: whitesmoke
+	xbackground: whitesmoke
 }
 
 .xpat-autotoc.autotabs {
-  background: white
+	background: white
 }
 
 fieldset {
-  xbackground: white;
-  padding-left: 2rem;
-  padding-right: 2rem;
+	xbackground: white;
+	padding-left: 2rem;
+	padding-right: 2rem;
 }
 
 td {
-  padding: 3px 12px;
-  xbackground: rgba(254, 255, 255, 0.5913176);
-  margin: 1px;
+	padding: 3px 12px;
+	xbackground: rgba(254, 255, 255, 0.5913176);
+	margin: 1px;
 }
 
 .calendarsheet {
-  max-width: 120px;
-  min-width: 90px;
-  float: right;
-
-  display: block;
+	max-width: 120px;
+	min-width: 90px;
+	float: right;
+	display: block;
 }
 
 .calendarsheet.left {
-  float: left;
-  opacity: 0.6
+	float: left;
+	opacity: 0.6
 }
 
 .redborder.calendarsheet time {
-  background: red;
+	background: red;
 }
 
 .calendarsheet time,
 .calendarsheet p,
 .calendarsheet date {
-  display: block;
-  text-align: center;
+	display: block;
+	text-align: center;
 }
 
 .colorborder {
-  border: 5px solid;
+	border: 5px solid;
 }
 
 .redborder {
-  border: 5px solid red;
+	border: 5px solid red;
 }
 
 .urgent_red {
-  border-color: red
+	border-color: red
 }
 
 .soon_yellow {
-  border-color: orange
+	border-color: orange
 }
 
 .future_green {
-  border-color: green
+	border-color: green
 }
 
 .long_grey {
-  border-color: #123456
+	border-color: #123456
 }
 
 .redborder p.theading,
 .urgent_red p.theading {
-  background: red
+	background: red
 }
 
 .soon_yellow p.theading {
-  background: orange
+	background: orange
 }
 
 .future_green p.theading {
-  background: green
+	background: green
 }
 
 .long_grey p.theading {
-  background: #123456
+	background: #123456
 }
 
 .calendarsheet time,
 .calendarsheet p.theading {
-  color: white !important;
-  margin: 0
+	color: white !important;
+	margin: 0
 }
 
 .calendarsheet .days,
 .calendarsheet date {
-  background: white;
-  color: black;
-  font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: -3px;
-  margin: 0;
-
+	background: white;
+	color: black;
+	font-size: 3rem;
+	font-weight: 500;
+	letter-spacing: -3px;
+	margin: 0;
 }
 
 .larger {
-  font-size: 120%
+	font-size: 120%
 }
 
-
 @media (min-width:100px) {
-  div.soon_yellow.colorborder.calendarsheet {
-    position: relative;
-    top: -2.5rem;
-    ;
-  }
+
+div.soon_yellow.colorborder.calendarsheet {
+	position: relative;
+	top: -2.5rem;
+;
+}
+
 }
 
 .pri-box.flex {
-  display: flex
+	display: flex
 }
 
 .priority-1 span {
-  color: red;
-  padding: 1px 5px
+	color: red;
+	padding: 1px 5px
 }
 
 .priority-2 span {
-  color: orange;
-  padding: 1px 5px
+	color: orange;
+	padding: 1px 5px
 }
 
 .priority-3 span {
-  color: green;
-  padding: 1px 5px
+	color: green;
+	padding: 1px 5px
 }
 
 span.previousdue-True {
-  color: silver;
+	color: silver;
 }
 
 #traffic-light {
-  background: #444;
-  border-radius: 3px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 17px;
-  height: 35px;
+	background: #444;
+	border-radius: 3px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 17px;
+	height: 35px;
 }
 
 #traffic-light>span {
-  border-radius: 50%;
-  width: 6px;
-  height: 6px;
-  padding: 0;
-  display: block;
-  opacity: 0.33
-}
-
-#tl-1 {
-  background: #FF0000
-}
-
-#tl-2 {
-  background: #FFFF00
-}
-
-#tl-3 {
-  background: #00FF00
+	border-radius: 50%;
+	width: 6px;
+	height: 6px;
+	padding: 0;
+	display: block;
+	opacity: 0.33
 }
 
 #traffic-light .active-True {
-  opacity: 1 !important;
-  width: 10px;
-  height: 10px
+	opacity: 1 !important;
+	width: 10px;
+	height: 10px
 }
 
 .late14-True {
-  color: red
+	color: red
 }
 
 span.late14-True {
-  color #FF0000 !important
+	
 }
 
 .soon14-True {
-  color: orange
+	color: orange
 }
 
 span.later-True {
-  color: green
+	color: green
 }
 
 #toolbar select {
-  background: none !important
+	background: none !important
 }
 
 .pat-discussion span.required,
 .pat-discussion .formControls {
-  display: none
+	display: none
 }
 
 .section-notes.template-full_view .item h1,
@@ -316,69 +351,75 @@ span.later-True {
 .template-post-it-note-view.template-full_view h1,
 .template-post-it-note-view.template-full_view p.lead,
 .section-notes #content-core header {
-  display: none
+	display: none
 }
 
 .section-notes.template-full_view #content-core,
 .template-note-view.template-full_view #content-core,
 .section-postit_notes.template-full_view #content-core,
 .template-post-it-note-view.template-full_view #content-core {
-  display: grid;
-  grid-template-columns: 1fr;
-  /* default to 1 column */
+	display: grid;
+	grid-template-columns: 1fr;
+	/* 
+
+default to 1 column */
   gap: 1rem;
-  /* optional spacing between items */
+/* op
+
+tional spacing between items */
 }
 
-
 #portal-column-two.overlay {
-  display: flex !important;
-  max-width: calc(100% + 1rem) !important;
-  width: calc(100% + 1rem) !important;
-  margin: 1rem 0 1rem 1rem;
-  height: auto;
-  background: whitesmoke !important;
+	display: flex !important;
+	max-width: calc(100% + 1rem) !important;
+	width: calc(100% + 1rem) !important;
+	margin: 1rem 0 1rem 1rem;
+	height: auto;
+	background: whitesmoke !important;
 }
 
 #portal-column-two.overlay .portletWrapper {
-  background: none !important;
-  padding: 0;
-  margin: 1rem 0 0
+	background: none !important;
+	padding: 0;
+	margin: 1rem 0 0
 }
 
 @media (min-width: 768px) {
-  .section-notes.template-full_view #content-core,
+
+.section-notes.template-full_view #content-core,
   .template-note-view.template-full_view #content-core,
   .section-postit_notes.template-full_view #content-core,
   .template-post-it-note-view.template-full_view #content-core {
-    grid-template-columns: 1fr 1fr;
-    /* two columns on large screens */
-  }
+	grid-template-columns: 1fr 1fr;
+/* two 
+
+columns on large screens */
+}
+
 }
 
 .card-big-shadow {
-  max-width: 620px;
-  position: relative;
+	max-width: 620px;
+	position: relative;
 }
 
 .coloured-cards .card {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 .card[data-radius="none"] {
-  border-radius: 0px;
+	border-radius: 0px;
 }
 
 .card {
-  border-radius: 8px;
-  box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
-  background-color: #FFFFFF;
-  color: #252422;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
+	border-radius: 8px;
+	box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+	background-color: #FFFFFF;
+	color: #252422;
+	margin-bottom: 20px;
+	position: relative;
+	z-index: 1;
 }
-
 
 .card[data-background="image"] .title,
 .card[data-background="image"] .stats,
@@ -396,332 +437,330 @@ span.later-True {
 .card[data-background="color"] .card-footer,
 .card[data-background="color"] small,
 .card[data-background="color"] .content a {
-  color: #444;
+	color: #444;
 }
 
 .card.card-just-text .content {
-  padding: 50px 65px;
-  text-align: xcenter;
+	padding: 50px 65px;
+	text-align: xcenter;
 }
 
 .card .content {
-  padding: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
 }
 
 .card[data-color="blue"] .category {
-  color: #7a9e9f;
+	color: #7a9e9f;
 }
 
 .card .category,
 .card .label {
-  font-size: 14px;
-  margin-bottom: 0px;
+	font-size: 14px;
+	margin-bottom: 0px;
 }
 
 .card-big-shadow:before {
-  background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  bottom: -12%;
-  content: "";
-  display: block;
-  left: -12%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 0;
+	background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	bottom: -12%;
+	content: "";
+	display: block;
+	left: -12%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 0;
 }
 
 h4,
 .h4 {
-  font-size: 1.5em;
-  font-weight: 600;
-  line-height: 1.2em;
+	font-size: 1.5em;
+	font-weight: 600;
+	line-height: 1.2em;
 }
 
 h6,
 .h6 {
-  font-size: 0.9em;
-  font-weight: 600;
-  text-transform: uppercase;
+	font-size: 0.9em;
+	font-weight: 600;
+	text-transform: uppercase;
 }
 
 .card .description {
-  font-size: 16px;
-  color: #66615b;
+	font-size: 16px;
+	color: #66615b;
 }
 
 .content-card {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 a:hover,
 a:focus {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 /*======== COLORS ===========*/
+
 .card[data-color="blue"] {
-  background: #b8d8d8;
+	background: #b8d8d8;
 }
 
 .card[data-color="blue"] .description {
-  color: #506568;
+	color: #506568;
 }
 
 .card[data-color="green"] {
-  background: #d5e5a3;
+	background: #d5e5a3;
 }
 
 .card[data-color="green"] .description {
-  color: #60773d;
+	color: #60773d;
 }
 
 .card[data-color="green"] .category {
-  color: #92ac56;
+	color: #92ac56;
 }
 
 .card[data-color="yellow"] {
-  background: #ffe28c;
+	background: #ffe28c;
 }
 
 .card[data-color="yellow"] .description {
-  color: #b25825;
+	color: #b25825;
 }
 
 .card[data-color="yellow"] .category {
-  color: #d88715;
+	color: #d88715;
 }
 
 .card[data-color="brown"] {
-  background: #d6c1ab;
+	background: #d6c1ab;
 }
 
 .card[data-color="brown"] .description {
-  color: #75442e;
+	color: #75442e;
 }
 
 .card[data-color="brown"] .category {
-  color: #a47e65;
+	color: #a47e65;
 }
 
 .card[data-color="purple"] {
-  background: #baa9ba;
+	background: #baa9ba;
 }
 
 .card[data-color="purple"] .description {
-  color: #3a283d;
+	color: #3a283d;
 }
 
 .card[data-color="purple"] .category {
-  color: #5a283d;
+	color: #5a283d;
 }
 
 .card[data-color="orange"] {
-  background: #ff8f5e;
+	background: #ff8f5e;
 }
 
 .card[data-color="orange"] .description {
-  color: #772510;
+	color: #772510;
 }
 
 .card[data-color="orange"] .category {
-  color: #e95e37;
+	color: #e95e37;
 }
 
 .greyed {
-  opacity: 0.25
+	opacity: 0.25
 }
 
 a {
-  opacity: 1
+	opacity: 1
 }
 
 .flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 }
 
 #toolbar {
-  padding: 0;
-  max-width: 1680px;
-  margin: auto;
+	padding: 0;
+	max-width: 1680px;
+	margin: auto;
 }
 
 #toolbar .flex {
-  justify-content: space-between;
-  margin: 0
+	justify-content: space-between;
+	margin: 0
 }
 
 #toolbar img {
-  width: 2rem;
+	width: 2rem;
 }
 
 #document_manager img,
 #meeting_select img {
-  width: 1.3rem;
+	width: 1.3rem;
 }
 
 #toolbar {
-  background: #E2E2E2;
-  font-size: 10pt;
-  width: 100%;
-  xmargin-bottom: 2rem;
+	background: #E2E2E2;
+	font-size: 10pt;
+	width: 100%;
+	xmargin-bottom: 2rem;
 }
 
 #toolbar>div {
-  border-right: 1px solid silver;
-  padding: 0.4rem 1rem 1.5rem;
-  flex-grow: 1;
-  position: relative
+	border-right: 1px solid silver;
+	padding: 0.4rem 1rem 1.5rem;
+	flex-grow: 1;
+	position: relative
 }
 
 .toolbar_label {
-  text-align: center;
-  font-weight: 600 !important;
-  position: absolute;
-  bottom: -7px;
-  left: 0;
-  right: 0;
-  xbackground: black;
-  line-height: 125%;
-  color: #555555 !important
+	text-align: center;
+	font-weight: 600 !important;
+	position: absolute;
+	bottom: -7px;
+	left: 0;
+	right: 0;
+	xbackground: black;
+	line-height: 125%;
+	color: #555555 !important
 }
 
 .toolbar_label a {
-  font-weight: 600 !important;
+	font-weight: 600 !important;
 }
 
 #toolbar {
-  text-align: center;
-  font-size: 10pt;
-  text-transform: none !important
+	text-align: center;
+	font-size: 10pt;
+	text-transform: none !important
 }
 
 #toolbar * {
-  text-transform: none !important;
-  font-size: 10pt;
-  font-family: Helvetica !important;
-  font-weight: normal;
-  color: black !important
+	text-transform: none !important;
+	font-size: 10pt;
+	font-family: Helvetica !important;
+	font-weight: normal;
+	color: black !important
 }
 
 #toolbar .messagetype,
 #toolbar .stoplight {
-  font-size: 90%;
-  margin: 4px 0 8px;
-  padding-left: 1px;
-  padding-right: 0;
-  width: 15pt;
-  height: 15pt;
-  padding: 3px;
-  border-radius: 50%;
-  background-color: gray
+	font-size: 90%;
+	margin: 4px 0 8px;
+	padding-left: 1px;
+	padding-right: 0;
+	width: 15pt;
+	height: 15pt;
+	padding: 3px;
+	border-radius: 50%;
+	background-color: gray
 }
 
 #toolbar .red {
-  background: red;
-  color: white
+	background: red;
+	color: white
 }
 
 #toolbar .yellow {
-  background: yellow
+	background: yellow
 }
 
 #toolbar .green {
-  background: green;
-  color: white
+	background: green;
+	color: white
 }
 
 #toolbar .info {
-  background: #40E0D0
+	background: #40E0D0
 }
 
 #toolbar select {
-  border-color: black;
-  border-width: 1px;
-  padding: 0 3px;
-  margin-bottom: 9px;
-  border-radius: 4px;
-
+	border-color: black;
+	border-width: 1px;
+	padding: 0 3px;
+	margin-bottom: 9px;
+	border-radius: 4px;
 }
 
 #toolbar input,
 #toolbar select {
-  height: auto
+	height: auto
 }
 
 #toolbar a {
-  color: black;
-  text-decoration: none;
-  text-transform: none !important;
-  border-bottom: 0 dotted #E2E2E2 !important
+	color: black;
+	text-decoration: none;
+	text-transform: none !important;
+	border-bottom: 0 dotted #E2E2E2 !important
 }
 
 #toolbar p {
-  padding: 0;
-  margin: 0;
-  line-height: 120%
+	padding: 0;
+	margin: 0;
+	line-height: 120%
 }
 
 #toolbar #help_div {
-  border-right: 0 none
+	border-right: 0 none
 }
 
 #document_type_select {
-  text-align: center
+	text-align: center
 }
- 
 
 #toolbar #site_logo img {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 4px
+	width: 3rem;
+	height: 3rem;
+	margin-bottom: 4px
 }
 
 #xmeeting_create img {
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 p.align-left {
-  text-align: left
+	text-align: left
 }
 
 #xcreate_meeting {
-  border: 0 none !important;
-  background: none
+	border: 0 none !important;
+	background: none
 }
 
 #create_meeting {
-  background-image: none
+	background-image: none
 }
 
 #show-toobar button {
-  border: 0 none;
-  padding: 0 10px 0 0;
-  padding-inline: 0;
-  background: white;
-  line-height: 120%;
+	border: 0 none;
+	padding: 0 10px 0 0;
+	padding-inline: 0;
+	background: white;
+	line-height: 120%;
 }
 
 #show-toobar img {
-  margin: 0 5px 0 0;
-  padding: 0
+	margin: 0 5px 0 0;
+	padding: 0
 }
 
-
 body #portal-column-two {
-  background: white !important;
-  border: 1px solid;
-  border-radius: 5px;
-  background: white !important;
-  padding-bottom: 2rem
+	background: white !important;
+	border: 1px solid;
+	border-radius: 5px;
+	background: white !important;
+	padding-bottom: 2rem
 }
 
 .portletWrapper {
-  background: white !important
+	background: white !important
 }
 
 .pat-collectionfilter .card-body,
@@ -730,218 +769,229 @@ body #portal-column-two {
 .collectionFilter,
 .pat-collectionfilter,
 .card-header.portletHeader {
-  background: none !important;
-  padding: 0 7px;
-  font-weight: bold;
-  border: 0 none !important;
-  margin: 0;
+	background: none !important;
+	padding: 0 7px;
+	font-weight: bold;
+	border: 0 none !important;
+	margin: 0;
 }
 
-.margin-auto {margin: auto;}
- 
+.margin-auto {
+	margin: auto;
+}
+
 body {
-  /* background: #FAFAF9 !important; */
+	/
+
+* background: #FAFAF9 !important; */
   background: #FAF9F6 !important
- 
 }
 
 .frontend fieldset {
-  background: white
+	background: white
 }
 
 .frontend fieldset.autotoc-section {
-  padding: 1rem;
+	padding: 1rem;
 }
 
 .frontend .pat-autotoc.autotabs .autotoc-nav {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .frontend .autotoc-level-1.active {
-  background: white;
-  color: black !important;
+	background: white;
+	color: black !important;
 }
 
 #toggle-filters,
 #toggle-filters img {
-  background: white;
-  border-radius: 5px;
-
+	background: white;
+	border-radius: 5px;
 }
 
 #toggle-filters {
-  padding: 3px 5px 0;
+	padding: 3px 5px 0;
 }
 
 #portal-breadcrumbs {
-  background: none !important;
+	background: none !important;
 }
 
-
-
 h1.priority-1 {
-  color: #F24C3D
+	color: #F24C3D
 }
 
 h1.priority-3 {
-  color: #22A699
+	color: #22A699
 }
 
 h1.priority-2 {
-  color: #F2BE22
+	color: #F2BE22
 }
 
 h1.priority-x3 {
-  color: #F29727
+	color: #F29727
 }
 
 h1.priority-xx1 {
-  color: #F24C3D
+	color: #F24C3D
 }
 
 h1.priority-x1 {
-  color: red
+	color: red
 }
 
 .black {
-  color: black
+	color: black
 }
 
 .autotoc-nav {
-  xbackground: whitesmoke
+	xbackground: whitesmoke
 }
 
 .autotoc-nav .active {
-  xbackground: white
+	xbackground: white
 }
 
 .white-background {
-  xbackground: white
+	xbackground: white
 }
 
 body {
-  xbackground: whitesmoke
+	xbackground: whitesmoke
 }
 
 .xpat-autotoc.autotabs {
-  background: white
+	background: white
 }
 
 fieldset {
-  padding-left: 2rem;
-  padding-right: 2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
 }
 
 td {
-  padding: 3px 12px;
-  margin: 1px;
+	padding: 3px 12px;
+	margin: 1px;
 }
 
 .calendarsheet {
-  max-width: 120px;
-  min-width: 90px;
-  float: right;
-
-  display: block;
+	max-width: 120px;
+	min-width: 90px;
+	float: right;
+	display: block;
 }
 
 .calendarsheet.left {
-  float: left;
-  opacity: 0.6
+	float: left;
+	opacity: 0.6
 }
 
 .redborder.calendarsheet time {
-  background: red;
+	background: red;
 }
 
 .calendarsheet time,
 .calendarsheet p,
 .calendarsheet date {
-  display: block;
-  text-align: center;
+	display: block;
+	text-align: center;
 }
 
 .colorborder {
-  border: 5px solid;
+	border: 5px solid;
 }
 
 .redborder {
-  border: 5px solid red;
+	border: 5px solid red;
 }
 
 .urgent_red {
-  border-color: red
+	border-color: red
 }
 
 .soon_yellow {
-  border-color: orange
+	border-color: orange
 }
 
 .future_green {
-  border-color: green
+	border-color: green
 }
 
 .long_grey {
-  border-color: #123456
+	border-color: #123456
 }
 
 .redborder p.theading,
 .urgent_red p.theading {
-  background: red
+	background: red
 }
 
 .soon_yellow p.theading {
-  background: orange
+	background: orange
 }
 
 .future_green p.theading {
-  background: green
+	background: green
 }
 
 .long_grey p.theading {
-  background: #123456
+	background: #123456
+}
+
+#tl-1 {
+	background: #FF0000
+}
+
+#tl-2 {
+	background: #FFFF00
+}
+
+#tl-3 {
+	background: #00FF00
 }
 
 .calendarsheet time,
 .calendarsheet p.theading {
-  color: white !important;
-  margin: 0
+	color: white !important;
+	margin: 0
 }
 
 .calendarsheet .days,
 .calendarsheet date {
-  background: white;
-  color: black;
-  font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: -3px;
-  margin: 0;
-
+	background: white;
+	color: black;
+	font-size: 3rem;
+	font-weight: 500;
+	letter-spacing: -3px;
+	margin: 0;
 }
 
 .larger {
-  font-size: 120%
+	font-size: 120%
 }
 
-
 @media (min-width:100px) {
+
   div.soon_yellow.colorborder.calendarsheet {
     position: relative;
     top: -2.5rem;
-    ;
   }
-}
 
+}
 
 #portal-column-two.overlay {
-  display: flex !important;
-  max-width:  calc(100% + 1rem) !important;
-  width: calc(100% + 1rem) !important;
-  margin: 1rem 0 1rem 1rem;
-  height: auto;
-  background: whitesmoke !important;
+	display: flex !important;
+	max-width: calc(100% + 1rem) !important;
+	width: calc(100% + 1rem) !important;
+	margin: 1rem 0 1rem 1rem;
+	height: auto;
+	background: whitesmoke !important;
 }
 
-#portal-column-two.overlay .portletWrapper { 
-  background: none !important; padding: 0; margin: 1rem 0 0
+#portal-column-two.overlay .portletWrapper {
+	background: none !important;
+	padding: 0;
+	margin: 1rem 0 0
 }

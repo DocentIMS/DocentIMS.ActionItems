@@ -39,12 +39,20 @@ class PermissionsOverview(BrowserView):
         setSecurityManager(user)
         
         
+        
+        
         try:
+            # Alternatively, revert to loop, but it looks slow
+            AddFolders = api.user.has_permission('Add Folders', user=user, obj=obj)
+            CopyorMove  = api.user.has_permission('Copy or Move', user=user, obj=obj)
+            ChangePermissions = api.user.has_permission('Change permissions', user=user, obj=obj)
+            DefinePermissions = api.user.has_permission('Define permissions', user=user, obj=obj)
+            
             result = {
                 'View':  api.user.has_permission('View', user=user, obj=obj),
                 'Modify': api.user.has_permission('Modify portal content', user=user, obj=obj),
                 'Delete': api.user.has_permission('Delete objects', user=user, obj=obj),
-                'permissions' : api.user.get_permissions(user=user, obj=obj),
+                'permissions' : [CopyorMove, ChangePermissions, AddFolders, DefinePermissions],
                 'workflow_actions': self.get_available_workflow_actions(obj, user),
             }
             return result
