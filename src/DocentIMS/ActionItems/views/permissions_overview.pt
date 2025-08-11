@@ -6,23 +6,6 @@
     <metal:content-core fill-slot="content">
       <metal:block define-macro="content">
 
-
-        <style>
-        table { border-collapse: collapse; width: 100%; }
-        tr:nth-child(even) {background: white} 
-        th, td { border: 1px solid #ddd; padding: 4px 6px; text-align: center; }
-        th:first-child, td:first-child { text-align: left; }
-        th { background-color: #f2f2f2; }
-        .yes { color: green; xfont-weight: bold; }
-        .no { color: red; }
-        .margin-10-0 {margin: 10px 0;}
-        .indent-3 { padding-left: 1em}
-        .indent-4 { padding-left: 2em}
-        .indent-5 { padding-left: 3em}
-        .indent-6 { padding-left: 4em}
-        </style>
-
-
         <h1>Permission & Workflow Audit</h1>
 
         <form method="get">
@@ -64,10 +47,12 @@
 
           <tal:block tal:condition="view/get_results|None">
 
-            <table tal:define="results view/get_results|None">
+            <table tal:define="results view/get_results|None" class="sortable plone-pat-tablesorter pat-tablesorter listing table-bordered">
               <thead>
                 <tr>
-                  <th>Content Item</th>
+                  <th>Path&nbsp;&&nbsp;Icon</th>
+                  <th class="main-td">Content Item</th>
+                  <th>Type</th>
                   <!-- <th>Path</th>                 -->
                   <th>View</th>
                   <th>Modify</th>
@@ -79,10 +64,18 @@ Actions</th>
               </thead>
               <tbody>
                 <tal:loop tal:repeat="row results">
-                  <tr>
-                    <td class="indent-${row/indent}">   
-                      <img tal:condition="row/ikon|None" alt="icon" src="${view/portal_url}/${row/ikon|None}" />
-                      <a href="${row/url|None}"><span class="type-${row/portal_type}">${row/title}</span></a>
+                  <tr tal:define="portal_type row/portal_type" tal:condition="python: portal_type != 'Plone Site'">
+                    <td tal:define="indent row/indent">
+                      <span tal:repeat="dot python:range(indent)" class="smallicon">→</span>
+                      <img alt="icon" src="${view/portal_url}/${row/ikon}" />
+                    </td>
+                    <td class="main-td">
+                      <a href="${row/url|None}">
+                        <span class="type-${portal_type}">${row/title}</span>
+                      </a>
+                    </td>
+                    <td>   
+                       ${portal_type}
                     </td>
                     <tal:define tal:define="users view/get_users">
                       <td>
@@ -144,9 +137,31 @@ Actions</th>
                 </tal:loop>
               </tbody>
             </table>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/js/jquery.tablesorter.min.js"></script> 
+            <script>
+$(function(){
+  $('table.sortable').tablesorter();
+});
+            </script>
+
+            <style>
+        table { border-collapse: collapse; width: 100%; }
+        tr:nth-child(even) {background: white} 
+        .main-td { text-align: left}
+        th, td {text-align: center; }
+        th:first-child, td:first-child { text-align: left; }
+        th { background-color: #f2f2f2; }
+        .smallicon {font-size: 65%}
+        .yes { color: green; xfont-weight: bold; }
+        .no { color: red; }
+        .margin-10-0 {margin: 10px 0;}
+        .tablesorter-header.tablesorter-headerAsc { background:whitesmoke; }
+        .tablesorter-header.tablesorter-headerDesc { background:#EEE; }
+        </style>
+
           </tal:block>
-          </tal:block>
-        </metal:block>
+        </tal:block>
+      </metal:block>
 
     </metal:content-core>
   </body>

@@ -7,7 +7,7 @@
       <metal:block define-macro="content-core" tal:define="webmail_url view/get_webmail_url; portal_url view/portal_url">
         <h1>Members</h1>
         <p class="discreet">Click on headers to sort</p>
-        <table class="sortable pat-tablesorter listing xtable-bordered ">
+        <table class="sortable pat-tablesorter listing xtable-bordered">
           <thead class="">
             <tr>
               <th>&nbsp;</th>
