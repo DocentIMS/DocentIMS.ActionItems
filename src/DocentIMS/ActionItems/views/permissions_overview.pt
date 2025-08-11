@@ -7,7 +7,6 @@
       <metal:block define-macro="content">
 
         <h1>Permission & Workflow Audit</h1>
-
         <form method="get">
           <label>User IDs:</label>
           <br />
@@ -17,22 +16,13 @@
                   "width": "40em",
                   "separator": ",",
                   "vocabularyUrl": "${view/portal_url}/@@getVocabulary?name=plone.app.vocabularies.Users"}' />
-
-
-
-          <!-- <input id="users" name="users" class="pat-select2 margin-10-0" tal:define="users request/users|None" value="${users}" type="hidden" data-pat-select2='{
-                  "placeholder": "Search for users",
-                  "width": "40em",
-                  "separator": ",",
-                  "vocabularyUrl": "${view/portal_url}/@@getVocabulary?name=plone.app.vocabularies.Users"}' /> -->
-
           <br />
           <label>Folder to audit (e.g. Documents or Meetings):</label>
           <br />
 
-          <select id="folder" name="folder" class="pat-select2" data-pat-select2="width:20em;">
+          <select tal:define="selected view/request/folder|view/folder_uid" id="folder" name="folder" class="pat-select2" data-pat-select2="width:20em;">
             <option value=""></option>
-            <option tal:repeat="folder view/get_folders" tal:attributes="selected python: folder['uid'] == request.get('folder')" value="${folder/uid}">
+            <option tal:repeat="folder view/folders" tal:attributes="selected python: folder['uid'] == selected" value="${folder/uid}">
                 ${folder/text}
             </option>
           </select>
@@ -47,7 +37,7 @@
 
           <tal:block tal:condition="view/get_results|None">
 
-            <table tal:define="results view/get_results|None" class="sortable plone-pat-tablesorter pat-tablesorter listing table-bordered">
+            <table tal:define="results view/get_results|None" class="sortable plone-pat-tablesorter pat-tablesorter listing table-bordered" >
               <thead>
                 <tr>
                   <th>Path&nbsp;&&nbsp;Icon</th>
@@ -139,9 +129,9 @@ Actions</th>
             </table>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/js/jquery.tablesorter.min.js"></script> 
             <script>
-$(function(){
-  $('table.sortable').tablesorter();
-});
+              $(function(){
+                $('table.sortable').tablesorter({ });
+              });
             </script>
 
             <style>

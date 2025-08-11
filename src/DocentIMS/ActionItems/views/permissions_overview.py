@@ -25,9 +25,10 @@ class PermissionsOverview(BrowserView):
         self.ikons = self.get_typeicons()
         self.portal = self.get_portal()
         self.portal_url = self.get_portal_url()
+        self.folders = self.get_folders()
+        self.folder_uid = self.get_folder_uid()
         return self.index()
         
-    
     def get_portal(self):
         return api.portal.get()
     
@@ -38,7 +39,7 @@ class PermissionsOverview(BrowserView):
         user = api.user.get(username=user_id)
         
         if not user:
-            return None
+            return None        
 
         # user = user.__of__(plone.api.portal.get().acl_users)  # Wrap in acquisition
         old_sm = getSecurityManager()
@@ -80,6 +81,8 @@ class PermissionsOverview(BrowserView):
 
     def get_users(self):
         raw = self.request.get('users', [])
+        if not raw:
+            return [api.user.get_current().id] 
         if isinstance(raw, list):
             raw = raw[0] if raw else ''
         elif isinstance(raw, str):
@@ -105,12 +108,24 @@ class PermissionsOverview(BrowserView):
                 icons[the_type] =  '++plone++bootstrap-icons/file-earmark-text.svg'
         return icons
                 
+    def get_folder_uid(self):
+        folder = self.context
+        parent = folder.aq_parent
+        # Check if this page is the default page of the parent
+        if parent.getDefaultPage() == folder.getId():
+            folder = parent       
+        return folder.UID()
+        
     def get_results(self):        
         # Get the plone_layout view
         request = self.request
         uid = request.get('folder', None)
         if not uid:
             folder = self.context
+            parent = folder.aq_parent
+            # Check if this page is the default page of the parent
+            if parent.getDefaultPage() == folder.getId():
+                folder = parent       
             brains = api.content.find(folder)       
         else:
             folder = api.content.get(UID=uid)    
@@ -120,7 +135,6 @@ class PermissionsOverview(BrowserView):
         
         
         folder_path_lenght = len(folder.getPhysicalPath())
-            
         user_ids = self.get_users()
         results = []
         
