@@ -995,3 +995,27 @@ td {
 	padding: 0;
 	margin: 1rem 0 0
 }
+
+div.comment {
+	border-top:  1px dotted black;
+	padding-left:0 !important;
+}
+
+div.comment button {
+	border:  none;
+	background: none;
+	color:  #007bb1; 
+}
+
+div.comment  div.comment-author a {
+  font-size: 150%;
+  font-weight: bold;
+  color: black !important;	
+  margin-right:  auto;;
+}
+
+div.comment-author {
+	display:  flex;
+	width: 100%
+}
+ 
