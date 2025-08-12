@@ -1,3 +1,5 @@
+/* @override http://ubuntu.local:8605/Plone17/++webresource++06ecd1ed-855b-5068-bc20-51c2f17de178/++plone++DocentIMS.ActionItems/css/action_items.css */
+
 body, html body {
 	color: #222
 }
@@ -997,9 +999,26 @@ td {
 }
 
 div.comment {
-	border-top:  1px dotted black;
-	padding-left:0 !important;
+	xborder-top:  1px dotted black; 
+	box-shadow: 5px 5px 16px  #CCC;
+	margin-bottom: 1rem !important;
 }
+
+ 
+form .hidden-widget {display: none}
+
+.comment:not(.level-0)::before {
+	content:  "↳";
+	width:  1rem;
+	float:  left;
+	display: block;
+	left:  -2rem;
+	top:  -1rem;;
+} 
+
+#formfield-form-widgets-in_reply_to,
+#formfield-form-widgets-author_name { margin-bottom: 0}
+
 
 div.comment button {
 	border:  none;

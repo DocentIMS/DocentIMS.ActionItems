@@ -112,8 +112,10 @@ class PermissionsOverview(BrowserView):
         folder = self.context
         parent = folder.aq_parent
         # Check if this page is the default page of the parent
-        if parent.getDefaultPage() == folder.getId():
-            folder = parent       
+        # If so, we probably want to show the folder instead
+        if hasattr(parent, 'getDefaultPage'):
+            if parent.getDefaultPage() == folder.getId():
+                folder = parent       
         return folder.UID()
         
     def get_results(self):        
