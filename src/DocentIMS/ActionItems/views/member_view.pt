@@ -8,7 +8,7 @@
         <h1>Members</h1>
         <p class="discreet">Click on headers to sort</p>
  
-        <table class="sortable pat-tablesorter listing xtable-bordered pat-datatables" data-pat-datatables="pageLength: 50">
+        <table class="sortable pat-tablesorter listing xtable-bordered pat-datatables" data-pat-datatables="pageLength: 25">
           <thead class="">
             <tr>
               <th>&nbsp;</th>
@@ -29,28 +29,20 @@
                 <td>${medlem/fullname|None}</td>
                 <td>${medlem/email|None}</td>
                 <!-- <td>${medlem/fullname}</td> -->
-
                 <td>${medlem/your_team_role}</td>
                 <td>${medlem/office_phone_number}</td>
                 <td>${medlem/cellphone_number}</td>
                 <td>${medlem/company}</td>
-
               </tr>
             </tal:repeat>
           </tbody>
-
         </table>
-
-
+        
         <button class="padding-10" onclick="composeNotify()"><img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" class="image22" />
                        Notify</button>
-
-
         <button class="padding-10" onclick="composeEmail()">
           <img src="++plone++DocentIMS.ActionItems/icons/email.png"  class="image22" />
  Send Email</button>
- 
-
  
         <script>
               function composeNotify() {
@@ -100,13 +92,10 @@
               .sorting.sorting_asc {
                   background:whitesmoke;                                                                  
               }
-
               .sorting.sorting_desc {
                   background:#EEE;
               }
-
               .padding-10 {padding: 5px 10px; line-height: 2 rem;}
-
               img.image22 { height: 20px !important; width: auto;}
 	
         </style>
