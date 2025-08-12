@@ -10,7 +10,7 @@ body, html body {
 }
 
 .userrole-anonymous #portal-top {
-	display: none;
+	color: white;
 }
 
 #portal-anontools {
