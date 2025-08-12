@@ -7,7 +7,8 @@
       <metal:block define-macro="content-core" tal:define="webmail_url view/get_webmail_url; portal_url view/portal_url">
         <h1>Members</h1>
         <p class="discreet">Click on headers to sort</p>
-        <table class="sortable pat-tablesorter listing xtable-bordered">
+ 
+        <table class="sortable pat-tablesorter listing xtable-bordered pat-datatables" data-pat-datatables="pageLength: 50">
           <thead class="">
             <tr>
               <th>&nbsp;</th>
@@ -92,27 +93,15 @@
         </script>
 
 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/js/jquery.tablesorter.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/filtertable@0.1.2/filtertable.min.js"></script>
-        <script>
-$(function(){
-  $('table.sortable').tablesorter({ sortList: [[1,0],] });
-});
-        </script>
-
-
-        <script>
-       $('table').filterTable();
-        </script>
 
 
         <style>
-              .tablesorter-header.tablesorter-headerAsc {
-                  background:whitesmoke;
-                                                                  
+              xtable {border-top: 1px solid silver}
+              .sorting.sorting_asc {
+                  background:whitesmoke;                                                                  
               }
 
-              .tablesorter-header.tablesorter-headerDesc {
+              .sorting.sorting_desc {
                   background:#EEE;
               }
 
