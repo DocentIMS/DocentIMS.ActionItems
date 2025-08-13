@@ -126,8 +126,9 @@ class PermissionsOverview(BrowserView):
             folder = self.context
             parent = folder.aq_parent
             # Check if this page is the default page of the parent
-            if parent.getDefaultPage() == folder.getId():
-                folder = parent       
+            if hasattr(parent, 'getDefaultPage'):
+                if parent.getDefaultPage() == folder.getId():
+                    folder = parent       
             brains = api.content.find(folder)       
         else:
             folder = api.content.get(UID=uid)    

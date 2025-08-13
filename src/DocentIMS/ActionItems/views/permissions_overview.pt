@@ -7,6 +7,17 @@
       <metal:block define-macro="content">
 
         <h1>Permission & Workflow Audit</h1>
+        <div class="lead Description">
+          <p>
+            <b>Explanation of Permissions, Security and Workflow</b>
+          </p>
+          <p>First, permissions and workflow are not the same as "Security".  A real-world example using your home will help explain the difference.</p>
+
+          <p><b>Security:</b>  Security is ensuring only invited guests can access your home.  Security is enforced through devices (e.g. locks, security systems, dog, etc.) to create barriers to uninvtied guests. This protects your family and contents from people who should not be in your home.  For Docent IMS, security is controlled by the the technical support team using the tools within Plone.  </p>
+          <p><b>Permissions:</b>  Once a user has entered the your home, permissions take over.  Permissions for your home (e.g. change the temperature setting, access the wireless) are assigned to project team members and define which of team members can manage the functioning of the site using actions controled by permissions.  It should be comforting to know, nothing done with permissions (at least those accesible to the Project Manager) can diminish the security of a site.  </p>
+          <p><b>Workflow:</b> a workflow is basically the set of steps content goes through from being created to being published. Or, think of it as a "to-do list" with checkpoints that content must pass before it’s visible to the public. As a project manager, this ensures no one sees any content before it has passed through all the steps (perhaps including QC)</p>
+        </div>
+        
         <form method="get">
           <label>User IDs:</label>
           <br />
@@ -16,7 +27,7 @@
                   "width": "40em",
                   "separator": ",",
                   "vocabularyUrl": "${view/portal_url}/@@getVocabulary?name=plone.app.vocabularies.Users"}' />
-                  
+
           <br />
           <label>Folder to audit (e.g. Documents or Meetings):</label>
           <br />
@@ -38,7 +49,7 @@
 
           <tal:block tal:condition="view/get_results|None">
 
-            <table tal:define="results view/get_results|None" class="sortable plone-pat-tablesorter pat-tablesorter listing table-bordered" >
+            <table tal:define="results view/get_results|None" class="sortable plone-pat-tablesorter pat-tablesorter listing table-bordered">
               <thead>
                 <tr>
                   <th>Path&nbsp;&&nbsp;Icon</th>
@@ -128,7 +139,7 @@ Actions</th>
                 </tal:loop>
               </tbody>
             </table>
-            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/js/jquery.tablesorter.min.js"></script> 
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/js/jquery.tablesorter.min.js"></script>
             <script>
               $(function(){
                 $('table.sortable').tablesorter({ });
@@ -148,7 +159,7 @@ Actions</th>
         .margin-10-0 {margin: 10px 0;}
         .tablesorter-header.tablesorter-headerAsc { background:whitesmoke; }
         .tablesorter-header.tablesorter-headerDesc { background:#EEE; }
-        </style>
+            </style>
 
           </tal:block>
         </tal:block>
