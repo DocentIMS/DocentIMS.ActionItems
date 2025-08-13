@@ -30,8 +30,8 @@
                 <td>${medlem/email|None}</td>
                 <!-- <td>${medlem/fullname}</td> -->
                 <td>${medlem/your_team_role}</td>
+                 <td>${medlem/cellphone_number}</td>
                 <td>${medlem/office_phone_number}</td>
-                <td>${medlem/cellphone_number}</td>
                 <td>${medlem/company}</td>
               </tr>
             </tal:repeat>
