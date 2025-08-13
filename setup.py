@@ -51,6 +51,7 @@ setup(
     install_requires=[
         'setuptools',
         # -*- Extra requirements: -*-
+        'chardet',
         'plone.api>=1.8.4',
         'plone.app.dexterity',
         'collective.searchandreplace',

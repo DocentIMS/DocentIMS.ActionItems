@@ -9,6 +9,8 @@ from zope.schema import Bytes
 from z3c.form import form, field, button
 from plone.autoform import directives as form_directives
 from plone.namedfile.file import NamedBlobImage
+from io import BytesIO
+import pandas as pd  # needs openpyxl installed
 
 
 
@@ -17,20 +19,17 @@ class IUsersImport(Interface):
 
 class ICSVImportFormSchema(Interface):
     csv_file = Bytes(
-        title=u"CSV File",
-        description=u"Upload a CSV file with user data",
+        title=u"Excel File",
+        description=u"Upload a Excel file with user data",
         required=True
     )
-
-# class UsersImport(BrowserView):
-#     def __call__(self):
-
+ 
 
 
 class UsersImport(form.Form):
     fields = field.Fields(ICSVImportFormSchema)
     ignoreContext = True
-    label = u"Import Users from CSV"
+    label = u"Import Users from Excel"
 
     @button.buttonAndHandler(u"Import")
     def handleImport(self, action):
@@ -40,11 +39,30 @@ class UsersImport(form.Form):
             return
 
         file_data = data['csv_file']
-        decoded = file_data.decode("utf-8")
-        reader = csv.DictReader(io.StringIO(decoded))
+        
+        # Get raw bytes from the upload (works for NamedBlobFile, FileUpload, or raw bytes)
+        if hasattr(file_data, 'data'):                 # plone.namedfile NamedBlobFile
+            raw = file_data.data
+        elif hasattr(file_data, 'read'):               # ZPublisher FileUpload
+            raw = file_data.read()
+        elif isinstance(file_data, (bytes, bytearray)):
+            raw = bytes(file_data)
+        else:
+            raise ValueError("Unsupported upload type for Excel file")
+
+        # Read first sheet as strings; requires 'openpyxl' for .xlsx and 'xlrd<2.0' for legacy .xls
+        df = pd.read_excel(BytesIO(raw), sheet_name=0, dtype=str)
+
+        # Clean NaNs and make headers predictable (optional but helpful)
+        df = df.fillna("")
+        df.columns = [str(c).strip().lower() for c in df.columns]
+
+        # Iterate correctly over dict rows
+        rows = df.to_dict(orient="records")
+        
 
         created_users = []
-        for row in reader:
+        for row in rows:
             email = row.get("email")
             if not email:
                 continue  # skip if no email
