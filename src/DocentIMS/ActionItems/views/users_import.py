@@ -8,7 +8,7 @@ from zope.interface import Interface
 from zope.schema import Bytes
 from z3c.form import form, field, button
 from plone.autoform import directives as form_directives
-from plone.namedfile.file import NamedBlobImage
+from plone.namedfile.file import NamedBlobImage, NamedBlobFile
 from io import BytesIO
 import pandas as pd  # needs openpyxl installed
 
@@ -23,7 +23,6 @@ class ICSVImportFormSchema(Interface):
         description=u"Upload a Excel file with user data",
         required=True
     )
- 
 
 
 class UsersImport(form.Form):

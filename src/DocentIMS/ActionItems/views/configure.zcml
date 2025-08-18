@@ -366,11 +366,11 @@
 
           
     <!-- Register BrowserView -->
-    <browser:page
+    <!-- <browser:page
         name="import-users"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".users_import.UsersImport"
         permission="cmf.ManagePortal"
-    />
+    /> -->
 
 </configure>
