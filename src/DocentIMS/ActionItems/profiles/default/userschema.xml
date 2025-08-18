@@ -25,11 +25,11 @@
       <vocabulary>DocentIMS.ActionItems.ProjectRolesVocabulary</vocabulary>
     </field>
 
-  <!-- <field name="office_phone_number" type="zope.schema.TextLine" users:forms="In User Profile">
+  <field name="office_phone_number" type="zope.schema.TextLine" users:forms="In User Profile">
     <description/>
     <required>False</required>
     <title>Office Phone Number</title>
-  </field> -->
+  </field> 
     <field name="cellphone_number" type="zope.schema.TextLine" users:forms="In User Profile">
       <description/>
        <required>False</required>
