@@ -14,7 +14,7 @@
 </div>
 <div id="toolbar" tal:condition="view/last_name|None" class="flex" tal:define="portal_url view/portal_url|None; tooltips view/get_the_tooltips">
     <div id="site_logo">
-        <a href="#" id="hide-toolbar" xdata-bs-toggle="tooltip" data-tooltip-content="<b>Hide</b> toolbar">
+        <a href="#" id="hide-toolbar" class="pat-tooltip" title="Hide toolbar">
             <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" />
 
             <label class="toolbar_label">Docent<br/>
@@ -22,7 +22,7 @@
 
         </a>
     </div>
-
+    
     <div id="project_name" class="xflex project_color">
         <!-- <label for="project">Select a Project:</label> -->
         <div id="project_select">
@@ -64,7 +64,9 @@
                     Mode</p>
             </a>
         </div>
-        <label class="toolbar_label" data-bs-toggle="tooltip" title="${tooltips/tooltipIdDocentMode|None}" data-tooltip-content="${tooltips/tooltipIdDocentMode|None}">
+        <label class="toolbar_label pat-tooltip" 
+               data-pat-tooltip="delay: 1500ms; position-list: tm" 
+               title="${tooltips/tooltipIdToggleButtonMgrMode|None}">
             <a href="#">Docent <br/>
 Mode</a>
         </label>

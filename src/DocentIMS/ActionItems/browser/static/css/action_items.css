@@ -598,6 +598,7 @@ a {
 	padding: 0;
 	max-width: 1680px;
 	margin: auto;
+	min-height: 122px;
 }
 
 #toolbar .flex {
