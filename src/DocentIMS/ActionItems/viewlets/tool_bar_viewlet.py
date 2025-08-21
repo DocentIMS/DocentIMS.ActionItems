@@ -44,6 +44,7 @@ class ToolBarViewlet(ViewletBase):
         self.project_name = self.get_project_name()        
         self.sites = self.get_sites()
         self.webmail_url = self.get_webmail_url()
+        self.returning = self.get_returning()
         
     @memoize
     def get_current_user_id(self):
@@ -57,6 +58,10 @@ class ToolBarViewlet(ViewletBase):
     @memoize
     def get_full_name(self):
         return api.user.get_current().getProperty('fullname')
+    
+    @memoize
+    def get_returning(self):
+        return api.user.get_current().getProperty('returning')
        
     def get_color(self):
         return api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.color1')
