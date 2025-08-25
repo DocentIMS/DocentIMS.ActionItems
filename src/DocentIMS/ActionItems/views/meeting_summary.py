@@ -42,6 +42,54 @@ class MeetingSummaryView(EventSummaryView):
     
     
     
+    @property
+    def get_grouped_attendees(self):
+        """
+        Returns a dictionary with:
+        {
+            'in_groups': ['user1', 'user2', 'user3'],
+            'not_in_groups': ['user4', 'user5']
+        }
+        """
+        attendees = set(self.get_attendees)
+        users_in_groups = set()
+
+        for groupname in self.context.attendees_group or []:
+            group = api.group.get(groupname=groupname)
+            if not group:
+                continue
+            group_members = [user.getId() for user in api.user.get_users(groupname=groupname)]
+            users_in_groups.update([u for u in group_members if u in attendees])
+
+        not_in_groups = attendees - users_in_groups
+
+        return {
+            'in_groups': list(users_in_groups),
+            'not_in_groups': list(not_in_groups)
+        }
+
+    # def get_groups_with_attendees(self):
+    #     """
+    #     Returns a list with dictionary:
+         
+    #     """
+    #     attendees = set(self.get_attendees)
+    #     groups_with_attendees = []
+
+    #     for groupname in self.context.attendees_group or []:
+    #         group = api.group.get(groupname=groupname)
+    #         if not group:
+    #             continue
+    #         group_title = group.getGroupTitleOrName()
+    #         group_members = [user.getId() for user in api.user.get_users(groupname=groupname)]
+    #         # Only include members who are also in attendees
+    #         groups_with_attendees.append({'groupname': group_title ,'users': [u for u in group_members if u in attendees]})
+
+    #     return groups_with_attendees
+
+    
+    
+    
 
     
  
