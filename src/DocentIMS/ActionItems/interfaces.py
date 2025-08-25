@@ -28,6 +28,8 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.schema.interfaces import  InvalidValue
+from z3c.form.browser.password import PasswordFieldWidget
+
 
 
 
@@ -699,7 +701,7 @@ class IDocentimsSettings(model.Schema):
         default="https://dashboard.docentims.com" 
     )    
     
-    
+    widget(dashboard=PasswordFieldWidget)
     dashboard = schema.TextLine(
         title=u"Dashboard Basic",
         required=not_required_in_debug_mode(),
