@@ -148,8 +148,7 @@
                   <b>Attendees: &nbsp;</b>
                 </div>
                 <div>
-                  <p>Teams: ${view/get_groups|None}<br/>
- 
+                  <p>${view/get_groups|None}<br/> 
                     <tal:repeat tal:repeat="item python: view.get_grouped_attendees['in_groups']">
                       <span class="text-no-wrap" tal:condition="python:  item != None">
                         <tal:define tal:define="
