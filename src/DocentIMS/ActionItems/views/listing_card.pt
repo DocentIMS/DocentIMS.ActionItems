@@ -13,45 +13,47 @@
 
             <!-- Show all folders as separate tabs -->
             <fieldset tal:condition="view/get_types|None" tal:repeat="folderitem view/get_types|None" tal:define="ex_show view/in_right_group|None">
-            <tal:condition tal:condition="python: folderitem!='Executive Session' or ex_show == False">
+              <tal:condition tal:condition="python: folderitem!='Executive Session' or ex_show == False">
 
-              <legend>${folderitem}</legend>
-              <!-- <tal:repeat tal:repeat="item python:current_folder.restrictedTraverse('@@contentlisting')"> -->
-              <div class="row xmb-5">
-    
- 
-                <tal:repeat tal:define="batch python: view.batch(folderitem);">
+                <legend>${folderitem}</legend>
+                <!-- <tal:repeat tal:repeat="item python:current_folder.restrictedTraverse('@@contentlisting')"> -->
+                <div class="row xmb-5">
 
-                   <p tal:condition="python: batch.length  == 0">No scheulded ${folderitem}</p>
 
-                  <div class="card h-100 w-25 sm-6 m-2" tal:repeat="item batch">
-               
-                    <div class="card-body">
+                  <tal:repeat tal:define="batch python: view.batch(folderitem);">
 
-                      <h5 class="card-title">
-                        <a href="${item/getURL}">
+                    <p tal:condition="python: batch.length  == 0">No scheulded ${folderitem}</p>
+
+                    <div class="card h-100 w-25 sm-6 m-2" tal:repeat="item batch">
+
+                      <div class="card-body">
+
+                        <h5 class="card-title">
+                          <a href="${item/getURL}">
                           ${item/Title}
-                        </a>
-                      </h5>
-                      <p class="card-text">${item/CroppedDescription}</p>
-                      <tal:define tal:define="formatted_date python:item.start.strftime('%b %d, %Y from %H:%M');
+                          </a>
+                        </h5>
+                        <p class="card-text">${item/CroppedDescription}</p>
+                        <tal:define tal:define="formatted_date python:item.start.strftime('%b %d, %Y from %H:%M');
                           formatted_created python:item.created.strftime('%b %d, %Y  %H:%M');
                           formatted_modified python:item.modified.strftime('%b %d, %Y  %H:%M')">
-                        <p> 🕑                          <tal:date replace="formatted_date" />
-                        </p>
-                        <p class="small published">
-
-                          <span tal:condition="python: formatted_created != formatted_modified">Revised:</span>
-                          <span tal:condition="python: formatted_created == formatted_modified">Published:</span>
-                          <tal:date replace="formatted_date" />
-                        </p>
-                      </tal:define>
+                          <p> 🕑                            <tal:date replace="formatted_date" />
+                          </p>
+                          <p class="small published">
+                            <span tal:condition="python: formatted_created != formatted_modified">Revised:</span>
+                            <span tal:condition="python: formatted_created == formatted_modified">
+                              <tal:condition tal:condition="python: item/portal_state=='Published'">Published</tal:condition>
+                              <tal:condition tal:condition="python: item/portal_state!='Published'">Created:</tal:condition>
+                            </span>
+                            <tal:date replace="formatted_date" />
+                          </p>
+                        </tal:define>
+                      </div>
                     </div>
-                  </div>
-                </tal:repeat>
-                <div metal:use-macro="here/batch_macros/macros/navigation" />
-              </div>
-            </tal:condition>
+                  </tal:repeat>
+                  <div metal:use-macro="here/batch_macros/macros/navigation" />
+                </div>
+              </tal:condition>
             </fieldset>
 
           </div>
