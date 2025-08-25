@@ -431,7 +431,7 @@ msgstr ""
 msgid "Vmeeting_summary"
 msgstr ""
 
-#. Default: "Team Roles"
+#. Default: "Roles"
 #: ../interfaces.py:99
 msgid "Vocabulary entries"
 msgstr ""
