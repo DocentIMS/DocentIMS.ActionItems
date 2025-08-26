@@ -51,7 +51,7 @@
                   ${typen}
                   </legend>
                   <div class="card-body" tal:content="structure item/text/output|None"></div>
-                  <div:condition tal:condition="item/file|None">
+                  <div tal:condition="item/file|None" class="flex">
                     <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
                       <p style="text-align: center">
                         <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" tal:condition="python: typen != 'File'"/>
@@ -64,7 +64,7 @@
                       </p>
                       <p style="text-align: center">Edit</p>
                     </a>
-                  </div:condition>
+                  </div>
                 </div>
               </tal:repeat>
             </div>
@@ -80,7 +80,7 @@
                    ${item/Title}
                   </legend>
                   <div class="card-body" tal:content="structure item/text/output|None"></div>
-                  <div:condition tal:condition="item/file|None">
+                  <div  tal:condition="item/file|None" class="flex">
                     <a href="${item/getURL}/@@download/file" class="block w-25 xp-1" alt="Download Document" title="Download Document">
                       <p style="text-align: center">
                         <img src="++plone++DocentIMS.ActionItems/word_icon.jpg" width="64" alt="word_icon" title="Download Document" tal:condition="python: typen != 'File'"/>
@@ -93,7 +93,7 @@
                       </p>
                       <p style="text-align: center">Edit</p>
                     </a>
-                  </div:condition>
+                  </div>
                 </div>
               </tal:repeat>
 
