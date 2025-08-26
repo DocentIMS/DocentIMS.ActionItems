@@ -173,7 +173,7 @@
                     </tal:repeat>
                   </p>
 
-
+                  <tal:condition tal:condition="python: view.get_grouped_attendees['not_in_groups']">
                   <strong class="meta-label" i18n:translate="contact_attendees">Attendees</strong>
 
                   <p class="card-text">
@@ -208,9 +208,8 @@
                         </span>
 
                       </tal:repeat>
-                     
-
                   </p>
+                  </tal:condition>
                 </div>
               </div>
             </div>
