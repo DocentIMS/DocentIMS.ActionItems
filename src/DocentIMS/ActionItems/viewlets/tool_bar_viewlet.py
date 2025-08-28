@@ -53,6 +53,8 @@ class ToolBarViewlet(ViewletBase):
     
     @memoize
     def get_last_name(self):
+        if api.user.get_current().id == 'admin':
+            return 'Administrator'
         return api.user.get_current().getProperty('last_name')
     
     @memoize
@@ -61,6 +63,8 @@ class ToolBarViewlet(ViewletBase):
     
     @memoize
     def get_returning(self):
+        if api.user.get_current().id == 'admin':
+            return 1
         return api.user.get_current().getProperty('returning')
        
     def get_color(self):
