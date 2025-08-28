@@ -173,8 +173,8 @@
     </field>
     <value>DocentIMS.ActionItems.TeamnamesVocabulary</value>
   </record>
-  
-    <record name="plone.app.querystring.field.closed.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+
+  <record name="plone.app.querystring.field.closed.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
     </field>
@@ -228,8 +228,8 @@
     </field>
     <value/>
   </record>
-  
-  
+
+
   <record name="plone.app.querystring.field.duedate.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
@@ -293,9 +293,9 @@
     </field>
     <value/>
   </record>
-  
-  
-  
+
+
+
   <record name="plone.app.querystring.field.initial_due_date.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
@@ -359,7 +359,7 @@
     </field>
     <value/>
   </record>
-  
+
   <record name="plone.app.querystring.field.is_this_item_closed.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
@@ -415,9 +415,9 @@
     </field>
     <value/>
   </record>
-  
-  
-  
+
+
+
   <record name="plone.app.querystring.field.priority.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
@@ -474,7 +474,7 @@
     </field>
     <value/>
   </record>
-  
+
   <record name="plone.app.querystring.field.prioritystring.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
@@ -584,9 +584,9 @@
     </field>
     <value/>
   </record>
-  
-  
-  
+
+
+
   <record name="plone.app.querystring.field.revised_due_date.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
@@ -650,13 +650,13 @@
     </field>
     <value/>
   </record>
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
   <record name="plone.app.querystring.urgency.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
     <field type="plone.registry.field.Text">
       <title>Description</title>
@@ -1014,4 +1014,16 @@
     </field>
     <value>True</value>
   </record>
-   </registry>
+</registry>
+
+
+<records interface="plone.app.querystring.interfaces.IQueryField" prefix="plone.app.querystring.field.document_type">
+  <value key="title">Document Type</value>
+  <value key="description"></value>
+  <value key="enabled">True</value>
+  <value key="sortable">True</value>
+  <value key="operations">
+    <element>plone.app.querystring.operation.string.is</element>
+  </value>
+  <value key="group">Metadata</value>
+</records>

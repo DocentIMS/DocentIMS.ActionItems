@@ -9,6 +9,9 @@
     <indexed_attr value="color"/>
   </index>
   
+  <index name="document_type" meta_type="FieldIndex">
+    <indexed_attr value="document_type"/>
+  </index>
 
   <index name="meeting_type" meta_type="FieldIndex">
     <indexed_attr value="meeting_type"/>
@@ -45,8 +48,7 @@
 
   <index name="stoplight" meta_type="FieldIndex">
     <indexed_attr value="stoplight"/>
-  </index>
-  
+  </index>  
 
   <index name="assigned_to" meta_type="FieldIndex">
     <indexed_attr value="assigned_to"/>
@@ -105,6 +107,7 @@
   <column value="actionno"/>
   <column value="urgency"/>
   <column value="has_file"/>
+  <column value="document_type"/>
   <column value="meeting_type"/>
   <column value="attendees"/>
 

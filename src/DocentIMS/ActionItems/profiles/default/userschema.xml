@@ -35,7 +35,6 @@
        <required>False</required>
       <title>Phone Number</title>
     </field>
-
     <field name="company" type="zope.schema.Choice" users:forms="">
       <description>Which company do you work for?</description>
       <required>False</required>

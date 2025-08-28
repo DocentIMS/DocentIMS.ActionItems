@@ -29,6 +29,20 @@ class IReadunreadPortlet(IPortletDataProvider):
         required=True,
         default=u'Show'
     )
+    
+    def get_selected_value(self):
+        request = self.request
+        collectionfilter = request.form.get('collectionfilter', '')  # Will be '1', '2', etc.
+        show_all = request.form.get('show_all', '')
+
+        # Default selection logic
+        if not collectionfilter:
+            return 'choose'
+        elif collectionfilter == '1' and show_all == '1':
+            return 'read'  # All, read and unread
+        elif collectionfilter == '1':
+            return 'all'  # Unread by default
+        return 'choose'
 
 
 @implementer(IReadunreadPortlet)
@@ -41,6 +55,20 @@ class Assignment(base.Assignment):
     @property
     def title(self):
         return _(u'Show')
+    
+    def get_selected_value(self):
+        request = self.request
+        collectionfilter = request.form.get('collectionfilter', '')  # Will be '1', '2', etc.
+        show_all = request.form.get('show_all', '')
+
+        # Default selection logic
+        if not collectionfilter:
+            return 'choose'
+        elif collectionfilter == '1' and show_all == '1':
+            return 'read'  # All, read and unread
+        elif collectionfilter == '1':
+            return 'all'  # Unread by default
+        return 'choose'
 
 
 class AddForm(base.AddForm):
@@ -73,6 +101,20 @@ class Renderer(base.Renderer):
         )
         self.anonymous = portal_state.anonymous()
 
+    def get_selected_value(self):
+        request = self.request
+        collectionfilter = request.form.get('collectionfilter', '')  # Will be '1', '2', etc.
+        show_all = request.form.get('show_all', '')
+
+        # Default selection logic
+        if not collectionfilter:
+            return 'choose'
+        elif collectionfilter == '1' and show_all == '1':
+            return 'read'  # All, read and unread
+        elif collectionfilter == '1':
+            return 'all'  # Unread by default
+        return 'choose'
+    
     def render(self):
         return self._template()
 
