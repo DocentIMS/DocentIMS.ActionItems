@@ -1011,6 +1011,9 @@ div.comment {
 	margin-bottom: 1rem !important;
 }
 
+.pat-discussion  .comment-action
+.comment-action.action-delete {margin-bottom: 0 !important}
+
  
 form .hidden-widget {display: none}
 
