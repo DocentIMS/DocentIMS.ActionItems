@@ -100,6 +100,7 @@ class ItemCount(object):
             query = {}
             query['portal_type'] = "action_items"
             query['assigned_id'] = user_ids
+            query['review_state'] = ["Published", "published"]
             queryresult =  api.content.find(**query)
             all_ais = len(queryresult)
             
