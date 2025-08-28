@@ -1015,7 +1015,8 @@ div.comment {
 form.comment-action,
 .comment-action.action-delete {margin-bottom: 0 !important}
 
- 
+.comment-body {display: flex;}
+
 form .hidden-widget {display: none}
 
 .comment:not(.level-0)::before {
