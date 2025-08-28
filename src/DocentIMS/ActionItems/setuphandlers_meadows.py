@@ -128,7 +128,7 @@ def post_install(context):
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
       [ {'meeting_type': 'Project Team Meeting', 
          'meeting_title': 'Project Team Meeting', 
-         'meeting_summary': '"Meeting of key Project Team Members', 
+         'meeting_summary': 'Meeting of key Project Team Members', 
          'meeting_attendees': {'PrjTeam'},
          'meeting_contact': 'dummyuser@docentims.com'},
         {'meeting_type': 'Community Meeting', 
@@ -138,7 +138,7 @@ def post_install(context):
          'meeting_contact': 'dummyuser@docentims.com'},
         {'meeting_type': 'Executive Team Meeting', 
          'meeting_title': 'Executive Team Meeting', 
-         'meeting_summary': '"Meeting of Leadership Team', 
+         'meeting_summary': 'Meeting of Leadership Team', 
          'meeting_attendees': {'PrjTeam'}, 
           'meeting_contact': 'dummyuser@docentims.com'},
       ])

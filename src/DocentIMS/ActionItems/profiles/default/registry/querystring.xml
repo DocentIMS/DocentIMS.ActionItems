@@ -1014,16 +1014,18 @@
     </field>
     <value>True</value>
   </record>
+
+
+
+  <records interface="plone.app.querystring.interfaces.IQueryField" prefix="plone.app.querystring.field.document_type">
+    <value key="title">Document Type</value>
+    <value key="description"></value>
+    <value key="enabled">True</value>
+    <value key="sortable">True</value>
+    <value key="operations">
+      <element>plone.app.querystring.operation.string.is</element>
+    </value>
+    <value key="group">Metadata</value>
+  </records>
+
 </registry>
-
-
-<records interface="plone.app.querystring.interfaces.IQueryField" prefix="plone.app.querystring.field.document_type">
-  <value key="title">Document Type</value>
-  <value key="description"></value>
-  <value key="enabled">True</value>
-  <value key="sortable">True</value>
-  <value key="operations">
-    <element>plone.app.querystring.operation.string.is</element>
-  </value>
-  <value key="group">Metadata</value>
-</records>
