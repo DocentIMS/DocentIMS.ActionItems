@@ -1011,7 +1011,8 @@ div.comment {
 	margin-bottom: 1rem !important;
 }
 
-.pat-discussion  .comment-action
+.pat-discussion  .comment-action,
+form.comment-action,
 .comment-action.action-delete {margin-bottom: 0 !important}
 
  
