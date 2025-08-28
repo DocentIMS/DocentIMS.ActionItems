@@ -155,6 +155,8 @@ class ToolBarViewlet(ViewletBase):
     def get_sites(self):
         user = api.user.get_current()
         usermail = user.getProperty('email')
+        # TO DO, this is leftover from 'old login'
+        # usermail = user.id
         if usermail:
             basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
             dashboard_url = self.get_dashboard_url()
@@ -167,8 +169,8 @@ class ToolBarViewlet(ViewletBase):
                         headers={
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
+                            'Authorization': f'Basic {basik}'                             
                         },
-                        auth=('admin', 'admin'),
                         timeout=2,                    
                     )
 
