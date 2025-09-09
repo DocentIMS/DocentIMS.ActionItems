@@ -1,15 +1,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:metal="http://xml.zope.org/namespaces/metal"
   xmlns:tal="http://xml.zope.org/namespaces/tal"
-  xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="DocentIMS.ActionItems" metal:use-macro="context/main_template/macros/master">
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
+  i18n:domain="DocentIMS.ActionItems" 
+  metal:use-macro="context/main_template/macros/master">
+
   <body>
     <metal:content-core fill-slot="content">
       <metal:block define-macro="content-core" tal:define="webmail_url view/get_webmail_url; portal_url view/portal_url">
         <h1>Members</h1>
         <p class="discreet">Click on headers to sort</p>
- 
+
         <table class="sortable pat-tablesorter listing xtable-bordered pat-datatables" data-pat-datatables="pageLength: 25">
-          <thead class="">
+          <thead>
             <tr>
               <th>&nbsp;</th>
               <th>Fullname</th>
@@ -24,85 +27,106 @@
             <tal:repeat tal:repeat="medlem view/group_users">
               <tr>
                 <td>
-                  <input type="checkbox" name="${medlem/id|None}" email="${medlem/email|None}" />
+                  <input type="checkbox" name="${medlem/id|None}" email="${medlem/email|None}" class="user-checkbox" />
                 </td>
                 <td>${medlem/fullname|None}</td>
                 <td>${medlem/email|None}</td>
-                <!-- <td>${medlem/fullname}</td> -->
                 <td>${medlem/your_team_role}</td>
-                 <td>${medlem/cellphone_number}</td>
+                <td>${medlem/cellphone_number}</td>
                 <td>${medlem/office_phone_number}</td>
                 <td>${medlem/company}</td>
               </tr>
             </tal:repeat>
           </tbody>
         </table>
-        
-        <button class="padding-10" onclick="composeNotify()"><img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" class="image22" />
-                       Notify</button>
-        <button class="padding-10" onclick="composeEmail()">
-          <img src="++plone++DocentIMS.ActionItems/icons/email.png"  class="image22" />
- Send Email</button>
- 
+
+        <!-- Action buttons -->
+        <button id="notifyBtn" class="padding-10" onclick="composeNotify()" disabled>
+          <img src="++plone++DocentIMS.ActionItems/icons//Notifs.jpg" class="image22" /> Notify
+        </button>
+
+        <button id="emailBtn" class="padding-10" onclick="composeEmail()" disabled>
+          <img src="++plone++DocentIMS.ActionItems/icons/email.png" class="image22" /> Send Email
+        </button>
+
+        <!-- JavaScript to enable/disable buttons -->
         <script>
-              function composeNotify() {
-                const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-                const recipients = Array.from(checkboxes)
-                                        .map(cb => cb.name)
-                                        .filter(name => name); // avoid empty/null names
+          const checkboxes = document.querySelectorAll('.user-checkbox');
+          const notifyBtn = document.getElementById('notifyBtn');
+          const emailBtn = document.getElementById('emailBtn');
 
-                if (recipients.length === 0) {
-                  alert("Please select at least one recipient.");
-                  return;
-                }
+          function updateButtonState() {
+            const anyChecked = document.querySelectorAll('.user-checkbox:checked').length > 0;
+            notifyBtn.disabled = !anyChecked;
+            emailBtn.disabled = !anyChecked;
+          }
 
-                const siteurl = "${portal_url}/notifications/++add++Notification";
-                const noteUrl = siteurl + "?notify_to=" + recipients.join(",");
-   
-                window.location.href = noteUrl;
-              }
+          // Attach event listeners to all checkboxes
+          checkboxes.forEach(cb => cb.addEventListener('change', updateButtonState));
         </script>
 
-
- 
+        <!-- Notify function -->
         <script>
-              function composeEmail() {
-                const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-                const recipients = Array.from(checkboxes)
-                                        .map(cb => cb.getAttribute('email'))
-                                        .filter(email => email); // avoid empty/null names
+          function composeNotify() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const recipients = Array.from(checkboxes)
+                                    .map(cb => cb.name)
+                                    .filter(name => name);
 
-                if (recipients.length === 0) {
-                  alert("Please select at least one recipient.");
-                  return;
-                }
+            if (recipients.length === 0) {
+              alert("Please select at least one recipient.");
+              return;
+            }
 
-                const webmailurl = "https://webmail.${webmail_url}";
-                const mailUrl = webmailurl + "?_task=mail&_action=compose&to=" + recipients.join(",");
-   
-                window.open(mailUrl, '_blank');
-              }
+            const siteurl = "${portal_url}/notifications/++add++Notification";
+            const noteUrl = siteurl + "?notify_to=" + recipients.join(",");
+            window.location.href = noteUrl;
+          }
         </script>
 
+        <!-- Email function -->
+        <script>
+          function composeEmail() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const recipients = Array.from(checkboxes)
+                                    .map(cb => cb.getAttribute('email'))
+                                    .filter(email => email);
 
+            if (recipients.length === 0) {
+              alert("Please select at least one recipient.");
+              return;
+            }
 
+            const webmailurl = "https://webmail.${webmail_url}";
+            const mailUrl = webmailurl + "?_task=mail&_action=compose&to=" + recipients.join(",");
+            window.open(mailUrl, '_blank');
+          }
+        </script>
 
+        <!-- Styles -->
         <style>
-              xtable {border-top: 1px solid silver}
-              .sorting.sorting_asc {
-                  background:whitesmoke;                                                                  
-              }
-              .sorting.sorting_desc {
-                  background:#EEE;
-              }
-              .padding-10 {padding: 5px 10px; line-height: 2 rem;}
-              img.image22 { height: 20px !important; width: auto;}
-	
+          xtable {border-top: 1px solid silver}
+          .sorting.sorting_asc {
+              background: whitesmoke;
+          }
+          .sorting.sorting_desc {
+              background: #EEE;
+          }
+          .padding-10 {
+              padding: 5px 10px;
+              line-height: 2rem;
+              cursor: pointer;
+          }
+          img.image22 {
+              height: 20px !important;
+              width: auto;
+          }
+          button:disabled {
+              background-color: #ccc !important;
+              cursor: not-allowed;
+              opacity: 0.6;
+          }
         </style>
-
- 
-
-
       </metal:block>
     </metal:content-core>
   </body>
