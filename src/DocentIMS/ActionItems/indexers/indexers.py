@@ -58,6 +58,9 @@ def attendeesIndexer(obj):
     if obj.portal_type in  ['Meeting', 'meeting']:
         attendees = obj.attendees
         groups = obj.attendees_group
+        entire_team = getattr(obj, 'entire_team', False)
+        if entire_team:
+            groups.add("PrjTeam")
         if groups and groups != None:
             all_users = list(attendees)
             for group in groups:
