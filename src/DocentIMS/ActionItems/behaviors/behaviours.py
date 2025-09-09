@@ -68,7 +68,7 @@ class IMeetingAttendees(IEventAttendees):
     model.fieldset(
         'attendees',
         fields=[
-            'entire_team,
+            'entire_team',
             'attendees',
         ] 
     )
