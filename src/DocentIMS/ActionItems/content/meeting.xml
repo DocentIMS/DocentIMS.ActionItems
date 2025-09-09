@@ -19,7 +19,7 @@
       <form:widget type="plone.app.z3cform.widget.AjaxSelectFieldWidget" />
       <description/>
       <required>False</required>
-      <title>Attendees Groups</title>
+      <title>Specific Groups</title>
       <value_type type="zope.schema.Choice">
         <vocabulary>plone.app.vocabularies.Groups</vocabulary>
       </value_type>
