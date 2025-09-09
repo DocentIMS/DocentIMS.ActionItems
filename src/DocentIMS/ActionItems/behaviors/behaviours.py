@@ -68,11 +68,18 @@ class IMeetingAttendees(IEventAttendees):
     model.fieldset(
         'attendees',
         fields=[
+            'entire_team,
             'attendees',
         ] 
     )
+    entire_team = schema.Bool(
+        title = "Entire Team",
+        default = True,
+        required = False,
+    )
+    
     attendees = schema.Tuple(
-        title= "Individual Attendees",
+        title= "Specific Members",
         description= "List of attendees.",
         required=False,
         missing_value=(),
