@@ -318,6 +318,9 @@ def user_created_handler(event):
     except KeyError:
         api.portal.show_message(message='User was not added to Dashboard Site. Check password in control panel',type='warning')
         pass   
+    
+    except requests.exceptions.SSLError:
+        api.portal.show_message(message='User was not added to Dashboard Site. SSH Certificate on Docent needs revival',type='error')
         
     #     return True
     
