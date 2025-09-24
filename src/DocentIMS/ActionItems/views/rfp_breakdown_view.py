@@ -101,7 +101,6 @@ class RfpBreakdownView(BrowserView):
         company = ''
         company_id =  member.getProperty('company')
         if company_id != None:
-             ;
             company_obj = api.content.get(UID=company_id)
             NoneType = type(None)
             if not isinstance(company_obj, NoneType):
