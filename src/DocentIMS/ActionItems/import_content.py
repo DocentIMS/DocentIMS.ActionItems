@@ -9,7 +9,7 @@ import transaction
 from pandas import *
 import os
 
-#import pdb; pdb.set_trace()
+ 
 print os.path.abspath(__file__)
 
 setSite(app['Plone'])
@@ -37,7 +37,7 @@ for i in range(0, len(my_dict)):
                 description=texte
     )
 
-    #import pdb; pdb.set_trace()
+     
     a =1 
  
 

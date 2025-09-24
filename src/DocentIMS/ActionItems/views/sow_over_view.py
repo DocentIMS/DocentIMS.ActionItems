@@ -41,7 +41,7 @@ class SowOverView(BrowserView):
  
 
     def today(self):
-        #import pdb; pdb.set_trace()
+         
         return datetime.date.today()
     
     

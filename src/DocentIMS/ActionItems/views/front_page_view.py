@@ -59,7 +59,7 @@ class FrontPageView(BrowserView):
             
             # if 'Project Manager' in roles:
             #         #User is project manager
-            #         #import pdb; pdb.set_trace()
+            #          
             #         current.setProperties(returning = True)
             #         if self.context.first_login_prjmgr:
             #             return self.context.first_login_prjmgr.output

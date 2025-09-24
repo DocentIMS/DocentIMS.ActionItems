@@ -52,7 +52,7 @@ def auto_publish_on_add(obj, event):
     if not event.object == obj:
         return
     
-    #import pdb; pdb.set_trace()
+     
     transition = obj.transition_state
     
     # Only do this if the object is not already published
@@ -173,7 +173,7 @@ def add_meeting_types(object, event):
         
 def change_uuid(object, event):
     if object.portal_type in  ['action_items' ]:
-        #import pdb; pdb.set_trace()
+         
         if hasattr(object, 'placeholder'):
             if object.placeholder is not None:
                 lenght = len( object.placeholder ) 
@@ -259,7 +259,7 @@ def save_note(object, event):
             
         #Update personal note with content
         if  IObjectModifiedEvent.providedBy(event):
-            #import pdb; pdb.set_trace()
+             
             if not item:
                 # not object.private_notes = None
                 if object.private_notes:

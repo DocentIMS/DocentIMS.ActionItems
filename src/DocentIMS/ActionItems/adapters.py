@@ -102,7 +102,7 @@ class ProjectShortName(BaseSubstitution):
 #     description = "Due Date"
 
 #     def safe_call(self):
-#       #import pdb; pdb.set_trace()
+#        
 #       if hasattr(self.context, 'initial_due_date'):
 #         return self.context.revised_due_date or self.context.initial_due_date
 #       return ''       

@@ -34,7 +34,7 @@ for i in range(0, len(my_dict)):
                 description=texte
     )
 
-    #import pdb; pdb.set_trace()
+     
     a =1 
  
 

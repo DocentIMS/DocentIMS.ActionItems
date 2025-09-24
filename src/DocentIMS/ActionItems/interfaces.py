@@ -69,7 +69,7 @@ def richtextConstraint(value):
 def richtextget(value):
     """ Workaround for bug 
     """
-    #import pdb; pdb.set_trace()
+     
     value = value.output
     return value 
 

@@ -25,7 +25,7 @@ class DocumentsFolderView(BrowserView):
 
     @property
     def b_size(self):
-        # import pdb; pdb.set_trace()
+          
         if self.context.Type() == 'Collection':
             return getattr(self, "_b_size", self.collection_behavior.item_count)
         return getattr(self, "_b_size", 25)

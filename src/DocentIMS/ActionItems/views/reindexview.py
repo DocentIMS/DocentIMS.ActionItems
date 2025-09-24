@@ -89,7 +89,7 @@ class ReindexView(BrowserView):
         
         for brain in my_brains:
             obj = brain.getObject()
-            #import pdb; pdb.set_trace()
+             
             old_urgency = brain.urgency
             
             
@@ -111,7 +111,7 @@ class ReindexView(BrowserView):
                     #Send email to user assigned
                     #print('we will send')
                     if brain.assigned_to:
-                        #import pdb; pdb.set_trace()
+                         
                         object = brain.getObject()
                         interpolator = IStringInterpolator(object)
                         

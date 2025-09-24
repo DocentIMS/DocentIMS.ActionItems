@@ -75,7 +75,7 @@ class ReindexView(BrowserView):
         # for name, rule in storage.items():
         #     #rule.title
         #     if rule.title == 'Item Due':
-        #         #import pdb; pdb.set_trace()
+        #          
         #         execute_rule = rule  
         #getRules()
         

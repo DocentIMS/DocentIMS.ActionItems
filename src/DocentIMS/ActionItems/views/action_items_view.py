@@ -74,7 +74,7 @@ class ActionItemsView(BrowserView):
 
         # difference between dates in timedelta
         if due_date != None:
-            #import pdb; pdb.set_trace()
+             
             today = datetime.date.today()
             usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
             workdays = np.busday_count(today, due_date, holidays = usholiday)
@@ -162,7 +162,7 @@ class ActionItemsView(BrowserView):
     def get_sow_text(self):
         if self.context.related_sow_section:
             rel_sow = api.content.get(UID=self.context.related_sow_section)
-            #import pdb; pdb.set_trace()   
+                
             if rel_sow:
                 if hasattr(rel_sow, 'bodytext') and rel_sow.bodytext:
                     return rel_sow.bodytext.output
@@ -174,7 +174,7 @@ class ActionItemsView(BrowserView):
         company = ''
         company_id =  member.getProperty('company')
         if company_id != None:
-            #import pdb; pdb.set_trace();
+             ;
             company_obj = api.content.get(UID=company_id)
             NoneType = type(None)
             if not isinstance(company_obj, NoneType):

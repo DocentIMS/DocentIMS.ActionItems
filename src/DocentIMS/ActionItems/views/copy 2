@@ -82,7 +82,7 @@ class ReindexView(BrowserView):
         # for name, rule in storage.items():
         #     #rule.title
         #     if rule.title == 'Item Due':
-        #         #import pdb; pdb.set_trace()
+        #          
         #         execute_rule = rule  
         #getRules()
         
@@ -94,7 +94,7 @@ class ReindexView(BrowserView):
             if brain.urgency == old_urgency:
                 #Send email to user assigned 
                 if brain.assigned_to:
-                    #import pdb; pdb.set_trace()
+                     
                     interpolator = IStringInterpolator(object)
                     self.recipients = "espen@medialog.no"
                     #self.recipients = brain.assigned_to

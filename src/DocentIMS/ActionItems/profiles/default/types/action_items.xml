@@ -30,14 +30,14 @@
   <element value="plone.relateditems"/>
   <element value="plone.locking"/>
   <element value="plone.basic"/>
-  <element value="medialog.notifications.mentioning_behavior"/>   
+  <element value="medialog.notifications.mentioning_behavior"/>
+  <element value="plone.textindexer"/>
  </property>
  <property name="schema"></property>
  <property
-    name="model_source">&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;utf8&#x27;?&gt;
-  &lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
+    name="model_source">&lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:indexer=&quot;http://namespaces.plone.org/supermodel/indexer&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
     &lt;schema&gt;
-      &lt;field name=&quot;full_explanation&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+      &lt;field name=&quot;full_explanation&quot; type=&quot;plone.app.textfield.RichText&quot; indexer:searchable=&quot;true&quot;&gt;
         &lt;description&gt;Give all the details, including any references, documents, etc. that might be helpful.&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Full Explanation&lt;/title&gt;
@@ -50,8 +50,8 @@
       &lt;/field&gt;
       &lt;field name=&quot;assigned_to&quot; type=&quot;zope.schema.Choice&quot;&gt;
         &lt;description&gt;Who is responsible for this Action Item?&lt;/description&gt;
-        &lt;title&gt;Assigned to&lt;/title&gt;
         &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;Assigned to&lt;/title&gt;
         &lt;vocabulary&gt;DocentIMS.ActionItems.TeamnamesVocabulary&lt;/vocabulary&gt;
       &lt;/field&gt;
       &lt;field name=&quot;prioritystring&quot; type=&quot;zope.schema.TextLine&quot; form:omitted=&quot;true&quot;&gt;
@@ -78,8 +78,8 @@
         &lt;title&gt;placeholder&lt;/title&gt;
       &lt;/field&gt;
       &lt;field name=&quot;source&quot; type=&quot;zope.schema.Text&quot; form:mode=&quot;z3c.form.interfaces.IForm:hidden&quot;&gt;
-        &lt;description/&gt;
         &lt;default&gt;Plone&lt;/default&gt;
+        &lt;description/&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;source&lt;/title&gt;
       &lt;/field&gt;

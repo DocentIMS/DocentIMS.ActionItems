@@ -79,7 +79,7 @@ def attendeesIndexer(obj):
 @indexer(IDexterityContainer)  # ADJUST THIS!
 def actionIndexer(obj):
     """Calculate and return the value for the indexer"""
-    #import pdb; pdb.set_trace()
+     
     if "action_items-" in obj.id:
         action_item =  obj.id.replace('action_items', '').replace("-", '')
         action_item_no = int(float(action_item))
@@ -137,7 +137,7 @@ def daysleftIndexer(obj):
     due_date = obj.duedate or None
     # difference between dates in timedelta
     if due_date != None:
-        #import pdb; pdb.set_trace()
+         
         today = datetime.date.today()
         usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
         workdays = np.busday_count(today, due_date, holidays = usholiday)
@@ -152,7 +152,7 @@ def urgencyIndexer(obj):
     """Calculate and return the value for the indexer"""
     due_date = obj.duedate or None
     if due_date != None:
-        #import pdb; pdb.set_trace()
+         
         today = datetime.date.today()
         usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
         workdays = np.busday_count(today, due_date, holidays = usholiday)

@@ -33,7 +33,7 @@ class AppInjectView(BrowserView):
     
     
     def get_dashboard_info(self):
-        # import pdb; pdb.set_trace()
+          
         # Change to own api endpoint
         # response = requests.get('http://ubuntu.local:8605/Plone14/@search', headers={'Accept': 'application/json', 'Content-Type': 'application/json'},  auth=('admin', 'admin'))
         siteurl = self.request.get('siteurl', 'https://mymeadows.org')

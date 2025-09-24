@@ -62,7 +62,7 @@ class SowView(BrowserView):
 
         # difference between dates in timedelta
         if due_date != None:
-            #import pdb; pdb.set_trace()
+             
             today = datetime.date.today()
             usholiday =   holiday_dates = [key for key in holidays.US(years=[today.year, today.year+1])]
             workdays = np.busday_count(today, due_date, holidays = usholiday)
@@ -102,7 +102,7 @@ class SowView(BrowserView):
         company = ''
         company_id =  member.getProperty('company')
         if company_id != None:
-            #import pdb; pdb.set_trace();
+             ;
             company_obj = api.content.get(UID=company_id)
             NoneType = type(None)
             if not isinstance(company_obj, NoneType):
@@ -117,7 +117,7 @@ class SowView(BrowserView):
         member = api.user.get(userid=self.context.assigned_to)
         if member:
             company_id =  member.getProperty('company')
-            #import pdb; pdb.set_trace()
+             
             #if company_id:
             #    company = api.content.get(UID=company_id).Title()
             return  {'id': member.getProperty('id'),
