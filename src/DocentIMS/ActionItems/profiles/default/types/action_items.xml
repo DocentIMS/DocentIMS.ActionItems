@@ -32,6 +32,7 @@
   <element value="plone.basic"/>
   <element value="medialog.notifications.mentioning_behavior"/>
   <element value="plone.textindexer"/>
+  <element value="docent.autopublish"/>  
  </property>
  <property name="schema"></property>
  <property

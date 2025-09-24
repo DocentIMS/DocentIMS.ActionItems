@@ -53,6 +53,7 @@
     <element value="plone.richtext"/>
     <element value="plone.tableofcontents"/>
     <element value="medialog.notifications.mentioning_behavior"/>
+    <element value="docent.autopublish"/>  
     <!--<element value="plone.versioning" />-->
     <!--<element value="plone.translatable" />-->
   </property>
