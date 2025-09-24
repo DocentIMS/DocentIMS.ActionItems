@@ -9,7 +9,7 @@ import transaction
 from pandas import *
 import os
 
-import pdb; pdb.set_trace()
+#import pdb; pdb.set_trace()
 print os.path.abspath(__file__)
 
 setSite(app['Plone'])

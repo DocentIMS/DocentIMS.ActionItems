@@ -4,7 +4,8 @@ from zope.schema.interfaces import IVocabularyFactory
 from Products.CMFCore.utils import getToolByName
 from AccessControl import getSecurityManager
 from plone import api
-
+from plone.api.exc import InvalidParameterError
+import requests
 
 from .interfaces import IDocentimsSettings
 
@@ -14,6 +15,40 @@ _ = MessageFactory('DocentIMS.ActionItems')
 def format_title(folder):
     return "{}  ...   [ {} ]".format( folder.Title, folder.getURL())
 
+
+def get_registry_record(self, record):
+    basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
+    dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'    
+    if basik:
+            siteurl = f'{dashboard_url}/@registry/{record}'
+            try:                
+                response  = requests.get(
+                    siteurl,
+                    headers={
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': f'Basic {basik}'                             
+                        },
+                    timeout=2,                    
+                )
+
+                if response.status_code == 200:
+                    #body = response.json()                    
+                    return response.json()
+
+                        
+            except requests.exceptions.ConnectionError:
+                    print("Failed to connect to the server. Please check your network or URL.")
+            except requests.exceptions.Timeout:
+                    print("The request timed out. Try again later.")
+            except requests.exceptions.RequestException as e:
+                    print(f"An error occurred: {e}")
+                    
+            return 
+                    
+        
+            
+    return None
 
 def ShowActionItemsVocabulary(context):
     items = api.content.find(portal_type=['sow_analysis', 'SOW Analysis'], sort_on='sortable_title')
@@ -37,6 +72,7 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 def CompanyVocabulary(context):
     items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    # dashboard_companies = get_registry_record(context, "DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies")
     if items:
         # Assuming items is a list of dictionaries
 
@@ -62,8 +98,7 @@ directlyProvides(CompanyVocabulary, IVocabularyFactory)
 def LocationsVocabulary(context):
     items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
     if items:
-        # Assuming items is a list of dictionaries
-        
+        # Assuming items is a list of dictionaries       
         
 
         sorted_items = sorted(

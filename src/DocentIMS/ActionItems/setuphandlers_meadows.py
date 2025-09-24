@@ -420,8 +420,22 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='documents',
+                default_page='documents-collection',
                 title='Documents',
             )
+            if not meeting.get('documents-collection', False):
+                documents_collection = plone.api.content.create(
+                    type='Collection',
+                    container=meeting,
+                    id='documents-collection',
+                    title='Documents',
+                    query=[{
+                        'i': 'path',
+                        'o': 'plone.app.querystring.operation.string.relativePath', 
+                        'v': '../'
+                    }]
+                )
+                
             if not portal.get('save-locations', False):
                 save_locations_folder = plone.api.content.create(
                     type='Folder',

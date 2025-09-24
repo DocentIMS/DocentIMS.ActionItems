@@ -140,6 +140,8 @@ class ActionItemsAddForm(DefaultAddForm):
         self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE  
         self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
         self.widgets["placeholder"].disabled = "disabled"
+        
+        
 
 
     def updateFields(self):
@@ -178,6 +180,9 @@ class ActionItemsAddForm(DefaultAddForm):
             # if group.__name__ == 'categorization':
             #         #group.mode = 'omitted'
             #         group.label = None
+            
+            
+        
                     
             if group.__name__ == 'connections':
                 if from_uid:
@@ -199,6 +204,8 @@ class ActionItemsAddForm(DefaultAddForm):
                 group.widgets['IRelatedItems.relatedItems'].mode = interfaces.HIDDEN_MODE
                 group.widgets['ICategorization.language'].mode = interfaces.HIDDEN_MODE
                 
+            if group.__name__ == 'all_dates':
+                group.widgets['revised_due_date'].disabled = "disabled"
             
             # if group.__name__ == 'connections':
             #     from_uid =  self.request.get('related_from')
