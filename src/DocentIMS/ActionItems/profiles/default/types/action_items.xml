@@ -101,13 +101,14 @@
         &lt;/field&gt;
       &lt;/fieldset&gt;
       &lt;fieldset name=&quot;notes&quot; label=&quot;PM Notes&quot; description=&quot; &quot;&gt;
-        &lt;field name=&quot;notes&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+        &lt;field name=&quot;notes&quot; type=&quot;plone.app.textfield.RichText&quot; indexer:searchable=&quot;true&quot;&gt;
+          &lt;description/&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Project Manager&#x27;s Notes to Person Assigned This Action Item&lt;/title&gt;
         &lt;/field&gt;
       &lt;/fieldset&gt;
       &lt;fieldset name=&quot;intermediate_actioins&quot; label=&quot;Intermediate Actions&quot; description=&quot;Describe all the actions taken including intermediate work if it is a lengthy or complicated issue.&quot;&gt;
-        &lt;field name=&quot;actions_taken&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+        &lt;field name=&quot;actions_taken&quot; type=&quot;plone.app.textfield.RichText&quot; indexer:searchable=&quot;true&quot;&gt;
           &lt;description&gt;Explain the intermediate steps as a way to keep people updated on your actiions&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Actions Taken&lt;/title&gt;
