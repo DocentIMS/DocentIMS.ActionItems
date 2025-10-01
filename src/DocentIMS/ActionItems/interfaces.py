@@ -193,7 +193,7 @@ class IMeetingRows(model.Schema):
     meeting_frequency = schema.Choice(
         values=[u"Daily", u"Weekly", u"Semi-Weekly", u"Monthly", u"Quarterly", u"Other"],
         title=_(u"meeting_frequency", default=u"Meeting Frequency"),
-        required=False,
+        required=True,
     )  
 
 
