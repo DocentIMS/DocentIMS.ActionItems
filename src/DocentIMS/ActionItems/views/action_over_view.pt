@@ -148,7 +148,7 @@
             <p>${context/help-files/action-item-help/action-item-help/Description|None}</p>
             <div tal:replace="structure context/help-files/action-item-help/action-item-help/text/output|None"/>
             <p>
-              <a href='${dashboard_url}/docent-help/team-mode/tasks' 
+              <a href='${view/dashboard_url}/docent-help' 
               class="button standalone btn btn-outline-secondary" target="_blank">Open Help PDF</a>
             </p>
           </fieldset>

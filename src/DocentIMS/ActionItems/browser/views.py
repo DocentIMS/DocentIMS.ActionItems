@@ -278,7 +278,7 @@ class ActionItemsEditForm(DefaultEditForm):
         if self.portal_type in  ['action_items', 'RFP Breakdown', 'rfp_breakdown' 'sow_analysis', 'project_companies', 'Document']:
             self.widgets['IVersionable.changeNote'].mode = interfaces.HIDDEN_MODE     
         
-        if self.portal_type == 'action_items':
+        if self.portal_type in 'action_items':
             self.widgets['IBasic.description'].mode = interfaces.HIDDEN_MODE
             self.widgets['placeholder'].mode = interfaces.HIDDEN_MODE 
             self.widgets["placeholder"].disabled = "disabled"
@@ -288,7 +288,7 @@ class ActionItemsEditForm(DefaultEditForm):
             # for group in self.groups:
             #     if group.__name__ == 'all_dates':
             #         self.groups['all_dates'].widgets['initial_due_date'].disabled='disabled'
-            
+           
         if self.portal_type in  ['sow_analysis', 'RFP Breakdown', 'rfp_breakdown']:
             # add confition to only show edit field for admins etc.
             user = api.user.get_current()
@@ -413,16 +413,18 @@ class MeetingEditForm(DefaultEditForm):
     def update(self):
         super(MeetingEditForm, self).update()
         
-        if self.portal_type in  ["meeting_notes", "Meeting Notes", "Meeting", "meeting", "Notes", "notes", "feedback", "Feedback", "PostIt Note", "postit_note"]:
+        
+        if self.portal_type in  ["rfp_breakdown", "meeting_notes", "Meeting Notes", "Meeting", "meeting", "Notes", "notes", "feedback", "Feedback", "PostIt Note", "postit_note"]:
         
             for group in self.groups:
+                    
                 if group.__name__ == 'settings':
                     group.label = None
                     #group.widgets['IVersionable.versioning_enabled'].mode = interfaces.HIDDEN_MODE
                     group.widgets['IAllowDiscussion.allow_discussion'].mode = interfaces.HIDDEN_MODE
                     
                     
-                if group.__name__ == 'settings' or group.__name__ == 'dates' or group.__name__ == 'categorization' or  group.__name__ == 'ownership':
+                if group.__name__ in  ['settings', 'dates', 'categorization', 'ownership']:
                     #group.mode = 'omitted'
                     group.label = None
         

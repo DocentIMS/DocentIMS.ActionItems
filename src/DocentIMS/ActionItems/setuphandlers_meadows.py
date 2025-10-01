@@ -369,9 +369,7 @@ def _create_content(portal):
                 query = [{'i': 'portal_type', 'o': 'plone.app.querystring.operation.selection.any', 'v': ['sow_analysis']}],
                 limit=2000,
                 item_count=500,
-            )
-            
-        
+            )          
         
         if not portal.get('rfp-manager', False):
             meeting = plone.api.content.create(
@@ -379,7 +377,7 @@ def _create_content(portal):
                 container=portal,
                 id='rfp-manager',
                 title='RFP Manager',
-                nextPreviousEnabled=0
+                nextPreviousEnabled=1
             )
             
         if not portal.get('ms-project', False):
@@ -617,6 +615,7 @@ def _create_content(portal):
                 id='pmp',
                 title='PMP',
                 exclude_from_nav=False,
+                 layout='tabular_view',
             )  
                 
         if not portal.get('command-statements', False):
@@ -626,6 +625,7 @@ def _create_content(portal):
                 id='command-statements',
                 title='Command Statements',
                 exclude_from_nav=False,
+                 layout='tabular_view',
             )
         
         # if not portal.get('help-files', False):
