@@ -115,7 +115,7 @@ class ItemCount(object):
             urgencies = ["Urgent < {days} workdays".format(days = red),
                          "Soon < {days} workdays".format(days = yellow),
                          "Future < {days} workdays".format(days = green),
-                         "More than {days}".format(days = green),
+                         "More than {days} workdays".format(days = green),
                          "Unset",
                         ]
 
