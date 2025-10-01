@@ -33,7 +33,7 @@
                 current_title view/site_title"
                 tal:condition="sites">
                 <select id="project" name="project">
-                    <option value="select">Change Project</option>
+                    <option value="select">${current_title}</option>
                     <tal:condition tal:condition="view/get_sites">
                         <tal:define tal:define="buttons python: sites['buttons']">
                             <tal:repeat tal:repeat="site buttons">
