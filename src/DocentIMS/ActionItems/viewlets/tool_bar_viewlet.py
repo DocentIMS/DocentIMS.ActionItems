@@ -45,7 +45,12 @@ class ToolBarViewlet(ViewletBase):
         self.sites = self.get_sites()
         self.webmail_url = self.get_webmail_url()
         self.returning = self.get_returning()
+        self.site_title = self.get_site_title()
         
+    @memoize
+    def get_site_title(self):
+        return  api.portal.get_registry_record('plone.site_title')
+    
     @memoize
     def get_current_user_id(self):
         current_user =  api.user.get_current()

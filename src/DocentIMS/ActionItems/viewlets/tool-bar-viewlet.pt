@@ -29,7 +29,9 @@
         <!-- <label for="project">Select a Project:</label> -->
         <div id="project_select">
        
-            <div tal:define="sites view/get_sites|None" tal:condition="sites">
+            <div tal:define="sites view/get_sites|None; 
+                current_title view/site_title"
+                tal:condition="sites">
                 <select id="project" name="project">
                     <option value="select">Change Project</option>
                     <tal:condition tal:condition="view/get_sites">
@@ -179,14 +181,14 @@ Mode
                 <option value="Project 2">Select 2</option>
             </select>
             <p class="align-left">
-                <a href="#" onclick="alert('You need to do this in Word!'); return false;">
+                <a class="greyed"  href="#" onclick="alert('You need to do this in Word!'); return false;">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/create_document_gray.png"/>
                     Create Document</a>
             </p>
 
             
             <p class="align-left">
-                <a href="#" onclick="alert('You need to do this in Word!'); return false;">
+                <a class="greyed"  href="#" onclick="alert('You need to do this in Word!'); return false;">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/open_document_gray.png"/>
                     Open Document
                 </a>
@@ -255,7 +257,7 @@ Mode
     <div id="command_statement" class="toolbar_manager hidden">
         <div class="no-flex">
             <a href="${portal_url}/command-statements">
-                <img src="++plone++DocentIMS.ActionItems/icons/command_statements.png" />
+                <img src="++plone++DocentIMS.ActionItems/icons/CacheListData.png" />
                 <p>Command<br/>
                     Statement</p>
             </a>
