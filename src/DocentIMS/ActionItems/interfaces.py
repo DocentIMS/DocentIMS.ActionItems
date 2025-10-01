@@ -160,7 +160,7 @@ class IMeetingRows(model.Schema):
     )
      
     meeting_summary = schema.Text(
-        title=_(u'Vmeeting_summary', 'Meeting Tag'),
+        title=_(u'meeting_summary', 'Meeting Tag'),
         # description=u"Default Summary",
         required=False,
     )
@@ -182,16 +182,19 @@ class IMeetingRows(model.Schema):
         description="",
         required=False,
         value_type=schema.Choice(vocabulary="plone.app.users.group_ids"),
-    )
-    
-     
+    ) 
     
     meeting_contact = schema.Choice(
         vocabulary=u"DocentIMS.ActionItems.TeamnamesVocabulary",
         title=_(u"meeting_contact", default=u"Contact Person"),
         required=False,
     )   
-
+    
+    meeting_frequency = schema.Choice(
+        values=[u"Daily", u"Weekly", u"Semi-Weekly", u"Monthly", u"Quarterly", u"Other"],
+        title=_(u"meeting_frequency", default=u"Meeting Frequency"),
+        required=False,
+    )  
 
 
 class ITableRows(model.Schema):
