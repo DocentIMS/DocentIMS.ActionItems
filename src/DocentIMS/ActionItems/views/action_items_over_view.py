@@ -33,6 +33,9 @@ class ActionItemsOverView(BrowserView):
     def batch(self):
         batch = self.context.restrictedTraverse('@@contentlisting')(sort_on='sortable_title', batch=True, b_size=400);
         return batch
+    
+    def dashboard_url(self):
+        return api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'
 
     def get_fields(self):
         return [api.portal.get_registry_record('table_columns', interface=IDocentimsSettings)]
