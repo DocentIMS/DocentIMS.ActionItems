@@ -127,6 +127,7 @@ class DocsInfo(object):
                     'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number'),   
                     'project_document_naming_convention':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'member_roles':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies'),
+                    'meetings_frequencies': ["Daily", "Weekly", "Semi-Weekly", "Monthly", "Quarterly", "Other"], 
                     'companies' :  companies,
                     'last_document_save_location': down_load_date,
                     'time_now_portal': datetime.now().astimezone(timezone(portal_timezone)).isoformat(),
