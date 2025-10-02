@@ -74,8 +74,7 @@ setup(
         'plone.app.widgets',
         'collective.fullcalendar',
         'plone.app.discussion',
-        'poppler-utils',
-        'python-poppler'
+        'poppler-utils'
     ],
     extras_require={
         'test': [
