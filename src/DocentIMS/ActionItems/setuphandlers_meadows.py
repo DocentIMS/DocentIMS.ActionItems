@@ -130,17 +130,20 @@ def post_install(context):
          'meeting_title': 'Project Team Meeting', 
          'meeting_summary': 'Meeting of key Project Team Members', 
          'meeting_attendees': {'PrjTeam'},
-         'meeting_contact': 'dummyuser@docentims.com'},
+         'meeting_contact': 'dummyuser@docentims.com',
+         'meeting_frequency': 'Other'},
         {'meeting_type': 'Community Meeting', 
          'meeting_title': 'Community Outreach Meeting', 
          'meeting_summary': 'Meetings to bring local communities into the process', 
          'meeting_attendees': {'PrjTeam'},
-         'meeting_contact': 'dummyuser@docentims.com'},
+         'meeting_contact': 'dummyuser@docentims.com',
+         'meeting_frequency': 'Other'},
         {'meeting_type': 'Executive Team Meeting', 
          'meeting_title': 'Executive Team Meeting', 
          'meeting_summary': 'Meeting of Leadership Team', 
          'meeting_attendees': {'PrjTeam'}, 
-          'meeting_contact': 'dummyuser@docentims.com'},
+         'meeting_contact': 'dummyuser@docentims.com',
+         'meeting_frequency': 'Other'},
       ])
     
  
@@ -418,21 +421,22 @@ def _create_content(portal):
                 type='Folder',
                 container=portal,
                 id='documents',
-                default_page='documents-collection',
+                # default_page='documents-collection',
                 title='Documents',
+                layout="tabbed-docmanager-view"
             )
-            if not meeting.get('documents-collection', False):
-                documents_collection = plone.api.content.create(
-                    type='Collection',
-                    container=meeting,
-                    id='documents-collection',
-                    title='Documents',
-                    query=[{
-                        'i': 'path',
-                        'o': 'plone.app.querystring.operation.string.relativePath', 
-                        'v': '../'
-                    }]
-                )
+            # if not meeting.get('documents-collection', False):
+            #     documents_collection = plone.api.content.create(
+            #         type='Collection',
+            #         container=meeting,
+            #         id='documents-collection',
+            #         title='Documents',
+            #         query=[{
+            #             'i': 'path',
+            #             'o': 'plone.app.querystring.operation.string.relativePath', 
+            #             'v': '../'
+            #         }]
+            #     )
                 
             if not portal.get('save-locations', False):
                 save_locations_folder = plone.api.content.create(
