@@ -48,7 +48,7 @@
                     </td>
                     <td>
                       <tal:condition tal:condition="item/file|None">
-                        <a alt="Open in Only Office" title="Open in Only Office" href="${context/absolute_url}/onlyoffice-view-file">Open in OnlyOffice</a>
+                        <a alt="Open in Only Office" title="Open in Only Office" href="${item/absolute_url}/onlyoffice-view-file">Open in OnlyOffice</a>
                       </tal:condition>
                     </td>
                   </tr>
