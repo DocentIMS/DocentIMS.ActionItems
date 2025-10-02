@@ -12,22 +12,51 @@
           <div class="pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
 
             <!-- Show all Document types as separate tabs document_type=-->
-            <tal:tabs tal:repeat="items view/grouped_items_by_document_type">
-            <fieldset tal:repeat="item items">
-              <legend>${item/Title}</legend>
+            <!-- ${items} -->
 
-              <div class="xcard">
-                <p class="lead">${item/Description}</p>
-              </div>
-              <div tal:content="structure item/text/output|None"></div>
+            <fieldset tal:repeat="doctypes python: view.grouped_items_by_document_type()">
+              <legend>${python: doctypes['document_type']}</legend >
 
+
+              <table class="listing pat-datatables listing" data-pat-datatables="pageLength: 50">
+                <thead>
+                  <tr>
+                    <th>Title </th>
+                    <th>Creator</th>
+                    <th>Type</th>
+                    <th>Modified </th>
+                    <th>File</th>
+                    <th>Open</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr tal:repeat="item python: doctypes['items']">
+                    <td>
+                      <a href="${item/absolute_url}">${item/Title}</a>
+                    </td>
+                    <td>${item/Creator}</td>
+                    <td>${item/Type}</td>
+                    <td>
+                      <time class="pat-display-time" datetime="${python:context.modified().ISO()}" data-pat-display-time="output-format: Do MMMM YYYY">
+                           ${item/modified}
+                      </time>
+                    </td>
+                    <td>
+                      <tal:condition tal:condition="item/file|None">
+                        <a href="${item/absolute_url}/@@download/file">Download</a>
+                      </tal:condition>
+                    </td>
+                    <td>
+                      <tal:condition tal:condition="item/file|None">
+                        <a alt="Open in Only Office" title="Open in Only Office" href="${context/absolute_url}/onlyoffice-view-file">Open in OnlyOffice</a>
+                      </tal:condition>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </fieldset>
-            </tal:tabs>
-
           </div>
         </div>
-
-
       </metal:block>
     </metal:content-core>
   </body>
