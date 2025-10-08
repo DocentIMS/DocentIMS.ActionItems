@@ -64,7 +64,7 @@
       <title>Actuals</title>
     </field>
     <fieldset name="meeting_notes" label="Meeting Notes" description="My notes during the meeting.">
-      <field name="meeting_notes" type="plone.app.textfield.RichText">
+      <field name="meeting_notes" type="plone.app.textfield.RichText" indexer:searchable="true">
         <description>Include all information to create minutes.</description>
         <required>False</required>
         <title>Meeting Notes</title>

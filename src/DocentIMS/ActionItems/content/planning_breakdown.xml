@@ -5,7 +5,7 @@
       <required>False</required>
       <title>Section Number</title>
     </field>
-    <field name="body_text" type="plone.app.textfield.RichText">
+    <field name="body_text" type="plone.app.textfield.RichText" indexer:searchable="true">
       <description/>
       <required>False</required>
       <title>Body Text</title>

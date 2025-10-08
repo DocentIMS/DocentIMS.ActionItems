@@ -12,7 +12,7 @@ xmlns="http://namespaces.plone.org/supermodel/schema">
 <required>False</required>
 <title>Breakdown Number</title>
 </field>
-<field name="bodytext" type="plone.app.textfield.RichText">
+<field name="bodytext" type="plone.app.textfield.RichText" indexer:searchable="true">
 <description> </description>
 <required>False</required>
 <title>Full Scope Section Text</title>
@@ -37,14 +37,14 @@ xmlns="http://namespaces.plone.org/supermodel/schema">
 </field>
 </fieldset>
 <fieldset name="notes" label="Notes" description=" ">
-<field name="notes" type="plone.app.textfield.RichText">
+<field name="notes" type="plone.app.textfield.RichText" indexer:searchable="true">
 <description>Add any notes regarding this Scope Item</description>
 <required>False</required>
 <title> " </title>
 </field>
 </fieldset>
 <fieldset name="actions_items" label="Actions Items" description="These are the action items generated from the analysis of this Statement of Work.">
-<field name="explanation" type="plone.app.textfield.RichText">
+<field name="explanation" type="plone.app.textfield.RichText" indexer:searchable="true">
 <description>What is this for</description>
 <required>False</required>
 <title>Explanation</title>
@@ -68,7 +68,7 @@ xmlns="http://namespaces.plone.org/supermodel/schema">
 <element>5 hours</element>
 </values>
 </field>
-<field name="notes_to_qc" type="plone.app.textfield.RichText">
+<field name="notes_to_qc" type="plone.app.textfield.RichText" indexer:searchable="true">
 <description>Enter anything that might help the QC process</description>
 <required>False</required>
 <title>Notes to QC</title>
@@ -102,7 +102,7 @@ xmlns="http://namespaces.plone.org/supermodel/schema">
 <title>Quality Procedure</title>
 <vocabulary>DocentIMS.ActionItems.QPVocabulary</vocabulary>
 </field>
-<field name="deliverable_text" type="plone.app.textfield.RichText">
+<field name="deliverable_text" type="plone.app.textfield.RichText" indexer:searchable="true">
 <description/>
 <required>False</required>
 <title>Deliverable Text</title>
@@ -116,7 +116,7 @@ xmlns="http://namespaces.plone.org/supermodel/schema">
 <title>Is the analyis complete</title>
 <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
 </field>
-<field name="analysis_notes" type="plone.app.textfield.RichText">
+<field name="analysis_notes" type="plone.app.textfield.RichText" indexer:searchable="true">
 <description/>
 <required>False</required>
 <title>Analysis Notes</title>
