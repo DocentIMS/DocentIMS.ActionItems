@@ -11,8 +11,7 @@
       <title>Feedback Submitted By</title>
       <vocabulary>plone.app.vocabularies.Users</vocabulary>
     </field>
-    <field name="feedback_text" type="plone.app.textfield.RichText" indexer:searchable="true">
-     <indexer:searchable=&quot;true&quot;&gt;>
+    <field name="feedback_text" type="plone.app.textfield.RichText" indexer:searchable="true"> 
       <description>Enter a full description of the comment, suggestion, compliment or complaint.</description>
       <title>Feedback Text</title>
     </field>
