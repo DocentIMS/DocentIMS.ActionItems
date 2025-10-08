@@ -123,7 +123,7 @@
           &lt;title&gt;Is this item closed&lt;/title&gt;
           &lt;form:widget type=&quot;z3c.form.browser.checkbox.SingleCheckBoxFieldWidget&quot;/&gt;
         &lt;/field&gt;
-        &lt;field name=&quot;actions_to_close_out&quot; type=&quot;plone.app.textfield.RichText&quot;&gt;
+        &lt;field name=&quot;actions_to_close_out&quot; type=&quot;plone.app.textfield.RichText&quot; indexer:searchable=&quot;true&quot;&gt;
           &lt;description&gt;Explain what you did to close this out.&lt;/description&gt;
           &lt;required&gt;False&lt;/required&gt;
           &lt;title&gt;Actions to Close out&lt;/title&gt;

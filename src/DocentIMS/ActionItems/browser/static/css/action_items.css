@@ -476,7 +476,7 @@ columns on large screens */
 	left: -12%;
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: -1px;
 	z-index: 0;
 }
 
@@ -745,6 +745,55 @@ p.align-left {
 	background-image: none
 }
 
+/* Fake toolbar dropdown */
+
+#toolbar .custom-select {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+	}
+  
+  #toolbar .selected {
+	border: 1px solid;
+	border-radius: 3px;
+  }
+  
+  #toolbar .selected img {
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+  }
+  
+  #toolbar .options {
+	display: none;
+	position: absolute;
+	background: #EEE;
+	width: 150px;
+	top:0;
+	border: 1px solid #ccc; 
+	z-index: 10;
+	border-radius: 6px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  
+  #customSelect div {
+	padding: 0 3px ; 
+  }
+  
+  #toolbar .option {
+   padding: 3px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+  }
+  
+  #toolbar .option img {
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+  }
+  
 #show-toobar button {
 	border: 0 none;
 	padding: 0 10px 0 0;

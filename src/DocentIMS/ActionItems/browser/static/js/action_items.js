@@ -149,18 +149,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Create meeting select
-  const createMeeting = document.getElementById("create_meeting");
-  if (createMeeting) {
-    createMeeting.addEventListener("change", function () {
-      if (this.value === "create_meeting") {
-        window.location.href = portalUrl + "/meetings/++add++meeting";
-      } else if (this.value === "your_meetings") {
-        document.querySelectorAll('#meeting_select a').forEach(a => a.classList.toggle("greyed"));
-        window.location.href = portalUrl + "/meetings/meeting-collection";
-      }
-    });
-  }
+  // // Create meeting select
+  // const createMeeting = document.getElementById("create_meeting");
+  // if (createMeeting) {
+  //   createMeeting.addEventListener("change", function () {
+  //     if (this.value === "create_meeting") {
+  //       window.location.href = portalUrl + "/meetings/++add++meeting";
+  //     } else if (this.value === "your_meetings") {
+  //       document.querySelectorAll('#meeting_select a').forEach(a => a.classList.toggle("greyed"));
+  //       window.location.href = portalUrl + "/meetings/meeting-collection";
+  //     }
+  //   });
+  // }
 
 
   const createFeedback = document.getElementById("create_feedback");
@@ -217,9 +217,49 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+
+
+  const select = document.querySelector('#customSelect');
+  const selected = select.querySelector('.selected');
+  const optionsContainer = select.querySelector('.options');
+
+  // Toggle dropdown open/close
+  selected.addEventListener('click', () => {
+    optionsContainer.style.display =
+      optionsContainer.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Handle option selection
+  optionsContainer.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const value = opt.dataset.value;
+
+      // Update visible selection
+      selected.querySelector('span').textContent = opt.textContent.trim();
+      selected.dataset.value = value;
+      optionsContainer.style.display = 'none';
+
+      // 🔽 Your original redirect logic
+      if (value === "create_meeting") {
+        window.location.href = portalUrl + "/meetings/++add++meeting";
+      } else if (value === "your_meetings") {
+        document.querySelectorAll('#meeting_select a').forEach(a =>
+          a.classList.toggle("greyed")
+        );
+        window.location.href = portalUrl + "/meetings/meeting-collection";
+      }
+    });
+  });
+
+  // Close dropdown if clicking outside
+  document.addEventListener('click', (e) => {
+    if (!select.contains(e.target)) optionsContainer.style.display = 'none';
+  });
+
+  
+
 });
-
-
 
 // jQuery(document).ready(function() {
 //   if ($("#portal-column-two").length) {

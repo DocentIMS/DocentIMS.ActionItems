@@ -31,6 +31,7 @@
   <element value="plone.ownership"/>
   <element value="plone.publication"/>
   <element value="plone.categorization"/>
+  <element value="plone.textindexer"/>
   <element value="plone.locking"/>
   <!-- <element value="plone.versioning"/> -->
  </property>

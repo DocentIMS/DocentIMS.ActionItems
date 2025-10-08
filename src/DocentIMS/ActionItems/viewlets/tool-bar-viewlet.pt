@@ -4,8 +4,8 @@
         <p class="red padding-20-0 margin-20-0">
             <a class="btn btn-primary success margin-20 padding-20" href="${view/portal_url}/@@personal-information">
     ✓ Important! ${view/full_name|None}, You need to confirm your profile first! Click here
-        <!-- TO DO: Maybe check if they have logged in in xx days or just show it first time -->
-    
+                        <!-- TO DO: Maybe check if they have logged in in xx days or just show it first time -->
+
             </a>
         </p>
     </div>
@@ -24,14 +24,13 @@
 
         </a>
     </div>
-    
+
     <div id="project_name" class="xflex project_color">
         <!-- <label for="project">Select a Project:</label> -->
         <div id="project_select">
-       
+
             <div tal:define="sites view/get_sites|None; 
-                current_title view/site_title"
-                tal:condition="sites">
+                current_title view/site_title" tal:condition="sites">
                 <select id="project" name="project">
                     <option value="select">${current_title}</option>
                     <tal:condition tal:condition="view/get_sites">
@@ -46,7 +45,7 @@
                 </select>
             </div>
             <div>
-                <div class="image_color margin-auto"> </div>
+                <div class="image_color margin-auto"></div>
                 <p>Project Color</p>
             </div>
             <label class="toolbar_label">
@@ -69,9 +68,7 @@
                     Mode</p>
             </a>
         </div>
-        <label class="toolbar_label pat-tooltip" 
-               data-pat-tooltip="delay: 1500ms; position-list: tm" 
-               title="${tooltips/tooltipIdToggleButtonMgrMode|None}">
+        <label class="toolbar_label pat-tooltip" data-pat-tooltip="delay: 1500ms; position-list: tm" title="${tooltips/tooltipIdToggleButtonMgrMode|None}">
             <a href="#">Docent <br/>
 Mode</a>
         </label>
@@ -181,14 +178,14 @@ Mode
                 <option value="Project 2">Select 2</option>
             </select>
             <p class="align-left">
-                <a class="greyed"  href="#" onclick="alert('You need to do this in Word!'); return false;">
+                <a class="greyed" href="#" onclick="alert('You need to do this in Word!'); return false;">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/create_document_gray.png"/>
                     Create Document</a>
             </p>
 
-            
+
             <p class="align-left">
-                <a class="greyed"  href="#" onclick="alert('You need to do this in Word!'); return false;">
+                <a class="greyed" href="#" onclick="alert('You need to do this in Word!'); return false;">
                     <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons/open_document_gray.png"/>
                     Open Document
                 </a>
@@ -277,7 +274,7 @@ Mode
             </a>
         </div>
         <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a  target="_blank"  href="${portal_url}/ms-project">MS Project</a>
+            <a target="_blank" href="${portal_url}/ms-project">MS Project</a>
         </label>
     </div>
 
@@ -328,14 +325,35 @@ Mode
                     </a>
                 </p>
                 <!-- <label for="create_meeting">Create Meeting</label> -->
-                <select id="create_meeting" name="create_meeting">
+                <!-- <select id="create_meetingx" name="create_meeting">
                     <option value="select">Create <br/>
                 Meeting</option>
                     <option value="create_meeting">Create Meeting</option>
                     <option value="your_meetings">Open Meeting</option>
-                </select>
+                </select> -->
 
-                <!-- <script>
+                <!-- We need image so we fake the select -->
+
+                <div class="custom-select" id="customSelect">
+                    <div class="selected">
+                        <span>Create Meeting</span>
+                    </div>
+                    <div class="options">
+                        <div class="option" data-value="create_meeting">
+                            <img src="++plone++DocentIMS.ActionItems/icons/Team.jpg" alt="">
+                        Create Meeting
+                            </div>
+                            <div class="option" data-value="your_meetings">
+                                <img src="++plone++DocentIMS.ActionItems/icons/open_document_gray.png" alt="">
+                        Open Meeting
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- <script>
                     $(document).ready(function() {
                         $('#meeting_select').on('change', function() {
                             $('#meeting_select a').toggleClass('greyed'); 
@@ -355,124 +373,121 @@ Mode
                     });
                 </script> -->
 
+                    </div>
+
+                </div>
+                <label class="toolbar_label">
+                    <a href="${portal_url}/meetings">Meeting Manager</a>
+                </label>
             </div>
 
-        </div>
-        <label class="toolbar_label">
-            <a href="${portal_url}/meetings">Meeting Manager</a>
-        </label>
-    </div>
+            <div id="project_team" class="toolbar_user">
+                <a href="${portal_url}/member-view" class="to_overlay">
+                    <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//user_list.png" />
+                    <p>View team</p>
+                </a>
+                <label class="toolbar_label">
+                    <a href="${portal_url}/member-view">Project Team</a>
+                </label>
+            </div>
 
-    <div id="project_team" class="toolbar_user">
-        <a href="${portal_url}/member-view" class="to_overlay">
-            <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//user_list.png" />
-            <p>View team</p>
-        </a>
-        <label class="toolbar_label">
-            <a href="${portal_url}/member-view">Project Team</a>
-        </label>
-    </div>
-
-    <div id="notes" class="toolbar_user">
-        <div class="no-flex">
-            <!-- <a class="toolbar_manager hidden" href="${portal_url}/notes/++add++postit_note">
+            <div id="notes" class="toolbar_user">
+                <div class="no-flex">
+                    <!-- <a class="toolbar_manager hidden" href="${portal_url}/notes/++add++postit_note">
                 <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
                 <p>Create <br/>
                     Note</p>
             </a> -->
 
-            <a class="" href="${portal_url}/notes/++add++postit_note">
-                <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
-                <p>Create <br/>
+                    <a class="" href="${portal_url}/notes/++add++postit_note">
+                        <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
+                        <p>Create <br/>
                     Note</p>
-            </a>
+                    </a>
 
-            <!-- <a class="toolbar_user" href="${portal_url}/notes">
+                    <!-- <a class="toolbar_user" href="${portal_url}/notes">
                 <img src="++plone++DocentIMS.ActionItems/icons/PostIt.jpg" />
                 <p>My<br/>
                     Notes</p>
             </a> -->
-        </div>
-        <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
-            <a href="${portal_url}/notes">My Notes</a>
-        </label>
-    </div>
-
-    <div id="webmail" class="">
-        <div class="no-flex">
-            <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
-                <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
-                <p>Webmail</p>
-            </a>
-        </div>
-        <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Opens</b> webmail in a new tab">
-            <a href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">Webmail</a>
-        </label>
-    </div>
-
-    <div id="feedback" tal:define="dashboard_url view/dashboard_url">
-        <div class="flex">
-
-            <div>
-                <a href="${portal_url}?refresh=1">
-                    <img src="++plone++DocentIMS.ActionItems/icons/refresh.jpg" />
-                    <br/>
-             Refresh
-                </a>
-
+                </div>
+                <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Click</b> on icons">
+                    <a href="${portal_url}/notes">My Notes</a>
+                </label>
             </div>
 
-
-
-
-             <div>
-              
-                    <a href="${portal_url}/feedback/++add++feedback">
-                        <img src="++plone++DocentIMS.ActionItems/icons/add_with_pencil.png" />
-                        <!-- <br/>
-                        Create<br/>Feedback -->
+            <div id="webmail" class="">
+                <div class="no-flex">
+                    <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
+                        <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
+                        <p>Webmail</p>
                     </a>
-                
-                <!-- <label for="create_meeting">Create Feedback</label> -->
-                <select id="create_feedback" name="create_feedback">
-                    <option value="select">Feedback</option>
-                    <option value="create_feedback">Create</option>
-                    <option value="all_feedback">Show All</option>
-                </select>
+                </div>
+                <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Opens</b> webmail in a new tab">
+                    <a href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">Webmail</a>
+                </label>
             </div>
 
-                
+            <div id="feedback" tal:define="dashboard_url view/dashboard_url">
+                <div class="flex">
 
-            <!-- <a href="${portal_url}/feedback/++add++feedback">
+                    <div>
+                        <a href="${portal_url}?refresh=1">
+                            <img src="++plone++DocentIMS.ActionItems/icons/refresh.jpg" />
+                            <br/>
+             Refresh
+                        </a>
+
+                    </div>
+
+                    <div>
+
+                        <a href="${portal_url}/feedback/++add++feedback">
+                            <img src="++plone++DocentIMS.ActionItems/icons/add_with_pencil.png" />
+                            <!-- <br/>
+                        Create<br/>Feedback -->
+                        </a>
+
+                        <!-- <label for="create_meeting">Create Feedback</label> -->
+                        <select id="create_feedback" name="create_feedback">
+                            <option value="select">Feedback</option>
+                            <option value="create_feedback">Create</option>
+                            <option value="all_feedback">Show All</option>
+                        </select>
+                    </div>
+
+
+
+                    <!-- <a href="${portal_url}/feedback/++add++feedback">
                 <img src="++plone++DocentIMS.ActionItems/icons/add_with_pencil.png" />
                 <p>Send<br/>
     
                 Feedback</p>
             </a> -->
-            <a href="${dashboard_url}/docent-help/">
-                <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
-                <br/>
+                    <a href="${dashboard_url}/docent-help/">
+                        <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
+                        <br/>
                 Help 
-            </a>
+                    </a>
+                </div>
+                <label class="toolbar_label">
+                    <!-- <a href="${portal_url}/feedback/++add++feedback">Feedback</a>  -->
+                    <a href="${dashboard_url}/docent-help/">Help</a>
+                </label>
+
+            </div>
+
+
         </div>
-        <label class="toolbar_label">
-            <!-- <a href="${portal_url}/feedback/++add++feedback">Feedback</a>  -->
-            <a href="${dashboard_url}/docent-help/">Help</a>
-        </label>
 
-    </div>
-
-
-</div>
-
-<div class="container hidden" id="show-toobar">
-    <button class="btn button btn-standalone">
-        <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" width="20" height="20"/>
+        <div class="container hidden" id="show-toobar">
+            <button class="btn button btn-standalone">
+                <img src="++plone++DocentIMS.ActionItems/icons/docent_favicon.png" width="20" height="20"/>
 Show Toolbar</button>
-    <hr/>
-</div>
+            <hr/>
+        </div>
 
-<!-- <script>
+        <!-- <script>
     $(document).ready(function () {
         $('.htmltooltip').each(function () {
             var tooltipContent = $(this).attr('data-tooltip-content'); // Get content from custom attribute
@@ -484,24 +499,23 @@ Show Toolbar</button>
     }); 
 </script> -->
 
-<script>
+        <script>
 document.getElementById('project').addEventListener('change', function () {
   if (this.value !== '${view/project_name}' && this.value !== 'select') {
     window.location.href = this.value; // Redirect to the selected project's home page
   }
 });
-</script>
+        </script>
 
-<script src="++plone++DocentIMS.ActionItems/js/action_items_jq.js" />
+        <script src="++plone++DocentIMS.ActionItems/js/action_items_jq.js" />
 
-<style>
-h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
+                    <style>
+            h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
 
-.image_color {
-  background: ${view/color|None};
-  width: 3rem;
-  height: 2rem;
-  margin-bottom: 4px
-}
-
-</style>
+            .image_color {
+            background: ${view/color|None};
+            width: 3rem;
+            height: 2rem;
+            margin-bottom: 4px
+            }
+        </style>

@@ -25,8 +25,8 @@
                     <th>Creator</th>
                     <th>Type</th>
                     <th>Modified </th>
-                    <th>File</th>
-                    <th>Open</th>
+                    <th>Download</th>
+                    <th>View</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -43,12 +43,21 @@
                     </td>
                     <td>
                       <tal:condition tal:condition="item/file|None">
-                        <a href="${item/absolute_url}/@@download/file">Download</a>
+
+                        <tal:define tal:define="
+                            filename item/file/filename;
+                            extension python:filename.split('.')[-1];                            
+                        ">
+                          <img src="++plone++DocentIMS.ActionItems/${extension}_icon.jpg" alt="${extension}-icon" width="25" height="25"/> 
+                          
+                        <a href="${item/absolute_url}/@@download/file">${filename}</a>
+                        </tal:define>
                       </tal:condition>
                     </td>
                     <td>
                       <tal:condition tal:condition="item/file|None">
-                        <a alt="Open in Only Office" title="Open in Only Office" href="${item/absolute_url}/onlyoffice-view-file">Open in OnlyOffice</a>
+                        <img src="++plone++DocentIMS.ActionItems/icons/eye.svg" alt="view icon" width="25" height="25"/>  
+                        <a alt="Open in Only Office" title="View" href="${item/absolute_url}/onlyoffice-view-file">View</a>
                       </tal:condition>
                     </td>
                   </tr>

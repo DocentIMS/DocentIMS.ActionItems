@@ -37,7 +37,7 @@ class TabbedDocmanagerView(BrowserView):
         for brain in brains:
             doc_type = getattr(brain, 'document_type', None)  # index value
             if doc_type is None or doc_type is MissingValue:
-                doc_type = "Unknown"
+                doc_type = "Other"
             obj = brain.getObject()
             groups[doc_type].append(obj)
         
