@@ -48,16 +48,17 @@
                             filename item/file/filename;
                             extension python:filename.split('.')[-1];                            
                         ">
-                          <img src="++plone++DocentIMS.ActionItems/${extension}_icon.jpg" alt="${extension}-icon" width="25" height="25"/> 
                           
-                        <a href="${item/absolute_url}/@@download/file">${filename}</a>
+                        <a href="${item/absolute_url}/@@download/file"><img src="++plone++DocentIMS.ActionItems/${extension}_icon.jpg" alt="${extension}-icon" width="25" height="25"/> 
+                          <!-- ${filename}--> Download</a>
                         </tal:define>
                       </tal:condition>
                     </td>
                     <td>
                       <tal:condition tal:condition="item/file|None">
-                        <img src="++plone++DocentIMS.ActionItems/icons/eye.svg" alt="view icon" width="25" height="25"/>  
-                        <a alt="Open in Only Office" title="View" href="${item/absolute_url}/onlyoffice-view-file">View</a>
+                        
+                        <a alt="Open in Only Office" title="View" href="${item/absolute_url}/onlyoffice-view-file"><img src="++plone++DocentIMS.ActionItems/icons/eye.svg" alt="view icon" width="25" height="25"/>  
+                         View</a>
                       </tal:condition>
                     </td>
                   </tr>

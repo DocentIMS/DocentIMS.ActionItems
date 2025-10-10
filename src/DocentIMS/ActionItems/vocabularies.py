@@ -16,7 +16,7 @@ def format_title(folder):
     return "{}  ...   [ {} ]".format( folder.Title, folder.getURL())
 
 
-def get_registry_record(self, record):
+def get_registry_record(record):
     basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
     dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'    
     if basik:
@@ -71,8 +71,10 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 
 def CompanyVocabulary(context):
-    items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
-    # dashboard_companies = get_registry_record(context, "DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies")
+    # items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    # Get them from dashboard instead
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.companies")
+    
     if items:
         # Assuming items is a list of dictionaries
 
@@ -96,7 +98,9 @@ directlyProvides(CompanyVocabulary, IVocabularyFactory)
 
 
 def LocationsVocabulary(context):
-    items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
+    #items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
+    # 	 DocentIMS ActionItems interfaces IDocentimsSettings location_names
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.location_names")
     if items:
         # Assuming items is a list of dictionaries       
         
@@ -223,9 +227,9 @@ directlyProvides(TeamIdsVocabulary, IVocabularyFactory)
 #directlyProvides(SiteVocabulary, IVocabularyFactory)
 
 def ProjectRolesVocabulary(context):
-    items = api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
-    #   import pdb; pdb.set_trace()
-
+    # items = api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies")
+    
     if items:
         # Extract unique entries from items and convert to lowercase for case-insensitive comparison
         
@@ -362,7 +366,9 @@ directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
 
 
 def CompanyRolesVocabulary(context):
-    items = api.portal.get_registry_record('vokabularies3', interface=IDocentimsSettings)
+    # items = api.portal.get_registry_record('vokabularies3', interface=IDocentimsSettings)
+    # Get them from dashboard instead
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies3")
     
     if items:
         # Extract unique entries from items and convert to lowercase for case-insensitive comparison

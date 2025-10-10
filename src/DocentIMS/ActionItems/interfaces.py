@@ -29,6 +29,7 @@ from zope.interface import implementer
 from zope.interface import Interface
 from zope.schema.interfaces import  InvalidValue
 from z3c.form.browser.password import PasswordFieldWidget
+from plone.autoform import directives as form
 
 
 
@@ -122,6 +123,7 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
 #     )
 
 class IVocabulari(model.Schema):
+    # form.readonly('vocabulary_entry')
     vocabulary_entry = schema.TextLine(
         title=_(u'Vocabulary entries', 'Roles'),
         description=u"Each team member will be assigned a “Role” during their membership creation.  The role for each member must be created here before their account can be created.",
@@ -140,7 +142,7 @@ class IVocabulari4(model.Schema):
     location_name = schema.TextLine(
         title=_(u'Vocabulary entries', 'Locations'),
         description=u"Location Name",
-        required=False,
+        required=False,  
     )
     
 
@@ -248,6 +250,7 @@ class ICompany(model.Schema):
     #     title=_(u"label_company_role", default=u"Company role")
     #     )
     
+    # form.omitted("company_role")
     company_role = schema.Choice(
         required = False,
         title=_(u"label_company_role", default=u"Company role"),
@@ -591,14 +594,16 @@ class IDocentimsSettings(model.Schema):
 
 
     widget(vokabularies=DataGridFieldFactory)
+    form.omitted("vokabularies")
     vokabularies = schema.List(
         title = _(u" ",
             default=u""),
         value_type=DictRow(schema=IVocabulari),
-        required=not_required_in_debug_mode(),
+        required=not_required_in_debug_mode(), 
     )
     
     widget(vokabularies3=DataGridFieldFactory)
+    form.omitted("vokabularies3")
     vokabularies3 = schema.List(
         title = _(u" ",
             default=u""),
@@ -607,6 +612,7 @@ class IDocentimsSettings(model.Schema):
     )
     
     widget(location_names=DataGridFieldFactory)
+    form.omitted("location_names")
     location_names = schema.List(
         title = _(u" ",
             default=u""),
