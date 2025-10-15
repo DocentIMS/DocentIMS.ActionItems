@@ -86,11 +86,11 @@ def post_install(context):
     #Set control panel properties, since we can not set them TTW
     #TODO: Maybe make a check 
     
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names', 
-                                         [{'location_name': 'MS Teams'}, 
-                                          {'location_name': 'Client Office'},
-                                          {'location_name': 'Client Office and MS Teams'}
-                                         ])
+    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.location_names', 
+    #                                      [{'location_name': 'MS Teams'}, 
+    #                                       {'location_name': 'Client Office'},
+    #                                       {'location_name': 'Client Office and MS Teams'}
+    #                                      ])
     
     
     plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.table_columns', 
@@ -109,55 +109,55 @@ def post_install(context):
                                        )
     
     
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies',
-                                        [{'vocabulary_entry': 'Project Manager'},
-                                         {'vocabulary_entry': 'Secretary'},
-                                         {'vocabulary_entry': 'Treasurer'}, 
-                                         {'vocabulary_entry': 'At Large'}, 
-                                        ])
+    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies',
+    #                                     [{'vocabulary_entry': 'Project Manager'},
+    #                                      {'vocabulary_entry': 'Secretary'},
+    #                                      {'vocabulary_entry': 'Treasurer'}, 
+    #                                      {'vocabulary_entry': 'At Large'}, 
+    #                                     ])
     
 
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies3',
-                                        [   {'vocabulary_entry': 'Prime'},
-                                            {'vocabulary_entry': 'Architect'},
-                                            {'vocabulary_entry': 'Geotechnical'},
-                                            {'vocabulary_entry': 'Outreach'},                                              
-                                        ])  
+    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies3',
+    #                                     [   {'vocabulary_entry': 'Prime'},
+    #                                         {'vocabulary_entry': 'Architect'},
+    #                                         {'vocabulary_entry': 'Geotechnical'},
+    #                                         {'vocabulary_entry': 'Outreach'},                                              
+    #                                     ])  
     
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
-      [ {'meeting_type': 'Project Team Meeting', 
-         'meeting_title': 'Project Team Meeting', 
-         'meeting_summary': 'Meeting of key Project Team Members', 
-         'meeting_attendees': {'PrjTeam'},
-         'meeting_contact': 'dummyuser@docentims.com',
-         'meeting_frequency': 'Other'},
-        {'meeting_type': 'Community Meeting', 
-         'meeting_title': 'Community Outreach Meeting', 
-         'meeting_summary': 'Meetings to bring local communities into the process', 
-         'meeting_attendees': {'PrjTeam'},
-         'meeting_contact': 'dummyuser@docentims.com',
-         'meeting_frequency': 'Other'},
-        {'meeting_type': 'Executive Team Meeting', 
-         'meeting_title': 'Executive Team Meeting', 
-         'meeting_summary': 'Meeting of Leadership Team', 
-         'meeting_attendees': {'PrjTeam'}, 
-         'meeting_contact': 'dummyuser@docentims.com',
-         'meeting_frequency': 'Other'},
-      ])
+    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.meeting_types',
+    #   [ {'meeting_type': 'Project Team Meeting', 
+    #      'meeting_title': 'Project Team Meeting', 
+    #      'meeting_summary': 'Meeting of key Project Team Members', 
+    #      'meeting_attendees': {'PrjTeam'},
+    #      'meeting_contact': 'dummyuser@docentims.com',
+    #      'meeting_frequency': 'Other'},
+    #     {'meeting_type': 'Community Meeting', 
+    #      'meeting_title': 'Community Outreach Meeting', 
+    #      'meeting_summary': 'Meetings to bring local communities into the process', 
+    #      'meeting_attendees': {'PrjTeam'},
+    #      'meeting_contact': 'dummyuser@docentims.com',
+    #      'meeting_frequency': 'Other'},
+    #     {'meeting_type': 'Executive Team Meeting', 
+    #      'meeting_title': 'Executive Team Meeting', 
+    #      'meeting_summary': 'Meeting of Leadership Team', 
+    #      'meeting_attendees': {'PrjTeam'}, 
+    #      'meeting_contact': 'dummyuser@docentims.com',
+    #      'meeting_frequency': 'Other'},
+    #   ])
     
  
 
-    plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
-                                        [{'full_company_name': 'Docent IMS LLC',
-                                          'short_company_name': 'Docent' ,
-                                          'company_letter_kode': 'DOC',
-                                          'company_role': None,
-                                          'company_full_street_address': '141 Reservoir Ave',
-                                          'company_other_address': '',
-                                          'company_city': 'Revere',
-                                          'company_state': 'MA',
-                                          'company_zip': '02151'},
-                                        ])
+    # plone.api.portal.set_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.companies',
+    #                                     [{'full_company_name': 'Docent IMS LLC',
+    #                                       'short_company_name': 'Docent' ,
+    #                                       'company_letter_kode': 'DOC',
+    #                                       'company_role': None,
+    #                                       'company_full_street_address': '141 Reservoir Ave',
+    #                                       'company_other_address': '',
+    #                                       'company_city': 'Revere',
+    #                                       'company_state': 'MA',
+    #                                       'company_zip': '02151'},
+    #                                     ])
     
     
     

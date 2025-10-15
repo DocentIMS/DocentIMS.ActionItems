@@ -31,9 +31,9 @@
       name="DocentIMS.ActionItems.DashboardCompanyVocabulary" />
 
 
-  <!-- <utility
+  <utility
   	  component=   ".vocabularies.DashboardCompanyNamesVocabulary"
-      name="DocentIMS.ActionItems.DashboardCompanyNamesVocabulary" /> -->
+      name="DocentIMS.ActionItems.DashboardCompanyNamesVocabulary" />
  
 
   <utility

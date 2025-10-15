@@ -6,37 +6,40 @@ from AccessControl import getSecurityManager
 from plone import api
 from plone.memoize import ram
 import requests
-from time import time
-
-
+import time 
 from plone.api.exc import InvalidParameterError
-import requests
-
 from .interfaces import IDocentimsSettings
 
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('DocentIMS.ActionItems')
 
+
+
+# 15 minutes in seconds
+CACHE_TIMEOUT = 15 * 60
+
+
 def format_title(folder):
     return "{}  ...   [ {} ]".format( folder.Title, folder.getURL())
 
 # Simple cache key based on the registry settings
-def registry_cache_key(method, self):
-        usermail = self.get_current_user_id()
-        if not usermail:
+def registry_cache_key(self):
+        user = api.user.get_current()
+        if not user:
             return None  # Don't cache if no user
 
         # Cache key changes every 100 minutes (6000 seconds)
-        time_bucket = int(time.time() / 6000)
-        return (usermail, time_bucket)
+        time_bucket = int(time.time() / CACHE_TIMEOUT)
+        return (user.id, time_bucket)
 
 @ram.cache(registry_cache_key)
-def get_registry_records(self):
-    # GET /@registry?interface=your.package.interfaces.IDocentimsSettings
+def get_registry_records():
+    # GET /@registry?interface=your.package.interfaces.ISettings
     basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
     dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'    
     if basik:
-            siteurl = f'{dashboard_url}/@registry/@registry?interface=your.package.interfaces.IDocentimsSettings'
+            # Not working, it gets everything
+            siteurl = f'{dashboard_url}/@registry'
             try:                
                 response  = requests.get(
                     siteurl,
@@ -60,45 +63,19 @@ def get_registry_records(self):
             except requests.exceptions.RequestException as e:
                     print(f"An error occurred: {e}")
                     
-            return 
+            return None
             
     return None
 
 
 def get_registry_record(record):
-    # import pdb; pdb.set_trace()
-    # reg_records = get_registry_records(self)
+    reg_records = get_registry_records()
     
-    basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
-    dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'    
-    if basik:
-            siteurl = f'{dashboard_url}/@registry/{record}'
-            try:                
-                response  = requests.get(
-                    siteurl,
-                    headers={
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                            'Authorization': f'Basic {basik}'                             
-                        },
-                    timeout=2,                    
-                )
-
-                if response.status_code == 200:
-                    #body = response.json()                    
-                    return response.json()
-
-                        
-            except requests.exceptions.ConnectionError:
-                    print("Failed to connect to the server. Please check your network or URL.")
-            except requests.exceptions.Timeout:
-                    print("The request timed out. Try again later.")
-            except requests.exceptions.RequestException as e:
-                    print(f"An error occurred: {e}")
-                    
-            return 
-                    
-        
+    if reg_records:
+        items =  reg_records.get('items')
+        if items:
+            items_by_name = {i["name"]: i["value"] for i in reg_records["items"]}
+            return items_by_name[record]    
             
     return None
 
@@ -123,7 +100,7 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 
 def CompanyVocabulary(context):
-    # items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
     # Get them from dashboard instead
     # Possible feature to get users without added companies
     items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.companies")
@@ -190,8 +167,8 @@ directlyProvides(DashboardCompanyVocabulary, IVocabularyFactory)
 
 
 def DashboardCompanyNamesVocabulary(context):
-    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies")    
-    
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.companies")  
+   
     if items:
         # Assuming items is a list of dictionaries 
         sorted_items = sorted(
@@ -199,12 +176,13 @@ def DashboardCompanyNamesVocabulary(context):
             key=lambda x: x.get('full_company_name', '').lower() if x.get('full_company_name') else ''
         )
 
-        # Create SimpleTerm objects from the sorted list, excluding empty 'short_company_name'
+        # Create SimpleTerm objects from the sorted list, excluding empty  
         terms = [
-            SimpleTerm(value=item['full_company_name'], token=item['full_company_name'], title=item['full_company_namee'])
+            SimpleTerm(value=item['full_company_name'], token=item['full_company_name'], title=item['full_company_name'])
             for item in sorted_items if item['full_company_name'] and len(item['full_company_name']) > 1
         ]
-        return SimpleVocabulary(terms)
+        if terms:
+            return SimpleVocabulary(terms)
     
     return SimpleVocabulary([])
 
@@ -215,9 +193,9 @@ directlyProvides(DashboardCompanyNamesVocabulary, IVocabularyFactory)
 
 
 def LocationsVocabulary(context):
-    items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
     # DocentIMS ActionItems interfaces IDocentimsSettings location_names
-    # items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.location_names")
+    items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
+ 
     if items:
         unique_items = []
         seen = set()
@@ -249,22 +227,11 @@ directlyProvides(LocationsVocabulary, IVocabularyFactory)
 
 
 def DashboardLocationsVocabulary(context):
+    # Get them from dashboard instead
     items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.location_names")
     
-    
     if items:
-        unique_items = []
-        seen = set()
-        for item in items:
-            # Convert dict to a tuple of sorted key-value pairs (hashable)
-            marker = tuple(sorted(item.items()))
-            if marker not in seen:
-                seen.add(marker)
-                unique_items.append(item)
-        items = unique_items
-        # Assuming items is a list of dictionaries  
         
-
         sorted_items = sorted(
             filter(lambda x: x.get('location_name', '') is not None, items),
             key=lambda x: x.get('location_name', '').lower() if x.get('location_name') else ''
@@ -275,11 +242,13 @@ def DashboardLocationsVocabulary(context):
             SimpleTerm(value=item['location_name'], token=item['location_name'], title=item['location_name'])
             for item in sorted_items if item['location_name'] and len(item['location_name']) > 1
         ]
+        
         return SimpleVocabulary(terms)
     
     return SimpleVocabulary([])
 
 directlyProvides(DashboardLocationsVocabulary, IVocabularyFactory)
+
 
 def MeetingTypesVocabulary(context):
     items  =  api.portal.get_registry_record('meeting_types', interface=IDocentimsSettings)
@@ -306,15 +275,15 @@ directlyProvides(MeetingTypesVocabulary, IVocabularyFactory)
 def DashboardMeetingTypesVocabulary(context):
     items  =  api.portal.get_registry_record('meeting_types', interface=IDocentimsSettings)
     if items:
-        unique_items = []
-        seen = set()
-        for item in items:
-            # Convert dict to a tuple of sorted key-value pairs (hashable)
-            marker = tuple(sorted(item.items()))
-            if marker not in seen:
-                seen.add(marker)
-                unique_items.append(item)
-        items = unique_items
+        # unique_items = []
+        # seen = set()
+        # for item in items:
+        #     # Convert dict to a tuple of sorted key-value pairs (hashable)
+        #     marker = tuple(sorted(item.items()))
+        #     if marker not in seen:
+        #         seen.add(marker)
+        #         unique_items.append(item)
+        # items = unique_items
         # Assuming items is a list of dictionaries
         sorted_items = sorted(
             filter(lambda x: x.get('meeting_type', '') is not None, items),
@@ -444,15 +413,15 @@ def DashboardProjectRolesVocabulary(context):
     items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies")
     
     if items:
-        unique_items = []
-        seen = set()
-        for item in items:
-            # Convert dict to a tuple of sorted key-value pairs (hashable)
-            marker = tuple(sorted(item.items()))
-            if marker not in seen:
-                seen.add(marker)
-                unique_items.append(item)
-        items = unique_items
+        # unique_items = []
+        # seen = set()
+        # for item in items:
+        #     # Convert dict to a tuple of sorted key-value pairs (hashable)
+        #     marker = tuple(sorted(item.items()))
+        #     if marker not in seen:
+        #         seen.add(marker)
+        #         unique_items.append(item)
+        # items = unique_items
         # Extract unique entries from items and convert to lowercase for case-insensitive comparison
         
         # Create SimpleTerm objects from the unique entries
