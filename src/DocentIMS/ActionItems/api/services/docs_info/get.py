@@ -125,6 +125,7 @@ class DocsInfo(object):
                     'very_short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.very_short_name', None),
                     'short_name': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_short_name'),
                     'project_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_contract_number'),   
+                    'marketing_contract_number':   api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.marketing_contract_number'),
                     'project_document_naming_convention': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_document_naming_convention'),
                     'member_roles': api.portal.get_registry_record('DocentIMS.ActionItems.interfaces.IDocentimsSettings.vokabularies'),
                     'meetings_frequencies': ["Daily", "Weekly", "Semi-Weekly", "Monthly", "Quarterly", "Other"], 

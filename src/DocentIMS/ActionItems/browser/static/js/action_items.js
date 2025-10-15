@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!select.contains(e.target)) optionsContainer.style.display = 'none';
   });
 
-  
+
 
 });
 
@@ -271,3 +271,36 @@ document.addEventListener("DOMContentLoaded", function () {
 //     jQuery("#portal-column-two").toggleClass("overlay");              
 //   });
 // }); 
+
+
+
+
+(function ($) {
+  $(document).ready(function () {
+
+    // Cache the field containers
+    var $projectContract = $('#formfield-form-widgets-IDocentimsSettings-project_contract_number');
+    var $marketingContract = $('#formfield-form-widgets-IDocentimsSettings-marketing_contract_number');
+    var $planningProject = $('#form-widgets-IDocentimsSettings-planning_project-0');
+
+    function toggleFields() {
+      if ($planningProject.is(':checked')) {
+        // planning_project is false, show marketing_contract_number
+        $projectContract.hide();
+        $marketingContract.show();
+      } else {
+        // planning_project is true, show project_contract_number
+        $projectContract.show();
+        $marketingContract.hide();
+      }
+    }
+
+    // Initial toggle on page load
+    toggleFields();
+
+    // Toggle on change
+    $planningProject.change(function () {
+      toggleFields();
+    });
+  });
+})(jQuery);

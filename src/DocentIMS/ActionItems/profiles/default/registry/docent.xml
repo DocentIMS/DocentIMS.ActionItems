@@ -58,6 +58,13 @@
     </field>
     <value>123-08</value>
   </record>
+    <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.marketing_contract_number" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_contract_number">
+    <field type="plone.registry.field.TextLine">
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="DocentIMS.ActionItems" ns0:translate="label_marketing_contract_number">Marketing Contract Number</title>
+    </field>
+    <value>123-09</value>
+  </record>
   <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.project_description" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="project_description">
     <value>&lt;p&gt;This is description&lt;/p&gt;&#13;
 &lt;div id="highlighter--hover-tools" style="display: none;"&gt;&#13;

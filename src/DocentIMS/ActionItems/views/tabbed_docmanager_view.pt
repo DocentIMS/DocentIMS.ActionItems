@@ -55,8 +55,7 @@
                       </tal:condition>
                     </td>
                     <td>
-                      <tal:condition tal:condition="item/file|None">
-                        
+                      <tal:condition tal:condition="item/file|None">                        
                         <a alt="Open in Only Office" title="View" href="${item/absolute_url}/onlyoffice-view-file"><img src="++plone++DocentIMS.ActionItems/icons/eye.svg" alt="view icon" width="25" height="25"/>  
                          View</a>
                       </tal:condition>

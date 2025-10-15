@@ -365,12 +365,13 @@ class IDocentimsSettings(model.Schema):
             'project_title',
             'project_short_name',
             'very_short_name',
-            'project_description',
+            'project_description',            
+            'planning_project',
             'project_contract_number',
+            'marketing_contract_number',
             'project_document_naming_convention',
             'color1',
             'color2',
-            'planning_project',
             'template_password',
             'dashboard',
             'dashboard_url'
@@ -502,6 +503,12 @@ class IDocentimsSettings(model.Schema):
                       default=u""),
         )
  
+    marketing_contract_number = schema.TextLine(
+        required = False,
+        title=_(u"label_marketing_contract_number", default=u"Project Marketing Number"),
+        description=_(u"",
+                      default=u""),
+        )
     
     # widget(project_document_naming_convention=SelectFieldWidget)
     project_document_naming_convention = schema.List(
@@ -694,7 +701,7 @@ class IDocentimsSettings(model.Schema):
     )
     
     planning_project = schema.Bool(
-        title=u"Is Planning Project?",
+        title=u"Is tis a Planning Project?",
         required=False,
         default=0,
     )

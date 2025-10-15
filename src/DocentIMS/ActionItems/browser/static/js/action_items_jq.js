@@ -33,4 +33,6 @@ $(document).ready(function () {
       $(".pat-discussion .formControls").css("display", "block");
     });
   }
+  
 }); 
+   
