@@ -71,11 +71,20 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 
 
 def CompanyVocabulary(context):
-    # items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
+    items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
     # Get them from dashboard instead
     items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.companies")
     
     if items:
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items
         # Assuming items is a list of dictionaries
 
         # Use sorted() to create a sorted list of items based on 'short_company_name'
@@ -96,13 +105,49 @@ def CompanyVocabulary(context):
 
 directlyProvides(CompanyVocabulary, IVocabularyFactory)
 
+ 
+
+
+def DashboardCompanyVocabulary(context):
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.companies")
+    
+    
+    if items:
+        # Assuming items is a list of dictionaries
+
+        # Use sorted() to create a sorted list of items based on 'short_company_name'
+        #sorted_items = sorted(items, key=lambda x: x['short_company_name'])
+        sorted_items = sorted(
+            filter(lambda x: x.get('short_company_name', '') is not None, items),
+            key=lambda x: x.get('short_company_name', '').lower() if x.get('short_company_name') else ''
+        )
+
+        # Create SimpleTerm objects from the sorted list, excluding empty 'short_company_name'
+        terms = [
+            SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name'])
+            for item in sorted_items if item['short_company_name'] and len(item['short_company_name']) > 1
+        ]
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([])
+
+directlyProvides(DashboardCompanyVocabulary, IVocabularyFactory)
 
 def LocationsVocabulary(context):
-    #items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
-    # 	 DocentIMS ActionItems interfaces IDocentimsSettings location_names
-    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.location_names")
+    items  =  api.portal.get_registry_record('location_names', interface=IDocentimsSettings)
+    # DocentIMS ActionItems interfaces IDocentimsSettings location_names
+    # items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.location_names")
     if items:
-        # Assuming items is a list of dictionaries       
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items
+            # Assuming items is a list of dictionaries       
         
 
         sorted_items = sorted(
@@ -122,8 +167,42 @@ def LocationsVocabulary(context):
 directlyProvides(LocationsVocabulary, IVocabularyFactory)
 
 
+def DashboardLocationsVocabulary(context):
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.location_names")
+    
+    
+    if items:
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items
+        # Assuming items is a list of dictionaries  
+        
+
+        sorted_items = sorted(
+            filter(lambda x: x.get('location_name', '') is not None, items),
+            key=lambda x: x.get('location_name', '').lower() if x.get('location_name') else ''
+        )
+
+        # Create SimpleTerm objects from the sorted list, excluding empty 'location_names'
+        terms = [
+            SimpleTerm(value=item['location_name'], token=item['location_name'], title=item['location_name'])
+            for item in sorted_items if item['location_name'] and len(item['location_name']) > 1
+        ]
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([])
+
+directlyProvides(DashboardLocationsVocabulary, IVocabularyFactory)
+
 def MeetingTypesVocabulary(context):
     items  =  api.portal.get_registry_record('meeting_types', interface=IDocentimsSettings)
+    
     if items:
         # Assuming items is a list of dictionaries
         sorted_items = sorted(
@@ -141,6 +220,37 @@ def MeetingTypesVocabulary(context):
     return SimpleVocabulary([])
 
 directlyProvides(MeetingTypesVocabulary, IVocabularyFactory)
+
+
+def DashboardMeetingTypesVocabulary(context):
+    items  =  api.portal.get_registry_record('meeting_types', interface=IDocentimsSettings)
+    if items:
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items
+        # Assuming items is a list of dictionaries
+        sorted_items = sorted(
+            filter(lambda x: x.get('meeting_type', '') is not None, items),
+            key=lambda x: x.get('meeting_type', '').lower() if x.get('meeting_type') else ''
+        )
+
+        # Create SimpleTerm objects from the sorted list, excluding empty 'meeting types'
+        terms = [
+            SimpleTerm(value=item['meeting_type'], token=item['meeting_type'], title=item['meeting_type'])
+            for item in sorted_items if item['meeting_type'] and len(item['meeting_type']) > 1
+        ]
+        return SimpleVocabulary(terms)
+    
+    return SimpleVocabulary([])
+
+directlyProvides(DashboardMeetingTypesVocabulary, IVocabularyFactory)
+
 
 def FullnamesVocabulary(context):
     members = api.user.get_users()
@@ -227,8 +337,8 @@ directlyProvides(TeamIdsVocabulary, IVocabularyFactory)
 #directlyProvides(SiteVocabulary, IVocabularyFactory)
 
 def ProjectRolesVocabulary(context):
-    # items = api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
-    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies")
+    items = api.portal.get_registry_record('vokabularies', interface=IDocentimsSettings)
+    # items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies")
     
     if items:
         # Extract unique entries from items and convert to lowercase for case-insensitive comparison
@@ -249,6 +359,37 @@ def ProjectRolesVocabulary(context):
 directlyProvides(ProjectRolesVocabulary, IVocabularyFactory)
 
 
+def DashboardProjectRolesVocabulary(context):
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies")
+    
+    if items:
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items
+        # Extract unique entries from items and convert to lowercase for case-insensitive comparison
+        
+        # Create SimpleTerm objects from the unique entries
+        terms = [
+            SimpleTerm(value=item['vocabulary_entry'], token=item['vocabulary_entry'].lower(), title=item['vocabulary_entry'])
+            for item in sorted(
+                (i for i in items if i.get('vocabulary_entry')),  # filters out None or empty values
+                key=lambda x: (x.get('vocabulary_entry') or '').lower()
+            )
+        ]
+
+        return SimpleVocabulary(terms)
+
+    return SimpleVocabulary([])
+
+directlyProvides(DashboardProjectRolesVocabulary, IVocabularyFactory)
+
+
 def Site2Vocabulary(context):
     all_items  =  api.portal.get_registry_record('vokabularies2', interface=IDocentimsSettings)
     set_items = set(all_items)
@@ -261,6 +402,21 @@ def Site2Vocabulary(context):
     return SimpleVocabulary([])
 
 directlyProvides(Site2Vocabulary, IVocabularyFactory)
+
+
+def DashboardSite2Vocabulary(context):
+    all_items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies2")
+    set_items = set(all_items)
+
+    if set_items:
+        items = list(set_items)
+        entries = set([ item['vocabulary_entry'] for item in items.sort() ])
+        terms = [ SimpleTerm(value=item, token=item.lower(), title=item) for item in entries]
+        return SimpleVocabulary(terms)
+    return SimpleVocabulary([])
+
+directlyProvides(DashboardSite2Vocabulary, IVocabularyFactory)
+
 
 # def PriorityVocabulary(context):
 #     red  =  api.portal.get_registry_record('red', interface=IDocentimsSettings)
@@ -366,8 +522,43 @@ directlyProvides(SowFieldsVocabulary, IVocabularyFactory)
 
 
 def CompanyRolesVocabulary(context):
-    # items = api.portal.get_registry_record('vokabularies3', interface=IDocentimsSettings)
+    items = api.portal.get_registry_record('vokabularies3', interface=IDocentimsSettings)
     # Get them from dashboard instead
+    # items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies3")
+    
+    if items:
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items    
+        
+        # Extract unique entries from items and convert to lowercase for case-insensitive comparison
+        
+        # Create SimpleTerm objects from the unique entries
+        try:
+            terms = [
+                SimpleTerm(value=item['vocabulary_entry'], token=item['vocabulary_entry'].lower(), title=item['vocabulary_entry'])
+                for item in sorted(items, key=lambda x: x.get('vocabulary_entry', '').lower())
+                if item.get('vocabulary_entry')  # Exclude items with None or empty 'short_company_name'
+            ]
+
+            return SimpleVocabulary(terms)
+        except AttributeError: 
+            return SimpleVocabulary([])
+
+    return SimpleVocabulary([])
+
+directlyProvides(CompanyRolesVocabulary, IVocabularyFactory)
+
+
+
+
+def DashboardCompanyRolesVocabulary(context):
     items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.vokabularies3")
     
     if items:
@@ -387,8 +578,7 @@ def CompanyRolesVocabulary(context):
 
     return SimpleVocabulary([])
 
-directlyProvides(CompanyRolesVocabulary, IVocabularyFactory)
-
+directlyProvides(DashboardCompanyRolesVocabulary, IVocabularyFactory)
 
 #Assigned to / 
 #SimpleTerm(value='id', token='id', title=_(u'id')),

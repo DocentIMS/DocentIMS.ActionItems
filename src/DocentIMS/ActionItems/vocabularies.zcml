@@ -26,12 +26,25 @@
       name="DocentIMS.ActionItems.CompanyVocabulary" />
 
   <utility
+  	  component=".vocabularies.DashboardCompanyVocabulary"
+      name="DocentIMS.ActionItems.DashboardCompanyVocabulary" />
+
+  <utility
   	  component=".vocabularies.ProjectRolesVocabulary"
       name="DocentIMS.ActionItems.ProjectRolesVocabulary" />
 
   <utility
+  	  component=".vocabularies.DashboardProjectRolesVocabulary"
+      name="DocentIMS.ActionItems.DashboardProjectRolesVocabulary" />
+
+  <utility
   	  component=".vocabularies.Site2Vocabulary"
       name="DocentIMS.ActionItems.Site2Vocabulary" />
+
+
+  <utility
+  	  component=".vocabularies.DashboardSite2Vocabulary"
+      name="DocentIMS.ActionItems.DashboardSite2Vocabulary" />
 
   <utility
   	  component=".vocabularies.PriorityVocabulary"
@@ -54,8 +67,16 @@
       name="DocentIMS.ActionItems.CompanyRolesVocabulary" />      
 
   <utility
+  	  component=".vocabularies.DashboardCompanyRolesVocabulary"
+      name="DocentIMS.ActionItems.DashboardCompanyRolesVocabulary" />      
+
+  <utility
   	  component=".vocabularies.LocationsVocabulary"
       name="DocentIMS.ActionItems.LocationsVocabulary" />      
+
+  <utility
+  	  component=".vocabularies.DashboardLocationsVocabulary"
+      name="DocentIMS.ActionItems.DashboardLocationsVocabulary" />  
 
   <utility
   	  component=".vocabularies.FullnamesVocabulary"
@@ -73,6 +94,8 @@
   	  component=".vocabularies.MeetingTypesVocabulary"
       name="DocentIMS.ActionItems.MeetingTypesVocabulary" />      
 
- 
+   <utility
+  	  component=".vocabularies.DashboardMeetingTypesVocabulary"
+      name="DocentIMS.ActionItems.DashboardMeetingTypesVocabulary" />      
 
 </configure>

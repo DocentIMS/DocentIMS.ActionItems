@@ -124,25 +124,28 @@ class IDocentimsActionitemsLayer(IDefaultBrowserLayer):
 
 class IVocabulari(model.Schema):
     # form.readonly('vocabulary_entry')
-    vocabulary_entry = schema.TextLine(
+    vocabulary_entry = schema.Choice(
         title=_(u'Vocabulary entries', 'Roles'),
         description=u"Each team member will be assigned a “Role” during their membership creation.  The role for each member must be created here before their account can be created.",
         required=False,
+        vocabulary=u"DocentIMS.ActionItems.DashboardProjectRolesVocabulary",
     )
 
 class IVocabulari3(model.Schema):
-    vocabulary_entry = schema.TextLine(
+    vocabulary_entry = schema.Choice(
         title=_(u'Vocabulary entries', 'Company Roles'),
         description=u"Each company will be assigned a “Role” during their creation. You need to save this form before continuing",
         required=False,
+        vocabulary=u"DocentIMS.ActionItems.DashboardCompanyRolesVocabulary",
     )
     
 
 class IVocabulari4(model.Schema):
-    location_name = schema.TextLine(
+    location_name = schema.Choice(
         title=_(u'Vocabulary entries', 'Locations'),
         description=u"Location Name",
         required=False,  
+        vocabulary=u"DocentIMS.ActionItems.DashboardLocationsVocabulary",
     )
     
 
@@ -601,7 +604,7 @@ class IDocentimsSettings(model.Schema):
 
 
     widget(vokabularies=DataGridFieldFactory)
-    form.omitted("vokabularies")
+    # form.omitted("vokabularies")
     vokabularies = schema.List(
         title = _(u" ",
             default=u""),
@@ -610,7 +613,7 @@ class IDocentimsSettings(model.Schema):
     )
     
     widget(vokabularies3=DataGridFieldFactory)
-    form.omitted("vokabularies3")
+    # form.omitted("vokabularies3")
     vokabularies3 = schema.List(
         title = _(u" ",
             default=u""),
@@ -619,7 +622,7 @@ class IDocentimsSettings(model.Schema):
     )
     
     widget(location_names=DataGridFieldFactory)
-    form.omitted("location_names")
+    # form.omitted("location_names")
     location_names = schema.List(
         title = _(u" ",
             default=u""),
