@@ -18,6 +18,14 @@ import plone.api
 from zope.component.hooks import setSite
 import transaction
 
+from zope.annotation.interfaces import IAnnotations
+from zope.interface import alsoProvides
+from collective.fullcalendar.interfaces import IFullcalendarEnabled
+
+from collective.fullcalendar.browser.fullcalendar import IIFullcalendarSettings
+
+
+
 from pandas import *
 
 import datetime
@@ -1223,7 +1231,24 @@ def _create_more_content(portal):
                 )
                          
 
-        
+    # if not portal.get('calendar', False):
+    #         calender = portal.get('calendar', False)
+    #         if calender.get('calenadar', False):
+    #             cal_collection = calender.get('calenadar', False)
+    #             """Enable fullcalendar on this context."""
+    #             alsoProvides(cal_collection, IFullcalendarEnabled)
+    #             cal_collection.reindexObject(idxs=("object_provides"))
+    #             annotations = IAnnotations(cal_collection)
+    #             if "fullcalendar_settings" not in annotations:
+    #                 # get the default-setting from the schema
+    #                 default_settings = {}
+    #                 for key, field in IIFullcalendarSettings.namesAndDescriptions():
+    #                     default_settings[key] = field.default
+    #                 annotations["fullcalendar_settings"] = default_settings
+    #             cal_collection.setLayout("fullcalendar-view")
+    #             cal_collection.request.response.redirect(cal_collection.absolute_url())
+                    
+          
  
 
 

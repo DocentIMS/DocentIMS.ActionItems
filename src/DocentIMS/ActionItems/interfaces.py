@@ -232,21 +232,25 @@ class IScopeTableRows(model.Schema):
 
 
 class ICompany(model.Schema):
-    full_company_name = schema.TextLine(
+    full_company_name = schema.Choice(
         required = False,
-        title=_(u"label_company_name", default=u"Full Company Name")
+        title=_(u"label_company_name", default=u"Company"),
+        vocabulary=u"DocentIMS.ActionItems.DashboardCompanyVocabulary",
+
         )
+   
+    # vocabulary=u"DocentIMS.ActionItems.DashboardCompanyVocabulary",
+    # DashboardCompanyVocabulary 
+    # short_company_name= schema.TextLine(
+    #     required = False,
+    #     title=_(u"label_company_short_name", default=u"Short Company Name")
+    #     )
     
-    short_company_name= schema.TextLine(
-        required = False,
-        title=_(u"label_company_short_name", default=u"Short Company Name")
-        )
-    
-    company_letter_kode = schema.TextLine(
-        required = False,
-        title=_(u"label_company_letter_code", default=u"Company 3-letter code (All Caps)"),
-        constraint=company_letter_kodeConstraint,
-        )
+    # company_letter_kode = schema.TextLine(
+    #     required = False,
+    #     title=_(u"label_company_letter_code", default=u"Company 3-letter code (All Caps)"),
+    #     constraint=company_letter_kodeConstraint,
+    #     )
 
     # company_role = schema.Text(
     #     required = False,
@@ -268,87 +272,30 @@ class ICompany(model.Schema):
     #company_logo = field.NamedBlobImage(title=u"Company Logo")
 
 
-    company_full_street_address = schema.Text(
-        required = False,
-        title=_(u"label_company_full_street_adress", default=u"Full Street Address")
-        )
-    company_other_address = schema.Text(
-        required = False,
-        title=_(u"label_company_other_adress", default=u"Other Address - Optional")
-        )
+    # company_full_street_address = schema.Text(
+    #     required = False,
+    #     title=_(u"label_company_full_street_adress", default=u"Full Street Address")
+    #     )
+    # company_other_address = schema.Text(
+    #     required = False,
+    #     title=_(u"label_company_other_adress", default=u"Other Address - Optional")
+    #     )
 
-    company_city = schema.TextLine(
-        required = False,
-        title=_(u"label_company_citye", default=u"City")
-        )
+    # company_city = schema.TextLine(
+    #     required = False,
+    #     title=_(u"label_company_citye", default=u"City")
+    #     )
     
-    company_state = schema.TextLine(
-        required = False,
-        title=_(u"label_company_state", default=u"State"),
-        constraint=stateConstraint,
-        )
-    
-
-
-#TO DO, maybe use a choice field instead ?
-
-# Alabama: AL
-# Alaska: AK
-# Arizona: AZ
-# Arkansas: AR
-# California: CA
-# Colorado: CO
-# Connecticut: CT
-# Delaware: DE
-# Florida: FL
-# Georgia: GA
-# Hawaii: HI
-# Idaho: ID
-# Illinois: IL
-# Indiana: IN
-# Iowa: IA
-# Kansas: KS
-# Kentucky: KY
-# Louisiana: LA
-# Maine: ME
-# Maryland: MD
-# Massachusetts: MA
-# Michigan: MI
-# Minnesota: MN
-# Mississippi: MS
-# Missouri: MO
-# Montana: MT
-# Nebraska: NE
-# Nevada: NV
-# New Hampshire: NH
-# New Jersey: NJ
-# New Mexico: NM
-# New York: NY
-# North Carolina: NC
-# North Dakota: ND
-# Ohio: OH
-# Oklahoma: OK
-# Oregon: OR
-# Pennsylvania: PA
-# Rhode Island: RI
-# South Carolina: SC
-# South Dakota: SD
-# Tennessee: TN
-# Texas: TX
-# Utah: UT
-# Vermont: VT
-# Virginia: VA
-# Washington: WA
-# West Virginia: WV
-# Wisconsin: WI
-# Wyoming: WY
-
-
-
-    company_zip = schema.TextLine(
-        required = False,
-        title=_(u"label_company_zip", default=u"ZIP")
-    )
+    # company_state = schema.TextLine(
+    #     required = False,
+    #     title=_(u"label_company_state", default=u"State"),
+    #     constraint=stateConstraint,
+    #     )
+     
+    # company_zip = schema.TextLine(
+    #     required = False,
+    #     title=_(u"label_company_zip", default=u"ZIP")
+    # )
     #company_main_phone_number = schema.TextLine(
     #    required = False,
     #    title=_(u"label_main_phone_number", default=u"Main Phone Number")
@@ -453,6 +400,12 @@ class IDocentimsSettings(model.Schema):
             ],
         )
 
+    # Some code to disable this field if Plonesite is not published
+    
+    
+    # form.mode(readonly_field='project_title')  # 👈 makes field readonly
+    # readonly=not_required_in_debug_mode(),
+        
     project_title = schema.TextLine(
         required = not_required_in_debug_mode(),
         title=_(u"label_title", default=u"Project Full Name"),
@@ -704,7 +657,7 @@ class IDocentimsSettings(model.Schema):
     )
     
     planning_project = schema.Bool(
-        title=u"Is tis a Planning Project?",
+        title=u"Is this a Planning Project?",
         required=False,
         default=0,
     )

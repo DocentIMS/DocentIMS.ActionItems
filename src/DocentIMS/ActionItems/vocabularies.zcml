@@ -24,10 +24,17 @@
   <utility
   	  component=".vocabularies.CompanyVocabulary"
       name="DocentIMS.ActionItems.CompanyVocabulary" />
+      
 
   <utility
   	  component=".vocabularies.DashboardCompanyVocabulary"
       name="DocentIMS.ActionItems.DashboardCompanyVocabulary" />
+
+
+  <!-- <utility
+  	  component=   ".vocabularies.DashboardCompanyNamesVocabulary"
+      name="DocentIMS.ActionItems.DashboardCompanyNamesVocabulary" /> -->
+ 
 
   <utility
   	  component=".vocabularies.ProjectRolesVocabulary"

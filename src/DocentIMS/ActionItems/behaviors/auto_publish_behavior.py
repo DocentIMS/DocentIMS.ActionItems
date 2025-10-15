@@ -37,12 +37,22 @@ def transitionStates(context):
     
     terms = []
     terms.append(SimpleTerm(value=None, title='Choose'))
-    if portal_type:
-        chains = wf_tool.getChainForPortalType(portal_type)
-        if chains:
+    chains = wf_tool.getChainForPortalType(portal_type)
+    
+    if chains:
             wf = wf_tool[chains[0]]
-            for t in wf.transitions.values():
-                terms.append(SimpleTerm(value=t.id, title=t.actbox_name or t.id))
+            initial_state = wf.initial_state
+
+            # Loop through transitions that originate from the initial state
+            for t_id in wf.states[initial_state].transitions:
+                t = wf.transitions.get(t_id)
+                if t:
+                    terms.append(SimpleTerm(
+                        value=t.id,
+                        title=t.actbox_name or t.id
+                    ))
+
+    return SimpleVocabulary(terms)
 
     return SimpleVocabulary(terms)
 

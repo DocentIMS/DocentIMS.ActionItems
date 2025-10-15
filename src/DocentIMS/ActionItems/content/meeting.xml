@@ -6,30 +6,28 @@
   xmlns:lingua="http://namespaces.plone.org/supermodel/lingua"
   xmlns:users="http://namespaces.plone.org/supermodel/users"
   xmlns="http://namespaces.plone.org/supermodel/schema">
-  <schema>
+   <schema>
     <field name="meeting_type" type="zope.schema.Choice">
       <description/>
+      <required>False</required>
       <title>Meeting type</title>
       <vocabulary>DocentIMS.ActionItems.MeetingTypesVocabulary</vocabulary>
-      <required>False</required>
     </field>
-
     <fieldset name="attendees" label="Attendees">
-    <field name="attendees_group" type="zope.schema.Set">
-      <form:widget type="plone.app.z3cform.widget.AjaxSelectFieldWidget" />
-      <description/>
-      <required>False</required>
-      <title>Specific Groups</title>
-      <value_type type="zope.schema.Choice">
-        <vocabulary>plone.app.vocabularies.Groups</vocabulary>
-      </value_type>
-    </field>
-    <!-- <field name="will_property_manager_attend" type="zope.schema.Bool">
-      <description/>
-      <title>Dummy UserManager Attend?</title>
-      <form:widget type="z3c.form.browser.radio.RadioFieldWidget"/>
-    </field> -->
-  </fieldset>
-
-</schema>
+      <field name="attendees_group" type="zope.schema.Set">
+        <description/>
+        <required>False</required>
+        <title>Specific Groups</title>
+        <value_type type="zope.schema.Choice">
+          <vocabulary>plone.app.vocabularies.Groups</vocabulary>
+        </value_type>
+        <form:widget type="plone.app.z3cform.widgets.select.AjaxSelectFieldWidget"/>
+      </field>
+      <field name="online_meeting_link" type="zope.schema.TextLine">
+        <description>This is link to either the Zoom or Team Meeting.</description>
+        <required>False</required>
+        <title>Online Meeting Link</title>
+      </field>
+    </fieldset>
+  </schema>
 </model>

@@ -56,14 +56,15 @@ def auto_publish_on_add(obj, event):
     transition = obj.transition_state
     
     # Only do this if the object is not already published
-    if not api.content.get_state(obj) == transition:
-        try:
-            api.content.transition(obj=obj, transition=transition)
-        except Exception as e:
-            # Log error if needed
-            pass
-        # finally:
-        #     pass
+    if transition:
+        if not api.content.get_state(obj) == transition:
+            try:
+                api.content.transition(obj=obj, transition=transition)
+            except Exception as e:
+                # Log error if needed
+                pass
+            # finally:
+            #     pass
 
 
 def check_defaultpage(object, event):

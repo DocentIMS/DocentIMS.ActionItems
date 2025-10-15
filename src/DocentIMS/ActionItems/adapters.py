@@ -108,3 +108,33 @@ class ProjectShortName(BaseSubstitution):
 #       return ''       
         
 
+# // Not an adapter, move it to another file later
+# TO DO 
+# from io import BytesIO
+# from Products.PortalTransforms.interfaces import ITransform
+# from zope.interface import implementer
+
+# import docx2txt
+
+
+# @implementer(ITransform)
+# class docx_to_text:
+#     __name__ = "docx_to_text"
+#     inputs = (
+#         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+#     )
+#     output = "text/plain"
+
+#     def __init__(self, name=None, **kwargs):
+#         if name is not None:
+#             self.__name__ = name
+
+#     def name(self):
+#         return self.__name__
+
+#     def convert(self, orig, idata, **kwargs):
+#         out = []
+#         text = docx2txt.process(BytesIO(orig))
+#         out.extend(self.clean_data(data=text))
+#         idata.setData(" ".join(out))
+#         return idata
