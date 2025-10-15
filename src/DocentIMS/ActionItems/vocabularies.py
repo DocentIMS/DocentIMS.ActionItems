@@ -125,7 +125,8 @@ directlyProvides(ActionItemsVocabulary, IVocabularyFactory)
 def CompanyVocabulary(context):
     items  =  api.portal.get_registry_record('companies', interface=IDocentimsSettings)
     # Get them from dashboard instead
-    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.companies")
+    # Possible feature to get users without added companies
+    # items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.companies")
     
     if items:
         unique_items = []
