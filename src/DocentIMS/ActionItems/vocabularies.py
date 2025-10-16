@@ -261,26 +261,17 @@ def MeetingTypesVocabulary(context):
     items  =  api.portal.get_registry_record('meeting_types', interface=IDocentimsSettings)
     
     if items:        
-        unique_items = []
-        seen = set()
+        item_list = []
         for item in items:
-            # Convert dict to a tuple of sorted key-value pairs (hashable)
-            marker = tuple(sorted(item.items()))
-            if marker not in seen:
-                seen.add(marker)
-                unique_items.append(item)
-        items = unique_items
+            if not item['meeting_type'] in item_list and item['meeting_type']:
+                if len(item['meeting_type']) > 1:
+                    item_list.append(item['meeting_type'])
+            
         
-        # Assuming items is a list of dictionaries
-        sorted_items = sorted(
-            filter(lambda x: x.get('meeting_type', '') is not None, items),
-            key=lambda x: x.get('meeting_type', '').lower() if x.get('meeting_type') else ''
-        )
-
         # Create SimpleTerm objects from the sorted list, excluding empty 'meeting types'
         terms = [
-            SimpleTerm(value=item['meeting_type'], token=item['meeting_type'], title=item['meeting_type'])
-            for item in sorted_items if item['meeting_type'] and len(item['meeting_type']) > 1
+            SimpleTerm(value=item, token=item, title=item)
+            for item in sorted(item_list) 
         ]
         
         if terms:
@@ -292,17 +283,18 @@ directlyProvides(MeetingTypesVocabulary, IVocabularyFactory)
 
 
 def DashboardMeetingTypesVocabulary(context):
-    items  =  api.portal.get_registry_record('meeting_types', interface=IDocentimsSettings)
+    items = get_registry_record("DocentIMS.dashboard.interfaces.IDocentimsSettings.meeting_types")
+    
     if items:
-        # unique_items = []
-        # seen = set()
-        # for item in items:
-        #     # Convert dict to a tuple of sorted key-value pairs (hashable)
-        #     marker = tuple(sorted(item.items()))
-        #     if marker not in seen:
-        #         seen.add(marker)
-        #         unique_items.append(item)
-        # items = unique_items
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items
         # Assuming items is a list of dictionaries
         sorted_items = sorted(
             filter(lambda x: x.get('meeting_type', '') is not None, items),

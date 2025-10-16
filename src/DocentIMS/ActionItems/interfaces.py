@@ -152,23 +152,24 @@ class IVocabulari4(model.Schema):
 
 
 class IMeetingRows(model.Schema):
-    meeting_type = schema.TextLine(
+    meeting_type = schema.Choice(
         title=_(u'meeting_type', 'Meeting Type'),
         # description=u"Meeting Type",
+        vocabulary=u"DocentIMS.ActionItems.DashboardMeetingTypesVocabulary",
         required=False,
     )
     
-    meeting_title = schema.TextLine(
-        title=_(u'meeting_title', 'Meeting Title'),
-        # description=u"Default Meeting Title",
-        required=False,
-    )
+    # meeting_title = schema.TextLine(
+    #     title=_(u'meeting_title', 'Meeting Title'),
+    #     # description=u"Default Meeting Title",
+    #     required=False,
+    # )
      
-    meeting_summary = schema.Text(
-        title=_(u'meeting_summary', 'Meeting Tag'),
-        # description=u"Default Summary",
-        required=False,
-    )
+    # meeting_summary = schema.Text(
+    #     title=_(u'meeting_summary', 'Meeting Tag'),
+    #     # description=u"Default Summary",
+    #     required=False,
+    # )
     
     # widget(meeting_attendees=SelectWidget)
     # value_type=schema.Choice(vocabulary="plone.app.users.group_ids"),
