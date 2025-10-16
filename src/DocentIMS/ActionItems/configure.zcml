@@ -27,11 +27,11 @@
   <!-- <include package=".transforms" /> -->
 
  <!-- Add my own portal transform -->
- <utility
+ <!-- <utility
         name="quark_to_html"
         component=".transforms.QuarkToHTML"
         provides="Products.PortalTransforms.interfaces.ITransform"
-    />
+    /> -->
  
   <!-- Extend TinyCME settings to include image folders (old and new name) -->
   <adapter
