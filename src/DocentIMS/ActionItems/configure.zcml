@@ -24,14 +24,15 @@
   <include package=".behaviors"/>
   <include package=".api" />
   <include package=".conditions" />
+  <!-- <include package=".transforms" /> -->
 
  <!-- Add my own portal transform -->
  <utility
         name="quark_to_html"
-        component=".transforms.quark"
+        component=".transforms.QuarkToHTML"
         provides="Products.PortalTransforms.interfaces.ITransform"
     />
-
+ 
   <!-- Extend TinyCME settings to include image folders (old and new name) -->
   <adapter
       factory=".tinymce.CustomPatternSettingsAdapter"

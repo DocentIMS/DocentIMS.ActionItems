@@ -129,13 +129,15 @@ def CompanyVocabulary(context):
             SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name'])
             for item in sorted_items if item['short_company_name'] and len(item['short_company_name']) > 1
         ]
-        return SimpleVocabulary(terms)
+        if terms:
+            return SimpleVocabulary(terms)
     
     return SimpleVocabulary([])
 
 directlyProvides(CompanyVocabulary, IVocabularyFactory)
 
  
+
 
 
 def DashboardCompanyVocabulary(context):
@@ -157,7 +159,9 @@ def DashboardCompanyVocabulary(context):
             SimpleTerm(value=item['short_company_name'], token=item['short_company_name'], title=item['short_company_name'])
             for item in sorted_items if item['short_company_name'] and len(item['short_company_name']) > 1
         ]
-        return SimpleVocabulary(terms)
+        
+        if terms:
+            return SimpleVocabulary(terms)
     
     return SimpleVocabulary([])
 
@@ -219,7 +223,9 @@ def LocationsVocabulary(context):
             SimpleTerm(value=item['location_name'], token=item['location_name'], title=item['location_name'])
             for item in sorted_items if item['location_name'] and len(item['location_name']) > 1
         ]
-        return SimpleVocabulary(terms)
+        
+        if terms:
+            return SimpleVocabulary(terms)
     
     return SimpleVocabulary([])
 
@@ -243,7 +249,8 @@ def DashboardLocationsVocabulary(context):
             for item in sorted_items if item['location_name'] and len(item['location_name']) > 1
         ]
         
-        return SimpleVocabulary(terms)
+        if terms:
+            return SimpleVocabulary(terms)
     
     return SimpleVocabulary([])
 
@@ -253,7 +260,17 @@ directlyProvides(DashboardLocationsVocabulary, IVocabularyFactory)
 def MeetingTypesVocabulary(context):
     items  =  api.portal.get_registry_record('meeting_types', interface=IDocentimsSettings)
     
-    if items:
+    if items:        
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items
+        
         # Assuming items is a list of dictionaries
         sorted_items = sorted(
             filter(lambda x: x.get('meeting_type', '') is not None, items),
@@ -265,7 +282,9 @@ def MeetingTypesVocabulary(context):
             SimpleTerm(value=item['meeting_type'], token=item['meeting_type'], title=item['meeting_type'])
             for item in sorted_items if item['meeting_type'] and len(item['meeting_type']) > 1
         ]
-        return SimpleVocabulary(terms)
+        
+        if terms:
+            return SimpleVocabulary(terms)
     
     return SimpleVocabulary([])
 
@@ -295,7 +314,9 @@ def DashboardMeetingTypesVocabulary(context):
             SimpleTerm(value=item['meeting_type'], token=item['meeting_type'], title=item['meeting_type'])
             for item in sorted_items if item['meeting_type'] and len(item['meeting_type']) > 1
         ]
-        return SimpleVocabulary(terms)
+        
+        if terms:
+            return SimpleVocabulary(terms)
     
     return SimpleVocabulary([])
 
@@ -392,6 +413,15 @@ def ProjectRolesVocabulary(context):
     
     if items:
         # Extract unique entries from items and convert to lowercase for case-insensitive comparison
+        unique_items = []
+        seen = set()
+        for item in items:
+            # Convert dict to a tuple of sorted key-value pairs (hashable)
+            marker = tuple(sorted(item.items()))
+            if marker not in seen:
+                seen.add(marker)
+                unique_items.append(item)
+        items = unique_items
         
         # Create SimpleTerm objects from the unique entries
         terms = [
@@ -432,8 +462,9 @@ def DashboardProjectRolesVocabulary(context):
                 key=lambda x: (x.get('vocabulary_entry') or '').lower()
             )
         ]
-
-        return SimpleVocabulary(terms)
+        
+        if terms:
+            return SimpleVocabulary(terms)
 
     return SimpleVocabulary([])
 

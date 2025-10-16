@@ -235,7 +235,7 @@ class ICompany(model.Schema):
     full_company_name = schema.Choice(
         required = False,
         title=_(u"label_company_name", default=u"Company"),
-        vocabulary=u"DocentIMS.ActionItems.DashboardCompanyNamesVocabulary",
+        vocabulary=u"DocentIMS.ActionItems.CompanyVocabulary",
 
         )
    
