@@ -416,7 +416,7 @@ Mode
                 </label>
             </div>
 
-            <div id="webmail" class="">
+            <div id="webmail" class="flex">
                 <div class="no-flex">
                     <a class="" href="${portal_url}/calendar/calendar" rel="noopener noreferrer">
                         <img src="++plone++DocentIMS.ActionItems/icons/calendar.png" />
