@@ -81,9 +81,9 @@
                       </td>
                     </tr>
                     <tal:condition tal:condition="context/source|None">
-                      <tr tal:condition="python: context.source != 'Plone'">
-                        <td><a href="resolveuid/${context/source|None}">Open Source Meeting</a></td>
-                        <td><a href="resolveuid/${context/closed_within|None}">Closed within meeting</a></td>
+                      <tr>
+                        <td tal:condition="python: context.source != 'Plone'"><a href="resolveuid/${context/source|None}">Open Source Meeting</a></td>
+                        <td  tal:condition="context/closed_within|None"><a href="resolveuid/${context/closed_within|None}">Closed within meeting</a></td>
                       </tr>
                     </tal:condition>
                   </tbody>
