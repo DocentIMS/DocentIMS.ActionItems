@@ -36,7 +36,7 @@ def transitionStates(context):
             portal_type = path_info.split('++add++')[-1]
     
     terms = []
-    terms.append(SimpleTerm(value=None, title='Choose'))
+    # terms.append(SimpleTerm(value=None, title='Choose'))
     chains = wf_tool.getChainForPortalType(portal_type)
     
     if chains:
@@ -49,7 +49,7 @@ def transitionStates(context):
                 if t:
                     terms.append(SimpleTerm(
                         value=t.id,
-                        title=t.actbox_name or t.id
+                        title=t.new_state_id or t.id
                     ))
 
     return SimpleVocabulary(terms)
