@@ -4,7 +4,7 @@
         <p class="red padding-20-0 margin-20-0">
             <a class="btn btn-primary success margin-20 padding-20" href="${view/portal_url}/@@personal-information">
     ✓ Important! ${view/full_name|None}, You need to confirm your profile first! Click here
-                        <!-- TO DO: Maybe check if they have logged in in xx days or just show it first time -->
+                                        <!-- TO DO: Maybe check if they have logged in in xx days or just show it first time -->
 
             </a>
         </p>
@@ -418,17 +418,18 @@ Mode
 
             <div id="webmail" class="flex">
                 <div class="no-flex">
+                    <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
+                        <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
+                        <p>WebMail</p>
+                    </a>
+                </div>
+                <div class="no-flex">
                     <a class="" href="${portal_url}/calendar/calendar" rel="noopener noreferrer">
                         <img src="++plone++DocentIMS.ActionItems/icons/calendar.png" />
                         <p>Calendar</p>
                     </a>
                 </div>
-                <div class="no-flex">
-                    <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
-                        <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
-                        <p>Mail</p>
-                    </a>
-                </div>
+
                 <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Opens</b> webmail in a new tab">
                     <a href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">Links</a>
                 </label>
@@ -515,7 +516,7 @@ document.getElementById('project').addEventListener('change', function () {
 
         <script src="++plone++DocentIMS.ActionItems/js/action_items_jq.js" />
 
-                    <style>
+        <style>
             h2.sit_tit {background: ${view/color|None} !important; border-bottom: 0 none !important}
 
             .image_color {
