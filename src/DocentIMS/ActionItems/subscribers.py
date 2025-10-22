@@ -53,7 +53,7 @@ def auto_publish_on_add(obj, event):
         return
     
      
-    transition = obj.transition_state
+    transition = obj.transition_target
     
     # Only do this if the object is not already published
     if transition:

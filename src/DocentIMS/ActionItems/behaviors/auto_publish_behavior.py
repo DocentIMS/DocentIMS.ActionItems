@@ -64,9 +64,9 @@ class IAutoPublishBehaviorMarker(Interface):
 @provider(IFormFieldProvider)
 class IAutoPublishBehavior(model.Schema):
     """Behavior to auto publish content"""              
-    form.mode(transition_state='hidden')
-    form.mode(IAddForm, transition_state='input')
-    transition_state = schema.Choice(
+    form.mode(transition_target='hidden')
+    form.mode(IAddForm, transition_target='input')
+    transition_target = schema.Choice(
         title= u"State",
         required= True,
         source=transitionStates,

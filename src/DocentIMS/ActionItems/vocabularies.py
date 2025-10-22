@@ -263,12 +263,13 @@ def MeetingTypesVocabulary(context):
     if items:        
         item_list = []
         for item in items:
+            # excluding empty 'meeting types'
             if not item['meeting_type'] in item_list and item['meeting_type']:
                 if len(item['meeting_type']) > 1:
                     item_list.append(item['meeting_type'])
             
         
-        # Create SimpleTerm objects from the sorted list, excluding empty 'meeting types'
+        # Create SimpleTerm objects from the sorted list
         terms = [
             SimpleTerm(value=item, token=item, title=item)
             for item in sorted(item_list) 

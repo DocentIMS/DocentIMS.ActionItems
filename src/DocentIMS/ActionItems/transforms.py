@@ -1,25 +1,18 @@
 from Products.PortalTransforms.interfaces import ITransform
 from zope.interface import implementer
-import markdown
+from Products.PortalTransforms.libtransforms.commandtransform import popentransform
 
 
-# @implementer(ITransform)
-# class QuarkToHTML:
-#     __name__ = "quark_to_html"
-#     inputs = ("text/x-web-markdown",)
-#     output = "text/html"
-    
-#     import pdb; pdb.set_trace()
+@implementer(ITransform)
+class docx_to_text(popentransform):
+    __name__ = "docx_to_text"
+    inputs = ("application/vnd.openxmlformats-officedocument.wordprocessingml.document",)
+    output = "text/plain"
+    output_encoding = "utf-8"
 
-#     def name(self):
-#         return self.__name__
-    
-
-#     def convert(self, orig, data, **kwargs):
-#         return 'data'
+    binaryName = "docx2txt"
+    binaryArgs = "- -enc UTF-8 -"
 
 
-# def register():
-#     return QuarkToHTML()
-
-  
+def register():
+    return docx_to_text()

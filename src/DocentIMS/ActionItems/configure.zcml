@@ -24,12 +24,12 @@
   <include package=".behaviors"/>
   <include package=".api" />
   <include package=".conditions" />
-  <!-- <include package=".transforms" /> -->
+  <!-- <include package=".transforms" /-->
 
  <!-- Add my own portal transform -->
- <!-- <utility
+ <!--utility
         name="quark_to_html"
-        component=".transforms.QuarkToHTML"
+        component=".transforms.docx_to_text"
         provides="Products.PortalTransforms.interfaces.ITransform"
     /> -->
  
