@@ -586,8 +586,8 @@ class MeetingCustomAddForm(DefaultAddForm):
             meeting_rows = [meeting for meeting in meeting_definitions if meeting['meeting_type'] == meeeting_value[0]]
             
             if meeting_rows and meeting_rows != None:
-                self.widgets['IBasic.description'].value = meeting_rows[0]['meeting_summary']
-                self.widgets['IBasic.title'].value =  meeting_rows[0]['meeting_title']
+                # self.widgets['IBasic.description'].value = meeting_rows[0]['meeting_summary']
+                # self.widgets['IBasic.title'].value =  meeting_rows[0]['meeting_title']
                 # self.widgets['IMeetingContact.contact_name'].value =  meeting_rows[0]['meeting_contact']
                 # self.widgets['IEventBasic.start'].default = self.fields['IEventBasic.start'].field.default + timedelta(days=1)
                 # self.widgets['IEventBasic.end'].default = self.fields['IEventBasic.start'].field.default + timedelta(days=1, hours=2)
