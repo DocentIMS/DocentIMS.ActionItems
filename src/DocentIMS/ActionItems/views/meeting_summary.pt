@@ -226,8 +226,8 @@
                 <p class="card-text">
                   <a href="" tal:attributes="
                        href data/event_url;
-                     " i18n:translate="external_website">Visit external website</a>
-                </p>
+                     " i18n:translate="zoom_link">Zoom Meeting</a>
+                </p> 
               </div>
             </div>
           </div>
