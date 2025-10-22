@@ -426,7 +426,7 @@ Mode
                 <div class="no-flex">
                     <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
                         <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
-                        <p>Webmail</p>
+                        <p>Mail</p>
                     </a>
                 </div>
                 <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Opens</b> webmail in a new tab">
