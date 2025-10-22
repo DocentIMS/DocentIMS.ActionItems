@@ -68,7 +68,7 @@ class IAutoPublishBehavior(model.Schema):
     form.mode(IAddForm, transition_target='input')
     transition_target = schema.Choice(
         title= u"State",
-        required= True,
+        required= False,
         source=transitionStates,
     )
 
