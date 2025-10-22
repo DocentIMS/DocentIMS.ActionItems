@@ -418,13 +418,19 @@ Mode
 
             <div id="webmail" class="">
                 <div class="no-flex">
+                    <a class="" href="${portal_url}/calendar/calendar" rel="noopener noreferrer">
+                        <img src="++plone++DocentIMS.ActionItems/icons/calendar.png" />
+                        <p>Calendar</p>
+                    </a>
+                </div>
+                <div class="no-flex">
                     <a class="" href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">
                         <img src="++plone++DocentIMS.ActionItems/icons/email.png" />
                         <p>Webmail</p>
                     </a>
                 </div>
                 <label class="toolbar_label" data-bs-toggle="tooltip" data-tooltip-content="<b>Opens</b> webmail in a new tab">
-                    <a href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">Webmail</a>
+                    <a href="https://webmail.${view/webmail_url}" target="_blank" rel="noopener noreferrer">Links</a>
                 </label>
             </div>
 
