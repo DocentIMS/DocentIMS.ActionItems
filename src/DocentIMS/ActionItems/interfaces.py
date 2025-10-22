@@ -363,6 +363,16 @@ class IDocentimsSettings(model.Schema):
         ] 
     )
 
+
+    model.fieldset(
+        'companies',
+        label=_(u'Companies'),
+        description=u"Please create all project companies involved in this project.",
+        fields=[
+            'companies',
+            ],
+        )
+
     model.fieldset(
         'notifications',
         label=_(u'Due Dates'),
@@ -371,17 +381,6 @@ class IDocentimsSettings(model.Schema):
             'future_green',
             'soon_yellow',
             'urgent_red',
-            ],
-        )
- 
-
-
-    model.fieldset(
-        'companies',
-        label=_(u'Companies'),
-        description=u"Please create all project companies involved in this project.",
-        fields=[
-            'companies',
             ],
         )
 
