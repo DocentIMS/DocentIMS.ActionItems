@@ -6,12 +6,18 @@
   xmlns:lingua="http://namespaces.plone.org/supermodel/lingua"
   xmlns:users="http://namespaces.plone.org/supermodel/users"
   xmlns="http://namespaces.plone.org/supermodel/schema">
-   <schema>
+  <schema>
     <field name="meeting_type" type="zope.schema.Choice">
       <description/>
       <required>False</required>
       <title>Meeting type</title>
       <vocabulary>DocentIMS.ActionItems.MeetingTypesVocabulary</vocabulary>
+    </field>
+    <field name="online_meeting_link" type="zope.schema.TextLine" form:omitted="true">
+      <description/>
+      <mode>hidden</mode>
+      <required>False</required>
+      <title>Online meeting UUID</title>
     </field>
     <fieldset name="attendees" label="Attendees">
       <field name="attendees_group" type="zope.schema.Set">
