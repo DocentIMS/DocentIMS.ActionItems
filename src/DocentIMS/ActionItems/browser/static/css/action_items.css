@@ -1316,3 +1316,6 @@ div.comment-author {
 	background: whitesmoke;
 }
 
+a.fc-daygrid-day-number {
+	border-bottom: 0px solid green;
+}
