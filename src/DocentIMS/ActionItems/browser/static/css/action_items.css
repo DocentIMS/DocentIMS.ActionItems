@@ -1300,3 +1300,19 @@ div.comment-author {
 }
 
  
+.fc-day,
+.fc-scrollgrid,
+.fc-theme-standard td,
+.fc-theme-standard th {
+	border-style: solid  !important;
+	border-color: #414141 !important;
+}
+
+.fc-scrollgrid {
+	border: 1px sold black !important
+}
+
+.fc-col-header-cell {
+	background: whitesmoke;
+}
+
