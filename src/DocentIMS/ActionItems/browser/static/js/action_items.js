@@ -303,4 +303,47 @@ document.addEventListener("DOMContentLoaded", function () {
       toggleFields();
     });
   });
+  
+  $(document).on('focusin', '.datagridwidget-row select', function() {
+    const $currentSelect = $(this);
+    const $cell = $currentSelect.closest('.datagridwidget-cell');
+
+    // Get all classes from the cell
+    const classes = $cell.attr('class').split(/\s+/);
+    // Find the class that starts with "cell-"
+    const cellClass = classes.find(c => c.startsWith('cell-'));
+    if (!cellClass) return; // safety check
+
+    // Limit search to selects inside datagridwidget-cells with the same "cell-X" class
+    const selectedValues = [];
+
+    $(`.${cellClass} select`).not($currentSelect).each(function() {
+      const val = $(this).val();
+      if (val) selectedValues.push(val);
+    });
+
+    // Re-enable all options first
+    $currentSelect.find('option').each(function() {
+      $(this).prop('disabled', false).show();
+    });
+
+    // Disable/hide already selected options
+    $currentSelect.find('option').each(function() {
+      if (selectedValues.includes($(this).val())) {
+        $(this).prop('disabled', true).hide(); // use .show() if you prefer visible but disabled
+      }
+    });
+  });
+
+  // Keep selects in same cell class synced on change
+  $(document).on('change', '.datagridwidget-row select', function() {
+    const $cell = $(this).closest('.datagridwidget-cell');
+    const classes = $cell.attr('class').split(/\s+/);
+    const cellClass = classes.find(c => c.startsWith('cell-'));
+    if (!cellClass) return;
+
+    const $row = $(this).closest('.datagridwidget-row');
+    $row.find(`.datagridwidget-cell.${cellClass} select`).trigger('focusin');
+  });
+
 })(jQuery);

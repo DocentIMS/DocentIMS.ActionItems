@@ -83,7 +83,7 @@
                     <tal:condition tal:condition="context/source|None">
                       <tr>
                         <td tal:condition="python: context.source != 'Plone'"><a href="resolveuid/${context/source|None}">Open Source Meeting</a></td>
-                        <td  tal:condition="context/closed_within|None"><a href="resolveuid/${context/closed_within|None}">Closed within meeting</a></td>
+                        <td  tal:condition="context/closed_within|None"><a href="resolveuid/${context/closed_within|None}">Closed within Meeting</a></td>
                       </tr>
                     </tal:condition>
                   </tbody>
