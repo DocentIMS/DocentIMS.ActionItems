@@ -576,7 +576,7 @@ def _create_content(portal):
             items = plone.api.content.create(
                 type='Folder',
                 container=portal,
-                description="To get this calendar:  add a collection with Meetings.  When viewing the collection,  click on : Actions-> Enable fullcalender and choose Fullcalender as the view",
+                description="To get this calendar:  add a collection with Meetings.  When viewing the collection,  click on : Actions-> Enable fullcalender and choose Fullcalender as the view. Also go to <a href='/fullcalendar_settings'></a>",
                 id='calendar',
                 title='Calendar',
                 exclude_from_nav=False,

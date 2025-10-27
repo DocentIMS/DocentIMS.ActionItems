@@ -94,6 +94,17 @@
    />
 
  <browser:page
+   name="make-word-view"
+   for="*"
+   class=".make_docx_view.MakeWordDocView"
+   template="make_docx_view.pt"
+   permission="zope2.View"
+   layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
+   />
+
+   
+
+ <browser:page
    name="action-items-overview"
    for="*"
    class=".action_items_over_view.ActionItemsOverView"
