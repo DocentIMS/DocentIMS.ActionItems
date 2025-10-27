@@ -31,7 +31,7 @@
 
             <div tal:define="sites view/get_sites|None; 
                 current_title view/site_title" tal:condition="sites">
-                <select id="project" name="project">
+                <select id="project_select" name="project">
                     <option value="select">${current_title}</option>
                     <tal:condition tal:condition="view/get_sites">
                         <tal:define tal:define="buttons python: sites['buttons']">
@@ -172,7 +172,7 @@ Mode
     <div id="document_manager" class="flex toolbar_user">
         <!-- <label for="project">Select a Project:</label> -->
         <div id="document_type_select">
-            <select id="project" name="project">
+            <select id="doc_project" name="project">
                 <option value="Project 1">Select Doc Type</option>
                 <option value="Project 1">Select 1</option>
                 <option value="Project 2">Select 2</option>
@@ -507,11 +507,11 @@ Show Toolbar</button>
 </script> -->
 
         <script>
-document.getElementById('project').addEventListener('change', function () {
-  if (this.value !== '${view/project_name}' && this.value !== 'select') {
-    window.location.href = this.value; // Redirect to the selected project's home page
-  }
-});
+            document.getElementById('project_select').addEventListener('change', function () {
+            if (this.value !== '${view/project_name}' && this.value !== 'select') {
+                window.location.href = this.value; // Redirect to the selected project's home page
+            }
+            });
         </script>
 
         <script src="++plone++DocentIMS.ActionItems/js/action_items_jq.js" />
