@@ -2,6 +2,10 @@ body, html body {
 	color: #222
 }
 
+body.template-login #portal-anontools  {
+	display: none !important;
+}
+
 .userrole-anonymous  #content-header {
 	max-width: 1300px;
 	margin: auto

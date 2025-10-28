@@ -3,10 +3,14 @@
 # from DocentIMS.ActionItems import _
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
+from plone.namedfile.file import NamedBlobImage
+from plone.app.textfield.value import RichTextValue
+from html2docx import html2docx
 
-# -*- coding: utf-8 -*-# import docx
+# import docx
+from docx import Document
 from docx.shared import Mm
-from docxtpl import DocxTemplate, InlineImage
+from docxtpl import DocxTemplate, InlineImage, RichText
 from io import BytesIO
 from plone.app.querystring import queryparser
 from Products.CMFCore.utils import getToolByName
@@ -27,33 +31,24 @@ class IMakeWordDocView(Interface):
 class MakeWordDocView(BrowserView):
     
     def __call__(self):
-        context = self.context;selected_file_id = self.request.form.get('selected_file', None)
-        
-        # Fetch the list of docx files from the templates folder
+        context = self.context
+        selected_file_id = self.request.form.get('selected_file', None)
         # files = self.find_docx_in_templates()
-        
         # If no file is found or user hasn't selected one, render a form to choose a file
-        if not selected_file:
+        if not selected_file_id:
             return self.index()
 
-        # Check if a file has been selected in the request (from a form submission)
-        
         if selected_file_id:
-            selected_file = next((f for f in files if f['object'].id == selected_file_id), None)
-        else:
-            # Default to the first file if nothing is selected
-            selected_file = files[0]
-
-        if selected_file:
             # Extract the selected file's data
-            file_data = selected_file['object'].file.data
+            filen = api.content.get(UID=selected_file_id)
+            file_data = filen.file.data
             
-            # Wrap in BytesIO for docxtpl
+            # Wrap in BytesIO for docxtpl etc
             file_stream = BytesIO(file_data)
             doc = DocxTemplate(file_stream)
 
             # Get context data for replacements
-            replacements = self.get_replacements(context)
+            replacements = self.get_replacements(context, doc)
             doc.render(replacements)
 
             # Prepare the output file stream for download
@@ -69,18 +64,46 @@ class MakeWordDocView(BrowserView):
 
         return "No valid file selected."
     
-    def get_replacements(self, context):
+    def get_replacements(self, context, doc):
         """Get the replacements for the Word template."""
         replacements = {}
+        
         
         for schema in iterSchemata(context):
             schema_obj = schema(context)  # This adapts context to the schema
             for name, field in getFieldsInOrder(schema):
                 value = getattr(schema_obj, name, None)
-                replacements[name] = value
-        
+                if value: 
+                    description = getattr(schema_obj, name, None)
+                    if isinstance(value, NamedBlobImage) and getattr(value, 'data', None):
+                        # Handle image field
+                        field_description = int(field.description)
+                        image_stream = BytesIO(value.data)
+                        replacements[name] = InlineImage(doc, image_stream, width=Mm(field_description))
+                    if isinstance(value, RichTextValue) and getattr(value, 'output', None):
+                        html = value.raw
+                        subdoc_stream = BytesIO()
+                        #document = Document()
+                        document = Document()
+                        html2docx(html, document)
+                        document.save(subdoc_stream)
+                        subdoc_stream.seek(0)
+                        subdoc = Document().new_subdoc(subdoc_stream)
+                        replacements[name] = subdoc
+                    else:
+                        # Normal field
+                        replacements[name] = value
+                    
         replacements['title'] = context.Title()
         replacements['description'] = context.Description()
+        
+        # image_field = getattr(context, 'myfield', None)
+        # if image_field and getattr(image_field, 'data', None):
+        #     image_data = image_field.data
+        #     image_stream = BytesIO(image_data)
+        #     # Use InlineImage from docxtpl
+        #     replacements['myimage'] = InlineImage(doc, image_stream, width=Mm(50))  # adjust size
+
         
         return replacements
     
@@ -100,9 +123,10 @@ class MakeWordDocView(BrowserView):
             if file_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
                 docx_items.append({
                     'title': obj.Title(),
-                    'url': obj.absolute_url, 'object': obj,
+                    # 'url': obj.absolute_url, 
+                    # 'object': obj,
+                    'uuid': obj.UID(),
                     'file_name': obj.file.filename  # Include the filename as well for easier reference
                 })
         
-        # import pdb; pdb.set_trace()
         return docx_items
