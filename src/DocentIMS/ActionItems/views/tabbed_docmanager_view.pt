@@ -27,6 +27,7 @@
                     <th>Modified </th>
                     <th>Download</th>
                     <th>View</th>
+                    <th>Email</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,28 +49,102 @@
                             filename item/file/filename;
                             extension python:filename.split('.')[-1];                            
                         ">
-                          
-                        <a href="${item/absolute_url}/@@download/file"><img src="++plone++DocentIMS.ActionItems/${extension}_icon.jpg" alt="${extension}-icon" width="25" height="25"/> 
-                          <!-- ${filename}--> Download</a>
+
+                          <a href="${item/absolute_url}/@@download/file">
+                            <img src="++plone++DocentIMS.ActionItems/${extension}_icon.jpg" alt="${extension}-icon" width="25" height="25"/>
+                            <!-- ${filename}--> Download</a>
                         </tal:define>
                       </tal:condition>
                     </td>
                     <td>
-                      <tal:condition tal:condition="item/file|None">                        
-                        <a alt="Open in Only Office" title="View" href="${item/absolute_url}/onlyoffice-view-file"><img src="++plone++DocentIMS.ActionItems/icons/eye.svg" alt="view icon" width="25" height="25"/>  
+                      <tal:condition tal:condition="item/file|None">
+                        <a alt="Open in Only Office" title="View" href="${item/absolute_url}/onlyoffice-view-file">
+                          <img src="++plone++DocentIMS.ActionItems/icons/eye.svg" alt="view icon" width="25" height="25"/>
+  
                          View</a>
                       </tal:condition>
                     </td>
-                  </tr>
-                </tbody>
-              </table>
-            </fieldset>
-          </div>
-        </div>
-      </metal:block>
-    </metal:content-core>
-  </body>
-</html>
+                    <!-- <td>
+                      <tal:condition tal:condition="item/file|None">                        
+                        <a alt="Email file" title="Send" href="#someurl">
+                            <img src="++plone++DocentIMS.ActionItems/icons/envelope-arrow-down.svg" alt="email icon" width="25" height="25"/>  
+                         Send</a>
+                      </tal:condition>
+                    </td> -->
+                    <td>
+                      <tal:condition tal:condition="item/file|None">
+                        <a href="#" class="open-email-dialog" data-item-url="${item/absolute_url}" title="Send">
+                          <img src="++plone++DocentIMS.ActionItems/icons/envelope-arrow-up.svg" alt="email icon" width="25" height="25"/>
+    Send
+                        </a>
+                      </tal:condition>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="emailDialog" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content p-3">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Send file by email</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form id="emailForm">
+                                <div class="mb-3">
+                                  <label for="emailRecipients" class="form-label">Recipient email(s)</label>
+                                  <input type="text" class="form-control" id="emailRecipients" name="recipients" placeholder="e.g. user@example.com, another@example.com" required>
+</div>
+<input type="hidden" name="file_url" id="fileUrl">
+                                    <button type="submit" class="btn btn-primary">Send Email</button>
+                                  </form>
+                                  <div id="emailStatus" class="mt-3"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </fieldset>
+              </div>
+            </div>
+
+            <SCRIPT>
+        $(document).ready(function() {
+          // When the send link is clicked
+          $('.open-email-dialog').on('click', function(e) {
+            e.preventDefault();
+            const fileUrl = $(this).data('item-url');
+            $('#fileUrl').val(fileUrl);
+            $('#emailStatus').text('');
+            $('#emailDialog').modal('show');
+          });
+
+          // Handle form submission
+          $('#emailForm').on('submit', function(e) {
+            e.preventDefault();
+            const recipients = $('#emailRecipients').val();
+            const fileUrl = $('#fileUrl').val();
+            $.ajax({
+              url: '@@email-send',
+              type: 'POST',
+              data: JSON.stringify({ recipients, file_url: fileUrl }),
+              contentType: 'application/json',
+              success: function(response) {
+                $('#emailStatus').html('<div class="alert alert-success">Email sent successfully!</div>');
+              },
+              error: function(xhr) {
+                $('#emailStatus').html('<div class="alert alert-danger">Error sending email.</div>');
+              }
+            });
+          });
+        });
+            </SCRIPT>
+          </metal:block>
+        </metal:content-core>
+      </body>
+    </html>
 
 
 
