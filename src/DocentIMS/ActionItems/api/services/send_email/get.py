@@ -1,61 +1,129 @@
 # -*- coding: utf-8 -*-
-from plone import api
-from plone.restapi.interfaces import IExpandableElement
+
+from AccessControl import getSecurityManager
+from AccessControl.Permissions import use_mailhost_services
+from plone.registry.interfaces import IRegistry
+from plone.restapi import _
+from plone.restapi.bbb import IMailSchema
+from plone.restapi.bbb import ISiteSchema
+from plone.restapi.deserializer import json_body
 from plone.restapi.services import Service
-from zope.component import adapter
-from zope.interface import Interface
-from zope.interface import implementer
+from Products.CMFCore.utils import getToolByName
+from smtplib import SMTPException
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+from zope.interface import alsoProvides
+import plone
 
 
-@implementer(IExpandableElement)
-@adapter(Interface, Interface)
-class SendEmail(object):
+try:
+    # Products.MailHost has a patch to fix quoted-printable soft line breaks.
+    # See https://github.com/zopefoundation/Products.MailHost/issues/35
+    from Products.MailHost.MailHost import message_from_string
+except ImportError:
+    # If the patch is ever removed, we fall back to the standard library.
+    from email import message_from_string
 
-    def __init__(self, context, request):
-        self.context = context.aq_explicit
-        self.request = request
-
-    def __call__(self, expand=False):
-        result = {
-            'send_email': {
-                '@id': '{}/@send_email'.format(
-                    self.context.absolute_url(),
-                ),
-            },
-        }
-        if not expand:
-            return result
-
-        # === Your custom code comes here ===
-
-        # Example:
-        try:
-            subjects = self.context.Subject()
-        except Exception as e:
-            print(e)
-            subjects = []
-        query = {}
-        query['portal_type'] = "Document"
-        query['Subject'] = {
-            'query': subjects,
-            'operator': 'or',
-        }
-        brains = api.content.find(**query)
-        items = []
-        for brain in brains:
-            # obj = brain.getObject()
-            # parent = obj.aq_inner.aq_parent
-            items.append({
-                'title': brain.Title,
-                'description': brain.Description,
-                '@id': brain.getURL(),
-            })
-        result['send_email']['items'] = items
-        return result
-
-
-class SendEmailGet(Service):
-
+class SendEmail(Service):
     def reply(self):
-        service_factory = SendEmail(self.context, self.request)
-        return service_factory(expand=True)['send_email']
+        data = json_body(self.request)
+
+        send_to_address = data.get("to", None)
+        sender_from_address = data.get("from", None)
+        message = data.get("message", None)
+        sender_fullname = data.get("name", "")
+        subject = data.get("subject", "")
+
+        if not send_to_address or not sender_from_address or not message:
+            self.request.response.setStatus(400)
+            return dict(
+                error=dict(
+                    type="BadRequest",
+                    message='Missing "to", "from" or "message" parameters',
+                )
+            )
+
+        overview_controlpanel = getMultiAdapter(
+            (self.context, self.request), name="overview-controlpanel"
+        )
+        if overview_controlpanel.mailhost_warning():
+            self.request.response.setStatus(400)
+            return dict(
+                error=dict(type="BadRequest", message="MailHost is not configured.")
+            )
+
+        sm = getSecurityManager()
+        if not sm.checkPermission(use_mailhost_services, self.context):
+            pm = getToolByName(self.context, "portal_membership")
+            if bool(pm.isAnonymousUser()):
+                self.request.response.setStatus(401)
+                error_type = "Unauthorized"
+            else:
+                self.request.response.setStatus(403)
+                error_type = "Forbidden"
+            return dict(error=dict(type=error_type, message=message))
+
+        # Disable CSRF protection
+        if "IDisableCSRFProtection" in dir(plone.protect.interfaces):
+            alsoProvides(self.request, plone.protect.interfaces.IDisableCSRFProtection)
+
+        registry = getUtility(IRegistry)
+        mail_settings = registry.forInterface(IMailSchema, prefix="plone")
+        from_address = mail_settings.email_from_address
+        encoding = registry.get("plone.email_charset", "utf-8")
+        host = getToolByName(self.context, "MailHost")
+        registry = getUtility(IRegistry)
+        site_settings = registry.forInterface(ISiteSchema, prefix="plone", check=False)
+        portal_title = site_settings.site_title
+
+        if not subject:
+            if not sender_fullname:
+                subject = self.context.translate(
+                    _(
+                        "A portal user via ${portal_title}",
+                        mapping={"portal_title": portal_title},
+                    )
+                )
+            else:
+                subject = self.context.translate(
+                    _(
+                        "${sender_fullname} via ${portal_title}",
+                        mapping={
+                            "sender_fullname": sender_fullname,
+                            "portal_title": portal_title,
+                        },
+                    )
+                )
+
+        # message_intro = self.context.translate(
+        #     _(
+        #         "You are receiving this mail because ${sender_fullname} sent this message via the site ${portal_title}:",  # noqa
+        #         mapping={
+        #             "sender_fullname": sender_fullname or "a portal user",
+        #             "portal_title": portal_title,
+        #         },
+        #     )
+        # )
+
+        # message = f"{message_intro} \n {message}"
+
+        message = message_from_string(message)
+        message["Reply-To"] = sender_from_address
+        try:
+            host.send(
+                message,
+                send_to_address,
+                from_address,
+                subject=subject,
+                charset=encoding,
+            )
+
+        except (SMTPException, RuntimeError):
+            plone_utils = getToolByName(self.context, "plone_utils")
+            exception = plone_utils.exceptionString()
+            message = f"Unable to send mail: {exception}"
+
+            self.request.response.setStatus(500)
+            return dict(error=dict(type="InternalServerError", message=message))
+
+        return self.reply_no_content()

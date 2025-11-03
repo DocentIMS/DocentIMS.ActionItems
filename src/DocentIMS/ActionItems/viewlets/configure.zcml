@@ -23,7 +23,7 @@
      layer="DocentIMS.ActionItems.interfaces.IDocentimsActionitemsLayer"
      class=".tool_bar_viewlet.ToolBarViewlet"
      template="tool-bar-viewlet.pt"
-     permission="cmf.ModifyPortalContent"
+     permission="zope2.View"
      />
 
   <!--browser:viewlet

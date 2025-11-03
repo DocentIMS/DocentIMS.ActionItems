@@ -127,25 +127,26 @@
             const recipients = $('#emailRecipients').val();
             const fileUrl = $('#fileUrl').val();
             $.ajax({
-              url: '@@send-email',
+              url: '/@@send_email',
               type: 'POST',
               headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },
-              data: {
-                to: recipients,
-                fileurl: fileUrl
-              },
-              success: function(response) {                
+              data: JSON.stringify({
+                to: recipients,         
+                fileurl: fileUrl,     // URL of file 
+              }),
+              success: function(response) {
+                console.log(response);
                 $('#emailStatus').html('<div class="alert alert-success">Email sent successfully!</div>');
               },
               error: function(xhr) {
                 console.error(xhr.responseText);
-                alert(xhr.responseText);
                 $('#emailStatus').html('<div class="alert alert-danger">Error sending email.</div>');
               }
             });
+
           });
         });
             </SCRIPT>

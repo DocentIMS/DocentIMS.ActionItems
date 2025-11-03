@@ -5,11 +5,13 @@
   <adapter factory=".get.SendEmail" name="send_email"/>
 
   <plone:service
-    method="GET"
+    method="POST"
     for="zope.interface.Interface"
-    factory=".get.SendEmailGet"
+    factory=".get.SendEmail"
     name="@send_email"
     permission="zope2.View"
     />
+
+
 
 </configure>

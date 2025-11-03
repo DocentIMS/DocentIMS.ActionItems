@@ -34,7 +34,7 @@ setup(
     keywords='Python Plone CMS',
     author='Espen Moe-Nilssen',
     author_email='espen@medialog.no',
-    url='https://github.com/collective/DocentIMS.ActionItems',
+    url='https://github.com/DocentIMS/DocentIMS.ActionItems',
     project_urls={
         'PyPI': 'https://pypi.python.org/pypi/DocentIMS.ActionItems',
         'Source': 'https://github.com/collective/DocentIMS.ActionItems',
