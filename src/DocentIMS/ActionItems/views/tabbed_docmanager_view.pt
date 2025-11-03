@@ -122,19 +122,27 @@
           });
 
           // Handle form submission
-          $('#emailForm').on('submit', function(e) {
+          $(document).on('submit', '#emailForm', function(e) {
             e.preventDefault();
             const recipients = $('#emailRecipients').val();
             const fileUrl = $('#fileUrl').val();
             $.ajax({
-              url: '@@email-send',
+              url: '@@send-email',
               type: 'POST',
-              data: JSON.stringify({ recipients, file_url: fileUrl }),
-              contentType: 'application/json',
-              success: function(response) {
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              data: {
+                to: recipients,
+                fileurl: fileUrl
+              },
+              success: function(response) {                
                 $('#emailStatus').html('<div class="alert alert-success">Email sent successfully!</div>');
               },
               error: function(xhr) {
+                console.error(xhr.responseText);
+                alert(xhr.responseText);
                 $('#emailStatus').html('<div class="alert alert-danger">Error sending email.</div>');
               }
             });

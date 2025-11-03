@@ -301,8 +301,10 @@ Mode
             <div id="meeting_select">
                 <select id="project" name="project">
                     <option value="Select Meeting">Select Meeting Doc</option>
-                    <option value="Meeting type 1">[Meeting Type 1]</option>
-                    <option value="Meeting type 2">[Meeting Type 2]</option>
+                    <option value="Meeting type 1">Meeting Notes</option>
+                    <option value="Meeting type 2">Meeting Minutes</option>
+                    <option value="Meeting type 3">Meeting Agenda</option>
+                    <!-- TO DO: Read from folder types -->
                 </select>
 
                 <p>
