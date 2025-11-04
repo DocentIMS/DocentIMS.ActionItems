@@ -466,7 +466,7 @@ Mode
     
                 Feedback</p>
             </a> -->
-                    <a href="${dashboard_url}/docent-help/">
+                    <a href="${dashboard_url}/help/">
                         <img src="${portal_url}/++plone++DocentIMS.ActionItems/icons//help_icon.png" />
                         <br/>
                 Help 
@@ -474,7 +474,7 @@ Mode
                 </div>
                 <label class="toolbar_label">
                     <!-- <a href="${portal_url}/feedback/++add++feedback">Feedback</a>  -->
-                    <a href="${dashboard_url}/docent-help/">Help</a>
+                    <a href="${dashboard_url}/help/">Help</a>
                 </label>
 
             </div>
