@@ -39,7 +39,7 @@ class SendEmail(Service):
         # sender_from_address = data.get("from", None)
         # sender_from_address = 'espen@medialog.no'
         # message = data.get("message", None)
-        message = 'Attatched is a file'
+        message = file_url
         # sender_fullname = data.get("name", "")
         sender_fullname = 'Docent IMS'
         # subject = data.get("subject", "")
