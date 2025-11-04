@@ -294,8 +294,6 @@ def user_created_handler(event):
                         )
                     
                     
-                    import pdb; pdb.set_trace()
-                    
                     if added_user.status_code == 200 or added_user.status_code == 201:
                         api.portal.show_message(message='User was added to Dashboard site',type='info')    
                     elif added_user.status_code == 400 or added_user.status_code != 401:
