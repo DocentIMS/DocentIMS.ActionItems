@@ -66,7 +66,7 @@ class ToolBarViewlet(ViewletBase):
     def get_full_name(self):
         return api.user.get_current().getProperty('fullname')
     
-    @memoize
+    # @memoize
     def get_returning(self):
         if api.user.get_current().id == 'admin':
             return 1

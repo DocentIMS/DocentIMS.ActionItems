@@ -293,14 +293,17 @@ def user_created_handler(event):
                             })
                         )
                     
+                    
                     import pdb; pdb.set_trace()
+                    
                     if added_user.status_code == 200 or added_user.status_code == 201:
                         api.portal.show_message(message='User was added to Dashboard site',type='info')    
-                    elif added_user.status_code != 500 or added_user.status_code != 501:
-                        # User probabaly exists already
-                        # Maybe we want to update info                        
-                        api.portal.show_message(message='User was not added/updated to Dashboard Site. Check password in control panel', type='error')                         
+                    elif added_user.status_code == 400 or added_user.status_code != 401:
+                        ok = 1
+                        ## api.portal.show_message(message='User was not added/updated to Dashboard Site. Check password in control panel', type='error')                         
                     else:
+                        # User probabaly exists already
+                        # Maybe we want to update info  PATCH
                         # Do nothing, probably
                         ok = 1
                         # api.portal.show_message(message='User was not added to Dashboard Site. Check password in control panel', type='error')
@@ -310,7 +313,7 @@ def user_created_handler(event):
             pass   
         
     except requests.exceptions.SSLError:
-            api.portal.show_message(message='User was not added to Dashboard Site. SSH Certificate on Docent needs revival',type='error')
+            api.portal.show_message(message='User was not added to Dashboard Site. SSH Certificate on Docent needs revival.',type='error')
         
     #     return True
     
