@@ -13,6 +13,11 @@ from smtplib import SMTPException
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.interface import alsoProvides
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
+from Products.CMFPlone.utils import safe_unicode
+import requests
 import plone
 import json
 
@@ -26,53 +31,37 @@ except ImportError:
     from email import message_from_string
 
 class SendEmail(Service):
-    
-    # def __call__(self):
-    #     import pdb; pdb.set_trace()
-    #     a= 1
-        
     def reply(self):
-        # import pdb; pdb.set_trace()
         data = json_body(self.request)
-        send_to_address = data.get("to", None)
-        file_url = data.get("fileUrl", None)
-        # sender_from_address = data.get("from", None)
-        # sender_from_address = 'espen@medialog.no'
-        # message = data.get("message", None)
-        message = file_url
-        # sender_fullname = data.get("name", "")
+        send_to_address = data.get("to")
+        file_url = data.get("fileUrl")
         sender_fullname = 'Docent IMS'
-        # subject = data.get("subject", "")
-        subject = file_url
+        subject = file_url or "File from Docent IMS"
+        message_body = f"Here is the file you requested: {file_url}"
 
         if not send_to_address:
             self.request.response.setStatus(400)
-            return dict(
-                error=dict(
-                    type="BadRequest",
-                    message='Missing "to", "from" or "message" parameters',
-                )
-            )
+            return dict(error=dict(
+                type="BadRequest",
+                message='Missing "to" parameter.'
+            ))
 
         overview_controlpanel = getMultiAdapter(
             (self.context, self.request), name="overview-controlpanel"
         )
         if overview_controlpanel.mailhost_warning():
             self.request.response.setStatus(400)
-            return dict(
-                error=dict(type="BadRequest", message="MailHost is not configured.")
-            )
+            return dict(error=dict(
+                type="BadRequest",
+                message="MailHost is not configured."
+            ))
 
         sm = getSecurityManager()
-        if not sm.checkPermission(use_mailhost_services, self.context):
+        if not sm.checkPermission("plone.app.controlpanel.MailHost: UseMailHostServices", self.context):
             pm = getToolByName(self.context, "portal_membership")
-            if bool(pm.isAnonymousUser()):
-                self.request.response.setStatus(401)
-                error_type = "Unauthorized"
-            else:
-                self.request.response.setStatus(403)
-                error_type = "Forbidden"
-            return dict(error=dict(type=error_type, message=message))
+            error_type = "Unauthorized" if pm.isAnonymousUser() else "Forbidden"
+            self.request.response.setStatus(401 if error_type == "Unauthorized" else 403)
+            return dict(error=dict(type=error_type, message="Access denied."))
 
         # Disable CSRF protection
         if "IDisableCSRFProtection" in dir(plone.protect.interfaces):
@@ -83,52 +72,42 @@ class SendEmail(Service):
         from_address = mail_settings.email_from_address
         encoding = registry.get("plone.email_charset", "utf-8")
         host = getToolByName(self.context, "MailHost")
-        registry = getUtility(IRegistry)
+
         site_settings = registry.forInterface(ISiteSchema, prefix="plone", check=False)
-        portal_title = site_settings.site_title
+        portal_title = site_settings.site_title or "Plone Site"
 
-        if not subject:
-            if not sender_fullname:
-                subject = self.context.translate(
-                    _(
-                        "A portal user via ${portal_title}",
-                        mapping={"portal_title": portal_title},
-                    )
-                )
-            else:
-                subject = self.context.translate(
-                    _(
-                        "${sender_fullname} via ${portal_title}",
-                        mapping={
-                            "sender_fullname": sender_fullname,
-                            "portal_title": portal_title,
-                        },
-                    )
-                )
+        # --- Create MIME email ---
+        msg = MIMEMultipart()
+        msg["From"] = from_address
+        msg["To"] = send_to_address
+        msg["Subject"] = safe_unicode(subject)
+        msg.attach(MIMEText(message_body, "plain", encoding))
 
-        # message_intro = self.context.translate(
-        #     _(
-        #         "You are receiving this mail because ${sender_fullname} sent this message via the site ${portal_title}:",  # noqa
-        #         mapping={
-        #             "sender_fullname": sender_fullname or "a portal user",
-        #             "portal_title": portal_title,
-        #         },
-        #     )
-        # )
+        # --- Try to attach file from URL ---
+        if file_url:
+            try:
+                response = requests.get(file_url)
+                response.raise_for_status()
+                filename = file_url.split("/")[-1] or "attachment"
+                part = MIMEApplication(response.content)
+                part.add_header("Content-Disposition", f'attachment; filename="{filename}"')
+                msg.attach(part)
+            except Exception as e:
+                return dict(error=dict(
+                    type="AttachmentError",
+                    message=f"Could not fetch file from {file_url}: {e}"
+                ))
 
-        # message = f"{message_intro} \n {message}"
-
-        message = message_from_string(message)
-        message["Reply-To"] = from_address
+        # --- Send via MailHost ---
         try:
             host.send(
-                message,
-                send_to_address,
-                from_address,
-                subject=subject,
+                msg.as_string(),
+                mto=send_to_address,
+                mfrom=from_address,
+                subject=safe_unicode(subject),
                 charset=encoding,
             )
-
+        
         except (SMTPException, RuntimeError):
             plone_utils = getToolByName(self.context, "plone_utils")
             exception = plone_utils.exceptionString()

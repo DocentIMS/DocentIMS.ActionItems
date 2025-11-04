@@ -79,35 +79,36 @@
                         </a>
                       </tal:condition>
 
-                      <!-- Modal -->
-                      <div class="modal fade" id="emailDialog" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content p-3">
-                            <div class="modal-header">
-                              <h5 class="modal-title">Send file by email</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-                              <form id="emailForm">
-                                <div class="mb-3">
-                                  <label for="emailRecipients" class="form-label">Recipient email(s)</label>
-                                  <input type="text" class="form-control" id="emailRecipients" name="recipients" 
-                                    placeholder="e.g. user@example.com, another@example.com" required />
+
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </fieldset>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="emailDialog" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content p-3">
+              <div class="modal-header">
+                <h5 class="modal-title">Send file by email</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <form id="emailForm">
+                  <div class="mb-3">
+                    <label for="emailRecipients" class="form-label">Recipient email(s)</label>
+                    <input type="text" class="form-control" id="emailRecipients" name="recipients" placeholder="e.g. user@example.com, another@example.com" required />
 </div>
 <input type="hidden" name="file_url" id="fileUrl">
-                                    <button type="submit" class="btn btn-primary">Send Email</button>
-                                  </form>
-                                  <div id="emailStatus" class="mt-3"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-
-                      </tr>
-                    </tbody>
-                  </table>
-                </fieldset>
+                      <button type="submit" class="btn btn-primary">Send Email</button>
+                    </form>
+                    <div id="emailStatus" class="mt-3"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -127,6 +128,7 @@
             e.preventDefault();
             const recipients = $('#emailRecipients').val();
             const fileUrl = $('#fileUrl').val();
+            alert(fileUrl);
             $.ajax({
               url: '@send_email',
               type: 'POST',
