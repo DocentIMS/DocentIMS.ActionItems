@@ -2,16 +2,13 @@
   xmlns="http://namespaces.zope.org/zope"
   xmlns:plone="http://namespaces.plone.org/plone">
 
-  <adapter factory=".get.SendEmail" name="send_email"/>
-
   <plone:service
     method="POST"
-    for="zope.interface.Interface"
+    for="*"
     factory=".get.SendEmail"
     name="@send_email"
     permission="zope2.View"
     />
-
 
 
 </configure>

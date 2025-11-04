@@ -5,7 +5,7 @@
     i18n_domain="DocentIMS.ActionItems">
 
   <!-- -*- extra stuff goes here -*- -->
-   <!-- <include package=".send_email" /> -->
+   <include package=".send_email" />
   <include package=".item_count" />
   <include package=".workflow_info" />
   <include package=".my_email" />

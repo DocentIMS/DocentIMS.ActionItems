@@ -14,6 +14,7 @@ from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.interface import alsoProvides
 import plone
+import json
 
 
 try:
@@ -25,16 +26,25 @@ except ImportError:
     from email import message_from_string
 
 class SendEmail(Service):
+    
+    # def __call__(self):
+    #     import pdb; pdb.set_trace()
+    #     a= 1
+        
     def reply(self):
+        # import pdb; pdb.set_trace()
         data = json_body(self.request)
-
         send_to_address = data.get("to", None)
-        sender_from_address = data.get("from", None)
-        message = data.get("message", None)
-        sender_fullname = data.get("name", "")
-        subject = data.get("subject", "")
+        # sender_from_address = data.get("from", None)
+        # sender_from_address = 'espen@medialog.no'
+        # message = data.get("message", None)
+        message = 'Attatched is a file'
+        # sender_fullname = data.get("name", "")
+        sender_fullname = 'Docent IMS'
+        # subject = data.get("subject", "")
+        subject = 'Docent File'
 
-        if not send_to_address or not sender_from_address or not message:
+        if not send_to_address:
             self.request.response.setStatus(400)
             return dict(
                 error=dict(
@@ -108,7 +118,7 @@ class SendEmail(Service):
         # message = f"{message_intro} \n {message}"
 
         message = message_from_string(message)
-        message["Reply-To"] = sender_from_address
+        message["Reply-To"] = from_address
         try:
             host.send(
                 message,

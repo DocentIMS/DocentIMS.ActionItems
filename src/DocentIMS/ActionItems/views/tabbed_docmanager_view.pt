@@ -127,7 +127,7 @@
             const recipients = $('#emailRecipients').val();
             const fileUrl = $('#fileUrl').val();
             $.ajax({
-              url: '/@@send_email',
+              url: '@send_email',
               type: 'POST',
               headers: {
                 'Accept': 'application/json',
