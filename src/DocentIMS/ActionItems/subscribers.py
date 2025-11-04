@@ -1,49 +1,31 @@
 # -*- coding: utf-8 -*-
 
-from plone import api
 # from plone.app.textfield import RichText
 # from zope.i18nmessageid import MessageFactory
-import transaction
 # from zope.interface import alsoProvides
 # from zope.interface import directlyProvides
-from zope.interface import Interface
-from zope.lifecycleevent import IObjectModifiedEvent
-from zope.lifecycleevent import IObjectModifiedEvent
-import requests
-import string
-import random
-import json
-import base64
+
+from plone import api
+from plone import api
 from plone.api import content
 from plone.api.exc import InvalidParameterError
-
-
-
-from DocentIMS.ActionItems.interfaces import IDocentimsSettings
-
-
-# from zope.lifecycleevent import IObjectAddedEvent"
-#from zope.schema.interfaces import IContextSourceBinder
-# from zope.schema.interfaces import  InvalidValue
-# from AccessControl import Unauthorized
+# from Products.PluggableAuthService.events import PropertiesUpdated
 from Products.statusmessages.interfaces import IStatusMessage
-from datetime import datetime
-
-# import transaction
-# from zope.container.contained import notifyContainerModified
-# from zope.event import notify
-
 from zExceptions import Redirect
-from zope.component import getMultiAdapter
-
 from zope.component import adapter
+from zope.component import getMultiAdapter
+from zope.interface import Interface
+from zope.lifecycleevent import IObjectModifiedEvent
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
-# from zope.interface import alsoProvides
-
+import base64
+import json
+import random
+import requests
+import string
+import transaction
+from datetime import datetime
 from DocentIMS.ActionItems.behaviors.auto_publish_behavior import IAutoPublishBehavior
-from plone import api
-
-        
+from DocentIMS.ActionItems.interfaces import IDocentimsSettings
 
 
 @adapter(IAutoPublishBehavior, IObjectAddedEvent)
@@ -284,44 +266,51 @@ def save_note(object, event):
 def user_created_handler(event):
     """Handles a new user creation."""
     try:
-        dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'
-        site_url = dashboard_url + "/++api++/@users"
-        user = event.object
-        email  = user.getProperty('email', None)
-        
-        # Create a new user on dashboard site
-        if email:
-            basik =  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
-            username = user.getUserName()
-            fullname = user.getProperty('fullname')
-            if fullname:
-                password = ''.join(random.choices(string.ascii_letters, k=27))     
-                
-                added_user = requests.post(
-                        site_url,
-                        headers={
-                            'Content-Type': 'application/json',
-                            'Authorization': f'Basic {basik}'
-                        },
-                        data = json.dumps({
-                            'email': email,
-                            'password': password,
-                            'fullname': fullname,
-                            'roles': ['Member'] 
-                        })
-                    )
-                
-                if added_user.status_code == 200 or added_user.status_code == 201:
-                    api.portal.show_message(message='User was added to Dashboard site',type='info')                   
-                else:
-                    api.portal.show_message(message='User was not added to Dashboard Site. Check password in control panel', type='error')
+            dashboard_url = api.portal.get_registry_record('dashboard_url', interface=IDocentimsSettings) or 'https://dashboard.docentims.com'
+            site_url = dashboard_url + "/++api++/@users"
+            user = event.object
+            email  = user.getProperty('email', None)
+            
+            # Create a new user on dashboard site
+            if email:
+                basik =  api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
+                username = user.getUserName()
+                fullname = user.getProperty('fullname')
+                if fullname:
+                    password = ''.join(random.choices(string.ascii_letters, k=27))     
                     
+                    added_user = requests.post(
+                            site_url,
+                            headers={
+                                'Content-Type': 'application/json',
+                                'Authorization': f'Basic {basik}'
+                            },
+                            data = json.dumps({
+                                'email': email,
+                                'password': password,
+                                'fullname': fullname,
+                                'roles': ['Member'] 
+                            })
+                        )
+                    
+                    import pdb; pdb.set_trace()
+                    if added_user.status_code == 200 or added_user.status_code == 201:
+                        api.portal.show_message(message='User was added to Dashboard site',type='info')    
+                    elif added_user.status_code != 500 or added_user.status_code != 501:
+                        # User probabaly exists already
+                        # Maybe we want to update info                        
+                        api.portal.show_message(message='User was not added/updated to Dashboard Site. Check password in control panel', type='error')                         
+                    else:
+                        # Do nothing, probably
+                        ok = 1
+                        # api.portal.show_message(message='User was not added to Dashboard Site. Check password in control panel', type='error')
+                        
     except KeyError:
-        api.portal.show_message(message='User was not added to Dashboard Site. Check password in control panel',type='warning')
-        pass   
-    
+            api.portal.show_message(message='User was not added to Dashboard Site. Check password in control panel.',type='warning')
+            pass   
+        
     except requests.exceptions.SSLError:
-        api.portal.show_message(message='User was not added to Dashboard Site. SSH Certificate on Docent needs revival',type='error')
+            api.portal.show_message(message='User was not added to Dashboard Site. SSH Certificate on Docent needs revival',type='error')
         
     #     return True
     
