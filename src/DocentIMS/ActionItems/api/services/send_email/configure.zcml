@@ -4,11 +4,10 @@
 
   <plone:service
     method="POST"
-    for="*"
+    for="Products.CMFCore.interfaces.ISiteRoot"
     factory=".get.SendEmail"
     name="@send_email"
     permission="zope2.View"
     />
-
 
 </configure>

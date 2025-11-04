@@ -35,6 +35,7 @@ class SendEmail(Service):
         # import pdb; pdb.set_trace()
         data = json_body(self.request)
         send_to_address = data.get("to", None)
+        file_url = data.get("fileUrl", None)
         # sender_from_address = data.get("from", None)
         # sender_from_address = 'espen@medialog.no'
         # message = data.get("message", None)
@@ -42,7 +43,7 @@ class SendEmail(Service):
         # sender_fullname = data.get("name", "")
         sender_fullname = 'Docent IMS'
         # subject = data.get("subject", "")
-        subject = 'Docent File'
+        subject = file_url
 
         if not send_to_address:
             self.request.response.setStatus(400)
