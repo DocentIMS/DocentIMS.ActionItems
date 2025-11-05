@@ -101,7 +101,7 @@
                 <form id="emailForm">
                   <div class="mb-3">
                     <label for="emailRecipients" class="form-label">Recipient email(s)</label>
-                    <input type="text" class="form-control" id="emailRecipients" name="recipients" placeholder="e.g. user@example.com, another@example.com" required />
+                    <input type="email" class="form-control" id="emailRecipients" name="recipients" placeholder="e.g. user@example.com, another@example.com" required />
 </div>
 <input type="hidden" name="file_uid" id="fileUid">
                       <button type="submit" class="btn btn-primary">Send Email</button>
