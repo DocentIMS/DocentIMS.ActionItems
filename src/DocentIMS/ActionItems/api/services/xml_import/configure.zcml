@@ -2,14 +2,13 @@
   xmlns="http://namespaces.zope.org/zope"
   xmlns:plone="http://namespaces.plone.org/plone">
 
-  <adapter factory=".get.XmlImport" name="xml_import"/>
-
   <plone:service
-    method="GET"
-    for="zope.interface.Interface"
-    factory=".get.XmlImportGet"
+    method="POST"
+    for="Products.CMFCore.interfaces.ISiteRoot"
+    factory=".get.XmlImport"
     name="@xml_import"
-    permission="zope2.View"
+    permission="cmf.ManagePortal"
     />
+
 
 </configure>

@@ -1,61 +1,40 @@
-# -*- coding: utf-8 -*-
-from plone import api
-from plone.restapi.interfaces import IExpandableElement
-from plone.restapi.services import Service
-from zope.component import adapter
-from zope.interface import Interface
-from zope.interface import implementer
+    # -*- coding: utf-8 -*-
+    from plone import api
+    from plone.restapi.services import Service
+    from Products.CMFCore.utils import getToolByName
+    from Products.CMFCore.exportimport.catalog import importCatalogTool
+    from Products.GenericSetup.context import SnapshotImportContext
+    from io import BytesIO
+
+    # from plone.protect.interfaces import IDisableCSRFProtection
+    # from zope.interface import alsoProvides
 
 
-@implementer(IExpandableElement)
-@adapter(Interface, Interface)
-class XmlImport(object):
+    class XmlImport(Service):
+        def reply(self):
+            # alsoProvides(self.request, IDisableCSRFProtection)
+            xml_data = b"""\
+                <?xml version="1.0"?>
+                <object name="portal_catalog" meta_type="Plone Catalog Tool">
+                <index name="my_index" meta_type="FieldIndex" />
+                </object>
+            """
 
-    def __init__(self, context, request):
-        self.context = context.aq_explicit
-        self.request = request
+            portal = api.portal.get()
+            setup = getToolByName(portal, "portal_setup")
 
-    def __call__(self, expand=False):
-        result = {
-            'xml_import': {
-                '@id': '{}/@xml_import'.format(
-                    self.context.absolute_url(),
-                ),
-            },
-        }
-        if not expand:
-            return result
+            # Create a fake import context that returns our XML
+            class InlineImportContext(SnapshotImportContext):
+                def readDataFile(self, filename):
+                    if filename == "catalog.xml":
+                        return xml_data
+                    return None
 
-        # === Your custom code comes here ===
+            context = InlineImportContext(setup, "utf-8")
+            importCatalogTool(context)  # now only one argument
 
-        # Example:
-        try:
-            subjects = self.context.Subject()
-        except Exception as e:
-            print(e)
-            subjects = []
-        query = {}
-        query['portal_type'] = "Document"
-        query['Subject'] = {
-            'query': subjects,
-            'operator': 'or',
-        }
-        brains = api.content.find(**query)
-        items = []
-        for brain in brains:
-            # obj = brain.getObject()
-            # parent = obj.aq_inner.aq_parent
-            items.append({
-                'title': brain.Title,
-                'description': brain.Description,
-                '@id': brain.getURL(),
-            })
-        result['xml_import']['items'] = items
-        return result
-
-
-class XmlImportGet(Service):
-
-    def reply(self):
-        service_factory = XmlImport(self.context, self.request)
-        return service_factory(expand=True)['xml_import']
+            self.request.response.setStatus(200)
+            return {
+                "status": "success",
+                "message": "Catalog XML imported from inline data."
+            }
