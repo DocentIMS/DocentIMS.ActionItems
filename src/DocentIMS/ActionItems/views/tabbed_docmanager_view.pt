@@ -73,7 +73,7 @@
                     </td> -->
                     <td>
                       <tal:condition tal:condition="item/file|None">
-                        <a href="#" class="open-email-dialog" data-item-url="${item/absolute_url}" title="Send">
+                        <a href="#" class="open-email-dialog" data-item-uid="${item/UID}" title="Send">
                           <img src="++plone++DocentIMS.ActionItems/icons/envelope-arrow-up.svg" alt="email icon" width="25" height="25"/>
     Send
                         </a>
@@ -103,7 +103,7 @@
                     <label for="emailRecipients" class="form-label">Recipient email(s)</label>
                     <input type="text" class="form-control" id="emailRecipients" name="recipients" placeholder="e.g. user@example.com, another@example.com" required />
 </div>
-<input type="hidden" name="file_url" id="fileUrl">
+<input type="hidden" name="file_uid" id="fileUid">
                       <button type="submit" class="btn btn-primary">Send Email</button>
                     </form>
                     <div id="emailStatus" class="mt-3"></div>
@@ -117,8 +117,8 @@
           // When the send link is clicked
           $('.open-email-dialog').on('click', function(e) {
             e.preventDefault();
-            const fileUrl = $(this).data('item-url');
-            $('#fileUrl').val(fileUrl);
+            const fileUid = $(this).data('item-uid');
+            $('#fileUid').val(fileUid);
             $('#emailStatus').text('');
             $('#emailDialog').modal('show');
           });
@@ -127,8 +127,7 @@
           $(document).on('submit', '#emailForm', function(e) {
             e.preventDefault();
             const recipients = $('#emailRecipients').val();
-            const fileUrl = $('#fileUrl').val();
-            alert(fileUrl);
+            const fileUid = $('#fileUid').val();
             $.ajax({
               url: '@send_email',
               type: 'POST',
@@ -138,7 +137,7 @@
               },
               data: JSON.stringify({
                 to: recipients,         
-                fileurl: fileUrl,     // URL of file 
+                fileUid: fileUid,     // Uid of content item 
               }),
               success: function(response) {
                 console.log(response);

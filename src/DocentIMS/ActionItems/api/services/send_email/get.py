@@ -19,6 +19,7 @@ from email.mime.application import MIMEApplication
 from Products.CMFPlone.utils import safe_unicode
 import requests
 import plone
+from plone import api
 import json
 
 
@@ -34,10 +35,12 @@ class SendEmail(Service):
     def reply(self):
         data = json_body(self.request)
         send_to_address = data.get("to")
-        file_url = data.get("fileUrl")
+        uid = data.get("fileUid")
         sender_fullname = 'Docent IMS'
-        subject = file_url or "File from Docent IMS"
-        message_body = f"Here is the file you requested: {file_url}"
+        item = api.content.get(UID=uid)
+        subject = item.Title() or "File from Docent IMS"
+        item_url = item.absolute_url()
+        message_body = f"The file you requested: {item_url} \n\n"
 
         if not send_to_address:
             self.request.response.setStatus(400)
@@ -84,19 +87,28 @@ class SendEmail(Service):
         msg.attach(MIMEText(message_body, "plain", encoding))
 
         # --- Try to attach file from URL ---
-        if file_url:
-            try:
-                response = requests.get(file_url)
-                response.raise_for_status()
-                filename = file_url.split("/")[-1] or "attachment"
-                part = MIMEApplication(response.content)
-                part.add_header("Content-Disposition", f'attachment; filename="{filename}"')
-                msg.attach(part)
-            except Exception as e:
-                return dict(error=dict(
-                    type="AttachmentError",
-                    message=f"Could not fetch file from {file_url}: {e}"
-                ))
+        try:
+            # Get the file field
+            file_field = getattr(item, "file", None)
+            if not file_field or not getattr(file_field, "data", None):
+                raise ValueError("Item has no file data")
+
+            file_data = file_field.data
+            filename = getattr(file_field, "filename", item.getId()) or "attachment"
+
+            # Create MIME attachment
+            part = MIMEApplication(file_data)
+            part.add_header(
+                "Content-Disposition",
+                f'attachment; filename="{filename}"'
+            )
+            msg.attach(part)
+        
+        except Exception as e:
+            return dict(error=dict(
+                type="AttachmentError",
+                message=f"Could not fetch file from {item_url}: {e}"
+            ))
 
         # --- Send via MailHost ---
         try:
