@@ -21,6 +21,8 @@ import requests
 import plone
 from plone import api
 import json
+from io import BytesIO
+from docx import Document
 
 
 try:
@@ -95,6 +97,22 @@ class SendEmail(Service):
 
             file_data = file_field.data
             filename = getattr(file_field, "filename", item.getId()) or "attachment"
+            if filename.lower().endswith(".docx"):
+                try:
+                    doc = Document(BytesIO(file_data))
+                    props = doc.core_properties
+                    props.title = item.Title() or "File from Docent IMS"
+                    props.author = "Docent IMS"
+                    props.subject = "Requested document"
+                    props.keywords = "Plone, Docent IMS"
+
+                    buffer = BytesIO()
+                    doc.save(buffer)
+                    file_data = buffer.getvalue()
+                except Exception as e:
+                    # You can safely log or ignore metadata errors
+                    pass
+            
 
             # Create MIME attachment
             part = MIMEApplication(file_data)
