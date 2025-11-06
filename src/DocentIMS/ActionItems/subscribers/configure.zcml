@@ -83,10 +83,17 @@
         /-->
 
 
+  <!-- Change word properties -->
   <subscriber for="plone.dexterity.interfaces.IDexterityContent
-                   zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-              handler=".set_word_properties.handler"
-              />
+                   zope.lifecycleevent.interfaces.IObjectAddedEvent"
+        handler=".set_word_properties.handler"
+        />
+
+  <subscriber 
+        for="plone.dexterity.interfaces.IDexterityContent
+             zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+        handler=".set_word_properties.handler"
+        />
 
 
 </configure>
