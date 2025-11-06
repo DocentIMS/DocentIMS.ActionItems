@@ -61,17 +61,6 @@
       name="User Logged in first time"
       />
 
-  <!-- Subscriber for user created // Currently this is hanging site !-->
-  <subscriber
-    for="Products.PluggableAuthService.interfaces.events.IPropertiesUpdatedEvent"
-    handler=".subscribers.user_created_handler"
-  />  
-
-  <!-- <subscriber
-    for="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
-    handler=".handlers.user_logged_in_first"
-    />
- -->
  
  
 
@@ -162,78 +151,7 @@
       name="DocentIMS.ActionItems-hiddenprofiles"
       />
 
-
-
-
-<!-- AUTO PUBLISH subscriber -->
-<subscriber
-    for="DocentIMS.ActionItems.behaviors.auto_publish_behavior.IAutoPublishBehavior
-        zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    handler=".subscribers.auto_publish_on_add" />
-
-
-
-<!-- Add meeting subtypes after creation -->
-  <subscriber
-    for="Products.CMFCore.interfaces.IFolderish        
-        zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    handler=".subscribers.add_meeting_types"
-    />
-
-<!-- Change UUID after creation -->
-  <subscriber
-    for="Products.CMFCore.interfaces.IFolderish        
-        zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    handler=".subscribers.change_uuid"
-    />
-
-<!-- Change POST IT NOTE title after creation -->
-  <subscriber
-    for="plone.dexterity.content.Item       
-        zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    handler=".subscribers.change_title"
-    />
-
-
-<!-- Disable deletion of default page -->
-  <subscriber
-    for="*       
-        zope.lifecycleevent.interfaces.IObjectRemovedEvent"
-        handler=".subscribers.check_defaultpage"
-    />
-    
-
-  <!-- <subscriber
-    for="Products.CMFCore.interfaces.IFolderish        
-        zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-    handler=".subscribers.remove_description"
-    /> -->
-
-<!-- to do find registration for right thing-->
-  <subscriber
-    for="Products.CMFCore.interfaces.IFolderish        
-        zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-    handler=".subscribers.save_note"
-    />
-   
-<!-- to do find registration for right thing-->
-  <subscriber
-    for="Products.CMFCore.interfaces.IFolderish        
-        zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-    handler=".subscribers.close_task"
-    />
-   
-
-
-
-
-
-    <!-- subscriber for the 'Last state' transaction -->
-  <!--subscriber
-    for="*
-        Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-    handler=".subscribers.last_state"
-    /-->
+ 
 
     <!-- Adapter for mail so we can sent mail to 'owner' -->
     <!-- for use in the 'mail content rules '-->
