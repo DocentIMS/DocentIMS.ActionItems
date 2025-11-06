@@ -97,7 +97,8 @@ class SendEmail(Service):
 
             file_data = file_field.data
             filename = getattr(file_field, "filename", item.getId()) or "attachment"
-            if filename.lower().endswith(".docx"):
+            if file_field and getattr(file_field, "contentType", None) == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' :
+            # if filename.lower().endswith(".docx"):
                 try:
                     doc = Document(BytesIO(file_data))
                     props = doc.core_properties

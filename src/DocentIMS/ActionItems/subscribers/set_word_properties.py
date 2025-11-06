@@ -17,6 +17,7 @@ def handler(obj, event):
                 doc = Document(BytesIO(file_data))
                 props = doc.core_properties
                 props.subject = obj.absolute_url()
+                # props.came_from = obj.absolute_url()
                 buffer = BytesIO()
                 doc.save(buffer)
                 obj.file.data = buffer.getvalue()

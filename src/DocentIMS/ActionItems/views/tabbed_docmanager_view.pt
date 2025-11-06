@@ -141,7 +141,7 @@
               }),
               success: function(response) {
                 console.log(response);
-                $('#emailStatus').html('<div class="alert alert-success">Email sent successfully!</div>');
+                $('#emailStatus').html('<div class="alert alert-success">Email sent</div>');
               },
               error: function(xhr) {
                 console.error(xhr.responseText);
