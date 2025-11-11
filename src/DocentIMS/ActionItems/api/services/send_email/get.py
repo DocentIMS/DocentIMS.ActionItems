@@ -103,8 +103,6 @@ class SendEmail(Service):
                     doc = Document(BytesIO(file_data))
                     props = doc.core_properties
                     props.title = item.Title() or "File from Docent IMS"
-                    props.author = "Docent IMS"
-                    props.subject = "Requested document"
                     props.keywords = "Plone, Docent IMS"
 
                     buffer = BytesIO()
