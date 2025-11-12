@@ -221,36 +221,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   const select = document.querySelector('#customSelect');
-  const selected = select.querySelector('.selected');
-  const optionsContainer = select.querySelector('.options');
+  if (select) {
+    const selected = select.querySelector('.selected');
+    const optionsContainer = select.querySelector('.options');
 
-  // Toggle dropdown open/close
-  selected.addEventListener('click', () => {
-    optionsContainer.style.display =
-      optionsContainer.style.display === 'block' ? 'none' : 'block';
-  });
 
-  // Handle option selection
-  optionsContainer.querySelectorAll('.option').forEach(opt => {
-    opt.addEventListener('click', () => {
-      const value = opt.dataset.value;
-
-      // Update visible selection
-      selected.querySelector('span').textContent = opt.textContent.trim();
-      selected.dataset.value = value;
-      optionsContainer.style.display = 'none';
-
-      // 🔽 Your original redirect logic
-      if (value === "create_meeting") {
-        window.location.href = portalUrl + "/meetings/++add++meeting";
-      } else if (value === "your_meetings") {
-        document.querySelectorAll('#meeting_select a').forEach(a =>
-          a.classList.toggle("greyed")
-        );
-        window.location.href = portalUrl + "/meetings/meeting-collection";
-      }
+    // Toggle dropdown open/close
+    selected.addEventListener('click', () => {
+      optionsContainer.style.display =
+        optionsContainer.style.display === 'block' ? 'none' : 'block';
     });
-  });
+
+
+    // Handle option selection
+    optionsContainer.querySelectorAll('.option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const value = opt.dataset.value;
+
+        // Update visible selection
+        selected.querySelector('span').textContent = opt.textContent.trim();
+        selected.dataset.value = value;
+        optionsContainer.style.display = 'none';
+
+        // 🔽 Your original redirect logic
+        if (value === "create_meeting") {
+          window.location.href = portalUrl + "/meetings/++add++meeting";
+        } else if (value === "your_meetings") {
+          document.querySelectorAll('#meeting_select a').forEach(a =>
+            a.classList.toggle("greyed")
+          );
+          window.location.href = portalUrl + "/meetings/meeting-collection";
+        }
+      });
+    });
+  }
 
   // Close dropdown if clicking outside
   document.addEventListener('click', (e) => {
@@ -303,8 +307,15 @@ document.addEventListener("DOMContentLoaded", function () {
       toggleFields();
     });
   });
-  
-  $(document).on('focusin', '.datagridwidget-row select', function() {
+
+  $(document).on('focusin', '.datagridwidget-row select', function () {
+    // IDs to skip (without the leading '#')
+    // Skip any select whose ID contains these substrings
+    const skipPatterns = ['meeting_frequency', 'meeting_contact'];
+
+    // Check if the current select's ID matches any of the skip patterns
+    if (skipPatterns.some(pattern => this.id.includes(pattern))) return;
+
     const $currentSelect = $(this);
     const $cell = $currentSelect.closest('.datagridwidget-cell');
 
@@ -317,18 +328,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Limit search to selects inside datagridwidget-cells with the same "cell-X" class
     const selectedValues = [];
 
-    $(`.${cellClass} select`).not($currentSelect).each(function() {
+    $(`.${cellClass} select`).not($currentSelect).each(function () {
       const val = $(this).val();
       if (val) selectedValues.push(val);
     });
 
     // Re-enable all options first
-    $currentSelect.find('option').each(function() {
+    $currentSelect.find('option').each(function () {
       $(this).prop('disabled', false).show();
     });
 
     // Disable/hide already selected options
-    $currentSelect.find('option').each(function() {
+    $currentSelect.find('option').each(function () {
       if (selectedValues.includes($(this).val())) {
         $(this).prop('disabled', true).hide(); // use .show() if you prefer visible but disabled
       }
@@ -336,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Keep selects in same cell class synced on change
-  $(document).on('change', '.datagridwidget-row select', function() {
+  $(document).on('change', '.datagridwidget-row select', function () {
     const $cell = $(this).closest('.datagridwidget-cell');
     const classes = $cell.attr('class').split(/\s+/);
     const cellClass = classes.find(c => c.startsWith('cell-'));
