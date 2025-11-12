@@ -4,10 +4,10 @@
 
 
     <!-- Subscriber for user created // Currently this is hanging site !-->
-    <subscriber
+    <!-- <subscriber
         for="Products.PluggableAuthService.interfaces.events.IPropertiesUpdatedEvent"
         handler=".subscribers.user_created_handler"
-    />  
+    />   -->
 
     <!-- <subscriber
         for="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
