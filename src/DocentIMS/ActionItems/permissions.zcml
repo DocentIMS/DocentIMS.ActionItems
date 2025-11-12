@@ -79,8 +79,9 @@
 
     <permission
         id="DocentIMS.ActionItems.AddMeeting"
-        title="DocentIMS.ActionItems: Add Meeting"
-    />
+        title="DocentIMS.ActionItems: Add Meeting">
+        <role name="Reader" />
+    </permission>
 
     <permission
         id="DocentIMS.ActionItems.AddCommandStatements"
