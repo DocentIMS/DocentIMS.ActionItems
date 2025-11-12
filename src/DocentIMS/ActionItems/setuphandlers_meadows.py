@@ -237,7 +237,7 @@ def pre_install(context):
     plone.api.group.create(groupname="can_add_meeting_minutes", title="Can Add Meeting Minutes", description="People allowed to add Minutes.  This is separate from users who can add meetings.  I expect the board to be able to add minutes, but only President allowed to add meeting.")
     # plone.api.group.create(groupname="can_add_documents", title="Can Add Documents", description="Top level control over who can add any document.")
     plone.api.group.create(groupname="can_add_meeting", title="Can Add Meetings", description="People allowed to add Meeting.  This is separate from users who can add agenda, minutes, etc.  I expect the board to be able to add minutes, but only President allowed to add meeting.")
-    
+    plone.api.group.grant_roles(groupname='can_add_meeting', roles=['Add Meeting'])
     
     
     #create content 

@@ -85,8 +85,8 @@
 
     <permission
         id="DocentIMS.ActionItems.AddCommandStatements"
-        title="DocentIMS.ActionItems: Add Command Statements"
-    />
+        title="DocentIMS.ActionItems: Add Command Statements">
+    </permission>
 
 
     <!-- <permission
