@@ -18,7 +18,7 @@
                 <legend> 
                 <!-- <img src="++plone++DocentIMS.ActionItems/icons/${python: folderitem.lower().replace(' ', '_')}.png" alt="meeting_icon" width="40" height="40"/> -->
                ${folderitem}</legend>
-                <img src="++plone++DocentIMS.ActionItems/icons/${python: folderitem.lower().replace(' ', '_')}.png" alt="meeting_icon" width="40" height="40"/>
+                <!-- <img src="++plone++DocentIMS.ActionItems/icons/${python: folderitem.lower().replace(' ', '_')}.png" alt="meeting_icon" width="40" height="40"/> -->
                
                 <div class="row xmb-5">
 
@@ -29,9 +29,12 @@
                     <div class="card h-100 w-25 sm-6 m-2" tal:repeat="item batch">
 
                       <div class="card-body">
+                      
 
                         <h5 class="card-title">
                           <a href="${item/getURL}">
+                          <img src="++plone++DocentIMS.ActionItems/icons/${python: folderitem.lower().replace(' ', '_')}.png" alt="meeting_icon" width="34" height="34"/>
+                          &nbsp;
                           ${item/Title}
                           </a>
                         </h5>
