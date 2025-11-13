@@ -24,7 +24,7 @@
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
-       <role name="Reader"/>
+      <role name="Reader"/>
     </permission>
 <!-- 
     <permission name="DocentIMS.ActionItems: Add Feedback" acquire="True">
