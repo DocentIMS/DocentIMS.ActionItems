@@ -407,7 +407,7 @@ columns on large screens */
 }
 
 }
-
+ 
 .card-big-shadow {
 	max-width: 620px;
 	position: relative;
@@ -594,6 +594,10 @@ a {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
+}
+
+.flex-start {
+	justify-content: flex-start !important;
 }
 
 #toolbar {

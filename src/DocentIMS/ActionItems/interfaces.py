@@ -658,6 +658,7 @@ class IDocentimsSettings(model.Schema):
     
     planning_project = schema.Bool(
         title=u"Is this a Planning Project?",
+        description=u"Leave off for Active Project",
         required=False,
         default=0,
     )

@@ -27,8 +27,6 @@ def get_content_types_and_workflows(portal_type):
 
     result = []
     
-    
-    
 
     # for name, fti in content_types:
     for c_type in content_types:
