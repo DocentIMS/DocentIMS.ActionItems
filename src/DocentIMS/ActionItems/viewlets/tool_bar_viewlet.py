@@ -173,7 +173,6 @@ class ToolBarViewlet(ViewletBase):
                         siteurl,
                         headers={
                             'Accept': 'application/json',
-                            'Content-Type': 'application/json',
                             'Authorization': f'Basic {basik}'                             
                         },
                         timeout=2,                    
