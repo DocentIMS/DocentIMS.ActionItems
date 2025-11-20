@@ -83,7 +83,6 @@ class ReindexView(BrowserView):
             old_urgency = brain.urgency
             object = brain.getObject()
             object.reindexObject(idxs=["daysleft", "urgency"])
-            #mport pdb; pdb.set_trace()
             if brain.urgency == old_urgency:
                 #Send email to user assigned 
                 if object.assigned_to:

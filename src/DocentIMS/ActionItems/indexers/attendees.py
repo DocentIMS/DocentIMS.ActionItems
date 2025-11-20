@@ -14,5 +14,4 @@
 # @indexer(IDocument)  # ADJUST THIS!
 # def attendees(obj):
 #     """Calculate and return the value for the indexer"""
-#     import pdb; pdb.set_trace()
 #     return obj.attendees

@@ -610,7 +610,6 @@ class MeetingCustomAddForm(DefaultAddForm):
                         
                     # if ids and ids != []: 
                     #     # self.widgets['IMeetingAttendees.attendees'].value  = ids
-                    #     import pdb; pdb.set_trace()
                     #     self.widgets['IMeetingAttendees.attendees'].value  = ";".join(set(ids))
                         
         # for group in self.groups:

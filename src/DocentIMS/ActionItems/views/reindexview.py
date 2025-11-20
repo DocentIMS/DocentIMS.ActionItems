@@ -93,9 +93,7 @@ class ReindexView(BrowserView):
             old_urgency = brain.urgency
             
             
-            #import pdb; pdb.set_trace;
             #if not hasattr(obj, 'urgency'):
-            #    import pdb; pdb.set_trace;
             #    obj.urgency = old_urgency
             
             if hasattr(obj, 'urgency'):

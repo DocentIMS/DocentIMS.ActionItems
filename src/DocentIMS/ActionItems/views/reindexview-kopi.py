@@ -35,7 +35,6 @@ class ReindexView(BrowserView):
 
     # def reindex(self):
     #     my_brains = self.context.portal_catalog(portal_type=['action_items', 'sow_analysis'])
-    #     import pdb; pdb.set_trace()
     #     storage = queryUtility(IRuleStorage)
     #     storage.items()
     #     #getRules()
@@ -49,8 +48,7 @@ class ReindexView(BrowserView):
     #         #     print(rule['title'])
     #         old_urgency = brain.urgency
     #         brain.getObject().reindexObject(idxs=["daysleft", "urgency"])
-    #         import pdb; pdb.set_trace()
-    #         rules = get_rules(brain)
+    #        rules = get_rules(brain)
     #         for rule in rules:
     #                 if rule.enabled and rule.isAvailable(brain):
     #                     execute(rule, brain)

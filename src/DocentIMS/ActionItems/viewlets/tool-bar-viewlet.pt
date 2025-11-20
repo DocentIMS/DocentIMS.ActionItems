@@ -27,8 +27,8 @@
         <div id="project_select">
 
             <div tal:define="sites view/get_sites|None; 
-                current_title view/site_title" tal:condition="sites">
-                <select id="project_select" name="project">
+                current_title view/site_title|None" tal:condition="sites">
+                <select id="project_select" name="project" tal:condition="sites">
                     <option value="select">${current_title}</option>
                     <tal:condition tal:condition="view/get_sites">
                         <tal:define tal:define="buttons python: sites['buttons']">
