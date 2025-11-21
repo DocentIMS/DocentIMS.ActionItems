@@ -166,16 +166,17 @@ class ToolBarViewlet(ViewletBase):
             basik = api.portal.get_registry_record('dashboard', interface=IDocentimsSettings) or ''
             dashboard_url = self.get_dashboard_url()
             if basik:
-                siteurl = f'{dashboard_url}/@dashboard_sites?email={usermail}'
+                siteurl = f'{dashboard_url}/@dashboard_sites/?email={usermail}'
                 buttons = []
                 try:                
                     response  = requests.get(
                         siteurl,
                         headers={
                             'Accept': 'application/json',
+                            'Content-Type': 'application/json',
                             'Authorization': f'Basic {basik}'                             
                         },
-                        timeout=2,                    
+                        timeout=4,                    
                     )
 
                     if response.status_code == 200:
