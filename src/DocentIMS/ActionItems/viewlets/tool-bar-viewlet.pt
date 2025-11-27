@@ -33,7 +33,7 @@
                     <tal:condition tal:condition="view/get_sites">
                         <tal:define tal:define="buttons python: sites['buttons']">
                             <tal:repeat tal:repeat="site buttons">
-                                <option tal:define="val python: site['url']" 
+                                <option tal:define="val python: site['url'].rstrip('/')" 
                                         value="${val}" 
                                         tal:condition="python: view.portal_url != val">
                                 ${python: site['name']}
