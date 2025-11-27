@@ -24,7 +24,7 @@
 
     <div id="project_name" class="xflex project_color">
         <!-- <label for="project">Select a Project:</label> -->
-        <div id="project_select">
+        <!-- <div id="project_select_div"> -->
 
             <div tal:define="sites view/get_sites|None; 
                 current_title view/site_title|None" tal:condition="sites">
@@ -33,7 +33,9 @@
                     <tal:condition tal:condition="view/get_sites">
                         <tal:define tal:define="buttons python: sites['buttons']">
                             <tal:repeat tal:repeat="site buttons">
-                                <option tal:define="val python: site['url']" value="${val}" tal:condition="python: view.portal_url != val">
+                                <option tal:define="val python: site['url']" 
+                                        value="${val}" 
+                                        tal:condition="python: view.portal_url != val">
                                 ${python: site['name']}
                                 </option>
                             </tal:repeat>
@@ -48,7 +50,7 @@
             <label class="toolbar_label">
                 <a href="${portal_url}">Project Selected</a>
             </label>
-        </div>
+        <!-- </div> -->
     </div>
 
     <div tal:condition="view/is_project_manager" id="toolbar_mode" class="">

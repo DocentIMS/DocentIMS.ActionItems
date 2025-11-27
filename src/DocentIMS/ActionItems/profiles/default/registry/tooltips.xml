@@ -22,7 +22,8 @@
     <value>Create a task for anyone on the team.</value>
   </record>
 
-  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonNotificationsRed" interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonNotificationsRed">
+  <record name="DocentIMS.ActionItems.interfaces.IDocentimsSettings.tooltipIdButtonNotificationsRed" 
+  interface="DocentIMS.ActionItems.interfaces.IDocentimsSettings" field="tooltipIdButtonNotificationsRed">
     <field type="plone.registry.field.Text">
       <title>Critical Notifications</title>
     </field>
